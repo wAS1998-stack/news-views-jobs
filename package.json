@@ -1,0 +1,11 @@
+{
+  "name": "news-views-jobs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static government-jobs site for news-views.in",
+  "scripts": {
+    "build": "node build.js",
+    "fetch": "node fetch-jobs.js"
+  },
+  "engines": { "node": ">=18" }
+}

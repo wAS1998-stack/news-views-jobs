@@ -1,0 +1,11 @@
+{
+  "_README": "This is the ONLY file you need to edit. Fill url + email, add your OPENAI_API_KEY as a GitHub secret, and you're done. The feeds below already cover central + all-state government jobs across India. See OFFICIAL-SOURCES.md for the full list of official bodies you can add or switch to.",
+  "url": "https://news-views.in",
+  "email": "contact@news-views.in",
+  "adsenseId": "",
+  "feeds": [
+    "https://www.govtjobsblog.in/feed",
+    "https://www.govtjobsdiary.com/feed"
+  ],
+  "maxNewPerRun": 12
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "id": "ssc-cgl-2026",
+    "title": "SSC CGL 2026 Notification",
+    "organization": "Staff Selection Commission",
+    "org_short": "SSC",
+    "post_name": "Combined Graduate Level (Group B & C)",
+    "total_vacancies": 17727,
+    "qualification": "Bachelor's degree in any discipline from a recognised university",
+    "age_min": 18,
+    "age_max": 32,
+    "application_start": "2026-06-24",
+    "application_end": "2026-07-24",
+    "exam_date": "2026-09-15",
+    "fee": "₹100 (no fee for SC/ST/PwD/Women)",
+    "location": "All India",
+    "salary": "₹25,500 – ₹1,51,100 per month",
+    "apply_link": "https://ssc.gov.in",
+    "official_notification": "https://ssc.gov.in",
+    "published": "2026-06-27",
+    "summary": "SSC has released the CGL 2026 notification for 17,727 Group B and C posts across central government departments. Graduates can apply online before 24 July 2026.",
+    "how_to_apply": [
+      "Register on the official SSC portal with a valid email and mobile number.",
+      "Fill the CGL 2026 application form with your education and personal details.",
+      "Upload a recent photo and signature in the required format.",
+      "Pay the application fee online (where applicable) and submit the form.",
+      "Download and save the confirmation page for future reference."
+    ],
+    "selection_process": [
+      "Tier 1 — Computer-Based Examination (objective: Reasoning, General Awareness, Quantitative Aptitude, English).",
+      "Tier 2 — Computer-Based Examination (Mathematical Abilities, Reasoning, English, Computer Knowledge).",
+      "Document Verification and final merit-based selection."
+    ]
+  },
+  {
+    "id": "ibps-po-2026",
+    "title": "IBPS PO 2026 Recruitment",
+    "organization": "Institute of Banking Personnel Selection",
+    "org_short": "IBPS",
+    "post_name": "Probationary Officer / Management Trainee",
+    "total_vacancies": 5208,
+    "qualification": "Graduate in any discipline with basic computer knowledge",
+    "age_min": 20,
+    "age_max": 30,
+    "application_start": "2026-07-01",
+    "application_end": "2026-07-21",
+    "exam_date": "2026-08-30",
+    "fee": "₹850 (₹175 for SC/ST/PwD)",
+    "location": "All India",
+    "salary": "₹52,000 – ₹55,000 per month (approx.)",
+    "apply_link": "https://www.ibps.in",
+    "official_notification": "https://www.ibps.in",
+    "published": "2026-06-26",
+    "summary": "IBPS invites applications for 5,208 Probationary Officer posts in participating public sector banks. The online application window is open from 1 to 21 July 2026.",
+    "how_to_apply": [
+      "Visit the official IBPS website and open the CRP PO/MT registration link.",
+      "Complete the registration and note your registration number and password.",
+      "Fill in academic, personal and category details accurately.",
+      "Upload photograph, signature, left thumb impression and a handwritten declaration.",
+      "Pay the fee and submit. Take a printout of the completed form."
+    ]
+  },
+  {
+    "id": "rrb-ntpc-2026",
+    "title": "RRB NTPC 2026 Vacancy",
+    "organization": "Railway Recruitment Board",
+    "org_short": "RRB",
+    "post_name": "Non-Technical Popular Categories (Graduate & Undergraduate)",
+    "total_vacancies": 11558,
+    "qualification": "12th pass / Graduate depending on the post applied for",
+    "age_min": 18,
+    "age_max": 33,
+    "application_start": "2026-06-10",
+    "application_end": "2026-07-02",
+    "exam_date": "2026-08-10",
+    "fee": "₹500 (₹250 refundable for SC/ST/PwD/Women on appearing)",
+    "location": "All India",
+    "salary": "₹19,900 – ₹35,400 per month",
+    "apply_link": "https://www.rrbcdg.gov.in",
+    "official_notification": "https://www.rrbcdg.gov.in",
+    "published": "2026-06-22",
+    "summary": "Indian Railways has notified 11,558 NTPC posts for graduates and 12th-pass candidates. Apply online through your regional RRB website before 2 July 2026.",
+    "how_to_apply": [
+      "Find your regional RRB website from the official RRB portal.",
+      "Create a one-time registration and verify with OTP.",
+      "Choose your preferred posts and RRB region.",
+      "Upload scanned documents as per the size specifications.",
+      "Pay the examination fee and submit the application."
+    ]
+  }
+]

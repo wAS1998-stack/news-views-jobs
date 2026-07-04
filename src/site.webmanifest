@@ -1,0 +1,13 @@
+{
+  "name": "News-Views.in — Government Jobs",
+  "short_name": "News-Views",
+  "description": "Latest Sarkari Naukri notifications — vacancies, eligibility and last dates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#14213D",
+  "icons": [
+    { "src": "/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

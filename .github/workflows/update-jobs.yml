@@ -1,0 +1,39 @@
+name: Update jobs
+
+on:
+  schedule:
+    # 3x/day (UTC) ≈ 08:00, 14:00, 19:00 IST
+    - cron: "30 2,8,13 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch new jobs from feeds (AI auto-fills details if key present)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}         # add this secret -> rich pages (recommended)
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # alternative to OpenAI
+          JOBS_FEEDS: ${{ secrets.JOBS_FEEDS }}                 # optional override; feeds normally come from config.json
+        run: node fetch-jobs.js
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "jobs-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/jobs.json)" ]; then
+            git add data/jobs.json
+            git commit -m "Auto: new job listings"
+            git push
+            echo "Pushed — Cloudflare will redeploy automatically."
+          else
+            echo "No changes."
+          fi
