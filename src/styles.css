@@ -454,3 +454,83 @@ html { scroll-behavior: smooth; }
   margin: 10px 0 0; font-family: "Spline Sans Mono", monospace; font-size: 11.5px;
   letter-spacing: .04em; color: var(--muted); text-transform: uppercase;
 }
+
+/* ===========================  v7: hero presence + interaction polish  =========================== */
+
+/* Dark hero panel — gives the top of the page real weight */
+.hero {
+  background: linear-gradient(135deg, #14213D 0%, #1B2C50 55%, #1F3560 100%);
+  border: 1px solid #0F1A31;
+  border-radius: 20px;
+  padding: 44px 44px 36px;
+  margin-top: 20px;
+  box-shadow: 0 18px 50px rgba(20, 33, 61, 0.22);
+}
+.hero .eyebrow { color: #F0A868; }
+.hero h1 { color: #FFFFFF; }
+.hero > p { color: #B9C3D8; }
+.hero .count { color: #8FA0BF; }
+
+/* Search: designed field with custom focus ring (kills the default blue outline) */
+.hero .search {
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.search { transition: border-color .15s ease, box-shadow .15s ease; }
+.search:focus {
+  outline: none;
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(232, 119, 46, 0.25), 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Stats overlap the hero slightly — connected, intentional composition */
+.stats { margin-top: -26px; padding: 0 18px; position: relative; z-index: 2; }
+.stat-box { box-shadow: 0 10px 30px rgba(20,33,61,0.10); }
+
+/* Interactive polish: cards lift on hover */
+.job-card, .guide-card {
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.job-card:hover, .guide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(20,33,61,0.13);
+  border-color: #D5D9E2;
+}
+.chip { transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+@media (max-width: 640px) {
+  .hero { padding: 30px 22px 26px; border-radius: 16px; margin-top: 12px; }
+  .stats { margin-top: -18px; padding: 0 8px; }
+}
+
+/* ===========================  v8: browse-by-education section  =========================== */
+.edu-browse { margin: 30px 0 4px; }
+.edu-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+}
+.edu-card {
+  display: flex; flex-direction: column; gap: 2px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 16px 14px; text-decoration: none; box-shadow: var(--shadow);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.edu-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(20,33,61,.13); border-color: #D5D9E2; }
+.edu-count {
+  font-family: "Spline Sans Mono", monospace; font-weight: 700; font-size: 26px;
+  color: var(--azure); line-height: 1;
+}
+.edu-name {
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 16.5px;
+  color: var(--ink); letter-spacing: -.01em; margin-top: 6px; line-height: 1.2;
+}
+.edu-sub {
+  font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em;
+}
+.edu-card .readmore { margin-top: 10px; font-size: 13px; }
+.qual-intro { max-width: 760px; margin-top: 6px; }
+.qual-intro p { color: #2A3344; }
+@media (max-width: 900px) { .edu-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .edu-grid { grid-template-columns: 1fr 1fr; } .edu-card { padding: 14px 13px 12px; } }

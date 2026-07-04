@@ -84,11 +84,50 @@ const LEVELS = [
   [/12th|inter|higher secondary|10\+2|hsc/i, "12th Pass"],
   [/10th|matric|sslc|secondary/i, "10th Pass"],
 ];
-function levelsOf(job) {
-  const q = job.qualification || "";
-  const out = LEVELS.filter(([re]) => re.test(q)).map(([, name]) => name);
-  return out.length ? [...new Set(out)] : ["Any Graduate"];
+/* ---- Fixed education categories (canonical landing pages) ------- */
+const QUALS = [
+  { slug: "10th-pass", name: "10th Pass", h1: "Government Jobs for 10th Pass",
+    re: /\b10th\b|matric|sslc/i,
+    desc: "Latest government job notifications for 10th pass candidates in India — railways, defence, police and state posts, with eligibility, dates and how to apply.",
+    intro: [
+      "Passing 10th class is a genuine entry point into government service. The railways, defence and paramilitary forces, state police and various state boards all recruit at the matriculation level for posts that offer real security, allowances and a career that can grow through promotions and further study.",
+      "Most 10th-level exams test a common core — basic mathematics, reasoning, general awareness and a language — so one steady preparation effort keeps several doors open. Uniformed posts add physical standards, so start fitness work early. Every listing below links to the official notification; always verify the details there before applying." ],
+    guideSlugs: ["government-jobs-after-10th", "railway-ntpc-vs-group-d", "government-job-eligibility-india"] },
+  { slug: "12th-pass", name: "12th Pass", h1: "Government Jobs for 12th Pass",
+    re: /\b12th\b|intermediate|higher secondary|hsc|\+2/i,
+    desc: "Latest government job notifications for 12th pass candidates — SSC CHSL, railways, defence, police and state recruitment, with eligibility, dates and how to apply.",
+    intro: [
+      "Completing 12th opens some of the most popular doors in government recruitment: SSC CHSL for central clerical posts, railway NTPC undergraduate categories, defence entries designed for school-leavers, police constable posts and a wide range of state jobs. These are secure careers you can begin right away — many candidates also complete a degree alongside and step up to graduate-level exams later.",
+      "The exams at this level share a familiar core of reasoning, quantitative aptitude, English and general awareness, with skill tests such as typing for some posts. Check each notification's exact eligibility and cut-off dates below, and confirm everything on the official website before you apply." ],
+    guideSlugs: ["government-jobs-after-12th", "how-to-join-defence-forces-after-12th", "ssc-cgl-vs-chsl-difference"] },
+  { slug: "graduate", name: "Graduate", h1: "Government Jobs for Graduates",
+    re: /graduat|bachelor|\bdegree\b|b\.?\s?a\b|b\.?sc|b\.?com/i,
+    desc: "Latest government job notifications for graduates — SSC CGL, banking (IBPS/SBI), UPSC, railways, state PSC and PSU recruitment, with eligibility, dates and how to apply.",
+    intro: [
+      "A graduate degree in any discipline unlocks the widest and best-paying range of government jobs in India: SSC CGL for central ministries, Probationary Officer and Clerk posts in public sector banks, graduate-level railway categories, state PSC services and, for the most ambitious, the UPSC Civil Services. Responsibility, pay and long-term growth are all a step above the school-level entries.",
+      "Because most graduate exams test the same core subjects, a single foundation of preparation lets you attempt several of them from one effort. Browse the live notifications below — each page summarises vacancies, eligibility, dates and fees, and links to the official notification for verification." ],
+    guideSlugs: ["government-jobs-after-graduation", "ssc-vs-banking-vs-railway-jobs", "how-to-prepare-ssc-cgl"] },
+  { slug: "engineering-diploma", name: "Engineering / Diploma", h1: "Government Jobs for Engineers & Diploma Holders",
+    re: /engineer|b\.?e\b|b\.?tech|diploma|\biti\b|polytechnic/i,
+    desc: "Latest government job notifications for engineering graduates, diploma and ITI holders — technical posts in railways, PSUs, defence research and state departments.",
+    intro: [
+      "Technical qualifications open a distinct, well-paid track in government recruitment. Engineering graduates are sought by PSUs, railway technical cadres, defence research organisations and junior-engineer posts across departments, while diploma and ITI holders qualify for a large base of technician, apprentice and skilled trade positions.",
+      "Technical exams typically combine your discipline's core subjects with general aptitude, so keep both sharp. Eligibility clauses are stricter here — the exact branch, and whether a diploma is accepted where a degree is specified, matter — so read each notification's qualification clause carefully and verify on the official site before applying." ],
+    guideSlugs: ["government-jobs-after-graduation", "government-job-eligibility-india", "how-to-read-government-job-notification"] },
+  { slug: "post-graduate", name: "Post Graduate", h1: "Government Jobs for Post Graduates",
+    re: /post\s?-?graduat|master|m\.?sc|m\.?tech|\bmba\b|ph\.?d/i,
+    desc: "Latest government job notifications for post graduates — specialist officer, research, teaching and senior administrative recruitment across central and state government.",
+    intro: [
+      "A master's degree qualifies you for the specialist end of government recruitment: specialist officer posts in banks, research and scientific positions, assistant professor and teaching roles, and senior administrative services where a post-graduate qualification is required or gives an edge in the selection.",
+      "Post-graduate recruitment is less frequent but more targeted, so track the bodies relevant to your subject closely and keep your documents ready to move quickly when notifications appear. Every listing below carries the key facts and a link to the official notification — always confirm the final eligibility there." ],
+    guideSlugs: ["state-psc-vs-upsc-differences", "government-jobs-after-graduation", "interview-tips-government-job-selection"] },
+];
+function qualsOf(job) {
+  const t = `${job.qualification || ""} ${job.title || ""}`;
+  const out = QUALS.filter((q) => q.re.test(t));
+  return out.length ? out : QUALS.filter((q) => q.slug === "graduate");
 }
+function levelsOf(job) { return qualsOf(job).map((q) => q.name); }
 
 /* parse "Rs 25,500 - 1,51,100 per month" -> {min,max,unit} for structured salary */
 function parseSalary(s) {
@@ -213,18 +252,59 @@ function jobCard(job) {
 }
 
 function chips(levels, orgs) {
-  const lvl = levels.map((l) =>
-    `<a class="chip" href="/qualification/${slug(l)}/">${esc(l)}</a>`).join("");
   const org = orgs.slice(0, 8).map((o) =>
     `<a class="chip chip-org" href="/organization/${slug(o.short)}/">${esc(o.short)}</a>`).join("");
   return `<nav class="chips" aria-label="Browse jobs">
-    <span class="chips-label">By qualification</span>${lvl}
     <span class="chips-label">By department</span>${org}
   </nav>`;
 }
 
+function eduSection(qualCounts) {
+  const card = (q) => {
+    const n = qualCounts.get(q.slug) || 0;
+    return `<li><a class="edu-card" href="/qualification/${q.slug}/">
+      <span class="edu-count">${n}</span>
+      <span class="edu-name">${esc(q.name)}</span>
+      <span class="edu-sub">${n === 1 ? "live notification" : "live notifications"}</span>
+      <span class="readmore">View jobs &rarr;</span>
+    </a></li>`;
+  };
+  return `<section class="edu-browse">
+    <h2 class="section-h">Find jobs by your education</h2>
+    <ul class="edu-grid">${QUALS.map(card).join("\n")}</ul>
+  </section>`;
+}
+
+function buildQualPage(q, list) {
+  const canonical = `${SITE.url}/qualification/${q.slug}/`;
+  const live = list.filter((j) => statusOf(j).cls !== "closed");
+  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const guides = (ALL_GUIDES || []).filter((g) => q.guideSlugs.includes(g.slug));
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: q.name, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: q.h1, url: canonical, description: q.desc,
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+        "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+  ];
+  return head({ title: `${q.h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc: q.desc, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; ${esc(q.name)}</p>
+  <section class="cat-head">
+    <p class="eyebrow">Browse by education &middot; ${live.length} live</p>
+    <h1>${esc(q.h1)}</h1>
+    <div class="prose qual-intro">${q.intro.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
+  </section>
+  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+    : `<p class="empty">No live notifications in this category right now — new jobs are added automatically several times a day, so check back soon or <a href="/">browse all current jobs</a>.</p>`}
+  ${guides.length ? `<section class="related">
+    <h2 class="section-h">Guides for ${esc(q.name)} candidates</h2>
+    <ul class="guides">${guides.map((g) => `<li><a class="guide-card" href="/guides/${g.slug}/"><h3>${esc(g.meta.title)}</h3><p>${esc(g.meta.description || "")}</p><span class="readmore">Read guide &rarr;</span></a></li>`).join("")}</ul>
+  </section>` : ""}
+</main>` + foot();
+}
+
 /* ---- Home ------------------------------------------------------- */
-function buildHome(jobs, levels, orgs, guides) {
+function buildHome(jobs, levels, orgs, guides, qualCounts) {
   const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
   const ld = [
@@ -264,6 +344,8 @@ function buildHome(jobs, levels, orgs, guides) {
     <div class="stat-box"><span class="n">${orgs.length}</span><span class="l">Departments</span></div>
     <div class="stat-box"><span class="n">Daily</span><span class="l">Updated &amp; free</span></div>
   </div>
+
+  ${eduSection(qualCounts)}
 
   ${chips(levels, orgs)}
 
@@ -415,8 +497,8 @@ function buildJob(job, all) {
     { name: job.title, url: canonical },
   ])];
   if (faqs.length) ld.push(faqLd(faqs));
-  const lvlLinks = levelsOf(job)
-    .map((l) => `<a class="chip" href="/qualification/${slug(l)}/">${esc(l)}</a>`).join("");
+  const lvlLinks = qualsOf(job)
+    .map((q) => `<a class="chip" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("");
   const selection = Array.isArray(job.selection_process) && job.selection_process.length
     ? `<h2 class="section-h">Selection process</h2><ol class="steps">${job.selection_process.map((s)=>`<li>${esc(s)}</li>`).join("")}</ol>`
     : "";
@@ -870,31 +952,32 @@ function main() {
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
 
-  const levelMap = new Map();
+  const levelMap = new Map();   // qual slug -> jobs
   const orgMap = new Map();
   for (const job of jobs) {
-    for (const l of levelsOf(job)) {
-      if (!levelMap.has(l)) levelMap.set(l, []);
-      levelMap.get(l).push(job);
+    for (const q of qualsOf(job)) {
+      if (!levelMap.has(q.slug)) levelMap.set(q.slug, []);
+      levelMap.get(q.slug).push(job);
     }
     const short = job.org_short || job.organization;
     if (!orgMap.has(short)) orgMap.set(short, { short, jobs: [] });
     orgMap.get(short).jobs.push(job);
   }
-  const levels = [...levelMap.keys()];
+  const qualCounts = new Map(QUALS.map((q) =>
+    [q.slug, (levelMap.get(q.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
+  const levels = QUALS.map((q) => q.name);
   const orgs = [...orgMap.values()].sort((a, b) => b.jobs.length - a.jobs.length);
 
   const guides = readGuides();
   ALL_GUIDES = guides;
 
-  write("index.html", buildHome(jobs, levels, orgs, guides));
+  write("index.html", buildHome(jobs, levels, orgs, guides, qualCounts));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
   const cats = [];
-  for (const [label, list] of levelMap) {
-    const s = slug(label);
-    write(`qualification/${s}/index.html`, buildCategory("qualification", label, s, list));
-    cats.push({ kind: "qualification", slug: s });
+  for (const q of QUALS) {
+    write(`qualification/${q.slug}/index.html`, buildQualPage(q, levelMap.get(q.slug) || []));
+    cats.push({ kind: "qualification", slug: q.slug });
   }
   for (const { short, jobs: list } of orgMap.values()) {
     const s = slug(short);
