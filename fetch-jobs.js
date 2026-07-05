@@ -28,6 +28,15 @@ const path = require("path");
 const ROOT = __dirname;
 const DATA = path.join(ROOT, "data", "jobs.json");
 const SOURCES = path.join(ROOT, "data", "sources.json");
+const UPDATES = path.join(ROOT, "data", "updates.json");
+function classify(title) {
+  const s = String(title || "");
+  if (/answer key/i.test(s)) return "answer-key";
+  if (/admit card|call letter|hall ticket|city intimation|exam city/i.test(s)) return "admit-card";
+  if (/result|merit list|cut ?off|shortlist/i.test(s)) return "result";
+  if (/exam date|exam schedule|exam from/i.test(s)) return "exam-date";
+  return "job";
+}
 
 const OPENAI_KEY = process.env.OPENAI_API_KEY || "";
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
@@ -108,7 +117,7 @@ async function aiExtract(item) {
     `Return ONLY a JSON object (no prose, no markdown) with these keys, using null when genuinely unknown: ` +
     `organization, org_short, post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
     `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
-    `summary (2-3 clear factual sentences describing the recruitment), ` +
+    `summary (2-3 clear factual sentences describing the recruitment), summary_hindi (the same summary written naturally in Hindi), ` +
     `selection_process (array of the selection stages if mentioned), ` +
     `how_to_apply (array of 4-6 clear step-by-step instructions to apply online). ` +
     `Write summary and how_to_apply as complete, helpful text even if you must phrase the standard online application process generally. ` +
@@ -192,6 +201,9 @@ async function main() {
   console.log(`Feeds: ${feeds.length} | AI extraction: ${AI_PROVIDER || "off"} | max new this run: ${MAX_NEW}`);
 
   const fresh = [];
+  let updates = [];
+  try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
+  let updatesAdded = 0;
   for (const url of feeds) {
     try {
       const r = await fetch(url, { headers: HDRS, signal: AbortSignal.timeout(20000) });
@@ -200,6 +212,21 @@ async function main() {
       console.log(`  ${items.length} items from ${url}`);
       for (const it of items) {
         if (fresh.length >= MAX_NEW) break;
+        const kind = classify(it.title);
+        if (kind !== "job") {
+          const uid = slug(it.title).slice(0, 80);
+          if (uid && !updates.some((u) => u.id === uid)) {
+            updates.unshift({ id: uid, type: kind, title: String(it.title).trim(),
+              organization: String(it.title).split(/[—:\-]/)[0].trim().slice(0, 60) || "Recruitment Board",
+              org_short: String(it.title).split(/\s+/).slice(0, 2).join(" "),
+              date: new Date().toISOString().slice(0, 10), link: it.link,
+              summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
+                " Check the official website for the direct link and full details." });
+            updatesAdded++;
+            console.log(`   * update: ${it.title}`);
+          }
+          continue;
+        }
         const job = await toJob(it, ids);
         if (job) { fresh.push(job); ids.add(job.id); console.log(`   + ${job.title}`); }
       }
@@ -207,6 +234,11 @@ async function main() {
     if (fresh.length >= MAX_NEW) break;
   }
 
+  if (updatesAdded) {
+    updates = updates.slice(0, 60);
+    fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
+    console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
+  }
   if (!fresh.length) { console.log("No new jobs found. jobs.json unchanged."); return; }
 
   const merged = [...fresh, ...existing]

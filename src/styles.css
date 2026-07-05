@@ -534,3 +534,72 @@ html { scroll-behavior: smooth; }
 .qual-intro p { color: #2A3344; }
 @media (max-width: 900px) { .edu-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .edu-grid { grid-template-columns: 1fr 1fr; } .edu-card { padding: 14px 13px 12px; } }
+
+/* ===========================  v9: education-first navigation  =========================== */
+/* Education pills inside the dark hero — the primary browse action */
+.hero-quick {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  margin-top: 16px;
+}
+.hq-label {
+  font-family: "Spline Sans Mono", monospace; font-size: 12px; letter-spacing: .1em;
+  text-transform: uppercase; color: #8FA0BF; margin-right: 2px;
+}
+.hq-pill {
+  display: inline-block; padding: 7px 15px; border-radius: 999px;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.22);
+  color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 13.5px;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+}
+.hq-pill:hover {
+  background: var(--saffron); border-color: var(--saffron); transform: translateY(-1px);
+}
+/* Education tag on job cards */
+.qual-tag {
+  display: inline-block; padding: 3px 9px; border-radius: 6px;
+  background: rgba(31,95,174,0.08); color: var(--azure);
+  font-family: "Spline Sans Mono", monospace; font-size: 11px; font-weight: 600;
+  letter-spacing: .03em;
+}
+@media (max-width: 560px) {
+  .hero-quick { gap: 6px; }
+  .hq-pill { padding: 6px 12px; font-size: 12.5px; }
+  .hq-label { display: none; }
+}
+
+/* ===========================  v10: results / admit-card / answer-key updates  =========================== */
+.updates { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.update {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 16px; text-decoration: none; box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.update:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(20,33,61,.12); border-color: #D5D9E2; }
+.upd-type {
+  font-family: "Spline Sans Mono", monospace; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: 6px; white-space: nowrap;
+}
+.upd-result     { background: rgba(27,127,90,.10);  color: var(--green); }
+.upd-admit-card { background: rgba(31,95,174,.10);  color: var(--azure); }
+.upd-answer-key { background: rgba(232,119,46,.12); color: var(--saffron); }
+.upd-exam-date  { background: rgba(20,33,61,.08);   color: var(--ink); }
+.upd-title { font-weight: 600; color: var(--ink); font-size: 15px; line-height: 1.35; }
+.upd-meta { font-family: "Spline Sans Mono", monospace; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.home-updates { margin: 30px 0 4px; }
+.hu-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.upd-group { margin-bottom: 26px; }
+.hindi { background: #FAF8F3; border-left: 3px solid var(--saffron); padding: 10px 14px; border-radius: 0 10px 10px 0; }
+@media (max-width: 560px) {
+  .update { grid-template-columns: auto 1fr; }
+  .upd-meta { grid-column: 2; justify-self: start; }
+}
+
+/* ===========================  v11: mobile overflow fix (job cards at scale)  =========================== */
+.job, .update, .job * { min-width: 0; }
+.job .meta { flex-wrap: wrap; row-gap: 6px; }
+.job h3, .job .post, .upd-title { overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .job .meta .mono, .job .meta b { white-space: normal; }
+  .job-top { flex-wrap: wrap; row-gap: 6px; }
+}

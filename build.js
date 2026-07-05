@@ -197,6 +197,7 @@ ${ldBlocks}
   </a>
   <nav class="nav" aria-label="Primary">
     <a href="/">Jobs</a>
+    <a href="/updates/">Updates</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -239,6 +240,7 @@ function jobCard(job) {
   return `<li><a class="job" href="/jobs/${esc(job.id)}/" data-text="${esc(text)}">
     <div class="job-top">
       <span class="org-tag">${esc(job.org_short || job.organization)}</span>
+      ${qualsOf(job).slice(0,2).map((q)=>`<span class="qual-tag">${esc(q.name)}</span>`).join("")}
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h2>${esc(job.title)}</h2>
@@ -275,6 +277,82 @@ function eduSection(qualCounts) {
   </section>`;
 }
 
+
+/* ---- Results / Admit Cards / Answer Keys / Exam Dates ------------ */
+const UPDATE_TYPES = {
+  "result":     { label: "Result",     plural: "Results" },
+  "admit-card": { label: "Admit Card", plural: "Admit Cards" },
+  "answer-key": { label: "Answer Key", plural: "Answer Keys" },
+  "exam-date":  { label: "Exam Date",  plural: "Exam Dates" },
+};
+function readUpdates() {
+  try {
+    const u = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "updates.json"), "utf8"));
+    return u.filter((x) => UPDATE_TYPES[x.type]).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  } catch { return []; }
+}
+function updateCard(u) {
+  return `<li><a class="update" href="/updates/${esc(u.id)}/">
+    <span class="upd-type upd-${u.type}">${UPDATE_TYPES[u.type].label}</span>
+    <span class="upd-title">${esc(u.title)}</span>
+    <span class="upd-meta">${esc(u.org_short || u.organization)}${u.date ? " &middot; " + fmtDate(u.date) : ""}</span>
+  </a></li>`;
+}
+function buildUpdatePage(u, all) {
+  const canonical = `${SITE.url}/updates/${u.id}/`;
+  const rel = all.filter((x) => x.id !== u.id && (x.org_short === u.org_short || x.type === u.type)).slice(0, 4);
+  const relJobs = (typeof ALL_JOBS !== "undefined" ? ALL_JOBS : []).filter((j) => (j.org_short || j.organization) === (u.org_short || u.organization)).slice(0, 2);
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: SITE.url + "/updates/" }, { name: u.title, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "NewsArticle", headline: u.title, datePublished: u.date,
+      dateModified: u.date, description: u.summary,
+      author: { "@type": "Organization", name: SITE.publisher },
+      publisher: { "@type": "Organization", name: SITE.brand, logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png" } },
+      mainEntityOfPage: canonical },
+  ];
+  return head({ title: `${u.title} | ${SITE.name}`, desc: u.summary.slice(0, 158), canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
+<main class="wrap article" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a></p>
+  <article>
+    <p class="eyebrow"><span class="upd-type upd-${u.type}">${UPDATE_TYPES[u.type].label}</span> &middot; ${esc(u.org_short || u.organization)} &middot; ${fmtDate(u.date)}</p>
+    <h1>${esc(u.title)}</h1>
+    <div class="prose">
+      <p>${esc(u.summary)}</p>
+      ${u.summary_hi ? `<p class="hindi" lang="hi">${esc(u.summary_hi)}</p>` : ""}
+      ${u.event_date ? `<p><strong>Important date:</strong> <b class="mono">${fmtDate(u.event_date)}</b></p>` : ""}
+    </div>
+    <p class="cta-row"><a class="btn btn-primary" href="${esc(u.link)}" rel="nofollow noopener" target="_blank">Check on official website &rarr;</a></p>
+    <p class="smallprint">Always verify on the official website — ${esc(SITE.brand)} aggregates publicly announced updates and is not a government body.</p>
+    ${relJobs.length ? `<section class="related"><h2 class="section-h">Related jobs</h2><ul class="jobs">${relJobs.map(jobCard).join("")}</ul></section>` : ""}
+    ${rel.length ? `<section class="related"><h2 class="section-h">More updates</h2><ul class="updates">${rel.map(updateCard).join("")}</ul></section>` : ""}
+  </article>
+</main>` + foot();
+}
+function buildUpdatesIndex(updates) {
+  const canonical = SITE.url + "/updates/";
+  const groups = Object.keys(UPDATE_TYPES).map((k) => {
+    const list = updates.filter((u) => u.type === k);
+    return list.length ? `<section class="upd-group">
+      <h2 class="section-h">${UPDATE_TYPES[k].plural} <span class="grp-count">${list.length}</span></h2>
+      <ul class="updates">${list.map(updateCard).join("\n")}</ul></section>` : "";
+  }).join("\n");
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: "Sarkari Results, Admit Cards & Answer Keys", url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: updates.map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/updates/${u.id}/`, name: u.title })) } },
+  ];
+  return head({ title: `Sarkari Result, Admit Card & Answer Key ${BUILT.getFullYear()} — Latest Updates | ${SITE.name}`,
+    desc: "Latest sarkari results, admit cards, answer keys and exam dates in one place — updated automatically with links to the official websites.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <section class="cat-head">
+    <p class="eyebrow">Updates &middot; ${updates.length} recent</p>
+    <h1>Results, Admit Cards &amp; Answer Keys</h1>
+    <p class="lede">The latest sarkari results, admit cards, answer keys and exam dates — each linking straight to the official website so you can verify and download.</p>
+  </section>
+  ${groups || '<p class="empty">New updates are added automatically and will appear here shortly.</p>'}
+</main>` + foot();
+}
+
 function buildQualPage(q, list) {
   const canonical = `${SITE.url}/qualification/${q.slug}/`;
   const live = list.filter((j) => statusOf(j).cls !== "closed");
@@ -304,7 +382,7 @@ function buildQualPage(q, list) {
 }
 
 /* ---- Home ------------------------------------------------------- */
-function buildHome(jobs, levels, orgs, guides, qualCounts) {
+function buildHome(jobs, levels, orgs, guides, qualCounts, updates) {
   const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
   const ld = [
@@ -336,6 +414,10 @@ function buildHome(jobs, levels, orgs, guides, qualCounts) {
       <input class="search" id="q" type="search" placeholder="Search by post, department or qualification…" aria-label="Search jobs">
     </div>
     <p class="count" id="count"></p>
+    <nav class="hero-quick" aria-label="Browse by education">
+      <span class="hq-label">Browse:</span>
+      ${QUALS.map((q) => `<a class="hq-pill" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
+    </nav>
   </section>
 
   <div class="stats" aria-label="At a glance">
@@ -344,6 +426,11 @@ function buildHome(jobs, levels, orgs, guides, qualCounts) {
     <div class="stat-box"><span class="n">${orgs.length}</span><span class="l">Departments</span></div>
     <div class="stat-box"><span class="n">Daily</span><span class="l">Updated &amp; free</span></div>
   </div>
+
+  ${(updates && updates.length) ? `<section class="home-updates">
+    <div class="hu-head"><h2 class="section-h">📢 Latest updates</h2><a class="backlink" href="/updates/">All updates &rarr;</a></div>
+    <ul class="updates">${updates.slice(0,6).map(updateCard).join("")}</ul>
+  </section>` : ""}
 
   ${eduSection(qualCounts)}
 
@@ -513,6 +600,7 @@ function buildJob(job, all) {
     </div>
     <h1>${esc(job.title)}</h1>
     <p class="lede">${esc(job.summary || "")}</p>
+    ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
     ${pct !== null ? `<div class="window" role="img" aria-label="Application window from ${fmtDate(job.application_start)} to ${fmtDate(job.application_end)}">
       <div class="bar"><span class="fill ${st.cls}" style="width:${pct.toFixed(0)}%"></span></div>
       <div class="window-ends"><span>${fmtDate(job.application_start)}</span><span>${fmtDate(job.application_end)}</span></div>
@@ -878,6 +966,7 @@ function buildGuide(g) {
 </main>` + foot();
 }
 let ALL_GUIDES = [];
+let ALL_JOBS = [];
 function relatedGuidesHtml(current) {
   const others = ALL_GUIDES.filter((x) => x.slug !== current.slug);
   if (!others.length) return "";
@@ -970,9 +1059,14 @@ function main() {
 
   const guides = readGuides();
   ALL_GUIDES = guides;
+  ALL_JOBS = jobs;
+  const updates = readUpdates();
 
-  write("index.html", buildHome(jobs, levels, orgs, guides, qualCounts));
+  write("index.html", buildHome(jobs, levels, orgs, guides, qualCounts, updates));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
+
+  write("updates/index.html", buildUpdatesIndex(updates));
+  for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
 
   const cats = [];
   for (const q of QUALS) {
@@ -998,6 +1092,8 @@ function main() {
   // extra URLs for sitemap
   const extra = [
     "guides/",
+    "updates/",
+    ...updates.map((u) => `updates/${u.id}/`),
     ...guides.map((g) => `guides/${g.slug}/`),
     ...Object.keys(pages).map((s) => `${s}/`),
   ];
