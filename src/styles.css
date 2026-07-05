@@ -603,3 +603,40 @@ html { scroll-behavior: smooth; }
   .job .meta .mono, .job .meta b { white-space: normal; }
   .job-top { flex-wrap: wrap; row-gap: 6px; }
 }
+
+/* ===========================  v12: PWA install button  =========================== */
+.install-btn {
+  position: fixed; right: 16px; bottom: 88px; z-index: 55;
+  background: var(--ink); color: #fff; border: 1px solid #0F1A31;
+  font-family: inherit; font-weight: 700; font-size: 14px;
+  padding: 11px 18px; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 10px 30px rgba(20,33,61,.30);
+}
+.install-btn:hover { background: #1B2C50; }
+
+/* ===========================  v13: education dropdown in main menu  =========================== */
+.nav-dd { position: relative; display: inline-block; }
+.nav-dd summary {
+  list-style: none; cursor: pointer; font-weight: 600; color: var(--ink);
+  padding: 6px 2px; user-select: none;
+}
+.nav-dd summary::-webkit-details-marker { display: none; }
+.nav-dd summary::after { content: " ▾"; font-size: 11px; color: var(--muted); }
+.nav-dd[open] summary { color: var(--azure); }
+.nav-dd .dd {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  min-width: 220px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 16px 44px rgba(20,33,61,.16); padding: 8px; z-index: 70;
+}
+.nav-dd .dd a {
+  display: block; padding: 9px 12px; border-radius: 8px; text-decoration: none;
+  color: var(--ink); font-weight: 600; font-size: 14px;
+}
+.nav-dd .dd a:first-child { border-bottom: 1px solid var(--line); border-radius: 8px 8px 0 0; margin-bottom: 4px; }
+.nav-dd .dd a:hover { background: #F2F0EA; color: var(--azure); }
+.foot-edu { margin-top: 10px; font-size: 12.5px; }
+.foot-edu a { color: var(--muted); text-decoration: none; }
+.foot-edu a:hover { color: var(--azure); text-decoration: underline; }
+@media (max-width: 640px) {
+  .nav-dd .dd { left: auto; right: -60px; transform: none; }
+}

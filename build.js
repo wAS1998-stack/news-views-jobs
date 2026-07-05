@@ -196,7 +196,13 @@ ${ldBlocks}
     News-Views<span class="dot">.</span>
   </a>
   <nav class="nav" aria-label="Primary">
-    <a href="/">Jobs</a>
+    <details class="nav-dd">
+      <summary>Jobs</summary>
+      <div class="dd">
+        <a href="/">All jobs</a>
+        ${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
+      </div>
+    </details>
     <a href="/updates/">Updates</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
@@ -213,7 +219,8 @@ function foot() {
     <a href="/contact/">Contact</a>
     <a href="/privacy-policy/">Privacy</a>
     <a href="/disclaimer/">Disclaimer</a>
-    <a href="/terms/">Terms</a>
+    <a href="/terms/">Terms</a></p>
+    <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}
     <a href="/feed.xml">RSS</a>
   </span>
 </div></footer>
@@ -1036,7 +1043,7 @@ function main() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
-  for (const f of ["styles.css", "site.js", "favicon.svg", "og.png", "icon-512.png", "icon-180.png", "site.webmanifest"]) {
+  for (const f of ["styles.css", "site.js", "sw.js", "favicon.svg", "og.png", "icon-512.png", "icon-192.png", "icon-180.png", "site.webmanifest"]) {
     const src = path.join(ROOT, "src", f);
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
@@ -1100,6 +1107,23 @@ function main() {
 
   write("sitemap.xml", buildSitemap(jobs, cats, extra));
   write("feed.xml", buildFeed(jobs));
+  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
+<main class="wrap" id="main"><section class="cat-head">
+  <p class="eyebrow">Offline</p><h1>You're offline right now</h1>
+  <p class="lede">This page isn't cached yet. Reconnect to the internet and try again — previously visited pages remain available offline.</p>
+  <p class="cta-row"><a class="btn btn-primary" href="/">Go to homepage</a></p>
+</section></main>` + foot());
+
+  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
+<main class="wrap" id="main">
+  <section class="cat-head">
+    <p class="eyebrow">Offline</p>
+    <h1>You're offline right now</h1>
+    <p class="lede">This page isn't available without an internet connection. Pages you've visited before may still open. Once you're back online, the latest jobs and updates will load automatically.</p>
+    <p class="cta-row"><a class="btn btn-primary" href="/">Try the homepage &rarr;</a></p>
+  </section>
+</main>` + foot());
+
   write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
   if (SITE.adsenseId) {
     const pub = SITE.adsenseId.replace(/^ca-/, "");

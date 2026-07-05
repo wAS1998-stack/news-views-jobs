@@ -37,3 +37,25 @@
     bar.remove();
   });
 })();
+
+// PWA: service worker + install prompt
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js"); });
+}
+(function () {
+  var deferred = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault(); deferred = e;
+    if (document.querySelector(".install-btn")) return;
+    var b = document.createElement("button");
+    b.className = "install-btn"; b.type = "button";
+    b.innerHTML = "&#128241; Install app";
+    b.addEventListener("click", function () {
+      b.remove(); if (deferred) { deferred.prompt(); deferred = null; }
+    });
+    document.body.appendChild(b);
+  });
+  window.addEventListener("appinstalled", function () {
+    var b = document.querySelector(".install-btn"); if (b) b.remove();
+  });
+})();

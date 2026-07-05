@@ -1,13 +1,27 @@
 {
-  "name": "News-Views.in — Government Jobs",
+  "name": "News-Views.in \u2014 Government Jobs",
   "short_name": "News-Views",
-  "description": "Latest Sarkari Naukri notifications — vacancies, eligibility and last dates.",
+  "description": "Latest Sarkari Naukri notifications \u2014 vacancies, eligibility and last dates.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FBFAF7",
   "theme_color": "#14213D",
   "icons": [
-    { "src": "/icon-180.png", "sizes": "180x180", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
   ]
 }
