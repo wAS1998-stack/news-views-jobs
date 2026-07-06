@@ -63,7 +63,7 @@ a:hover { text-decoration: underline; }
 .brand .dot { color: var(--saffron); }
 .nav { display: flex; gap: 22px; font-size: 15px; font-weight: 600; }
 .nav a { color: var(--ink); }
-@media (max-width: 560px) { .nav { display: none; } }
+/* mobile nav handled by v13 block below */
 
 /* ---------- Hero ---------- */
 .hero { padding: 44px 0 28px; border-bottom: 1px solid var(--line); }
@@ -624,19 +624,50 @@ html { scroll-behavior: smooth; }
 .nav-dd summary::after { content: " ▾"; font-size: 11px; color: var(--muted); }
 .nav-dd[open] summary { color: var(--azure); }
 .nav-dd .dd {
-  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  min-width: 220px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
-  box-shadow: 0 16px 44px rgba(20,33,61,.16); padding: 8px; z-index: 70;
+  position: absolute; top: calc(100% + 10px); right: 0; left: auto; transform: none;
+  min-width: 210px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(20,33,61,.22); padding: 8px; z-index: 200;
 }
 .nav-dd .dd a {
-  display: block; padding: 9px 12px; border-radius: 8px; text-decoration: none;
-  color: var(--ink); font-weight: 600; font-size: 14px;
+  display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none;
+  color: var(--ink); font-weight: 600; font-size: 14px; white-space: nowrap;
 }
-.nav-dd .dd a:first-child { border-bottom: 1px solid var(--line); border-radius: 8px 8px 0 0; margin-bottom: 4px; }
+.nav-dd .dd a:first-child { border-bottom: 1px solid var(--line); border-radius: 8px 8px 0 0; margin-bottom: 4px; padding-bottom: 12px; }
 .nav-dd .dd a:hover { background: #F2F0EA; color: var(--azure); }
 .foot-edu { margin-top: 10px; font-size: 12.5px; }
 .foot-edu a { color: var(--muted); text-decoration: none; }
 .foot-edu a:hover { color: var(--azure); text-decoration: underline; }
+.site-head { position: relative; z-index: 210; }
 @media (max-width: 640px) {
-  .nav-dd .dd { left: auto; right: -60px; transform: none; }
+  .nav-dd .dd { right: 0; left: auto; transform: none; }
+}
+
+/* ===========================  v13: mobile menu  =========================== */
+.nav-toggle { display: none; }
+@media (max-width: 560px) {
+  .nav-toggle {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff; cursor: pointer; margin-left: auto;
+  }
+  .nav-toggle span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: .2s; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .site-head .wrap { flex-wrap: wrap; }
+  .nav {
+    display: none; flex-direction: column; gap: 2px; width: 100%;
+    order: 3; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+  }
+  .nav.open { display: flex; }
+  .nav > a, .nav-dd summary { padding: 12px 8px; font-size: 16px; border-radius: 8px; }
+  .nav > a:active, .nav-dd summary:active { background: #F2F0EA; }
+  /* on mobile the Jobs submenu is inline, not a floating panel */
+  .nav-dd { width: 100%; }
+  .nav-dd .dd {
+    position: static; transform: none; box-shadow: none; border: none;
+    padding: 0 0 0 12px; min-width: 0; margin-top: 2px;
+  }
+  .nav-dd .dd a { padding: 10px 8px; font-weight: 500; }
+  .nav-dd .dd a:first-child { border-bottom: none; }
 }

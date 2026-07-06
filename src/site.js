@@ -20,6 +20,15 @@
     });
     tally(shown);
     if (empty) empty.hidden = shown !== 0;
+    var closing = document.getElementById("closing-sec");
+    var chips = document.querySelector(".chips");
+    var edu = document.querySelector(".edu-browse");
+    var lh = document.getElementById("list-h");
+    var searching = term.length > 0;
+    if (closing) closing.style.display = searching ? "none" : "";
+    if (chips) chips.style.display = searching ? "none" : "";
+    if (edu) edu.style.display = searching ? "none" : "";
+    if (lh) lh.textContent = searching ? "Search results" : "Latest government jobs";
   });
 })();
 
@@ -57,5 +66,29 @@ if ("serviceWorker" in navigator) {
   });
   window.addEventListener("appinstalled", function () {
     var b = document.querySelector(".install-btn"); if (b) b.remove();
+  });
+})();
+
+// Close the Jobs dropdown when clicking outside or choosing an item
+(function () {
+  var dd = document.querySelector(".nav-dd");
+  if (!dd) return;
+  document.addEventListener("click", function (e) {
+    if (dd.open && !dd.contains(e.target)) dd.removeAttribute("open");
+  });
+  dd.querySelectorAll(".dd a").forEach(function (a) {
+    a.addEventListener("click", function () { dd.removeAttribute("open"); });
+  });
+})();
+
+// Mobile menu toggle
+(function () {
+  var btn = document.querySelector(".nav-toggle");
+  var nav = document.querySelector(".nav");
+  if (!btn || !nav) return;
+  btn.addEventListener("click", function () {
+    var open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
 })();

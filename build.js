@@ -131,7 +131,10 @@ function levelsOf(job) { return qualsOf(job).map((q) => q.name); }
 
 /* parse "Rs 25,500 - 1,51,100 per month" -> {min,max,unit} for structured salary */
 function parseSalary(s) {
-  if (!s) return null;
+  if (s == null) return null;
+  // Accept numbers or objects the AI may return, not just strings.
+  if (typeof s === "number") return s > 99 ? { min: s, max: s, unit: "MONTH" } : null;
+  if (typeof s !== "string") { try { s = String(s); } catch { return null; } }
   const nums = (s.match(/[\d,]+/g) || []).map((x) => Number(x.replace(/,/g, ""))).filter((n) => n > 99);
   if (!nums.length) return null;
   const unit = /year|annum|p\.?a\.?|lpa/i.test(s) ? "YEAR" : /hour/i.test(s) ? "HOUR" : "MONTH";
@@ -195,6 +198,7 @@ ${ldBlocks}
     <span class="mark" aria-hidden="true">N<span class="dot">.</span></span>
     News-Views<span class="dot">.</span>
   </a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
     <details class="nav-dd">
       <summary>Jobs</summary>
@@ -443,16 +447,16 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates) {
 
   ${chips(levels, orgs)}
 
-  ${closingSoon.length ? `<section class="closing">
+  ${closingSoon.length ? `<section class="closing" id="closing-sec">
     <h2 class="section-h">⏳ Closing soon</h2>
     <ul class="jobs">${closingSoon.slice(0,3).map(jobCard).join("\n")}</ul>
   </section>` : ""}
 
-  <h2 class="section-h list-h">Latest government jobs</h2>
+  <h2 class="section-h list-h" id="list-h">Latest government jobs</h2>
   ${sorted.length ? `<ul class="jobs" id="list">
     ${sorted.map(jobCard).join("\n")}
   </ul>
-  <p class="empty" id="empty" hidden>No jobs match that search.</p>` :
+  <p class="empty" id="empty" hidden>No jobs match your search — try a department (SSC, RRB), a post, or a qualification.</p>` :
   `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
 
   ${(guides && guides.length) ? `<section class="home-guides">
@@ -1039,7 +1043,26 @@ function write(rel, content) {
 }
 
 function main() {
-  const jobs = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  const rawJobs = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  // Defensive sanitiser: the automation's AI can occasionally return a field as a
+  // number/object/array. Coerce text fields to strings so the build never crashes.
+  const TEXT = ["id", "title", "organization", "org_short", "post_name", "qualification",
+    "summary", "summary_hindi", "location", "fee", "salary", "apply_link",
+    "application_start", "application_end", "exam_date", "published"];
+  const jobs = (Array.isArray(rawJobs) ? rawJobs : []).map((j) => {
+    const o = { ...j };
+    for (const k of TEXT) {
+      if (o[k] != null && typeof o[k] !== "string") {
+        o[k] = Array.isArray(o[k]) ? o[k].join(", ") : String(o[k]);
+      }
+    }
+    if (o.total_vacancies != null && typeof o.total_vacancies !== "number") {
+      const n = parseInt(String(o.total_vacancies).replace(/[^\d]/g, ""), 10);
+      o.total_vacancies = Number.isFinite(n) ? n : null;
+    }
+    if (o.how_to_apply != null && !Array.isArray(o.how_to_apply)) o.how_to_apply = [String(o.how_to_apply)];
+    return o;
+  }).filter((j) => j.id && j.title);
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
