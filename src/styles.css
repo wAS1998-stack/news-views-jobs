@@ -671,3 +671,13 @@ html { scroll-behavior: smooth; }
   .nav-dd .dd a { padding: 10px 8px; font-weight: 500; }
   .nav-dd .dd a:first-child { border-bottom: none; }
 }
+
+/* ===========================  v14: NEW badge for freshly added items  =========================== */
+.new-badge {
+  display: inline-block; background: var(--green); color: #fff;
+  font-family: "Spline Sans Mono", monospace; font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; padding: 3px 7px; border-radius: 5px; vertical-align: middle;
+  animation: nvpulse 2s ease-in-out infinite;
+}
+@keyframes nvpulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
+.upd-title .new-badge { margin-left: 6px; padding: 2px 6px; }

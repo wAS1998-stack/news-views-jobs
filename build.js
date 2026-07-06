@@ -74,6 +74,13 @@ function windowPct(job) {
   return Math.max(0, Math.min(100, p));
 }
 const inr = (n) => (n === 0 || n) ? Number(n).toLocaleString("en-IN") : "—";
+function isNew(iso) {
+  if (!iso) return false;
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d)) return false;
+  const days = (BUILT - d) / 86400000;
+  return days >= 0 && days <= 3;
+}
 
 /* qualification level(s) for category pages */
 const LEVELS = [
@@ -252,6 +259,7 @@ function jobCard(job) {
     <div class="job-top">
       <span class="org-tag">${esc(job.org_short || job.organization)}</span>
       ${qualsOf(job).slice(0,2).map((q)=>`<span class="qual-tag">${esc(q.name)}</span>`).join("")}
+      ${isNew(job.published) ? `<span class="new-badge">NEW</span>` : ""}
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h2>${esc(job.title)}</h2>
@@ -305,7 +313,7 @@ function readUpdates() {
 function updateCard(u) {
   return `<li><a class="update" href="/updates/${esc(u.id)}/">
     <span class="upd-type upd-${u.type}">${UPDATE_TYPES[u.type].label}</span>
-    <span class="upd-title">${esc(u.title)}</span>
+    <span class="upd-title">${esc(u.title)}${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</span>
     <span class="upd-meta">${esc(u.org_short || u.organization)}${u.date ? " &middot; " + fmtDate(u.date) : ""}</span>
   </a></li>`;
 }
