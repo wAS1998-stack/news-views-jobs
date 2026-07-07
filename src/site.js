@@ -20,14 +20,16 @@
     });
     tally(shown);
     if (empty) empty.hidden = shown !== 0;
-    var closing = document.getElementById("closing-sec");
-    var chips = document.querySelector(".chips");
-    var edu = document.querySelector(".edu-browse");
-    var lh = document.getElementById("list-h");
     var searching = term.length > 0;
-    if (closing) closing.style.display = searching ? "none" : "";
-    if (chips) chips.style.display = searching ? "none" : "";
-    if (edu) edu.style.display = searching ? "none" : "";
+    // While searching, collapse everything between the search box and the results
+    // so the matches appear immediately below the search — not after the updates.
+    ["closing-sec"].forEach(function (id) {
+      var el = document.getElementById(id); if (el) el.style.display = searching ? "none" : "";
+    });
+    [".chips", ".edu-browse", ".home-updates", ".stats", ".home-guides", ".home-about"].forEach(function (sel) {
+      var el = document.querySelector(sel); if (el) el.style.display = searching ? "none" : "";
+    });
+    var lh = document.getElementById("list-h");
     if (lh) lh.textContent = searching ? "Search results" : "Latest government jobs";
   });
 })();
