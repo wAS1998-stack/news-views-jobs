@@ -71,17 +71,6 @@ if ("serviceWorker" in navigator) {
   });
 })();
 
-// Close the Jobs dropdown when clicking outside or choosing an item
-(function () {
-  var dd = document.querySelector(".nav-dd");
-  if (!dd) return;
-  document.addEventListener("click", function (e) {
-    if (dd.open && !dd.contains(e.target)) dd.removeAttribute("open");
-  });
-  dd.querySelectorAll(".dd a").forEach(function (a) {
-    a.addEventListener("click", function () { dd.removeAttribute("open"); });
-  });
-})();
 
 // Mobile menu toggle
 (function () {

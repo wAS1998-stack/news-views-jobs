@@ -207,13 +207,7 @@ ${ldBlocks}
   </a>
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
-    <details class="nav-dd">
-      <summary>Jobs</summary>
-      <div class="dd">
-        <a href="/">All jobs</a>
-        ${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
-      </div>
-    </details>
+    <a href="/">Jobs</a>
     <a href="/updates/">Updates</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
