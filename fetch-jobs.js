@@ -157,9 +157,19 @@ async function aiExtract(item) {
 }
 
 /* ---- build a job entry from a feed item ------------------------- */
-async function toJob(item, existingIds) {
+// Build a "fingerprint" of a job so near-duplicates (same job, different wording)
+// are caught even when the exact title/slug differs.
+function fingerprint(title) {
+  const stop = new Set("recruitment notification apply online form last date vacancy vacancies post posts jobs job 2025 2026 2027 the a an for of to and or online offline".split(" "));
+  const words = String(title || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/)
+    .filter((w) => w.length > 1 && !stop.has(w));
+  return words.sort().join(" ");
+}
+async function toJob(item, existingIds, fingerprints) {
   let id = slug(item.title);
-  if (!id || existingIds.has(id)) return null;        // skip seen / empty
+  if (!id || existingIds.has(id)) return null;        // skip exact-slug duplicates
+  const fp = fingerprint(item.title);
+  if (fp && fingerprints && fingerprints.has(fp)) return null;  // skip near-duplicates
   const base = {
     id,
     title: item.title,
@@ -193,6 +203,7 @@ async function toJob(item, existingIds) {
 async function main() {
   const existing = JSON.parse(fs.readFileSync(DATA, "utf8"));
   const ids = new Set(existing.map((j) => j.id));
+  const fps = new Set(existing.map((j) => fingerprint(j.title)));
   const feeds = loadFeeds();
 
   if (!feeds.length) {
@@ -228,8 +239,8 @@ async function main() {
           }
           continue;
         }
-        const job = await toJob(it, ids);
-        if (job) { fresh.push(job); ids.add(job.id); console.log(`   + ${job.title}`); }
+        const job = await toJob(it, ids, fps);
+        if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
       }
     } catch (e) { console.log(`  feed error (${url}): ${e.message}`); }
     if (fresh.length >= MAX_NEW) break;
