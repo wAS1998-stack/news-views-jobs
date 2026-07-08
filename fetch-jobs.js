@@ -41,6 +41,7 @@ function classify(title) {
 const OPENAI_KEY = process.env.OPENAI_API_KEY || "";
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
 const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")); } catch { return {}; } })();
+const SITE_URL = (CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const MAX_NEW = Number(process.env.MAX_NEW || CONFIG.maxNewPerRun || 8);   // cap new jobs per run
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-nano";          // cheapest, ideal for extraction
 const ANTHROPIC_MODEL = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20251001";
@@ -245,6 +246,15 @@ async function main() {
     .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   fs.writeFileSync(DATA, JSON.stringify(merged, null, 2) + "\n");
   console.log(`Added ${fresh.length} new job(s). Total: ${merged.length}.`);
+
+  // Record exactly which job URLs are new this run, so the Indexing API pings
+  // only those (fast + quota-efficient) instead of re-submitting everything.
+  try {
+    const base = (SITE_URL || "https://news-views.in").replace(/\/$/, "");
+    const newUrls = fresh.filter((j) => j && j.id).map((j) => `${base}/jobs/${j.id}/`);
+    fs.writeFileSync(path.join(ROOT, "data", "new-urls.txt"), newUrls.join("\n") + "\n");
+    console.log(`Recorded ${newUrls.length} new URL(s) for indexing.`);
+  } catch {}
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
