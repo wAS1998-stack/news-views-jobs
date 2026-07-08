@@ -1068,7 +1068,7 @@ function main() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
-  for (const f of ["styles.css", "site.js", "sw.js", "favicon.svg", "og.png", "icon-512.png", "icon-192.png", "icon-180.png", "site.webmanifest"]) {
+  for (const f of ["styles.css", "site.js", "sw.js", "favicon.svg", "og.png", "icon-512.png", "icon-192.png", "icon-180.png", "site.webmanifest", "761d3fa6bfbb9013f7da584d6b8b4eaa.txt"]) {
     const src = path.join(ROOT, "src", f);
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
@@ -1131,6 +1131,19 @@ function main() {
   ];
 
   write("sitemap.xml", buildSitemap(jobs, cats, extra));
+
+  // Human-readable master list of every URL — handy for checking/indexing.
+  const allUrls = [
+    SITE.url + "/",
+    ...jobs.map((j) => `${SITE.url}/jobs/${j.id}/`),
+    ...cats.map((c) => `${SITE.url}/${c.kind}/${c.slug}/`),
+    ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
+    SITE.url + "/updates/",
+    ...guides.map((g) => `${SITE.url}/guides/${g.slug}/`),
+    SITE.url + "/guides/",
+    ...Object.keys(pages).map((s) => `${SITE.url}/${s}/`),
+  ];
+  write("all-urls.txt", allUrls.join("\n") + "\n");
   write("feed.xml", buildFeed(jobs));
   write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
 <main class="wrap" id="main"><section class="cat-head">

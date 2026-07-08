@@ -62,6 +62,30 @@ function loadFeeds() {
 /* ---- helpers ---------------------------------------------------- */
 const slug = (s) => String(s || "").toLowerCase().trim()
   .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 70);
+// Cleaner slug for auto-fetched jobs: drop filler/noise words and vacancy counts,
+// keep it short and readable (e.g. "NTPC Jobs 2026 – Apply Online for 08 Senior
+// Manager Engineer" -> "ntpc-senior-manager-engineer-2026").
+function cleanSlug(title) {
+  const noise = new Set(("jobs job apply online offline for the a an of to and or with without last date " +
+    "recruitment notification vacancy vacancies post posts opening openings career careers " +
+    "download link form registration eligibility www com in gov nic org").split(" "));
+  let year = "";
+  const words = String(title || "").toLowerCase()
+    .replace(/&[a-z]+;/gi, " ")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((w) => {
+      if (/^(20\d{2})$/.test(w)) { year = w; return false; }   // pull the year out, re-append later
+      if (/^\d+$/.test(w)) return false;                        // drop bare numbers like "08"
+      if (noise.has(w)) return false;
+      return true;
+    });
+  let s = words.slice(0, 6).join("-");
+  if (year) s += "-" + year;
+  s = s.replace(/^-+|-+$/g, "").slice(0, 60).replace(/-+$/g, "");
+  return s || slug(title);
+}
 const stripTags = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").replace(/\s+/g, " ").trim();
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -166,7 +190,7 @@ function fingerprint(title) {
   return words.sort().join(" ");
 }
 async function toJob(item, existingIds, fingerprints) {
-  let id = slug(item.title);
+  let id = cleanSlug(item.title);
   if (!id || existingIds.has(id)) return null;        // skip exact-slug duplicates
   const fp = fingerprint(item.title);
   if (fp && fingerprints && fingerprints.has(fp)) return null;  // skip near-duplicates
