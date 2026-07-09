@@ -29,7 +29,7 @@ const BUILT = new Date();
 // Load the single user config file (config.json) and apply it.
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
-  for (const k of ["url", "email", "adsenseId", "brand", "name", "tagline"]) {
+  for (const k of ["url", "email", "adsenseId", "brand", "name", "tagline", "staleDays"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -64,6 +64,13 @@ function statusOf(job) {
   if (d < 0) return { cls: "closed", label: "Closed", live: false };
   if (d <= 7) return { cls: "soon", label: d === 0 ? "Last day" : `${d} days left`, live: true };
   return { cls: "open", label: "Open", live: true };
+}
+// A job is "stale" once its deadline passed more than STALE_DAYS ago.
+// Stale jobs keep their own page (SEO) but drop out of active listings/counts.
+const STALE_DAYS = Number(SITE.staleDays || 45);
+function isStale(job) {
+  const d = daysLeft(job.application_end);
+  return d !== null && d < -STALE_DAYS;
 }
 function windowPct(job) {
   if (!job.application_start || !job.application_end) return null;
@@ -583,6 +590,27 @@ function helpfulGuidesForJob(job) {
     <ul class="guides">${picks.map((g) => `<li><a class="guide-card" href="/guides/${g.slug}/"><h3>${esc(g.meta.title)}</h3><p>${esc(g.meta.description || "")}</p><span class="readmore">Read guide &rarr;</span></a></li>`).join("")}</ul>
   </section>`;
 }
+function prepTips(job) {
+  const t = `${job.title} ${job.organization} ${job.org_short || ""} ${job.qualification || ""}`.toLowerCase();
+  const generic = [
+    `Read the official notification end to end before applying — eligibility, exam pattern, syllabus and the fee are all defined there, and small details often decide selection.`,
+    `Build your preparation around previous years' question papers; they reveal the real difficulty level and the topics that repeat most often.`,
+    `Keep a simple weekly routine that covers the whole syllabus and leaves time for revision and full-length mock tests, which build both speed and accuracy.`,
+  ];
+  const extra = [];
+  if (/ssc|cgl|chsl|mts/.test(t)) extra.push(`For SSC exams, quantitative aptitude and reasoning reward daily practice, while general awareness and English can be improved steadily with short, consistent study.`);
+  if (/bank|ibps|sbi|rbi/.test(t)) extra.push(`For banking exams, focus on speed in the quantitative and reasoning sections, and stay current with banking awareness and recent economic news.`);
+  if (/rrb|railway|technician|loco|group d|ntpc/.test(t)) extra.push(`For railway exams, mathematics, general science and general awareness carry significant weight, so revise NCERT-level science and practise arithmetic regularly.`);
+  if (/police|constable|si|defence|army|navy|air force|agniveer/.test(t)) extra.push(`For uniformed posts, start physical preparation early — the physical efficiency and endurance tests are as decisive as the written exam.`);
+  if (/upsc|pcs|psc|civil/.test(t)) extra.push(`For civil-services-style exams, build a strong foundation in current affairs and standard reference books, and practise structured answer writing.`);
+  if (/engineer|je|technical|diploma|iti|drdo|isro|psu/.test(t)) extra.push(`For technical posts, revise your core branch subjects thoroughly, since the technical section usually carries the highest weight.`);
+  const all = [...extra, ...generic].slice(0, 4);
+  return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(job.org_short || job.organization)} ${esc(job.post_name || "this exam")}</h2>
+    <p>Preparation for ${esc(job.title)} is most effective when it is planned and consistent. A few practical pointers:</p>
+    <ul>${all.map((x) => `<li>${x}</li>`).join("")}</ul>
+    <p>For a fuller, step-by-step plan, see the helpful guides linked below — they cover exam strategy, subject-wise tips and common mistakes in detail.</p>
+  </div>`;
+}
 function buildJob(job, all) {
   const st = statusOf(job);
   const canonical = `${SITE.url}/jobs/${job.id}/`;
@@ -612,6 +640,7 @@ function buildJob(job, all) {
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h1>${esc(job.title)}</h1>
+    ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> The last date to apply was ${fmtDate(job.application_end)}. This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
     <p class="lede">${esc(job.summary || "")}</p>
     ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
     ${pct !== null ? `<div class="window" role="img" aria-label="Application window from ${fmtDate(job.application_start)} to ${fmtDate(job.application_end)}">
@@ -653,6 +682,8 @@ function buildJob(job, all) {
     ${job.official_notification ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Read official notification</a>` : ""}
   </div>
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
+
+  ${prepTips(job)}
 
   ${faqSection(faqs)}
 
@@ -1073,9 +1104,15 @@ function main() {
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
 
-  const levelMap = new Map();   // qual slug -> jobs
+  // Split: `jobs` = ALL (each gets its own page — SEO preserved, no 404s).
+  // `activeJobs` = not stale (drives homepage, category listings, counts, sitemap priority).
+  const activeJobs = jobs.filter((j) => !isStale(j));
+  const staleCount = jobs.length - activeJobs.length;
+  if (staleCount) console.log(`Lifecycle: ${staleCount} stale job(s) hidden from listings (pages kept live).`);
+
+  const levelMap = new Map();   // qual slug -> ACTIVE jobs (for listings)
   const orgMap = new Map();
-  for (const job of jobs) {
+  for (const job of activeJobs) {
     for (const q of qualsOf(job)) {
       if (!levelMap.has(q.slug)) levelMap.set(q.slug, []);
       levelMap.get(q.slug).push(job);
@@ -1094,7 +1131,7 @@ function main() {
   ALL_JOBS = jobs;
   const updates = readUpdates();
 
-  write("index.html", buildHome(jobs, levels, orgs, guides, qualCounts, updates));
+  write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
   write("updates/index.html", buildUpdatesIndex(updates));

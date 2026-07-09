@@ -43,6 +43,7 @@ const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
 const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")); } catch { return {}; } })();
 const SITE_URL = (CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const MAX_NEW = Number(process.env.MAX_NEW || CONFIG.maxNewPerRun || 8);   // cap new jobs per run
+const MAX_UPDATES = Number(process.env.MAX_UPDATES || CONFIG.maxUpdatesPerRun || 15);   // cap new updates per run
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-nano";          // cheapest, ideal for extraction
 const ANTHROPIC_MODEL = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20251001";
 const AI_PROVIDER = OPENAI_KEY ? "OpenAI" : ANTHROPIC_KEY ? "Claude" : "";
@@ -234,7 +235,7 @@ async function main() {
     console.log("No feeds configured. Add a feed URL to config.json under 'feeds'. Nothing to fetch.");
     return;
   }
-  console.log(`Feeds: ${feeds.length} | AI extraction: ${AI_PROVIDER || "off"} | max new this run: ${MAX_NEW}`);
+  console.log(`Feeds: ${feeds.length} | AI extraction: ${AI_PROVIDER || "off"} | max jobs: ${MAX_NEW} | max updates: ${MAX_UPDATES}`);
 
   const fresh = [];
   let updates = [];
@@ -247,9 +248,11 @@ async function main() {
       const items = parseFeed(await r.text());
       console.log(`  ${items.length} items from ${url}`);
       for (const it of items) {
-        if (fresh.length >= MAX_NEW) break;
+        // Stop only when BOTH caps are hit (jobs and updates are independent).
+        if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
         const kind = classify(it.title);
         if (kind !== "job") {
+          if (updatesAdded >= MAX_UPDATES) continue;
           const uid = slug(it.title).slice(0, 80);
           if (uid && !updates.some((u) => u.id === uid)) {
             updates.unshift({ id: uid, type: kind, title: String(it.title).trim(),
@@ -263,15 +266,16 @@ async function main() {
           }
           continue;
         }
+        if (fresh.length >= MAX_NEW) continue;
         const job = await toJob(it, ids, fps);
         if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
       }
     } catch (e) { console.log(`  feed error (${url}): ${e.message}`); }
-    if (fresh.length >= MAX_NEW) break;
+    if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
   }
 
   if (updatesAdded) {
-    updates = updates.slice(0, 60);
+    updates = updates.slice(0, 120);
     fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }

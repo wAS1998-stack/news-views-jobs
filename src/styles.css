@@ -681,3 +681,11 @@ html { scroll-behavior: smooth; }
 }
 @keyframes nvpulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
 .upd-title .new-badge { margin-left: 6px; padding: 2px 6px; }
+
+/* ===========================  v15: closed-recruitment notice  =========================== */
+.closed-notice {
+  margin: 12px 0 4px; padding: 14px 18px; border-radius: 12px;
+  background: #FBEEE8; border: 1px solid #F0C9B4; color: #7A3B1E; font-size: 14.5px; line-height: 1.55;
+}
+.closed-notice strong { color: #C2410C; }
+.closed-notice a { color: var(--azure); font-weight: 600; }

@@ -1,11 +1,17 @@
 {
-  "_README": "This is the ONLY file you need to edit. Fill url + email, add your OPENAI_API_KEY as a GitHub secret, and you're done. The feeds below already cover central + all-state government jobs across India. See OFFICIAL-SOURCES.md for the full list of official bodies you can add or switch to.",
+  "_README": "This is the ONLY file you need to edit. Fill url + email, add OPENAI_API_KEY as a GitHub secret, done. Feeds below cover central + all-state jobs AND results/admit-cards/answer-keys. maxNewPerRun = jobs per run, maxUpdatesPerRun = results/admit-cards per run. 3 runs/day.",
   "url": "https://news-views.in",
   "email": "contact@news-views.in",
   "adsenseId": "",
   "feeds": [
     "https://www.govtjobsblog.in/feed",
-    "https://www.govtjobsdiary.com/feed"
+    "https://www.govtjobsdiary.com/feed",
+    "https://sarkarifeed.com/feed",
+    "https://sarkarifeed.com/category/sarkari-result/feed",
+    "https://sarkarifeed.com/category/admit-card/feed",
+    "https://sarkarifeed.com/category/answer-key/feed"
   ],
-  "maxNewPerRun": 12
+  "maxNewPerRun": 15,
+  "maxUpdatesPerRun": 12,
+  "staleDays": 45
 }
