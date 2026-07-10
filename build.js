@@ -1099,7 +1099,7 @@ function main() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
-  for (const f of ["styles.css", "site.js", "sw.js", "favicon.svg", "og.png", "icon-512.png", "icon-192.png", "icon-180.png", "site.webmanifest", "761d3fa6bfbb9013f7da584d6b8b4eaa.txt"]) {
+  for (const f of ["styles.css", "site.js", "sw.js", "favicon.svg", "og.png", "icon-512.png", "icon-192.png", "icon-180.png", "site.webmanifest", "761d3fa6bfbb9013f7da584d6b8b4eaa.txt", "googledb93c44ec31e6b4b.html"]) {
     const src = path.join(ROOT, "src", f);
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
