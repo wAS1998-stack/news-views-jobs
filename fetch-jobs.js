@@ -67,25 +67,39 @@ const slug = (s) => String(s || "").toLowerCase().trim()
 // keep it short and readable (e.g. "NTPC Jobs 2026 – Apply Online for 08 Senior
 // Manager Engineer" -> "ntpc-senior-manager-engineer-2026").
 function cleanSlug(title) {
+  // URL-safe normalizer used everywhere below: lowercase, ASCII a-z0-9, hyphens only.
+  const safe = (x) => String(x || "").toLowerCase()
+    .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")   // strip accents
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").replace(/-{2,}/g, "-").slice(0, 60).replace(/-+$/g, "");
+  const raw = safe(title);                 // safe baseline (may include noise words)
   const noise = new Set(("jobs job apply online offline for the a an of to and or with without last date " +
     "recruitment notification vacancy vacancies post posts opening openings career careers " +
-    "download link form registration eligibility www com in gov nic org").split(" "));
+    "download link form registration eligibility procedure www com in gov nic org").split(" "));
   let year = "";
   const words = String(title || "").toLowerCase()
+    .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
     .replace(/&[a-z]+;/gi, " ")
     .replace(/[^a-z0-9\s]/g, " ")
     .split(/\s+/)
     .filter(Boolean)
     .filter((w) => {
-      if (/^(20\d{2})$/.test(w)) { year = w; return false; }   // pull the year out, re-append later
-      if (/^\d+$/.test(w)) return false;                        // drop bare numbers like "08"
+      if (/^(20\d{2})$/.test(w)) { year = w; return false; }
+      if (/^\d+$/.test(w)) return false;
       if (noise.has(w)) return false;
       return true;
     });
   let s = words.slice(0, 6).join("-");
-  if (year) s += "-" + year;
-  s = s.replace(/^-+|-+$/g, "").slice(0, 60).replace(/-+$/g, "");
-  return s || slug(title);
+  if (year && s) s += "-" + year;
+  s = safe(s);   // guarantee URL-safe even after joining
+  // The cleaned slug must have real letters beyond a bare year; otherwise fall back
+  // to the safe raw slug, and finally to a unique id — but ALWAYS URL-safe.
+  const meaningful = s.replace(/-?20\d{2}$/, "").replace(/-/g, "");
+  if (!s || meaningful.length < 3) {
+    const rawMeaningful = raw.replace(/-?20\d{2}$/, "").replace(/-/g, "");
+    if (raw && rawMeaningful.length >= 3) return raw;
+    return "job-" + Date.now().toString(36);
+  }
+  return s;
 }
 const stripTags = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").replace(/\s+/g, " ").trim();
 const today = () => new Date().toISOString().slice(0, 10);

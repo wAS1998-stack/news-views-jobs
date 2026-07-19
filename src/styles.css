@@ -689,3 +689,16 @@ html { scroll-behavior: smooth; }
 }
 .closed-notice strong { color: #C2410C; }
 .closed-notice a { color: var(--azure); font-weight: 600; }
+
+/* ===========================  v16: browse by state  =========================== */
+.state-browse { margin: 26px 0 4px; }
+.state-browse .chips { margin-top: 8px; }
+.chip-n {
+  display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 20px;
+  background: rgba(31,95,174,.10); color: var(--azure); font-size: 11px; font-weight: 700;
+  font-family: "Spline Sans Mono", monospace;
+}
+.chip:hover .chip-n { background: rgba(255,255,255,.25); color: #fff; }
+.states-grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) { .states-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .states-grid { grid-template-columns: 1fr 1fr; } }

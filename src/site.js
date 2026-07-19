@@ -26,7 +26,7 @@
     ["closing-sec"].forEach(function (id) {
       var el = document.getElementById(id); if (el) el.style.display = searching ? "none" : "";
     });
-    [".chips", ".edu-browse", ".home-updates", ".stats", ".home-guides", ".home-about"].forEach(function (sel) {
+    [".chips", ".edu-browse", ".home-updates", ".stats", ".home-guides", ".home-about", ".state-browse"].forEach(function (sel) {
       var el = document.querySelector(sel); if (el) el.style.display = searching ? "none" : "";
     });
     var lh = document.getElementById("list-h");

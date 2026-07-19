@@ -143,6 +143,51 @@ function qualsOf(job) {
 }
 function levelsOf(job) { return qualsOf(job).map((q) => q.name); }
 
+/* ---- States: landing pages + location matcher ------------------- */
+// name, slug, and keywords (state name + major cities/abbr) to match location text.
+const STATES = [
+  { slug: "all-india", name: "All India / Central", kw: ["all india", "central", "pan india", "nationwide", "anywhere in india"] },
+  { slug: "andhra-pradesh", name: "Andhra Pradesh", kw: ["andhra", "vijayawada", "visakhapatnam", "guntur", "tirupati", "amaravati", "nellore"] },
+  { slug: "arunachal-pradesh", name: "Arunachal Pradesh", kw: ["arunachal", "itanagar"] },
+  { slug: "assam", name: "Assam", kw: ["assam", "guwahati", "dispur", "namrup", "dibrugarh", "silchar"] },
+  { slug: "bihar", name: "Bihar", kw: ["bihar", "patna", "gaya", "muzaffarpur", "bhagalpur"] },
+  { slug: "chhattisgarh", name: "Chhattisgarh", kw: ["chhattisgarh", "raipur", "bhilai", "bilaspur"] },
+  { slug: "delhi", name: "Delhi (NCR)", kw: ["delhi", "new delhi", "ncr", "nct"] },
+  { slug: "goa", name: "Goa", kw: ["goa", "panaji", "vasco", "margao"] },
+  { slug: "gujarat", name: "Gujarat", kw: ["gujarat", "ahmedabad", "surat", "vadodara", "gandhinagar", "rajkot"] },
+  { slug: "haryana", name: "Haryana", kw: ["haryana", "gurugram", "gurgaon", "faridabad", "panchkula", "hisar", "rohtak"] },
+  { slug: "himachal-pradesh", name: "Himachal Pradesh", kw: ["himachal", "shimla", "dharamshala", "mandi", "solan"] },
+  { slug: "jharkhand", name: "Jharkhand", kw: ["jharkhand", "ranchi", "dhanbad", "jamshedpur", "bokaro"] },
+  { slug: "karnataka", name: "Karnataka", kw: ["karnataka", "bengaluru", "bangalore", "mysuru", "mysore", "hubli", "mangalore", "belgaum"] },
+  { slug: "kerala", name: "Kerala", kw: ["kerala", "thiruvananthapuram", "kochi", "cochin", "kozhikode", "thrissur"] },
+  { slug: "madhya-pradesh", name: "Madhya Pradesh", kw: ["madhya pradesh", "bhopal", "indore", "jabalpur", "gwalior", "ujjain"] },
+  { slug: "maharashtra", name: "Maharashtra", kw: ["maharashtra", "mumbai", "pune", "nagpur", "nashik", "aurangabad", "thane", "navi mumbai"] },
+  { slug: "manipur", name: "Manipur", kw: ["manipur", "imphal"] },
+  { slug: "meghalaya", name: "Meghalaya", kw: ["meghalaya", "shillong"] },
+  { slug: "mizoram", name: "Mizoram", kw: ["mizoram", "aizawl"] },
+  { slug: "nagaland", name: "Nagaland", kw: ["nagaland", "kohima", "dimapur"] },
+  { slug: "odisha", name: "Odisha", kw: ["odisha", "orissa", "bhubaneswar", "cuttack", "rourkela"] },
+  { slug: "punjab", name: "Punjab", kw: ["punjab", "ludhiana", "amritsar", "jalandhar", "patiala", "mohali", "bathinda"] },
+  { slug: "rajasthan", name: "Rajasthan", kw: ["rajasthan", "jaipur", "jodhpur", "udaipur", "kota", "ajmer", "bikaner"] },
+  { slug: "sikkim", name: "Sikkim", kw: ["sikkim", "gangtok"] },
+  { slug: "tamil-nadu", name: "Tamil Nadu", kw: ["tamil nadu", "chennai", "coimbatore", "madurai", "tiruchirappalli", "trichy", "salem"] },
+  { slug: "telangana", name: "Telangana", kw: ["telangana", "hyderabad", "warangal", "nizamabad", "secunderabad"] },
+  { slug: "tripura", name: "Tripura", kw: ["tripura", "agartala"] },
+  { slug: "uttar-pradesh", name: "Uttar Pradesh", kw: ["uttar pradesh", "lucknow", "kanpur", "noida", "greater noida", "ghaziabad", "varanasi", "agra", "prayagraj", "allahabad", "meerut"] },
+  { slug: "uttarakhand", name: "Uttarakhand", kw: ["uttarakhand", "dehradun", "haridwar", "roorkee", "nainital", "haldwani"] },
+  { slug: "west-bengal", name: "West Bengal", kw: ["west bengal", "kolkata", "calcutta", "howrah", "durgapur", "siliguri", "asansol"] },
+  { slug: "jammu-kashmir", name: "Jammu & Kashmir", kw: ["jammu", "kashmir", "srinagar"] },
+];
+function statesOf(job) {
+  const loc = String(job.location || "").toLowerCase();
+  if (!loc) return [STATES[0]];
+  // All-India jobs go under the central bucket (anyone can apply regardless of state).
+  if (STATES[0].kw.some((k) => loc.includes(k))) return [STATES[0]];
+  const matched = STATES.filter((s) => s.slug !== "all-india" && s.kw.some((k) => loc.includes(k)));
+  return matched.length ? matched : [STATES[0]];
+}
+
+
 /* parse "Rs 25,500 - 1,51,100 per month" -> {min,max,unit} for structured salary */
 function parseSalary(s) {
   if (s == null) return null;
@@ -215,6 +260,7 @@ ${ldBlocks}
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
     <a href="/">Jobs</a>
+    <a href="/state/">States</a>
     <a href="/updates/">Updates</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
@@ -402,7 +448,71 @@ function buildQualPage(q, list) {
 }
 
 /* ---- Home ------------------------------------------------------- */
-function buildHome(jobs, levels, orgs, guides, qualCounts, updates) {
+function buildStatePage(st, list) {
+  const canonical = `${SITE.url}/state/${st.slug}/`;
+  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const live = list.filter((j) => statusOf(j).cls !== "closed");
+  const h1 = st.slug === "all-india" ? "All India & Central Government Jobs" : `${st.name} Government Jobs`;
+  const desc = st.slug === "all-india"
+    ? "Latest all-India and central government job notifications — open to candidates from every state, with eligibility, dates and how to apply."
+    : `Latest ${st.name} government job notifications — state and central vacancies open to ${st.name} candidates, with eligibility, last dates and how to apply.`;
+  const intro = st.slug === "all-india"
+    ? `These are central government and all-India recruitments that anyone across the country can apply for, regardless of home state. Each listing links to the official notification so you can verify the details before applying.`
+    : `This page brings together government job notifications relevant to ${st.name} — both state-level recruitments and all-India posts open to candidates from ${st.name}. Every listing shows the key facts and links to the official notification. New jobs are added automatically several times a day.`;
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: st.name, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+        "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+  ];
+  return head({ title: `${h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/state/">States</a> &nbsp;&rsaquo;&nbsp; ${esc(st.name)}</p>
+  <section class="cat-head">
+    <p class="eyebrow">Browse by state &middot; ${live.length} live</p>
+    <h1>${esc(h1)}</h1>
+    <p class="lede">${esc(intro)}</p>
+  </section>
+  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+    : `<p class="empty">No live notifications for ${esc(st.name)} right now — new jobs are added automatically several times a day. Meanwhile, <a href="/state/all-india/">browse all-India jobs</a> open to everyone, or <a href="/">see all current jobs</a>.</p>`}
+</main>` + foot();
+}
+function buildStatesIndex(stateCounts) {
+  const canonical = `${SITE.url}/state/`;
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "States", url: canonical }])];
+  const card = (s) => {
+    const n = stateCounts.get(s.slug) || 0;
+    return `<li><a class="edu-card" href="/state/${s.slug}/">
+      <span class="edu-count">${n}</span>
+      <span class="edu-name">${esc(s.name)}</span>
+      <span class="edu-sub">${n === 1 ? "live job" : "live jobs"}</span>
+    </a></li>`;
+  };
+  return head({ title: `Government Jobs by State ${BUILT.getFullYear()} — Statewise Sarkari Naukri | ${SITE.name}`,
+    desc: "Browse the latest government job notifications by state — Uttar Pradesh, Bihar, Maharashtra, Rajasthan and every other state, plus all-India central jobs.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <section class="cat-head">
+    <p class="eyebrow">Browse by state</p>
+    <h1>Government Jobs by State</h1>
+    <p class="lede">Find the latest Sarkari Naukri notifications for your state, plus all-India central government jobs open to everyone.</p>
+  </section>
+  <ul class="edu-grid states-grid">${STATES.map(card).join("\n")}</ul>
+</main>` + foot();
+}
+function stateSection(stateCounts) {
+  // top states by live count, then a link to the full states index
+  const ranked = STATES.filter((s) => (stateCounts.get(s.slug) || 0) > 0)
+    .sort((a, b) => (stateCounts.get(b.slug) || 0) - (stateCounts.get(a.slug) || 0));
+  const show = ranked.slice(0, 11);
+  if (!show.length) return "";
+  return `<section class="state-browse">
+    <div class="hu-head"><h2 class="section-h">Jobs by state</h2><a class="backlink" href="/state/">All states &rarr;</a></div>
+    <nav class="chips" aria-label="Browse jobs by state">
+      ${show.map((s) => `<a class="chip" href="/state/${s.slug}/">${esc(s.name)} <span class="chip-n">${stateCounts.get(s.slug)}</span></a>`).join("")}
+    </nav>
+  </section>`;
+}
+function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts) {
   const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
   const ld = [
@@ -453,6 +563,8 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates) {
   </section>` : ""}
 
   ${eduSection(qualCounts)}
+
+  ${stateSection(stateCounts)}
 
   ${chips(levels, orgs)}
 
@@ -713,7 +825,7 @@ function buildSitemap(jobs, cats, extra = []) {
   const urls = [
     { loc: SITE.url + "/", mod: today },
     ...extra.map((u) => ({ loc: `${SITE.url}/${u}`, mod: today })),
-    ...cats.map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug}/`, mod: today })),
+    ...cats.map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`, mod: today })),
     ...jobs.map((j) => ({ loc: `${SITE.url}/jobs/${j.id}/`, mod: j.published || today })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1094,8 +1206,17 @@ function main() {
       o.total_vacancies = Number.isFinite(n) ? n : null;
     }
     if (o.how_to_apply != null && !Array.isArray(o.how_to_apply)) o.how_to_apply = [String(o.how_to_apply)];
+    // Guarantee a URL-safe id no matter what's in the data (spaces/unicode/empty).
+    const safeId = String(o.id || o.title || "")
+      .toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").replace(/-{2,}/g, "-").slice(0, 70).replace(/-+$/g, "");
+    o.id = safeId;
     return o;
-  }).filter((j) => j.id && j.title);
+  }).filter((j) => j.id && j.id.length >= 2 && j.title);
+  // Drop duplicate ids that could collide into the same URL (keep first/newest).
+  { const seen = new Set(); for (let i = jobs.length - 1; i >= 0; i--) {
+      if (seen.has(jobs[i].id)) jobs.splice(i, 1); else seen.add(jobs[i].id);
+  } }
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
@@ -1112,10 +1233,15 @@ function main() {
 
   const levelMap = new Map();   // qual slug -> ACTIVE jobs (for listings)
   const orgMap = new Map();
+  const stateMap = new Map();    // state slug -> ACTIVE jobs
   for (const job of activeJobs) {
     for (const q of qualsOf(job)) {
       if (!levelMap.has(q.slug)) levelMap.set(q.slug, []);
       levelMap.get(q.slug).push(job);
+    }
+    for (const st of statesOf(job)) {
+      if (!stateMap.has(st.slug)) stateMap.set(st.slug, []);
+      stateMap.get(st.slug).push(job);
     }
     const short = job.org_short || job.organization;
     if (!orgMap.has(short)) orgMap.set(short, { short, jobs: [] });
@@ -1123,6 +1249,8 @@ function main() {
   }
   const qualCounts = new Map(QUALS.map((q) =>
     [q.slug, (levelMap.get(q.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
+  const stateCounts = new Map(STATES.map((s) =>
+    [s.slug, (stateMap.get(s.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
   const levels = QUALS.map((q) => q.name);
   const orgs = [...orgMap.values()].sort((a, b) => b.jobs.length - a.jobs.length);
 
@@ -1131,7 +1259,7 @@ function main() {
   ALL_JOBS = jobs;
   const updates = readUpdates();
 
-  write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates));
+  write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
   write("updates/index.html", buildUpdatesIndex(updates));
@@ -1141,6 +1269,13 @@ function main() {
   for (const q of QUALS) {
     write(`qualification/${q.slug}/index.html`, buildQualPage(q, levelMap.get(q.slug) || []));
     cats.push({ kind: "qualification", slug: q.slug });
+  }
+  // State landing pages (statewise browsing)
+  write("state/index.html", buildStatesIndex(stateCounts));
+  cats.push({ kind: "state", slug: "" });
+  for (const st of STATES) {
+    write(`state/${st.slug}/index.html`, buildStatePage(st, stateMap.get(st.slug) || []));
+    cats.push({ kind: "state", slug: st.slug });
   }
   for (const { short, jobs: list } of orgMap.values()) {
     const s = slug(short);
