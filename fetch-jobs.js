@@ -47,8 +47,13 @@ const MAX_UPDATES = Number(process.env.MAX_UPDATES || CONFIG.maxUpdatesPerRun ||
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-nano";          // cheapest, ideal for extraction
 const ANTHROPIC_MODEL = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20251001";
 const AI_PROVIDER = OPENAI_KEY ? "OpenAI" : ANTHROPIC_KEY ? "Claude" : "";
-const UA = "Mozilla/5.0 (compatible; NewsViewsJobsBot/1.0; +https://news-views.in)";
-const HDRS = { "user-agent": UA, "accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8" };
+const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
+const UA_ALT = "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0";
+const HDRS = {
+  "user-agent": UA,
+  "accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8",
+  "accept-language": "en-IN,en;q=0.9,hi;q=0.8",
+};
 
 /* ---- feeds: from config.json (single source) + fallbacks -------- */
 function loadFeeds() {
@@ -257,7 +262,12 @@ async function main() {
   let updatesAdded = 0;
   for (const url of feeds) {
     try {
-      const r = await fetch(url, { headers: HDRS, signal: AbortSignal.timeout(20000) });
+      let r = await fetch(url, { headers: HDRS, signal: AbortSignal.timeout(20000) });
+      if (r.status === 403 || r.status === 503 || r.status === 429) {
+        // Some sites block one identity but allow another — retry once.
+        await new Promise((res) => setTimeout(res, 1200));
+        r = await fetch(url, { headers: { ...HDRS, "user-agent": UA_ALT }, signal: AbortSignal.timeout(20000) });
+      }
       if (!r.ok) { console.log(`  feed HTTP ${r.status}: ${url}`); continue; }
       const items = parseFeed(await r.text());
       console.log(`  ${items.length} items from ${url}`);

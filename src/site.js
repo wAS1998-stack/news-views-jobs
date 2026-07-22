@@ -72,14 +72,23 @@ if ("serviceWorker" in navigator) {
 })();
 
 
-// Mobile menu toggle
+// Mobile menu toggle (overlay panel)
 (function () {
   var btn = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".nav");
   if (!btn || !nav) return;
-  btn.addEventListener("click", function () {
-    var open = nav.classList.toggle("open");
+  function setOpen(open) {
+    nav.classList.toggle("open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
     btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  btn.addEventListener("click", function () { setOpen(!nav.classList.contains("open")); });
+  // Close when a menu link is tapped
+  nav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { setOpen(false); });
+  });
+  // Close when tapping outside the menu
+  document.addEventListener("click", function (e) {
+    if (nav.classList.contains("open") && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
   });
 })();

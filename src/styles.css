@@ -642,34 +642,36 @@ html { scroll-behavior: smooth; }
   .nav-dd .dd { right: 0; left: auto; transform: none; }
 }
 
-/* ===========================  v13: mobile menu  =========================== */
+/* ===========================  v13: mobile menu (fixed overlay panel)  =========================== */
 .nav-toggle { display: none; }
 @media (max-width: 560px) {
   .nav-toggle {
     display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
     width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line);
     border-radius: 10px; background: #fff; cursor: pointer; margin-left: auto;
+    position: relative; z-index: 401;
   }
   .nav-toggle span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: .2s; }
   .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .site-head .wrap { flex-wrap: wrap; }
+  /* The menu is a fixed overlay below the header — solid background, always on top,
+     independent of header layout so it can never render behind page content. */
   .nav {
-    display: none; flex-direction: column; gap: 2px; width: 100%;
-    order: 3; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+    display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 400;
+    flex-direction: column; gap: 2px;
+    background: #fff; padding: 8px 16px 14px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 24px 48px rgba(20, 33, 61, .22);
+    max-height: calc(100vh - 64px); overflow-y: auto;
   }
   .nav.open { display: flex; }
-  .nav > a, .nav-dd summary { padding: 12px 8px; font-size: 16px; border-radius: 8px; }
-  .nav > a:active, .nav-dd summary:active { background: #F2F0EA; }
-  /* on mobile the Jobs submenu is inline, not a floating panel */
-  .nav-dd { width: 100%; }
-  .nav-dd .dd {
-    position: static; transform: none; box-shadow: none; border: none;
-    padding: 0 0 0 12px; min-width: 0; margin-top: 2px;
+  .nav > a {
+    padding: 14px 12px; font-size: 16.5px; font-weight: 600; color: var(--ink);
+    border-radius: 10px; border-bottom: 1px solid #F0EEE8;
   }
-  .nav-dd .dd a { padding: 10px 8px; font-weight: 500; }
-  .nav-dd .dd a:first-child { border-bottom: none; }
+  .nav > a:last-child { border-bottom: none; }
+  .nav > a:active { background: #F2F0EA; }
 }
 
 /* ===========================  v14: NEW badge for freshly added items  =========================== */
