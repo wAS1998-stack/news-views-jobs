@@ -19,7 +19,7 @@
      (Use official / authorised sources. Re-publishing another site's content
       verbatim is both a copyright and an SEO problem — see README.)
    - Optional but recommended: add repo secret OPENAI_API_KEY for rich pages
-     (GPT-4.1 Nano is used by default; override with OPENAI_MODEL).
+     (gpt-4o-mini by default; change "aiModel" in config.json or set OPENAI_MODEL).
    ================================================================== */
 
 const fs = require("fs");
@@ -44,7 +44,7 @@ const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 
 const SITE_URL = (CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const MAX_NEW = Number(process.env.MAX_NEW || CONFIG.maxNewPerRun || 8);   // cap new jobs per run
 const MAX_UPDATES = Number(process.env.MAX_UPDATES || CONFIG.maxUpdatesPerRun || 15);   // cap new updates per run
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-nano";          // cheapest, ideal for extraction
+const OPENAI_MODEL = process.env.OPENAI_MODEL || CONFIG.aiModel || "gpt-4o-mini";   // set "aiModel" in config.json to change
 const ANTHROPIC_MODEL = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20251001";
 const AI_PROVIDER = OPENAI_KEY ? "OpenAI" : ANTHROPIC_KEY ? "Claude" : "";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
@@ -164,9 +164,14 @@ async function aiExtract(item) {
     `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
     `summary (2-3 clear factual sentences describing the recruitment), summary_hindi (the same summary written naturally in Hindi), ` +
     `selection_process (array of the selection stages if mentioned), ` +
-    `how_to_apply (array of 4-6 clear step-by-step instructions to apply online). ` +
-    `Write summary and how_to_apply as complete, helpful text even if you must phrase the standard online application process generally. ` +
-    `Do not invent specific numbers, dates or fees; use null for those if not clearly stated.\n\nTITLE: ${item.title}\n\nTEXT:\n${pageText}`;
+    `how_to_apply (array of 4-6 clear step-by-step instructions to apply online), ` +
+    `overview (3 well-written paragraphs, 160-220 words total, as an array of paragraph strings, explaining this recruitment in plain English for an Indian job seeker: what the post involves, who it suits, why it matters, and what applicants should check before applying), ` +
+    `about_organization (2-3 sentences, 50-70 words, describing the recruiting body and the kind of work it does), ` +
+    `eligibility_notes (2-3 sentences explaining the eligibility in plain language, including any relaxations or conditions worth flagging), ` +
+    `preparation_tips (array of 3-4 specific, practical preparation pointers tailored to THIS exam and post — mention the actual subjects or test stages where known), ` +
+    `faq (array of 4-5 objects with keys q and a, answering the questions a real candidate would ask about this specific recruitment; each answer 1-3 sentences). ` +
+    `Write overview, about_organization, eligibility_notes, preparation_tips and faq as genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate. ` +
+    `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\nTITLE: ${item.title}\n\nTEXT:\n${pageText}`;
 
   let raw = "";
   try {
@@ -178,7 +183,7 @@ async function aiExtract(item) {
           model: OPENAI_MODEL,
           messages: [{ role: "user", content: prompt }],
           response_format: { type: "json_object" },
-          max_tokens: 1024,
+          max_tokens: 3000,
         }),
       });
       if (!res.ok) { console.log("  (AI skipped: OpenAI HTTP " + res.status + ")"); return {}; }
@@ -188,7 +193,7 @@ async function aiExtract(item) {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-        body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: 1024, messages: [{ role: "user", content: prompt }] }),
+        body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: 3000, messages: [{ role: "user", content: prompt }] }),
       });
       if (!res.ok) { console.log("  (AI skipped: Claude HTTP " + res.status + ")"); return {}; }
       const data = await res.json();
@@ -254,7 +259,7 @@ async function main() {
     console.log("No feeds configured. Add a feed URL to config.json under 'feeds'. Nothing to fetch.");
     return;
   }
-  console.log(`Feeds: ${feeds.length} | AI extraction: ${AI_PROVIDER || "off"} | max jobs: ${MAX_NEW} | max updates: ${MAX_UPDATES}`);
+  console.log(`Feeds: ${feeds.length} | AI: ${AI_PROVIDER ? AI_PROVIDER + " (" + (AI_PROVIDER === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL) + ")" : "off"} | max jobs: ${MAX_NEW} | max updates: ${MAX_UPDATES}`);
 
   const fresh = [];
   let updates = [];

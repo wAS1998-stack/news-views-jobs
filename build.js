@@ -262,6 +262,7 @@ ${ldBlocks}
     <a href="/">Jobs</a>
     <a href="/state/">States</a>
     <a href="/updates/">Updates</a>
+    <a href="/news/">News</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -356,6 +357,71 @@ function readUpdates() {
     const u = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "updates.json"), "utf8"));
     return u.filter((x) => UPDATE_TYPES[x.type]).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   } catch { return []; }
+}
+/* ---- News & Views: current affairs + notification analysis ------- */
+const NEWS_TYPES = { "current-affairs": "Current Affairs", analysis: "Analysis" };
+function readNews() {
+  try {
+    const n = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "news.json"), "utf8"));
+    return (Array.isArray(n) ? n : [])
+      .filter((a) => a && a.id && a.title && Array.isArray(a.body) && a.body.length)
+      .map((a) => ({ ...a, id: String(a.id).toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") }))
+      .filter((a) => a.id.length >= 2)
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  } catch { return []; }
+}
+function newsCard(a) {
+  return `<li><a class="update" href="/news/${esc(a.id)}/">
+    <span class="upd-type upd-${a.type === "analysis" ? "answer-key" : "result"}">${esc(NEWS_TYPES[a.type] || "News")}</span>
+    <span class="upd-title">${esc(a.title)}${isNew(a.date) ? ` <span class="new-badge">NEW</span>` : ""}</span>
+    <span class="upd-meta">${a.date ? fmtDate(a.date) : ""}</span>
+  </a></li>`;
+}
+function newsBody(a) {
+  return (a.body || []).map((b) =>
+    `${b.h ? `<h2 class="section-h">${esc(b.h)}</h2>` : ""}${(b.p || []).map((p) => `<p>${esc(p)}</p>`).join("")}`).join("");
+}
+function buildNewsPage(a, all) {
+  const canonical = `${SITE.url}/news/${a.id}/`;
+  const related = all.filter((x) => x.id !== a.id).slice(0, 4);
+  const job = a.job_id ? (ALL_JOBS || []).find((j) => j.id === a.job_id) : null;
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "News", url: SITE.url + "/news/" }, { name: a.title, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "NewsArticle", headline: a.title, url: canonical,
+      datePublished: a.date, dateModified: a.date, description: a.summary || a.title,
+      author: { "@type": "Organization", name: SITE.publisher },
+      publisher: { "@type": "Organization", name: SITE.brand } },
+  ];
+  return head({ title: `${a.title} | ${SITE.name}`, desc: (a.summary || a.title).slice(0, 155), canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/news/">News</a></p>
+  <article class="prose">
+    <p class="eyebrow">${esc(NEWS_TYPES[a.type] || "News")}${a.date ? " &middot; " + fmtDate(a.date) : ""}</p>
+    <h1>${esc(a.title)}</h1>
+    ${a.summary ? `<p class="lede">${esc(a.summary)}</p>` : ""}
+    ${newsBody(a)}
+    ${(a.pointers || []).length ? `<h2 class="section-h">Key takeaways for aspirants</h2><ul>${a.pointers.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
+    ${job ? `<p class="tagrow">Related notification: <a href="/jobs/${esc(job.id)}/">${esc(job.title)}</a></p>` : ""}
+    ${(a.sources || []).length ? `<h2 class="section-h">Sources</h2><ul>${a.sources.map((s) =>
+      `<li><a href="${esc(s.link)}" rel="nofollow noopener" target="_blank">${esc(s.title)}</a></li>`).join("")}</ul>` : ""}
+  </article>
+  ${related.length ? `<section class="related"><h2 class="section-h">More from News &amp; Views</h2><ul class="updates">${related.map(newsCard).join("")}</ul></section>` : ""}
+</main>` + foot();
+}
+function buildNewsIndex(news) {
+  const canonical = `${SITE.url}/news/`;
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "News", url: canonical }])];
+  return head({ title: `Exam News & Current Affairs ${BUILT.getFullYear()} | ${SITE.name}`,
+    desc: "Daily current affairs for government exam aspirants, plus plain-English analysis of the latest Sarkari recruitment notifications.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <section class="cat-head">
+    <p class="eyebrow">News &amp; Views</p>
+    <h1>Exam News &amp; Current Affairs</h1>
+    <p class="lede">Daily current affairs drawn from official government press releases, and plain-English analysis of the recruitment notifications that matter — written for candidates preparing for SSC, UPSC, Banking, Railway and State PSC exams.</p>
+  </section>
+  ${news.length ? `<ul class="updates">${news.map(newsCard).join("")}</ul>`
+    : `<p class="empty">The first articles are being prepared and will appear here shortly. Meanwhile, browse the <a href="/guides/">preparation guides</a> or the <a href="/updates/">latest results and admit cards</a>.</p>`}
+</main>` + foot();
 }
 function updateCard(u) {
   return `<li><a class="update" href="/updates/${esc(u.id)}/">
@@ -473,8 +539,44 @@ function buildStatePage(st, list) {
     <h1>${esc(h1)}</h1>
     <p class="lede">${esc(intro)}</p>
   </section>
+  ${(() => {
+    const min = Number(SITE.minComboJobs || 3);
+    const avail = QUALS.filter((q) => list.filter((j) => qualsOf(j).some((x) => x.slug === q.slug) && statusOf(j).cls !== "closed").length >= min);
+    return avail.length ? `<nav class="chips" aria-label="By qualification">${avail.map((q) =>
+      `<a class="chip" href="/state/${st.slug}/${q.slug}/">${esc(st.name)} jobs for ${esc(q.name)}</a>`).join("")}</nav>` : "";
+  })()}
   ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
     : `<p class="empty">No live notifications for ${esc(st.name)} right now — new jobs are added automatically several times a day. Meanwhile, <a href="/state/all-india/">browse all-India jobs</a> open to everyone, or <a href="/">see all current jobs</a>.</p>`}
+</main>` + foot();
+}
+/* Long-tail landing pages: "<State> government jobs for <qualification>".
+   Generated only where enough live jobs exist, so no page is thin. */
+function buildStateQualPage(st, q, list) {
+  const canonical = `${SITE.url}/state/${st.slug}/${q.slug}/`;
+  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const live = list.filter((j) => statusOf(j).cls !== "closed");
+  const place = st.slug === "all-india" ? "All India" : st.name;
+  const h1 = `${place} Government Jobs for ${q.name}`;
+  const desc = `Latest ${place} government job notifications for ${q.name} candidates — ${live.length} live vacancies with eligibility, last dates, salary and how to apply.`;
+  const intro = st.slug === "all-india"
+    ? `This page lists central and all-India government recruitments open to ${q.name} candidates from anywhere in the country. Each notification below shows the vacancies, eligibility and last date, and links to the official source.`
+    : `This page brings together government job notifications open to ${q.name} candidates in ${st.name} — both ${st.name} state recruitments and all-India posts that ${st.name} candidates can apply for. New notifications are added automatically several times a day.`;
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: st.name, url: `${SITE.url}/state/${st.slug}/` }, { name: q.name, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+        "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+  ];
+  return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/state/${st.slug}/">${esc(st.name)}</a> &nbsp;&rsaquo;&nbsp; ${esc(q.name)}</p>
+  <section class="cat-head">
+    <p class="eyebrow">${esc(place)} &middot; ${esc(q.name)} &middot; ${live.length} live</p>
+    <h1>${esc(h1)}</h1>
+    <p class="lede">${esc(intro)}</p>
+  </section>
+  <ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>
+  <p class="tagrow">Also see: <a href="/state/${st.slug}/">all ${esc(st.name)} jobs</a> &middot; <a href="/qualification/${q.slug}/">all ${esc(q.name)} jobs</a></p>
 </main>` + foot();
 }
 function buildStatesIndex(stateCounts) {
@@ -512,7 +614,7 @@ function stateSection(stateCounts) {
     </nav>
   </section>`;
 }
-function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts) {
+function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts, news) {
   const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
   const ld = [
@@ -560,6 +662,11 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts)
   ${(updates && updates.length) ? `<section class="home-updates">
     <div class="hu-head"><h2 class="section-h">📢 Latest updates</h2><a class="backlink" href="/updates/">All updates &rarr;</a></div>
     <ul class="updates">${updates.slice(0,6).map(updateCard).join("")}</ul>
+  </section>` : ""}
+
+  ${(news && news.length) ? `<section class="home-news">
+    <div class="hu-head"><h2 class="section-h">📰 News &amp; Views</h2><a class="backlink" href="/news/">All news &rarr;</a></div>
+    <ul class="updates">${news.slice(0,4).map(newsCard).join("")}</ul>
   </section>` : ""}
 
   ${eduSection(qualCounts)}
@@ -716,7 +823,9 @@ function prepTips(job) {
   if (/police|constable|si|defence|army|navy|air force|agniveer/.test(t)) extra.push(`For uniformed posts, start physical preparation early — the physical efficiency and endurance tests are as decisive as the written exam.`);
   if (/upsc|pcs|psc|civil/.test(t)) extra.push(`For civil-services-style exams, build a strong foundation in current affairs and standard reference books, and practise structured answer writing.`);
   if (/engineer|je|technical|diploma|iti|drdo|isro|psu/.test(t)) extra.push(`For technical posts, revise your core branch subjects thoroughly, since the technical section usually carries the highest weight.`);
-  const all = [...extra, ...generic].slice(0, 4);
+  const aiTips = Array.isArray(job.preparation_tips)
+    ? job.preparation_tips.map((x) => String(x || "").trim()).filter(Boolean) : [];
+  const all = aiTips.length >= 3 ? aiTips.slice(0, 5) : [...extra, ...generic].slice(0, 4);
   return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(job.org_short || job.organization)} ${esc(job.post_name || "this exam")}</h2>
     <p>Preparation for ${esc(job.title)} is most effective when it is planned and consistent. A few practical pointers:</p>
     <ul>${all.map((x) => `<li>${x}</li>`).join("")}</ul>
@@ -892,6 +1001,16 @@ function frontmatter(raw) {
 /* ---- Job article prose + FAQ ------------------------------------ */
 function overviewProse(job) {
   const live = statusOf(job).live;
+  // Prefer AI-written overview paragraphs when the extractor produced them.
+  const ai = Array.isArray(job.overview) ? job.overview : (typeof job.overview === "string" && job.overview.trim() ? [job.overview] : null);
+  if (ai && ai.length) {
+    const facts = [];
+    if (job.total_vacancies) facts.push(`<strong>${inr(job.total_vacancies)} vacancies</strong>`);
+    if (job.application_end) facts.push(`last date <strong>${fmtDate(job.application_end)}</strong>`);
+    return ai.map((p) => `<p>${esc(String(p))}</p>`).join("") +
+      (facts.length ? `<p class="fact-line">Key facts: ${facts.join(" &middot; ")}.</p>` : "") +
+      (job.about_organization ? `<p>${esc(String(job.about_organization))}</p>` : "");
+  }
   const bits = [];
   bits.push(`The ${esc(job.organization)}${job.org_short ? ` (${esc(job.org_short)})` : ""} has invited online applications for <strong>${esc(job.title)}</strong>${job.post_name ? `, for the post of ${esc(job.post_name)}` : ""}.`);
   if (job.total_vacancies) bits.push(`A total of <strong>${inr(job.total_vacancies)} vacancies</strong> are to be filled through this recruitment.`);
@@ -902,6 +1021,7 @@ function overviewProse(job) {
 }
 function eligibilityProse(job) {
   const p = [];
+  if (job.eligibility_notes) p.push(esc(String(job.eligibility_notes)));
   if (job.qualification) p.push(`To apply for ${esc(job.title)}, a candidate must have ${esc(job.qualification)}.`);
   if (job.age_max) p.push(`The age of applicants should generally be between <strong>${job.age_min} and ${job.age_max} years</strong> as on the cut-off date mentioned in the official notification. Age relaxation is provided to candidates from SC, ST, OBC, PwD and other reserved categories as per government rules.`);
   if (job.location) p.push(`The posts are based in ${esc(job.location)}.`);
@@ -913,7 +1033,13 @@ function salaryProse(job) {
   return `<p>Selected candidates will receive a pay of <strong>${esc(job.salary)}</strong>. Government employees are also generally entitled to allowances such as Dearness Allowance (DA), House Rent Allowance (HRA) and other benefits applicable to the post and pay level.</p>`;
 }
 function faqsFor(job) {
-  if (Array.isArray(job.faqs) && job.faqs.length) return job.faqs;
+  const aiFaq = Array.isArray(job.faq) ? job.faq : (Array.isArray(job.faqs) ? job.faqs : null);
+  if (aiFaq && aiFaq.length) {
+    const cleaned = aiFaq
+      .map((x) => ({ q: String(x && (x.q || x.question) || "").trim(), a: String(x && (x.a || x.answer) || "").trim() }))
+      .filter((x) => x.q && x.a);
+    if (cleaned.length) return cleaned;
+  }
   const f = [];
   if (job.application_end) f.push({ q: `What is the last date to apply for ${job.title}?`, a: `The last date to submit the online application is ${fmtDate(job.application_end)}.` });
   if (job.total_vacancies) f.push({ q: `How many vacancies are there in ${job.title}?`, a: `There are ${inr(job.total_vacancies)} vacancies in this recruitment.` });
@@ -1258,14 +1384,20 @@ function main() {
   ALL_GUIDES = guides;
   ALL_JOBS = jobs;
   const updates = readUpdates();
+  const news = readNews();
 
-  write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts));
+  write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts, news));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
+
+  write("news/index.html", buildNewsIndex(news));
+  for (const a of news) write(`news/${a.id}/index.html`, buildNewsPage(a, news));
 
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
 
   const cats = [];
+  cats.push({ kind: "news", slug: "" });
+  for (const a of news) cats.push({ kind: "news", slug: a.id });
   for (const q of QUALS) {
     write(`qualification/${q.slug}/index.html`, buildQualPage(q, levelMap.get(q.slug) || []));
     cats.push({ kind: "qualification", slug: q.slug });
@@ -1273,10 +1405,23 @@ function main() {
   // State landing pages (statewise browsing)
   write("state/index.html", buildStatesIndex(stateCounts));
   cats.push({ kind: "state", slug: "" });
+  const MIN_COMBO = Number(SITE.minComboJobs || 3);   // don't publish thin combo pages
+  let comboCount = 0;
   for (const st of STATES) {
-    write(`state/${st.slug}/index.html`, buildStatePage(st, stateMap.get(st.slug) || []));
+    const stJobs = stateMap.get(st.slug) || [];
+    write(`state/${st.slug}/index.html`, buildStatePage(st, stJobs));
     cats.push({ kind: "state", slug: st.slug });
+    // Long-tail: "<State> government jobs for <qualification>"
+    for (const q of QUALS) {
+      const list = stJobs.filter((j) => qualsOf(j).some((x) => x.slug === q.slug));
+      const liveN = list.filter((j) => statusOf(j).cls !== "closed").length;
+      if (liveN < MIN_COMBO) continue;
+      write(`state/${st.slug}/${q.slug}/index.html`, buildStateQualPage(st, q, list));
+      cats.push({ kind: "state", slug: `${st.slug}/${q.slug}` });
+      comboCount++;
+    }
   }
+  if (comboCount) console.log(`Long-tail: ${comboCount} state x qualification page(s) (min ${MIN_COMBO} live jobs each).`);
   for (const { short, jobs: list } of orgMap.values()) {
     const s = slug(short);
     write(`organization/${s}/index.html`, buildCategory("organization", short, s, list));
@@ -1308,14 +1453,16 @@ function main() {
   const allUrls = [
     SITE.url + "/",
     ...jobs.map((j) => `${SITE.url}/jobs/${j.id}/`),
-    ...cats.map((c) => `${SITE.url}/${c.kind}/${c.slug}/`),
+    ...cats.map((c) => `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`),
     ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
     SITE.url + "/updates/",
+    ...news.map((a) => `${SITE.url}/news/${a.id}/`),
+    SITE.url + "/news/",
     ...guides.map((g) => `${SITE.url}/guides/${g.slug}/`),
     SITE.url + "/guides/",
     ...Object.keys(pages).map((s) => `${SITE.url}/${s}/`),
   ];
-  write("all-urls.txt", allUrls.join("\n") + "\n");
+  write("all-urls.txt", [...new Set(allUrls)].join("\n") + "\n");
   write("feed.xml", buildFeed(jobs));
   write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
 <main class="wrap" id="main"><section class="cat-head">

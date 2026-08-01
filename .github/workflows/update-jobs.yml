@@ -25,14 +25,29 @@ jobs:
           JOBS_FEEDS: ${{ secrets.JOBS_FEEDS }}                 # optional override; feeds normally come from config.json
         run: node fetch-jobs.js
 
+      - name: Upgrade older job pages to full AI content (a few per run)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node enrich-jobs.js
+
+      - name: Write news & analysis (grounded in official sources)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node fetch-news.js
+
+      - name: Daily freshness heartbeat (keeps the published date current)
+        run: node heartbeat.js
+
       - name: Commit if anything changed
         id: commit
         run: |
           git config user.name  "jobs-bot"
           git config user.email "actions@users.noreply.github.com"
           if [ -n "$(git status --porcelain data/)" ]; then
-            git add data/jobs.json data/updates.json
-            git commit -m "Auto: new job listings & updates"
+            git add data/jobs.json data/updates.json data/news.json data/last-run.json
+            git commit -m "Auto: new jobs, updates & news"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Pushed — Cloudflare will redeploy automatically."

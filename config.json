@@ -14,5 +14,13 @@
   ],
   "maxNewPerRun": 15,
   "maxUpdatesPerRun": 12,
-  "staleDays": 45
+  "staleDays": 45,
+  "newsFeeds": [
+    "https://www.pib.gov.in/ViewRss.aspx?reg=1&lang=1"
+  ],
+  "maxAnalysisPerRun": 1,
+  "aiModel": "gpt-4o-mini",
+  "newsModel": "gpt-4o-mini",
+  "minArticleWords": 350,
+  "maxEnrichPerRun": 5
 }
