@@ -704,3 +704,11 @@ html { scroll-behavior: smooth; }
 .states-grid { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 900px) { .states-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .states-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ===========================  v17: in-content ad slots  =========================== */
+.ad-slot { margin: 26px 0; padding: 0; min-height: 0; }
+.ad-label {
+  display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px; font-family: "Spline Sans Mono", monospace;
+}
+.ad-slot ins { display: block; }

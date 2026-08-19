@@ -178,7 +178,23 @@ const STATES = [
   { slug: "west-bengal", name: "West Bengal", kw: ["west bengal", "kolkata", "calcutta", "howrah", "durgapur", "siliguri", "asansol"] },
   { slug: "jammu-kashmir", name: "Jammu & Kashmir", kw: ["jammu", "kashmir", "srinagar"] },
 ];
+/* ---- Gulf / overseas: country landing pages ---------------------- */
+const GULF = [
+  { slug: "uae", name: "UAE", kw: ["uae", "united arab emirates", "dubai", "abu dhabi", "sharjah", "ajman", "ras al khaimah", "fujairah"] },
+  { slug: "saudi-arabia", name: "Saudi Arabia", kw: ["saudi", "ksa", "riyadh", "jeddah", "dammam", "jubail", "mecca", "medina", "yanbu"] },
+  { slug: "qatar", name: "Qatar", kw: ["qatar", "doha"] },
+  { slug: "kuwait", name: "Kuwait", kw: ["kuwait"] },
+  { slug: "oman", name: "Oman", kw: ["oman", "muscat", "sohar", "salalah"] },
+  { slug: "bahrain", name: "Bahrain", kw: ["bahrain", "manama"] },
+];
+function gulfOf(job) {
+  const t = `${job.location || ""} ${job.title || ""} ${job.organization || ""}`.toLowerCase();
+  return GULF.find((g) => g.kw.some((k) => new RegExp(`\\b${k}\\b`).test(t))) || null;
+}
+function isGulf(job) { return !!gulfOf(job); }
 function statesOf(job) {
+  // Overseas roles must never fall into the Indian state buckets.
+  if (isGulf(job)) return [];
   const loc = String(job.location || "").toLowerCase();
   if (!loc) return [STATES[0]];
   // All-India jobs go under the central bucket (anyone can apply regardless of state).
@@ -261,6 +277,7 @@ ${ldBlocks}
   <nav class="nav" aria-label="Primary">
     <a href="/">Jobs</a>
     <a href="/state/">States</a>
+    <a href="/gulf/">Gulf</a>
     <a href="/updates/">Updates</a>
     <a href="/news/">News</a>
     <a href="/guides/">Guides</a>
@@ -579,6 +596,52 @@ function buildStateQualPage(st, q, list) {
   <p class="tagrow">Also see: <a href="/state/${st.slug}/">all ${esc(st.name)} jobs</a> &middot; <a href="/qualification/${q.slug}/">all ${esc(q.name)} jobs</a></p>
 </main>` + foot();
 }
+function buildGulfPage(g, list) {
+  const canonical = `${SITE.url}/gulf/${g.slug}/`;
+  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const live = list.filter((j) => statusOf(j).cls !== "closed");
+  const h1 = `${g.name} Jobs for Indians`;
+  const desc = `Latest ${g.name} job vacancies for Indian candidates — ${live.length} openings with salary, requirements and how to apply. Updated daily.`;
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Gulf Jobs", url: SITE.url + "/gulf/" }, { name: g.name, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+        "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+  ];
+  return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/gulf/">Gulf Jobs</a> &nbsp;&rsaquo;&nbsp; ${esc(g.name)}</p>
+  <section class="cat-head">
+    <p class="eyebrow">Overseas &middot; ${live.length} live</p>
+    <h1>${esc(h1)}</h1>
+    <p class="lede">Current job vacancies in ${esc(g.name)} open to Indian candidates, including walk-in interviews and direct recruitment. Each listing shows the role, requirements and how to apply, and links to the original source so you can verify the details before applying.</p>
+  </section>
+  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+    : `<p class="empty">No ${esc(g.name)} vacancies listed right now — new overseas jobs are added automatically several times a day. Meanwhile, <a href="/gulf/">browse all Gulf jobs</a>.</p>`}
+  <div class="prose"><h2 class="section-h">Before you apply for a job in ${esc(g.name)}</h2>
+    <p>Always verify the recruiting agency and the employer before paying any fee. Registered recruitment agents in India are licensed by the Ministry of External Affairs, and genuine employers do not ask candidates for large upfront payments. Check the offer letter, the contract terms and the visa type carefully, and keep copies of everything you sign.</p>
+    <p>Listings on this page are collected from public recruitment sources and are provided for information only. ${esc(SITE.brand)} is not a recruitment agency and does not process applications or charge candidates.</p>
+  </div>
+</main>` + foot();
+}
+function buildGulfIndex(counts) {
+  const canonical = `${SITE.url}/gulf/`;
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Gulf Jobs", url: canonical }])];
+  const card = (g) => {
+    const n = counts.get(g.slug) || 0;
+    return `<li><a class="edu-card" href="/gulf/${g.slug}/"><span class="edu-count">${n}</span><span class="edu-name">${esc(g.name)}</span><span class="edu-sub">${n === 1 ? "live job" : "live jobs"}</span></a></li>`;
+  };
+  return head({ title: `Gulf Jobs for Indians ${BUILT.getFullYear()} — UAE, Saudi, Qatar, Kuwait, Oman | ${SITE.name}`,
+    desc: "Latest Gulf job vacancies for Indian candidates in UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — walk-in interviews and direct recruitment, updated daily.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <section class="cat-head">
+    <p class="eyebrow">Overseas jobs</p>
+    <h1>Gulf Jobs for Indians</h1>
+    <p class="lede">Job vacancies across the Gulf — UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — open to Indian candidates, including walk-in interviews and direct company recruitment. New openings are added automatically every day.</p>
+  </section>
+  <ul class="edu-grid states-grid">${GULF.map(card).join("")}</ul>
+</main>` + foot();
+}
 function buildStatesIndex(stateCounts) {
   const canonical = `${SITE.url}/state/`;
   const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "States", url: canonical }])];
@@ -832,6 +895,17 @@ function prepTips(job) {
     <p>For a fuller, step-by-step plan, see the helpful guides linked below — they cover exam strategy, subject-wise tips and common mistakes in detail.</p>
   </div>`;
 }
+/* In-content ad unit. Renders only when adsenseId is set, so the site stays
+   clean (and policy-safe) until AdSense is approved. In-article placements
+   earn far more than relying on Auto Ads alone. */
+function adSlot(label) {
+  if (!SITE.adsenseId) return "";
+  return `<aside class="ad-slot" aria-label="Advertisement" data-slot="${esc(label || "")}">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="${esc(SITE.adsenseId)}" data-ad-format="fluid" data-ad-layout="in-article"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>`;
+}
 function buildJob(job, all) {
   const st = statusOf(job);
   const canonical = `${SITE.url}/jobs/${job.id}/`;
@@ -854,7 +928,9 @@ function buildJob(job, all) {
 
   return head({ title, desc, canonical, ld, ogType: "article" }) + `
 <main class="wrap" id="main">
-  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; <a href="/organization/${slug(job.org_short || job.organization)}/">${esc(job.org_short || job.organization)}</a></p>
+  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(job.org_short || job.organization))
+    ? `<a href="/organization/${slug(job.org_short || job.organization)}/">${esc(job.org_short || job.organization)}</a>`
+    : esc(job.org_short || job.organization)}</p>
   <div class="detail-head">
     <div class="headline-row">
       <span class="org-tag">${esc(job.organization)}</span>
@@ -890,6 +966,8 @@ function buildJob(job, all) {
     ${row("Exam date", fmtDate(job.exam_date), true)}
   </dl></div>
 
+  ${adSlot("job-mid")}
+
   ${eligibilityProse(job) ? `<div class="prose"><h2 class="section-h">Eligibility criteria</h2>${eligibilityProse(job)}${lvlLinks ? `<p class="tagrow">Eligibility: ${lvlLinks}</p>` : ""}</div>` : ""}
 
   ${selection}
@@ -905,6 +983,8 @@ function buildJob(job, all) {
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
 
   ${prepTips(job)}
+
+  ${adSlot("job-end")}
 
   ${faqSection(faqs)}
 
@@ -1249,6 +1329,7 @@ function buildGuide(g) {
 }
 let ALL_GUIDES = [];
 let ALL_JOBS = [];
+let ORG_PAGES = new Set();   // org slugs that actually get a page (active jobs only)
 function relatedGuidesHtml(current) {
   const others = ALL_GUIDES.filter((x) => x.slug !== current.slug);
   if (!others.length) return "";
@@ -1360,10 +1441,16 @@ function main() {
   const levelMap = new Map();   // qual slug -> ACTIVE jobs (for listings)
   const orgMap = new Map();
   const stateMap = new Map();    // state slug -> ACTIVE jobs
+  const gulfMap = new Map();     // gulf country slug -> ACTIVE jobs
   for (const job of activeJobs) {
     for (const q of qualsOf(job)) {
       if (!levelMap.has(q.slug)) levelMap.set(q.slug, []);
       levelMap.get(q.slug).push(job);
+    }
+    const g = gulfOf(job);
+    if (g) {
+      if (!gulfMap.has(g.slug)) gulfMap.set(g.slug, []);
+      gulfMap.get(g.slug).push(job);
     }
     for (const st of statesOf(job)) {
       if (!stateMap.has(st.slug)) stateMap.set(st.slug, []);
@@ -1375,10 +1462,13 @@ function main() {
   }
   const qualCounts = new Map(QUALS.map((q) =>
     [q.slug, (levelMap.get(q.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
+  const gulfCounts = new Map(GULF.map((g) =>
+    [g.slug, (gulfMap.get(g.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
   const stateCounts = new Map(STATES.map((s) =>
     [s.slug, (stateMap.get(s.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
   const levels = QUALS.map((q) => q.name);
   const orgs = [...orgMap.values()].sort((a, b) => b.jobs.length - a.jobs.length);
+  ORG_PAGES = new Set(orgs.map((o) => slug(o.short)));   // set BEFORE any page is rendered
 
   const guides = readGuides();
   ALL_GUIDES = guides;
@@ -1402,6 +1492,14 @@ function main() {
     write(`qualification/${q.slug}/index.html`, buildQualPage(q, levelMap.get(q.slug) || []));
     cats.push({ kind: "qualification", slug: q.slug });
   }
+  // Gulf / overseas country pages
+  write("gulf/index.html", buildGulfIndex(gulfCounts));
+  cats.push({ kind: "gulf", slug: "" });
+  for (const g of GULF) {
+    write(`gulf/${g.slug}/index.html`, buildGulfPage(g, gulfMap.get(g.slug) || []));
+    cats.push({ kind: "gulf", slug: g.slug });
+  }
+
   // State landing pages (statewise browsing)
   write("state/index.html", buildStatesIndex(stateCounts));
   cats.push({ kind: "state", slug: "" });
@@ -1458,6 +1556,8 @@ function main() {
     SITE.url + "/updates/",
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
+    SITE.url + "/gulf/",
+    ...GULF.map((g) => `${SITE.url}/gulf/${g.slug}/`),
     ...guides.map((g) => `${SITE.url}/guides/${g.slug}/`),
     SITE.url + "/guides/",
     ...Object.keys(pages).map((s) => `${SITE.url}/${s}/`),

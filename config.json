@@ -10,7 +10,10 @@
     "https://sarkarifeed.com/category/sarkari-result/feed",
     "https://sarkarifeed.com/category/admit-card/feed",
     "https://sarkarifeed.com/category/answer-key/feed",
-    "https://rajsarkariresult.com/feed"
+    "https://rajsarkariresult.com/feed",
+    "https://gulfwalkin.com/feed",
+    "https://www.gccwalkins.com/feed",
+    "https://gulfjobvacancy.in/feed"
   ],
   "maxNewPerRun": 15,
   "maxUpdatesPerRun": 12,
