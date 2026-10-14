@@ -340,7 +340,7 @@ function jobCard(job) {
     <p class="post">${esc(job.post_name || "")}</p>
     <div class="meta">
       <span class="stat"><span class="n">${inr(job.total_vacancies)}</span><span class="l">Posts</span></span>
-      <span class="stat"><span class="n">${job.age_max ? job.age_min + "&ndash;" + job.age_max : "&mdash;"}</span><span class="l">Age</span></span>
+      <span class="stat"><span class="n">${job.age_max ? (job.age_min ? job.age_min + "&ndash;" : "up to ") + job.age_max : "&mdash;"}</span><span class="l">Age</span></span>
       <span class="deadline${st.cls === "soon" ? " soon" : ""}">Last date <b>${fmtDate(job.application_end)}</b></span>
     </div>
   </a></li>`;
@@ -956,7 +956,7 @@ function jobLd(job) {
   const descHtml =
     `<p>${esc(job.summary || job.title)}</p>` +
     (job.qualification ? `<p><b>Qualification:</b> ${esc(job.qualification)}</p>` : "") +
-    (job.age_max ? `<p><b>Age limit:</b> ${job.age_min}-${job.age_max} years</p>` : "") +
+    (job.age_max ? `<p><b>Age limit:</b> ${job.age_min ? job.age_min + "-" : "up to "}${job.age_max} years</p>` : "") +
     (job.fee ? `<p><b>Application fee:</b> ${esc(job.fee)}</p>` : "") +
     ((job.how_to_apply||[]).length
       ? `<p><b>How to apply:</b></p><ol>${job.how_to_apply.map((s)=>`<li>${esc(s)}</li>`).join("")}</ol>` : "");
@@ -1103,7 +1103,7 @@ function buildJob(job, all) {
     ${row("Post name", esc(job.post_name))}
     ${row("Total vacancies", `<span class="mono">${inr(job.total_vacancies)}</span>`)}
     ${row("Qualification", esc(job.qualification))}
-    ${row("Age limit", job.age_max ? `${job.age_min}&ndash;${job.age_max} years` : "")}
+    ${row("Age limit", job.age_max ? `${job.age_min ? job.age_min + "&ndash;" : "Up to "}${job.age_max} years` : "")}
     ${row("Salary", esc(job.salary))}
     ${row("Application fee", esc(job.fee))}
     ${row("Job location", esc(job.location))}
@@ -1253,7 +1253,7 @@ function eligibilityProse(job) {
   const p = [];
   if (job.eligibility_notes) p.push(esc(String(job.eligibility_notes)));
   if (job.qualification) p.push(`To apply for ${esc(job.title)}, a candidate must have ${esc(job.qualification)}.`);
-  if (job.age_max) p.push(`The age of applicants should generally be between <strong>${job.age_min} and ${job.age_max} years</strong> as on the cut-off date mentioned in the official notification. Age relaxation is provided to candidates from SC, ST, OBC, PwD and other reserved categories as per government rules.`);
+  if (job.age_max) p.push(`The age of applicants should generally be <strong>${job.age_min ? `between ${job.age_min} and ${job.age_max} years` : `up to ${job.age_max} years`}</strong> as on the cut-off date mentioned in the official notification. Age relaxation is provided to candidates from SC, ST, OBC, PwD and other reserved categories as per government rules.`);
   if (job.location) p.push(`The posts are based in ${esc(job.location)}.`);
   if (!p.length) return "";
   return `<p>${p.join(" ")}</p>`;
@@ -1274,7 +1274,7 @@ function faqsFor(job) {
   if (job.application_end) f.push({ q: `What is the last date to apply for ${job.title}?`, a: `The last date to submit the online application is ${fmtDate(job.application_end)}.` });
   if (job.total_vacancies) f.push({ q: `How many vacancies are there in ${job.title}?`, a: `There are ${inr(job.total_vacancies)} vacancies in this recruitment.` });
   if (job.qualification) f.push({ q: `What is the educational qualification required?`, a: `Candidates must have ${job.qualification}.` });
-  if (job.age_max) f.push({ q: `What is the age limit for this recruitment?`, a: `The age limit is generally ${job.age_min}–${job.age_max} years, with relaxation for reserved categories as per government norms.` });
+  if (job.age_max) f.push({ q: `What is the age limit for this recruitment?`, a: `The age limit is generally ${job.age_min ? job.age_min + "–" : "up to "}${job.age_max} years, with relaxation for reserved categories as per government norms.` });
   if (job.fee) f.push({ q: `What is the application fee?`, a: `The application fee is ${job.fee}.` });
   if (job.salary) f.push({ q: `What is the salary for ${job.post_name || job.title}?`, a: `The pay offered is ${job.salary}.` });
   f.push({ q: `How can I apply for ${job.title}?`, a: `Applications are accepted online through the official website. The step-by-step process is listed in the "How to apply" section above.` });
