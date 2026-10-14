@@ -59,46 +59,16 @@ function parseFeed(xml) {
   }
   return out;
 }
+const L = require("./lib.js");
 async function getFeed(url) {
-  try {
-    let r = await fetch(url, { headers: HDRS, signal: AbortSignal.timeout(20000) });
-    if (r.status === 403 || r.status === 503 || r.status === 429) {
-      await new Promise((res) => setTimeout(res, 1200));
-      r = await fetch(url, { headers: { ...HDRS, "user-agent": UA_ALT }, signal: AbortSignal.timeout(20000) });
-    }
-    if (!r.ok) { console.log(`  news feed HTTP ${r.status}: ${url}`); return []; }
-    return parseFeed(await r.text());
-  } catch (e) { console.log(`  news feed error (${url}): ${e.message}`); return []; }
+  const r = await L.fetchFeed(url);
+  console.log(`  news feed: ${r.items.length} items from ${url}${r.via ? " (" + r.via + ")" : ""}${!r.items.length ? " — " + r.errors.join(" | ") : ""}`);
+  NEWS_STATUS[url] = r.items.length ? `${r.items.length} via ${r.via}` : r.errors.join(" | ");
+  return r.items.map((i) => ({ title: i.title, link: i.link, summary: String(i.summary || "").slice(0, 400) }));
 }
+const NEWS_STATUS = {};
 
-async function askAI(prompt, maxTokens = 3000, attempt = 1) {
-  try {
-    if (AI === "OpenAI") {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${OPENAI_KEY}` },
-        body: JSON.stringify({ model: OPENAI_MODEL, messages: [{ role: "user", content: prompt }], response_format: { type: "json_object" }, max_tokens: maxTokens }),
-      });
-      if (!res.ok) {
-        console.log("  (OpenAI HTTP " + res.status + (attempt < 2 ? " — retrying once)" : ")"));
-        if (attempt < 2 && res.status !== 401) { await new Promise((r) => setTimeout(r, 2000)); return askAI(prompt, maxTokens, attempt + 1); }
-        return null;
-      }
-      const data = await res.json();
-      const txt = data.choices?.[0]?.message?.content || "";
-      if (!txt && attempt < 2) { await new Promise((r) => setTimeout(r, 1500)); return askAI(prompt, maxTokens, attempt + 1); }
-      return txt;
-    }
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: maxTokens, messages: [{ role: "user", content: prompt }] }),
-    });
-    if (!res.ok) { console.log("  (AI skipped: Claude HTTP " + res.status + ")"); return null; }
-    const data = await res.json();
-    return (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
-  } catch (e) { console.log("  (AI error: " + e.message + ")"); return null; }
-}
+const askAI = (prompt, maxTokens = 3000) => L.askAI(prompt, { maxTokens });
 function parseJson(raw) {
   if (!raw) return null;
   try {
@@ -208,7 +178,7 @@ async function analysis(existing, jobs) {
 }
 
 async function main() {
-  if (!AI) { console.log("News: no AI key set — skipping (news is never generated without a source-grounded model call)."); return; }
+  if (!AI) { console.log("News: no AI key set — skipping (news is never generated without a source-grounded model call)."); L.logRun("news", { ai: "off" }); return; }
   let existing = [];
   try { existing = JSON.parse(fs.readFileSync(NEWS, "utf8")); } catch { existing = []; }
   if (!Array.isArray(existing)) existing = [];
@@ -221,6 +191,7 @@ async function main() {
   if (ca) { fresh.push(ca); console.log(`  + digest: ${ca.title} (${words(ca)} words)`); }
   fresh.push(...await analysis(existing, jobs));
 
+  L.logRun("news", { ai: AI, published: fresh.length, existing: existing.length, feeds: NEWS_STATUS });
   if (!fresh.length) { console.log("News: nothing new to publish."); return; }
   const all = [...fresh, ...existing].slice(0, 400);
   fs.writeFileSync(NEWS, JSON.stringify(all, null, 2) + "\n");

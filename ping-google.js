@@ -97,6 +97,7 @@ async function main() {
       source = "all jobs";
     } catch { urls = []; }
   }
+  urls = urls.filter((u) => /\/jobs\/[^/]+\/?$/.test(u));   // Google's Indexing API is for JobPosting pages only
   if (!urls.length) { console.log("Indexing API: no job URLs to submit."); return; }
 
   // Google quota is 200 URLs/day. Cap per run to stay safe.

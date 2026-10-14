@@ -1,5 +1,5 @@
 {
-  "_README": "This is the ONLY file you need to edit. Fill url + email, add OPENAI_API_KEY as a GitHub secret, done. Feeds below cover central + all-state jobs AND results/admit-cards/answer-keys. maxNewPerRun = jobs per run, maxUpdatesPerRun = results/admit-cards per run. 3 runs/day.",
+  "_README": "This is the ONLY file you need to edit. url + email, feeds (jobs + results/admit-cards), caps per run. The automation runs 6x/day; data/last-run.json shows how the last run went.",
   "url": "https://news-views.in",
   "email": "contact@news-views.in",
   "adsenseId": "",
@@ -15,15 +15,17 @@
     "https://www.gccwalkins.com/feed",
     "https://gulfjobvacancy.in/feed"
   ],
-  "maxNewPerRun": 15,
-  "maxUpdatesPerRun": 12,
+  "maxNewPerRun": 20,
+  "maxUpdatesPerRun": 20,
   "staleDays": 45,
   "newsFeeds": [
-    "https://www.pib.gov.in/ViewRss.aspx?reg=1&lang=1"
+    "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3"
   ],
   "maxAnalysisPerRun": 1,
   "aiModel": "gpt-4o-mini",
   "newsModel": "gpt-4o-mini",
   "minArticleWords": 350,
-  "maxEnrichPerRun": 5
+  "maxEnrichPerRun": 5,
+  "maxLinkFixPerRun": 25,
+  "maxUpdateEnrichPerRun": 15
 }

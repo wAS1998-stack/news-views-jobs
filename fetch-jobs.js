@@ -24,6 +24,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const L = require("./lib.js");
 
 const ROOT = __dirname;
 const DATA = path.join(ROOT, "data", "jobs.json");
@@ -106,63 +107,35 @@ function cleanSlug(title) {
   }
   return s;
 }
-const stripTags = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").replace(/\s+/g, " ").trim();
+const stripTags = L.stripTags;
 const today = () => new Date().toISOString().slice(0, 10);
 
-function decodeEntities(s) {
-  return String(s || "")
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&#x27;/g, "'");
-}
+const decodeEntities = L.decodeEntities;
 
-/* ---- minimal RSS + Atom parser (zero deps) ---------------------- */
-function parseFeed(xml) {
-  const items = [];
-  const grab = (block, tag) => {
-    const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
-    return m ? decodeEntities(m[1]).trim() : "";
-  };
-  // RSS <item>
-  const rss = xml.match(/<item[\s\S]*?<\/item>/gi) || [];
-  for (const b of rss) {
-    items.push({
-      title: stripTags(grab(b, "title")),
-      link: grab(b, "link") || (b.match(/<link[^>]*href="([^"]+)"/i)?.[1] || ""),
-      summary: stripTags(grab(b, "description") || grab(b, "content:encoded")),
-      date: grab(b, "pubDate") || grab(b, "dc:date"),
-      guid: grab(b, "guid"),
-    });
-  }
-  // Atom <entry>
-  const atom = xml.match(/<entry[\s\S]*?<\/entry>/gi) || [];
-  for (const b of atom) {
-    items.push({
-      title: stripTags(grab(b, "title")),
-      link: b.match(/<link[^>]*href="([^"]+)"/i)?.[1] || grab(b, "id"),
-      summary: stripTags(grab(b, "summary") || grab(b, "content")),
-      date: grab(b, "updated") || grab(b, "published"),
-      guid: grab(b, "id"),
-    });
-  }
-  return items.filter((i) => i.title && i.link);
-}
+const parseFeed = L.parseFeed;
 
-/* ---- optional: extract structured fields with Claude ------------ */
-async function aiExtract(item) {
-  if (!AI_PROVIDER) return {};
-  let pageText = item.summary || "";
+/* ---- read the source page once: text + candidate official links --------- */
+async function readSource(link) {
   try {
-    const r = await fetch(item.link, { headers: HDRS, signal: AbortSignal.timeout(15000) });
-    const ct = r.headers.get("content-type") || "";
-    if (r.ok && ct.includes("html")) pageText = (stripTags(await r.text()) || pageText).slice(0, 7000);
-  } catch { /* fall back to summary */ }
+    const { text, type, url } = await L.fetchText(link, 15000);
+    if (!/html/i.test(type)) return { text: "", cands: [] };
+    return { text: L.stripTags(text).slice(0, 7000), cands: L.extractOfficialLinks(text, url) };
+  } catch { return { text: "", cands: [] }; }
+}
+function candList(cands) {
+  return cands.length ? cands.map((c, i) => `${i + 1}. ${c.url}${c.text ? "  (link text: " + c.text + ")" : ""}${c.pdf ? "  [PDF]" : ""}`).join("\n") : "(none found)";
+}
 
+/* ---- optional: extract structured fields with AI ----------------- */
+async function aiExtract(item, src) {
+  if (!AI_PROVIDER) return {};
+  const pageText = src.text || item.summary || "";
   const prompt = `You are extracting facts from an Indian government job notification to build a complete, useful job page. ` +
     `Return ONLY a JSON object (no prose, no markdown) with these keys, using null when genuinely unknown: ` +
-    `organization, org_short, post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
+    `organization (full official name of the recruiting body — NOT the headline), org_short (its common abbreviation, e.g. SSC, UPSC, RRB, IBPS), post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
     `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
-    `summary (2-3 clear factual sentences describing the recruitment), summary_hindi (the same summary written naturally in Hindi), ` +
+    `apply_link, official_notification, official_website (see rules below), ` +
+    `summary (2-3 clear factual sentences describing the recruitment), summary_hindi (the same summary written naturally in Hindi — Devanagari only, never mix Latin letters into Hindi words), ` +
     `selection_process (array of the selection stages if mentioned), ` +
     `how_to_apply (array of 4-6 clear step-by-step instructions to apply online), ` +
     `overview (3 well-written paragraphs, 160-220 words total, as an array of paragraph strings, explaining this recruitment in plain English for an Indian job seeker: what the post involves, who it suits, why it matters, and what applicants should check before applying), ` +
@@ -170,39 +143,60 @@ async function aiExtract(item) {
     `eligibility_notes (2-3 sentences explaining the eligibility in plain language, including any relaxations or conditions worth flagging), ` +
     `preparation_tips (array of 3-4 specific, practical preparation pointers tailored to THIS exam and post — mention the actual subjects or test stages where known), ` +
     `faq (array of 4-5 objects with keys q and a, answering the questions a real candidate would ask about this specific recruitment; each answer 1-3 sentences). ` +
+    `LINK RULES: choose apply_link (the official online application / registration page), official_notification (the official notification PDF or notice page) and official_website (the recruiting body's own site homepage) ONLY from the CANDIDATE LINKS list below — copy the URL exactly; if no suitable candidate exists use null. Never choose a news/blog/aggregator site. ` +
     `Write overview, about_organization, eligibility_notes, preparation_tips and faq as genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate. ` +
-    `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\nTITLE: ${item.title}\n\nTEXT:\n${pageText}`;
+    `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\n` +
+    `TITLE: ${item.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nTEXT:\n${pageText}`;
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 3200 }));
+  if (!obj) { console.log("  (AI extract failed)"); return {}; }
+  return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== null && v !== "" && !(Array.isArray(v) && !v.length)));
+}
 
-  let raw = "";
-  try {
-    if (AI_PROVIDER === "OpenAI") {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${OPENAI_KEY}` },
-        body: JSON.stringify({
-          model: OPENAI_MODEL,
-          messages: [{ role: "user", content: prompt }],
-          response_format: { type: "json_object" },
-          max_tokens: 3000,
-        }),
-      });
-      if (!res.ok) { console.log("  (AI skipped: OpenAI HTTP " + res.status + ")"); return {}; }
-      const data = await res.json();
-      raw = data.choices?.[0]?.message?.content || "";
-    } else {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-        body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: 3000, messages: [{ role: "user", content: prompt }] }),
-      });
-      if (!res.ok) { console.log("  (AI skipped: Claude HTTP " + res.status + ")"); return {}; }
-      const data = await res.json();
-      raw = (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
-    }
-    const json = raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1);
-    const obj = JSON.parse(json);
-    return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== null && v !== "" && !(Array.isArray(v) && !v.length)));
-  } catch (e) { console.log("  (AI extract failed: " + e.message + ")"); return {}; }
+/* ---- updates (results / admit cards / answer keys): rich entries ---------- */
+async function aiUpdate(it, kind, src) {
+  if (!AI_PROVIDER) return {};
+  const label = { "admit-card": "admit card / hall ticket", result: "result / merit list / cut-off", "answer-key": "answer key", "exam-date": "exam date / schedule" }[kind] || kind;
+  const prompt = `You are writing a helpful page about a ${label} announcement for an Indian government exam. Use ONLY the source text; never invent dates, cut-offs or numbers.\n` +
+    `Return ONLY a JSON object with keys: ` +
+    `organization (full official name of the exam body), org_short (common abbreviation), exam_name (the exam / post this is for), ` +
+    `event_date (YYYY-MM-DD of the release/exam date if stated, else null), ` +
+    `summary (3-4 factual sentences: what was released, for which exam/post, when, and where to check), ` +
+    `summary_hi (the same summary in natural Hindi, Devanagari only), ` +
+    `steps (array of 4-6 numbered steps telling the candidate exactly how to download/check it on the official website — mention the real site name and the credentials needed, e.g. registration number and date of birth), ` +
+    `details (array of 2-3 paragraphs, 120-180 words total, with the useful context: what happens next, documents to carry, how cut-offs or the next stage work for THIS exam, common problems and fixes), ` +
+    `faq (array of 3-4 objects with keys q and a that a candidate would ask about this specific ${label}), ` +
+    `official_link (the single best official URL to check/download this, chosen ONLY from the CANDIDATE LINKS list, copied exactly; null if none), ` +
+    `official_website (the exam body's own homepage, from the candidate list or null).\n` +
+    `Never pick a news/blog/aggregator site as official. Write clear, original, neutral English.\n\n` +
+    `TITLE: ${it.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nSOURCE TEXT:\n${(src.text || it.summary || "").slice(0, 6000)}`;
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 2000 }));
+  return obj || {};
+}
+function finishUpdate(base, ai, src) {
+  const cands = src.cands || [];
+  const picked = L.validateLinks({ apply_link: ai.official_link, official_notification: ai.official_link, official_website: ai.official_website }, cands);
+  const heur = L.pickLinksHeuristic(cands);
+  const titleHost = L.hostFromTitle(base.title);
+  const official = picked.apply_link || picked.official_notification || heur.apply_link || heur.official_notification || (titleHost ? `https://${titleHost}/` : null);
+  const u = {
+    ...base,
+    organization: String(ai.organization || base.organization || "").trim().slice(0, 90) || base.organization,
+    org_short: String(ai.org_short || base.org_short || "").trim().slice(0, 30) || base.org_short,
+    exam_name: ai.exam_name ? String(ai.exam_name).trim().slice(0, 120) : undefined,
+    event_date: /^\d{4}-\d{2}-\d{2}$/.test(String(ai.event_date || "")) ? ai.event_date : undefined,
+    summary: String(ai.summary || base.summary || "").trim() || base.summary,
+    summary_hi: ai.summary_hi ? String(ai.summary_hi).trim() : undefined,
+    steps: L.strArr(ai.steps, 7),
+    details: L.strArr(ai.details, 4),
+    faq: L.faqArr(ai.faq, 5),
+    official_link: official || undefined,
+    official_website: picked.official_website || heur.official_website || (titleHost ? `https://${titleHost}/` : undefined),
+    source: base.link,
+  };
+  // The outbound button must never point at the middleman when we found an official page.
+  if (official) u.link = official;
+  for (const k of Object.keys(u)) if (u[k] === undefined || (Array.isArray(u[k]) && !u[k].length)) delete u[k];
+  return u;
 }
 
 /* ---- build a job entry from a feed item ------------------------- */
@@ -219,17 +213,26 @@ async function toJob(item, existingIds, fingerprints) {
   if (!id || existingIds.has(id)) return null;        // skip exact-slug duplicates
   const fp = fingerprint(item.title);
   if (fp && fingerprints && fingerprints.has(fp)) return null;  // skip near-duplicates
+  const src = await readSource(item.link);
   const base = {
     id,
     title: item.title,
-    organization: item.title.split(/[-–|,(]/)[0].trim() || "Government of India",
+    organization: L.orgFromTitle(item.title) || "Government of India",
     summary: item.summary ? item.summary.slice(0, 240) : item.title,
-    apply_link: item.link,
-    official_notification: item.link,
+    apply_link: null,
+    official_notification: null,
+    source: item.link,
     published: item.date ? new Date(item.date).toISOString().slice(0, 10) : today(),
   };
-  const extra = await aiExtract(item);
-  const merged = { ...base, ...extra, id, title: item.title, apply_link: extra.apply_link || base.apply_link };
+  const extra = await aiExtract(item, src);
+  const merged = { ...base, ...extra, id, title: item.title };
+  // Links: AI's choice must be a real candidate from the page; otherwise heuristic; never the aggregator.
+  const picked = L.validateLinks(extra, src.cands);
+  const heur = L.pickLinksHeuristic(src.cands);
+  merged.apply_link = picked.apply_link || heur.apply_link || picked.official_notification || heur.official_notification || null;
+  merged.official_notification = picked.official_notification || heur.official_notification || null;
+  merged.official_website = picked.official_website || heur.official_website || null;
+  if (!merged.organization || merged.organization === merged.title) merged.organization = L.orgFromTitle(item.title) || "Government of India";
   // Quality floor: ensure every page has substantial content even if extraction was sparse.
   if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) {
     merged.how_to_apply = [
@@ -245,6 +248,7 @@ async function toJob(item, existingIds, fingerprints) {
     merged.summary = `${merged.organization} has released a notification for ${merged.title}. ` +
       `Check the eligibility, important dates and application details below, and apply through the official website before the last date.`;
   }
+  for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
   return merged;
 }
 
@@ -265,31 +269,33 @@ async function main() {
   let updates = [];
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   let updatesAdded = 0;
+  const newUpdateIds = [];
+  const feedStatus = {};
   for (const url of feeds) {
     try {
-      let r = await fetch(url, { headers: HDRS, signal: AbortSignal.timeout(20000) });
-      if (r.status === 403 || r.status === 503 || r.status === 429) {
-        // Some sites block one identity but allow another — retry once.
-        await new Promise((res) => setTimeout(res, 1200));
-        r = await fetch(url, { headers: { ...HDRS, "user-agent": UA_ALT }, signal: AbortSignal.timeout(20000) });
-      }
-      if (!r.ok) { console.log(`  feed HTTP ${r.status}: ${url}`); continue; }
-      const items = parseFeed(await r.text());
-      console.log(`  ${items.length} items from ${url}`);
+      const fr = await L.fetchFeed(url);
+      const items = fr.items;
+      feedStatus[url] = items.length ? `${items.length} items via ${fr.via}` : "0 items: " + fr.errors.join(" | ");
+      console.log(`  ${items.length} items from ${url}${fr.via ? " (" + fr.via + ")" : ""}${fr.errors.length && !items.length ? " — " + fr.errors.join(" | ") : ""}`);
       for (const it of items) {
         // Stop only when BOTH caps are hit (jobs and updates are independent).
         if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
+        if (L.JUNK_TITLE.test(it.title)) continue;   // newspaper PDF dumps, roundups — not a recruitment
         const kind = classify(it.title);
         if (kind !== "job") {
           if (updatesAdded >= MAX_UPDATES) continue;
           const uid = slug(it.title).slice(0, 80);
           if (uid && !updates.some((u) => u.id === uid)) {
-            updates.unshift({ id: uid, type: kind, title: String(it.title).trim(),
-              organization: String(it.title).split(/[—:\-]/)[0].trim().slice(0, 60) || "Recruitment Board",
+            const base = { id: uid, type: kind, title: String(it.title).trim(),
+              organization: L.orgFromTitle(it.title) || "Recruitment Board",
               org_short: String(it.title).split(/\s+/).slice(0, 2).join(" "),
               date: new Date().toISOString().slice(0, 10), link: it.link,
               summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
-                " Check the official website for the direct link and full details." });
+                " Check the official website for the direct link and full details." };
+            const src = await readSource(it.link);
+            const ai = await aiUpdate(it, kind, src);
+            updates.unshift(finishUpdate(base, ai, src));
+            newUpdateIds.push(uid);
             updatesAdded++;
             console.log(`   * update: ${it.title}`);
           }
@@ -299,7 +305,7 @@ async function main() {
         const job = await toJob(it, ids, fps);
         if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
       }
-    } catch (e) { console.log(`  feed error (${url}): ${e.message}`); }
+    } catch (e) { console.log(`  feed error (${url}): ${e.message}`); feedStatus[url] = "error: " + e.message; }
     if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
   }
 
@@ -308,21 +314,22 @@ async function main() {
     fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }
-  if (!fresh.length) { console.log("No new jobs found. jobs.json unchanged."); return; }
-
-  const merged = [...fresh, ...existing]
-    .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
-  fs.writeFileSync(DATA, JSON.stringify(merged, null, 2) + "\n");
-  console.log(`Added ${fresh.length} new job(s). Total: ${merged.length}.`);
-
+  L.logRun("fetch", { feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus });
   // Record exactly which job URLs are new this run, so the Indexing API pings
   // only those (fast + quota-efficient) instead of re-submitting everything.
   try {
     const base = (SITE_URL || "https://news-views.in").replace(/\/$/, "");
-    const newUrls = fresh.filter((j) => j && j.id).map((j) => `${base}/jobs/${j.id}/`);
+    const newUrls = fresh.filter((j) => j && j.id).map((j) => `${base}/jobs/${j.id}/`).concat(newUpdateIds.map((id) => `${base}/updates/${id}/`));
     fs.writeFileSync(path.join(ROOT, "data", "new-urls.txt"), newUrls.join("\n") + "\n");
     console.log(`Recorded ${newUrls.length} new URL(s) for indexing.`);
   } catch {}
+
+  if (!fresh.length) { console.log("No new jobs found. jobs.json unchanged."); return; }
+  const merged = [...fresh, ...existing]
+    .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  fs.writeFileSync(DATA, JSON.stringify(merged, null, 2) + "\n");
+  console.log(`Added ${fresh.length} new job(s). Total: ${merged.length}.`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+module.exports = { readSource, aiExtract, aiUpdate, finishUpdate, classify, cleanSlug, fingerprint };
+if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

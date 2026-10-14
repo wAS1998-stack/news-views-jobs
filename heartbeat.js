@@ -17,12 +17,12 @@ const path = require("path");
 const FILE = path.join(__dirname, "data", "last-run.json");
 const today = new Date().toISOString().slice(0, 10);
 
-let prev = null;
-try { prev = JSON.parse(fs.readFileSync(FILE, "utf8")).date || null; } catch { /* first run */ }
+let prev = null, cur = {};
+try { cur = JSON.parse(fs.readFileSync(FILE, "utf8")) || {}; prev = cur.date || null; } catch { /* first run */ }
 
 if (prev === today) {
   console.log(`Heartbeat: already refreshed today (${today}) — no commit needed.`);
 } else {
-  fs.writeFileSync(FILE, JSON.stringify({ date: today, note: "Daily freshness marker — triggers a rebuild so the site's updated date stays current." }, null, 2) + "\n");
+  fs.writeFileSync(FILE, JSON.stringify({ ...cur, date: today }, null, 2) + "\n");   // keep the step diagnostics other scripts wrote
   console.log(`Heartbeat: marked ${today} (was ${prev || "never"}) — site will rebuild and show today's date.`);
 }

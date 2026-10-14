@@ -1,66 +1,69 @@
 #!/usr/bin/env node
 /**
- * enrich-jobs.js — upgrades EXISTING jobs to rich AI-written content.
+ * enrich-jobs.js — upgrades EXISTING data, a few entries per run, so the whole
+ * archive improves over time without a big one-off API bill.
  *
- * Jobs fetched before the richer prompt only have template content. This walks
- * data/jobs.json, finds entries missing the AI fields, and fills them in a few
- * at a time so the whole archive is upgraded over several runs without a huge
- * one-off API bill.
+ * Three passes, each capped per run (config.json / env):
+ *   1. links    — jobs whose "official" links still point at the source blog
+ *                 (a middleman) get the real government / recruiter URLs,
+ *                 discovered on the source page and confirmed by the model.
+ *   2. updates  — results / admit-card / answer-key entries that are still
+ *                 one-liners get download steps, context, FAQ and official link.
+ *   3. content  — jobs still on template prose get the full written page.
  *
- * Grounded: it writes ONLY from facts already stored on the job. It never
- * invents vacancy counts, dates or fees — anything unknown stays unknown.
+ * Grounded: it writes ONLY from facts already stored on the entry or read from
+ * its source page. It never invents vacancy counts, dates or fees.
  */
 const fs = require("fs");
 const path = require("path");
+const L = require("./lib.js");
+const F = require("./fetch-jobs.js");
 
 const ROOT = __dirname;
-const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")); } catch { return {}; } })();
 const JOBS = path.join(ROOT, "data", "jobs.json");
+const UPDATES = path.join(ROOT, "data", "updates.json");
+const C = L.CONFIG;
+const MAX_CONTENT = Number(process.env.ENRICH_MAX || C.maxEnrichPerRun || 5);
+const MAX_LINKS = Number(process.env.ENRICH_LINKS || C.maxLinkFixPerRun || 25);
+const MAX_UPD = Number(process.env.ENRICH_UPDATES || C.maxUpdateEnrichPerRun || 15);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const OPENAI_KEY = process.env.OPENAI_API_KEY || "";
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
-const OPENAI_MODEL = process.env.OPENAI_MODEL || CONFIG.aiModel || "gpt-4o-mini";
-const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-3-5-haiku-latest";
-const AI = OPENAI_KEY ? "OpenAI" : (ANTHROPIC_KEY ? "Claude" : "");
-const MAX_PER_RUN = Number(process.env.ENRICH_MAX || CONFIG.maxEnrichPerRun || 5);
+const badLink = (u) => !u || L.isAggregator(L.hostOf(u));
+function needsLinks(j) { return badLink(j.apply_link) && badLink(j.official_notification) && !j.links_checked; }
+function needsContent(j) {
+  return !(Array.isArray(j.overview) && j.overview.length >= 2) || !(Array.isArray(j.faq) && j.faq.length >= 3);
+}
+function needsUpdateEnrich(u) { return !(Array.isArray(u.steps) && u.steps.length >= 3) && !u.enriched; }
 
-function needsEnrich(j) {
-  return !(Array.isArray(j.overview) && j.overview.length >= 2)
-      || !(Array.isArray(j.faq) && j.faq.length >= 3);
+/* ---- pass 1: official links ------------------------------------- */
+async function fixLinks(job) {
+  const srcUrl = job.source || job.official_notification || job.apply_link;
+  if (!srcUrl) return false;
+  const src = await F.readSource(srcUrl);
+  if (!src.cands.length) { job.links_checked = new Date().toISOString().slice(0, 10); return false; }
+  let picked = { apply_link: null, official_notification: null, official_website: null };
+  if (L.AI) {
+    const prompt = `From the candidate links below (all found on a page about "${job.title}"), choose: ` +
+      `apply_link = the official online application / registration page; official_notification = the official notification PDF or notice page; ` +
+      `official_website = the recruiting body's own homepage. Copy URLs exactly from the list; use null when no candidate fits. ` +
+      `Never pick a news/blog/aggregator site. Return ONLY a JSON object with those three keys.\n\nCANDIDATES:\n` +
+      src.cands.map((c, i) => `${i + 1}. ${c.url}${c.text ? "  (link text: " + c.text + ")" : ""}${c.pdf ? "  [PDF]" : ""}`).join("\n");
+    picked = L.validateLinks(L.parseJson(await L.askAI(prompt, { maxTokens: 400 })) || {}, src.cands);
+  }
+  const heur = L.pickLinksHeuristic(src.cands);
+  const apply = picked.apply_link || heur.apply_link || picked.official_notification || heur.official_notification;
+  const notif = picked.official_notification || heur.official_notification;
+  if (!apply && !notif) { job.links_checked = new Date().toISOString().slice(0, 10); return false; }
+  if (!job.source) job.source = srcUrl;
+  if (apply) job.apply_link = apply;
+  if (notif) job.official_notification = notif; else delete job.official_notification;
+  job.official_website = picked.official_website || heur.official_website || `https://${L.hostOf(apply || notif)}/`;
+  delete job.links_checked;
+  return true;
 }
 
-async function askAI(prompt, attempt = 1) {
-  try {
-    if (AI === "OpenAI") {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${OPENAI_KEY}` },
-        body: JSON.stringify({ model: OPENAI_MODEL, messages: [{ role: "user", content: prompt }], response_format: { type: "json_object" }, max_tokens: 3000 }),
-      });
-      if (!res.ok) {
-        if (attempt < 2 && res.status !== 401) { await new Promise((r) => setTimeout(r, 2000)); return askAI(prompt, attempt + 1); }
-        console.log(`  (OpenAI HTTP ${res.status})`); return null;
-      }
-      const d = await res.json();
-      return d.choices?.[0]?.message?.content || "";
-    }
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: 3000, messages: [{ role: "user", content: prompt }] }),
-    });
-    if (!res.ok) { console.log(`  (Claude HTTP ${res.status})`); return null; }
-    const d = await res.json();
-    return (d.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
-  } catch (e) { console.log("  (AI error: " + e.message + ")"); return null; }
-}
-function parseJson(raw) {
-  if (!raw) return null;
-  try { return JSON.parse(raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1)); } catch { return null; }
-}
-const strArr = (x, n) => (Array.isArray(x) ? x : []).map((v) => String(v || "").trim()).filter(Boolean).slice(0, n);
-
-async function enrich(job) {
+/* ---- pass 3: written content ------------------------------------ */
+async function enrichContent(job) {
   const facts = [
     `Title: ${job.title}`, `Organisation: ${job.organization || ""}`, `Post: ${job.post_name || ""}`,
     `Vacancies: ${job.total_vacancies ?? "not stated"}`, `Qualification: ${job.qualification || "not stated"}`,
@@ -79,45 +82,75 @@ async function enrich(job) {
     `preparation_tips (array of 3-4 practical pointers tailored to THIS exam and post, naming the actual subjects or stages where known), ` +
     `faq (array of 4-5 objects with keys q and a, answering what a real candidate would ask about this specific recruitment; each answer 1-3 sentences).\n\n` +
     `Write genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate.\n\nVERIFIED FACTS:\n${facts}`;
-
-  const o = parseJson(await askAI(prompt));
+  const o = L.parseJson(await L.askAI(prompt));
   if (!o) return null;
-  const overview = strArr(o.overview, 4);
-  const faq = (Array.isArray(o.faq) ? o.faq : [])
-    .map((x) => ({ q: String(x?.q || x?.question || "").trim(), a: String(x?.a || x?.answer || "").trim() }))
-    .filter((x) => x.q && x.a).slice(0, 6);
-  // Quality gate: don't overwrite good template content with a weak AI answer.
+  const overview = L.strArr(o.overview, 4);
+  const faq = L.faqArr(o.faq, 6);
   if (overview.length < 2 || overview.join(" ").split(/\s+/).length < 100 || faq.length < 3) return null;
   return {
     overview,
     about_organization: String(o.about_organization || "").trim() || undefined,
     eligibility_notes: String(o.eligibility_notes || "").trim() || undefined,
-    preparation_tips: strArr(o.preparation_tips, 5),
+    preparation_tips: L.strArr(o.preparation_tips, 5),
     faq,
   };
 }
 
 async function main() {
-  if (!AI) { console.log("Enrich: no AI key — skipping."); return; }
-  let jobs = [];
+  let jobs = [], updates = [];
   try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { console.log("Enrich: cannot read jobs.json"); return; }
+  try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   if (!Array.isArray(jobs)) return;
+  const stats = { ai: L.AI_LABEL, linksFixed: 0, linksPending: 0, updatesEnriched: 0, updatesPending: 0, contentWritten: 0, contentPending: 0 };
 
-  const pending = jobs.filter((j) => j && j.id && j.title && needsEnrich(j));
-  console.log(`Enrich: AI ${AI} (${AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL}) | ${pending.length} job(s) still on template content | doing up to ${MAX_PER_RUN} this run`);
-  if (!pending.length) { console.log("Enrich: every job already has full AI content."); return; }
-
-  let done = 0;
-  for (const job of pending.slice(0, MAX_PER_RUN)) {
-    const rich = await enrich(job);
-    if (!rich) { console.log(`  - skipped (quality gate): ${job.title}`); continue; }
-    Object.assign(job, rich);
-    done++;
-    console.log(`  ✓ enriched: ${job.title}`);
-    await new Promise((r) => setTimeout(r, 800));   // gentle on rate limits
+  // Pass 1 — official links (works even without an AI key: heuristic pick)
+  const linkJobs = jobs.filter((j) => j && j.id && needsLinks(j));
+  stats.linksPending = linkJobs.length;
+  console.log(`Enrich/links: ${linkJobs.length} job(s) still link to the source blog | doing up to ${MAX_LINKS}`);
+  let jobsDirty = false;
+  for (const job of linkJobs.slice(0, MAX_LINKS)) {
+    const ok = await fixLinks(job);
+    jobsDirty = true;   // links_checked marker or new links
+    if (ok) { stats.linksFixed++; console.log(`  ✓ official links: ${job.title} -> ${L.hostOf(job.apply_link)}`); }
+    else console.log(`  - no official link found on source: ${job.title}`);
+    await sleep(400);
   }
-  if (!done) { console.log("Enrich: nothing written."); return; }
-  fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
-  console.log(`Enrich: upgraded ${done} job page(s). ${Math.max(0, pending.length - done)} remaining for future runs.`);
+  stats.linksPending = Math.max(0, linkJobs.length - MAX_LINKS);
+
+  // Pass 2 — updates
+  const pendUpd = updates.filter((u) => u && u.id && needsUpdateEnrich(u));
+  console.log(`Enrich/updates: ${pendUpd.length} thin update(s) | doing up to ${MAX_UPD}`);
+  let updDirty = false;
+  for (const u of pendUpd.slice(0, MAX_UPD)) {
+    const src = await F.readSource(u.source || u.link);
+    const ai = L.AI ? await F.aiUpdate({ title: u.title, summary: u.summary }, u.type, src) : {};
+    const rich = F.finishUpdate({ ...u, link: u.source || u.link }, ai, src);
+    if (!L.AI && !rich.official_link) { u.enriched = "no-ai"; updDirty = true; continue; }
+    Object.assign(u, rich);
+    if (Array.isArray(u.steps) && u.steps.length >= 3) u.enriched = new Date().toISOString().slice(0, 10); else u.enriched = "partial";
+    updDirty = true; stats.updatesEnriched++;
+    console.log(`  ✓ update: ${u.title}${u.official_link ? " -> " + L.hostOf(u.official_link) : ""}`);
+    await sleep(600);
+  }
+  stats.updatesPending = Math.max(0, pendUpd.length - MAX_UPD);
+
+  // Pass 3 — content (AI only)
+  if (L.AI) {
+    const pending = jobs.filter((j) => j && j.id && j.title && needsContent(j));
+    console.log(`Enrich/content: ${pending.length} job(s) on template content | doing up to ${MAX_CONTENT}`);
+    for (const job of pending.slice(0, MAX_CONTENT)) {
+      const rich = await enrichContent(job);
+      if (!rich) { console.log(`  - skipped (quality gate): ${job.title}`); continue; }
+      Object.assign(job, rich); jobsDirty = true; stats.contentWritten++;
+      console.log(`  ✓ content: ${job.title}`);
+      await sleep(800);
+    }
+    stats.contentPending = Math.max(0, pending.length - MAX_CONTENT);
+  } else console.log("Enrich/content: no AI key — skipped.");
+
+  if (jobsDirty) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
+  if (updDirty) fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
+  L.logRun("enrich", stats);
+  console.log("Enrich:", JSON.stringify(stats));
 }
-main();
+main().catch((e) => { console.error(e); process.exit(1); });

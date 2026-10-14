@@ -2,12 +2,29 @@ name: Update jobs
 
 on:
   schedule:
-    # 3x/day (UTC) ≈ 08:00, 14:00, 19:00 IST
-    - cron: "30 2,8,13 * * *"
-  workflow_dispatch: {}
+    # 6x/day (UTC) ≈ 07:00, 10:30, 13:30, 16:30, 19:30, 22:30 IST
+    - cron: "30 1,5,8,11,14,17 * * *"
+  workflow_dispatch:
+    inputs:
+      enrich_links:
+        description: "Max jobs to fix official links for this run"
+        default: "25"
+      enrich_updates:
+        description: "Max results/admit-cards to enrich this run"
+        default: "15"
+      enrich_content:
+        description: "Max job pages to write full content for this run"
+        default: "5"
+      max_new:
+        description: "Max new jobs to add this run"
+        default: "20"
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-jobs
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -18,17 +35,21 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Fetch new jobs from feeds (AI auto-fills details if key present)
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}         # add this secret -> rich pages (recommended)
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # alternative to OpenAI
-          JOBS_FEEDS: ${{ secrets.JOBS_FEEDS }}                 # optional override; feeds normally come from config.json
-        run: node fetch-jobs.js
-
-      - name: Upgrade older job pages to full AI content (a few per run)
+      - name: Fetch new jobs & updates from feeds (AI fills details + finds official links)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          JOBS_FEEDS: ${{ secrets.JOBS_FEEDS }}
+          MAX_NEW: ${{ github.event.inputs.max_new || '20' }}
+        run: node fetch-jobs.js
+
+      - name: Enrich existing data (official links, rich update pages, full content)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ENRICH_LINKS: ${{ github.event.inputs.enrich_links || '25' }}
+          ENRICH_UPDATES: ${{ github.event.inputs.enrich_updates || '15' }}
+          ENRICH_MAX: ${{ github.event.inputs.enrich_content || '5' }}
         run: node enrich-jobs.js
 
       - name: Write news & analysis (grounded in official sources)
@@ -40,14 +61,18 @@ jobs:
       - name: Daily freshness heartbeat (keeps the published date current)
         run: node heartbeat.js
 
+      - name: Verify the site still builds before committing
+        run: node build.js
+
       - name: Commit if anything changed
         id: commit
         run: |
           git config user.name  "jobs-bot"
           git config user.email "actions@users.noreply.github.com"
-          if [ -n "$(git status --porcelain data/)" ]; then
-            git add data/jobs.json data/updates.json data/news.json data/last-run.json data/posted.json
+          git add data/
+          if ! git diff --cached --quiet; then
             git commit -m "Auto: new jobs, updates & news"
+            git pull --rebase origin main || true
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Pushed — Cloudflare will redeploy automatically."
@@ -59,7 +84,7 @@ jobs:
       - name: Notify Google (Indexing API — job pages only)
         if: steps.commit.outputs.changed == 'true'
         env:
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}  # optional -> near-instant indexing
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: node ping-google.js
 
       - name: Post new jobs to Telegram channel (instant traffic)

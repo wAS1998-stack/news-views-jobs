@@ -45,6 +45,8 @@ const slug = (s) =>
   String(s || "").toLowerCase().trim()
     .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+const LIB = require("./lib.js");
+function hostOf(u) { try { return new URL(u).host.replace(/^www\./, ""); } catch { return ""; } }
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function fmtDate(iso) {
   if (!iso) return "—";
@@ -276,9 +278,11 @@ ${ldBlocks}
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
     <a href="/">Jobs</a>
+    <a href="/latest/">Latest</a>
+    <a href="/updates/result/">Results</a>
+    <a href="/updates/admit-card/">Admit Cards</a>
     <a href="/state/">States</a>
     <a href="/gulf/">Gulf</a>
-    <a href="/updates/">Updates</a>
     <a href="/news/">News</a>
     <a href="/guides/">Guides</a>
     <a href="/about/">About</a>
@@ -295,7 +299,11 @@ function foot() {
     <a href="/contact/">Contact</a>
     <a href="/privacy-policy/">Privacy</a>
     <a href="/disclaimer/">Disclaimer</a>
-    <a href="/terms/">Terms</a></p>
+    <a href="/terms/">Terms</a>
+    <a href="/latest/">Latest jobs</a>
+    <a href="/closing-soon/">Closing soon</a>
+    <a href="/updates/">Updates</a>
+    <a href="/updates/answer-key/">Answer keys</a></p>
     <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}
     <a href="/feed.xml">RSS</a>
   </span>
@@ -447,34 +455,152 @@ function updateCard(u) {
     <span class="upd-meta">${esc(u.org_short || u.organization)}${u.date ? " &middot; " + fmtDate(u.date) : ""}</span>
   </a></li>`;
 }
+function updateGenericSteps(u) {
+  const site = u.__site || "the official website";
+  const what = (UPDATE_TYPES[u.type] || {}).label || "update";
+  return [
+    `Open the official website (${site}) and go to the Recruitment, Examination or Results section.`,
+    `Find the link titled "${u.exam_name || u.org_short || u.organization} ${what}" — it is usually under Latest Updates or What's New.`,
+    `Enter your registration number / roll number and date of birth or password exactly as used while applying.`,
+    `Download the ${what.toLowerCase()} PDF and check that your name, roll number and other details are correct.`,
+    `Save a copy and take a printout; keep it with your ID proof for any exam, document verification or interview.`,
+  ];
+}
 function buildUpdatePage(u, all) {
   const canonical = `${SITE.url}/updates/${u.id}/`;
+  const typeLabel = (UPDATE_TYPES[u.type] || {}).label || "Update";
   const rel = all.filter((x) => x.id !== u.id && (x.org_short === u.org_short || x.type === u.type)).slice(0, 4);
   const relJobs = (typeof ALL_JOBS !== "undefined" ? ALL_JOBS : []).filter((j) => (j.org_short || j.organization) === (u.org_short || u.organization)).slice(0, 2);
+  const details = Array.isArray(u.details) ? u.details.filter(Boolean) : [];
+  const faqs = Array.isArray(u.faq) ? u.faq.filter((f) => f && f.q && f.a) : [];
+  const AGG = /(rajsarkariresult|govtjobsblog|govtjobsdiary|sarkarifeed|gulfjobvacancy|gulfwalkin|gccwalkins|sarkariresult|freejobalert)\./i;
+  const titleHost = (String(u.title).match(/\b(?:at|on|from|via)\s+((?:[a-z0-9-]+\.)+(?:gov\.in|nic\.in|ac\.in|edu\.in|res\.in|org\.in|co\.in|gov|org|in|com|net))\b/i) || [])[1];
+  const official = (u.official_link && !AGG.test(u.official_link)) ? u.official_link
+    : (u.official_website && !AGG.test(u.official_website)) ? u.official_website
+    : titleHost ? `https://${titleHost.toLowerCase()}/` : (u.source || u.link);
+  const officialHost = AGG.test(official) ? "" : hostOf(official);
+  const steps = Array.isArray(u.steps) && u.steps.length >= 3 ? u.steps : updateGenericSteps({ ...u, __site: officialHost || "the official website" });
+  const desc = (u.summary || "").slice(0, 158);
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: SITE.url + "/updates/" }, { name: u.title, url: canonical }]),
     { "@context": "https://schema.org", "@type": "NewsArticle", headline: u.title, datePublished: u.date,
-      dateModified: u.date, description: u.summary,
+      dateModified: u.enriched && /^\d{4}/.test(u.enriched) ? u.enriched : u.date, description: desc,
       author: { "@type": "Organization", name: SITE.publisher },
       publisher: { "@type": "Organization", name: SITE.brand, logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png" } },
-      mainEntityOfPage: canonical },
+      mainEntityOfPage: canonical, image: SITE.url + "/og.png" },
+    { "@context": "https://schema.org", "@type": "HowTo", name: `How to download the ${u.org_short || u.organization} ${typeLabel}`,
+      step: steps.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) },
   ];
-  return head({ title: `${u.title} | ${SITE.name}`, desc: u.summary.slice(0, 158), canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
+  if (faqs.length) ld.push(faqLd(faqs));
+  return head({ title: `${u.title} | ${SITE.name}`, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
 <main class="wrap article" id="main">
-  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a></p>
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/${esc(u.type)}/">${esc((UPDATE_TYPES[u.type] || {}).plural || typeLabel)}</a></p>
   <article>
-    <p class="eyebrow"><span class="upd-type upd-${u.type}">${UPDATE_TYPES[u.type].label}</span> &middot; ${esc(u.org_short || u.organization)} &middot; ${fmtDate(u.date)}</p>
+    <p class="eyebrow"><span class="upd-type upd-${u.type}">${typeLabel}</span> &middot; ${esc(u.org_short || u.organization)} &middot; ${fmtDate(u.date)}${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</p>
     <h1>${esc(u.title)}</h1>
     <div class="prose">
-      <p>${esc(u.summary)}</p>
+      <p class="lede">${esc(u.summary)}</p>
       ${u.summary_hi ? `<p class="hindi" lang="hi">${esc(u.summary_hi)}</p>` : ""}
-      ${u.event_date ? `<p><strong>Important date:</strong> <b class="mono">${fmtDate(u.event_date)}</b></p>` : ""}
     </div>
-    <p class="cta-row"><a class="btn btn-primary" href="${esc(u.link)}" rel="nofollow noopener" target="_blank">Check on official website &rarr;</a></p>
-    <p class="smallprint">Always verify on the official website — ${esc(SITE.brand)} aggregates publicly announced updates and is not a government body.</p>
+    <div class="spec"><dl>
+      ${row("Organisation", esc(u.organization))}
+      ${row("Exam / post", esc(u.exam_name))}
+      ${row("Type of update", esc(typeLabel))}
+      ${row("Released on", fmtDate(u.event_date || u.date))}
+      ${row("Official website", officialHost ? `<a href="${esc(official)}" rel="nofollow noopener" target="_blank">${esc(officialHost)}</a>` : "")}
+      ${row("Source", !officialHost || AGG.test(u.source || "") ? `<a href="${esc(u.source || u.link)}" rel="nofollow noopener" target="_blank">${esc(hostOf(u.source || u.link))}</a>` : "")}
+    </dl></div>
+    <p class="cta-row"><a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">${officialHost ? `Download / check on ${esc(officialHost)}` : "View the notice"} &rarr;</a>${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
+    ${adSlot("update-mid")}
+    <h2 class="section-h">How to download the ${esc(u.org_short || u.organization)} ${esc(typeLabel.toLowerCase())}</h2>
+    <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
+    ${details.length ? `<div class="prose"><h2 class="section-h">What candidates should know</h2>${details.map((d) => `<p>${esc(d)}</p>`).join("")}</div>` : ""}
+    ${faqSection(faqs)}
+    <p class="smallprint">Always verify on the official website — ${esc(SITE.brand)} summarises publicly announced updates and is not a government body.</p>
     ${relJobs.length ? `<section class="related"><h2 class="section-h">Related jobs</h2><ul class="jobs">${relJobs.map(jobCard).join("")}</ul></section>` : ""}
     ${rel.length ? `<section class="related"><h2 class="section-h">More updates</h2><ul class="updates">${rel.map(updateCard).join("")}</ul></section>` : ""}
   </article>
+</main>` + foot();
+}
+const UPDATE_TYPE_SEO = {
+  "result":     { h1: "Sarkari Result", title: `Sarkari Result ${new Date().getFullYear()} — Latest Government Exam Results, Merit Lists & Cut-offs`,
+    intro: "Every newly declared government exam result in one place — SSC, UPSC, Railway, Banking, state PSCs, police and teaching results — with step-by-step instructions to check your score and a link to the official website." },
+  "admit-card": { h1: "Admit Cards", title: `Admit Card ${new Date().getFullYear()} — Download Latest Sarkari Exam Hall Tickets`,
+    intro: "Newly released admit cards and hall tickets for central and state government exams, with the exact steps and credentials you need to download yours from the official website." },
+  "answer-key": { h1: "Answer Keys", title: `Answer Key ${new Date().getFullYear()} — Latest Government Exam Answer Keys & Objections`,
+    intro: "Official and provisional answer keys for sarkari exams as they are released, with how to download them, calculate your expected score and raise objections before the deadline." },
+  "exam-date":  { h1: "Exam Dates", title: `Exam Dates ${new Date().getFullYear()} — Upcoming Government Exam Schedules`,
+    intro: "Announced exam dates and schedules for upcoming government recruitment exams so you can plan your preparation and travel." },
+};
+function buildUpdateTypeIndex(type, list) {
+  const t = UPDATE_TYPES[type], seo = UPDATE_TYPE_SEO[type];
+  const canonical = `${SITE.url}/updates/${type}/`;
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: SITE.url + "/updates/" }, { name: t.plural, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: seo.title, url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 50).map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/updates/${u.id}/`, name: u.title })) } },
+  ];
+  const others = Object.keys(UPDATE_TYPES).filter((k) => k !== type).map((k) => `<a class="chip" href="/updates/${k}/">${UPDATE_TYPES[k].plural}</a>`).join("");
+  return head({ title: `${seo.title} | ${SITE.name}`, desc: seo.intro.slice(0, 158), canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a></p>
+  <section class="cat-head">
+    <p class="eyebrow">${esc(t.plural)} &middot; ${list.length} recent</p>
+    <h1>${esc(seo.h1)} &mdash; latest ${esc(t.plural.toLowerCase())}</h1>
+    <p class="lede">${esc(seo.intro)}</p>
+    <p class="tagrow">Also see: ${others}</p>
+  </section>
+  ${list.length ? `<ul class="updates">${list.map(updateCard).join("\n")}</ul>` : `<p class="empty">No ${esc(t.plural.toLowerCase())} listed yet — new ones are added automatically several times a day.</p>`}
+  <div class="prose">
+    <h2 class="section-h">How ${esc(t.plural.toLowerCase())} are handled here</h2>
+    <p>Each entry above is written from the official announcement and links straight to the board's own website, so you can download the ${esc(t.label.toLowerCase())} from the source. We never host candidate data, and we never ask for your roll number or password — always enter those only on the official portal.</p>
+    <p>New ${esc(t.plural.toLowerCase())} are added automatically through the day. Bookmark this page, or check the <a href="/updates/">all updates</a> page and the <a href="/">latest government jobs</a>.</p>
+  </div>
+</main>` + foot();
+}
+function buildLatestPage(jobs) {
+  const canonical = `${SITE.url}/latest/`;
+  const week = jobs.filter((j) => j.published && (BUILT - new Date(j.published + "T00:00:00")) / 86400000 <= 7);
+  const list = (week.length >= 10 ? week : jobs.slice(0, 30)).filter((j) => statusOf(j).cls !== "closed");
+  const todayStr = fmtDate(BUILT.toISOString().slice(0, 10));
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Latest jobs", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: `Latest Government Jobs — ${todayStr}`, url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 50).map((j, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+  ];
+  return head({ title: `Sarkari Naukri Today — New Government Jobs This Week (${todayStr}) | ${SITE.name}`,
+    desc: `All new government job notifications released this week, updated ${todayStr}: vacancies, eligibility, last dates and official apply links.`, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Latest jobs</p>
+  <section class="cat-head">
+    <p class="eyebrow">Updated ${todayStr} &middot; ${list.length} new</p>
+    <h1>Latest government jobs &mdash; this week's new notifications</h1>
+    <p class="lede">Every recruitment notification published in the last few days, newest first. Each page has the vacancies, eligibility, important dates and a link to apply on the official website.</p>
+  </section>
+  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">No new notifications this week yet — check the <a href="/">homepage</a> for all open jobs.</p>`}
+  <div class="prose">
+    <h2 class="section-h">How to use this page</h2>
+    <p>Check it daily or subscribe to the <a href="/feed.xml">RSS feed</a> to catch notifications on day one — many recruitments have short application windows, and early applicants avoid last-day server problems. Jobs that are about to close are listed on the <a href="/closing-soon/">closing soon</a> page.</p>
+  </div>
+</main>` + foot();
+}
+function buildClosingSoonPage(jobs) {
+  const canonical = `${SITE.url}/closing-soon/`;
+  const list = jobs.filter((j) => daysLeft(j.application_end) !== null && daysLeft(j.application_end) >= 0 && daysLeft(j.application_end) <= 10)
+    .sort((a, b) => daysLeft(a.application_end) - daysLeft(b.application_end));
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Closing soon", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: "Government jobs closing soon", url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 50).map((j, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } }];
+  return head({ title: `Government Jobs Closing Soon — Last Date This Week | ${SITE.name}`,
+    desc: "Sarkari job notifications whose last date to apply is within the next 10 days, sorted by deadline so you don't miss one.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Closing soon</p>
+  <section class="cat-head">
+    <p class="eyebrow">Deadline within 10 days &middot; ${list.length} jobs</p>
+    <h1>Government jobs closing soon</h1>
+    <p class="lede">Recruitments whose last date is in the next ten days, nearest deadline first. Apply early — official portals slow down on the final day.</p>
+  </section>
+  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">Nothing is closing in the next ten days. See <a href="/latest/">this week's new jobs</a>.</p>`}
 </main>` + foot();
 }
 function buildUpdatesIndex(updates) {
@@ -482,8 +608,8 @@ function buildUpdatesIndex(updates) {
   const groups = Object.keys(UPDATE_TYPES).map((k) => {
     const list = updates.filter((u) => u.type === k);
     return list.length ? `<section class="upd-group">
-      <h2 class="section-h">${UPDATE_TYPES[k].plural} <span class="grp-count">${list.length}</span></h2>
-      <ul class="updates">${list.map(updateCard).join("\n")}</ul></section>` : "";
+      <h2 class="section-h"><a href="/updates/${k}/">${UPDATE_TYPES[k].plural}</a> <span class="grp-count">${list.length}</span></h2>
+      <ul class="updates">${list.slice(0, 20).map(updateCard).join("\n")}</ul>${list.length > 20 ? `<p class="backlink"><a href="/updates/${k}/">All ${list.length} ${UPDATE_TYPES[k].plural.toLowerCase()} &rarr;</a></p>` : ""}</section>` : "";
   }).join("\n");
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: canonical }]),
@@ -823,7 +949,7 @@ function jobLd(job) {
     employmentType: "FULL_TIME",
     directApply: false,
     identifier: { "@type": "PropertyValue", name: job.organization, value: job.id },
-    hiringOrganization: { "@type": "Organization", name: job.organization, sameAs: job.apply_link },
+    hiringOrganization: { "@type": "Organization", name: job.organization, ...(job.official_website || job.apply_link ? { sameAs: job.official_website || job.apply_link } : {}) },
     jobLocation: { "@type": "Place",
       address: { "@type": "PostalAddress", addressLocality: job.location || "India", addressCountry: "IN" } },
     applicantLocationRequirements: { "@type": "Country", name: "India" },
@@ -977,8 +1103,12 @@ function buildJob(job, all) {
   ${steps ? `<h2 class="section-h">How to apply</h2><ol class="steps">${steps}</ol>` : ""}
 
   <div class="apply-bar">
-    ${job.apply_link ? `<a class="btn btn-primary" href="${esc(job.apply_link)}" target="_blank" rel="noopener nofollow">Apply on official site &uarr;</a>` : ""}
+    ${job.apply_link ? `<a class="btn btn-primary" href="${esc(job.apply_link)}" target="_blank" rel="noopener nofollow">Apply on official site &uarr;</a>`
+      : (job.official_website || LIB.hostFromTitle(job.title)) ? `<a class="btn btn-primary" href="${esc(job.official_website || "https://" + LIB.hostFromTitle(job.title) + "/")}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
+      : job.official_website ? `<a class="btn btn-primary" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
+      : job.source ? `<a class="btn btn-primary" href="${esc(job.source)}" target="_blank" rel="noopener nofollow">View the notification &uarr;</a>` : ""}
     ${job.official_notification ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Read official notification</a>` : ""}
+    ${job.official_website && job.apply_link && hostOf(job.official_website) !== hostOf(job.apply_link) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Official website</a>` : ""}
   </div>
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
 
@@ -1484,6 +1614,9 @@ function main() {
 
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
+  for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
+  write("latest/index.html", buildLatestPage(activeJobs));
+  write("closing-soon/index.html", buildClosingSoonPage(activeJobs));
 
   const cats = [];
   cats.push({ kind: "news", slug: "" });
@@ -1540,6 +1673,9 @@ function main() {
   const extra = [
     "guides/",
     "updates/",
+    "latest/",
+    "closing-soon/",
+    ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
     ...updates.map((u) => `updates/${u.id}/`),
     ...guides.map((g) => `guides/${g.slug}/`),
     ...Object.keys(pages).map((s) => `${s}/`),
@@ -1554,6 +1690,8 @@ function main() {
     ...cats.map((c) => `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`),
     ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
     SITE.url + "/updates/",
+    ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
+    SITE.url + "/latest/", SITE.url + "/closing-soon/",
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
     SITE.url + "/gulf/",
