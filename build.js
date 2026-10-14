@@ -300,6 +300,7 @@ function foot() {
     <a href="/privacy-policy/">Privacy</a>
     <a href="/disclaimer/">Disclaimer</a>
     <a href="/terms/">Terms</a>
+    <a href="/jobs/">All jobs</a>
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
     <a href="/updates/">Updates</a>
@@ -582,6 +583,25 @@ function buildLatestPage(jobs) {
     <h2 class="section-h">How to use this page</h2>
     <p>Check it daily or subscribe to the <a href="/feed.xml">RSS feed</a> to catch notifications on day one — many recruitments have short application windows, and early applicants avoid last-day server problems. Jobs that are about to close are listed on the <a href="/closing-soon/">closing soon</a> page.</p>
   </div>
+</main>` + foot();
+}
+function buildAllJobsPage(jobs) {
+  const canonical = `${SITE.url}/jobs/`;
+  const list = jobs.filter((j) => statusOf(j).cls !== "closed");
+  const vac = list.reduce((n, j) => n + (Number(j.total_vacancies) || 0), 0);
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "All jobs", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: "All open government jobs", url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 100).map((j, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } }];
+  return head({ title: `All Government Jobs ${BUILT.getFullYear()} — ${list.length} Open Sarkari Naukri Notifications | ${SITE.name}`,
+    desc: `Every currently open government job notification in India — ${inr(vac)} vacancies across ${list.length} recruitments, with eligibility, last dates and official apply links.`, canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; All jobs</p>
+  <section class="cat-head">
+    <p class="eyebrow">${list.length} open recruitments &middot; ${inr(vac)} vacancies</p>
+    <h1>All open government jobs</h1>
+    <p class="lede">Every recruitment that is still accepting applications, newest first. Narrow it down by <a href="/qualification/graduate/">qualification</a>, <a href="/state/">state</a> or department, or see only <a href="/latest/">this week's new jobs</a> and the ones <a href="/closing-soon/">closing soon</a>.</p>
+  </section>
+  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
 </main>` + foot();
 }
 function buildClosingSoonPage(jobs) {
@@ -1616,6 +1636,7 @@ function main() {
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
   write("latest/index.html", buildLatestPage(activeJobs));
+  write("jobs/index.html", buildAllJobsPage(activeJobs));
   write("closing-soon/index.html", buildClosingSoonPage(activeJobs));
 
   const cats = [];
@@ -1674,6 +1695,7 @@ function main() {
     "guides/",
     "updates/",
     "latest/",
+    "jobs/",
     "closing-soon/",
     ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
     ...updates.map((u) => `updates/${u.id}/`),
@@ -1691,7 +1713,7 @@ function main() {
     ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
     SITE.url + "/updates/",
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
-    SITE.url + "/latest/", SITE.url + "/closing-soon/",
+    SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/",
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
     SITE.url + "/gulf/",

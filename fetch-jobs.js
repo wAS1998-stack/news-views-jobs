@@ -143,7 +143,7 @@ async function aiExtract(item, src) {
     `eligibility_notes (2-3 sentences explaining the eligibility in plain language, including any relaxations or conditions worth flagging), ` +
     `preparation_tips (array of 3-4 specific, practical preparation pointers tailored to THIS exam and post — mention the actual subjects or test stages where known), ` +
     `faq (array of 4-5 objects with keys q and a, answering the questions a real candidate would ask about this specific recruitment; each answer 1-3 sentences). ` +
-    `LINK RULES: choose apply_link (the official online application / registration page), official_notification (the official notification PDF or notice page) and official_website (the recruiting body's own site homepage) ONLY from the CANDIDATE LINKS list below — copy the URL exactly; if no suitable candidate exists use null. Never choose a news/blog/aggregator site. ` +
+    `LINK RULES: choose apply_link (the official online application / registration page), official_notification (the official notification PDF or notice page) and official_website (the recruiting body's own site homepage) ONLY from the CANDIDATE LINKS list below — copy the URL exactly; if no suitable candidate exists use null. The links must belong to the recruiting body in the TITLE (its own domain or its application portal); a link for a different organisation or exam is wrong — prefer null. Never choose a news/blog/aggregator site. ` +
     `Write overview, about_organization, eligibility_notes, preparation_tips and faq as genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate. ` +
     `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\n` +
     `TITLE: ${item.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nTEXT:\n${pageText}`;
@@ -165,7 +165,7 @@ async function aiUpdate(it, kind, src) {
     `steps (array of 4-6 numbered steps telling the candidate exactly how to download/check it on the official website — mention the real site name and the credentials needed, e.g. registration number and date of birth), ` +
     `details (array of 2-3 paragraphs, 120-180 words total, with the useful context: what happens next, documents to carry, how cut-offs or the next stage work for THIS exam, common problems and fixes), ` +
     `faq (array of 3-4 objects with keys q and a that a candidate would ask about this specific ${label}), ` +
-    `official_link (the single best official URL to check/download this, chosen ONLY from the CANDIDATE LINKS list, copied exactly; null if none), ` +
+    `official_link (the single best official URL to check/download this, chosen ONLY from the CANDIDATE LINKS list, copied exactly; it must belong to the exam body in the title — null if none fits), ` +
     `official_website (the exam body's own homepage, from the candidate list or null).\n` +
     `Never pick a news/blog/aggregator site as official. Write clear, original, neutral English.\n\n` +
     `TITLE: ${it.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nSOURCE TEXT:\n${(src.text || it.summary || "").slice(0, 6000)}`;
@@ -275,7 +275,8 @@ async function main() {
     try {
       const fr = await L.fetchFeed(url);
       const items = fr.items;
-      feedStatus[url] = items.length ? `${items.length} items via ${fr.via}` : "0 items: " + fr.errors.join(" | ");
+      const newest = items.map((i) => i.date && new Date(i.date)).filter((d) => d && !isNaN(d)).sort((a, b) => b - a)[0];
+      feedStatus[url] = items.length ? `${items.length} items via ${fr.via}; newest ${newest ? newest.toISOString().slice(0, 10) : "?"}; ${items.filter((i) => classify(i.title) === "job").filter((i) => ids.has(cleanSlug(i.title)) || fps.has(fingerprint(i.title))).length} already known` : "0 items: " + fr.errors.join(" | ");
       console.log(`  ${items.length} items from ${url}${fr.via ? " (" + fr.via + ")" : ""}${fr.errors.length && !items.length ? " — " + fr.errors.join(" | ") : ""}`);
       for (const it of items) {
         // Stop only when BOTH caps are hit (jobs and updates are independent).

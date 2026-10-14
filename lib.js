@@ -140,11 +140,16 @@ function hostFromTitle(title) {
 const AGGREGATOR_HOSTS = (CONFIG.feeds || []).map((f) => { try { return new URL(f).host.replace(/^www\./, ""); } catch { return ""; } }).filter(Boolean)
   .concat(["sarkariresult.com", "sarkariresult.com.cm", "freejobalert.com", "jagranjosh.com", "adda247.com", "testbook.com",
     "careerpower.in", "sarkariexam.com", "rojgarresult.com", "sarkarinaukri.com", "indgovtjobs.in", "employmentnews.gov.in",
-    "naukri.com", "indeed.com", "linkedin.com", "shine.com", "monsterindia.com", "glassdoor.com"]);
+    "jobsearchindia.org", "naukri.com", "indeed.com", "linkedin.com", "shine.com", "monsterindia.com", "glassdoor.com"]);
 const JUNK_HOST = /(^|\.)(facebook|twitter|x|instagram|youtube|telegram|t|whatsapp|wa|pinterest|linkedin|google|googleapis|gstatic|googletagmanager|doubleclick|blogger|wordpress|wp|gravatar|amazon|flipkart|play|apple|microsoft|bit|tinyurl|cloudflare|jsdelivr|unpkg|cdnjs|feedburner|disqus|sharethis|addthis|reddit|quora|medium)\.(com|net|org|in|me|ly|co|io|app|google)$/i;
+const SHARE_HOST = /(^|\.)(addtoany|sharethis|addthis|shareaholic|api\.whatsapp|web\.whatsapp|telegram|t\.me|bit\.ly|tinyurl|goo\.gl|cutt\.ly|rb\.gy|shorturl|is\.gd|ow\.ly|buff\.ly|dlvr\.it|feedburner|translate\.google|webcache|archive\.org|web\.archive\.org|wa\.me|m\.me|pinterest|reddit|tumblr|flipboard|mix\.com|digg|vk\.com|ok\.ru|line\.me|snapchat|threads\.net|mastodon)(\.[a-z.]+)?$/i;
 const OFFICIAL_TLD = /\.(gov\.in|nic\.in|ac\.in|edu\.in|res\.in|org\.in|co\.in|gov|mil\.in|org|edu|in|com)$/i;
 const STRONG_OFFICIAL = /\.(gov\.in|nic\.in|ac\.in|edu\.in|res\.in|mil\.in|gov)$/i;
 
+function isBadOfficial(u) {
+  const h = hostOf(u);
+  return !h || isAggregator(h) || JUNK_HOST.test(h) || SHARE_HOST.test(h) || /[?&](url|u|linkurl|link|redirect|redir|target|dest|q)=https?/i.test(u);
+}
 function isAggregator(host) {
   const h = String(host || "").toLowerCase().replace(/^www\./, "");
   return AGGREGATOR_HOSTS.some((a) => h === a || h.endsWith("." + a));
@@ -156,8 +161,19 @@ function hostOf(u) { try { return new URL(u).host.toLowerCase().replace(/^www\./
  * ones: not the source site itself, not social/ads/CDN, not another aggregator.
  * Returns [{url, text, host, pdf, score}] sorted best-first (max 25).
  */
+function articleRegion(html) {
+  // Keep only the article body: drop header/nav before the headline and sidebar/footer/related after it.
+  let h = String(html || "");
+  const start = Math.max(h.search(/<article\b/i), h.search(/<h1\b/i), h.search(/class="[^"]*entry-content[^"]*"/i));
+  if (start > 0) h = h.slice(start);
+  const endMarks = [/<\/article>/i, /<aside\b/i, /class="[^"]*(sidebar|widget-area|related-posts|post-navigation|comments-area|site-footer)[^"]*"/i, /<footer\b/i, /id="(comments|sidebar|secondary|footer)"/i];
+  let end = h.length;
+  for (const re of endMarks) { const i = h.search(re); if (i > 2000 && i < end) end = i; }
+  return h.slice(0, end);
+}
 function extractOfficialLinks(html, pageUrl) {
   const self = hostOf(pageUrl);
+  html = articleRegion(html);
   const seen = new Map();
   const re = /<a\b[^>]*href\s*=\s*["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
@@ -166,7 +182,8 @@ function extractOfficialLinks(html, pageUrl) {
     if (!/^https?:\/\//i.test(href)) { try { href = new URL(href, pageUrl).href; } catch { continue; } }
     const host = hostOf(href);
     if (!host || host === self || host.endsWith("." + self) || self.endsWith("." + host)) continue;
-    if (JUNK_HOST.test(host) || isAggregator(host)) continue;
+    if (JUNK_HOST.test(host) || isAggregator(host) || SHARE_HOST.test(host)) continue;
+    if (/[?&](url|u|linkurl|link|redirect|redir|target|dest|q)=https?/i.test(href) || /https?:\/\/[^/]+\/.*https?(%3A|:)/i.test(href)) continue;
     if (!OFFICIAL_TLD.test(host)) continue;
     const text = stripTags(m[2]).slice(0, 80);
     const pdf = /\.pdf(\?|$)/i.test(href);
@@ -181,6 +198,18 @@ function extractOfficialLinks(html, pageUrl) {
     if (!seen.has(key) || seen.get(key).score < score) seen.set(key, { url: href, text, host, pdf, score });
   }
   return [...seen.values()].sort((a, b) => b.score - a.score).slice(0, 25);
+}
+
+/** Does the host plausibly belong to the body named in the title/org? (soft check) */
+function hostMatches(host, ...names) {
+  const h = String(host || "").toLowerCase();
+  const toks = new Set();
+  for (const n of names) for (const w of String(n || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/)) if (w.length >= 3 && !/^(the|and|for|of|recruitment|notification|apply|online|posts?|jobs?|vacanc|govt|government|india|indian|limited|ltd|corporation|board|commission|department|university|institute|national|state|central|bank|public|service|services)$/.test(w)) toks.add(w);
+  for (const t of toks) if (h.includes(t)) return true;
+  // common abbreviation: initials of the organisation name
+  const initials = String(names[0] || "").toLowerCase().replace(/[^a-z ]/g, " ").split(/\s+/).filter((w) => w.length > 2 && !/^(and|of|the|for)$/.test(w)).map((w) => w[0]).join("");
+  if (initials.length >= 3 && h.includes(initials)) return true;
+  return false;
 }
 
 /** Pick apply / notification / website links by heuristic (no AI). */
@@ -258,13 +287,19 @@ function validateLinks(picked, cands) {
   return out;
 }
 
+/* ---- capture console output so the run log can include the tail of it ---- */
+const LOG_LINES = [];
+{ const orig = console.log.bind(console); console.log = (...a) => { const line = a.map((x) => (typeof x === "string" ? x : JSON.stringify(x))).join(" "); LOG_LINES.push(line.slice(0, 300)); if (LOG_LINES.length > 400) LOG_LINES.shift(); orig(...a); }; }
+function logTail(n = 25) { return LOG_LINES.slice(-n); }
+
 /* ---- run summary (so a human — or a future bot run — can see what happened) */
 const RUNLOG = path.join(ROOT, "data", "last-run.json");
 function logRun(section, info) {
   let cur = {};
   try { cur = JSON.parse(fs.readFileSync(RUNLOG, "utf8")); } catch {}
   if (!cur.runs || cur.date !== new Date().toISOString().slice(0, 10)) cur = { date: new Date().toISOString().slice(0, 10), runs: {} };
-  cur[section] = { at: new Date().toISOString(), ...info };
+  cur[section] = { at: new Date().toISOString(), ...info, log: logTail(info && info.logLines || 25) };
+  delete cur[section].logLines;
   cur.note = "Written by the automation after each step so run health can be checked without opening Actions logs.";
   fs.writeFileSync(RUNLOG, JSON.stringify(cur, null, 2) + "\n");
 }
@@ -273,4 +308,4 @@ function logRun(section, info) {
 const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf/i;
 
 module.exports = { CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, JUNK_TITLE, STRONG_OFFICIAL };
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, JUNK_TITLE, STRONG_OFFICIAL };

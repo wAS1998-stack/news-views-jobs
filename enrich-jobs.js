@@ -28,7 +28,7 @@ const MAX_LINKS = Number(process.env.ENRICH_LINKS || C.maxLinkFixPerRun || 25);
 const MAX_UPD = Number(process.env.ENRICH_UPDATES || C.maxUpdateEnrichPerRun || 15);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const badLink = (u) => !u || L.isAggregator(L.hostOf(u));
+const badLink = (u) => !u || L.isBadOfficial(u);
 function needsLinks(j) { return badLink(j.apply_link) && badLink(j.official_notification) && !j.links_checked; }
 function needsContent(j) {
   return !(Array.isArray(j.overview) && j.overview.length >= 2) || !(Array.isArray(j.faq) && j.faq.length >= 3);
@@ -46,6 +46,7 @@ async function fixLinks(job) {
     const prompt = `From the candidate links below (all found on a page about "${job.title}"), choose: ` +
       `apply_link = the official online application / registration page; official_notification = the official notification PDF or notice page; ` +
       `official_website = the recruiting body's own homepage. Copy URLs exactly from the list; use null when no candidate fits. ` +
+      `The links MUST belong to the recruiting body named in the title (its own domain or its application portal) — if a candidate is for a different organisation or an unrelated exam, do not pick it; prefer null over a wrong link. ` +
       `Never pick a news/blog/aggregator site. Return ONLY a JSON object with those three keys.\n\nCANDIDATES:\n` +
       src.cands.map((c, i) => `${i + 1}. ${c.url}${c.text ? "  (link text: " + c.text + ")" : ""}${c.pdf ? "  [PDF]" : ""}`).join("\n");
     picked = L.validateLinks(L.parseJson(await L.askAI(prompt, { maxTokens: 400 })) || {}, src.cands);
@@ -104,6 +105,10 @@ async function main() {
   const stats = { ai: L.AI_LABEL, linksFixed: 0, linksPending: 0, updatesEnriched: 0, updatesPending: 0, contentWritten: 0, contentPending: 0 };
 
   // Pass 1 — official links (works even without an AI key: heuristic pick)
+  for (const j of jobs) {   // purge any share/aggregator URLs that slipped in earlier
+    for (const k of ["apply_link", "official_notification", "official_website"]) if (j[k] && L.isBadOfficial(j[k])) { delete j[k]; delete j.links_checked; }
+  }
+  for (const u of updates) for (const k of ["official_link", "official_website"]) if (u[k] && L.isBadOfficial(u[k])) { delete u[k]; if (u.link && L.isBadOfficial(u.link)) u.link = u.source || u.link; }
   const linkJobs = jobs.filter((j) => j && j.id && needsLinks(j));
   stats.linksPending = linkJobs.length;
   console.log(`Enrich/links: ${linkJobs.length} job(s) still link to the source blog | doing up to ${MAX_LINKS}`);

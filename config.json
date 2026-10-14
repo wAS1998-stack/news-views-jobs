@@ -13,7 +13,13 @@
     "https://rajsarkariresult.com/feed",
     "https://gulfwalkin.com/feed",
     "https://www.gccwalkins.com/feed",
-    "https://gulfjobvacancy.in/feed"
+    "https://gulfjobvacancy.in/feed",
+    "https://www.freejobalert.com/feed/",
+    "https://www.sarkariexam.com/feed/",
+    "https://www.adda247.com/jobs/feed/",
+    "https://www.careerpower.in/feed/",
+    "https://sarkarinaukriblog.com/feed/",
+    "https://www.indgovtjobs.in/feeds/posts/default?alt=rss"
   ],
   "maxNewPerRun": 20,
   "maxUpdatesPerRun": 20,
