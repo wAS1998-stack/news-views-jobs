@@ -4,34 +4,27 @@
   "email": "contact@news-views.in",
   "adsenseId": "",
   "feeds": [
-    "https://www.govtjobsblog.in/feed",
-    "https://www.govtjobsdiary.com/feed",
-    "https://sarkarifeed.com/feed",
-    "https://sarkarifeed.com/category/sarkari-result/feed",
-    "https://sarkarifeed.com/category/admit-card/feed",
-    "https://sarkarifeed.com/category/answer-key/feed",
-    "https://rajsarkariresult.com/feed",
-    "https://gulfwalkin.com/feed",
-    "https://www.gccwalkins.com/feed",
-    "https://gulfjobvacancy.in/feed",
     "https://www.freejobalert.com/feed/",
+    "https://rajsarkariresult.com/feed",
+    "https://gulfjobvacancy.in/feed",
     "https://www.sarkariexam.com/feed/",
     "https://www.adda247.com/jobs/feed/",
     "https://www.careerpower.in/feed/",
     "https://sarkarinaukriblog.com/feed/",
     "https://www.indgovtjobs.in/feeds/posts/default?alt=rss"
   ],
-  "maxNewPerRun": 20,
-  "maxUpdatesPerRun": 20,
+  "maxNewPerRun": 30,
+  "maxUpdatesPerRun": 30,
   "staleDays": 45,
   "newsFeeds": [
     "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3"
   ],
-  "maxAnalysisPerRun": 1,
+  "maxAnalysisPerRun": 2,
   "aiModel": "gpt-4o-mini",
   "newsModel": "gpt-4o-mini",
-  "minArticleWords": 350,
+  "minArticleWords": 300,
   "maxEnrichPerRun": 5,
   "maxLinkFixPerRun": 25,
-  "maxUpdateEnrichPerRun": 15
+  "maxUpdateEnrichPerRun": 15,
+  "_feedsNote": "Dead feeds removed 2026-10-15 (govtjobsblog, govtjobsdiary, sarkarifeed, gulfwalkin, gccwalkins). data/last-run.json shows per-feed health each run."
 }

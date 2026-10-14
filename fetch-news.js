@@ -109,9 +109,10 @@ async function currentAffairs(existing) {
     `summary (2 sentences describing what today's digest covers), ` +
     `body (array of 5-8 blocks; each block is an object with "h" = a short heading naming the topic, and "p" = an array of 1-2 paragraphs explaining that item in plain English and noting why it matters for SSC, UPSC, Banking, Railway or State PSC exams), ` +
     `exam_pointers (array of 3-4 one-line takeaways an aspirant should remember for the exam).\n\n` +
-    `Write clearly and factually for a candidate preparing for competitive exams. Total length 500-700 words.\n\nTODAY'S HEADLINES:\n${src}`;
+    `Write clearly and factually for a candidate preparing for competitive exams. Total length 600-800 words — this length is required.\n\nTODAY'S HEADLINES:\n${src}`;
 
-  const obj = parseJson(await askAI(prompt, 3500));
+  let obj = parseJson(await askAI(prompt, 4000));
+  if (obj && words({ body: cleanBody(obj.body) }) < MIN_WORDS) obj = parseJson(await askAI(prompt + "\n\nIMPORTANT: your previous draft was too short. Write at least 650 words in the body paragraphs.", 4000)) || obj;
   if (!obj || !obj.title) { console.log("  current affairs generation failed."); return null; }
   const body = cleanBody(obj.body);
   const draft = { body };
@@ -154,9 +155,10 @@ async function analysis(existing, jobs) {
       `summary (2 sentences), ` +
       `body (array of 4-6 blocks; each block has "h" = section heading and "p" = array of 1-2 paragraphs). Cover: what has been announced, who is eligible and who it suits, how selection works or what candidates should expect, what this means in context for aspirants, and what to do next), ` +
       `exam_pointers (array of 3-4 practical one-line takeaways).\n\n` +
-      `Write 450-650 words of useful original analysis in a neutral, informative tone.\n\nVERIFIED FACTS:\n${facts}`;
+      `Write 500-700 words of useful original analysis in a neutral, informative tone — this length is required.\n\nVERIFIED FACTS:\n${facts}`;
 
-    const obj = parseJson(await askAI(prompt, 3000));
+    let obj = parseJson(await askAI(prompt, 3500));
+    if (obj && words({ body: cleanBody(obj.body) }) < MIN_WORDS) obj = parseJson(await askAI(prompt + "\n\nIMPORTANT: your previous draft was too short. Write at least 550 words across the body paragraphs.", 3500)) || obj;
     if (!obj || !obj.title) { console.log(`  analysis failed for ${job.id}`); continue; }
     const body = cleanBody(obj.body);
     if (body.length < 3 || words({ body }) < MIN_WORDS) {

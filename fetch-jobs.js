@@ -271,6 +271,9 @@ async function main() {
   let updatesAdded = 0;
   const newUpdateIds = [];
   const feedStatus = {};
+  // 1) Read every feed first (so health is recorded for all of them), then
+  // 2) process items newest-first across feeds — big, fresh notifications win.
+  const pool = [];
   for (const url of feeds) {
     try {
       const fr = await L.fetchFeed(url);
@@ -278,40 +281,51 @@ async function main() {
       const newest = items.map((i) => i.date && new Date(i.date)).filter((d) => d && !isNaN(d)).sort((a, b) => b - a)[0];
       feedStatus[url] = items.length ? `${items.length} items via ${fr.via}; newest ${newest ? newest.toISOString().slice(0, 10) : "?"}; ${items.filter((i) => classify(i.title) === "job").filter((i) => ids.has(cleanSlug(i.title)) || fps.has(fingerprint(i.title))).length} already known` : "0 items: " + fr.errors.join(" | ");
       console.log(`  ${items.length} items from ${url}${fr.via ? " (" + fr.via + ")" : ""}${fr.errors.length && !items.length ? " — " + fr.errors.join(" | ") : ""}`);
-      for (const it of items) {
-        // Stop only when BOTH caps are hit (jobs and updates are independent).
-        if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
-        if (L.JUNK_TITLE.test(it.title)) continue;   // newspaper PDF dumps, roundups — not a recruitment
-        const kind = classify(it.title);
-        if (kind !== "job") {
-          if (updatesAdded >= MAX_UPDATES) continue;
-          const uid = slug(it.title).slice(0, 80);
-          if (uid && !updates.some((u) => u.id === uid)) {
-            const base = { id: uid, type: kind, title: String(it.title).trim(),
-              organization: L.orgFromTitle(it.title) || "Recruitment Board",
-              org_short: String(it.title).split(/\s+/).slice(0, 2).join(" "),
-              date: new Date().toISOString().slice(0, 10), link: it.link,
-              summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
-                " Check the official website for the direct link and full details." };
-            const src = await readSource(it.link);
-            const ai = await aiUpdate(it, kind, src);
-            updates.unshift(finishUpdate(base, ai, src));
-            newUpdateIds.push(uid);
-            updatesAdded++;
-            console.log(`   * update: ${it.title}`);
-          }
-          continue;
-        }
-        if (fresh.length >= MAX_NEW) continue;
-        const job = await toJob(it, ids, fps);
-        if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
-      }
+      for (const it of items) pool.push({ ...it, feed: url, ts: it.date && !isNaN(new Date(it.date)) ? new Date(it.date).getTime() : 0 });
     } catch (e) { console.log(`  feed error (${url}): ${e.message}`); feedStatus[url] = "error: " + e.message; }
-    if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
+  }
+  // Drop items older than staleDays (a dead feed re-serving 2025 posts must not fill the site).
+  const cutoff = Date.now() - Number(CONFIG.staleDays || 45) * 86400000;
+  const seenLinks = new Set();
+  const queue = pool
+    .filter((it) => !(it.ts && it.ts < cutoff))
+    .filter((it) => { const k = it.link.replace(/[?#].*$/, ""); if (seenLinks.has(k)) return false; seenLinks.add(k); return true; })
+    .sort((a, b) => b.ts - a.ts);
+  console.log(`  ${queue.length} candidate item(s) across feeds (newest first)`);
+
+  for (const it of queue) {
+    try {
+      // Stop only when BOTH caps are hit (jobs and updates are independent).
+      if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
+      if (L.JUNK_TITLE.test(it.title)) continue;   // newspaper PDF dumps, roundups — not a recruitment
+      const kind = classify(it.title);
+      if (kind !== "job") {
+        if (updatesAdded >= MAX_UPDATES) continue;
+        const uid = slug(it.title).slice(0, 80);
+        if (uid && !updates.some((u) => u.id === uid)) {
+          const base = { id: uid, type: kind, title: String(it.title).trim(),
+            organization: L.orgFromTitle(it.title) || "Recruitment Board",
+            org_short: String(it.title).split(/\s+/).slice(0, 2).join(" "),
+            date: new Date().toISOString().slice(0, 10), link: it.link,
+            summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
+              " Check the official website for the direct link and full details." };
+          const src = await readSource(it.link);
+          const ai = await aiUpdate(it, kind, src);
+          updates.unshift(finishUpdate(base, ai, src));
+          newUpdateIds.push(uid);
+          updatesAdded++;
+          console.log(`   * update: ${it.title}`);
+        }
+        continue;
+      }
+      if (fresh.length >= MAX_NEW) continue;
+      const job = await toJob(it, ids, fps);
+      if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
+    } catch (e) { console.log(`  item error (${it.title}): ${e.message}`); }
   }
 
   if (updatesAdded) {
-    updates = updates.slice(0, 120);
+    updates = updates.slice(0, 600);
     fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }
