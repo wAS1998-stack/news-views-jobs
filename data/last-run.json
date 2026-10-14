@@ -1,4 +1,43 @@
 {
   "date": "2026-10-14",
-  "note": "Daily freshness marker — triggers a rebuild so the site's updated date stays current."
+  "runs": {},
+  "fetch": {
+    "at": "2026-10-14T21:08:27.527Z",
+    "feeds": 10,
+    "ai": "OpenAI (gpt-4o-mini)",
+    "newJobs": 0,
+    "newUpdates": 1,
+    "feedStatus": {
+      "https://www.govtjobsblog.in/feed": "50 items via direct",
+      "https://www.govtjobsdiary.com/feed": "10 items via direct",
+      "https://sarkarifeed.com/feed": "0 items: direct: fetch failed | alt-ua: fetch failed | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 | rss2json: HTTP 500",
+      "https://sarkarifeed.com/category/sarkari-result/feed": "0 items: direct: fetch failed | alt-ua: fetch failed | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 | rss2json: HTTP 500",
+      "https://sarkarifeed.com/category/admit-card/feed": "0 items: direct: fetch failed | alt-ua: fetch failed | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 | rss2json: HTTP 500",
+      "https://sarkarifeed.com/category/answer-key/feed": "0 items: direct: fetch failed | alt-ua: fetch failed | api.allorigins.win: HTTP 400 | api.codetabs.com: HTTP 522 | rss2json: HTTP 500",
+      "https://rajsarkariresult.com/feed": "10 items via direct",
+      "https://gulfwalkin.com/feed": "0 items: direct: HTTP 403 | alt-ua: HTTP 403 | api.allorigins.win: bot challenge | api.codetabs.com: HTTP 522 | rss2json: HTTP 500",
+      "https://www.gccwalkins.com/feed": "0 items: rss2json: HTTP 500",
+      "https://gulfjobvacancy.in/feed": "10 items via direct"
+    }
+  },
+  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
+  "enrich": {
+    "at": "2026-10-14T21:25:34.690Z",
+    "ai": "OpenAI (gpt-4o-mini)",
+    "linksFixed": 122,
+    "linksPending": 0,
+    "updatesEnriched": 44,
+    "updatesPending": 0,
+    "contentWritten": 0,
+    "contentPending": 0
+  },
+  "news": {
+    "at": "2026-10-14T21:25:48.642Z",
+    "ai": "OpenAI",
+    "published": 0,
+    "existing": 0,
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    }
+  }
 }
