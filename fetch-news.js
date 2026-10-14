@@ -120,8 +120,12 @@ async function currentAffairs(existing) {
     console.log(`  current affairs below quality bar (${body.length} sections, ${words(draft)} words, need ${MIN_WORDS}) — not published.`);
     return null;
   }
+  // The model sometimes writes the wrong year into the headline — pin the real date.
+  const niceDate = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
+  let caTitle = String(obj.title).trim().replace(/\b\d{4}-\d{2}-\d{2}\b/g, niceDate).replace(/\b(20\d{2})\b/g, (y) => (y === String(new Date().getFullYear()) ? y : String(new Date().getFullYear())));
+  if (!/current affairs/i.test(caTitle)) caTitle = `Current Affairs ${niceDate}: ${caTitle}`;
   return {
-    id, type: "current-affairs", title: String(obj.title).trim(), date: today(),
+    id, type: "current-affairs", title: caTitle, date: today(),
     summary: String(obj.summary || "").trim(),
     body,
     pointers: (Array.isArray(obj.exam_pointers) ? obj.exam_pointers : []).map((x) => String(x || "").trim()).filter(Boolean).slice(0, 5),

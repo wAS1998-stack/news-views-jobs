@@ -1,0 +1,19 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: public, max-age=0, must-revalidate
+
+/styles.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/site.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/sw.js
+  Cache-Control: no-cache
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+/favicon.svg
+  Cache-Control: public, max-age=2592000, immutable
+/sitemap.xml
+  Cache-Control: public, max-age=0, must-revalidate
+/feed.xml
+  Cache-Control: public, max-age=600
