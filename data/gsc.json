@@ -1,0 +1,674 @@
+{
+ "date": "2026-10-15",
+ "property": "https://news-views.in/",
+ "range": [
+  "2026-09-16",
+  "2026-10-13"
+ ],
+ "totals": {
+  "clicks": 4,
+  "impressions": 348
+ },
+ "daily": [
+  {
+   "date": "2026-09-16",
+   "clicks": 0,
+   "impressions": 4
+  },
+  {
+   "date": "2026-09-17",
+   "clicks": 0,
+   "impressions": 4
+  },
+  {
+   "date": "2026-09-18",
+   "clicks": 0,
+   "impressions": 8
+  },
+  {
+   "date": "2026-09-19",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-09-20",
+   "clicks": 1,
+   "impressions": 4
+  },
+  {
+   "date": "2026-09-21",
+   "clicks": 0,
+   "impressions": 3
+  },
+  {
+   "date": "2026-09-22",
+   "clicks": 0,
+   "impressions": 0
+  },
+  {
+   "date": "2026-09-23",
+   "clicks": 0,
+   "impressions": 0
+  },
+  {
+   "date": "2026-09-24",
+   "clicks": 0,
+   "impressions": 2
+  },
+  {
+   "date": "2026-09-25",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-09-26",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-09-27",
+   "clicks": 0,
+   "impressions": 3
+  },
+  {
+   "date": "2026-09-28",
+   "clicks": 0,
+   "impressions": 2
+  },
+  {
+   "date": "2026-09-29",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-09-30",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-10-01",
+   "clicks": 0,
+   "impressions": 0
+  },
+  {
+   "date": "2026-10-02",
+   "clicks": 0,
+   "impressions": 2
+  },
+  {
+   "date": "2026-10-03",
+   "clicks": 1,
+   "impressions": 7
+  },
+  {
+   "date": "2026-10-04",
+   "clicks": 0,
+   "impressions": 4
+  },
+  {
+   "date": "2026-10-05",
+   "clicks": 0,
+   "impressions": 2
+  },
+  {
+   "date": "2026-10-06",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-10-07",
+   "clicks": 0,
+   "impressions": 2
+  },
+  {
+   "date": "2026-10-08",
+   "clicks": 0,
+   "impressions": 91
+  },
+  {
+   "date": "2026-10-09",
+   "clicks": 0,
+   "impressions": 6
+  },
+  {
+   "date": "2026-10-10",
+   "clicks": 1,
+   "impressions": 4
+  },
+  {
+   "date": "2026-10-11",
+   "clicks": 0,
+   "impressions": 1
+  },
+  {
+   "date": "2026-10-12",
+   "clicks": 0,
+   "impressions": 3
+  },
+  {
+   "date": "2026-10-13",
+   "clicks": 0,
+   "impressions": 0
+  }
+ ],
+ "topPages": [
+  {
+   "page": "/jobs/bvfcl-apprentice-2026/",
+   "clicks": 3,
+   "impressions": 36,
+   "ctr": 8.33,
+   "position": 5.5
+  },
+  {
+   "page": "/guides/",
+   "clicks": 1,
+   "impressions": 6,
+   "ctr": 16.67,
+   "position": 4.3
+  },
+  {
+   "page": "/",
+   "clicks": 0,
+   "impressions": 7,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "page": "/about/",
+   "clicks": 0,
+   "impressions": 5,
+   "ctr": 0,
+   "position": 4.2
+  },
+  {
+   "page": "/disclaimer/",
+   "clicks": 0,
+   "impressions": 5,
+   "ctr": 0,
+   "position": 4.8
+  },
+  {
+   "page": "/guides/balance-studies-government-exam-preparation/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 4.5
+  },
+  {
+   "page": "/guides/banking-exam-preparation-guide-beginners/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 3.5
+  },
+  {
+   "page": "/guides/common-reasons-candidates-fail-government-exams/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 8
+  },
+  {
+   "page": "/guides/english-preparation-tips-government-exams/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 7
+  },
+  {
+   "page": "/guides/fill-online-government-job-form-without-mistakes/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 6.7
+  },
+  {
+   "page": "/guides/government-exam-preparation-without-coaching/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 6
+  },
+  {
+   "page": "/guides/government-jobs-after-10th/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 1.5
+  },
+  {
+   "page": "/guides/government-jobs-after-graduation/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "page": "/guides/how-to-make-study-timetable-government-exam/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 10
+  },
+  {
+   "page": "/guides/how-to-prepare-current-affairs-government-exams/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 9.5
+  },
+  {
+   "page": "/guides/how-to-prepare-ssc-cgl/",
+   "clicks": 0,
+   "impressions": 5,
+   "ctr": 0,
+   "position": 51
+  },
+  {
+   "page": "/guides/how-to-revise-effectively-government-exam/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 7.5
+  },
+  {
+   "page": "/guides/interview-tips-government-job-selection/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 5.5
+  },
+  {
+   "page": "/guides/prepare-government-exams-while-working/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 6.5
+  },
+  {
+   "page": "/guides/quantitative-aptitude-preparation-tips/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2.5
+  },
+  {
+   "page": "/guides/ssc-vs-banking-vs-railway-jobs/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 27.7
+  },
+  {
+   "page": "/guides/state-psc-vs-upsc-differences/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "page": "/guides/time-management-government-exam-preparation/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "page": "/jobs/andhra-university-assistant-professor-research-investigator/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 25
+  },
+  {
+   "page": "/jobs/apgb-financial-literacy-counsellors-2025/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 21
+  },
+  {
+   "page": "/jobs/apgenco-assistant-executive-engineer-aee-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 26
+  },
+  {
+   "page": "/jobs/bihar-police-si-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 18
+  },
+  {
+   "page": "/jobs/bpsc-72nd-cce-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 20
+  },
+  {
+   "page": "/jobs/gims-clerical-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 15
+  },
+  {
+   "page": "/jobs/gpt-guntakal-2026/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 17.7
+  },
+  {
+   "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
+   "clicks": 0,
+   "impressions": 12,
+   "ctr": 0,
+   "position": 7.2
+  },
+  {
+   "page": "/jobs/hpcl-officers-2026/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 16.7
+  },
+  {
+   "page": "/jobs/icai-branch-incharge-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 14
+  },
+  {
+   "page": "/jobs/icsil-deo-mts-driver-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 20
+  },
+  {
+   "page": "/jobs/ihmcl-systems-engineer-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 19
+  },
+  {
+   "page": "/jobs/iim-visakhapatnam-assistant-manager-associate-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 24
+  },
+  {
+   "page": "/jobs/iit-hyderabad-non-teaching-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 19
+  },
+  {
+   "page": "/jobs/indian-bank-2026/",
+   "clicks": 0,
+   "impressions": 7,
+   "ctr": 0,
+   "position": 8.3
+  },
+  {
+   "page": "/jobs/indian-bank-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "page": "/jobs/ksp-constable-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 16
+  },
+  {
+   "page": "/jobs/mdl-trade-apprentice-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 15
+  },
+  {
+   "page": "/jobs/mpesb-group2-subgroup1-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 17
+  },
+  {
+   "page": "/jobs/nlc-junior-overman-mining-sirdar-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 27
+  },
+  {
+   "page": "/jobs/pnb-2026/",
+   "clicks": 0,
+   "impressions": 4,
+   "ctr": 0,
+   "position": 12.5
+  },
+  {
+   "page": "/jobs/rrb-technician-indian-railways-govt-alert-2025/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 28
+  },
+  {
+   "page": "/jobs/rri-engineer-2026/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 14.7
+  },
+  {
+   "page": "/jobs/saudi-aramco-gulf-2025/",
+   "clicks": 0,
+   "impressions": 12,
+   "ctr": 0,
+   "position": 8.3
+  },
+  {
+   "page": "/jobs/ssb-constable-sports-quota-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 24
+  },
+  {
+   "page": "/jobs/ssc-cgl-staff-selection-commission-govt-2025/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 30
+  },
+  {
+   "page": "/jobs/ssc-chsl-staff-selection-commission-govt-2025/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 29
+  }
+ ],
+ "topQueries": [
+  {
+   "query": "brahmaputra fertilizer recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 6
+  },
+  {
+   "query": "brahmaputra valley fertilizer corporation limited recruitment",
+   "clicks": 0,
+   "impressions": 7,
+   "ctr": 0,
+   "position": 5.6
+  },
+  {
+   "query": "gulf jobs 2025",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 7
+  },
+  {
+   "query": "gulf shutdown jobs",
+   "clicks": 0,
+   "impressions": 4,
+   "ctr": 0,
+   "position": 6
+  },
+  {
+   "query": "gulf shutdown jobs 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 8
+  },
+  {
+   "query": "how to prepare for ssc cgl exam",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 81.7
+  },
+  {
+   "query": "indian bank recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 7
+  },
+  {
+   "query": "iob apprentice recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "railway ssc banking",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 66
+  },
+  {
+   "query": "shutdown jobs in gulf",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "shutdown work in gulf",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "shutdowns jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 19
+  },
+  {
+   "query": "गल्फ जॉब",
+   "clicks": 0,
+   "impressions": 4,
+   "ctr": 0,
+   "position": 5.5
+  }
+ ],
+ "opportunities": [
+  {
+   "page": "/jobs/bvfcl-apprentice-2026/",
+   "clicks": 3,
+   "impressions": 36,
+   "ctr": 8.33,
+   "position": 5.5,
+   "queries": [
+    {
+     "q": "brahmaputra valley fertilizer corporation limited recruitment",
+     "impressions": 7,
+     "position": 5.6
+    },
+    {
+     "q": "brahmaputra fertilizer recruitment",
+     "impressions": 1,
+     "position": 6
+    }
+   ]
+  },
+  {
+   "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
+   "clicks": 0,
+   "impressions": 12,
+   "ctr": 0,
+   "position": 7.2,
+   "queries": [
+    {
+     "q": "gulf shutdown jobs",
+     "impressions": 4,
+     "position": 6
+    },
+    {
+     "q": "shutdown jobs in gulf",
+     "impressions": 3,
+     "position": 2
+    },
+    {
+     "q": "gulf shutdown jobs 2026",
+     "impressions": 1,
+     "position": 8
+    },
+    {
+     "q": "shutdown work in gulf",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "shutdowns jobs",
+     "impressions": 1,
+     "position": 19
+    }
+   ]
+  },
+  {
+   "page": "/jobs/saudi-aramco-gulf-2025/",
+   "clicks": 0,
+   "impressions": 12,
+   "ctr": 0,
+   "position": 8.3,
+   "queries": [
+    {
+     "q": "गल्फ जॉब",
+     "impressions": 4,
+     "position": 5.5
+    },
+    {
+     "q": "gulf jobs 2025",
+     "impressions": 1,
+     "position": 7
+    }
+   ]
+  }
+ ],
+ "lowCtr": []
+}
