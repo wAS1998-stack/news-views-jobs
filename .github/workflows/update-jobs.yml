@@ -19,6 +19,9 @@ on:
       max_new:
         description: "Max new jobs to add this run"
         default: "20"
+      hindi:
+        description: "Max jobs and updates to translate to Hindi this run"
+        default: "25"
 
 permissions:
   contents: write
@@ -53,6 +56,8 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ENRICH_LINKS: ${{ github.event.inputs.enrich_links || '25' }}
           ENRICH_UPDATES: ${{ github.event.inputs.enrich_updates || '15' }}
+          HINDI_JOBS: ${{ github.event.inputs.hindi || '25' }}
+          HINDI_UPDATES: ${{ github.event.inputs.hindi || '25' }}
           ENRICH_MAX: ${{ github.event.inputs.enrich_content || '5' }}
         run: node enrich-jobs.js
 

@@ -97,6 +97,51 @@ async function enrichContent(job) {
   };
 }
 
+
+/* ---- pass 4: Hindi edition (grounded translation, never new facts) ----- */
+const MAX_HI_JOBS = Number(process.env.HINDI_JOBS || C.maxHindiJobsPerRun || 25);
+const MAX_HI_UPD = Number(process.env.HINDI_UPDATES || C.maxHindiUpdatesPerRun || 25);
+const devanagariShare = (s) => { const t = String(s || "").replace(/[\s\d\W_]/g, ""); if (!t) return 0; return (t.match(/[ऀ-ॿ]/g) || []).length / t.length; };
+const HI_RULES = `Translate into natural, simple Hindi (Devanagari) the way leading Indian government-job portals write — clear and conversational, not literary. ` +
+  `Keep exam and organisation abbreviations in Latin letters (SSC, UPSC, RRB, IBPS, CGL, NTPC, PwBD, OBC, PDF, KB). Keep every number, date, rupee amount, website address and age exactly as given. ` +
+  `Do not add, drop or change any fact. If a field is empty, return an empty string or empty array for it.`;
+async function hindiJob(job) {
+  const src = {
+    title: job.title, organization: job.organization, post_name: job.post_name || "", qualification: job.qualification || "",
+    fee: job.fee || "", salary: job.salary || "", location: job.location || "", summary: job.summary || "",
+    overview: job.overview || [], eligibility_notes: job.eligibility_notes || "", about_organization: job.about_organization || "",
+    how_to_apply: job.how_to_apply || [], selection_process: job.selection_process || [], preparation_tips: job.preparation_tips || [],
+    faq: (job.faq || []).slice(0, 5),
+  };
+  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input (faq items keep keys q and a), every value translated to Hindi. ` +
+    `For "title", write a Hindi headline in the usual style, e.g. "SSC CGL भर्ती 2026: 14582 पदों के लिए ऑनलाइन आवेदन".\n\nINPUT:\n${JSON.stringify(src)}`;
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 4000 }));
+  if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
+  const hi = {
+    title: String(o.title).trim(), organization: String(o.organization || "").trim(), post_name: String(o.post_name || "").trim(),
+    qualification: String(o.qualification || "").trim(), fee: String(o.fee || "").trim(), salary: String(o.salary || "").trim(),
+    location: String(o.location || "").trim(), summary: String(o.summary).trim(), overview: L.strArr(o.overview, 5),
+    eligibility_notes: String(o.eligibility_notes || "").trim(), about_organization: String(o.about_organization || "").trim(),
+    how_to_apply: L.strArr(o.how_to_apply, 8), selection_process: L.strArr(o.selection_process, 8),
+    preparation_tips: L.strArr(o.preparation_tips, 6), faq: L.faqArr(o.faq, 6),
+    at: new Date().toISOString().slice(0, 10),
+  };
+  for (const k of Object.keys(hi)) if (hi[k] === "" || (Array.isArray(hi[k]) && !hi[k].length)) delete hi[k];
+  return hi;
+}
+async function hindiUpdate(u) {
+  const src = { title: u.title, organization: u.organization || "", exam_name: u.exam_name || "", summary: u.summary || "",
+    steps: u.steps || [], details: u.details || [], faq: (u.faq || []).slice(0, 5) };
+  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input (faq items keep keys q and a), every value translated to Hindi. ` +
+    `For "title", write a Hindi headline in the usual style, e.g. "SSC GD कांस्टेबल रिजल्ट 2026 जारी – ऐसे करें चेक".\n\nINPUT:\n${JSON.stringify(src)}`;
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 3000 }));
+  if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
+  const hi = { title: String(o.title).trim(), organization: String(o.organization || "").trim(), exam_name: String(o.exam_name || "").trim(),
+    summary: String(o.summary).trim(), steps: L.strArr(o.steps, 8), details: L.strArr(o.details, 5), faq: L.faqArr(o.faq, 6), at: new Date().toISOString().slice(0, 10) };
+  for (const k of Object.keys(hi)) if (hi[k] === "" || (Array.isArray(hi[k]) && !hi[k].length)) delete hi[k];
+  return hi;
+}
+
 async function main() {
   let jobs = [], updates = [];
   try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { console.log("Enrich: cannot read jobs.json"); return; }
@@ -152,6 +197,31 @@ async function main() {
     }
     stats.contentPending = Math.max(0, pending.length - MAX_CONTENT);
   } else console.log("Enrich/content: no AI key — skipped.");
+
+  // Pass 4 — Hindi edition (newest first; open jobs before closed ones)
+  if (L.AI) {
+    const isOpen = (j) => !j.application_end || new Date(j.application_end + "T23:59:59") >= new Date();
+    const hj = jobs.filter((j) => j && j.id && j.title && !j.hi && Array.isArray(j.overview) && j.overview.length)
+      .sort((a, b) => (isOpen(b) - isOpen(a)) || String(b.published || "").localeCompare(String(a.published || "")));
+    stats.hindiJobsPending = hj.length;
+    console.log(`Enrich/hindi: ${hj.length} job(s) without Hindi | doing up to ${MAX_HI_JOBS}`);
+    for (const job of hj.slice(0, MAX_HI_JOBS)) {
+      const hi = await hindiJob(job);
+      if (!hi) { console.log(`  - hindi skipped (quality gate): ${job.title}`); continue; }
+      job.hi = hi; jobsDirty = true; stats.hindiJobs = (stats.hindiJobs || 0) + 1;
+      console.log(`  ✓ hindi: ${hi.title}`);
+      await sleep(500);
+    }
+    const hu = updates.filter((u) => u && u.id && !u.hi && Array.isArray(u.steps) && u.steps.length).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+    stats.hindiUpdatesPending = hu.length;
+    for (const u of hu.slice(0, MAX_HI_UPD)) {
+      const hi = await hindiUpdate(u);
+      if (!hi) { console.log(`  - hindi update skipped: ${u.title}`); continue; }
+      u.hi = hi; updDirty = true; stats.hindiUpdates = (stats.hindiUpdates || 0) + 1;
+      console.log(`  ✓ hindi update: ${hi.title}`);
+      await sleep(400);
+    }
+  }
 
   if (jobsDirty) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
   if (updDirty) fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");

@@ -281,7 +281,7 @@ function head(o) {
     ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsenseId}" crossorigin="anonymous"></script>`
     : "";
   return `<!doctype html>
-<html lang="en">
+<html lang="${o.lang || "en"}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -289,8 +289,9 @@ function head(o) {
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.desc)}">
 <link rel="canonical" href="${esc(o.canonical)}">
+${(o.alternates || []).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}">`).join("\n")}
 <meta name="theme-color" content="#14213D">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="${o.noindex ? "noindex, follow" : "index, follow, max-image-preview:large"}">
 <meta property="og:type" content="${o.ogType || "website"}">
 ${o.published ? `<meta property="article:published_time" content="${o.published}">` : ""}
 ${o.modified || o.published ? `<meta property="article:modified_time" content="${o.modified || o.published}">` : ""}
@@ -313,6 +314,7 @@ ${o.modified || o.published ? `<meta property="article:modified_time" content="$
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
+${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">` : ""}
 <link rel="stylesheet" href="/styles.css">
 ${adsense}
 ${ldBlocks}
@@ -326,14 +328,20 @@ ${ldBlocks}
   </a>
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
-    <a href="/">Jobs</a>
+${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
+    <a href="/hi/updates/result/">रिजल्ट</a>
+    <a href="/hi/updates/admit-card/">एडमिट कार्ड</a>
+    <a href="/hi/updates/answer-key/">आंसर की</a>
+    <a href="/tools/">टूल्स</a>
+    <a href="/quiz/">क्विज़</a>` : `    <a href="/">Jobs</a>
     <a href="/latest/">Latest</a>
     <a href="/updates/result/">Results</a>
     <a href="/updates/admit-card/">Admit Card</a>
     <a href="/tools/">Tools</a>
     <a href="/news/">Current Affairs</a>
     <a href="/state/">States</a>
-    <a href="/guides/">Guides</a>
+    <a href="/guides/">Guides</a>`}
+    <a class="lang-switch" href="${esc(o.langSwitch || (o.lang === "hi" ? "/" : "/hi/"))}" lang="${o.lang === "hi" ? "en" : "hi"}">${o.lang === "hi" ? "English" : "हिंदी"}</a>
   </nav>
 </div></header>`;
 }
@@ -607,7 +615,8 @@ function buildUpdatePage(u, all) {
   if (shortT.length > 60) shortT = shortT.slice(0, 58).replace(/\s+\S*$/, "");
   if (!/download|check|out\b/i.test(shortT) && shortT.length < 44) shortT += u.type === "result" ? " – Check Now" : u.type === "admit-card" ? " – Download Link" : u.type === "answer-key" ? " – Download PDF" : "";
   const pageTitle = (shortT + ` | ${SITE.name}`).length <= 72 ? `${shortT} | ${SITE.name}` : shortT;
-  return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
+  const hiAltU = u.hi && u.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/updates/${u.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/updates/${u.id}/` } : {};
+  return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date, ...hiAltU }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/${esc(u.type)}/">${esc((UPDATE_TYPES[u.type] || {}).plural || typeLabel)}</a></p>
   <article>
@@ -959,7 +968,16 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   const live = sorted.filter((j) => statusOf(j).cls !== "closed");
   const closingSoon = sorted.filter((j) => statusOf(j).cls === "soon");
   const totalPosts = sorted.reduce((s, j) => s + (Number(j.total_vacancies) || 0), 0);
-  return head({ title, desc: SITE.tagline, canonical: SITE.url + "/", ld }) + `
+  const homeDesc = `Sarkari Naukri ${BUILT.getFullYear()}: ${live.length} live government job notifications, ${totalPosts ? inr(totalPosts) + "+ vacancies" : "all vacancies"}, results, admit cards, answer keys, daily current affairs quiz and free exam tools.`;
+  const glanceCol = (t, href, items) => `<section class="glance-col"><h2><a href="${href}">${t}</a></h2><ul>${items.join("")}</ul><a class="glance-more" href="${href}">View all &rarr;</a></section>`;
+  const byType = (t) => (updates || []).filter((u) => u.type === t).slice(0, 10).map((u) => `<li><a href="/updates/${esc(u.id)}/">${esc(u.title)}</a>${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</li>`);
+  const glance = `<div class="glance" aria-label="Latest at a glance">
+    ${glanceCol("Latest Jobs", "/latest/", live.slice(0, 10).map((j) => `<li><a href="/jobs/${esc(j.id)}/">${esc(j.title)}</a>${isNew(j.published) ? ` <span class="new-badge">NEW</span>` : ""}</li>`))}
+    ${glanceCol("Results", "/updates/result/", byType("result"))}
+    ${glanceCol("Admit Cards", "/updates/admit-card/", byType("admit-card"))}
+  </div>`;
+  return head({ title, desc: homeDesc, canonical: SITE.url + "/", ld,
+    alternates: jobs.filter((j) => j.hi && j.hi.title).length < 5 ? [] : [{ hreflang: "en", href: SITE.url + "/" }, { hreflang: "hi", href: SITE.url + "/hi/" }, { hreflang: "x-default", href: SITE.url + "/" }] }) + `
 <main class="wrap" id="main">
   <section class="hero">
     <p class="eyebrow">${esc(SITE.section)} &middot; Updated ${fmtDate(BUILT.toISOString().slice(0,10))}</p>
@@ -981,6 +999,8 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
     <div class="stat-box"><span class="n">${orgs.length}</span><span class="l">Departments</span></div>
     <div class="stat-box"><span class="n">Daily</span><span class="l">Updated &amp; free</span></div>
   </div>
+
+  ${glance}
 
   ${(updates && updates.length) ? `<section class="home-updates">
     <div class="hu-head"><h2 class="section-h">📢 Latest updates</h2><a class="backlink" href="/updates/">All updates &rarr;</a></div>
@@ -1195,8 +1215,10 @@ function buildJob(job, all) {
     ? `<h2 class="section-h">Selection process</h2><ol class="steps">${job.selection_process.map((s)=>`<li>${esc(s)}</li>`).join("")}</ol>`
     : "";
 
-  return head({ title, desc, canonical, ld, ogType: "article" }) + `
+  const hiAlt = job.hi && job.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/jobs/${job.id}/` } : {};
+  return head({ title, desc, canonical, ld, ogType: "article", ...hiAlt }) + `
 <main class="wrap" id="main">
+  ${job.hi && job.hi.title ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
   <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(orgKey(job)))
     ? `<a href="/organization/${slug(orgKey(job))}/">${esc(orgKey(job))}</a>`
     : esc(orgKey(job) || job.organization)}</p>
@@ -1781,6 +1803,9 @@ function main() {
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
+  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates });
+  for (const hp of HINDI.pages) write(hp.path, hp.html);
+  console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
   write("latest/index.html", buildLatestPage(activeJobs));
   write("jobs/index.html", buildAllJobsPage(activeJobs));
   write("closing-soon/index.html", buildClosingSoonPage(activeJobs));
@@ -1843,6 +1868,7 @@ function main() {
     "latest/",
     "jobs/",
     "quiz/",
+    ...HINDI.pages.filter((p) => !p.noindex).map((p) => p.path.replace(/index\.html$/, "")),
     ...ALL_QUIZ.map((z) => `quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.path.replace(/index\.html$/, "")),
     "closing-soon/",
@@ -1863,6 +1889,7 @@ function main() {
     SITE.url + "/updates/",
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
     SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/", SITE.url + "/quiz/",
+    ...HINDI.pages.filter((p) => !p.noindex).map((p) => p.url),
     ...ALL_QUIZ.map((z) => `${SITE.url}/quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.url),
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),

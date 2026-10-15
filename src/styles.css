@@ -774,3 +774,25 @@ html { scroll-behavior: smooth; }
 .quiz .why { margin: 10px 0 0; font-size: .92rem; color: var(--muted); }
 .quiz-score { position: sticky; bottom: 12px; display: inline-block; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 600; }
 @media (max-width: 560px) { .cmp { grid-template-columns: 1fr; } .tool { padding: 16px; } .tool .big { font-size: 1.6rem; } }
+.nav a.lang-switch { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-weight: 600; }
+.nav a.lang-switch:hover { border-color: var(--azure); }
+html[lang="hi"] body { line-height: 1.7; }
+
+/* ===== At-a-glance three columns (Latest Jobs / Results / Admit Cards) ===== */
+.glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 22px 0 30px; }
+.glance-col { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+.glance-col h2 { margin: 0; font-size: 1.02rem; background: var(--ink); color: #fff; padding: 11px 14px; text-align: center; letter-spacing: .01em; }
+.glance-col h2 a { color: #fff; text-decoration: none; }
+.glance-col:nth-child(2) h2 { background: var(--azure-dark); }
+.glance-col:nth-child(3) h2 { background: var(--saffron); }
+.glance-col ul { list-style: none; margin: 0; padding: 4px 0; flex: 1; }
+.glance-col li { padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: .9rem; line-height: 1.4; }
+.glance-col li:last-child { border-bottom: 0; }
+.glance-col li a { color: var(--azure-dark); text-decoration: none; }
+.glance-col li a:hover { text-decoration: underline; }
+.glance-col .new-badge { font-size: .64rem; vertical-align: middle; }
+.glance-more { display: block; text-align: center; padding: 10px; font-weight: 600; font-size: .88rem; border-top: 1px solid var(--line); text-decoration: none; }
+.lang-note { margin: 0 0 6px; font-size: .92rem; }
+@media (max-width: 860px) { .glance { grid-template-columns: 1fr; } .glance-col li:nth-child(n+7) { display: none; } }
+html[lang="hi"] body, html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3 { font-family: "Noto Sans Devanagari", "Public Sans", system-ui, sans-serif; }
+html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
