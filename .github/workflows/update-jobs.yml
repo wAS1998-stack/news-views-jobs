@@ -35,6 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main          # a queued run must start from the LATEST data, not the commit that triggered it
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -80,9 +83,24 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/
           if ! git diff --cached --quiet; then
-            git commit -m "Auto: new jobs, updates & news"
-            git pull --rebase origin main || true
-            git push
+            git commit -q -m "Auto: new jobs, updates & news"
+            git checkout -- . 2>/dev/null || true      # drop any stray non-data changes so rebase can run
+            ok=false
+            for i in 1 2 3 4; do
+              git fetch -q origin main
+              # Our run's data wins on a conflicting hunk (it is the newer work); other files rebase normally.
+              if git rebase -X theirs origin/main; then
+                # Never push data that no longer parses or no longer builds after an automatic merge.
+                if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8"))' || ! node build.js >/dev/null; then
+                  echo "::error::Merged data is invalid — discarding this run's data to protect the site"; git reset -q --hard origin/main; break
+                fi
+                if git push -q origin HEAD:main; then ok=true; break; fi
+              else
+                git rebase --abort || true
+              fi
+              echo "Push attempt $i failed — retrying"; sleep $((i * 7))
+            done
+            if [ "$ok" != true ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; echo "::warning::Data not pushed this run (next run will redo the work)"; exit 0; fi
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             echo "Pushed — Cloudflare will redeploy automatically."
