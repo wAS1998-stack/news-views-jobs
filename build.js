@@ -353,6 +353,7 @@ function foot() {
     <a href="/tools/income-tax-calculator/">Income tax calculator</a>
     <a href="/salary/">7th pay matrix</a>
     <a href="/tools/age-calculator/">Age calculator</a>
+    <a href="/quiz/">Daily quiz</a>
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
     <a href="/updates/">Updates</a>
@@ -459,6 +460,61 @@ function newsBody(a) {
   return (a.body || []).map((b) =>
     `${b.h ? `<h2 class="section-h">${esc(b.h)}</h2>` : ""}${(b.p || []).map((p) => `<p>${esc(p)}</p>`).join("")}`).join("");
 }
+/* ---- Daily current-affairs quiz ---------------------------------- */
+function readQuiz() { try { const q = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "quiz.json"), "utf8")); return Array.isArray(q) ? q : []; } catch { return []; } }
+function buildQuizPage(z, all) {
+  const canonical = `${SITE.url}/quiz/${z.id}/`;
+  const L = "ABCD";
+  const ld = [
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Quiz", url: SITE.url + "/quiz/" }, { name: z.title, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "Quiz", name: z.title, url: canonical, datePublished: z.date, educationalLevel: "Competitive exams",
+      about: { "@type": "Thing", name: "Current affairs" },
+      hasPart: z.questions.map((q) => ({ "@type": "Question", eduQuestionType: "Multiple choice", text: q.q,
+        acceptedAnswer: { "@type": "Answer", text: q.options[q.answer] },
+        suggestedAnswer: q.options.filter((_, i) => i !== q.answer).map((o) => ({ "@type": "Answer", text: o })) })) },
+  ];
+  const more = all.filter((x) => x.id !== z.id).slice(0, 6);
+  return head({ title: `${z.title} – ${z.questions.length} MCQs with Answers | ${SITE.name}`.length <= 72 ? `${z.title} – ${z.questions.length} MCQs with Answers | ${SITE.name}` : `${z.title} – MCQs with Answers`,
+    desc: `Daily current affairs quiz for ${fmtDate(z.date)}: ${z.questions.length} MCQs with answers and explanations for SSC, UPSC, Banking, Railway and State PSC exams.`, canonical, ld, ogType: "article", published: z.date }) + `
+<main class="wrap article" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/quiz/">Quiz</a></p>
+  <article>
+    <p class="eyebrow">Daily quiz &middot; ${fmtDate(z.date)}</p>
+    <h1>${esc(z.title)}</h1>
+    <p class="lede">${z.questions.length} questions from today's news, with answers. Tap an option to check it — then read the <a href="/news/${esc(z.digest_id)}/">full current affairs digest</a>.</p>
+    <ol class="quiz" id="quiz">${z.questions.map((q, i) => `<li data-a="${q.answer}"><p>${esc(q.q)}</p><div class="opts">${q.options.map((o, j) =>
+      `<button class="opt" type="button" data-i="${j}">${L[j]}. ${esc(o)}</button>`).join("")}</div>
+      <details class="why"><summary>Show answer</summary>Answer: <b>${L[q.answer]}. ${esc(q.options[q.answer])}</b>${q.why ? ` — ${esc(q.why)}` : ""}</details></li>`).join("")}</ol>
+    <p><span class="quiz-score" id="qs" hidden></span></p>
+    ${adSlot("quiz-end")}
+    ${more.length ? `<section class="related"><h2 class="section-h">Previous quizzes</h2><ul class="updates">${more.map(quizCard).join("")}</ul></section>` : ""}
+  </article>
+</main>
+<script>
+(function(){var done=0,right=0,n=${z.questions.length},s=document.getElementById("qs");
+document.querySelectorAll("#quiz > li").forEach(function(li){var a=+li.dataset.a;
+  li.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){if(li.dataset.done)return;li.dataset.done=1;done++;
+    var i=+b.dataset.i;if(i===a)right++;else b.classList.add("wrong");li.querySelectorAll(".opt")[a].classList.add("right");
+    li.querySelector("details").open=true;s.hidden=false;s.textContent="Score: "+right+" / "+done+(done===n?" — finished!":"");});});});})();
+</script>` + foot();
+}
+function quizCard(z) {
+  return `<li><a class="update" href="/quiz/${esc(z.id)}/"><span class="upd-type upd-exam-date">Quiz</span><span class="upd-title">${esc(z.title)}${isNew(z.date) ? ` <span class="new-badge">NEW</span>` : ""}</span><span class="upd-meta">${z.questions.length} MCQs &middot; ${fmtDate(z.date)}</span></a></li>`;
+}
+function buildQuizIndex(all) {
+  const canonical = `${SITE.url}/quiz/`;
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Quiz", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: "Daily Current Affairs Quiz", url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: all.slice(0, 60).map((z, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/quiz/${z.id}/`, name: z.title })) } }];
+  return head({ title: `Daily Current Affairs Quiz ${BUILT.getFullYear()} – MCQs with Answers | ${SITE.name}`,
+    desc: "Free daily current affairs quiz with answers and explanations, built from the day's government news — practice for SSC, UPSC, Banking, Railway and State PSC exams.", canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Quiz</p>
+  <section class="cat-head"><p class="eyebrow">New every day</p><h1>Daily current affairs quiz</h1>
+  <p class="lede">Ten questions a day from the day's government news, with answers and short explanations. Pair each quiz with its <a href="/news/">current affairs digest</a>.</p></section>
+  ${all.length ? `<ul class="updates">${all.map(quizCard).join("")}</ul>` : `<p class="empty">The first quiz will appear with the next daily digest.</p>`}
+</main>` + foot();
+}
 function buildNewsPage(a, all) {
   const canonical = `${SITE.url}/news/${a.id}/`;
   const related = all.filter((x) => x.id !== a.id).slice(0, 4);
@@ -478,6 +534,7 @@ function buildNewsPage(a, all) {
     <h1>${esc(a.title)}</h1>
     ${a.summary ? `<p class="lede">${esc(a.summary)}</p>` : ""}
     ${newsBody(a)}
+    ${(ALL_QUIZ.find((z) => z.digest_id === a.id)) ? `<p class="cta-row"><a class="btn btn-primary" href="/quiz/${esc(ALL_QUIZ.find((z) => z.digest_id === a.id).id)}/">Take today's 10-question quiz &rarr;</a></p>` : ""}
     ${(a.pointers || []).length ? `<h2 class="section-h">Key takeaways for aspirants</h2><ul>${a.pointers.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
     ${job ? `<p class="tagrow">Related notification: <a href="/jobs/${esc(job.id)}/">${esc(job.title)}</a></p>` : ""}
     ${(a.sources || []).length ? `<h2 class="section-h">Sources</h2><ul>${a.sources.map((s) =>
@@ -1545,6 +1602,7 @@ function buildGuide(g) {
 }
 let ALL_GUIDES = [];
 let TOOL_DEFS = [];
+let ALL_QUIZ = [];
 let ALL_JOBS = [];
 let ORG_PAGES = new Set();   // org slugs that actually get a page (active jobs only)
 function relatedGuidesHtml(current) {
@@ -1714,6 +1772,9 @@ function main() {
   write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts, news));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
+  ALL_QUIZ = readQuiz();
+  write("quiz/index.html", buildQuizIndex(ALL_QUIZ));
+  for (const z of ALL_QUIZ) write(`quiz/${z.id}/index.html`, buildQuizPage(z, ALL_QUIZ));
   write("news/index.html", buildNewsIndex(news));
   for (const a of news) write(`news/${a.id}/index.html`, buildNewsPage(a, news));
 
@@ -1781,6 +1842,8 @@ function main() {
     "updates/",
     "latest/",
     "jobs/",
+    "quiz/",
+    ...ALL_QUIZ.map((z) => `quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.path.replace(/index\.html$/, "")),
     "closing-soon/",
     ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
@@ -1799,7 +1862,8 @@ function main() {
     ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
     SITE.url + "/updates/",
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
-    SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/",
+    SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/", SITE.url + "/quiz/",
+    ...ALL_QUIZ.map((z) => `${SITE.url}/quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.url),
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",

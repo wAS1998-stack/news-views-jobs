@@ -31,7 +31,7 @@ function collectUrls() {
     } catch { urls = []; }
   }
   // Always include the hub pages so their "referring page" signal refreshes.
-  const hubs = ["/", "/updates/", "/updates/result/", "/updates/admit-card/", "/updates/answer-key/", "/latest/", "/closing-soon/", "/guides/",
+  const hubs = ["/", "/tools/", "/salary/", "/quiz/", "/tools/photo-resizer/", "/tools/income-tax-calculator/", "/tools/age-calculator/", "/tools/7th-pay-commission-salary-calculator/", "/tools/8th-pay-commission-salary-calculator/", "/updates/", "/updates/result/", "/updates/admit-card/", "/updates/answer-key/", "/latest/", "/closing-soon/", "/guides/",
     "/qualification/10th-pass/", "/qualification/12th-pass/", "/qualification/graduate/",
     "/qualification/engineering-diploma/", "/qualification/post-graduate/"].map((p) => SITE + p);
   return [...new Set([...hubs, ...urls])].slice(0, 10000);

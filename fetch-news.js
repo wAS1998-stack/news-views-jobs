@@ -183,6 +183,39 @@ async function analysis(existing, jobs) {
   return out;
 }
 
+
+/* ---- daily quiz: 10 MCQs grounded ONLY in a published digest ------------ */
+const QUIZ = path.join(ROOT, "data", "quiz.json");
+async function makeQuiz(digest) {
+  const text = [digest.title, digest.summary, ...(digest.body || []).map((b) => `${b.h}: ${(b.p || []).join(" ")}`)].join("\n");
+  const prompt = `Write a 10-question multiple-choice current affairs quiz for Indian competitive-exam aspirants, using ONLY facts stated in the article below. ` +
+    `Every question must be answerable from the article; never add outside facts, numbers or names. Each question has exactly 4 options, one correct. ` +
+    `Vary the position of the correct option. Return ONLY a JSON object: {"questions":[{"q":"...","options":["A","B","C","D"],"answer":0,"why":"one-sentence explanation citing the article"}]} where answer is the 0-based index.\n\nARTICLE:\n${text.slice(0, 7000)}`;
+  const obj = parseJson(await askAI(prompt, 3500));
+  const qs = (obj && Array.isArray(obj.questions) ? obj.questions : []).map((x) => ({
+    q: String(x.q || "").trim(), options: (Array.isArray(x.options) ? x.options : []).map((o) => String(o).trim()).filter(Boolean),
+    answer: Number(x.answer), why: String(x.why || "").trim(),
+  })).filter((x) => x.q && x.options.length === 4 && x.answer >= 0 && x.answer < 4 && new Set(x.options).size === 4);
+  if (qs.length < 6) { console.log(`  quiz for ${digest.id}: only ${qs.length} valid questions — not published.`); return null; }
+  return { id: `current-affairs-quiz-${digest.date}`, date: digest.date, digest_id: digest.id,
+    title: `Current Affairs Quiz ${new Date(digest.date + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`,
+    questions: qs.slice(0, 10) };
+}
+async function quizzes(allNews) {
+  let quiz = [];
+  try { quiz = JSON.parse(fs.readFileSync(QUIZ, "utf8")); } catch { quiz = []; }
+  const have = new Set(quiz.map((q) => q.digest_id));
+  const todo = allNews.filter((a) => a.type === "current-affairs" && !have.has(a.id)).slice(0, 3);
+  const made = [];
+  for (const d of todo) { const q = await makeQuiz(d); if (q) { made.push(q); console.log(`  + quiz: ${q.title} (${q.questions.length} Qs)`); } }
+  if (made.length) {
+    quiz = [...made, ...quiz].sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 400);
+    fs.writeFileSync(QUIZ, JSON.stringify(quiz, null, 2) + "\n");
+    try { fs.appendFileSync(NEWURLS, made.map((q) => `${SITE_URL}/quiz/${q.id}/`).join("\n") + "\n"); } catch {}
+  }
+  return made.length;
+}
+
 async function main() {
   if (!AI) { console.log("News: no AI key set — skipping (news is never generated without a source-grounded model call)."); L.logRun("news", { ai: "off" }); return; }
   let existing = [];
@@ -197,10 +230,11 @@ async function main() {
   if (ca) { fresh.push(ca); console.log(`  + digest: ${ca.title} (${words(ca)} words)`); }
   fresh.push(...await analysis(existing, jobs));
 
-  L.logRun("news", { ai: AI, published: fresh.length, existing: existing.length, feeds: NEWS_STATUS });
-  if (!fresh.length) { console.log("News: nothing new to publish."); return; }
   const all = [...fresh, ...existing].slice(0, 400);
-  fs.writeFileSync(NEWS, JSON.stringify(all, null, 2) + "\n");
+  if (fresh.length) fs.writeFileSync(NEWS, JSON.stringify(all, null, 2) + "\n");
+  const quizMade = await quizzes(all);
+  L.logRun("news", { ai: AI, published: fresh.length, quizzes: quizMade, existing: existing.length, feeds: NEWS_STATUS });
+  if (!fresh.length) { console.log("News: nothing new to publish."); return; }
   try {
     const urls = fresh.map((a) => `${SITE_URL}/news/${a.id}/`).join("\n") + "\n";
     fs.appendFileSync(NEWURLS, urls);
