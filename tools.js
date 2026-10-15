@@ -513,7 +513,8 @@ function buildToolPages(ctx) {
         offers: { "@type": "Offer", price: "0", priceCurrency: "INR" }, publisher: { "@type": "Organization", name: SITE.brand } },
       faqLd(d.faq),
     ];
-    pages.push({ path: `tools/${d.slug}/index.html`, url: canonical, html: head({ title: `${d.title} | ${SITE.name}`.length <= 72 ? `${d.title} | ${SITE.name}` : d.title, desc: d.desc, canonical, ld }) + `
+    pages.push({ path: `tools/${d.slug}/index.html`, url: canonical, html: head({ title: `${d.title} | ${SITE.name}`.length <= 72 ? `${d.title} | ${SITE.name}` : d.title, desc: d.desc, canonical, ld,
+      ...(HI_TOOLS[d.slug] ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/tools/${d.slug}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/tools/${d.slug}/` } : {}) }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/tools/">Tools</a> &nbsp;&rsaquo;&nbsp; ${esc(d.cat)}</p>
   <article>
@@ -606,3 +607,114 @@ function buildToolPages(ctx) {
 }
 
 module.exports = { buildToolPages, MATRIX, nvSalary };
+
+/* ==================================================================
+   Hindi versions of the most-searched tools. Same tested widget, Hindi
+   text and labels. Written by hand, not machine-translated.
+   ================================================================== */
+const HI_TOOLS = {
+  "photo-resizer": {
+    h1: "सरकारी फॉर्म के लिए फोटो और सिग्नेचर रिसाइज़र",
+    title: "फोटो साइज कम करें – SSC, IBPS, RRB फॉर्म (20–50 KB)",
+    desc: "SSC, IBPS, RRB, UPSC फॉर्म के लिए फोटो, सिग्नेचर, अंगूठा निशान और डिक्लेरेशन को सही पिक्सल और KB साइज़ में बदलें। मुफ़्त, तुरंत, बिना अपलोड।",
+    intro: "फॉर्म भरते समय फोटो रिजेक्ट होने की परेशानी खत्म करें। प्रीसेट चुनें, अपनी फोटो चुनें और ठीक उसी पिक्सल व KB साइज़ में JPG डाउनलोड करें जो पोर्टल माँगता है।",
+    article: [
+      ["ऑनलाइन फॉर्म फोटो क्यों रिजेक्ट करते हैं", "भर्ती पोर्टल तीन चीज़ें अपने-आप जाँचते हैं: फाइल टाइप (लगभग हमेशा JPG), पिक्सल में साइज़ और KB में फाइल साइज़। मोबाइल की फोटो आमतौर पर 3–5 MB की होती है, इसलिए तीनों में फेल हो जाती है। यह टूल फोटो को सही पिक्सल में क्रॉप करता है और फिर क्वालिटी इतनी एडजस्ट करता है कि फाइल तय KB सीमा में आ जाए — सब कुछ आपके ब्राउज़र में।"],
+      ["फोटो के लिए ज़रूरी बातें", "हाल की रंगीन फोटो लें, पीछे सफ़ेद या हल्का बैकग्राउंड हो, चेहरा बीच में और फ्रेम का लगभग 70% हिस्सा घेरे, आँखें खुली हों, टोपी या काला चश्मा न हो। सिग्नेचर सफ़ेद कागज़ पर काले पेन से करें और पास से क्रॉप करें। SSC और IBPS जैसे नए नोटिफिकेशन में बाएँ अंगूठे का निशान और हाथ से लिखा डिक्लेरेशन भी माँगा जाता है — दोनों के प्रीसेट दिए गए हैं।"],
+      ["आपकी प्राइवेसी", "आपकी फोटो किसी सर्वर पर अपलोड नहीं होती। सारा काम ब्राउज़र के अंदर होता है — पेज खुलने के बाद इंटरनेट बंद करके भी यह टूल चलता है।"],
+    ],
+    faq: [
+      { q: "SSC और IBPS फॉर्म के लिए फोटो का साइज़ क्या होना चाहिए?", a: "ज़्यादातर नोटिफिकेशन में लगभग 200×230 पिक्सल की JPG फोटो 20 से 50 KB के बीच और लगभग 140×60 पिक्सल का सिग्नेचर 10 से 20 KB के बीच माँगा जाता है। सही सीमा हमेशा अपने नोटिफिकेशन में देखें।" },
+      { q: "क्या मेरी फोटो कहीं अपलोड होती है?", a: "नहीं। रिसाइज़ पूरी तरह आपके ब्राउज़र में होता है, फोटो आपके फ़ोन या कंप्यूटर से बाहर नहीं जाती।" },
+      { q: "फाइल न्यूनतम KB से कम आ रही है, क्या करूँ?", a: "ज़्यादा रेज़ोल्यूशन वाली फोटो लें या 'Crop to fit' का निशान हटा दें, ताकि ज़्यादा डिटेल बनी रहे।" },
+    ],
+  },
+  "age-calculator": {
+    h1: "सरकारी परीक्षा के लिए आयु कैलकुलेटर",
+    title: "आयु कैलकुलेटर – कट-ऑफ तिथि पर उम्र और पात्रता जाँचें",
+    desc: "SSC, UPSC, रेलवे, बैंक और राज्य परीक्षाओं के लिए कट-ऑफ तिथि पर अपनी सटीक उम्र निकालें और OBC, SC/ST, दिव्यांग आयु छूट के साथ पात्रता जाँचें।",
+    intro: "हर नोटिफिकेशन में एक कट-ऑफ तिथि (जैसे 1 जनवरी या 1 अगस्त) और न्यूनतम-अधिकतम आयु तय होती है। अपनी जन्मतिथि और नोटिफिकेशन की जानकारी डालें — आपकी सटीक उम्र और छूट के बाद पात्रता तुरंत दिखेगी।",
+    article: [
+      ["कट-ऑफ तिथि कैसे काम करती है", "उम्र आवेदन के दिन नहीं, बल्कि नोटिफिकेशन में लिखी तय तारीख पर गिनी जाती है। अगर परीक्षा में 1 अगस्त को 18–27 वर्ष की सीमा है, तो उस तारीख को 27 वर्ष पूरे कर चुके लेकिन 28 के न हुए उम्मीदवार पात्र हैं। कैलकुलेटर पात्र जन्मतिथियों की पूरी रेंज भी बताता है, जैसा नोटिफिकेशन में लिखा होता है।"],
+      ["आयु में छूट के नियम", "केंद्र सरकार के नियमों के अनुसार अधिकतम आयु में OBC (नॉन-क्रीमी लेयर) को 3 वर्ष, SC/ST को 5 वर्ष और दिव्यांग (PwBD) को 10 वर्ष की छूट मिलती है (PwBD-OBC को 13, PwBD-SC/ST को 15)। केंद्रीय भर्तियों में EWS को आयु छूट नहीं मिलती। पूर्व सैनिकों और राज्यों के नियम अलग हो सकते हैं।"],
+    ],
+    faq: [
+      { q: "SSC परीक्षा में उम्र कैसे गिनी जाती है?", a: "SSC एक तय तारीख (आमतौर पर 1 जनवरी या 1 अगस्त) पर उम्र गिनता है। 'Age as on' में वही तारीख डालें और अपने पद की आयु सीमा भरें।" },
+      { q: "क्या EWS को आयु में छूट मिलती है?", a: "केंद्र सरकार की भर्तियों में नहीं। कुछ राज्य EWS को छूट देते हैं, इसलिए राज्य का नोटिफिकेशन देखें।" },
+    ],
+  },
+  "income-tax-calculator": {
+    h1: "इनकम टैक्स कैलकुलेटर FY 2026-27",
+    title: "इनकम टैक्स कैलकुलेटर 2026-27 – नई बनाम पुरानी व्यवस्था",
+    desc: "FY 2026-27 के लिए नई और पुरानी टैक्स व्यवस्था में टैक्स की तुलना करें: ₹75,000 स्टैंडर्ड डिडक्शन, ₹12 लाख तक टैक्स फ्री, 80C, HRA, होम लोन।",
+    intro: "अपनी सालाना सैलरी और छूट (डिडक्शन) डालें — दोनों टैक्स व्यवस्थाओं में टैक्स एक साथ दिखेगा, धारा 87A रिबेट, मार्जिनल रिलीफ, सरचार्ज और 4% सेस के साथ।",
+    article: [
+      ["नई व्यवस्था के स्लैब (FY 2026-27)", "₹4 लाख तक: शून्य · ₹4–8 लाख: 5% · ₹8–12 लाख: 10% · ₹12–16 लाख: 15% · ₹16–20 लाख: 20% · ₹20–24 लाख: 25% · ₹24 लाख से ऊपर: 30%। वेतनभोगियों को ₹75,000 का स्टैंडर्ड डिडक्शन मिलता है और 87A रिबेट से ₹12 लाख तक की टैक्सेबल आय पर कोई टैक्स नहीं लगता — यानी ₹12.75 लाख तक की सैलरी टैक्स फ्री है।"],
+      ["पुरानी व्यवस्था के स्लैब", "₹2.5 लाख तक: शून्य (60–79 वर्ष के लिए ₹3 लाख, 80+ के लिए ₹5 लाख) · ₹5 लाख तक: 5% · ₹5–10 लाख: 20% · ₹10 लाख से ऊपर: 30%। स्टैंडर्ड डिडक्शन ₹50,000 है। जिनके 80C, HRA और होम लोन जैसे बड़े डिडक्शन हैं, उनके लिए पुरानी व्यवस्था अब भी फ़ायदेमंद हो सकती है।"],
+    ],
+    faq: [
+      { q: "क्या FY 2026-27 में ₹12 लाख तक की आय टैक्स फ्री है?", a: "हाँ, नई व्यवस्था में। ₹12 लाख तक की टैक्सेबल आय पर धारा 87A के तहत पूरी छूट है, और वेतनभोगियों को ₹75,000 स्टैंडर्ड डिडक्शन भी मिलता है।" },
+      { q: "क्या बजट 2026 में टैक्स स्लैब बदले?", a: "नहीं। FY 2026-27 के स्लैब, रिबेट और स्टैंडर्ड डिडक्शन FY 2025-26 जैसे ही हैं।" },
+    ],
+  },
+  "7th-pay-commission-salary-calculator": {
+    h1: "7वां वेतन आयोग सैलरी कैलकुलेटर",
+    title: "7th Pay सैलरी कैलकुलेटर – DA, HRA के साथ इन-हैंड सैलरी",
+    desc: "केंद्र सरकार की सैलरी निकालें: बेसिक पे, DA, HRA (X/Y/Z शहर), ट्रांसपोर्ट अलाउंस, NPS कटौती और हर पे लेवल की इन-हैंड सैलरी।",
+    intro: "अपना पे लेवल और बेसिक पे चुनें — मौजूदा DA दर, शहर के अनुसार HRA, DA सहित ट्रांसपोर्ट अलाउंस, NPS और अनुमानित इन-हैंड सैलरी की पूरी सैलरी स्लिप दिखेगी।",
+    article: [
+      ["सरकारी सैलरी कैसे बनती है", "सैलरी 7वें वेतन आयोग के पे मैट्रिक्स से तय होती है: हर लेवल में 40 सेल होते हैं और हर साल 1 जनवरी या 1 जुलाई को एक सेल आगे (लगभग 3% बढ़ोतरी) मिलता है। बेसिक के ऊपर महंगाई भत्ता (DA), मकान किराया भत्ता (X, Y, Z शहरों के लिए बेसिक का 30%, 20%, 10%) और ट्रांसपोर्ट अलाउंस मिलता है। NPS में बेसिक + DA का 10% कटता है और सरकार 14% जोड़ती है।"],
+    ],
+    faq: [
+      { q: "X, Y और Z शहर क्या हैं?", a: "ये जनसंख्या के आधार पर HRA की श्रेणियाँ हैं। X में बड़े महानगर (दिल्ली, मुंबई, बेंगलुरु, चेन्नई, कोलकाता, हैदराबाद, पुणे, अहमदाबाद) आते हैं, Y में ज़्यादातर राज्यों की राजधानियाँ और बड़े शहर, और बाकी सब Z में।" },
+      { q: "इंक्रीमेंट कब मिलता है?", a: "साल में एक बार, 1 जनवरी या 1 जुलाई को — ज्वाइनिंग या प्रमोशन की तारीख के अनुसार। इससे आप पे मैट्रिक्स में एक सेल आगे बढ़ते हैं।" },
+    ],
+  },
+};
+const HI_LABELS = [
+  ["<b>Choose a photo</b> or drop it here", "<b>फोटो चुनें</b> या यहाँ खींचकर छोड़ें"], ["JPG, PNG or phone photo — it never leaves your device", "JPG, PNG या मोबाइल फोटो — आपके डिवाइस से बाहर नहीं जाती"],
+  [">Preset<", ">प्रीसेट<"], ["Width (px)", "चौड़ाई (px)"], ["Height (px)", "ऊँचाई (px)"], ["Min KB", "न्यूनतम KB"], ["Max KB", "अधिकतम KB"], ["Crop to fit exactly", "सही साइज़ में क्रॉप करें"],
+  ["Download JPG", "JPG डाउनलोड करें"], ["Photograph — ", "फोटो — "], ["Signature — ", "सिग्नेचर — "], ["Left thumb impression — ", "बाएँ अंगूठे का निशान — "], ["Handwritten declaration — ", "हस्तलिखित डिक्लेरेशन — "],
+  ["Date of birth", "जन्मतिथि"], ["Age as on (cut-off date)", "इस तिथि पर आयु (कट-ऑफ)"], ["Minimum age", "न्यूनतम आयु"], ["Maximum age (General)", "अधिकतम आयु (सामान्य)"], [">Category<", ">श्रेणी<"],
+  ["Annual gross salary / income (₹)", "सालाना कुल सैलरी / आय (₹)"], [">Age<", ">आयु<"], ["Salaried / pensioner (standard deduction)", "वेतनभोगी / पेंशनर (स्टैंडर्ड डिडक्शन)"],
+  ["Old-regime deductions (ignored in new regime)", "पुरानी व्यवस्था के डिडक्शन (नई व्यवस्था में लागू नहीं)"],
+  [" years, ", " वर्ष, "], [" months, ", " महीने, "], [" days</p>", " दिन</p>"], ["✓ Eligible", "✓ पात्र"], ["✗ Not eligible", "✗ पात्र नहीं"],
+  [" for an age limit of ", " — आयु सीमा "], [" years (after relaxation) as on ", " वर्ष (छूट सहित), तिथि "], ["Eligible birth dates: ", "पात्र जन्मतिथियाँ: "], ["</b> to <b>", "</b> से <b>"],
+  ["approx. in-hand / month", "लगभग इन-हैंड / माह"], ["<h3>New regime</h3>", "<h3>नई व्यवस्था</h3>"], ["<h3>Old regime</h3>", "<h3>पुरानी व्यवस्था</h3>"],
+  ["Taxable income ", "टैक्सेबल आय "], [" per month", " प्रति माह"], ["Both regimes give the same tax.", "दोनों व्यवस्थाओं में टैक्स बराबर है।"],
+  ['"The <b>"+better+" regime</b> saves you <b>"', '"<b>"+(better==="new"?"नई":"पुरानी")+" व्यवस्था</b> में सालाना बचत: <b>"'], ['"</b> a year."', '"</b>"'],
+  [" ✓ within limits", " ✓ सीमा के अंदर"], ["Gross salary", "कुल सैलरी"], ["In-hand (before tax)", "इन-हैंड (टैक्स से पहले)"], ["Annual gross: ", "सालाना कुल: "],
+  ["Pay level<", "पे लेवल<"], ["Basic pay (cell)", "बेसिक पे (सेल)"], ["City class (HRA)", "शहर श्रेणी (HRA)"], ["NPS / UPS deduction (10%)", "NPS / UPS कटौती (10%)"],
+];
+
+function buildHindiTools(ctx) {
+  const { head, foot, esc, SITE, breadcrumbLd, faqLd, rates } = ctx;
+  const defs = buildDefs(rates);
+  const pages = [];
+  for (const [slug, H] of Object.entries(HI_TOOLS)) {
+    const d = defs.find((x) => x.slug === slug); if (!d) continue;
+    let body = d.body; for (const [en, hi] of HI_LABELS) body = body.split(en).join(hi);
+    const enPath = `/tools/${slug}/`, hiPath = `/hi/tools/${slug}/`, canonical = SITE.url + hiPath;
+    const faqHtml = `<h2 class="section-h">अक्सर पूछे जाने वाले सवाल</h2><div class="faq">${H.faq.map((x) => `<details class="faq-item"><summary>${esc(x.q)}</summary><div class="faq-a">${esc(x.a)}</div></details>`).join("")}</div>`;
+    const others = Object.entries(HI_TOOLS).filter(([s]) => s !== slug);
+    pages.push({ path: `hi/tools/${slug}/index.html`, url: canonical, enPath, html: head({ lang: "hi", title: `${H.title} | ${SITE.name}`.length <= 72 ? `${H.title} | ${SITE.name}` : H.title, desc: H.desc, canonical,
+      ld: [breadcrumbLd([{ name: "होम", url: SITE.url + "/hi/" }, { name: "टूल्स", url: SITE.url + "/tools/" }, { name: H.h1, url: canonical }]),
+        { "@context": "https://schema.org", "@type": "WebApplication", name: H.h1, url: canonical, inLanguage: "hi", applicationCategory: "UtilitiesApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "INR" } },
+        faqLd(H.faq)],
+      alternates: [{ hreflang: "en", href: SITE.url + enPath }, { hreflang: "hi", href: canonical }, { hreflang: "x-default", href: SITE.url + enPath }], langSwitch: enPath }) + `
+<main class="wrap article" id="main">
+  <p class="crumb"><a href="/hi/">होम</a> &nbsp;&rsaquo;&nbsp; <a href="/tools/">टूल्स</a></p>
+  <article>
+    <h1>${esc(H.h1)}</h1>
+    <p class="lede">${esc(H.intro)}</p>
+    ${body}
+    <div class="prose">${H.article.map(([h, p]) => `<h2 class="section-h">${esc(h)}</h2><p>${esc(p)}</p>`).join("")}</div>
+    ${faqHtml}
+    <section class="related"><h2 class="section-h">और मुफ़्त टूल्स</h2><ul class="tool-list">${others.map(([s, o]) => `<li><a class="tool-card" href="/hi/tools/${s}/"><b>${esc(o.h1)}</b><span>${esc(o.desc.slice(0, 100))}…</span></a></li>`).join("")}</ul></section>
+  </article>
+</main>` + foot() });
+  }
+  return pages;
+}
+module.exports.buildHindiTools = buildHindiTools;
+module.exports.HI_TOOL_SLUGS = Object.keys(HI_TOOLS);

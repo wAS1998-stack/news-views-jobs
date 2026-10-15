@@ -332,7 +332,7 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
     <a href="/hi/updates/result/">रिजल्ट</a>
     <a href="/hi/updates/admit-card/">एडमिट कार्ड</a>
     <a href="/hi/updates/answer-key/">आंसर की</a>
-    <a href="/tools/">टूल्स</a>
+    <a href="/hi/tools/photo-resizer/">फोटो रिसाइज़</a>
     <a href="/quiz/">क्विज़</a>` : `    <a href="/">Jobs</a>
     <a href="/latest/">Latest</a>
     <a href="/updates/result/">Results</a>
@@ -1788,6 +1788,10 @@ function main() {
   const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection,
     rates: (JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")).payRates || {}) });
   for (const tp of TOOLS.pages) write(tp.path, tp.html);
+  const HI_TOOL_PAGES = require("./tools.js").buildHindiTools({ head, foot, esc, SITE, breadcrumbLd, faqLd,
+    rates: (JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")).payRates || {}) });
+  for (const tp of HI_TOOL_PAGES) write(tp.path, tp.html);
+  TOOLS.pages.push(...HI_TOOL_PAGES);
   TOOL_DEFS = TOOLS.defs;
   console.log(`Tools: ${TOOLS.defs.length} tools + ${TOOLS.levels.length} pay-level pages.`);
 

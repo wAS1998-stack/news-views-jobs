@@ -91,7 +91,7 @@ function buildHindi(ctx) {
   <p class="note">आवेदन से पहले ऑफिशियल वेबसाइट पर तिथियाँ और पात्रता ज़रूर जाँच लें। ${esc(SITE.brand)} सार्वजनिक नोटिफिकेशन की जानकारी देता है, यह कोई सरकारी संस्था नहीं है।</p>
   ${(h.preparation_tips || []).length ? `<div class="prose"><h2 class="section-h">तैयारी के टिप्स</h2><ul>${h.preparation_tips.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
   ${faqHtml(h.faq)}
-  <p class="cta-row"><a class="btn btn-ghost" href="/tools/age-calculator/">आयु कैलकुलेटर</a> <a class="btn btn-ghost" href="/tools/photo-resizer/">फोटो-सिग्नेचर रिसाइज़र</a></p>
+  <p class="cta-row"><a class="btn btn-ghost" href="/hi/tools/age-calculator/">आयु कैलकुलेटर</a> <a class="btn btn-ghost" href="/hi/tools/photo-resizer/">फोटो-सिग्नेचर रिसाइज़र</a></p>
   ${(() => { const rel = openJobs.filter((x) => x.id !== j.id).slice(0, 3); return rel.length ? `<section class="related"><h2 class="section-h">और सरकारी नौकरियाँ</h2><ul class="jobs">${rel.map(jobCardHi).join("")}</ul></section>` : ""; })()}
 </main>` + foot() });
   }
@@ -162,9 +162,9 @@ function buildHindi(ctx) {
   <h2 class="section-h">आवेदन जारी — सभी भर्तियाँ</h2>
   ${openJobs.length ? `<ul class="jobs">${openJobs.map(jobCardHi).join("")}</ul>` : `<p class="empty">हिंदी में भर्तियाँ जोड़ी जा रही हैं — तब तक <a href="/" lang="en">English</a> में देखें।</p>`}
   <section class="home-tools"><h2 class="section-h">🧰 मुफ़्त टूल्स</h2><ul class="tool-list">
-    <li><a class="tool-card" href="/tools/photo-resizer/"><b>फोटो और सिग्नेचर रिसाइज़र</b><span>SSC, IBPS, RRB फॉर्म के लिए सही साइज़ (20–50 KB) में फोटो बनाएं — बिना अपलोड।</span></a></li>
-    <li><a class="tool-card" href="/tools/age-calculator/"><b>आयु कैलकुलेटर</b><span>कट-ऑफ तिथि पर अपनी सटीक आयु और OBC/SC/ST छूट के साथ पात्रता जाँचें।</span></a></li>
-    <li><a class="tool-card" href="/tools/7th-pay-commission-salary-calculator/"><b>सैलरी कैलकुलेटर (7वां वेतन आयोग)</b><span>बेसिक, DA, HRA, TA और इन-हैंड सैलरी हर लेवल के लिए।</span></a></li>
+    <li><a class="tool-card" href="/hi/tools/photo-resizer/"><b>फोटो और सिग्नेचर रिसाइज़र</b><span>SSC, IBPS, RRB फॉर्म के लिए सही साइज़ (20–50 KB) में फोटो बनाएं — बिना अपलोड।</span></a></li>
+    <li><a class="tool-card" href="/hi/tools/age-calculator/"><b>आयु कैलकुलेटर</b><span>कट-ऑफ तिथि पर अपनी सटीक आयु और OBC/SC/ST छूट के साथ पात्रता जाँचें।</span></a></li>
+    <li><a class="tool-card" href="/hi/tools/7th-pay-commission-salary-calculator/"><b>सैलरी कैलकुलेटर (7वां वेतन आयोग)</b><span>बेसिक, DA, HRA, TA और इन-हैंड सैलरी हर लेवल के लिए।</span></a></li>
     <li><a class="tool-card" href="/quiz/"><b>डेली करंट अफेयर्स क्विज़</b><span>रोज़ 10 सवाल, उत्तर और व्याख्या के साथ।</span></a></li>
   </ul></section>
 </main>` + foot() });
