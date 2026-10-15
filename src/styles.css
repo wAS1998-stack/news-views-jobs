@@ -796,3 +796,10 @@ html[lang="hi"] body { line-height: 1.7; }
 @media (max-width: 860px) { .glance { grid-template-columns: 1fr; } .glance-col li:nth-child(n+7) { display: none; } }
 html[lang="hi"] body, html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3 { font-family: "Noto Sans Devanagari", "Public Sans", system-ui, sans-serif; }
 html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
+
+/* ===== Exam hubs ===== */
+.exam-timeline { list-style: none; padding: 0; margin: 10px 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.exam-timeline li { padding: 10px 14px; border-bottom: 1px solid var(--line); line-height: 1.45; }
+.exam-timeline li:last-child { border-bottom: 0; }
+.exam-timeline .when { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+.upd-type.upd-job { background: #EAF6F0; color: var(--green); }

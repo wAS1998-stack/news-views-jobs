@@ -108,9 +108,11 @@ function daysLeft(endIso) {
   if (isNaN(end)) return null;
   return Math.ceil((end - BUILT) / 86400000);
 }
+function ageDays(iso) { if (!iso) return null; const t = new Date(iso + "T00:00:00"); return isNaN(t) ? null : (BUILT - t) / 86400000; }
 function statusOf(job) {
   const d = daysLeft(job.application_end);
-  if (d === null) return { cls: "open", label: "Open", live: true };
+  // No last date known: treat as open only while the notice is recent; an undated 2025 notice is not "open" forever.
+  if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS ? { cls: "closed", label: "Closed", live: false } : { cls: "open", label: "Open", live: true }; }
   if (d < 0) return { cls: "closed", label: "Closed", live: false };
   if (d <= 7) return { cls: "soon", label: d === 0 ? "Last day" : `${d} days left`, live: true };
   return { cls: "open", label: "Open", live: true };
@@ -120,7 +122,8 @@ function statusOf(job) {
 const STALE_DAYS = Number(SITE.staleDays || 45);
 function isStale(job) {
   const d = daysLeft(job.application_end);
-  return d !== null && d < -STALE_DAYS;
+  if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS * 2; }
+  return d < -STALE_DAYS;
 }
 function windowPct(job) {
   if (!job.application_start || !job.application_end) return null;
@@ -339,8 +342,8 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
     <a href="/updates/admit-card/">Admit Card</a>
     <a href="/tools/">Tools</a>
     <a href="/news/">Current Affairs</a>
-    <a href="/state/">States</a>
-    <a href="/guides/">Guides</a>`}
+    <a href="/exam/">Exams</a>
+    <a href="/state/">States</a>`}
     <a class="lang-switch" href="${esc(o.langSwitch || (o.lang === "hi" ? "/" : "/hi/"))}" lang="${o.lang === "hi" ? "en" : "hi"}">${o.lang === "hi" ? "English" : "हिंदी"}</a>
   </nav>
 </div></header>`;
@@ -356,6 +359,8 @@ function foot() {
     <a href="/disclaimer/">Disclaimer</a>
     <a href="/terms/">Terms</a>
     <a href="/gulf/">Gulf jobs</a>
+    <a href="/guides/">Guides</a>
+    <a href="/exam/">All exams</a>
     <a href="/jobs/">All jobs</a>
     <a href="/tools/photo-resizer/">Photo resizer</a>
     <a href="/tools/income-tax-calculator/">Income tax calculator</a>
@@ -639,6 +644,7 @@ function buildUpdatePage(u, all) {
     <h2 class="section-h">How to download the ${esc(u.org_short || u.organization)} ${esc(typeLabel.toLowerCase())}</h2>
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
     ${details.length ? `<div class="prose"><h2 class="section-h">What candidates should know</h2>${details.map((d) => `<p>${esc(d)}</p>`).join("")}</div>` : ""}
+    ${(() => { const ex = require("./exams.js").examOf(u.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates &rarr;</a></p>` : ""; })()}
     ${faqSection(faqs)}
     <p class="smallprint">Always verify on the official website — ${esc(SITE.brand)} summarises publicly announced updates and is not a government body.</p>
     ${relJobs.length ? `<section class="related"><h2 class="section-h">Related jobs</h2><ul class="jobs">${relJobs.map(jobCard).join("")}</ul></section>` : ""}
@@ -1001,6 +1007,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   </div>
 
   ${glance}
+  <nav class="tagrow" aria-label="Popular exams"><b>Popular exams:</b> ${require("./exams.js").EXAMS.slice(0, 22).map((e) => `<a class="chip" href="/exam/${e.slug}/">${esc(e.name)}</a>`).join("")} <a class="chip" href="/exam/">All exams &rarr;</a></nav>
 
   ${(updates && updates.length) ? `<section class="home-updates">
     <div class="hu-head"><h2 class="section-h">📢 Latest updates</h2><a class="backlink" href="/updates/">All updates &rarr;</a></div>
@@ -1277,6 +1284,7 @@ function buildJob(job, all) {
   </div>
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
 
+  ${(() => { const ex = require("./exams.js").examOf(job.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates — admit card, answer key, result &rarr;</a></p>` : ""; })()}
   ${prepTips(job)}
 
   ${adSlot("job-end")}
@@ -1810,6 +1818,9 @@ function main() {
   const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates });
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
+  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates });
+  for (const ep of EXAMP.pages) write(ep.path, ep.html);
+  console.log(`Exams: ${EXAMP.pages.length - 1} exam hub(s).`);
   write("latest/index.html", buildLatestPage(activeJobs));
   write("jobs/index.html", buildAllJobsPage(activeJobs));
   write("closing-soon/index.html", buildClosingSoonPage(activeJobs));
@@ -1873,6 +1884,7 @@ function main() {
     "jobs/",
     "quiz/",
     ...HINDI.pages.filter((p) => !p.noindex).map((p) => p.path.replace(/index\.html$/, "")),
+    ...EXAMP.pages.map((p) => p.path.replace(/index\.html$/, "")),
     ...ALL_QUIZ.map((z) => `quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.path.replace(/index\.html$/, "")),
     "closing-soon/",
@@ -1894,6 +1906,7 @@ function main() {
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
     SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/", SITE.url + "/quiz/",
     ...HINDI.pages.filter((p) => !p.noindex).map((p) => p.url),
+    ...EXAMP.pages.map((p) => p.url),
     ...ALL_QUIZ.map((z) => `${SITE.url}/quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.url),
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
@@ -1911,6 +1924,23 @@ function main() {
   // so old URLs that Google already saw keep their value instead of 404ing.
   try {
     const reds = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8"));
+    // Every URL ever published is remembered in data/known-urls.json. If one is no longer generated
+    // (a thin page dropped, a job removed), 301 it to the nearest parent page that still exists.
+    try {
+      const KNOWN = path.join(ROOT, "data", "known-urls.json");
+      let known = []; try { known = JSON.parse(fs.readFileSync(KNOWN, "utf8")); } catch {}
+      const current = [...new Set(allUrls.map((u) => u.replace(SITE.url, "")).filter((u) => u.endsWith("/")))];
+      const have = new Set(reds.map((r) => r[0]));
+      let auto = 0;
+      for (const u of known) {
+        if (fs.existsSync(path.join(DIST, u, "index.html")) || have.has(u)) continue;
+        let parent = u.replace(/[^/]+\/$/, "");
+        while (parent.length > 1 && !fs.existsSync(path.join(DIST, parent, "index.html"))) parent = parent.replace(/[^/]+\/$/, "");
+        reds.push([u, parent || "/"]); have.add(u); auto++;
+      }
+      if (auto) console.log(`Redirects: ${auto} vanished URL(s) auto-redirected to their parent page.`);
+      fs.writeFileSync(KNOWN, JSON.stringify([...new Set([...known, ...current])].sort(), null, 0) + "\n");
+    } catch (e) { console.log("known-urls: " + e.message); }
     const lines = [], seen = new Set();
     for (const [from, to] of reds) {
       if (!from || !to || seen.has(from)) continue;
