@@ -329,13 +329,11 @@ ${ldBlocks}
     <a href="/">Jobs</a>
     <a href="/latest/">Latest</a>
     <a href="/updates/result/">Results</a>
-    <a href="/updates/admit-card/">Admit Cards</a>
+    <a href="/updates/admit-card/">Admit Card</a>
+    <a href="/tools/">Tools</a>
+    <a href="/news/">Current Affairs</a>
     <a href="/state/">States</a>
-    <a href="/gulf/">Gulf</a>
-    <a href="/news/">News</a>
     <a href="/guides/">Guides</a>
-    <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
   </nav>
 </div></header>`;
 }
@@ -349,7 +347,12 @@ function foot() {
     <a href="/privacy-policy/">Privacy</a>
     <a href="/disclaimer/">Disclaimer</a>
     <a href="/terms/">Terms</a>
+    <a href="/gulf/">Gulf jobs</a>
     <a href="/jobs/">All jobs</a>
+    <a href="/tools/photo-resizer/">Photo resizer</a>
+    <a href="/tools/income-tax-calculator/">Income tax calculator</a>
+    <a href="/salary/">7th pay matrix</a>
+    <a href="/tools/age-calculator/">Age calculator</a>
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
     <a href="/updates/">Updates</a>
@@ -950,6 +953,14 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   <p class="empty" id="empty" hidden>No jobs match your search — try a department (SSC, RRB), a post, or a qualification.</p>` :
   `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
 
+  ${TOOL_DEFS.length ? `<section class="home-tools">
+    <h2 class="section-h">🧰 Free tools</h2>
+    <ul class="tool-list">${["photo-resizer", "age-calculator", "income-tax-calculator", "7th-pay-commission-salary-calculator", "8th-pay-commission-salary-calculator", "exam-score-calculator"]
+      .map((sl) => TOOL_DEFS.find((d) => d.slug === sl)).filter(Boolean)
+      .map((d) => `<li><a class="tool-card" href="/tools/${d.slug}/"><b>${esc(d.h1)}</b><span>${esc(d.desc.slice(0, 96))}…</span></a></li>`).join("")}</ul>
+    <p class="backlink"><a href="/tools/">All tools &rarr;</a> &nbsp; <a href="/salary/">Salary by pay level &rarr;</a></p>
+  </section>` : ""}
+
   ${(guides && guides.length) ? `<section class="home-guides">
     <h2 class="section-h">Preparation guides</h2>
     <ul class="guides">${guides.slice(0,2).map((g)=>`<li><a class="guide-card" href="/guides/${g.slug}/"><h2>${esc(g.meta.title)}</h2><p>${esc(g.meta.description||"")}</p><span class="readmore">Read guide &rarr;</span></a></li>`).join("")}</ul>
@@ -1533,6 +1544,7 @@ function buildGuide(g) {
 </main>` + foot();
 }
 let ALL_GUIDES = [];
+let TOOL_DEFS = [];
 let ALL_JOBS = [];
 let ORG_PAGES = new Set();   // org slugs that actually get a page (active jobs only)
 function relatedGuidesHtml(current) {
@@ -1692,6 +1704,13 @@ function main() {
   const updates = readUpdates();
   const news = readNews();
 
+  // Tools, salary pages (calculators that work in the browser)
+  const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection,
+    rates: (JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")).payRates || {}) });
+  for (const tp of TOOLS.pages) write(tp.path, tp.html);
+  TOOL_DEFS = TOOLS.defs;
+  console.log(`Tools: ${TOOLS.defs.length} tools + ${TOOLS.levels.length} pay-level pages.`);
+
   write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts, news));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
@@ -1762,6 +1781,7 @@ function main() {
     "updates/",
     "latest/",
     "jobs/",
+    ...TOOLS.pages.map((p) => p.path.replace(/index\.html$/, "")),
     "closing-soon/",
     ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
     ...updates.map((u) => `updates/${u.id}/`),
@@ -1780,6 +1800,7 @@ function main() {
     SITE.url + "/updates/",
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
     SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/",
+    ...TOOLS.pages.map((p) => p.url),
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
     SITE.url + "/gulf/",

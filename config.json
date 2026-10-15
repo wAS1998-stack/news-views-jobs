@@ -23,5 +23,12 @@
   "maxEnrichPerRun": 5,
   "maxLinkFixPerRun": 25,
   "maxUpdateEnrichPerRun": 15,
-  "_feedsNote": "Dead feeds removed 2026-10-15 (govtjobsblog, govtjobsdiary, sarkarifeed, gulfwalkin, gccwalkins). data/last-run.json shows per-feed health each run."
+  "_feedsNote": "Dead feeds removed 2026-10-15 (govtjobsblog, govtjobsdiary, sarkarifeed, gulfwalkin, gccwalkins). data/last-run.json shows per-feed health each run.",
+  "payRates": {
+    "_note": "Single source for all salary/tax tools. Update daPercent when the government notifies a new DA (July 2026 hike expected at 63%).",
+    "daPercent": 60,
+    "daEffective": "1 January 2026",
+    "daNextExpected": "63% expected from 1 July 2026 (not yet notified)",
+    "taxYear": "FY 2026-27 (AY 2027-28)"
+  }
 }
