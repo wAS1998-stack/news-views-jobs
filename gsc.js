@@ -43,7 +43,8 @@ async function main() {
   const prop = list.find((s) => s === `sc-domain:${HOST}`) || list.find((s) => s.replace(/\/$/, "") === SITE) || list.find((s) => s.includes(HOST.replace(/^www\./, "")));
   if (!prop) {
     const msg = `service account has no access to a Search Console property for ${HOST} (sees: ${list.join(", ") || "none"})`;
-    console.log("GSC: " + msg); L.logRun("gsc", { ok: false, error: msg });
+    console.log("GSC: " + msg); L.logRun("gsc", { ok: false, error: msg, serviceAccount: G.loadKey().client_email,
+      fix: "Search Console → news-views.in → Settings → Users and permissions → Add user → this email → Owner" });
     return;
   }
   const P = encodeURIComponent(prop);
