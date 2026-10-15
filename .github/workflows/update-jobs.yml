@@ -2,8 +2,9 @@ name: Update jobs
 
 on:
   schedule:
-    # 6x/day (UTC) ≈ 07:00, 10:30, 13:30, 16:30, 19:30, 22:30 IST
-    - cron: "30 1,5,8,11,14,17 * * *"
+    # Every 3 hours at :17 (GitHub drops/delays many runs scheduled on the hour
+    # or half hour, so an odd minute and extra slots keep the site fresh).
+    - cron: "17 */3 * * *"
   workflow_dispatch:
     inputs:
       enrich_links:
@@ -41,6 +42,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           JOBS_FEEDS: ${{ secrets.JOBS_FEEDS }}
           MAX_NEW: ${{ github.event.inputs.max_new || '20' }}
+          HAS_GOOGLE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
+          HAS_TELEGRAM: ${{ secrets.TELEGRAM_BOT_TOKEN != '' && secrets.TELEGRAM_CHAT_ID != '' }}
+          HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ZONE_ID != '' }}
         run: node fetch-jobs.js
 
       - name: Enrich existing data (official links, rich update pages, full content)
@@ -75,11 +79,20 @@ jobs:
             git pull --rebase origin main || true
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             echo "Pushed — Cloudflare will redeploy automatically."
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes."
           fi
+
+      - name: Purge Cloudflare cache once the new build is live
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          PURGE_SHA: ${{ steps.commit.outputs.sha }}
+        run: node purge-cache.js
 
       - name: Notify Google (Indexing API — job pages only)
         if: steps.commit.outputs.changed == 'true'

@@ -25,6 +25,7 @@ const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
 const DATA = path.join(ROOT, "data", "jobs.json");
 const BUILT = new Date();
+const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA || "local").slice(0, 7)} ${BUILT.toISOString().slice(0, 16)}Z`;
 
 // Load the single user config file (config.json) and apply it.
 try {
@@ -48,6 +49,41 @@ const slug = (s) =>
 const LIB = require("./lib.js");
 function hostOf(u) { try { return new URL(u).host.replace(/^www\./, ""); } catch { return ""; } }
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+/* ---- SEO title: short, specific, no empty placeholders (Google shows ~60 chars) ---- */
+function seoTitle(job) {
+  const year = (String(job.title).match(/\b20\d{2}\b/) || [String(BUILT.getFullYear())])[0];
+  const org = String(job.org_short || "").trim() && String(job.org_short).length <= 18 ? job.org_short.trim() : "";
+  let base = String(job.title)
+    .replace(/\s*[–—:|-]\s*(apply|notification|last date|walk[- ]?in|online form|download|check|out\b).*$/i, "")
+    .replace(/\s+(apply online|apply offline|notification out|vacancy|vacancies)\b.*$/i, "")
+    .replace(/\s+/g, " ").trim();
+  if (base.length > 48 || base.length < 12) {
+    const post = String(job.post_name || "").split(/[,(/]| and | & /i)[0].trim();
+    base = [org || String(job.organization || "").split(/[(,]/)[0].trim(), post && post.length <= 30 ? post : "", "Recruitment", year].filter(Boolean).join(" ");
+  }
+  if (!/\b20\d{2}\b/.test(base)) base += " " + year;
+  const v = Number(job.total_vacancies);
+  const bits = [];
+  if (v > 0 && !new RegExp("\\b" + v.toLocaleString("en-IN").replace(/,/g, ",?") + "\\b").test(base) && !new RegExp("\\b" + v + "\\b").test(base)) bits.push(`${inr(v)} Post${v === 1 ? "" : "s"}`);
+  const dl = daysLeft(job.application_end);
+  if (job.application_end && dl !== null && dl >= 0) { const d = new Date(job.application_end + "T00:00:00"); bits.push(`Last Date ${d.getDate()} ${MONTHS[d.getMonth()]}`); }
+  else if (dl !== null && dl < 0) bits.push("Closed");
+  let t = base + (bits.length ? ` – ${bits.join(", ")}` : "");
+  if (t.length > 70) t = base + (bits[0] ? ` – ${bits[0]}` : "");
+  if (t.length > 70) t = base.slice(0, 68).replace(/\s+\S*$/, "") ;
+  return (t + ` | ${SITE.name}`).length <= 72 ? `${t} | ${SITE.name}` : t;
+}
+function seoDesc(job) {
+  const parts = [];
+  const v = Number(job.total_vacancies);
+  parts.push(`${job.organization}${job.post_name ? " " + job.post_name : ""} recruitment${v > 0 ? ` for ${inr(v)} post${v === 1 ? "" : "s"}` : ""}.`);
+  if (job.qualification) parts.push(`Qualification: ${String(job.qualification).slice(0, 60)}.`);
+  if (job.application_end) parts.push(`Last date ${fmtDate(job.application_end)}.`);
+  parts.push("Eligibility, salary, selection process & official apply link.");
+  let d = parts.join(" ");
+  if (d.length > 160) d = d.slice(0, 157).replace(/\s+\S*$/, "") + "…";
+  return d;
+}
 function fmtDate(iso) {
   if (!iso) return "—";
   const d = new Date(iso + "T00:00:00");
@@ -237,6 +273,7 @@ function head(o) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="nv-build" content="${BUILD_ID}">
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.desc)}">
 <link rel="canonical" href="${esc(o.canonical)}">
@@ -493,7 +530,12 @@ function buildUpdatePage(u, all) {
       step: steps.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) },
   ];
   if (faqs.length) ld.push(faqLd(faqs));
-  return head({ title: `${u.title} | ${SITE.name}`, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
+  let shortT = String(u.title).replace(/\s*\(?out\)?\s*$/i, "").replace(/[\s–—:|-]+$/, "");
+  if (shortT.length > 60) shortT = shortT.split(/\s+[–—:|-]\s+/)[0];
+  if (shortT.length > 60) shortT = shortT.slice(0, 58).replace(/\s+\S*$/, "");
+  if (!/download|check|out\b/i.test(shortT) && shortT.length < 44) shortT += u.type === "result" ? " – Check Now" : u.type === "admit-card" ? " – Download Link" : u.type === "answer-key" ? " – Download PDF" : "";
+  const pageTitle = (shortT + ` | ${SITE.name}`).length <= 72 ? `${shortT} | ${SITE.name}` : shortT;
+  return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/${esc(u.type)}/">${esc((UPDATE_TYPES[u.type] || {}).plural || typeLabel)}</a></p>
   <article>
@@ -542,7 +584,7 @@ function buildUpdateTypeIndex(type, list) {
       mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 50).map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/updates/${u.id}/`, name: u.title })) } },
   ];
   const others = Object.keys(UPDATE_TYPES).filter((k) => k !== type).map((k) => `<a class="chip" href="/updates/${k}/">${UPDATE_TYPES[k].plural}</a>`).join("");
-  return head({ title: `${seo.title} | ${SITE.name}`, desc: seo.intro.slice(0, 158), canonical, ld }) + `
+  return head({ title: seo.title.length > 62 ? seo.title.replace(/ — .*$/, ` — Latest ${t.plural} | ${SITE.name}`) : `${seo.title} | ${SITE.name}`, desc: seo.intro.slice(0, 158), canonical, ld }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a></p>
   <section class="cat-head">
@@ -1055,8 +1097,8 @@ function adSlot(label) {
 function buildJob(job, all) {
   const st = statusOf(job);
   const canonical = `${SITE.url}/jobs/${job.id}/`;
-  const title = `${job.title} — ${inr(job.total_vacancies)} Posts, Apply by ${fmtDate(job.application_end)} | ${SITE.name}`;
-  const desc = job.summary || `${job.organization} recruitment for ${job.post_name}. Check eligibility, vacancies and last date.`;
+  const title = seoTitle(job);
+  const desc = seoDesc(job);
   const steps = (job.how_to_apply || []).map((s) => `<li>${esc(s)}</li>`).join("\n");
   const pct = windowPct(job);
   const faqs = faqsFor(job);
@@ -1724,6 +1766,21 @@ function main() {
   ];
   write("all-urls.txt", [...new Set(allUrls)].join("\n") + "\n");
   write("feed.xml", buildFeed(jobs));
+
+  // 301s for pages that were removed or merged (off-topic, duplicates, re-classified),
+  // so old URLs that Google already saw keep their value instead of 404ing.
+  try {
+    const reds = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8"));
+    const lines = [], seen = new Set();
+    for (const [from, to] of reds) {
+      if (!from || !to || seen.has(from)) continue;
+      const srcExists = fs.existsSync(path.join(DIST, from, "index.html"));
+      const dstExists = fs.existsSync(path.join(DIST, to.replace(/^\//, ""), "index.html")) || to === "/";
+      if (srcExists || !dstExists) continue;
+      seen.add(from); lines.push(`${from} ${to} 301`);
+    }
+    if (lines.length) { write("_redirects", lines.join("\n") + "\n"); console.log(`Redirects: ${lines.length} retired URL(s) -> 301.`); }
+  } catch { /* no redirects file */ }
   write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
 <main class="wrap" id="main"><section class="cat-head">
   <p class="eyebrow">Offline</p><h1>You're offline right now</h1>

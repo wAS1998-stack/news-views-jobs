@@ -35,7 +35,7 @@ function classify(title) {
   if (/answer key/i.test(s)) return "answer-key";
   if (/admit card|call letter|hall ticket|city intimation|exam city/i.test(s)) return "admit-card";
   if (/result|merit list|cut ?off|shortlist/i.test(s)) return "result";
-  if (/exam date|exam schedule|exam from/i.test(s)) return "exam-date";
+  if (/exam date|exam schedule|exam from|interview schedule|interview date|dv schedule|document verification|\bdv date|walk-?in date|exam city/i.test(s)) return "exam-date";
   return "job";
 }
 
@@ -208,6 +208,15 @@ function fingerprint(title) {
     .filter((w) => w.length > 1 && !stop.has(w));
   return words.sort().join(" ");
 }
+let EXISTING_FOR_DUPES = [];
+const normOrg = (x) => String(x.org_short || x.organization || "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "").slice(0, 14);
+function isDuplicate(job) {
+  const v = Number(job.total_vacancies) || 0;
+  if (v < 2) return false;
+  const o = normOrg(job), t = new Date(job.published || Date.now()).getTime();
+  return EXISTING_FOR_DUPES.some((x) => normOrg(x) === o && Number(x.total_vacancies) === v &&
+    Math.abs(new Date(x.published || 0).getTime() - t) < 60 * 86400000);
+}
 async function toJob(item, existingIds, fingerprints) {
   let id = cleanSlug(item.title);
   if (!id || existingIds.has(id)) return null;        // skip exact-slug duplicates
@@ -249,6 +258,7 @@ async function toJob(item, existingIds, fingerprints) {
       `Check the eligibility, important dates and application details below, and apply through the official website before the last date.`;
   }
   for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
+  if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return null; }
   return merged;
 }
 
@@ -256,6 +266,7 @@ async function toJob(item, existingIds, fingerprints) {
 async function main() {
   const existing = JSON.parse(fs.readFileSync(DATA, "utf8"));
   const ids = new Set(existing.map((j) => j.id));
+  EXISTING_FOR_DUPES = existing;
   const fps = new Set(existing.map((j) => fingerprint(j.title)));
   const feeds = loadFeeds();
 
@@ -297,7 +308,7 @@ async function main() {
     try {
       // Stop only when BOTH caps are hit (jobs and updates are independent).
       if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
-      if (L.JUNK_TITLE.test(it.title)) continue;   // newspaper PDF dumps, roundups — not a recruitment
+      if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title)) continue;   // PDF dumps, syllabus, admissions, university results
       const kind = classify(it.title);
       if (kind !== "job") {
         if (updatesAdded >= MAX_UPDATES) continue;
@@ -329,7 +340,8 @@ async function main() {
     fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }
-  L.logRun("fetch", { feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus });
+  const integrations = { ai: L.AI_LABEL, googleIndexing: process.env.HAS_GOOGLE === "true", telegram: process.env.HAS_TELEGRAM === "true", cloudflarePurge: process.env.HAS_CLOUDFLARE === "true" };
+  L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus });
   // Record exactly which job URLs are new this run, so the Indexing API pings
   // only those (fast + quota-efficient) instead of re-submitting everything.
   try {
