@@ -39,6 +39,10 @@ async function main() {
   const token = await G.getToken("https://www.googleapis.com/auth/webmasters");
   // Which property does the service account have? Prefer the domain property.
   const sites = await api(token, "GET", "https://www.googleapis.com/webmasters/v3/sites");
+  if (!sites.ok) {
+    const msg = `Search Console API error HTTP ${sites.status}: ${JSON.stringify(sites.j.error && sites.j.error.message || sites.j).slice(0, 200)} — is "Google Search Console API" enabled in the service account's Cloud project?`;
+    console.log("GSC: " + msg); L.logRun("gsc", { ok: false, error: msg, serviceAccount: G.loadKey().client_email }); return;
+  }
   const list = (sites.j.siteEntry || []).map((s) => s.siteUrl);
   const prop = list.find((s) => s === `sc-domain:${HOST}`) || list.find((s) => s.replace(/\/$/, "") === SITE) || list.find((s) => s.includes(HOST.replace(/^www\./, "")));
   if (!prop) {
