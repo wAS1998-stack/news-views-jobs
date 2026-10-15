@@ -1,0 +1,545 @@
+{
+ "rrb-mumbai": {
+  "host": "www.rrbmumbai.gov.in",
+  "dns": "ENOTFOUND"
+ },
+ "hppsc": {
+  "host": "www.hppsc.hp.gov.in",
+  "dns": "EAI_AGAIN"
+ },
+ "ssc": {
+  "host": "ssc.gov.in",
+  "ip": "103.195.217.13",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "upsc": {
+  "host": "upsc.gov.in",
+  "ip": "164.100.229.104",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "nta": {
+  "host": "nta.ac.in",
+  "ip": "20.219.187.119",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "rbi": {
+  "host": "opportunities.rbi.org.in",
+  "ip": "1.6.75.39",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "dsssb": {
+  "host": "dsssb.delhi.gov.in",
+  "ip": "182.74.205.45",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "kvs": {
+  "host": "kvsangathan.nic.in",
+  "ip": "103.195.208.1",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "ibps": {
+  "host": "www.ibps.in",
+  "ip": "223.31.219.50",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "nvs": {
+  "host": "navodaya.gov.in",
+  "ip": "220.156.188.67",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "aiims": {
+  "host": "www.aiimsexams.ac.in",
+  "ip": "15.197.189.251",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "army": {
+  "host": "joinindianarmy.nic.in",
+  "ip": "164.100.158.26",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "navy": {
+  "host": "www.joinindiannavy.gov.in",
+  "ip": "45.127.75.80",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "iaf-agniveer": {
+  "host": "agnipathvayu.cdac.in",
+  "ip": "220.156.189.189",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "hprca": {
+  "host": "hprca.hp.gov.in",
+  "dns": "EAI_AGAIN"
+ },
+ "rrb-cdg": {
+  "host": "www.rrbcdg.gov.in",
+  "ip": "203.176.113.43",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "rrb-patna": {
+  "host": "www.rrbpatna.gov.in",
+  "ip": "203.176.113.100",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "rrb-chennai": {
+  "host": "www.rrbchennai.gov.in",
+  "ip": "203.176.113.41",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "ctet": {
+  "host": "ctet.nic.in",
+  "ip": "164.100.50.250",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "ncs": {
+  "host": "www.ncs.gov.in",
+  "ip": "40.81.228.73",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "uppsc": {
+  "host": "uppsc.up.nic.in",
+  "ip": "164.100.211.47",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "bpsc": {
+  "host": "bpsc.bihar.gov.in",
+  "ip": "103.208.172.9",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "rpsc": {
+  "host": "rpsc.rajasthan.gov.in",
+  "ip": "103.122.36.168",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "tnpsc": {
+  "host": "www.tnpsc.gov.in",
+  "ip": "164.100.134.232",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "mppsc": {
+  "host": "mppsc.mp.gov.in",
+  "ip": "103.94.204.86",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "mpsc": {
+  "host": "mpsc.gov.in",
+  "ip": "15.252.23.28",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "indiapost-gds": {
+  "host": "indiapostgdsonline.gov.in",
+  "ip": "103.244.127.129",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "wbpsc": {
+  "host": "psc.wb.gov.in",
+  "ip": "103.38.191.169",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "tgpsc": {
+  "host": "www.tgpsc.gov.in",
+  "ip": "3.108.210.108",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "appsc": {
+  "host": "psc.ap.gov.in",
+  "ip": "203.145.179.98",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "kpsc": {
+  "host": "kpsc.kar.nic.in",
+  "ip": "164.100.81.231",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "hpsc": {
+  "host": "hpsc.gov.in",
+  "ip": "164.100.178.93",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "opsc": {
+  "host": "www.opsc.gov.in",
+  "ip": "164.100.140.16",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "ukpsc": {
+  "host": "psc.uk.gov.in",
+  "ip": "103.116.27.241",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "jpsc": {
+  "host": "www.jpsc.gov.in",
+  "ip": "111.118.214.21",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "gpsc": {
+  "host": "gpsc.gujarat.gov.in",
+  "ip": "103.78.200.149",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "cgpsc": {
+  "host": "psc.cg.gov.in",
+  "ip": "164.100.113.141",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "keralapsc": {
+  "host": "www.keralapsc.gov.in",
+  "ip": "103.251.43.237",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "apsc": {
+  "host": "apsc.nic.in",
+  "ip": "103.158.205.39",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "ppsc": {
+  "host": "ppsc.gov.in",
+  "ip": "164.100.146.174",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "jkpsc": {
+  "host": "jkpsc.nic.in",
+  "ip": "45.127.74.22",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "goapsc": {
+  "host": "gpsc.goa.gov.in",
+  "ip": "34.54.23.231",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "rssb": {
+  "host": "rssb.rajasthan.gov.in",
+  "ip": "164.100.222.142",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "upsssc": {
+  "host": "upsssc.gov.in",
+  "ip": "164.100.181.99",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "bssc": {
+  "host": "bssc.bihar.gov.in",
+  "ip": "164.100.130.68",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "esb-mp": {
+  "host": "esb.mp.gov.in",
+  "ip": "164.100.60.116",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "uksssc": {
+  "host": "sssc.uk.gov.in",
+  "ip": "164.100.50.141",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "hssc": {
+  "host": "hssc.gov.in",
+  "ip": "13.126.166.101",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "jssc": {
+  "host": "jssc.jharkhand.gov.in",
+  "ip": "103.107.59.191",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "gsssb": {
+  "host": "gsssb.gujarat.gov.in",
+  "ip": "103.234.162.116",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "osssc": {
+  "host": "www.osssc.gov.in",
+  "ip": "164.100.62.212",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "sssb-punjab": {
+  "host": "sssb.punjab.gov.in",
+  "ip": "117.220.2.169",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "kea": {
+  "host": "cetonline.karnataka.gov.in",
+  "ip": "164.100.133.60",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "jkssb": {
+  "host": "jkssb.nic.in",
+  "ip": "45.127.74.179",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "dsssb2": {
+  "host": "dsssb.delhi.gov.in",
+  "ip": "182.74.205.45",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "wbssc": {
+  "host": "www.westbengalssc.com",
+  "ip": "104.26.4.10",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "uppbpb": {
+  "host": "uppbpb.gov.in",
+  "ip": "164.100.211.156",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "bpssc": {
+  "host": "bpssc.bihar.gov.in",
+  "ip": "103.208.172.14",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "csbc": {
+  "host": "csbc.bihar.gov.in",
+  "ip": "103.194.24.186",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "tnusrb": {
+  "host": "www.tnusrb.tn.gov.in",
+  "ip": "103.59.65.65",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "tslprb": {
+  "host": "www.tgprb.in",
+  "ip": "103.241.145.217",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ },
+ "slprb-ap": {
+  "host": "slprb.ap.gov.in",
+  "ip": "103.129.75.100",
+  "tls": {
+   "ok": false,
+   "err": "TCP/TLS timeout"
+  },
+  "fetch": "UND_ERR_CONNECT_TIMEOUT"
+ }
+}
