@@ -1,1 +1,227 @@
-[]
+[
+  {
+    "id": "current-affairs-quiz-2026-10-15",
+    "date": "2026-10-15",
+    "digest_id": "current-affairs-2026-10-15",
+    "title": "Current Affairs Quiz 15 October 2026",
+    "questions": [
+      {
+        "q": "What was inaugurated in Vijayawada on October 15 as part of a cultural initiative?",
+        "options": [
+          "National Saras Mela",
+          "CCRAS Spark 5.0",
+          "World Standards Day",
+          "RDI Scheme"
+        ],
+        "answer": 0,
+        "why": "The National Saras Mela was inaugurated in Vijayawada to promote local crafts and artisans."
+      },
+      {
+        "q": "What sector is included under the Research, Development, and Innovation (RDI) scheme?",
+        "options": [
+          "Agriculture",
+          "Advanced chemicals",
+          "Tourism",
+          "Education"
+        ],
+        "answer": 1,
+        "why": "The RDI scheme includes advanced chemicals, petrochemicals, and material technologies to enhance India's manufacturing capabilities."
+      },
+      {
+        "q": "Which initiatives were launched by the NCISM President to promote Ayurvedic research?",
+        "options": [
+          "CCRAS Spark 5.0 and CCRAS Ayushodh 2026",
+          "National Saras Mela",
+          "World Standards Day",
+          "Sugarcane Farmers Support"
+        ],
+        "answer": 0,
+        "why": "The CCRAS Spark 5.0 and CCRAS Ayushodh 2026 initiatives aim to invigorate Ayurvedic research and innovation."
+      },
+      {
+        "q": "What is the objective of the collaboration between national law universities?",
+        "options": [
+          "Promote Ayurveda",
+          "Resolve pending criminal cases",
+          "Support sugarcane farmers",
+          "Enhance telecommunications standards"
+        ],
+        "answer": 1,
+        "why": "The collaboration aims to resolve pending criminal cases in hotspot districts to expedite the judicial process."
+      },
+      {
+        "q": "With which country did India review its bilateral trade and economic cooperation?",
+        "options": [
+          "Bangladesh",
+          "Nepal",
+          "Brunei Darussalam",
+          "Sri Lanka"
+        ],
+        "answer": 2,
+        "why": "India and Brunei Darussalam reviewed their bilateral trade and economic cooperation during their meeting."
+      },
+      {
+        "q": "Where was 'World Standards Day 2026' celebrated?",
+        "options": [
+          "New Delhi",
+          "Mumbai",
+          "Vijayawada",
+          "Bangalore"
+        ],
+        "answer": 0,
+        "why": "'World Standards Day 2026' was celebrated in New Delhi, emphasizing India's role in global telecommunications standardization."
+      },
+      {
+        "q": "What has the government formed to address issues concerning sugarcane farmers?",
+        "options": [
+          "Digital web portal",
+          "Research committee",
+          "Investigative committee",
+          "Judicial committee"
+        ],
+        "answer": 2,
+        "why": "The government has formed an investigative committee to address issues concerning sugarcane farmers and the sugar industry."
+      },
+      {
+        "q": "Who launched a digital web portal for analyzing demographic changes?",
+        "options": [
+          "President Droupadi Murmu",
+          "Justice Prakash Prabhakar Nawlekar",
+          "NCISM President",
+          "RDI Scheme Committee"
+        ],
+        "answer": 1,
+        "why": "Retired Justice Prakash Prabhakar Nawlekar launched a digital web portal for the committee addressing demographic changes."
+      },
+      {
+        "q": "What is a goal of initiatives aimed at promoting Ayurveda mentioned in the article?",
+        "options": [
+          "Reducing unemployment",
+          "Integrating with modern scientific approaches",
+          "Expanding export markets",
+          "Enhancing crop yields"
+        ],
+        "answer": 1,
+        "why": "The initiatives aim to invigorate traditional medicine through research and integrate it with modern scientific approaches."
+      },
+      {
+        "q": "What is a significant aspect of the initiatives discussed in the article?",
+        "options": [
+          "Fostering economic growth",
+          "Promoting foreign tourism",
+          "Increasing government revenue",
+          "Strengthening military capabilities"
+        ],
+        "answer": 0,
+        "why": "The initiatives are aimed at enhancing various sectors and are crucial for job creation and economic growth."
+      }
+    ]
+  },
+  {
+    "id": "current-affairs-quiz-2026-10-14",
+    "date": "2026-10-14",
+    "digest_id": "current-affairs-2026-10-14",
+    "title": "Current Affairs Quiz 14 October 2026",
+    "questions": [
+      {
+        "q": "किस केंद्रीय मंत्री की पहल पर 'राष्ट्रीय सरस मेला' का आयोजन किया जा रहा है?",
+        "options": [
+          "श्रीमती द्रौपदी मुर्मु",
+          "श्री शिवराज सिंह चौहान",
+          "रक्षा मंत्री",
+          "सीएसआईआर के अध्यक्ष"
+        ],
+        "answer": 1,
+        "why": "यह मेले का आयोजन केंद्रीय minister श्री शिवराज सिंह चौहान की पहल पर हो रहा है।"
+      },
+      {
+        "q": "राष्ट्रीय सरस मेला का उद्घाटन कब किया जाएगा?",
+        "options": [
+          "15 अक्टूबर",
+          "14 अक्टूबर",
+          "16 अक्टूबर",
+          "20 अक्टूबर"
+        ],
+        "answer": 0,
+        "why": "उद्घाटन राष्ट्रपति श्रीमती द्रौपदी मुर्मु 15 अक्टूबर को करेंगी।"
+      },
+      {
+        "q": "आरडीआई स्कीम में कौन से क्षेत्र शामिल किए गए हैं?",
+        "options": [
+          "सूचना प्रौद्योगिकी",
+          "एडवांस्ड केमिकल्स",
+          "कृषि",
+          "स्वास्थ्य सेवाएँ"
+        ],
+        "answer": 1,
+        "why": "एडवांस्ड केमिकल्स, पेट्रोकेमिकल्स और मटीरियल टेक्नोलॉजीज को आरडीआई स्कीम में शामिल किया गया है।"
+      },
+      {
+        "q": "आयुर्वेद अनुसंधान को प्रोत्साहन देने के लिए किसने सीसीआरएएस स्पार्क 5.0 का शुभारंभ किया?",
+        "options": [
+          "रक्षा मंत्री",
+          "एनसीआईएसएम अध्यक्ष",
+          "मुख्यमंत्री",
+          "संसदीय सचिव"
+        ],
+        "answer": 1,
+        "why": "आयुर्वेद अनुसंधान एवं नवाचार को मजबूत करने के लिए एनसीआईएसएम अध्यक्ष ने सीसीआरएएस स्पार्क 5.0 का शुभारंभ किया।"
+      },
+      {
+        "q": "सरकार ने न्यायपालिका की क्षमता में सुधार के लिए किसकी सहायता मांगी?",
+        "options": [
+          "राष्ट्रीय विधि विश्वविद्यालयों",
+          "केंद्र सरकार",
+          "राज्य सरकार",
+          "स्थानीय प्रशासन"
+        ],
+        "answer": 0,
+        "why": "सरकार ने हॉटस्पॉट जिलों में लंबित आपराधिक मुकदमों के निपटारे के लिए राष्ट्रीय विधि विश्वविद्यालयों को एकजुट किया है।"
+      },
+      {
+        "q": "रक्षा मंत्री ने किस क्षेत्र और संस्थान के बीच सहयोग बढ़ाने का सुझाव दिया?",
+        "options": [
+          "शिक्षा",
+          "स्वास्थ्य",
+          "कृषि",
+          "विज्ञान"
+        ],
+        "answer": 0,
+        "why": "रक्षा मंत्री ने रक्षा क्षेत्र और शिक्षा के बीच सहयोग बढ़ाने की आवश्यकता बताई है।"
+      },
+      {
+        "q": "भारत ने किस कार्यक्रम के जरिए 'ग्लोबल साउथ' के साथ विज्ञान साझेदारी को मजबूत किया?",
+        "options": [
+          "सीएसआईआर तकनीक परिचय कार्यक्रम",
+          "राष्ट्रीय विकास कार्यक्रम",
+          "आयुर्वेद अनुसंधान कार्यक्रम",
+          "रक्षा सहयोग कार्यक्रम"
+        ],
+        "answer": 0,
+        "why": "भारत ने विदेश मंत्रालय – सीएसआईआर तकनीक परिचय कार्यक्रम के ज़रिए यह साझेदारी मजबूत की है।"
+      },
+      {
+        "q": "स्वच्छता ही सेवा अभियान के तहत किस विभाग ने श्रमदान कार्यक्रम का आयोजन किया?",
+        "options": [
+          "शिक्षा विभाग",
+          "सामाजिक कल्याण विभाग",
+          "रक्षा लेखा विभाग",
+          "स्वास्थ्य विभाग"
+        ],
+        "answer": 2,
+        "why": "दिव्य लेखा विभाग ने 'स्वच्छता ही सेवा' अभियान के तहत यह कार्यक्रम आयोजित किया है।"
+      },
+      {
+        "q": "एमसीएल ने सीएसआर परियोजनाओं के लिए कितनी राशि का निवेश करने का वादा किया?",
+        "options": [
+          "10 करोड़ रुपये",
+          "22.64 करोड़ रुपये",
+          "30 करोड़ रुपये",
+          "15 करोड़ रुपये"
+        ],
+        "answer": 1,
+        "why": "एमसीएल ने सुंदरगढ़ जिले में पांच सीएसआर परियोजनाओं के लिए 22.64 करोड़ रुपये की प्रतिबद्धता जताई है।"
+      }
+    ]
+  }
+]
