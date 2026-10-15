@@ -82,6 +82,19 @@ function loadPosted() {
   } catch { return new Set(); }
 }
 
+const UPD_ICON = { result: "✅ RESULT", "admit-card": "🎫 ADMIT CARD", "answer-key": "🔑 ANSWER KEY", "exam-date": "🗓 EXAM DATE" };
+function updMessage(u) {
+  const L = [`<b>${UPD_ICON[u.type] || "📢 UPDATE"}</b>`, `<b>${esc(u.title)}</b>`, ""];
+  if (u.summary) L.push(esc(String(u.summary).slice(0, 280)), "");
+  L.push(`📥 How to download + official link:`, `${SITE}/updates/${u.id}/`, "", `— ${esc(BRAND)}`);
+  return L.join("\n");
+}
+function quizMessage(z) {
+  const q = z.questions[0];
+  return [`<b>🧠 ${esc(z.title)}</b>`, "", `Q1. ${esc(q.q)}`, ...q.options.map((o, i) => `${"ABCD"[i]}) ${esc(o)}`), "",
+    `Answer + ${z.questions.length - 1} more questions 👇`, `${SITE}/quiz/${z.id}/`, "", `— ${esc(BRAND)}`].join("\n");
+}
+
 async function main() {
   if (!TOKEN || !CHAT) {
     console.log("Telegram: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set — skipping (see telegram-post.js header for setup).");
@@ -99,10 +112,7 @@ async function main() {
     ids = fs.readFileSync(NEWURLS, "utf8").split("\n")
       .map((u) => (u.match(/\/jobs\/([^/]+)\//) || [])[1]).filter(Boolean);
   } catch { /* no new-urls this run */ }
-  if (!ids.length) {
-    ids = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""))
-      .map((j) => j.id).slice(0, 20);
-  }
+  // Only this run's new jobs are posted (no "newest 20" fallback — that re-posted old jobs).
 
   const queue = [];
   for (const id of ids) {
@@ -112,7 +122,29 @@ async function main() {
     if (queue.length >= MAX_POSTS) break;
   }
 
-  if (!queue.length) { console.log("Telegram: nothing new to post."); return; }
+  // Results, admit cards, answer keys and the daily quiz from this run
+  let updates = [], quiz = [];
+  try { updates = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "updates.json"), "utf8")); } catch {}
+  try { quiz = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "quiz.json"), "utf8")); } catch {}
+  let newUrls = []; try { newUrls = fs.readFileSync(NEWURLS, "utf8").split("\n"); } catch {}
+  const extra = [];
+  for (const u of newUrls) {
+    let m = u.match(/\/updates\/([^/]+)\//);
+    if (m) { const x = updates.find((y) => y.id === m[1]); if (x && !posted.has("u:" + x.id)) extra.push({ key: "u:" + x.id, text: updMessage(x), title: x.title }); continue; }
+    m = u.match(/\/quiz\/([^/]+)\//);
+    if (m) { const z = quiz.find((y) => y.id === m[1]); if (z && z.questions && z.questions.length && !posted.has("q:" + z.id)) extra.push({ key: "q:" + z.id, text: quizMessage(z), title: z.title }); }
+  }
+  const MAX_EXTRA = Number(process.env.TELEGRAM_MAX_UPDATES || CONFIG.maxTelegramUpdatesPerRun || 8);
+  let sentExtra = 0;
+  for (const it of extra.slice(0, MAX_EXTRA)) {
+    const r = await send(it.text);
+    if (r.ok) { posted.add(it.key); sentExtra++; console.log(`  ✓ ${it.title}`); }
+    else { console.log(`  ✗ HTTP ${r.status} ${r.why}`); if (r.status === 401 || r.status === 403 || r.status === 400) break; }
+    await new Promise((res) => setTimeout(res, 3500));
+  }
+  if (sentExtra) { fs.writeFileSync(POSTED, JSON.stringify([...posted].slice(-3000), null, 2) + "\n"); console.log(`Telegram: posted ${sentExtra} update/quiz message(s).`); }
+
+  if (!queue.length) { console.log("Telegram: no new jobs to post."); return; }
   console.log(`Telegram: posting ${queue.length} job(s) to ${CHAT}`);
 
   let sent = 0;
@@ -128,7 +160,7 @@ async function main() {
 
   if (sent) {
     // Keep the last 2000 ids so the file stays small.
-    fs.writeFileSync(POSTED, JSON.stringify([...posted].slice(-2000), null, 2) + "\n");
+    fs.writeFileSync(POSTED, JSON.stringify([...posted].slice(-3000), null, 2) + "\n");
     console.log(`Telegram: posted ${sent} job(s).`);
   }
 }

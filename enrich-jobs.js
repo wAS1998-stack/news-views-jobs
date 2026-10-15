@@ -147,6 +147,26 @@ async function hindiUpdate(u) {
   return hi;
 }
 
+
+/* ---- pass 5: Search Console opportunities --------------------------------
+   Pages Google already shows at positions 4–20 get FAQ answers written for the
+   exact searches people used — answered ONLY from the page's own facts. */
+const MAX_SEO = Number(process.env.SEO_MAX || C.maxSeoPerRun || 10);
+async function searchFaq(entry, queries, kind) {
+  const facts = kind === "job"
+    ? { title: entry.title, organization: entry.organization, post: entry.post_name, vacancies: entry.total_vacancies, qualification: entry.qualification,
+        age: entry.age_max ? `${entry.age_min || ""}-${entry.age_max}` : "", start: entry.application_start, last_date: entry.application_end, exam_date: entry.exam_date,
+        fee: entry.fee, salary: entry.salary, location: entry.location, selection: entry.selection_process, how_to_apply: entry.how_to_apply, summary: entry.summary,
+        official_website: entry.official_website || entry.apply_link }
+    : { title: entry.title, organization: entry.organization, exam: entry.exam_name, date: entry.event_date || entry.date, summary: entry.summary, steps: entry.steps, details: entry.details, official: entry.official_link || entry.official_website };
+  const prompt = `People reached this page on Google with the search queries listed below. For each query that can be answered from the FACTS, write one FAQ item: ` +
+    `"q" = a natural question phrased the way the searcher meant it (in the same language as the query — Hindi queries get Hindi answers), "a" = a direct 1–3 sentence answer using ONLY the facts. ` +
+    `If a fact needed for an answer is missing, say candidates should check the official notification — never guess numbers or dates. Skip queries that are unrelated to this page. ` +
+    `Return ONLY JSON: {"faq":[{"q":"...","a":"..."}]} with at most 6 items.\n\nQUERIES:\n${queries.map((x) => "- " + x.q).join("\n")}\n\nFACTS:\n${JSON.stringify(facts)}`;
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 1500 }));
+  return L.faqArr(o && o.faq, 6);
+}
+
 async function main() {
   let jobs = [], updates = [];
   try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { console.log("Enrich: cannot read jobs.json"); return; }
@@ -226,6 +246,26 @@ async function main() {
       console.log(`  ✓ hindi update: ${hi.title}`);
       await sleep(400);
     }
+  }
+
+  // Pass 5 — Search Console opportunities (only when gsc.json has data)
+  if (L.AI) {
+    let gsc = null; try { gsc = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "gsc.json"), "utf8")); } catch {}
+    const opp = (gsc && gsc.opportunities) || [];
+    const fresh = (x) => x.faq_search_at && (Date.now() - new Date(x.faq_search_at).getTime()) < 14 * 86400000;
+    let done = 0;
+    for (const o of opp) {
+      if (done >= MAX_SEO) break;
+      const m = o.page.match(/^\/(jobs|updates)\/([^/]+)\/$/); if (!m || !(o.queries || []).length) continue;
+      const entry = m[1] === "jobs" ? jobs.find((j) => j.id === m[2]) : updates.find((u) => u.id === m[2]);
+      if (!entry || fresh(entry)) continue;
+      const faq = await searchFaq(entry, o.queries, m[1] === "jobs" ? "job" : "update");
+      entry.faq_search_at = new Date().toISOString().slice(0, 10);
+      if (faq.length) { entry.faq_search = faq; console.log(`  ✓ search FAQ (${faq.length}) for ${o.page} [pos ${o.position}, ${o.impressions} impr]`); }
+      if (m[1] === "jobs") jobsDirty = true; else updDirty = true;
+      done++; await sleep(400);
+    }
+    stats.searchFaqPages = done; stats.opportunities = opp.length;
   }
 
   if (jobsDirty) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");

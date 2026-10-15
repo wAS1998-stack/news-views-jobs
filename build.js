@@ -595,7 +595,7 @@ function buildUpdatePage(u, all) {
   const rel = all.filter((x) => x.id !== u.id && (x.org_short === u.org_short || x.type === u.type)).slice(0, 4);
   const relJobs = (typeof ALL_JOBS !== "undefined" ? ALL_JOBS : []).filter((j) => (j.org_short || j.organization) === (u.org_short || u.organization)).slice(0, 2);
   const details = Array.isArray(u.details) ? u.details.filter(Boolean) : [];
-  const faqs = Array.isArray(u.faq) ? u.faq.filter((f) => f && f.q && f.a) : [];
+  const faqs = [...(Array.isArray(u.faq_search) ? u.faq_search : []), ...(Array.isArray(u.faq) ? u.faq : [])].filter((f) => f && f.q && f.a).slice(0, 10);
   const AGG = /(rajsarkariresult|govtjobsblog|govtjobsdiary|sarkarifeed|gulfjobvacancy|gulfwalkin|gccwalkins|sarkariresult|freejobalert)\./i;
   const titleHost = (String(u.title).match(/\b(?:at|on|from|via)\s+((?:[a-z0-9-]+\.)+(?:gov\.in|nic\.in|ac\.in|edu\.in|res\.in|org\.in|co\.in|gov|org|in|com|net))\b/i) || [])[1];
   const official = (u.official_link && !AGG.test(u.official_link)) ? u.official_link
@@ -1416,6 +1416,12 @@ function salaryProse(job) {
   return `<p>Selected candidates will receive a pay of <strong>${esc(job.salary)}</strong>. Government employees are also generally entitled to allowances such as Dearness Allowance (DA), House Rent Allowance (HRA) and other benefits applicable to the post and pay level.</p>`;
 }
 function faqsFor(job) {
+  const searchFaq = Array.isArray(job.faq_search) ? job.faq_search.filter((x) => x && x.q && x.a) : [];
+  const base = faqsBase(job);
+  const seen = new Set(searchFaq.map((x) => x.q.toLowerCase()));
+  return [...searchFaq, ...base.filter((x) => !seen.has(x.q.toLowerCase()))].slice(0, 10);
+}
+function faqsBase(job) {
   const aiFaq = Array.isArray(job.faq) ? job.faq : (Array.isArray(job.faqs) ? job.faqs : null);
   if (aiFaq && aiFaq.length) {
     const cleaned = aiFaq
