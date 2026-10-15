@@ -2,9 +2,9 @@ name: Update jobs
 
 on:
   schedule:
-    # Every 3 hours at :17 (GitHub drops/delays many runs scheduled on the hour
-    # or half hour, so an odd minute and extra slots keep the site fresh).
-    - cron: "17 */3 * * *"
+    # Every 2 hours at :17 (off-peak minute; GitHub drops many on-the-hour runs).
+    # 12 runs/day keeps site builds within Cloudflare Pages' free 500/month.
+    - cron: "17 */2 * * *"
   workflow_dispatch:
     inputs:
       enrich_links:
@@ -52,6 +52,15 @@ jobs:
           HAS_TELEGRAM: ${{ secrets.TELEGRAM_BOT_TOKEN != '' && secrets.TELEGRAM_CHAT_ID != '' }}
           HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ZONE_ID != '' }}
         run: node fetch-jobs.js
+
+      - name: Install PDF reader for official notices
+        run: npm install --no-save --no-audit --no-fund pdf-parse@1.1.1 >/dev/null 2>&1 || echo "pdf-parse unavailable — PDFs read by title only"
+
+      - name: Watch official websites (central + every state PSC / SSB / police board)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node watch.js
 
       - name: Search Console sync (sitemap submit + performance + opportunities, once a day)
         env:
@@ -144,7 +153,7 @@ jobs:
         run: |
           git add data/posted.json
           if git diff --cached --quiet; then echo "Nothing to save."; exit 0; fi
-          git commit -q -m "Auto: telegram posted-history"
+          git commit -q -m "Auto: telegram posted-history [CF-Pages-Skip]"
           for i in 1 2 3; do
             git fetch -q origin main
             if git rebase -X theirs origin/main && git push -q origin HEAD:main; then echo "Saved."; exit 0; fi

@@ -32,7 +32,10 @@ const SOURCES = path.join(ROOT, "data", "sources.json");
 const UPDATES = path.join(ROOT, "data", "updates.json");
 function classify(title) {
   const s = String(title || "");
-  if (/answer key/i.test(s)) return "answer-key";
+  if (/answer key|उत्तर कुंजी|आंसर की|उत्तर-कुंजी/i.test(s)) return "answer-key";
+  if (/प्रवेश ?पत्र|एडमिट कार्ड|हॉल टिकट/i.test(s)) return "admit-card";
+  if (/परिणाम|रिजल्ट|मेरिट सूची|चयन सूची|कट ?ऑफ/i.test(s)) return "result";
+  if (/परीक्षा (तिथि|कार्यक्रम)|साक्षात्कार (कार्यक्रम|तिथि)/i.test(s)) return "exam-date";
   if (/admit card|call letter|hall ticket|city intimation|exam city/i.test(s)) return "admit-card";
   if (/result|merit list|cut ?off|shortlist/i.test(s)) return "result";
   if (/exam date|exam schedule|exam from|interview schedule|interview date|dv schedule|document verification|\bdv date|walk-?in date|exam city/i.test(s)) return "exam-date";

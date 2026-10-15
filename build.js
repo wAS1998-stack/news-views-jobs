@@ -627,6 +627,7 @@ function buildUpdatePage(u, all) {
   <article>
     <p class="eyebrow"><span class="upd-type upd-${u.type}">${typeLabel}</span> &middot; ${esc(u.org_short || u.organization)} &middot; ${fmtDate(u.date)}${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</p>
     <h1>${esc(u.title)}</h1>
+    ${u.via === "official" ? `<p class="verified">✓ Verified from the official website — <a href="${esc(u.official_link || u.link)}" rel="nofollow noopener" target="_blank">${esc(hostOf(u.official_link || u.link))}</a></p>` : ""}
     <div class="prose">
       <p class="lede">${esc(u.summary)}</p>
       ${u.summary_hi ? `<p class="hindi" lang="hi">${esc(u.summary_hi)}</p>` : ""}
@@ -1235,6 +1236,7 @@ function buildJob(job, all) {
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h1>${esc(job.title)}</h1>
+    ${job.via === "official" ? `<p class="verified">✓ Verified from the official website${job.official_website ? ` — <a href="${esc(job.official_website)}" rel="nofollow noopener" target="_blank">${esc(hostOf(job.official_website))}</a>` : ""}</p>` : ""}
     ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> The last date to apply was ${fmtDate(job.application_end)}. This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
     <p class="lede">${esc(job.summary || "")}</p>
     ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}

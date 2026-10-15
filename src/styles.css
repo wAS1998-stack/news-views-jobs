@@ -803,3 +803,5 @@ html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
 .exam-timeline li:last-child { border-bottom: 0; }
 .exam-timeline .when { color: var(--muted); font-size: .82rem; white-space: nowrap; }
 .upd-type.upd-job { background: #EAF6F0; color: var(--green); }
+.verified { display: inline-block; margin: 2px 0 10px; padding: 4px 12px; border-radius: 999px; background: #EAF6F0; color: var(--green); font-weight: 600; font-size: .86rem; }
+.verified a { color: var(--green); }

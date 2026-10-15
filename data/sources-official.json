@@ -1,0 +1,377 @@
+{
+ "_note": "Official recruitment websites watched by watch.js. data/last-run.json -> watch.sources shows each one's health. Add or fix URLs here.",
+ "sources": [
+  {
+   "id": "upsc",
+   "name": "UPSC",
+   "state": "Central",
+   "url": "https://upsc.gov.in/whats-new"
+  },
+  {
+   "id": "ssc",
+   "name": "Staff Selection Commission",
+   "state": "Central",
+   "url": "https://ssc.gov.in/"
+  },
+  {
+   "id": "ibps",
+   "name": "IBPS",
+   "state": "Central",
+   "url": "https://www.ibps.in/"
+  },
+  {
+   "id": "nta",
+   "name": "National Testing Agency",
+   "state": "Central",
+   "url": "https://nta.ac.in/"
+  },
+  {
+   "id": "rbi",
+   "name": "RBI Opportunities",
+   "state": "Central",
+   "url": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx"
+  },
+  {
+   "id": "dsssb",
+   "name": "DSSSB",
+   "state": "Delhi",
+   "url": "https://dsssb.delhi.gov.in/"
+  },
+  {
+   "id": "kvs",
+   "name": "Kendriya Vidyalaya Sangathan",
+   "state": "Central",
+   "url": "https://kvsangathan.nic.in/"
+  },
+  {
+   "id": "nvs",
+   "name": "Navodaya Vidyalaya Samiti",
+   "state": "Central",
+   "url": "https://navodaya.gov.in/"
+  },
+  {
+   "id": "ctet",
+   "name": "CTET (CBSE)",
+   "state": "Central",
+   "url": "https://ctet.nic.in/"
+  },
+  {
+   "id": "aiims",
+   "name": "AIIMS Exams",
+   "state": "Central",
+   "url": "https://www.aiimsexams.ac.in/"
+  },
+  {
+   "id": "army",
+   "name": "Join Indian Army",
+   "state": "Central",
+   "url": "https://joinindianarmy.nic.in/"
+  },
+  {
+   "id": "navy",
+   "name": "Join Indian Navy",
+   "state": "Central",
+   "url": "https://www.joinindiannavy.gov.in/"
+  },
+  {
+   "id": "iaf-agniveer",
+   "name": "IAF Agniveervayu",
+   "state": "Central",
+   "url": "https://agnipathvayu.cdac.in/"
+  },
+  {
+   "id": "rrb-cdg",
+   "name": "RRB Chandigarh",
+   "state": "Central",
+   "url": "https://www.rrbcdg.gov.in/"
+  },
+  {
+   "id": "rrb-mumbai",
+   "name": "RRB Mumbai",
+   "state": "Central",
+   "url": "https://www.rrbmumbai.gov.in/"
+  },
+  {
+   "id": "rrb-patna",
+   "name": "RRB Patna",
+   "state": "Central",
+   "url": "https://www.rrbpatna.gov.in/"
+  },
+  {
+   "id": "rrb-chennai",
+   "name": "RRB Chennai",
+   "state": "Central",
+   "url": "https://www.rrbchennai.gov.in/"
+  },
+  {
+   "id": "indiapost-gds",
+   "name": "India Post GDS",
+   "state": "Central",
+   "url": "https://indiapostgdsonline.gov.in/"
+  },
+  {
+   "id": "ncs",
+   "name": "National Career Service",
+   "state": "Central",
+   "url": "https://www.ncs.gov.in/"
+  },
+  {
+   "id": "uppsc",
+   "name": "UPPSC",
+   "state": "Uttar Pradesh",
+   "url": "https://uppsc.up.nic.in/"
+  },
+  {
+   "id": "bpsc",
+   "name": "BPSC",
+   "state": "Bihar",
+   "url": "https://bpsc.bihar.gov.in/"
+  },
+  {
+   "id": "rpsc",
+   "name": "RPSC",
+   "state": "Rajasthan",
+   "url": "https://rpsc.rajasthan.gov.in/"
+  },
+  {
+   "id": "mppsc",
+   "name": "MPPSC",
+   "state": "Madhya Pradesh",
+   "url": "https://mppsc.mp.gov.in/"
+  },
+  {
+   "id": "mpsc",
+   "name": "MPSC",
+   "state": "Maharashtra",
+   "url": "https://mpsc.gov.in/"
+  },
+  {
+   "id": "tnpsc",
+   "name": "TNPSC",
+   "state": "Tamil Nadu",
+   "url": "https://www.tnpsc.gov.in/"
+  },
+  {
+   "id": "kpsc",
+   "name": "KPSC",
+   "state": "Karnataka",
+   "url": "https://kpsc.kar.nic.in/"
+  },
+  {
+   "id": "appsc",
+   "name": "APPSC",
+   "state": "Andhra Pradesh",
+   "url": "https://psc.ap.gov.in/"
+  },
+  {
+   "id": "tgpsc",
+   "name": "TGPSC",
+   "state": "Telangana",
+   "url": "https://www.tgpsc.gov.in/"
+  },
+  {
+   "id": "wbpsc",
+   "name": "WBPSC",
+   "state": "West Bengal",
+   "url": "https://psc.wb.gov.in/"
+  },
+  {
+   "id": "opsc",
+   "name": "OPSC",
+   "state": "Odisha",
+   "url": "https://www.opsc.gov.in/"
+  },
+  {
+   "id": "hpsc",
+   "name": "HPSC",
+   "state": "Haryana",
+   "url": "https://hpsc.gov.in/"
+  },
+  {
+   "id": "hppsc",
+   "name": "HPPSC",
+   "state": "Himachal Pradesh",
+   "url": "https://www.hppsc.hp.gov.in/"
+  },
+  {
+   "id": "ukpsc",
+   "name": "UKPSC",
+   "state": "Uttarakhand",
+   "url": "https://psc.uk.gov.in/"
+  },
+  {
+   "id": "jpsc",
+   "name": "JPSC",
+   "state": "Jharkhand",
+   "url": "https://www.jpsc.gov.in/"
+  },
+  {
+   "id": "cgpsc",
+   "name": "CGPSC",
+   "state": "Chhattisgarh",
+   "url": "https://psc.cg.gov.in/"
+  },
+  {
+   "id": "gpsc",
+   "name": "GPSC",
+   "state": "Gujarat",
+   "url": "https://gpsc.gujarat.gov.in/"
+  },
+  {
+   "id": "keralapsc",
+   "name": "Kerala PSC",
+   "state": "Kerala",
+   "url": "https://www.keralapsc.gov.in/"
+  },
+  {
+   "id": "ppsc",
+   "name": "PPSC",
+   "state": "Punjab",
+   "url": "https://ppsc.gov.in/"
+  },
+  {
+   "id": "apsc",
+   "name": "APSC",
+   "state": "Assam",
+   "url": "https://apsc.nic.in/"
+  },
+  {
+   "id": "jkpsc",
+   "name": "JKPSC",
+   "state": "Jammu & Kashmir",
+   "url": "https://jkpsc.nic.in/"
+  },
+  {
+   "id": "goapsc",
+   "name": "Goa PSC",
+   "state": "Goa",
+   "url": "https://gpsc.goa.gov.in/"
+  },
+  {
+   "id": "upsssc",
+   "name": "UPSSSC",
+   "state": "Uttar Pradesh",
+   "url": "https://upsssc.gov.in/"
+  },
+  {
+   "id": "rssb",
+   "name": "RSSB (RSMSSB)",
+   "state": "Rajasthan",
+   "url": "https://rssb.rajasthan.gov.in/"
+  },
+  {
+   "id": "esb-mp",
+   "name": "MP ESB",
+   "state": "Madhya Pradesh",
+   "url": "https://esb.mp.gov.in/"
+  },
+  {
+   "id": "bssc",
+   "name": "BSSC",
+   "state": "Bihar",
+   "url": "https://bssc.bihar.gov.in/"
+  },
+  {
+   "id": "hssc",
+   "name": "HSSC",
+   "state": "Haryana",
+   "url": "https://hssc.gov.in/"
+  },
+  {
+   "id": "uksssc",
+   "name": "UKSSSC",
+   "state": "Uttarakhand",
+   "url": "https://sssc.uk.gov.in/"
+  },
+  {
+   "id": "jssc",
+   "name": "JSSC",
+   "state": "Jharkhand",
+   "url": "https://jssc.jharkhand.gov.in/"
+  },
+  {
+   "id": "osssc",
+   "name": "OSSSC",
+   "state": "Odisha",
+   "url": "https://www.osssc.gov.in/"
+  },
+  {
+   "id": "gsssb",
+   "name": "GSSSB",
+   "state": "Gujarat",
+   "url": "https://gsssb.gujarat.gov.in/"
+  },
+  {
+   "id": "sssb-punjab",
+   "name": "PSSSB",
+   "state": "Punjab",
+   "url": "https://sssb.punjab.gov.in/"
+  },
+  {
+   "id": "hprca",
+   "name": "HPRCA",
+   "state": "Himachal Pradesh",
+   "url": "https://hprca.hp.gov.in/"
+  },
+  {
+   "id": "jkssb",
+   "name": "JKSSB",
+   "state": "Jammu & Kashmir",
+   "url": "https://jkssb.nic.in/"
+  },
+  {
+   "id": "kea",
+   "name": "KEA",
+   "state": "Karnataka",
+   "url": "https://cetonline.karnataka.gov.in/kea/"
+  },
+  {
+   "id": "wbssc",
+   "name": "WBSSC",
+   "state": "West Bengal",
+   "url": "https://www.westbengalssc.com/"
+  },
+  {
+   "id": "dsssb2",
+   "name": "Delhi Subordinate (DSSSB results)",
+   "state": "Delhi",
+   "url": "https://dsssb.delhi.gov.in/notices-and-results"
+  },
+  {
+   "id": "uppbpb",
+   "name": "UP Police Recruitment Board",
+   "state": "Uttar Pradesh",
+   "url": "https://uppbpb.gov.in/"
+  },
+  {
+   "id": "csbc",
+   "name": "CSBC Bihar Police",
+   "state": "Bihar",
+   "url": "https://csbc.bihar.gov.in/"
+  },
+  {
+   "id": "bpssc",
+   "name": "BPSSC Bihar",
+   "state": "Bihar",
+   "url": "https://bpssc.bihar.gov.in/"
+  },
+  {
+   "id": "tnusrb",
+   "name": "TNUSRB",
+   "state": "Tamil Nadu",
+   "url": "https://www.tnusrb.tn.gov.in/"
+  },
+  {
+   "id": "tslprb",
+   "name": "TSLPRB",
+   "state": "Telangana",
+   "url": "https://www.tgprb.in/"
+  },
+  {
+   "id": "slprb-ap",
+   "name": "SLPRB AP",
+   "state": "Andhra Pradesh",
+   "url": "https://slprb.ap.gov.in/"
+  }
+ ]
+}
