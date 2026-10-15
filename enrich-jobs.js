@@ -101,7 +101,12 @@ async function enrichContent(job) {
 /* ---- pass 4: Hindi edition (grounded translation, never new facts) ----- */
 const MAX_HI_JOBS = Number(process.env.HINDI_JOBS || C.maxHindiJobsPerRun || 25);
 const MAX_HI_UPD = Number(process.env.HINDI_UPDATES || C.maxHindiUpdatesPerRun || 25);
-const devanagariShare = (s) => { const t = String(s || "").replace(/[\s\d\W_]/g, ""); if (!t) return 0; return (t.match(/[ऀ-ॿ]/g) || []).length / t.length; };
+// Share of letters that are Devanagari. (Must not use \W — in JS regex that matches every non-ASCII letter, Hindi included.)
+const devanagariShare = (s) => {
+  const str = String(s || "");
+  const deva = (str.match(/[ऀ-ॿ]/g) || []).length, latin = (str.match(/[A-Za-z]/g) || []).length;
+  return deva + latin ? deva / (deva + latin) : 0;
+};
 const HI_RULES = `Translate into natural, simple Hindi (Devanagari) the way leading Indian government-job portals write — clear and conversational, not literary. ` +
   `Keep exam and organisation abbreviations in Latin letters (SSC, UPSC, RRB, IBPS, CGL, NTPC, PwBD, OBC, PDF, KB). Keep every number, date, rupee amount, website address and age exactly as given. ` +
   `Do not add, drop or change any fact. If a field is empty, return an empty string or empty array for it.`;
@@ -228,4 +233,5 @@ async function main() {
   L.logRun("enrich", stats);
   console.log("Enrich:", JSON.stringify(stats));
 }
-main().catch((e) => { console.error(e); process.exit(1); });
+module.exports = { devanagariShare };
+if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
