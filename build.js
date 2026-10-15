@@ -47,6 +47,18 @@ const slug = (s) =>
     .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 const LIB = require("./lib.js");
+/* ---- Organisation key: a clean short name, never a headline ---- */
+const ORG_JUNK = /recruitment|apply|vacanc|notification|\bjobs?\b|walk-?in|careers?|\[|\]|\||admit|result|\d{3,}|online|offline|interview/i;
+function orgKey(job) {
+  const clean = (x) => String(x || "").replace(/\s+/g, " ").trim();
+  const a = clean(job.org_short);
+  if (a && a.length <= 22 && !ORG_JUNK.test(a)) return a;
+  const b = clean(job.organization).replace(/\s*\(.*?\)\s*/g, " ").trim();
+  if (b && b.length <= 45 && !ORG_JUNK.test(b)) return b;
+  const c = clean(LIB.orgFromTitle(job.title));
+  if (c && c.length <= 30 && !ORG_JUNK.test(c)) return c;
+  return "";
+}
 function hostOf(u) { try { return new URL(u).host.replace(/^www\./, ""); } catch { return ""; } }
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 /* ---- SEO title: short, specific, no empty placeholders (Google shows ~60 chars) ---- */
@@ -368,7 +380,7 @@ function jobCard(job) {
     (job.post_name||"") + " " + levelsOf(job).join(" ")).toLowerCase();
   return `<li><a class="job" href="/jobs/${esc(job.id)}/" data-text="${esc(text)}">
     <div class="job-top">
-      <span class="org-tag">${esc(job.org_short || job.organization)}</span>
+      <span class="org-tag">${esc(orgKey(job) || job.organization)}</span>
       ${qualsOf(job).slice(0,2).map((q)=>`<span class="qual-tag">${esc(q.name)}</span>`).join("")}
       ${isNew(job.published) ? `<span class="new-badge">NEW</span>` : ""}
       <span class="status ${st.cls}">${esc(st.label)}</span>
@@ -958,7 +970,7 @@ function buildCategory(kind, label, slugVal, jobs) {
   const isQ = kind === "qualification";
   const title = isQ
     ? `${label} Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri for ${label} | ${SITE.name}`
-    : `${label} Recruitment ${BUILT.getFullYear()} — Latest ${label} Vacancies | ${SITE.name}`;
+    : (`${label} Recruitment ${BUILT.getFullYear()} — Latest ${label} Vacancies`.length <= 58 ? `${label} Recruitment ${BUILT.getFullYear()} — Latest ${label} Vacancies | ${SITE.name}` : `${label} Recruitment ${BUILT.getFullYear()} — Latest Vacancies | ${SITE.name}`);
   const desc = isQ
     ? `All latest government job notifications for ${label} candidates — vacancies, eligibility and last dates, updated regularly.`
     : `Latest ${label} recruitment notifications — vacancies, eligibility and application dates in one place.`;
@@ -1025,7 +1037,8 @@ function jobLd(job) {
 function relatedList(job, all) {
   const lvls = new Set(levelsOf(job));
   const pool = all.filter((j) => j.id !== job.id);
-  const sameOrg = pool.filter((j) => (j.org_short || j.organization) === (job.org_short || job.organization));
+  const ok = slug(orgKey(job));
+  const sameOrg = ok ? pool.filter((j) => slug(orgKey(j)) === ok) : [];
   const sameLvl = pool.filter((j) => !sameOrg.includes(j) && levelsOf(j).some((l) => lvls.has(l)));
   const picks = [...sameOrg, ...sameLvl].slice(0, 3);
   if (!picks.length) return "";
@@ -1077,7 +1090,7 @@ function prepTips(job) {
   const aiTips = Array.isArray(job.preparation_tips)
     ? job.preparation_tips.map((x) => String(x || "").trim()).filter(Boolean) : [];
   const all = aiTips.length >= 3 ? aiTips.slice(0, 5) : [...extra, ...generic].slice(0, 4);
-  return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(job.org_short || job.organization)} ${esc(job.post_name || "this exam")}</h2>
+  return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(orgKey(job) || job.organization)} ${esc(job.post_name || "this exam")}</h2>
     <p>Preparation for ${esc(job.title)} is most effective when it is planned and consistent. A few practical pointers:</p>
     <ul>${all.map((x) => `<li>${x}</li>`).join("")}</ul>
     <p>For a fuller, step-by-step plan, see the helpful guides linked below — they cover exam strategy, subject-wise tips and common mistakes in detail.</p>
@@ -1104,7 +1117,7 @@ function buildJob(job, all) {
   const faqs = faqsFor(job);
   const ld = [jobLd(job), breadcrumbLd([
     { name: "Jobs", url: SITE.url + "/" },
-    { name: job.org_short || job.organization, url: `${SITE.url}/organization/${slug(job.org_short || job.organization)}/` },
+    ...(ORG_PAGES.has(slug(orgKey(job))) ? [{ name: orgKey(job), url: `${SITE.url}/organization/${slug(orgKey(job))}/` }] : []),
     { name: job.title, url: canonical },
   ])];
   if (faqs.length) ld.push(faqLd(faqs));
@@ -1116,9 +1129,9 @@ function buildJob(job, all) {
 
   return head({ title, desc, canonical, ld, ogType: "article" }) + `
 <main class="wrap" id="main">
-  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(job.org_short || job.organization))
-    ? `<a href="/organization/${slug(job.org_short || job.organization)}/">${esc(job.org_short || job.organization)}</a>`
-    : esc(job.org_short || job.organization)}</p>
+  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(orgKey(job)))
+    ? `<a href="/organization/${slug(orgKey(job))}/">${esc(orgKey(job))}</a>`
+    : esc(orgKey(job) || job.organization)}</p>
   <div class="detail-head">
     <div class="headline-row">
       <span class="org-tag">${esc(job.organization)}</span>
@@ -1648,9 +1661,20 @@ function main() {
       if (!stateMap.has(st.slug)) stateMap.set(st.slug, []);
       stateMap.get(st.slug).push(job);
     }
-    const short = job.org_short || job.organization;
-    if (!orgMap.has(short)) orgMap.set(short, { short, jobs: [] });
-    orgMap.get(short).jobs.push(job);
+  }
+  // Organisation pages: built from ALL jobs (stable URLs), only when an organisation has 2+ jobs —
+  // a one-job "organisation page" is a thin duplicate of the job page.
+  { const tmp = new Map();
+    for (const job of jobs) {
+      const short = orgKey(job); if (!short) continue;
+      const k = slug(short); if (!k) continue;
+      if (!tmp.has(k)) tmp.set(k, { short, jobs: [] });
+      tmp.get(k).jobs.push(job);
+    }
+    for (const [k, o] of tmp) if (o.jobs.length >= 2) {
+      o.jobs.sort((x, y) => (statusOf(x).cls === "closed") - (statusOf(y).cls === "closed") || String(y.published || "").localeCompare(String(x.published || "")));
+      orgMap.set(o.short, o);
+    }
   }
   const qualCounts = new Map(QUALS.map((q) =>
     [q.slug, (levelMap.get(q.slug) || []).filter((j) => statusOf(j).cls !== "closed").length]));
