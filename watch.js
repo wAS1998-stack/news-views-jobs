@@ -130,10 +130,14 @@ async function main() {
 
   // 1) scan every source
   const health = {}, fresh = [];
+  const runNo = (state._run = (state._run || 0) + 1);
   await pool(sources, CONCURRENCY, async (s) => {
     const st = state[s.id] || (state[s.id] = { seen: [], fails: 0 });
+    // Sources failing for a long time are retried every 6th run only, so blocked sites don't slow every run.
+    if ((st.fails || 0) >= 6 && runNo % 6) { health[s.id] = `paused (fails ${st.fails}${st.blocked ? ", geo-blocked" : ""})`; return; }
     try {
-      const { text, url } = await L.fetchText(s.url, 25000);
+      const { text, url, via } = await L.fetchText(s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
+      st.via = via;
       const links = noticeLinks(text, url);
       if (!links.length) { st.fails = (st.fails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails})`; return; }
       const seen = new Set(st.seen);
@@ -141,9 +145,13 @@ async function main() {
       const nu = links.filter((l) => !seen.has(l.key));
       st.seen = [...links.map((l) => l.key), ...st.seen.filter((k) => !links.some((l) => l.key === k))].slice(0, 600);
       st.fails = 0; st.lastOk = today();
-      health[s.id] = baseline ? `baseline ${links.length} links` : `${links.length} links, ${nu.length} new`;
+      health[s.id] = (baseline ? `baseline ${links.length} links` : `${links.length} links, ${nu.length} new`) + ` via ${via}`;
       if (!baseline) for (const l of nu) fresh.push({ src: s, link: l });
-    } catch (e) { st.fails = (st.fails || 0) + 1; health[s.id] = `error: ${String(e.message).slice(0, 120)} (fails ${st.fails})`; }
+    } catch (e) {
+      st.fails = (st.fails || 0) + 1;
+      if (/^direct: .*(UND_ERR_CONNECT_TIMEOUT|ETIMEDOUT|ECONNRESET|timeout)/i.test(String(e.message))) st.blocked = true;   // drops non-Indian networks
+      health[s.id] = `error: ${String(e.message).slice(0, 120)} (fails ${st.fails})`;
+    }
   });
   fs.writeFileSync(STATE, JSON.stringify(state) + "\n");
   console.log(`Watch: ${fresh.length} new official notice link(s).`);

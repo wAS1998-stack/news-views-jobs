@@ -61,21 +61,28 @@ const PROXIES = [
   (u) => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}`,
 ];
 async function tryFetch(url, headers, ms) {
-  const r = await fetch(url, { headers, signal: AbortSignal.timeout(ms), redirect: "follow" });
+  let r;
+  try { r = await fetch(url, { headers, signal: AbortSignal.timeout(ms), redirect: "follow" }); }
+  catch (e) { const c = e.cause && (e.cause.code || e.cause.message); throw new Error(c ? `${e.message} (${c})` : e.message); }
   if (!r.ok) throw new Error("HTTP " + r.status);
   const text = await r.text();
   if (!text || text.length < 200) throw new Error("empty body");
   if (/<title>\s*(Just a moment|Attention Required|Access denied|403 Forbidden)/i.test(text) || /cf-browser-verification|challenge-platform/i.test(text)) throw new Error("bot challenge");
   return { text, type: r.headers.get("content-type") || "", url: r.url || url };
 }
-async function fetchText(url, ms = 20000, { allowProxy = true } = {}) {
+async function fetchText(url, ms = 20000, { allowProxy = true, skipDirect = false, proxyMs } = {}) {
   const errors = [];
-  try { return { ...(await tryFetch(url, HDRS, ms)), via: "direct" }; } catch (e) { errors.push("direct: " + e.message); }
-  await new Promise((r) => setTimeout(r, 800));
-  try { return { ...(await tryFetch(url, { ...HDRS, "user-agent": UA_ALT }, ms)), via: "alt-ua" }; } catch (e) { errors.push("alt-ua: " + e.message); }
+  if (!skipDirect) {
+    try { return { ...(await tryFetch(url, HDRS, ms)), via: "direct" }; } catch (e) { errors.push("direct: " + e.message); }
+    // A connect timeout means the host drops our network (geo-block) — a second UA won't help.
+    if (!/timeout|aborted/i.test(errors[0])) {
+      await new Promise((r) => setTimeout(r, 800));
+      try { return { ...(await tryFetch(url, { ...HDRS, "user-agent": UA_ALT }, ms)), via: "alt-ua" }; } catch (e) { errors.push("alt-ua: " + e.message); }
+    }
+  }
   if (allowProxy) {
     for (const p of PROXIES) {
-      try { const r = await tryFetch(p(url), { "user-agent": UA, accept: "*/*" }, ms + 10000); return { ...r, url, via: new URL(p(url)).host }; }
+      try { const r = await tryFetch(p(url), { "user-agent": UA, accept: "*/*" }, proxyMs || ms + 10000); return { ...r, url, via: new URL(p(url)).host }; }
       catch (e) { errors.push(new URL(p(url)).host + ": " + e.message); }
     }
   }
