@@ -37,7 +37,8 @@ function classify(title) {
   if (/परिणाम|रिजल्ट|मेरिट सूची|चयन सूची|कट ?ऑफ/i.test(s)) return "result";
   if (/परीक्षा (तिथि|कार्यक्रम)|साक्षात्कार (कार्यक्रम|तिथि)/i.test(s)) return "exam-date";
   if (/admit card|call letter|hall ticket|city intimation|exam city/i.test(s)) return "admit-card";
-  if (/result|merit list|cut ?off|shortlist/i.test(s)) return "result";
+  if (/date (change|extended|postponed)|postpone|reschedul|revised (exam )?(date|schedule)|exam.{0,20}date/i.test(s) && !/recruit|advt|advertisement|vacanc/i.test(s)) return "exam-date";
+  if (/result|merit list|rank list|cut[- ]?off|short ?list|marks (obtained|of)|score ?card/i.test(s)) return "result";
   if (/exam date|exam schedule|exam from|interview schedule|interview date|dv schedule|document verification|\bdv date|walk-?in date|exam city/i.test(s)) return "exam-date";
   return "job";
 }

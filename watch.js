@@ -193,13 +193,18 @@ async function main() {
   const fps = new Set([...jobs.map((j) => F.fingerprint(j.title)), ...updates.map((u) => F.fingerprint(u.title))]);
   const added = { jobs: [], updates: [] }, skipped = [];
   if (!L.AI) console.log("Watch: no AI key — new links recorded but not published.");
+  const thisYear = new Date().getFullYear();
   for (const { src, link } of (L.AI ? fresh : []).slice(0, MAX_PUBLISH)) {
     if (existingUrls.has(norm(link.url))) { skipped.push("known url"); continue; }
+    // Old notices re-surfacing on a homepage ("Cut-off Marks (01/2018)") are not news.
+    const years = (link.text.match(/\b(20\d{2})\b/g) || []).map(Number).concat((link.text.match(/\/(\d{2})\b/g) || []).map((x) => 2000 + Number(x.slice(1))).filter((y) => y >= 2010 && y <= thisYear + 1));
+    if (years.length && Math.max(...years) < thisYear - 1) { skipped.push("old notice: " + link.text.slice(0, 50)); continue; }
     const kind = F.classify(link.text);
     const doc = await readDoc(link.url);
     if (kind === "job") {
       const o = await extractJob(src, link, doc);
       if (!o || o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
+      if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) && o.application_end < today()) { skipped.push("already closed: " + o.headline); continue; }
       // A job page needs real substance: a post name AND (vacancies, a last date or an advertisement number).
       if (!o.post_name || !(Number(o.total_vacancies) > 0 || /^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) || o.advt_no)) { skipped.push("too thin: " + link.text.slice(0, 50)); continue; }
       const title = L.cleanTitle(o.headline);
@@ -221,6 +226,7 @@ async function main() {
     } else {
       const o = await extractUpdate(src, link, doc, kind);
       if (!o || o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
+      if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.event_date || "")) && (Date.now() - new Date(o.event_date).getTime()) > 45 * 86400000) { skipped.push("old update: " + o.headline); continue; }
       const title = L.cleanTitle(o.headline);
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
