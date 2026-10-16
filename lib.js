@@ -51,6 +51,60 @@ function orgFromTitle(title) {
   return t.length >= 2 && t.length <= 80 ? t : "";
 }
 
+
+/* ---- incomplete certificate chains ---------------------------------------
+   Several government servers (IBPS, BPSC, state boards) send only their own
+   certificate and omit the intermediate. Browsers fetch the missing intermediate
+   from the "CA Issuers" address inside the certificate (AIA); Node does not.
+   This does the same: read the server's certificate (nothing is sent or trusted),
+   download the issuer certificate(s), then make a FULLY VERIFIED request with
+   them added to the trust chain. Verification is never switched off for content. */
+const AIA_CACHE = new Map();
+function getRaw(url, ms = 15000) {
+  return new Promise((res, rej) => {
+    const mod = url.startsWith("https:") ? require("https") : require("http");
+    const req = mod.get(url, { timeout: ms }, (r) => { const b = []; r.on("data", (c) => b.push(c)); r.on("end", () => res(Buffer.concat(b))); });
+    req.on("error", rej); req.on("timeout", () => req.destroy(new Error("timeout")));
+  });
+}
+function derToPem(der) { return "-----BEGIN CERTIFICATE-----\n" + der.toString("base64").match(/.{1,64}/g).join("\n") + "\n-----END CERTIFICATE-----\n"; }
+function issuerUrl(x509) { const m = String(x509.infoAccess || "").match(/CA Issuers - URI:(\S+)/); return m ? m[1] : null; }
+async function intermediatesFor(host, port = 443) {
+  const ck = host + ":" + port;
+  if (AIA_CACHE.has(ck)) return AIA_CACHE.get(ck);
+  const crypto = require("crypto"), tls = require("tls");
+  const leafDer = await new Promise((res, rej) => {
+    const s = tls.connect({ host, port, servername: host, rejectUnauthorized: false, timeout: 15000 }, () => { const c = s.getPeerCertificate(false); s.end(); res(c && c.raw); });
+    s.on("error", rej); s.on("timeout", () => s.destroy(new Error("timeout")));
+  });
+  const pems = [];
+  let cert = new crypto.X509Certificate(leafDer);
+  for (let i = 0; i < 3; i++) {
+    const u = issuerUrl(cert); if (!u) break;
+    let der = await getRaw(u);
+    if (/^-----BEGIN/.test(der.toString("latin1", 0, 11))) { pems.push(der.toString()); cert = new crypto.X509Certificate(der); }
+    else { try { cert = new crypto.X509Certificate(der); } catch { break; } pems.push(derToPem(der)); }
+    if (cert.issuer === cert.subject) break;   // reached a root
+  }
+  AIA_CACHE.set(ck, pems);
+  return pems;
+}
+async function fetchWithAIA(url, ms = 20000, redirects = 3) {
+  const tls = require("tls"), https = require("https"), fs = require("fs");
+  const u = new URL(url);
+  const extra = process.env.NODE_EXTRA_CA_CERTS && fs.existsSync(process.env.NODE_EXTRA_CA_CERTS) ? [fs.readFileSync(process.env.NODE_EXTRA_CA_CERTS, "utf8")] : [];
+  const ca = [...tls.rootCertificates, ...extra, ...(await intermediatesFor(u.hostname, Number(u.port) || 443))];
+  return new Promise((res, rej) => {
+    const req = https.get(url, { ca, servername: u.hostname, headers: HDRS, timeout: ms }, (r) => {
+      if (r.statusCode >= 300 && r.statusCode < 400 && r.headers.location && redirects > 0) { r.resume(); return res(fetchWithAIA(new URL(r.headers.location, url).href, ms, redirects - 1)); }
+      if (r.statusCode >= 400) { r.resume(); return rej(new Error("HTTP " + r.statusCode)); }
+      const b = []; r.on("data", (c) => b.push(c)); r.on("end", () => res({ buffer: Buffer.concat(b), type: r.headers["content-type"] || "", url }));
+    });
+    req.on("error", rej); req.on("timeout", () => req.destroy(new Error("timeout")));
+  });
+}
+const CHAIN_ERR = /UNABLE_TO_VERIFY_LEAF_SIGNATURE|UNABLE_TO_GET_ISSUER_CERT_LOCALLY|unable to verify the first certificate/i;
+
 /* ---- fetching --------------------------------------------------- */
 /* GitHub Actions runners are often blocked by the bot-protection on the
    source sites, so every fetch has a fallback chain: direct -> alternate UA
@@ -74,6 +128,10 @@ async function fetchText(url, ms = 20000, { allowProxy = true, skipDirect = fals
   const errors = [];
   if (!skipDirect) {
     try { return { ...(await tryFetch(url, HDRS, ms)), via: "direct" }; } catch (e) { errors.push("direct: " + e.message); }
+    if (CHAIN_ERR.test(errors[0])) {
+      try { const r = await fetchWithAIA(url, ms); const text = r.buffer.toString("utf8"); if (text.length > 200) return { text, type: r.type, url: r.url, via: "direct+aia" }; }
+      catch (e) { errors.push("aia: " + e.message); }
+    }
     // A connect timeout means the host drops our network (geo-block) — a second UA won't help.
     if (!/timeout|aborted/i.test(errors[0])) {
       await new Promise((r) => setTimeout(r, 800));
@@ -317,5 +375,5 @@ const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
 const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf/i;
 
-module.exports = { CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+module.exports = { fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL };

@@ -34,8 +34,8 @@ const MAX_PUBLISH = Number(process.env.WATCH_MAX || L.CONFIG.maxWatchPerRun || 2
 const CONCURRENCY = 8;
 const today = () => new Date().toISOString().slice(0, 10);
 
-const KEEP = /recruit|vacanc|advertis|\badvt\b|notification|\bposts?\b|engagement|walk[- ]?in|admit card|hall ?ticket|call letter|e-?admit|result|merit list|select(ed|ion) list|answer key|answer sheet|exam(ination)? (date|schedule|notice|calendar|city)|interview|document verification|\bdv\b|written (test|exam)|\bcbt\b|online application|apply online|भर्ती|विज्ञापन|परिणाम|प्रवेश पत्र|उत्तर कुंजी|परीक्षा|रिक्ति|साक्षात्कार/i;
-const DROP = /tender|quotation|auction|e-?procurement|\brti\b|annual report|budget|press release|gallery|photo|video|holiday|transfer|posting order|promotion order|seniority|pension|salary slip|court case|judgment|archive|old (notices|results)|sitemap|log ?in|sign ?in|register here|contact|disclaimer|screen reader|skip to|privacy|copyright|feedback|grievance|faq|help ?desk|home ?page|click here$|^more$|^view all|^read more|^download$|^new$/i;
+const KEEP = /recruit|vacanc|advertis|\badvt\b|notification|\bnoti\b|category no|cat\.? ?no|\bposts?\b|engagement|walk[- ]?in|admit card|hall ?ticket|call letter|e-?admit|result|merit list|rank ?list|short ?list|select(ed|ion) list|provisional list|final list|score ?card|marks|cut[- ]?off|answer key|answer sheet|exam(ination)? (date|schedule|notice|calendar|city)|time ?table|interview|document verification|\bdv\b|written (test|exam)|\bcbt\b|online application|apply online|assistant|officer|teacher|lecturer|professor|constable|clerk|engineer|inspector|nurse|technician|driver|steno|typist|peon|guard|accountant|pharmacist|librarian|भर्ती|विज्ञापन|विज्ञप्ति|परिणाम|प्रवेश पत्र|उत्तर कुंजी|परीक्षा|रिक्ति|साक्षात्कार|मेरिट/i;
+const DROP = /procedure|guideline|instruction|how to|steps to|user manual|\bhelp\b|scheme of exam|syllabus|exam pattern|calendar of|annual (exam )?calendar|citizen charter|organi[sz]ation chart|who.?s who|\bmission\b|\bvision\b|about us|act and rules|service rules|bye-?laws|office order|\bmeetings?\b|\bminutes\b|newsletter|magazine|tender|quotation|auction|e-?procurement|\brti\b|annual report|budget|press release|gallery|photo|video|holiday|transfer|posting order|promotion order|seniority|pension|salary slip|court case|judgment|archive|old (notices|results)|sitemap|log ?in|sign ?in|register here|contact|disclaimer|screen reader|skip to|privacy|copyright|feedback|grievance|faq|help ?desk|home ?page|click here$|^more$|^view all|^read more|^download$|^new$/i;
 
 const hash = (s) => crypto.createHash("sha1").update(s).digest("hex").slice(0, 16);
 const norm = (u) => String(u || "").replace(/#.*$/, "").replace(/\/+$/, "").toLowerCase();
@@ -57,6 +57,18 @@ async function readDoc(url) {
     const html = await r.text();
     return { text: L.stripTags(html).slice(0, 8000), cands: anchors(html, r.url || url).slice(0, 30).map((a) => ({ url: a.url, text: a.text, pdf: /\.pdf(\?|$)/i.test(a.url) })), pdf: false };
   } catch (e) {
+    const msg = (e.cause && (e.cause.code || e.cause.message)) || e.message;
+    if (L.CHAIN_ERR.test(String(msg))) {   // incomplete certificate chain: fetch the issuer and retry, verified
+      try {
+        const r = await L.fetchWithAIA(url, 25000);
+        if (/pdf/i.test(r.type) || /\.pdf(\?|$)/i.test(url)) {
+          const d = pdfParse ? await pdfParse(r.buffer, { max: 6 }).catch(() => null) : null;
+          return { text: d ? String(d.text).replace(/\s+/g, " ").slice(0, 9000) : "", cands: [], pdf: true };
+        }
+        const html = r.buffer.toString("utf8");
+        return { text: L.stripTags(html).slice(0, 8000), cands: anchors(html, r.url).slice(0, 30).map((a) => ({ url: a.url, text: a.text, pdf: /\.pdf(\?|$)/i.test(a.url) })), pdf: false };
+      } catch { /* fall through */ }
+    }
     try { const { text, url: u } = await L.fetchText(url, 20000); return { text: L.stripTags(text).slice(0, 8000), cands: anchors(text, u).slice(0, 30), pdf: false }; }
     catch { return { text: "", cands: [], pdf: false, error: e.message }; }
   }
@@ -77,11 +89,23 @@ function anchors(html, base) {
   return out;
 }
 
+/* A notice link points at ONE document: a file, or text that names something specific
+   (a number, a year, an advertisement no., or a descriptive phrase). Section pages such as
+   "Notifications", "Interviews", "Answer Keys" are navigation, never publish them. */
+function isSpecific(a) {
+  const text = a.text.trim(), words = text.split(/\s+/).length;
+  const file = /\.(pdf|docx?|xlsx?|jpe?g|png)(\?|$)/i.test(a.url);
+  let pathDigits = false; try { pathDigits = /\d/.test(new URL(a.url).pathname + new URL(a.url).search); } catch {}
+  const textSpecific = /\d/.test(text) || words >= 6;
+  if (file) return words >= 3 || /\d/.test(text);
+  return textSpecific && (pathDigits || words >= 6);
+}
 function noticeLinks(html, base) {
   const seen = new Set(), out = [];
   for (const a of anchors(html, base)) {
     const blob = `${a.text} ${decodeURIComponent(a.url).replace(/[_\-/.]+/g, " ")}`;
     if (a.text.length < 8 || !KEEP.test(blob) || DROP.test(a.text) || L.OFF_TOPIC.test(a.text)) continue;
+    if (!isSpecific(a)) continue;   // menu / section links ("Notifications", "Results") are not notices
     const k = hash(norm(a.url) + "|" + a.text.toLowerCase().slice(0, 80));
     if (seen.has(k)) continue; seen.add(k);
     out.push({ ...a, key: k });
@@ -101,6 +125,8 @@ async function extractJob(src, link, doc) {
   const prompt = `This is an official recruitment notice published on the website of ${src.name} (${src.state}). Extract the facts to build a job page. ` +
     `Return ONLY a JSON object, null where unknown: headline (a clear English headline like "UPPSC Lecturer Recruitment 2026 – 120 Posts" — organisation short name, post, year, number of posts if stated), ` +
     `is_recruitment (true only if this notice invites applications for posts; false for results, admit cards, corrigenda, schedules, tenders), ` +
+    `is_specific_notice (true only if the text is ONE specific notice/advertisement; false if it is a listing, index, menu or section page that lists many notices), ` +
+    `advt_no (advertisement / notification number if stated), ` +
     `organization (full name), org_short, post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
     `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
     `apply_link (official online application page, chosen ONLY from CANDIDATE LINKS or null), ` +
@@ -113,7 +139,8 @@ async function extractJob(src, link, doc) {
 async function extractUpdate(src, link, doc, kind) {
   const label = { "admit-card": "admit card / hall ticket", result: "result / merit or selection list / cut-off", "answer-key": "answer key", "exam-date": "exam date / schedule / interview" }[kind];
   const prompt = `This is an official ${label} notice published on the website of ${src.name} (${src.state}). Use ONLY the notice text; never invent dates or numbers. ` +
-    `Return ONLY a JSON object: headline (clear English headline like "UPSSSC Junior Assistant Result 2026 Out" — organisation short name, exam/post, type, year), ` +
+    `Return ONLY a JSON object: is_specific_notice (true only if the text is ONE specific ${label} notice for a named exam or post; false for listing/index/section pages, procedures or general instructions), ` +
+    `headline (clear English headline like "UPSSSC Junior Assistant Result 2026 Out" — organisation short name, exam/post, type, year), ` +
     `organization, org_short, exam_name, event_date (YYYY-MM-DD or null), summary (3-4 factual sentences: what was released, for which exam/post, where to check), ` +
     `summary_hi (same in Hindi), steps (array of 4-6 steps to download/check it on ${new URL(link.url).host}), details (array of 2-3 short paragraphs with what happens next), ` +
     `faq (array of 3-4 {q,a}).\n\nLINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nNOTICE TEXT:\n${doc.text || "(text not readable — use the link text only)"}`;
@@ -137,15 +164,20 @@ async function main() {
     if ((st.fails || 0) >= 6 && runNo % 6) { health[s.id] = `paused (fails ${st.fails}${st.blocked ? ", geo-blocked" : ""})`; return; }
     try {
       const { text, url, via } = await L.fetchText(s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
-      st.via = via;
+      const prevVia = st.via; st.via = via;
       const links = noticeLinks(text, url);
       if (!links.length) { st.fails = (st.fails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails})`; return; }
       const seen = new Set(st.seen);
-      const baseline = !st.seen.length;
+      let baseline = !st.seen.length;
       const nu = links.filter((l) => !seen.has(l.key));
+      // A burst of "new" links means the page changed shape (redesign, different fetch route), not 15 new notices.
+      // Record silently instead of publishing a flood of old items.
+      const reason = !baseline && (nu.length > 10 || (prevVia && prevVia !== via && nu.length > 2) || (st.seen.length && nu.length > Math.max(4, st.seen.length * 0.6)))
+        ? `re-baselined (${nu.length} new after ${prevVia && prevVia !== via ? "route change " + prevVia + "→" + via : "page change"})` : "";
+      if (reason) baseline = true;
       st.seen = [...links.map((l) => l.key), ...st.seen.filter((k) => !links.some((l) => l.key === k))].slice(0, 600);
       st.fails = 0; st.lastOk = today();
-      health[s.id] = (baseline ? `baseline ${links.length} links` : `${links.length} links, ${nu.length} new`) + ` via ${via}`;
+      health[s.id] = (reason || (baseline ? `baseline ${links.length} links` : `${links.length} links, ${nu.length} new`)) + ` via ${via}`;
       if (!baseline) for (const l of nu) fresh.push({ src: s, link: l });
     } catch (e) {
       st.fails = (st.fails || 0) + 1;
@@ -167,13 +199,15 @@ async function main() {
     const doc = await readDoc(link.url);
     if (kind === "job") {
       const o = await extractJob(src, link, doc);
-      if (!o || o.is_recruitment === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a recruitment: " + link.text.slice(0, 50)); continue; }
+      if (!o || o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
+      // A job page needs real substance: a post name AND (vacancies, a last date or an advertisement number).
+      if (!o.post_name || !(Number(o.total_vacancies) > 0 || /^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) || o.advt_no)) { skipped.push("too thin: " + link.text.slice(0, 50)); continue; }
       const title = L.cleanTitle(o.headline);
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
       const id = F.cleanSlug(title);
       if (!id || jobs.some((j) => j.id === id)) { skipped.push("id taken: " + id); continue; }
-      const job = Object.fromEntries(Object.entries({ ...o, headline: undefined, is_recruitment: undefined }).filter(([, v]) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && !v.length)));
+      const job = Object.fromEntries(Object.entries({ ...o, headline: undefined, is_recruitment: undefined, is_specific_notice: undefined }).filter(([, v]) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && !v.length)));
       const sameHostCands = doc.cands.filter((c) => c.url);
       Object.assign(job, {
         id, title, published: today(), via: "official", source: link.url, state_hint: src.state,
@@ -186,7 +220,7 @@ async function main() {
       console.log(`   + [${src.name}] ${title}`);
     } else {
       const o = await extractUpdate(src, link, doc, kind);
-      if (!o || !o.headline || !(o.summary && o.summary.length > 40)) { skipped.push("unreadable update: " + link.text.slice(0, 50)); continue; }
+      if (!o || o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
       const title = L.cleanTitle(o.headline);
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
@@ -211,7 +245,7 @@ async function main() {
   if (added.jobs.length || added.updates.length) {
     fs.appendFileSync(NEWURLS, [...added.jobs.map((j) => `${SITE_URL}/jobs/${j.id}/`), ...added.updates.map((u) => `${SITE_URL}/updates/${u.id}/`)].join("\n") + "\n");
   }
-  const ok = Object.values(health).filter((h) => !/^error|^0 notice/.test(h)).length;
+  const ok = Object.values(health).filter((h) => !/^error|^0 notice|^paused/.test(h)).length;
   L.logRun("watch", { sources: sources.length, healthy: ok, newLinks: fresh.length, publishedJobs: added.jobs.length, publishedUpdates: added.updates.length,
     skipped: skipped.slice(0, 30), sources_health: health, logLines: 40 });
   console.log(`Watch: ${ok}/${sources.length} sources healthy | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
