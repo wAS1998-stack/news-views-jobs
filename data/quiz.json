@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-17",
+    "date": "2026-10-17",
+    "digest_id": "current-affairs-2026-10-17",
+    "title": "Current Affairs Quiz 17 October 2026",
+    "questions": [
+      {
+        "q": "What is the significance of ITRA's foundation day celebration?",
+        "options": [
+          "It marks a new educational initiative",
+          "It emphasizes contributions to Ayurvedic education and public health",
+          "It is an annual festivals celebration",
+          "It highlights government funding for research"
+        ],
+        "answer": 1,
+        "why": "The ITRA celebrated its foundation day to showcase its contributions to Ayurvedic education, research, and public health."
+      },
+      {
+        "q": "What is the purpose of the Combined Geoscientific Examination announced for 2026?",
+        "options": [
+          "To improve agricultural techniques",
+          "To provide job opportunities in geological sciences",
+          "To enhance environmental education",
+          "To create research positions in traditional medicine"
+        ],
+        "answer": 1,
+        "why": "The announcement marks a significant opportunity for candidates aspiring to work in geological sciences and related fields."
+      },
+      {
+        "q": "What technology is being implemented by CQM for better operational oversight?",
+        "options": [
+          "Drones",
+          "PTZ cameras",
+          "Satellite imaging",
+          "Aerial photography"
+        ],
+        "answer": 1,
+        "why": "CQM has expanded remote monitoring using PTZ cameras to improve transparency and compliance in industrial operations."
+      },
+      {
+        "q": "Where did the review of enforcement measures take place during the rice harvesting season?",
+        "options": [
+          "Punjab",
+          "Haryana",
+          "Madhya Pradesh",
+          "Uttar Pradesh"
+        ],
+        "answer": 0,
+        "why": "The review of enforcement measures was conducted in Moga district, Punjab."
+      },
+      {
+        "q": "Who addressed the closing session of the conference at SRCC?",
+        "options": [
+          "The Prime Minister",
+          "Union Minister Ashwini Vaishnaw",
+          "Union Minister Hardeep Singh Puri",
+          "The President of India"
+        ],
+        "answer": 2,
+        "why": "Union Minister Hardeep Singh Puri addressed the closing session of the SRCC conference."
+      },
+      {
+        "q": "How many patients were treated at the All India Institute of Ayurveda over the past decade?",
+        "options": [
+          "Over 2 million",
+          "Over 3.774 million",
+          "Over 5 million",
+          "Over 1 million"
+        ],
+        "answer": 1,
+        "why": "The All India Institute of Ayurveda reported treating over 3.774 million patients over the past decade."
+      },
+      {
+        "q": "What event did Union Minister Ashwini Vaishnaw attend related to sports?",
+        "options": [
+          "A national sports day",
+          "A meeting with the women's Kabaddi team",
+          "The Olympics opening ceremony",
+          "A sports management conference"
+        ],
+        "answer": 1,
+        "why": "Union Minister Ashwini Vaishnaw met with the gold medal-winning Indian women’s Kabaddi team."
+      },
+      {
+        "q": "Who inaugurated the 'Navaratri Sargotsavam 2026'?",
+        "options": [
+          "The President",
+          "The Prime Minister",
+          "The Vice President",
+          "A Union Minister"
+        ],
+        "answer": 2,
+        "why": "The Vice President inaugurated the 'Navaratri Sargotsavam 2026' in Kozhikode."
+      },
+      {
+        "q": "What main theme did Minister Hardeep Singh Puri discuss at the SRCC conference?",
+        "options": [
+          "Agricultural reforms",
+          "Sports development",
+          "Economic growth and educational excellence",
+          "Healthcare advancements"
+        ],
+        "answer": 2,
+        "why": "The discussion reflected the government's vision for economic growth and educational excellence."
+      },
+      {
+        "q": "What aspect of Indian culture does the 'Navaratri Sargotsavam' celebrate?",
+        "options": [
+          "Economic policies",
+          "Cultural heritage and arts",
+          "Sports achievements",
+          "Technological advancements"
+        ],
+        "answer": 1,
+        "why": "The event celebrates cultural heritage and arts, significant for understanding India's rich traditions."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-16",
     "date": "2026-10-16",
     "digest_id": "current-affairs-2026-10-16",
