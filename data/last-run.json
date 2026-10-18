@@ -2,7 +2,7 @@
   "date": "2026-10-18",
   "runs": {},
   "fetch": {
-    "at": "2026-10-18T15:53:25.346Z",
+    "at": "2026-10-18T18:40:23.554Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,14 +11,14 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 1,
+    "newJobs": 3,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-18; 69 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-18; 68 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-17; 6 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-17; 9 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-18; 23 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-18; 18 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-18; 19 already known"
     },
     "log": [
       "Feeds: 5 | AI: OpenAI (gpt-4o-mini) | max jobs: 20 | max updates: 30",
@@ -28,8 +28,9 @@
       "  40 items from https://www.sarkariexam.com/feed/ (direct)",
       "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
-      "   = duplicate of an existing recruitment, skipped: Eastern Railway Cultural Quota Recruitment 2026 - Apply Online for 02 Posts",
-      "   + MCTE Mhow Teaching Staff Recruitment 2026 – 18 Vacancies",
+      "   + TMB Credit Trainer Recruitment 2026 – Apply Online",
+      "   + GBU Project Scientist I Recruitment 2026 – Apply Online",
+      "   + Eastern Railway Cultural Quota Recruitment 2026 - Apply Online for 02 Posts",
       "   = duplicate of an existing recruitment, skipped: BHEL Artisan Recruitment 2027 - Notification for 660 Posts",
       "   = duplicate of an existing recruitment, skipped: ARCI Recruitment 2026 – Apply Online for 29 Scientist, Technical Assistant, Technician & Other Posts",
       "   = duplicate of an existing recruitment, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
@@ -41,15 +42,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-18T15:54:24.311Z",
+    "at": "2026-10-18T18:41:15.037Z",
     "sources": 61,
-    "healthy": 11,
-    "newLinks": 2,
-    "publishedJobs": 1,
+    "healthy": 10,
+    "newLinks": 0,
+    "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [
-      "not a specific recruitment: पदनाम-कनिष्ठ सहायक/आशुलिपिक(वैयत्तिक सहायक-Advt-78"
-    ],
+    "skipped": [],
     "sources_health": {
       "upsc": "paused (fails 8, geo-blocked)",
       "ssc": "paused (fails 8)",
@@ -100,23 +99,22 @@
       "indiapost-gds": "142 links, 0 new via direct",
       "dsssb2": "paused (fails 8, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via direct",
+      "uksssc": "27 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
       "tnusrb": "paused (fails 8, geo-blocked)",
       "tslprb": "paused (fails 8)",
       "slprb-ap": "paused (fails 8, geo-blocked)",
-      "uksssc": "27 links, 2 new via direct",
       "csbc": "197 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "8 links, 0 new via direct",
       "jkssb": "3 links, 0 new via direct+aia",
-      "bpssc": "error: api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 3)",
-      "keralapsc": "error: api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 3)"
+      "wbssc": "13 links, 0 new via direct",
+      "keralapsc": "error: api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 4)",
+      "bpssc": "error: api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 4)",
+      "jpsc": "error: direct: fetch failed (UND_ERR_CONNECT_TIMEOUT) | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 61 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 2 new official notice link(s).",
-      "   + [UKSSSC] UKSSSC Junior Assistant Recruitment 2026 – Multiple Posts"
+      "Watch: 0 new official notice link(s)."
     ]
   },
   "gsc": {
@@ -133,7 +131,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-18T15:54:44.325Z",
+    "at": "2026-10-18T18:41:47.216Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -141,8 +139,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
+    "hindiJobsPending": 3,
+    "hindiJobs": 3,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 3,
@@ -151,23 +149,24 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: UKSSSC जूनियर असिस्टेंट भर्ती 2026 – कई पदों के लिए",
-      "  ✓ hindi: MCTE Mhow शिक्षण स्टाफ भर्ती 2026 – 18 रिक्तियां"
+      "Enrich/hindi: 3 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: TMB क्रेडिट ट्रेनर भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: GBU परियोजना वैज्ञानिक I भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: पूर्वी रेलवे सांस्कृतिक कोटा भर्ती 2026 - 02 पदों के लिए ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-10-18T15:55:07.309Z",
+    "at": "2026-10-18T18:42:14.501Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 38,
+    "existing": 40,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 38",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 40",
       "  current affairs for today already exists.",
-      "  + analysis: MCTE Mhow Announces Recruitment for 18 Teaching Staff Positions",
-      "  + analysis: IIFM Announces Walk-in Interview for Agroforestry Expert Position"
+      "  + analysis: TMB Credit Trainer Recruitment 2026 – Apply Online",
+      "  + analysis: GBU Opens Applications for Project Scientist I Position – Deadline November 2026"
     ]
   }
 }
