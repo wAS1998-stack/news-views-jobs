@@ -2,7 +2,7 @@
   "date": "2026-10-18",
   "runs": {},
   "fetch": {
-    "at": "2026-10-18T00:06:40.736Z",
+    "at": "2026-10-18T04:33:25.689Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,14 +11,14 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
-    "newUpdates": 0,
+    "newJobs": 1,
+    "newUpdates": 1,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-17; 67 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-17; 6 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-17; 9 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-17; 23 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-17; 21 already known"
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-18; 23 already known",
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-18; 20 already known"
     },
     "log": [
       "Feeds: 5 | AI: OpenAI (gpt-4o-mini) | max jobs: 20 | max updates: 30",
@@ -28,25 +28,26 @@
       "  40 items from https://www.sarkariexam.com/feed/ (direct)",
       "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
+      "   * update: Railway RRB JE 04/2026 Exam City Details 2026",
+      "   + Govt Bank Jobs 2026: Apply Online, Latest Vacancy Notifications",
       "   = duplicate of an existing recruitment, skipped: ARCI Recruitment 2026 – Apply Online for 29 Scientist, Technical Assistant, Technician & Other Posts",
       "   = duplicate of an existing recruitment, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = duplicate of an existing recruitment, skipped: Top 5 Government Jobs in India October 2026",
       "   = duplicate of an existing recruitment, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
       "   = duplicate of an existing recruitment, skipped: BMHRC Group B & C Recruitment 2026 Notification Out - Apply Online for 66 Engineer, Officer and More Posts",
-      "   = duplicate of an existing recruitment, skipped: RRB NTPC Graduate Recruitment 2026 - Apply Online for 3548 Posts"
+      "   = duplicate of an existing recruitment, skipped: RRB NTPC Graduate Recruitment 2026 - Apply Online for 3548 Posts",
+      "Added 1 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-18T00:07:23.708Z",
+    "at": "2026-10-18T04:34:09.236Z",
     "sources": 61,
-    "healthy": 13,
-    "newLinks": 1,
+    "healthy": 11,
+    "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [
-      "not a specific recruitment: Expression of Interest for Engineering Colleges"
-    ],
+    "skipped": [],
     "sources_health": {
       "upsc": "paused (fails 8, geo-blocked)",
       "ssc": "paused (fails 8)",
@@ -54,6 +55,7 @@
       "dsssb": "paused (fails 8, geo-blocked)",
       "kvs": "paused (fails 8, geo-blocked)",
       "nvs": "paused (fails 8, geo-blocked)",
+      "ctet": "paused (fails 6, geo-blocked)",
       "aiims": "paused (fails 7)",
       "army": "paused (fails 8, geo-blocked)",
       "navy": "paused (fails 8, geo-blocked)",
@@ -76,7 +78,6 @@
       "ukpsc": "paused (fails 8, geo-blocked)",
       "cgpsc": "paused (fails 8, geo-blocked)",
       "gpsc": "paused (fails 8, geo-blocked)",
-      "rbi": "19 links, 0 new via direct",
       "ppsc": "paused (fails 8, geo-blocked)",
       "apsc": "paused (fails 8, geo-blocked)",
       "jkpsc": "paused (fails 8, geo-blocked)",
@@ -85,34 +86,34 @@
       "rssb": "paused (fails 8, geo-blocked)",
       "esb-mp": "paused (fails 8, geo-blocked)",
       "bssc": "paused (fails 8, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via direct",
+      "rbi": "19 links, 0 new via direct",
+      "nta": "3 links, 0 new via direct",
       "jssc": "paused (fails 8, geo-blocked)",
       "osssc": "paused (fails 7)",
       "gsssb": "paused (fails 8, geo-blocked)",
       "sssb-punjab": "paused (fails 8, geo-blocked)",
       "hprca": "paused (fails 8, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "kea": "paused (fails 8, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 8, geo-blocked)",
-      "bpsc": "0 notice links (fails 4)",
+      "jpsc": "47 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "keralapsc": "6 links, 1 new via api.allorigins.win",
       "tnusrb": "paused (fails 8, geo-blocked)",
       "tslprb": "paused (fails 8)",
       "slprb-ap": "paused (fails 8, geo-blocked)",
-      "uppbpb": "8 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via api.allorigins.win",
       "csbc": "197 links, 0 new via direct",
       "jkssb": "3 links, 0 new via direct+aia",
+      "uppbpb": "8 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "nta": "3 links, 0 new via api.allorigins.win",
-      "ctet": "error: api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 6)"
+      "keralapsc": "error: api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)",
+      "bpsc": "error: api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 5)",
+      "bpssc": "error: api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 61 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 1 new official notice link(s)."
+      "Watch: 0 new official notice link(s)."
     ]
   },
   "gsc": {
@@ -129,7 +130,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-18T00:13:09.291Z",
+    "at": "2026-10-18T04:35:39.274Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -137,56 +138,39 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 29,
-    "hindiJobs": 25,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 5,
+    "hindiJobs": 5,
+    "hindiUpdatesPending": 1,
+    "hindiUpdates": 1,
     "searchFaqPages": 0,
     "opportunities": 3,
     "log": [
-      "  ✓ hindi: SSC CGL भर्ती 2026 – संयुक्त स्नातक स्तर परीक्षा",
-      "  ✓ hindi: GMC Nalgonda नौकरी 2026: 62 सहायक और एसोशिएट प्रोफेसर पदों के लिए वॉक-इन इंटरव्यू",
-      "  ✓ hindi: IDBI नौकरियां 2026 – 1100 जूनियर सहायक प्रबंधक (JAM) पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IDBI नौकरियां 2026 – 200 सहायक प्रबंधक (ग्रेड A) पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: OFB Itarsi नौकरी 2026 – 265 रासायनिक प्रक्रियाकर्ता पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DWCWEO Srikakulam नौकरी 2026 – 13 विभिन्न पदों के लिए ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: TTD BIRRD नौकरी 2026 – 30 प्रोफेसर, सहायक, सहयोगी पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: NTPC नौकरियां 2026 – 08 सीनियर मैनेजर, इंजीनियर (ग्रीन केमिकल) पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: MANUU नौकरियां 2026 – 11 प्रोफेसर, एसोसिएट प्रोफेसर पदों के लिए ऑनलाइन आवेदन",
-      "  ✓ hindi: Central Bank of India नौकरियां 2026 – 275 विशेषज्ञ अधिकारियों के पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: WCD Chittoor नौकरियां 2026 – 14 केन्द्र प्रशासक, कार्यालय सहायक और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: SIDBI नौकरियां 2026 - 03 प्रोटोकॉल, प्रशासन अधिकारी पदों के लिए आवेदन करें",
-      "  ✓ hindi: SVIMS जॉब्स 2026 – 26 चिकित्सा अधिकारियों और स्टाफ नर्सों के लिए वॉक-इन इंटरव्यू",
-      "  ✓ hindi: TTD नौकरियां 2026 – 8 सिविल असिस्टेंट सर्जन के पदों के लिए वॉक-इन इंटरव्यू",
-      "  ✓ hindi: BEL भर्ती 2026 – 05 चिकित्सा अधिकारी, वरिष्ठ चिकित्सा अधिकारी पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: Northern Coalfields Limited भर्ती 2026 – 270 सहायक फोरमैन (प्रशिक्षु) पदों के लिए आवेदन करें",
-      "  ✓ hindi: RBI नौकरियाँ 2026 – 650 सहायक पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: कृष्णा जिला अदालत नौकरी 2026 – 03 टाइपिस्ट-यर सहायक पदों के लिए आवेदन करें",
-      "  ✓ hindi: NLC नौकरियां 2026: 08 जूनियर ओवरमैन, माइनिंग सॉर्डर पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: DMHO चित्तूर नौकरियाँ 2026 – 7 DEO, डेटा मैनेजर पदों के लिए आवेदन करें",
-      "  ✓ hindi: AIIMS Bibinagar नौकरी 2026 – 13 सीनियर रेजिडेंट (गैर-शैक्षणिक) पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: UOH नौकरियां 2026 – 40 प्रोफेसरों/ सहयोगी प्रोफेसरों/ सहायक प्रोफेसरों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NCERT नौकरियां 2026 – 117 सहायक प्रोफेसर पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: PNB नौकरियां 2026 – 5138 अप्रेंटिस पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: TGHC भर्ती 2026 – 43 कार्यालय अधीनस्थ और चालक पदों के लिए आवेदन करें"
+      "Enrich/links: 2 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: Govt Bank Jobs 2026: Apply Online, Latest Vacancy Notifications",
+      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
+      "Enrich/content: 0 job(s) on template content | doing up to 5",
+      "Enrich/hindi: 5 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: सरकारी बैंक जॉब्स 2026: ऑनलाइन आवेदन करें, नवीनतम रिक्ति सूचनाएं",
+      "  ✓ hindi: APSRTC नौकरी 2025 – 291 ITI अप्रेंटिस पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: आंध्र विश्वविद्यालय जॉब्स 2025 – 06 सहायक प्रोफेसर, रिसर्च अन्वेषक पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: APGB नौकरियाँ 2025 – 07 वित्तीय साक्षरता परामर्शदाताओं के पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: मुंबई में फ्री भर्ती",
+      "  ✓ hindi update: रेलवे RRB JE 04/2026 परीक्षा शहर विवरण 2026"
     ]
   },
   "news": {
-    "at": "2026-10-18T00:14:08.497Z",
+    "at": "2026-10-18T04:36:07.747Z",
     "ai": "OpenAI",
-    "published": 3,
-    "quizzes": 1,
-    "existing": 34,
-    "feeds": {
-      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
-    },
+    "published": 1,
+    "quizzes": 0,
+    "existing": 37,
+    "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 34",
-      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
-      "  20 source headlines for today's digest",
-      "  + digest: Current Affairs 18 October 2026: Key Government Updates for Exam Aspirants (354 words)",
-      "  + analysis: ESIC Hospital Tirunelveli Recruitment 2026 – Walk-in for 46 Super Specialist, Senior Resident and More Posts",
-      "  + analysis: WAMUL Announces Recruitment for Assistant Posts – Apply for 9 Positions Starting October 2026",
-      "  + quiz: Current Affairs Quiz 18 October 2026 (10 Qs)"
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 37",
+      "  current affairs for today already exists.",
+      "  + analysis: Uttarakhand Forest Department Recruitment 2026 – Apply Online for Computer Operator and Senior Research Fellow Positions",
+      "  analysis below quality bar for jmi-consultant-2026 (278 words, need 300) — not published."
     ]
   }
 }
