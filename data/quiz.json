@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-18",
+    "date": "2026-10-18",
+    "digest_id": "current-affairs-2026-10-18",
+    "title": "Current Affairs Quiz 18 October 2026",
+    "questions": [
+      {
+        "q": "What did the All India Institute of Ayurveda (AIIA) celebrate recently?",
+        "options": [
+          "10th Foundation Day",
+          "15th Anniversary",
+          "New Research Publication",
+          "International Conference"
+        ],
+        "answer": 0,
+        "why": "The article states that AIIA marked its 10th foundation day."
+      },
+      {
+        "q": "What is the main focus of the Mission Youth Defense programs conducted by the Central Narcotics Bureau?",
+        "options": [
+          "Environmental Awareness",
+          "Youth Welfare",
+          "Drug Abuse Education",
+          "Cultural Events"
+        ],
+        "answer": 2,
+        "why": "The mission aims at educating youth about the dangers of drug abuse."
+      },
+      {
+        "q": "How much funding did the National Biodiversity Authority allocate to State Biodiversity Councils?",
+        "options": [
+          "₹1.19 crores",
+          "₹2.5 crores",
+          "₹50 lakhs",
+          "₹75 lakhs"
+        ],
+        "answer": 0,
+        "why": "The article mentions that NBA has allocated ₹1.19 crores for biodiversity councils."
+      },
+      {
+        "q": "What was reviewed by the Committee on Quality Management in Punjab?",
+        "options": [
+          "Soil Fertility",
+          "Crop Residue Management",
+          "Water Conservation",
+          "Pesticide Use"
+        ],
+        "answer": 1,
+        "why": "The CQM reviewed measures for managing paddy straw, which relates to crop residue management."
+      },
+      {
+        "q": "What significant action regarding cancer drugs has the government proposed?",
+        "options": [
+          "Increase in prices",
+          "Rationalization of trade margins",
+          "Complete ban on imports",
+          "Free distribution"
+        ],
+        "answer": 1,
+        "why": "The government proposed the rationalization of trade margins to make cancer drugs more affordable."
+      },
+      {
+        "q": "What type of cooperation was enhanced by the departure of the first training squadron to Seychelles?",
+        "options": [
+          "Economic Cooperation",
+          "Cultural Cooperation",
+          "Maritime Cooperation",
+          "Environmental Cooperation"
+        ],
+        "answer": 2,
+        "why": "The training squadron's departure pertains to enhancing maritime cooperation."
+      },
+      {
+        "q": "What was the focus of the awareness program organized by the Department of Commerce in Jaipur?",
+        "options": [
+          "Urban Development",
+          "Leveraging Free Trade Agreements",
+          "Tourism Promotion",
+          "Technology Transfer"
+        ],
+        "answer": 1,
+        "why": "The program was centered on leveraging free trade agreements to boost export opportunities."
+      },
+      {
+        "q": "What is promoted as a holistic approach for menopause health on World Menopause Day 2026?",
+        "options": [
+          "Modern Medicine",
+          "Ayurveda",
+          "Homeopathy",
+          "Naturopathy"
+        ],
+        "answer": 1,
+        "why": "The article mentions that Ayurveda is being promoted for menopause health."
+      },
+      {
+        "q": "What implications does the announcement of funds by the National Biodiversity Authority have?",
+        "options": [
+          "Political Elections",
+          "Crop Yield Improvement",
+          "Biodiversity Management",
+          "Urban Development"
+        ],
+        "answer": 2,
+        "why": "The funding aims to enhance local biodiversity management efforts."
+      },
+      {
+        "q": "Which sector's initiatives are highlighted as essential for competitive exam preparation?",
+        "options": [
+          "Agriculture",
+          "Culture",
+          "Health",
+          "Government"
+        ],
+        "answer": 3,
+        "why": "The article states that developments from various Indian ministries are essential for competitive exam preparation."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-17",
     "date": "2026-10-17",
     "digest_id": "current-affairs-2026-10-17",

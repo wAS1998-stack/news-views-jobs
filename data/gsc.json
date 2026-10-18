@@ -1,20 +1,15 @@
 {
- "date": "2026-10-17",
+ "date": "2026-10-18",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-18",
-  "2026-10-15"
+  "2026-09-19",
+  "2026-10-16"
  ],
  "totals": {
   "clicks": 5,
-  "impressions": 351
+  "impressions": 353
  },
  "daily": [
-  {
-   "date": "2026-09-18",
-   "clicks": 0,
-   "impressions": 8
-  },
   {
    "date": "2026-09-19",
    "clicks": 0,
@@ -149,43 +144,48 @@
    "date": "2026-10-15",
    "clicks": 1,
    "impressions": 4
+  },
+  {
+   "date": "2026-10-16",
+   "clicks": 0,
+   "impressions": 1
   }
  ],
  "topPages": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 4,
-   "impressions": 42,
-   "ctr": 9.52,
+   "impressions": 40,
+   "ctr": 10,
    "position": 5.1
   },
   {
    "page": "/guides/",
    "clicks": 1,
-   "impressions": 5,
-   "ctr": 20,
-   "position": 3.8
+   "impressions": 6,
+   "ctr": 16.67,
+   "position": 3.5
   },
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 7,
    "ctr": 0,
-   "position": 1.8
+   "position": 1.7
   },
   {
    "page": "/about/",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 5,
    "ctr": 0,
-   "position": 3.3
+   "position": 3.4
   },
   {
    "page": "/disclaimer/",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 5,
    "ctr": 0,
-   "position": 4.8
+   "position": 5
   },
   {
    "page": "/guides/balance-studies-government-exam-preparation/",
@@ -365,9 +365,9 @@
   {
    "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
    "clicks": 0,
-   "impressions": 16,
+   "impressions": 10,
    "ctr": 0,
-   "position": 6.6
+   "position": 8
   },
   {
    "page": "/jobs/hpcl-officers-2026/",
@@ -533,13 +533,6 @@
    "position": 7
   },
   {
-   "query": "gulf shutdown jobs",
-   "clicks": 0,
-   "impressions": 4,
-   "ctr": 0,
-   "position": 6
-  },
-  {
    "query": "gulf shutdown jobs 2026",
    "clicks": 0,
    "impressions": 1,
@@ -566,13 +559,6 @@
    "impressions": 2,
    "ctr": 0,
    "position": 64.5
-  },
-  {
-   "query": "shutdown jobs in gulf",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 1
   },
   {
    "query": "shutdown project in gulf",
@@ -614,8 +600,8 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 4,
-   "impressions": 42,
-   "ctr": 9.52,
+   "impressions": 40,
+   "ctr": 10,
    "position": 5.1,
    "queries": [
     {
@@ -627,50 +613,6 @@
      "q": "brahmaputra fertilizer recruitment",
      "impressions": 2,
      "position": 5
-    }
-   ]
-  },
-  {
-   "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
-   "clicks": 0,
-   "impressions": 16,
-   "ctr": 0,
-   "position": 6.6,
-   "queries": [
-    {
-     "q": "gulf shutdown jobs",
-     "impressions": 4,
-     "position": 6
-    },
-    {
-     "q": "gulf job today",
-     "impressions": 2,
-     "position": 4
-    },
-    {
-     "q": "shutdown jobs in gulf",
-     "impressions": 2,
-     "position": 1
-    },
-    {
-     "q": "gulf shutdown jobs 2026",
-     "impressions": 1,
-     "position": 8
-    },
-    {
-     "q": "shutdown project in gulf",
-     "impressions": 1,
-     "position": 9
-    },
-    {
-     "q": "shutdown work in gulf",
-     "impressions": 1,
-     "position": 4
-    },
-    {
-     "q": "shutdowns jobs",
-     "impressions": 1,
-     "position": 19
     }
    ]
   },
@@ -695,6 +637,40 @@
      "q": "gulf jobs 2025",
      "impressions": 1,
      "position": 7
+    }
+   ]
+  },
+  {
+   "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
+   "clicks": 0,
+   "impressions": 10,
+   "ctr": 0,
+   "position": 8,
+   "queries": [
+    {
+     "q": "gulf job today",
+     "impressions": 2,
+     "position": 4
+    },
+    {
+     "q": "gulf shutdown jobs 2026",
+     "impressions": 1,
+     "position": 8
+    },
+    {
+     "q": "shutdown project in gulf",
+     "impressions": 1,
+     "position": 9
+    },
+    {
+     "q": "shutdown work in gulf",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "shutdowns jobs",
+     "impressions": 1,
+     "position": 19
     }
    ]
   }
