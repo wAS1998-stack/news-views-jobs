@@ -335,6 +335,7 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
     <a href="/hi/updates/result/">रिजल्ट</a>
     <a href="/hi/updates/admit-card/">एडमिट कार्ड</a>
     <a href="/hi/updates/answer-key/">आंसर की</a>
+    <a href="/hi/exam/">परीक्षाएँ</a>
     <a href="/hi/tools/photo-resizer/">फोटो रिसाइज़</a>
     <a href="/quiz/">क्विज़</a>` : `    <a href="/">Jobs</a>
     <a href="/latest/">Latest</a>
@@ -1826,9 +1827,9 @@ function main() {
   const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates });
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
-  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates });
+  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates, hiDate: require("./hindi.js").hiDate });
   for (const ep of EXAMP.pages) write(ep.path, ep.html);
-  console.log(`Exams: ${EXAMP.pages.length - 1} exam hub(s).`);
+  console.log(`Exams: ${EXAMP.pages.filter((p) => !p.path.startsWith("hi/")).length - 1} exam hub(s) + ${EXAMP.pages.filter((p) => p.path.startsWith("hi/")).length - 1} Hindi.`);
   write("latest/index.html", buildLatestPage(activeJobs));
   write("jobs/index.html", buildAllJobsPage(activeJobs));
   write("closing-soon/index.html", buildClosingSoonPage(activeJobs));

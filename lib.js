@@ -370,10 +370,60 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b/i;
+const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b/i;
 
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
 const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf/i;
 
+/** Same announcement from two feeds ("HPSC HCS Final Result 2026 Out - Check…" vs
+ *  "HPSC HCS and Allied Services Final Result 2026"): compare the subject words before the
+ *  event keyword, plus the event itself (final result ≠ pre result ≠ exam city). */
+const EVENT_RE = /\b((?:final|pre|prelims?|mains?|revised|provisional|phase[- ]?\w+|tier[- ]?\w+|cbt[- ]?\w+)\s+)?(result|admit card|hall ticket|call letter|answer key|exam city|exam date|exam schedule|interview|merit list|cut[- ]?off|score ?card|marks|document verification)\b/i;
+const CORE_STOP = new Set("the a an and of for to in on at out released release declared check download link online pdf new notice details date 2024 2025 2026 2027 exam recruitment posts post various".split(" "));
+function updateKey(title) {
+  const t = String(title || "").toLowerCase().replace(/[–—]/g, "-");
+  const m = t.match(EVENT_RE);
+  if (!m) return null;
+  const words = t.slice(0, m.index + (m[1] || "").length).replace(/[^a-z0-9/ ]/g, " ").split(/\s+/).filter(Boolean);
+  const stages = [], core = [];
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
+    if (/^(final|pre|prelims?|mains?|revised|provisional)$/.test(w)) stages.push(w.replace(/s$/, "").replace(/^prelim$/, "pre"));
+    else if (/^(phase|tier|cbt|stage|round)$/.test(w) && words[i + 1]) stages.push(w + words[++i]);
+    else if (!CORE_STOP.has(w)) core.push(w);
+  }
+  return { core, ev: [...new Set(stages)].sort().join("+") + "|" + m[2].replace(/hall ticket|call letter/, "admit card") };
+}
+function isDupUpdate(u, list, days = 7) {
+  const a = updateKey(u.title);
+  if (!a || a.core.length < 2) return false;
+  const t = new Date(u.date || Date.now()).getTime();
+  return list.some((x) => {
+    if (x === u || x.id === u.id) return false;
+    if (Math.abs(new Date(x.date || 0).getTime() - t) > days * 86400000) return false;
+    const b = updateKey(x.title);
+    if (!b || b.core.length < 2 || b.ev !== a.ev) return false;
+    const [s, l] = a.core.length <= b.core.length ? [a.core, b.core] : [b.core, a.core];
+    return s.every((w) => l.includes(w));
+  });
+}
+
+/** Official homepage for a well-known recruiting body named in a title — used only when no
+ *  official link could be read from the source page, so the button never points at a blog. */
+const OFFICIAL_HOMES = [
+  [/\bupsssc\b/i, "https://upsssc.gov.in/"], [/\buksssc\b/i, "https://sssc.uk.gov.in/"], [/\bdsssb\b/i, "https://dsssb.delhi.gov.in/"],
+  [/\bupsc\b/i, "https://upsc.gov.in/"], [/\bssc\b(?!.*\b(board|class|10th|12th)\b)/i, "https://ssc.gov.in/"], [/\bibps\b/i, "https://www.ibps.in/"],
+  [/\brrb\b/i, "https://www.rrbapply.gov.in/"], [/\bsbi\b/i, "https://sbi.co.in/web/careers/"], [/\brbi\b/i, "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx"],
+  [/\buppsc\b/i, "https://uppsc.up.nic.in/"], [/\bbpsc\b/i, "https://bpsc.bihar.gov.in/"], [/\brpsc\b/i, "https://rpsc.rajasthan.gov.in/"],
+  [/\bmppsc\b/i, "https://mppsc.mp.gov.in/"], [/\bhpsc\b/i, "https://hpsc.gov.in/"], [/\bhssc\b/i, "https://hssc.gov.in/"],
+  [/\bbssc\b/i, "https://bssc.bihar.gov.in/"], [/\bjssc\b/i, "https://jssc.jharkhand.gov.in/"], [/\bgsssb\b/i, "https://gsssb.gujarat.gov.in/"],
+  [/\bcsbc\b/i, "https://csbc.bihar.gov.in/"], [/\bbpssc\b/i, "https://bpssc.bihar.gov.in/"], [/\bkvs\b/i, "https://kvsangathan.nic.in/"],
+  [/\bctet\b/i, "https://ctet.nic.in/"], [/\btnpsc\b/i, "https://www.tnpsc.gov.in/"], [/\bmpsc\b/i, "https://mpsc.gov.in/"],
+];
+function officialHomeFor(title) {
+  for (const [re, url] of OFFICIAL_HOMES) if (re.test(String(title || ""))) return url;
+  return null;
+}
+
 module.exports = { fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL };
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };

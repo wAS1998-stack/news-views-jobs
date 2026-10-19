@@ -181,7 +181,9 @@ function finishUpdate(base, ai, src) {
   const picked = L.validateLinks({ apply_link: ai.official_link, official_notification: ai.official_link, official_website: ai.official_website }, cands);
   const heur = L.pickLinksHeuristic(cands);
   const titleHost = L.hostFromTitle(base.title);
-  const official = picked.apply_link || picked.official_notification || heur.apply_link || heur.official_notification || (titleHost ? `https://${titleHost}/` : null);
+  const officialSite = picked.official_website || heur.official_website || (titleHost ? `https://${titleHost}/` : null) || L.officialHomeFor(base.title);
+  // Source page unreadable or without links: the body's own homepage beats sending readers to a blog.
+  const official = picked.apply_link || picked.official_notification || heur.apply_link || heur.official_notification || L.officialHomeFor(base.title) || officialSite;
   const u = {
     ...base,
     organization: String(ai.organization || base.organization || "").trim().slice(0, 90) || base.organization,
@@ -194,7 +196,7 @@ function finishUpdate(base, ai, src) {
     details: L.strArr(ai.details, 4),
     faq: L.faqArr(ai.faq, 5),
     official_link: official || undefined,
-    official_website: picked.official_website || heur.official_website || (titleHost ? `https://${titleHost}/` : undefined),
+    official_website: officialSite || undefined,
     source: base.link,
   };
   // The outbound button must never point at the middleman when we found an official page.
@@ -317,7 +319,7 @@ async function main() {
       if (kind !== "job") {
         if (updatesAdded >= MAX_UPDATES) continue;
         const uid = slug(it.title).slice(0, 80);
-        if (uid && !updates.some((u) => u.id === uid)) {
+        if (uid && !updates.some((u) => u.id === uid) && !L.isDupUpdate({ title: it.title, date: today() }, updates)) {
           const base = { id: uid, type: kind, title: String(it.title).trim(),
             organization: L.orgFromTitle(it.title) || "Recruitment Board",
             org_short: String(it.title).split(/\s+/).slice(0, 2).join(" "),

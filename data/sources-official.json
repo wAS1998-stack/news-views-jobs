@@ -80,22 +80,10 @@
    "url": "https://agnipathvayu.cdac.in/"
   },
   {
-   "id": "rrb-cdg",
-   "name": "RRB Chandigarh",
+   "id": "rrb-portal",
+   "name": "Railway Recruitment Boards (RRB)",
    "state": "Central",
-   "url": "https://www.rrbcdg.gov.in/"
-  },
-  {
-   "id": "rrb-patna",
-   "name": "RRB Patna",
-   "state": "Central",
-   "url": "https://www.rrbpatna.gov.in/"
-  },
-  {
-   "id": "rrb-chennai",
-   "name": "RRB Chennai",
-   "state": "Central",
-   "url": "https://www.rrbchennai.gov.in/"
+   "url": "https://rrb.indianrailways.gov.in/secunderabad"
   },
   {
    "id": "indiapost-gds",

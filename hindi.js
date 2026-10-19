@@ -41,6 +41,8 @@ function buildHindi(ctx) {
       <span class="deadline${st.cls === "soon" ? " soon" : ""}">अंतिम तिथि <b>${hiDate(j.application_end)}</b></span></div></a></li>`; };
   const updCardHi = (u) => `<li><a class="update" href="/hi/updates/${esc(u.id)}/"><span class="upd-type upd-${u.type}">${(HI_TYPES[u.type] || {}).label || "अपडेट"}</span>
     <span class="upd-title">${esc(u.hi.title)}</span><span class="upd-meta">${esc(u.org_short || "")} &middot; ${hiDate(u.date)}</span></a></li>`;
+  const examLink = (title) => { const { examOf } = require("./exams.js"); const e = examOf(title);
+    return e ? `<p class="tagrow"><a class="chip" href="/hi/exam/${e.slug}/">${esc(e.name)} — सभी अपडेट (नोटिफिकेशन, एडमिट कार्ड, रिजल्ट) &rarr;</a></p>` : ""; };
   const alt = (en, hi) => [{ hreflang: "en", href: SITE.url + en }, { hreflang: "hi", href: SITE.url + hi }, { hreflang: "x-default", href: SITE.url + en }];
 
   /* ---- job pages ---- */
@@ -91,6 +93,7 @@ function buildHindi(ctx) {
   <p class="note">आवेदन से पहले ऑफिशियल वेबसाइट पर तिथियाँ और पात्रता ज़रूर जाँच लें। ${esc(SITE.brand)} सार्वजनिक नोटिफिकेशन की जानकारी देता है, यह कोई सरकारी संस्था नहीं है।</p>
   ${(h.preparation_tips || []).length ? `<div class="prose"><h2 class="section-h">तैयारी के टिप्स</h2><ul>${h.preparation_tips.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
   ${faqHtml(h.faq)}
+  ${examLink(j.title)}
   <p class="cta-row"><a class="btn btn-ghost" href="/hi/tools/age-calculator/">आयु कैलकुलेटर</a> <a class="btn btn-ghost" href="/hi/tools/photo-resizer/">फोटो-सिग्नेचर रिसाइज़र</a></p>
   ${(() => { const rel = openJobs.filter((x) => x.id !== j.id).slice(0, 3); return rel.length ? `<section class="related"><h2 class="section-h">और सरकारी नौकरियाँ</h2><ul class="jobs">${rel.map(jobCardHi).join("")}</ul></section>` : ""; })()}
 </main>` + foot() });
@@ -118,6 +121,7 @@ function buildHindi(ctx) {
     ${(h.steps || []).length ? `<h2 class="section-h">${T.label} कैसे डाउनलोड/चेक करें</h2><ol class="steps">${h.steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}
     ${(h.details || []).length ? `<div class="prose"><h2 class="section-h">उम्मीदवारों के लिए ज़रूरी बातें</h2>${h.details.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
     ${faqHtml(h.faq)}
+    ${examLink(u.title)}
     <p class="smallprint">हमेशा ऑफिशियल वेबसाइट पर जानकारी की पुष्टि करें — ${esc(SITE.brand)} सरकारी संस्था नहीं है।</p>
     ${(() => { const rel = hiUpd.filter((x) => x.id !== u.id && x.type === u.type).slice(0, 5); return rel.length ? `<section class="related"><h2 class="section-h">और ${T.plural}</h2><ul class="updates">${rel.map(updCardHi).join("")}</ul></section>` : ""; })()}
   </article>
@@ -161,6 +165,7 @@ function buildHindi(ctx) {
   </div>
   <h2 class="section-h">आवेदन जारी — सभी भर्तियाँ</h2>
   ${openJobs.length ? `<ul class="jobs">${openJobs.map(jobCardHi).join("")}</ul>` : `<p class="empty">हिंदी में भर्तियाँ जोड़ी जा रही हैं — तब तक <a href="/" lang="en">English</a> में देखें।</p>`}
+  <section class="related"><h2 class="section-h">परीक्षा के अनुसार देखें</h2><p class="tagrow">${["ssc-cgl", "ssc-gd", "ssc-chsl", "ssc-mts", "rrb-ntpc", "rrb-group-d", "rrb-alp", "ibps-po", "sbi-po", "upsc-cse", "police-constable", "ctet", "india-post-gds", "agniveer"].map((s) => { const e = require("./exams.js").EXAMS.find((x) => x.slug === s); return e ? `<a class="chip" href="/hi/exam/${s}/">${esc(e.name)}</a>` : ""; }).join("")}<a class="chip" href="/hi/exam/">सभी परीक्षाएँ &rarr;</a></p></section>
   <section class="home-tools"><h2 class="section-h">🧰 मुफ़्त टूल्स</h2><ul class="tool-list">
     <li><a class="tool-card" href="/hi/tools/photo-resizer/"><b>फोटो और सिग्नेचर रिसाइज़र</b><span>SSC, IBPS, RRB फॉर्म के लिए सही साइज़ (20–50 KB) में फोटो बनाएं — बिना अपलोड।</span></a></li>
     <li><a class="tool-card" href="/hi/tools/age-calculator/"><b>आयु कैलकुलेटर</b><span>कट-ऑफ तिथि पर अपनी सटीक आयु और OBC/SC/ST छूट के साथ पात्रता जाँचें।</span></a></li>

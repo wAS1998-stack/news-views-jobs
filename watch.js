@@ -192,6 +192,7 @@ async function main() {
   const existingUrls = new Set([...jobs.flatMap((j) => [j.official_notification, j.apply_link, j.source]), ...updates.flatMap((u) => [u.official_link, u.link, u.source])].filter(Boolean).map(norm));
   const fps = new Set([...jobs.map((j) => F.fingerprint(j.title)), ...updates.map((u) => F.fingerprint(u.title))]);
   const added = { jobs: [], updates: [] }, skipped = [];
+  let upgraded = 0;   // feed updates given their official notice link
   if (!L.AI) console.log("Watch: no AI key — new links recorded but not published.");
   const thisYear = new Date().getFullYear();
   for (const { src, link } of (L.AI ? fresh : []).slice(0, MAX_PUBLISH)) {
@@ -230,6 +231,11 @@ async function main() {
       const title = L.cleanTitle(o.headline);
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
+      const twin = updates.find((x) => L.isDupUpdate({ title, type: kind, date: today() }, [x]));
+      if (twin) {   // already on the site from a feed: give it the official link instead of a second page
+        if (!twin.official_link || L.isBadOfficial(twin.link || "")) { twin.official_link = link.url; twin.link = link.url; upgraded++; }
+        skipped.push("duplicate (same notice): " + title); continue;
+      }
       const id = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
       if (!id || updates.some((u) => u.id === id)) { skipped.push("id taken: " + id); continue; }
       const u = {
@@ -247,7 +253,7 @@ async function main() {
   }
 
   if (added.jobs.length) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
-  if (added.updates.length) fs.writeFileSync(UPDATES, JSON.stringify(updates.slice(0, 800), null, 2) + "\n");
+  if (added.updates.length || upgraded) fs.writeFileSync(UPDATES, JSON.stringify(updates.slice(0, 800), null, 2) + "\n");
   if (added.jobs.length || added.updates.length) {
     fs.appendFileSync(NEWURLS, [...added.jobs.map((j) => `${SITE_URL}/jobs/${j.id}/`), ...added.updates.map((u) => `${SITE_URL}/updates/${u.id}/`)].join("\n") + "\n");
   }

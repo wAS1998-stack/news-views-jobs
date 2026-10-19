@@ -7,6 +7,7 @@
    Facts here are deliberately conservative — details that change every cycle
    (dates, vacancies, fees) come only from the live notices in the timeline.
    ================================================================== */
+const { HI_EXAMS, buildHindiExamPages } = require("./exams-hi.js");
 const EXAMS = [
   // ---- SSC ----
   { slug: "ssc-cgl", name: "SSC CGL", full: "SSC Combined Graduate Level Examination", cat: "SSC", body: "Staff Selection Commission (SSC)", site: "https://ssc.gov.in/",
@@ -164,9 +165,10 @@ function buildExamPages(ctx) {
   const { head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates } = ctx;
   const year = BUILT.getFullYear();
   const pages = [];
+  const hiAlt = (en) => [{ hreflang: "en", href: SITE.url + en }, { hreflang: "hi", href: SITE.url + "/hi" + en }, { hreflang: "x-default", href: SITE.url + en }];
   const items = (e) => [
-    ...jobs.filter((j) => e.re.test(j.title)).map((j) => ({ type: "job", title: j.title, date: j.published, url: `/jobs/${j.id}/`, end: j.application_end, open: statusOf(j).cls !== "closed" })),
-    ...updates.filter((u) => e.re.test(u.title)).map((u) => ({ type: u.type, title: u.title, date: u.date, url: `/updates/${u.id}/` })),
+    ...jobs.filter((j) => e.re.test(j.title)).map((j) => ({ type: "job", title: j.title, hiTitle: j.hi && j.hi.title, date: j.published, url: `/jobs/${j.id}/`, end: j.application_end, open: statusOf(j).cls !== "closed" })),
+    ...updates.filter((u) => e.re.test(u.title)).map((u) => ({ type: u.type, title: u.title, hiTitle: u.hi && u.hi.title, date: u.date, url: `/updates/${u.id}/` })),
   ].sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 
   const index = [];
@@ -194,7 +196,8 @@ function buildExamPages(ctx) {
     index.push({ e, n: list.length, open: open.length, latest: list[0] });
     pages.push({ path: `exam/${e.slug}/index.html`, url: canonical, html: head({
       title: `${title} | ${SITE.name}`.length <= 72 ? `${title} | ${SITE.name}` : title.slice(0, 70),
-      desc: `${e.full} ${year}: latest notification, important dates, admit card, answer key and result with official links — plus eligibility, selection process and salary.`.slice(0, 158), canonical, ld }) + `
+      desc: `${e.full} ${year}: latest notification, important dates, admit card, answer key and result with official links — plus eligibility, selection process and salary.`.slice(0, 158), canonical, ld,
+      ...(HI_EXAMS[e.slug] ? { alternates: hiAlt(`/exam/${e.slug}/`), langSwitch: `/hi/exam/${e.slug}/` } : {}) }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/exam/">Exams</a> &nbsp;&rsaquo;&nbsp; ${esc(e.cat)}</p>
   <article>
@@ -229,7 +232,7 @@ function buildExamPages(ctx) {
     const cats = [...new Set(EXAMS.map((e) => e.cat))];
     pages.push({ path: "exam/index.html", url: canonical, html: head({ title: `Government Exams ${year} – SSC, Railway, Bank, UPSC, Defence | ${SITE.name}`,
       desc: "Every major government exam in one place — latest notification, admit card, answer key and result for SSC, RRB, IBPS, SBI, UPSC, defence, teaching and state exams.", canonical,
-      ld: [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Exams", url: canonical }])] }) + `
+      ld: [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Exams", url: canonical }])], alternates: hiAlt("/exam/"), langSwitch: "/hi/exam/" }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Exams</p>
   <section class="cat-head"><p class="eyebrow">${EXAMS.length} exams tracked automatically</p><h1>Government exams ${year}</h1>
@@ -237,6 +240,7 @@ function buildExamPages(ctx) {
   ${cats.map((c) => `<h2 class="section-h">${esc(c)}</h2><ul class="tool-list">${index.filter((x) => x.e.cat === c).map((x) => `<li><a class="tool-card" href="/exam/${x.e.slug}/"><b>${esc(x.e.name)}</b><span>${x.open ? `<b style="color:var(--green)">${x.open} open</b> · ` : ""}${x.n ? `${x.n} update${x.n === 1 ? "" : "s"} · latest ${fmtDate(x.latest.date)}` : esc(x.e.full)}</span></a></li>`).join("")}</ul>`).join("")}
 </main>` + foot() });
   }
+  pages.push(...buildHindiExamPages(ctx, EXAMS, items));
   return { pages, examOf };
 }
 
