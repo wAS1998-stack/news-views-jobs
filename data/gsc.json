@@ -1,20 +1,15 @@
 {
- "date": "2026-10-18",
+ "date": "2026-10-19",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-19",
-  "2026-10-16"
+  "2026-09-20",
+  "2026-10-17"
  ],
  "totals": {
   "clicks": 5,
   "impressions": 353
  },
  "daily": [
-  {
-   "date": "2026-09-19",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-09-20",
    "clicks": 1,
@@ -149,6 +144,11 @@
    "date": "2026-10-16",
    "clicks": 0,
    "impressions": 1
+  },
+  {
+   "date": "2026-10-17",
+   "clicks": 0,
+   "impressions": 1
   }
  ],
  "topPages": [
@@ -260,9 +260,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 7,
    "ctr": 0,
-   "position": 59
+   "position": 64.3
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -414,9 +414,9 @@
   {
    "page": "/jobs/indian-bank-2026/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 5,
    "ctr": 0,
-   "position": 8.8
+   "position": 9.2
   },
   {
    "page": "/jobs/ksp-constable-2026/",
@@ -584,9 +584,9 @@
   {
    "query": "ssc cgl preparation plan",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
-   "position": 99
+   "position": 97.5
   },
   {
    "query": "गल्फ जॉब",

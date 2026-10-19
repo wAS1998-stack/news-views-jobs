@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-19",
+    "date": "2026-10-19",
+    "digest_id": "current-affairs-2026-10-19",
+    "title": "Current Affairs Quiz 19 October 2026",
+    "questions": [
+      {
+        "q": "What festival's celebration did the President of India extend warm wishes for?",
+        "options": [
+          "Eid",
+          "Diwali",
+          "Durga Puja",
+          "Holi"
+        ],
+        "answer": 2,
+        "why": "The article specifically mentions the President's greetings for Durga Puja."
+      },
+      {
+        "q": "Who is set to meet families of victims affected by anti-drug activities in Punjab?",
+        "options": [
+          "The Prime Minister",
+          "Union Home Minister",
+          "Chief Minister",
+          "President"
+        ],
+        "answer": 1,
+        "why": "The article states that Union Home Minister Amit Shah will meet these families."
+      },
+      {
+        "q": "What is the focus of the Postal Department's Special Campaign 6.0?",
+        "options": [
+          "Education",
+          "Environmental responsibility",
+          "Tourism",
+          "Cultural heritage"
+        ],
+        "answer": 1,
+        "why": "The article highlights the emphasis on public service excellence and environmental responsibility."
+      },
+      {
+        "q": "Which Indian Navy ship highlighted India's growing maritime presence by departing for Oman?",
+        "options": [
+          "INS Vikrant",
+          "INS Sudarshini",
+          "INS Kamorta",
+          "INS Kolkata"
+        ],
+        "answer": 1,
+        "why": "The article mentions that INS Sudarshini has departed for Oman."
+      },
+      {
+        "q": "What event does the Prime Minister wish the Indian contingent good luck for?",
+        "options": [
+          "Commonwealth Games",
+          "Asian Para Games 2026",
+          "Olympics",
+          "SAFF Championship"
+        ],
+        "answer": 1,
+        "why": "The article specifically mentions the Prime Minister's wishes for the Asian Para Games 2026."
+      },
+      {
+        "q": "Which organization celebrated three years of Namo Bharat operations?",
+        "options": [
+          "NABARD",
+          "NCRTC",
+          "DMRC",
+          "IRCTC"
+        ],
+        "answer": 1,
+        "why": "The article states that the National Capital Region Transport Corporation (NCRTC) celebrated this milestone."
+      },
+      {
+        "q": "Who visited the Munsyari cold water fisheries cluster to meet farmers?",
+        "options": [
+          "The Prime Minister",
+          "Chief Minister",
+          "Central Secretary",
+          "Union Minister"
+        ],
+        "answer": 2,
+        "why": "The article mentions that Central Secretary Dr. Abhilaksh Likhi visited the cluster."
+      },
+      {
+        "q": "What significant action was taken by the Directorate of Revenue Intelligence (DRI)?",
+        "options": [
+          "Seizure of weapons",
+          "Arrest of drug lords",
+          "Seizure of 137 kg of crystal meth",
+          "Closure of illegal factories"
+        ],
+        "answer": 2,
+        "why": "The article highlights that DRI seized 137 kg of crystal meth in Tamil Nadu."
+      },
+      {
+        "q": "What type of initiatives did the government's visit to the Munsyari cluster emphasize?",
+        "options": [
+          "Renewable energy",
+          "Promoting sustainable agriculture",
+          "Technology in education",
+          "Tourism development"
+        ],
+        "answer": 1,
+        "why": "The article specifies the government's initiatives in promoting sustainable agriculture and fisheries."
+      },
+      {
+        "q": "What does the government's commitment to addressing drug trafficking aim to mitigate?",
+        "options": [
+          "Cultural heritage",
+          "Economic growth",
+          "Environmental issues",
+          "Community impact"
+        ],
+        "answer": 3,
+        "why": "The article discusses the impact of drug trafficking on communities as a challenge the government is addressing."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-18",
     "date": "2026-10-18",
     "digest_id": "current-affairs-2026-10-18",
