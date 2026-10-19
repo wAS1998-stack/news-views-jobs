@@ -2,7 +2,7 @@
   "date": "2026-10-19",
   "runs": {},
   "fetch": {
-    "at": "2026-10-19T04:41:11.530Z",
+    "at": "2026-10-19T13:15:18.863Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,13 +11,13 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 3,
-    "newUpdates": 0,
+    "newJobs": 1,
+    "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-19; 69 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-19; 70 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-17; 6 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-17; 9 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-19; 23 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-19; 24 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-18; 20 already known"
     },
     "log": [
@@ -28,21 +28,22 @@
       "  40 items from https://www.sarkariexam.com/feed/ (direct)",
       "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
-      "   + HPSC Food Safety Officer (FSO) Online Form 2026 – Last Date",
-      "   + DRDE Recruitment 2026 – Apply Online for 8 Paid Intern Posts",
-      "   + LIFE Mission Recruitment 2026 – Apply Online for 6 Civil Engineer, Architect and More Posts",
+      "   * update: BSF Head Constable RO / RM Admit Card Date 2026",
+      "   * update: SBI Clerk JA Backlog Mains Admit Card 2026",
+      "   = duplicate of an existing recruitment, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
+      "   + EIL Recruitment 2026 – Apply Online for 109 Associate Engineer, Associate Officer Posts",
       "   = duplicate of an existing recruitment, skipped: BHEL Artisan Recruitment 2027 - Notification for 660 Posts",
       "   = duplicate of an existing recruitment, skipped: ARCI Recruitment 2026 – Apply Online for 29 Scientist, Technical Assistant, Technician & Other Posts",
       "   = duplicate of an existing recruitment, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = duplicate of an existing recruitment, skipped: Top 5 Government Jobs in India October 2026",
-      "   = duplicate of an existing recruitment, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
       "   = duplicate of an existing recruitment, skipped: BMHRC Group B & C Recruitment 2026 Notification Out - Apply Online for 66 Engineer, Officer and More Posts",
-      "   = duplicate of an existing recruitment, skipped: RRB NTPC Graduate Recruitment 2026 - Apply Online for 3548 Posts"
+      "   = duplicate of an existing recruitment, skipped: RRB NTPC Graduate Recruitment 2026 - Apply Online for 3548 Posts",
+      "Added 2 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-19T04:41:58.424Z",
+    "at": "2026-10-19T13:16:01.029Z",
     "sources": 59,
     "healthy": 10,
     "newLinks": 0,
@@ -77,6 +78,7 @@
       "ukpsc": "paused (fails 9, geo-blocked)",
       "cgpsc": "paused (fails 9, geo-blocked)",
       "gpsc": "paused (fails 9, geo-blocked)",
+      "keralapsc": "paused (fails 6, geo-blocked)",
       "ppsc": "paused (fails 9, geo-blocked)",
       "apsc": "paused (fails 9, geo-blocked)",
       "jkpsc": "paused (fails 9, geo-blocked)",
@@ -86,29 +88,28 @@
       "esb-mp": "paused (fails 9, geo-blocked)",
       "bssc": "paused (fails 9, geo-blocked)",
       "rbi": "19 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
       "jssc": "paused (fails 9, geo-blocked)",
       "osssc": "paused (fails 8)",
       "gsssb": "paused (fails 9, geo-blocked)",
       "sssb-punjab": "paused (fails 9, geo-blocked)",
       "hprca": "paused (fails 9, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "kea": "paused (fails 9, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 9, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
       "nta": "3 links, 0 new via direct",
-      "csbc": "197 links, 0 new via direct",
+      "uksssc": "25 links, 0 new via direct",
+      "bpssc": "paused (fails 6, geo-blocked)",
       "tnusrb": "paused (fails 9, geo-blocked)",
       "tslprb": "paused (fails 9)",
       "slprb-ap": "paused (fails 9, geo-blocked)",
-      "jkssb": "3 links, 0 new via direct+aia",
-      "uppbpb": "8 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
+      "csbc": "197 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "error: api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 6)",
-      "bpssc": "error: api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 6)",
-      "jpsc": "error: api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 3)",
-      "rrb-portal": "error: direct: fetch failed (UND_ERR_CONNECT_TIMEOUT) | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)"
+      "uppbpb": "8 links, 0 new via direct",
+      "jkssb": "3 links, 0 new via direct+aia",
+      "rrb-portal": "error: api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)",
+      "jpsc": "error: api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 4)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -129,7 +130,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-19T04:42:56.646Z",
+    "at": "2026-10-19T13:16:29.221Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -137,40 +138,35 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 3,
-    "hindiJobs": 3,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 3,
     "log": [
-      "Enrich/links: 2 job(s) still link to the source blog | doing up to 25",
-      "  - no official link found on source: HPSC Food Safety Officer (FSO) Online Form 2026 – Last Date",
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 3 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: HPSC खाद्य सुरक्षा अधिकारी (FSO) ऑनलाइन फॉर्म 2026 – अंतिम तारीख",
-      "  ✓ hindi: DRDE भर्ती 2026 – 8 पेड इंटर्न पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: LIFE Mission भर्ती 2026 – 6 सिविल इंजीनियर, आर्किटेक्ट और अन्य पदों के लिए ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: EIL भर्ती 2026 – 109 एसोसिएट इंजीनियर, एसोसिएट ऑफिसर पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: SBI क्लर्क JA बैकलॉग मेन्स एडमिट कार्ड 2026",
+      "  ✓ hindi update: BSF हेड कांस्टेबल RO / RM एडमिट कार्ड तिथि 2026"
     ]
   },
   "news": {
-    "at": "2026-10-19T04:43:44.797Z",
+    "at": "2026-10-19T13:16:58.458Z",
     "ai": "OpenAI",
-    "published": 3,
-    "quizzes": 1,
-    "existing": 44,
-    "feeds": {
-      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
-    },
+    "published": 1,
+    "quizzes": 0,
+    "existing": 47,
+    "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 44",
-      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
-      "  20 source headlines for today's digest",
-      "  + digest: Current Affairs 19 October 2026: Key Government Updates for Exam Aspirants (327 words)",
-      "  + analysis: Haryana Public Service Commission Announces Recruitment for Food Safety Officers",
-      "  + analysis: DRDE Recruitment 2026 – Apply Online for 8 Paid Intern Posts",
-      "  + quiz: Current Affairs Quiz 19 October 2026 (10 Qs)"
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 47",
+      "  current affairs for today already exists.",
+      "  + analysis: Engineers India Limited Announces Recruitment for 109 Associate Engineer and Associate Officer Posts",
+      "  analysis below quality bar for life-mission-civil-engineer-architect-more-2026 (252 words, need 300) — not published."
     ]
   }
 }
