@@ -2,7 +2,7 @@
   "date": "2026-10-19",
   "runs": {},
   "fetch": {
-    "at": "2026-10-19T19:58:31.579Z",
+    "at": "2026-10-19T23:41:44.169Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,14 +11,14 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 7,
-    "newUpdates": 1,
+    "newJobs": 0,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-19; 70 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-19; 71 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-17; 6 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-17; 9 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-19; 24 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-19; 15 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-19; 21 already known"
     },
     "log": [
       "Feeds: 5 | AI: OpenAI (gpt-4o-mini) | max jobs: 20 | max updates: 30",
@@ -28,34 +28,23 @@
       "  40 items from https://www.sarkariexam.com/feed/ (direct)",
       "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
-      "   + Apprentice Govt Jobs 2026",
-      "   + Latest ITI Govt Jobs 2026 (5212+ Vacancies Opening)",
-      "   + Post Graduate Govt Jobs 2026 – MA, M.Sc, MBA, MCA, M.Tech Vacancies List",
-      "   + Latest Law Govt Jobs 2026",
-      "   + DSSSB Advertisement No. 05/2026 - Apply Online for 25 Sweeper & Chowkidar Posts",
-      "   + Govt Jobs for Diploma Holders 2026 (1000+ Vacancies Opening)",
       "   = duplicate of an existing recruitment, skipped: Top 5 Government Jobs in India October 2026",
-      "   + TNMVMD Recruitment 2026 – Apply Online for 79 Graduate Apprentice, Technician Apprentice Posts",
-      "   * update: UPSC CDS-II Result 2026 – Out",
       "   = duplicate of an existing recruitment, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
       "   = duplicate of an existing recruitment, skipped: BHEL Artisan Recruitment 2027 - Notification for 660 Posts",
       "   = duplicate of an existing recruitment, skipped: ARCI Recruitment 2026 – Apply Online for 29 Scientist, Technical Assistant, Technician & Other Posts",
       "   = duplicate of an existing recruitment, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
-      "   = duplicate of an existing recruitment, skipped: BMHRC Group B & C Recruitment 2026 Notification Out - Apply Online for 66 Engineer, Officer and More Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = duplicate of an existing recruitment, skipped: BMHRC Group B & C Recruitment 2026 Notification Out - Apply Online for 66 Engineer, Officer and More Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-19T19:59:35.277Z",
+    "at": "2026-10-19T23:42:25.772Z",
     "sources": 59,
     "healthy": 10,
-    "newLinks": 3,
+    "newLinks": 0,
     "publishedJobs": 0,
-    "publishedUpdates": 2,
-    "skipped": [
-      "duplicate (same notice): UKSSSC Lineman Admit Card 2025 Released"
-    ],
+    "publishedUpdates": 0,
+    "skipped": [],
     "sources_health": {
       "upsc": "paused (fails 9, geo-blocked)",
       "ssc": "paused (fails 9)",
@@ -104,7 +93,7 @@
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 9, geo-blocked)",
       "nta": "3 links, 0 new via direct",
-      "uksssc": "28 links, 3 new via direct",
+      "uksssc": "28 links, 0 new via direct",
       "bpssc": "paused (fails 6, geo-blocked)",
       "tnusrb": "paused (fails 9, geo-blocked)",
       "tslprb": "paused (fails 9)",
@@ -114,14 +103,12 @@
       "jkssb": "3 links, 0 new via direct+aia",
       "uppbpb": "8 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "jpsc": "error: api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 5)",
-      "rrb-portal": "error: api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 3)"
+      "rrb-portal": "error: api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 4)",
+      "jpsc": "error: api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 6)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 3 new official notice link(s).",
-      "   * [UKSSSC] UKSSSC Psychologist Admit Card 2025 Out",
-      "   * [UKSSSC] UKSSSC Trainer/Instructor Admit Card 2025 Released"
+      "Watch: 0 new official notice link(s)."
     ]
   },
   "gsc": {
@@ -138,7 +125,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-19T20:01:26.276Z",
+    "at": "2026-10-19T23:42:26.411Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -146,47 +133,30 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 7,
-    "hindiJobs": 7,
-    "hindiUpdatesPending": 3,
-    "hindiUpdates": 3,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 3,
     "log": [
-      "Enrich/links: 6 job(s) still link to the source blog | doing up to 25",
-      "  - no official link found on source: Apprentice Govt Jobs 2026",
-      "  - no official link found on source: Latest ITI Govt Jobs 2026 (5212+ Vacancies Opening)",
-      "  - no official link found on source: Post Graduate Govt Jobs 2026 – MA, M.Sc, MBA, MCA, M.Tech Vacancies List",
-      "  - no official link found on source: Latest Law Govt Jobs 2026",
-      "  - no official link found on source: Govt Jobs for Diploma Holders 2026 (1000+ Vacancies Opening)",
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 7 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: अप्रेंटिस सरकारी नौकरी 2026",
-      "  ✓ hindi: ITI सरकारी नौकरियों की नवीनतम भर्ती 2026 (5212+ रिक्तियों के लिए आवेदन शुरू)",
-      "  ✓ hindi: पोस्ट ग्रेजुएट सरकारी नौकरियां 2026 – MA, M.Sc, MBA, MCA, M.Tech पदों की सूची",
-      "  ✓ hindi: नवीनतम कानून सरकारी नौकरियाँ 2026",
-      "  ✓ hindi: DSSSB विज्ञापन संख्या 05/2026 - 25 सफाई कर्मचारी और चौकीदार पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: डिप्लोमा धारकों के लिए सरकारी नौकरियां 2026 (1000+ रिक्तियां खुल रही हैं)",
-      "  ✓ hindi: TNMVMD भर्ती 2026 – 79 ग्रेजुएट अप्रेंटिस, तकनीशियन अप्रेंटिस पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi update: UKSSSC प्रशिक्षक/शिक्षक एडमिट कार्ड 2025 जारी",
-      "  ✓ hindi update: UKSSSC मनोवैज्ञानिक एडमिट कार्ड 2025 जारी",
-      "  ✓ hindi update: UPSC CDS-II परिणाम 2026 – जारी"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-10-19T20:01:47.616Z",
+    "at": "2026-10-19T23:42:54.709Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 48,
+    "existing": 49,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 48",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 49",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for apprentice-govt-2026 (276 words, need 300) — not published.",
-      "  + analysis: Over 5212 Vacancies Announced in Latest ITI Government Jobs for 2026"
+      "  + analysis: 5000 Apprentice Positions Announced by Apprenticeship Training Government Jobs for 2026",
+      "  + analysis: DSSSB Announces Recruitment for 25 Sweeper and Chowkidar Positions"
     ]
   }
 }
