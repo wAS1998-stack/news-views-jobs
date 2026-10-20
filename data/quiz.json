@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-20",
+    "date": "2026-10-20",
+    "digest_id": "current-affairs-2026-10-20",
+    "title": "Current Affairs Quiz 20 October 2026",
+    "questions": [
+      {
+        "q": "Which athlete won a silver medal in the Women's 1500m T12/13 event at the Asian Para Games 2026?",
+        "options": [
+          "Radha Venkatesh",
+          "Soumya",
+          "Ajit Singh",
+          "Rinku Hooda"
+        ],
+        "answer": 0,
+        "why": "The article states that Radha Venkatesh won a silver medal in the Women's 1500m T12/13 event."
+      },
+      {
+        "q": "What significant examination result was announced recently?",
+        "options": [
+          "Civil Services Examination",
+          "Combined Defence Services Examination (II)",
+          "Joint Entrance Examination",
+          "Banking Examination"
+        ],
+        "answer": 1,
+        "why": "The article mentions the announcement of the Combined Defence Services Examination (II) results."
+      },
+      {
+        "q": "What was the major seizure made by the Directorate of Revenue Intelligence in Mizoram?",
+        "options": [
+          "Smuggled gold",
+          "Foreign cigarettes",
+          "Illegal arms",
+          "Counterfeit currency"
+        ],
+        "answer": 1,
+        "why": "The article mentions that DRI seized smuggled foreign cigarettes in Mizoram."
+      },
+      {
+        "q": "Who reviewed the functions of various divisions under the Ministry of Social Justice and Empowerment?",
+        "options": [
+          "Prime Minister",
+          "Union Minister Dr. Virendra Kumar",
+          "Defense Minister",
+          "Finance Minister"
+        ],
+        "answer": 1,
+        "why": "The article states that Union Minister Dr. Virendra Kumar conducted the review."
+      },
+      {
+        "q": "What initiative was discussed between India and Saudi Arabia?",
+        "options": [
+          "Bilateral electric interconnection",
+          "Trade agreement",
+          "Military cooperation",
+          "Cultural exchange"
+        ],
+        "answer": 0,
+        "why": "The article highlights discussions on a bilateral electric interconnection initiative."
+      },
+      {
+        "q": "Where did the fifth edition of the joint military exercise 'Austra Hind' take place?",
+        "options": [
+          "Delhi",
+          "Thiruvananthapuram",
+          "Mumbai",
+          "Pune"
+        ],
+        "answer": 1,
+        "why": "The article notes that the exercise commenced in Thiruvananthapuram."
+      },
+      {
+        "q": "What type of training was completed by CSIR-NISCAIR?",
+        "options": [
+          "Library automation",
+          "Financial management",
+          "Data science",
+          "Cybersecurity"
+        ],
+        "answer": 0,
+        "why": "The article states that a training program on library automation was completed."
+      },
+      {
+        "q": "When is the India-New Zealand Free Trade Agreement set to come into effect?",
+        "options": [
+          "October 1, 2026",
+          "October 15, 2026",
+          "October 20, 2026",
+          "November 1, 2026"
+        ],
+        "answer": 2,
+        "why": "The article mentions the FTA coming into effect on October 20, 2026."
+      },
+      {
+        "q": "What campaign is set to run from October 21, 2026, to December 31, 2026?",
+        "options": [
+          "Financial Inclusion Campaign",
+          "Digital India Campaign",
+          "Skill India Campaign",
+          "Clean India Campaign"
+        ],
+        "answer": 0,
+        "why": "The article states that a Financial Inclusion campaign will be conducted during this period."
+      },
+      {
+        "q": "Which athlete achieved a gold medal in the Men's Javelin Throw F46 event?",
+        "options": [
+          "Radha Venkatesh",
+          "Ajit Singh",
+          "Soumya",
+          "Rinku Hooda"
+        ],
+        "answer": 3,
+        "why": "The article mentions Rinku Hooda earning a gold medal in the Men's Javelin Throw F46 event."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-19",
     "date": "2026-10-19",
     "digest_id": "current-affairs-2026-10-19",

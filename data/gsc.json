@@ -1,20 +1,15 @@
 {
- "date": "2026-10-19",
+ "date": "2026-10-20",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-20",
-  "2026-10-17"
+  "2026-09-21",
+  "2026-10-18"
  ],
  "totals": {
-  "clicks": 5,
-  "impressions": 353
+  "clicks": 3,
+  "impressions": 354
  },
  "daily": [
-  {
-   "date": "2026-09-20",
-   "clicks": 1,
-   "impressions": 4
-  },
   {
    "date": "2026-09-21",
    "clicks": 0,
@@ -149,15 +144,20 @@
    "date": "2026-10-17",
    "clicks": 0,
    "impressions": 1
+  },
+  {
+   "date": "2026-10-18",
+   "clicks": 0,
+   "impressions": 6
   }
  ],
  "topPages": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
-   "clicks": 4,
-   "impressions": 40,
-   "ctr": 10,
-   "position": 5.1
+   "clicks": 2,
+   "impressions": 35,
+   "ctr": 5.71,
+   "position": 5.5
   },
   {
    "page": "/guides/",
@@ -260,9 +260,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 7,
+   "impressions": 9,
    "ctr": 0,
-   "position": 64.3
+   "position": 67.3
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -435,9 +435,9 @@
   {
    "page": "/jobs/ministry-health-project-saudi-arabia-gulf-2024/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 4
+   "position": 29
   },
   {
    "page": "/jobs/mpesb-group2-subgroup1-2026/",
@@ -477,9 +477,9 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 14,
+   "impressions": 16,
    "ctr": 0,
-   "position": 7.6
+   "position": 7.2
   },
   {
    "page": "/jobs/ssb-constable-sports-quota-2026/",
@@ -504,6 +504,13 @@
   }
  ],
  "topQueries": [
+  {
+   "query": "10th pass govt jobs for female",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
   {
    "query": "brahmaputra fertilizer recruitment",
    "clicks": 0,
@@ -584,25 +591,25 @@
   {
    "query": "ssc cgl preparation plan",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 97.5
+   "position": 96.7
   },
   {
    "query": "गल्फ जॉब",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 5,
    "ctr": 0,
-   "position": 5.5
+   "position": 5
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
-   "clicks": 4,
-   "impressions": 40,
-   "ctr": 10,
-   "position": 5.1,
+   "clicks": 2,
+   "impressions": 35,
+   "ctr": 5.71,
+   "position": 5.5,
    "queries": [
     {
      "q": "brahmaputra valley fertilizer corporation limited recruitment",
@@ -619,14 +626,14 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 14,
+   "impressions": 16,
    "ctr": 0,
-   "position": 7.6,
+   "position": 7.2,
    "queries": [
     {
      "q": "गल्फ जॉब",
-     "impressions": 4,
-     "position": 5.5
+     "impressions": 5,
+     "position": 5
     },
     {
      "q": "gulf job today",
