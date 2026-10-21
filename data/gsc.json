@@ -1,20 +1,15 @@
 {
- "date": "2026-10-20",
+ "date": "2026-10-21",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-21",
-  "2026-10-18"
+  "2026-09-22",
+  "2026-10-19"
  ],
  "totals": {
   "clicks": 3,
-  "impressions": 354
+  "impressions": 355
  },
  "daily": [
-  {
-   "date": "2026-09-21",
-   "clicks": 0,
-   "impressions": 3
-  },
   {
    "date": "2026-09-22",
    "clicks": 0,
@@ -149,15 +144,20 @@
    "date": "2026-10-18",
    "clicks": 0,
    "impressions": 6
+  },
+  {
+   "date": "2026-10-19",
+   "clicks": 0,
+   "impressions": 4
   }
  ],
  "topPages": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 35,
-   "ctr": 5.71,
-   "position": 5.5
+   "impressions": 34,
+   "ctr": 5.88,
+   "position": 5.6
   },
   {
    "page": "/guides/",
@@ -260,9 +260,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 9,
+   "impressions": 11,
    "ctr": 0,
-   "position": 67.3
+   "position": 70.2
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -363,6 +363,13 @@
    "position": 17.7
   },
   {
+   "page": "/jobs/gulf-hours-hotel-uae/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
    "clicks": 0,
    "impressions": 10,
@@ -414,9 +421,9 @@
   {
    "page": "/jobs/indian-bank-2026/",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 4,
    "ctr": 0,
-   "position": 9.2
+   "position": 10
   },
   {
    "page": "/jobs/ksp-constable-2026/",
@@ -477,9 +484,9 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 16,
+   "impressions": 17,
    "ctr": 0,
-   "position": 7.2
+   "position": 7
   },
   {
    "page": "/jobs/ssb-constable-sports-quota-2026/",
@@ -494,13 +501,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 30
-  },
-  {
-   "page": "/jobs/ssc-chsl-staff-selection-commission-govt-2025/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 29
   }
  ],
  "topQueries": [
@@ -524,6 +524,13 @@
    "impressions": 8,
    "ctr": 0,
    "position": 5.1
+  },
+  {
+   "query": "gulf hotel jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "gulf job today",
@@ -552,6 +559,13 @@
    "impressions": 3,
    "ctr": 0,
    "position": 81.7
+  },
+  {
+   "query": "how to start preparation for ssc cgl",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 79
   },
   {
    "query": "indian bank recruitment 2026",
@@ -607,9 +621,9 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 35,
-   "ctr": 5.71,
-   "position": 5.5,
+   "impressions": 34,
+   "ctr": 5.88,
+   "position": 5.6,
    "queries": [
     {
      "q": "brahmaputra valley fertilizer corporation limited recruitment",
@@ -626,9 +640,9 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 16,
+   "impressions": 17,
    "ctr": 0,
-   "position": 7.2,
+   "position": 7,
    "queries": [
     {
      "q": "गल्फ जॉब",

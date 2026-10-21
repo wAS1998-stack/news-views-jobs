@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-21",
+    "date": "2026-10-21",
+    "digest_id": "current-affairs-2026-10-21",
+    "title": "Current Affairs Quiz 21 October 2026",
+    "questions": [
+      {
+        "q": "What event is being hosted in Guwahati that lasts eight days?",
+        "options": [
+          "Shilp Samagam Mela 2026",
+          "Vijay Dashami",
+          "Asian Para Games",
+          "SCO Summit"
+        ],
+        "answer": 0,
+        "why": "The article states that the eight-day 'Shilp Samagam Mela 2026' is taking place in Guwahati."
+      },
+      {
+        "q": "During which festival did Prime Minister Modi deliver a significant address?",
+        "options": [
+          "Independence Day",
+          "Holi",
+          "Vijay Dashami",
+          "Diwali"
+        ],
+        "answer": 2,
+        "why": "The Prime Minister's address was given during the Vijay Dashami ceremony."
+      },
+      {
+        "q": "Which of the following was highlighted in Prime Minister Modi's congratulatory messages?",
+        "options": [
+          "Successful space missions",
+          "Asian Para Games medalists",
+          "National elections",
+          "Economic reforms"
+        ],
+        "answer": 1,
+        "why": "The article notes that Modi congratulated Indian athletes who excelled at the Asian Para Games."
+      },
+      {
+        "q": "Who participated in the Vijayadashami festival in Ludhiana, Punjab?",
+        "options": [
+          "Rahul Gandhi",
+          "Amit Shah",
+          "Narendra Modi",
+          "Yogi Adityanath"
+        ],
+        "answer": 1,
+        "why": "Union Home Minister Amit Shah participated in the Vijayadashami festival in Ludhiana."
+      },
+      {
+        "q": "What is the primary focus of India's nuclear program according to the article?",
+        "options": [
+          "Military expansion",
+          "Peaceful purposes",
+          "Industrial development",
+          "Space exploration"
+        ],
+        "answer": 1,
+        "why": "The Indian government reaffirmed that the nuclear program is dedicated to peaceful purposes."
+      },
+      {
+        "q": "What significant call was made at the SCO Heads of State Council meeting?",
+        "options": [
+          "Promote trade among nations",
+          "Dismantle terrorist systems",
+          "Increase defense budgets",
+          "Strengthen cultural exchange"
+        ],
+        "answer": 1,
+        "why": "India's Defense Minister called for collective global action to dismantle the terrorism system."
+      },
+      {
+        "q": "What aspect of events does the article suggest is important for candidates preparing for competitive exams?",
+        "options": [
+          "International trade agreements",
+          "Cultural events and government initiatives",
+          "Environmental studies",
+          "Healthcare advancements"
+        ],
+        "answer": 1,
+        "why": "Understanding cultural events reflects government initiatives that are often a focus in competitive exams."
+      },
+      {
+        "q": "What valuable knowledge about India's government is emphasized for exam candidates?",
+        "options": [
+          "Historical warfare",
+          "Investment in technology",
+          "Nuclear energy policies",
+          "Policies for agriculture"
+        ],
+        "answer": 2,
+        "why": "Knowledge of India's stance on nuclear energy is essential as it pertains to energy policies and international relations."
+      },
+      {
+        "q": "Which of the following themes is often featured in UPSC and other competitive exams based on the article?",
+        "options": [
+          "Science and technology advancements",
+          "Government's investment in arts",
+          "Historical events",
+          "Local governance issues"
+        ],
+        "answer": 1,
+        "why": "The article mentions the government's promotion of cultural values and tradition as relevant for competitive exams."
+      },
+      {
+        "q": "Which festival signifies the triumph of good over evil, as mentioned in the article?",
+        "options": [
+          "Diwali",
+          "Holi",
+          "Durga Puja",
+          "Eid"
+        ],
+        "answer": 2,
+        "why": "The article states that Vijay Dashami, culminating the Durga Puja festivities, symbolizes the triumph of good."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-20",
     "date": "2026-10-20",
     "digest_id": "current-affairs-2026-10-20",
