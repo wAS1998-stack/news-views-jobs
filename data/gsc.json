@@ -1,20 +1,15 @@
 {
- "date": "2026-10-21",
+ "date": "2026-10-22",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-22",
-  "2026-10-19"
+  "2026-09-23",
+  "2026-10-20"
  ],
  "totals": {
   "clicks": 3,
-  "impressions": 355
+  "impressions": 362
  },
  "daily": [
-  {
-   "date": "2026-09-22",
-   "clicks": 0,
-   "impressions": 0
-  },
   {
    "date": "2026-09-23",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-10-19",
    "clicks": 0,
    "impressions": 4
+  },
+  {
+   "date": "2026-10-20",
+   "clicks": 0,
+   "impressions": 7
   }
  ],
  "topPages": [
@@ -349,6 +349,20 @@
    "position": 20
   },
   {
+   "page": "/jobs/cochin-shipyard-apprentice-technician-graduate-apprentices-2/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 9
+  },
+  {
+   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "page": "/jobs/gims-clerical-2026/",
    "clicks": 0,
    "impressions": 2,
@@ -484,26 +498,19 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 17,
+   "impressions": 19,
    "ctr": 0,
-   "position": 7
-  },
-  {
-   "page": "/jobs/ssb-constable-sports-quota-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 24
-  },
-  {
-   "page": "/jobs/ssc-cgl-staff-selection-commission-govt-2025/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 30
+   "position": 6.8
   }
  ],
  "topQueries": [
+  {
+   "query": "(\"hindustan laboratories\" or \"hll\") and (\"ipo\" or \"initial public offering\" or \"sebi\" or \"securities and exchange board of india\" or \"public issue\" or \"listing\" or \"approval\" or \"clearance\")",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 9
+  },
   {
    "query": "10th pass govt jobs for female",
    "clicks": 0,
@@ -542,7 +549,7 @@
   {
    "query": "gulf jobs 2025",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 7
   },
@@ -640,9 +647,9 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 17,
+   "impressions": 19,
    "ctr": 0,
-   "position": 7,
+   "position": 6.8,
    "queries": [
     {
      "q": "गल्फ जॉब",
@@ -656,7 +663,7 @@
     },
     {
      "q": "gulf jobs 2025",
-     "impressions": 1,
+     "impressions": 2,
      "position": 7
     }
    ]
