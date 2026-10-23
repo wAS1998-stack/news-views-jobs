@@ -1,20 +1,15 @@
 {
- "date": "2026-10-22",
+ "date": "2026-10-23",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-23",
-  "2026-10-20"
+  "2026-09-24",
+  "2026-10-21"
  ],
  "totals": {
   "clicks": 3,
-  "impressions": 362
+  "impressions": 384
  },
  "daily": [
-  {
-   "date": "2026-09-23",
-   "clicks": 0,
-   "impressions": 0
-  },
   {
    "date": "2026-09-24",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-10-20",
    "clicks": 0,
    "impressions": 7
+  },
+  {
+   "date": "2026-10-21",
+   "clicks": 0,
+   "impressions": 22
   }
  ],
  "topPages": [
@@ -169,9 +169,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 7,
+   "impressions": 8,
    "ctr": 0,
-   "position": 1.7
+   "position": 2.5
   },
   {
    "page": "/about/",
@@ -207,6 +207,13 @@
    "impressions": 2,
    "ctr": 0,
    "position": 8
+  },
+  {
+   "page": "/guides/documents-required-government-job-application/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 9
   },
   {
    "page": "/guides/english-preparation-tips-government-exams/",
@@ -335,6 +342,13 @@
    "position": 26
   },
   {
+   "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 1.5
+  },
+  {
    "page": "/jobs/bihar-police-si-2026/",
    "clicks": 0,
    "impressions": 2,
@@ -356,11 +370,18 @@
    "position": 9
   },
   {
-   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
-   "position": 5
+   "position": 2
+  },
+  {
+   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "clicks": 0,
+   "impressions": 8,
+   "ctr": 0,
+   "position": 5.3
   },
   {
    "page": "/jobs/gims-clerical-2026/",
@@ -368,6 +389,13 @@
    "impressions": 2,
    "ctr": 0,
    "position": 15
+  },
+  {
+   "page": "/jobs/gmu-research-associate-field-investigator-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 2
   },
   {
    "page": "/jobs/gpt-guntakal-2026/",
@@ -473,34 +501,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 27
-  },
-  {
-   "page": "/jobs/pnb-2026/",
-   "clicks": 0,
-   "impressions": 4,
-   "ctr": 0,
-   "position": 12.5
-  },
-  {
-   "page": "/jobs/rrb-technician-indian-railways-govt-alert-2025/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 28
-  },
-  {
-   "page": "/jobs/rri-engineer-2026/",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 14.7
-  },
-  {
-   "page": "/jobs/saudi-aramco-gulf-2025/",
-   "clicks": 0,
-   "impressions": 19,
-   "ctr": 0,
-   "position": 6.8
   }
  ],
  "topQueries": [
@@ -531,6 +531,13 @@
    "impressions": 8,
    "ctr": 0,
    "position": 5.1
+  },
+  {
+   "query": "free job alert 2026 karnataka",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "gulf hotel jobs",
@@ -580,6 +587,20 @@
    "impressions": 1,
    "ctr": 0,
    "position": 7
+  },
+  {
+   "query": "jobs in karnataka government",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "karnataka job recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "railway ssc banking",
@@ -647,7 +668,7 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 19,
+   "impressions": 20,
    "ctr": 0,
    "position": 6.8,
    "queries": [

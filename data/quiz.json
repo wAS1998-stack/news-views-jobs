@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-23",
+    "date": "2026-10-23",
+    "digest_id": "current-affairs-2026-10-23",
+    "title": "Current Affairs Quiz 23 October 2026",
+    "questions": [
+      {
+        "q": "What initiative aims to enhance livelihood opportunities for youth from Scheduled Tribes?",
+        "options": [
+          "Tripartite MoU",
+          "PM Daksh Scheme",
+          "Circular Economy",
+          "Air Pollution Control Measures"
+        ],
+        "answer": 0,
+        "why": "The article mentions a tripartite memorandum of understanding signed to strengthen livelihood opportunities for Scheduled Tribe youth."
+      },
+      {
+        "q": "Which scheme has helped train over 1,87,000 candidates as per the article?",
+        "options": [
+          "PM Daksh Scheme",
+          "Universal NutriScience Acquisition",
+          "Sahyadri Health Care Acquisition",
+          "Circular Economy Initiative"
+        ],
+        "answer": 0,
+        "why": "The PM Daksh scheme has successfully trained 1,87,305 candidates from 2020-21 to 2023-24."
+      },
+      {
+        "q": "What approach did the Prime Minister emphasize during the NDTV World Summit?",
+        "options": [
+          "Innovation in business",
+          "Collaboration to address global challenges",
+          "Environmental sustainability",
+          "Investment in healthcare"
+        ],
+        "answer": 1,
+        "why": "The Prime Minister highlighted the importance of collaboration in addressing global challenges during his address."
+      },
+      {
+        "q": "Which organization's approval was sought for Integrace Private Limited's acquisition?",
+        "options": [
+          "Sahyadri Health Care",
+          "Competition Commission of India",
+          "NDTV World Summit",
+          "Central AQMS"
+        ],
+        "answer": 1,
+        "why": "The Competition Commission of India (CCI) granted approval for Integrace Private Limited's acquisition."
+      },
+      {
+        "q": "What did the Union Environment Minister urge at the CII conference?",
+        "options": [
+          "Air pollution control",
+          "Circular economy collaboration",
+          "Youth employment initiatives",
+          "Sports promotion"
+        ],
+        "answer": 1,
+        "why": "The Union Environment Minister urged collaboration to promote India’s circular economy at the CII conference."
+      },
+      {
+        "q": "What did the Prime Minister do in regard to athletes at the Asian Para Games?",
+        "options": [
+          "Reviewed policies",
+          "Extended congratulations",
+          "Approved funding",
+          "Announced new initiatives"
+        ],
+        "answer": 1,
+        "why": "The Prime Minister congratulated various athletes for their achievements at the Asian Para Games."
+      },
+      {
+        "q": "What type of investment does the acquisition of Sahyadri Health Care signify?",
+        "options": [
+          "Sociocultural",
+          "Healthcare Industry consolidation",
+          "Environmental sustainability",
+          "Technological advancements"
+        ],
+        "answer": 1,
+        "why": "The acquisition by Meiback Asia Holdings II signifies investment trends and consolidation within the healthcare industry."
+      },
+      {
+        "q": "What did the Central AQMS call for regarding air pollution in Punjab and Haryana?",
+        "options": [
+          "Public awareness programs",
+          "Immediate ground-level actions",
+          "Increased industrial regulations",
+          "Economic investments"
+        ],
+        "answer": 1,
+        "why": "The Central AQMS reviewed the measures and called for immediate ground-level actions."
+      },
+      {
+        "q": "How many candidates found employment through the PM Daksh scheme?",
+        "options": [
+          "1,87,305",
+          "96,162",
+          "100,000",
+          "150,000"
+        ],
+        "answer": 1,
+        "why": "The article states that 96,162 candidates were helped to find employment through the PM Daksh scheme."
+      },
+      {
+        "q": "What was a key topic discussed at the NDTV World Summit related to India’s development?",
+        "options": [
+          "Employment opportunities",
+          "Indoor sports facilities",
+          "Global collaboration",
+          "Healthcare policies"
+        ],
+        "answer": 2,
+        "why": "The Prime Minister's address emphasized global collaboration as crucial for addressing various challenges."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-22",
     "date": "2026-10-22",
     "digest_id": "current-affairs-2026-10-22",
