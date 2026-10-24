@@ -1,20 +1,15 @@
 {
- "date": "2026-10-23",
+ "date": "2026-10-24",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-24",
-  "2026-10-21"
+  "2026-09-25",
+  "2026-10-22"
  ],
  "totals": {
-  "clicks": 3,
-  "impressions": 384
+  "clicks": 8,
+  "impressions": 425
  },
  "daily": [
-  {
-   "date": "2026-09-24",
-   "clicks": 0,
-   "impressions": 2
-  },
   {
    "date": "2026-09-25",
    "clicks": 0,
@@ -149,15 +144,27 @@
    "date": "2026-10-21",
    "clicks": 0,
    "impressions": 22
+  },
+  {
+   "date": "2026-10-22",
+   "clicks": 4,
+   "impressions": 40
   }
  ],
  "topPages": [
   {
+   "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
+   "clicks": 2,
+   "impressions": 6,
+   "ctr": 33.33,
+   "position": 2.2
+  },
+  {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 34,
-   "ctr": 5.88,
-   "position": 5.6
+   "impressions": 37,
+   "ctr": 5.41,
+   "position": 5.5
   },
   {
    "page": "/guides/",
@@ -167,11 +174,32 @@
    "position": 3.5
   },
   {
+   "page": "/jobs/delhi-university-project-technical-support-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 3,
+   "ctr": 33.33,
+   "position": 2
+  },
+  {
+   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "clicks": 1,
+   "impressions": 12,
+   "ctr": 8.33,
+   "position": 4
+  },
+  {
+   "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 18,
+   "ctr": 5.56,
+   "position": 2
+  },
+  {
    "page": "/",
    "clicks": 0,
-   "impressions": 8,
+   "impressions": 10,
    "ctr": 0,
-   "position": 2.5
+   "position": 3.3
   },
   {
    "page": "/about/",
@@ -342,13 +370,6 @@
    "position": 26
   },
   {
-   "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 1.5
-  },
-  {
    "page": "/jobs/bihar-police-si-2026/",
    "clicks": 0,
    "impressions": 2,
@@ -377,11 +398,11 @@
    "position": 2
   },
   {
-   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "page": "/jobs/gbu-project-scientist-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 8,
+   "impressions": 2,
    "ctr": 0,
-   "position": 5.3
+   "position": 2
   },
   {
    "page": "/jobs/gims-clerical-2026/",
@@ -393,7 +414,7 @@
   {
    "page": "/jobs/gmu-research-associate-field-investigator-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 4,
    "ctr": 0,
    "position": 2
   },
@@ -410,6 +431,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
+  },
+  {
+   "page": "/jobs/gulf-walkin-burjeel-holdings-dubai-gulf/",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 4.7
   },
   {
    "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
@@ -463,47 +491,33 @@
   {
    "page": "/jobs/indian-bank-2026/",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 5,
    "ctr": 0,
-   "position": 10
+   "position": 8.4
   },
   {
-   "page": "/jobs/ksp-constable-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 16
-  },
-  {
-   "page": "/jobs/mdl-trade-apprentice-2026/",
+   "page": "/jobs/indian-bank-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
-   "position": 15
-  },
-  {
-   "page": "/jobs/ministry-health-project-saudi-arabia-gulf-2024/",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 29
-  },
-  {
-   "page": "/jobs/mpesb-group2-subgroup1-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 17
-  },
-  {
-   "page": "/jobs/nlc-junior-overman-mining-sirdar-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 27
+   "position": 2
   }
  ],
  "topQueries": [
+  {
+   "query": "govt jobs in karnataka 2026",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "university of delhi jobs",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
   {
    "query": "(\"hindustan laboratories\" or \"hll\") and (\"ipo\" or \"initial public offering\" or \"sebi\" or \"securities and exchange board of india\" or \"public issue\" or \"listing\" or \"approval\" or \"clearance\")",
    "clicks": 0,
@@ -519,6 +533,13 @@
    "position": 3
   },
   {
+   "query": "2026 job vacancy government",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "brahmaputra fertilizer recruitment",
    "clicks": 0,
    "impressions": 2,
@@ -528,12 +549,54 @@
   {
    "query": "brahmaputra valley fertilizer corporation limited recruitment",
    "clicks": 0,
-   "impressions": 8,
+   "impressions": 9,
    "ctr": 0,
-   "position": 5.1
+   "position": 5
+  },
+  {
+   "query": "careers burjeelholdings com",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "delhi university vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "field investigator jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "free job alert 2026 karnataka",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "gbu university recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "government recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "govt jobs in karnataka",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -589,6 +652,13 @@
    "position": 7
   },
   {
+   "query": "indianbank career",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "jobs in karnataka government",
    "clicks": 0,
    "impressions": 1,
@@ -596,7 +666,49 @@
    "position": 2
   },
   {
+   "query": "karnataka government jobs 2026",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "karnataka govt jobs 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "karnataka job recruitment 2026",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "karnataka recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "latest govt jobs in karnataka 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "latest recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "post job vacancy",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -631,6 +743,13 @@
    "position": 19
   },
   {
+   "query": "specialist officer recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "ssc cgl preparation plan",
    "clicks": 0,
    "impressions": 3,
@@ -640,23 +759,30 @@
   {
    "query": "गल्फ जॉब",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 4,
    "ctr": 0,
-   "position": 5
+   "position": 4.8
+  },
+  {
+   "query": "सुप्रीम कोर्ट वैकेंसी 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 34,
-   "ctr": 5.88,
-   "position": 5.6,
+   "impressions": 37,
+   "ctr": 5.41,
+   "position": 5.5,
    "queries": [
     {
      "q": "brahmaputra valley fertilizer corporation limited recruitment",
-     "impressions": 8,
-     "position": 5.1
+     "impressions": 9,
+     "position": 5
     },
     {
      "q": "brahmaputra fertilizer recruitment",
@@ -668,14 +794,14 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 20,
+   "impressions": 19,
    "ctr": 0,
-   "position": 6.8,
+   "position": 6.9,
    "queries": [
     {
      "q": "गल्फ जॉब",
-     "impressions": 5,
-     "position": 5
+     "impressions": 4,
+     "position": 4.8
     },
     {
      "q": "gulf job today",
@@ -686,6 +812,20 @@
      "q": "gulf jobs 2025",
      "impressions": 2,
      "position": 7
+    }
+   ]
+  },
+  {
+   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
+   "clicks": 1,
+   "impressions": 12,
+   "ctr": 8.33,
+   "position": 4,
+   "queries": [
+    {
+     "q": "gbu university recruitment",
+     "impressions": 1,
+     "position": 3
     }
    ]
   },

@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-24",
+    "date": "2026-10-24",
+    "digest_id": "current-affairs-2026-10-24",
+    "title": "Current Affairs Quiz 24 October 2026",
+    "questions": [
+      {
+        "q": "What significant recognition did the Prime Minister give recently?",
+        "options": [
+          "Achievements of Indian athletes",
+          "Expansion of maritime NBFC",
+          "Inter-Caste Marriage Promotion Scheme",
+          "Cleanliness Campaign 'Special Campaign 6'"
+        ],
+        "answer": 0,
+        "why": "The Prime Minister congratulated several athletes for their achievements at the Asian Para Games."
+      },
+      {
+        "q": "How many medals did Indian athletes win in the men's javelin throw at the Asian Para Games?",
+        "options": [
+          "Two",
+          "One",
+          "All three",
+          "Four"
+        ],
+        "answer": 2,
+        "why": "Indian athletes secured all three medals in the men's javelin throw event."
+      },
+      {
+        "q": "What does the government's 'Special Campaign 6' aim to improve?",
+        "options": [
+          "Financial stability",
+          "Cleanliness and efficiency of governance",
+          "Water supply management",
+          "Inter-caste marriages"
+        ],
+        "answer": 1,
+        "why": "'Special Campaign 6' promotes cleanliness and a review of pending matters in government offices."
+      },
+      {
+        "q": "What has been announced by India's Hali Maritime NBFC?",
+        "options": [
+          "Completion of a survey",
+          "Plan to distribute ₹5,107 crores",
+          "Introduction of an inter-caste marriage scheme",
+          "Launch of cleanliness campaign"
+        ],
+        "answer": 1,
+        "why": "Hali Maritime NBFC announced a plan to distribute ₹5,107 crores."
+      },
+      {
+        "q": "Which department organized training for rural drinking water management?",
+        "options": [
+          "Drinking Water and Sanitation Department",
+          "Legislative Department",
+          "Maritime NBFC",
+          "Revenue Intelligence Department"
+        ],
+        "answer": 0,
+        "why": "The Drinking Water and Sanitation Department organized national-level training under the Jal Jeevan Mission 2.0."
+      },
+      {
+        "q": "What was seized by Delhi Customs and DRI recently?",
+        "options": [
+          "Gold",
+          "Diamonds",
+          "Heroin",
+          "Money"
+        ],
+        "answer": 2,
+        "why": "The Directorate of Revenue Intelligence seized 5.6 kg of heroin."
+      },
+      {
+        "q": "What is the objective of the Inter-Caste Marriage Promotion Scheme?",
+        "options": [
+          "To improve economic stability",
+          "To promote social harmony",
+          "To combat drug trafficking",
+          "To ensure water supply"
+        ],
+        "answer": 1,
+        "why": "The scheme aims to promote inter-caste marriages as part of social harmony efforts."
+      },
+      {
+        "q": "Which initiative focuses on enhancing financial stability in the maritime sector?",
+        "options": [
+          "Jal Jeevan Mission 2.0",
+          "Special Campaign 6",
+          "Hali Maritime NBFC growth strategy",
+          "Inter-Caste Marriage Promotion Scheme"
+        ],
+        "answer": 2,
+        "why": "Hali Maritime NBFC's growth strategy signals the government’s focus on enhancing financial stability in essential industries."
+      },
+      {
+        "q": "What is the goal of the initiatives discussed in the article?",
+        "options": [
+          "Promoting economic growth",
+          "Encouraging competitive exams",
+          "Improving national security",
+          "All of the above"
+        ],
+        "answer": 3,
+        "why": "The initiatives together reflect government commitments towards economic growth, governance, and national security."
+      },
+      {
+        "q": "What does the government’s approach to para-sports reflect?",
+        "options": [
+          "Increased funding",
+          "Heightened public interest",
+          "National and international recognition",
+          "Focus on athletes' training"
+        ],
+        "answer": 2,
+        "why": "The achievements at the Asian Para Games highlight India's growing prowess and international recognition in para-sports."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-23",
     "date": "2026-10-23",
     "digest_id": "current-affairs-2026-10-23",
