@@ -2,7 +2,7 @@
   "date": "2026-10-25",
   "runs": {},
   "fetch": {
-    "at": "2026-10-25T19:10:23.179Z",
+    "at": "2026-10-25T22:38:23.038Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -48,7 +48,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-25T19:10:28.974Z",
+    "at": "2026-10-25T22:38:29.311Z",
     "sources": 59,
     "healthy": 7,
     "newLinks": 0,
@@ -110,9 +110,9 @@
       "slprb-ap": "paused (fails 14, geo-blocked)",
       "rbi": "20 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
       "nta": "3 links, 0 new via direct",
       "csbc": "197 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
       "jkssb": "2 links, 0 new via direct+aia"
     },
@@ -135,7 +135,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-25T19:10:29.689Z",
+    "at": "2026-10-25T22:38:30.050Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -156,17 +156,17 @@
     ]
   },
   "news": {
-    "at": "2026-10-25T19:11:01.948Z",
+    "at": "2026-10-25T22:39:02.612Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 96,
+    "existing": 98,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 96",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 98",
       "  current affairs for today already exists.",
-      "  + analysis: ISRO SDSC SHAR Recruitment 2026 – Apply Online for 97 MTS, Driver, Fireman and Other Posts",
-      "  + analysis: AIIMS Bilaspur Announces Recruitment for 69 Senior Resident Posts"
+      "  + analysis: ESIC Pune Opens Walk-In Interviews for 40 Faculty Positions",
+      "  + analysis: Government Medical College Thiruvananthapuram Announces ECG Technician Recruitment via Walk-in Interview"
     ]
   }
 }
