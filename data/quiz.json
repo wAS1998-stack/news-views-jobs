@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-25",
+    "date": "2026-10-25",
+    "digest_id": "current-affairs-2026-10-25",
+    "title": "Current Affairs Quiz 25 October 2026",
+    "questions": [
+      {
+        "q": "What is the initiative that has collected approximately 1.04 crore rupees for biodiversity efforts in India?",
+        "options": [
+          "Agricultural biological resources",
+          "Environmental balance",
+          "Urban mobility",
+          "Crafts fair"
+        ],
+        "answer": 0,
+        "why": "The article states that agricultural biological resources have raised funds for biodiversity initiatives."
+      },
+      {
+        "q": "Where was the 19th Urban Mobility India Conference held?",
+        "options": [
+          "Guwahati",
+          "Delhi",
+          "Bhuwaneswar",
+          "Bihar"
+        ],
+        "answer": 2,
+        "why": "The article mentions that the conference was concluded in Bhubaneswar."
+      },
+      {
+        "q": "What is the focus of the labor dialogue program taking place on 26 October in Lucknow?",
+        "options": [
+          "Defense initiatives",
+          "Social security and labor welfare",
+          "Economic development",
+          "Urban policy improvement"
+        ],
+        "answer": 1,
+        "why": "The article notes that the program promotes labor rights and social security."
+      },
+      {
+        "q": "Which state has initiated the Bihar Integrated Manufacturing City Gaya Limited for industrial development?",
+        "options": [
+          "Assam",
+          "Bihar",
+          "Delhi",
+          "Maharashtra"
+        ],
+        "answer": 1,
+        "why": "The article clearly states that the initiative is in Bihar."
+      },
+      {
+        "q": "What significant achievement has been accomplished in the Indian Navy regarding indigenous technology?",
+        "options": [
+          "New training programs",
+          "Diesel-electric submarines AIP system",
+          "Joint military exercises",
+          "International collaborations"
+        ],
+        "answer": 1,
+        "why": "The article emphasizes the significance of the indigenous AIP system for submarines."
+      },
+      {
+        "q": "What event is held to promote Indian handicrafts and cottage industries in 2026?",
+        "options": [
+          "Labour Dialogue",
+          "Urban Mobility India",
+          "Crafts Fair",
+          "Manufacturing City"
+        ],
+        "answer": 2,
+        "why": "The article specifies that the Crafts Fair 2026 is aimed at promoting these sectors."
+      },
+      {
+        "q": "How many representatives and experts attended the 19th Urban Mobility India Conference?",
+        "options": [
+          "Around 1,000",
+          "Approximately 1,500",
+          "Close to 2,000",
+          "Around 800"
+        ],
+        "answer": 1,
+        "why": "The article mentions that approximately 1,500 representatives and experts participated in the conference."
+      },
+      {
+        "q": "What has Prime Minister Modi recently provided to farmers as part of agricultural reforms?",
+        "options": [
+          "Financial assistance",
+          "Insurance coverage",
+          "Farmer IDs",
+          "Training programs"
+        ],
+        "answer": 2,
+        "why": "The article states that Prime Minister Modi has given farmer IDs as a protective measure."
+      },
+      {
+        "q": "What role do Ramsar sites play according to the article?",
+        "options": [
+          "Industrial development",
+          "Biodiversity and environmental balance",
+          "Urban mobility",
+          "Labor welfare"
+        ],
+        "answer": 1,
+        "why": "The article highlights the importance of Ramsar sites for global biodiversity and environmental balance."
+      },
+      {
+        "q": "Which competitive exams are particularly relevant to the updates mentioned in the article?",
+        "options": [
+          "SSC, UPSC, and others",
+          "NEET and JEE",
+          "CAT and MAT",
+          "CLAT and LSAT"
+        ],
+        "answer": 0,
+        "why": "The article emphasizes that updates are crucial for SSC, UPSC, Banking, Railway, and State PSC aspirants."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-24",
     "date": "2026-10-24",
     "digest_id": "current-affairs-2026-10-24",
