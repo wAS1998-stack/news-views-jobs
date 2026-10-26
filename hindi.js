@@ -85,7 +85,8 @@ function buildHindi(ctx) {
     const desc = (h.summary || "").slice(0, 155);
     const ld = [breadcrumbLd([{ name: "होम", url: SITE.url + "/hi/" }, { name: "सरकारी नौकरी", url: SITE.url + "/hi/" }, { name: h.title, url: canonical }])];
     if (h.faq && h.faq.length) ld.push(faqLd(h.faq));
-    const apply = j.apply_link || j.official_website || j.source;
+    const notAgg = (x) => x && !require("./lib.js").isAggregator(new URL(x).hostname);
+    const apply = j.apply_link || j.official_website || (notAgg(j.source) ? j.source : "");
     pages.push({ path: `hi/jobs/${j.id}/index.html`, url: canonical, html: head({ lang: "hi", title: `${title} | ${SITE.name}`, desc, canonical, ld, ogType: "article",
       alternates: alt(enPath, hiPath), langSwitch: enPath }) + `
 <main class="wrap" id="main">
@@ -135,7 +136,8 @@ function buildHindi(ctx) {
   for (const u of hiUpd) {
     const h = u.hi, T = HI_TYPES[u.type] || HI_TYPES.result;
     const enPath = `/updates/${u.id}/`, hiPath = `/hi/updates/${u.id}/`, canonical = SITE.url + hiPath;
-    const official = u.official_link || u.official_website || u.source || u.link;
+    const L = require("./lib.js"), notAgg = (x) => { try { return x && !L.isAggregator(new URL(x).hostname); } catch { return false; } };
+    const official = (notAgg(u.official_link) && u.official_link) || (notAgg(u.official_website) && u.official_website) || L.officialHomeFor(u.title) || (notAgg(u.link) && u.link) || "";
     let title = h.title.split(/\s+[–—|-]\s+/)[0].trim(); if (title.length > 62) title = title.slice(0, 60).replace(/\s+\S*$/, "");
     const ld = [breadcrumbLd([{ name: "होम", url: SITE.url + "/hi/" }, { name: T.plural, url: `${SITE.url}/hi/updates/${u.type}/` }, { name: h.title, url: canonical }])];
     if ((h.steps || []).length) ld.push({ "@context": "https://schema.org", "@type": "HowTo", name: h.title, step: h.steps.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) });

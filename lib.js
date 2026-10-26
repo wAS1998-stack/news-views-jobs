@@ -425,7 +425,12 @@ const OFFICIAL_HOMES = [
   [/\bsupreme court\b|\bsci court\b/i, "https://www.sci.gov.in/"], [/\bisro\b/i, "https://www.isro.gov.in/"], [/\baai\b/i, "https://www.aai.aero/"],
   [/\bassam rifles\b/i, "https://www.assamrifles.gov.in/"], [/\bindian army\b/i, "https://joinindianarmy.nic.in/"], [/\bbsf\b/i, "https://rectt.bsf.gov.in/"],
   [/\bup police\b|\buppbpb\b|\buprpb\b/i, "https://uppbpb.gov.in/"], [/\bssb\b/i, "https://ssbrectt.gov.in/"], [/\buiic\b|\buiicl\b/i, "https://uiic.co.in/"],
-  [/\bcanara bank\b/i, "https://canarabank.bank.in/"], [/\bcci\b.*\bcotton\b|\bcotcorp\b/i, "https://cotcorp.org.in/"],
+  [/\bcanara bank\b/i, "https://canarabank.bank.in/"], [/\bcci\b.*\bcotton\b|\bcotcorp\b|\bcotton corporation\b/i, "https://cotcorp.org.in/"],
+  [/\bmp police\b|\bmadhya pradesh police\b/i, "https://esb.mp.gov.in/"], [/\bbank of baroda\b|\bbob\b/i, "https://www.bankofbaroda.in/career"],
+  [/\bindian overseas bank\b|\biob\b/i, "https://www.iob.in/"], [/\bnicl\b|\bnational insurance\b/i, "https://nationalinsurance.nic.co.in/"],
+  [/\buco bank\b/i, "https://www.ucobank.com/"], [/\bntpc\b/i, "https://careers.ntpc.co.in/"], [/\bnhb\b|\bnational housing bank\b/i, "https://www.nhb.org.in/"],
+  [/\bdgqa\b/i, "https://www.dgqadefence.gov.in/"], [/\bup anganwadi\b|\bbal vikas\b/i, "https://balvikasup.gov.in/"], [/\bsouth indian bank\b/i, "https://www.southindianbank.com/"],
+  [/\bupcisb\b|\bup cooperative\b/i, "https://upsevamandal.org/"], [/\bbihar stet\b/i, "https://bsebstet.org/"], [/\becce educator\b/i, "https://basiceducation.up.gov.in/"],
 ];
 function officialHomeFor(title) {
   for (const [re, url] of OFFICIAL_HOMES) if (re.test(String(title || ""))) return url;

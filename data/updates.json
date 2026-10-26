@@ -1,5 +1,18 @@
 [
   {
+    "id": "up-home-guard-final-marks-2026",
+    "type": "result",
+    "title": "UP Home Guard Final Marks 2026",
+    "organization": "Uttar Pradesh Police Recruitment and Promotion Board",
+    "org_short": "UP Home Guard",
+    "date": "2026-10-24",
+    "link": "https://homeguard.up.gov.in/",
+    "official_link": "https://homeguard.up.gov.in/",
+    "official_website": "https://homeguard.up.gov.in/",
+    "summary": "Uttar Pradesh Police Recruitment and Promotion Board has announced the final marks for the Home Guard recruitment conducted in 2025. A total of 41,424 positions are available for candidates who completed their 10th grade. This announcement is an important step for those awaiting their results.",
+    "source": "https://www.sarkariexam.com/up-home-guard-2025/"
+  },
+  {
     "id": "mpesb-mp-police-si-subedar-admit-card-2026",
     "type": "admit-card",
     "title": "MPESB MP Police SI, Subedar Admit Card 2026",
@@ -818,7 +831,7 @@
     "organization": "Bank of Baroda",
     "org_short": "BOB",
     "date": "2026-10-24",
-    "link": "https://www.sarkariexam.com/bank-of-baroda-specialist-officer-so-2026/",
+    "link": "https://www.bankofbaroda.in/career",
     "summary": "Bank of Baroda has released the Admit Card for the post of Specialist Officer SO. This recruitment was announced for 206 posts. Candidates can check their hall ticket on the official website of Bank of Baroda. The announcement was made by the Sarkari Exam Team.",
     "exam_name": "Specialist Officer SO",
     "summary_hi": "बैंक ऑफ बड़ौदा ने specialist officer SO पद के लिए एडमिट कार्ड जारी कर दिया है। यह भर्ती 206 पदों के लिए घोषित की गई थी। उम्मीदवार अपने हॉल टिकट को बैंक ऑफ बड़ौदा की आधिकारिक वेबसाइट पर देख सकते हैं। यह घोषणा सारकारी परीक्षा टीम द्वारा की गई थी।",
@@ -887,7 +900,9 @@
         }
       ],
       "at": "2026-10-24"
-    }
+    },
+    "official_link": "https://www.bankofbaroda.in/career",
+    "official_website": "https://www.bankofbaroda.in/career"
   },
   {
     "id": "bihar-stet-admit-card-2026",
@@ -896,7 +911,7 @@
     "organization": "Bihar School Examination Board",
     "org_short": "BSEB",
     "date": "2026-10-24",
-    "link": "https://www.sarkariexam.com/bihar-stet-2026/",
+    "link": "https://bsebstet.org/",
     "summary": "The Bihar School Examination Board (BSEB) has released the Admit Card for the Bihar State Teacher Eligibility STET Examination 2026 on their official website. Candidates who applied for the exam can now download their admit cards. To check or download the admit card, visit the official BSEB website.",
     "exam_name": "Bihar State Teacher Eligibility Test (STET)",
     "summary_hi": "बिहार स्कूल परीक्षा बोर्ड (BSEB) ने बिहार राज्य शिक्षक पात्रता परीक्षा (STET) 2026 के लिए प्रवेश पत्र जारी कर दिया है। जो उम्मीदवार परीक्षा के लिए आवेदन करें हैं, वे अब अपने प्रवेश पत्र डाउनलोड कर सकते हैं। प्रवेश पत्र जांचने या डाउनलोड करने के लिए, आधिकारिक BSEB वेबसाइट पर जाएं।",
@@ -965,7 +980,9 @@
         }
       ],
       "at": "2026-10-24"
-    }
+    },
+    "official_link": "https://bsebstet.org/",
+    "official_website": "https://bsebstet.org/"
   },
   {
     "id": "upsssc-pet-admit-card-2026-out",
@@ -1208,7 +1225,7 @@
     "organization": "Cotton Corporation of India Limited",
     "org_short": "CCI",
     "date": "2026-10-23",
-    "link": "https://www.sarkariexam.com/cci-various-post-2026/",
+    "link": "https://cotcorp.org.in/",
     "summary": "Cotton Corporation of India Limited has released the result for the Junior Commercial Executive, Junior Assistant, and Assistant Manager posts. This recruitment was conducted for a total of 148 positions. Candidates can check their results through the official announcement made by the Corporation.",
     "exam_name": "Junior Commercial Executive, Junior Assistant & Assistant Manager Post",
     "summary_hi": "कॉटन कॉर्पोरेशन ऑफ इंडिया लिमिटेड ने जूनियर कमर्शियल एक्जीक्यूटिव, जूनियर असिस्टेंट और असिस्टेंट मैनेजर पदों के लिए परिणाम जारी किया है। यह भर्ती कुल 148 पदों के लिए की गई थी। उम्मीदवार अपने परिणामों की जांच निगम द्वारा की गई आधिकारिक घोषणा के माध्यम से कर सकते हैं।",
@@ -1281,7 +1298,9 @@
         }
       ],
       "at": "2026-10-23"
-    }
+    },
+    "official_website": "https://cotcorp.org.in/",
+    "official_link": "https://cotcorp.org.in/"
   },
   {
     "id": "ssc-junior-engineer-je-exam-city-details-2026",
@@ -2104,7 +2123,7 @@
     "organization": "National Insurance Company Limited",
     "org_short": "NICL",
     "date": "2026-10-23",
-    "link": "https://www.sarkariexam.com/national-insurance-nicl-assistant-2026/",
+    "link": "https://nationalinsurance.nic.co.in/",
     "summary": "National Insurance Company Limited (NICL) has released the mains admit card for the post of Assistants. This recruitment is for 500 posts. Candidates can check and download their admit cards on the official NICL website. Ensure to have your credentials ready for the download process.",
     "exam_name": "Assistant Mains",
     "summary_hi": "नेशनल इंश्योरेंस कंपनी लिमिटेड (NICL) ने सहायक पद के लिए मुख्य परीक्षा का एडमिट कार्ड जारी किया है। यह भर्ती 500 पदों के लिए है। उम्मीदवार अपने एडमिट कार्ड को आधिकारिक NICL वेबसाइट पर देख और डाउनलोड कर सकते हैं। डाउनलोड प्रक्रिय से पहले अपने प्रमाण पत्र तैयार रखें।",
@@ -2173,7 +2192,9 @@
         }
       ],
       "at": "2026-10-23"
-    }
+    },
+    "official_link": "https://nationalinsurance.nic.co.in/",
+    "official_website": "https://nationalinsurance.nic.co.in/"
   },
   {
     "id": "jssc-assistant-jailor-pet-admit-card-2026-out-download-jajce-physical-",
@@ -14403,7 +14424,7 @@
     "organization": "U.P. Co-operative Institutional Service Board",
     "org_short": "UPCISB",
     "date": "2026-10-14",
-    "link": "https://www.sarkariexam.com/upcisb-cooperative-bank-various-post-2026/",
+    "link": "https://upsevamandal.org/",
     "summary": "U.P. Co-operative Institutional Service Board (UPCISB) has released the admit card for various posts under the Cooperative Bank recruitment. The applications for this recruitment were accepted from 25 April 2026 to 15 May 2026. Candidates can check and download their admit cards from the official UPCISB website. Further instructions regarding the examination will be provided along with the admit card.",
     "exam_name": "Cooperative Bank Various Posts",
     "summary_hi": "उत्तर प्रदेश सहकारी संस्थागत सेवा बोर्ड (UPCISB) ने सहकारी बैंक भर्ती के तहत विभिन्न पदों के लिए प्रवेश पत्र जारी किया है। इस भर्ती के लिए आवेदन 25 अप्रैल 2026 से 15 मई 2026 तक स्वीकार किए गए थे। उम्मीदवार अपने प्रवेश पत्र UPCISB की आधिकारिक वेबसाइट से चेक और डाउनलोड कर सकते हैं। परीक्षा से संबंधित और निर्देश प्रवेश पत्र के साथ प्रदान किए जाएंगे।",
@@ -14472,7 +14493,9 @@
         }
       ],
       "at": "2026-10-15"
-    }
+    },
+    "official_link": "https://upsevamandal.org/",
+    "official_website": "https://upsevamandal.org/"
   },
   {
     "id": "railway-rrb-technician-cen-02-2026-admit-card-2026",
@@ -14561,7 +14584,7 @@
     "organization": "Indian Overseas Bank",
     "org_short": "IOB",
     "date": "2026-10-14",
-    "link": "https://www.sarkariexam.com/indian-overseas-bank-security-guard-2026/",
+    "link": "https://www.iob.in/",
     "summary": "Indian Overseas Bank has released the admit card for the post of Security Guard. This release is for the Security Guard recruitment. Candidates can check the official website for more details and to download their admit cards.",
     "exam_name": "Security Guard",
     "summary_hi": "भारतीय विदेश बैंक ने सुरक्षा रक्षक पद के लिए प्रवेश पत्र जारी किया है। यह रिलीज सुरक्षा रक्षक भर्ती के लिए है। उम्मीदवार अधिक जानकारी और अपने प्रवेश पत्र डाउनलोड करने के लिए आधिकारिक वेबसाइट देख सकते हैं।",
@@ -14630,7 +14653,9 @@
         }
       ],
       "at": "2026-10-15"
-    }
+    },
+    "official_link": "https://www.iob.in/",
+    "official_website": "https://www.iob.in/"
   },
   {
     "id": "upsssc-moharir-2022-eligibility-result-2026",

@@ -599,10 +599,13 @@ function buildUpdatePage(u, all) {
   const faqs = [...(Array.isArray(u.faq_search) ? u.faq_search : []), ...(Array.isArray(u.faq) ? u.faq : [])].filter((f) => f && f.q && f.a).slice(0, 10);
   const AGG = /(rajsarkariresult|govtjobsblog|govtjobsdiary|sarkarifeed|gulfjobvacancy|gulfwalkin|gccwalkins|sarkariresult|freejobalert)\./i;
   const titleHost = (String(u.title).match(/\b(?:at|on|from|via)\s+((?:[a-z0-9-]+\.)+(?:gov\.in|nic\.in|ac\.in|edu\.in|res\.in|org\.in|co\.in|gov|org|in|com|net))\b/i) || [])[1];
-  const official = (u.official_link && !AGG.test(u.official_link)) ? u.official_link
-    : (u.official_website && !AGG.test(u.official_website)) ? u.official_website
-    : titleHost ? `https://${titleHost.toLowerCase()}/` : (u.source || u.link);
-  const officialHost = AGG.test(official) ? "" : hostOf(official);
+  // Outbound links go to the exam body only — never to the blog/aggregator the item was first seen on.
+  const notAgg = (x) => x && !AGG.test(x) && !LIB.isAggregator(hostOf(x));
+  const official = notAgg(u.official_link) ? u.official_link
+    : notAgg(u.official_website) ? u.official_website
+    : titleHost ? `https://${titleHost.toLowerCase()}/`
+    : LIB.officialHomeFor(u.title) || (notAgg(u.link) ? u.link : "");
+  const officialHost = official ? hostOf(official) : "";
   const steps = Array.isArray(u.steps) && u.steps.length >= 3 ? u.steps : updateGenericSteps({ ...u, __site: officialHost || "the official website" });
   const desc = (u.summary || "").slice(0, 158);
   const ld = [
@@ -639,9 +642,8 @@ function buildUpdatePage(u, all) {
       ${row("Type of update", esc(typeLabel))}
       ${row("Released on", fmtDate(u.event_date || u.date))}
       ${row("Official website", officialHost ? `<a href="${esc(official)}" rel="nofollow noopener" target="_blank">${esc(officialHost)}</a>` : "")}
-      ${row("Source", !officialHost || AGG.test(u.source || "") ? `<a href="${esc(u.source || u.link)}" rel="nofollow noopener" target="_blank">${esc(hostOf(u.source || u.link))}</a>` : "")}
     </dl></div>
-    <p class="cta-row"><a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">${officialHost ? `Download / check on ${esc(officialHost)}` : "View the notice"} &rarr;</a>${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
+    <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">Download / check on ${esc(officialHost)} &rarr;</a>` : ""}${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
     ${adSlot("update-mid")}
     <h2 class="section-h">How to download the ${esc(u.org_short || u.organization)} ${esc(typeLabel.toLowerCase())}</h2>
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
@@ -1283,7 +1285,7 @@ function buildJob(job, all) {
     ${job.apply_link ? `<a class="btn btn-primary" href="${esc(job.apply_link)}" target="_blank" rel="noopener nofollow">Apply on official site &uarr;</a>`
       : (job.official_website || LIB.hostFromTitle(job.title) || LIB.officialHomeFor(job.title)) ? `<a class="btn btn-primary" href="${esc(job.official_website || (LIB.hostFromTitle(job.title) ? "https://" + LIB.hostFromTitle(job.title) + "/" : LIB.officialHomeFor(job.title)))}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
       : job.official_website ? `<a class="btn btn-primary" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
-      : job.source ? `<a class="btn btn-primary" href="${esc(job.source)}" target="_blank" rel="noopener nofollow">View the notification &uarr;</a>` : ""}
+      : (job.source && !LIB.isAggregator(hostOf(job.source))) ? `<a class="btn btn-primary" href="${esc(job.source)}" target="_blank" rel="noopener nofollow">View the notification &uarr;</a>` : ""}
     ${job.official_notification ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Read official notification</a>` : ""}
     ${job.official_website && job.apply_link && hostOf(job.official_website) !== hostOf(job.apply_link) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Official website</a>` : ""}
   </div>
