@@ -1319,13 +1319,18 @@ function build404() {
 }
 
 /* ---- Feeds ------------------------------------------------------ */
-function buildSitemap(jobs, cats, extra = []) {
+function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
+  // lastmod must be honest: a page's own date, not "today" on every build (Google stops trusting a
+  // sitemap whose dates are all today). Hubs genuinely change daily and keep today's date.
+  // Jobs closed for 60+ days stay live and linked but leave the sitemap, so crawl slots go to new pages.
   const today = BUILT.toISOString().slice(0, 10);
+  const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff));
   const urls = [
     { loc: SITE.url + "/", mod: today },
-    ...extra.map((u) => ({ loc: `${SITE.url}/${u}`, mod: today })),
-    ...cats.map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`, mod: today })),
-    ...jobs.map((j) => ({ loc: `${SITE.url}/jobs/${j.id}/`, mod: j.published || today })),
+    ...extra.map((u) => ({ loc: `${SITE.url}/${u}`, mod: mods.get(u) || today })),
+    ...cats.map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`, mod: mods.get(`${c.kind}/${c.slug ? c.slug + "/" : ""}`) || today })),
+    ...mapJobs.map((j) => ({ loc: `${SITE.url}/jobs/${j.id}/`, mod: j.published || today })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
@@ -1908,7 +1913,17 @@ function main() {
     ...Object.keys(pages).map((s) => `${s}/`),
   ];
 
-  write("sitemap.xml", buildSitemap(jobs, cats, extra));
+  // Real modification dates for dated pages (everything else is a hub that changes with each build).
+  const mods = new Map();
+  const d = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
+  for (const u of updates) if (d(u.date)) { mods.set(`updates/${u.id}/`, d(u.date)); mods.set(`hi/updates/${u.id}/`, d(u.date)); }
+  for (const j of jobs) if (d(j.published)) mods.set(`hi/jobs/${j.id}/`, d(j.published));
+  for (const a of news) if (d(a.date)) mods.set(`news/${a.id}/`, d(a.date));
+  for (const z of ALL_QUIZ) if (d(z.date)) mods.set(`quiz/${z.id}/`, d(z.date));
+  for (const g of guides) if (d(g.meta && g.meta.date)) mods.set(`guides/${g.slug}/`, d(g.meta.date));
+  const cutoff60 = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  const oldClosed = new Set(jobs.filter((j) => j.application_end && j.application_end < cutoff60).map((j) => `hi/jobs/${j.id}/`));
+  write("sitemap.xml", buildSitemap(jobs, cats, extra.filter((u) => !oldClosed.has(u)), mods));
 
   // Human-readable master list of every URL — handy for checking/indexing.
   const allUrls = [
