@@ -1,20 +1,15 @@
 {
- "date": "2026-10-25",
+ "date": "2026-10-26",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-26",
-  "2026-10-23"
+  "2026-09-27",
+  "2026-10-24"
  ],
  "totals": {
-  "clicks": 9,
-  "impressions": 468
+  "clicks": 12,
+  "impressions": 495
  },
  "daily": [
-  {
-   "date": "2026-09-26",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-09-27",
    "clicks": 0,
@@ -149,9 +144,21 @@
    "date": "2026-10-23",
    "clicks": 1,
    "impressions": 44
+  },
+  {
+   "date": "2026-10-24",
+   "clicks": 3,
+   "impressions": 27
   }
  ],
  "topPages": [
+  {
+   "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 3,
+   "impressions": 24,
+   "ctr": 12.5,
+   "position": 2
+  },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
    "clicks": 2,
@@ -167,13 +174,6 @@
    "position": 5.5
   },
   {
-   "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 2,
-   "impressions": 21,
-   "ctr": 9.52,
-   "position": 2
-  },
-  {
    "page": "/guides/",
    "clicks": 1,
    "impressions": 6,
@@ -183,9 +183,16 @@
   {
    "page": "/jobs/delhi-university-project-technical-support-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 5,
-   "ctr": 20,
-   "position": 2.4
+   "impressions": 7,
+   "ctr": 14.29,
+   "position": 2.6
+  },
+  {
+   "page": "/jobs/dgqa-technician-2026/",
+   "clicks": 1,
+   "impressions": 16,
+   "ctr": 6.25,
+   "position": 3.4
   },
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
@@ -195,11 +202,18 @@
    "position": 4
   },
   {
+   "page": "/jobs/nfsu-senior-project-associate-walkin-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
    "page": "/",
    "clicks": 0,
-   "impressions": 10,
+   "impressions": 11,
    "ctr": 0,
-   "position": 3.3
+   "position": 3.7
   },
   {
    "page": "/about/",
@@ -398,18 +412,18 @@
    "position": 9
   },
   {
-   "page": "/jobs/dgqa-technician-2026/",
-   "clicks": 0,
-   "impressions": 12,
-   "ctr": 0,
-   "position": 4
-  },
-  {
    "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "page": "/jobs/gbu-project-scientist-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -435,16 +449,16 @@
   {
    "page": "/jobs/gpt-guntakal-2026/",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 4,
    "ctr": 0,
-   "position": 17.7
+   "position": 13.5
   },
   {
    "page": "/jobs/gulf-hours-hotel-uae/",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 4,
    "ctr": 0,
-   "position": 3
+   "position": 2.3
   },
   {
    "page": "/jobs/gulf-walkin-burjeel-holdings-dubai-gulf/",
@@ -487,23 +501,23 @@
    "impressions": 3,
    "ctr": 0,
    "position": 4
-  },
-  {
-   "page": "/jobs/ihmcl-systems-engineer-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 19
-  },
-  {
-   "page": "/jobs/iim-visakhapatnam-assistant-manager-associate-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 24
   }
  ],
  "topQueries": [
+  {
+   "query": "dgqa kanpur recruitment",
+   "clicks": 1,
+   "impressions": 12,
+   "ctr": 8.33,
+   "position": 3.4
+  },
+  {
+   "query": "free job alert 2026",
+   "clicks": 1,
+   "impressions": 2,
+   "ctr": 50,
+   "position": 2.5
+  },
   {
    "query": "government jobs in karnataka apply online",
    "clicks": 1,
@@ -513,6 +527,13 @@
   },
   {
    "query": "govt jobs in karnataka 2026",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "govt jobs recruitment 2026",
    "clicks": 1,
    "impressions": 1,
    "ctr": 100,
@@ -570,7 +591,7 @@
   {
    "query": "bank recruitment 2026",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 2
   },
@@ -578,6 +599,13 @@
    "query": "bank vacancy 2026",
    "clicks": 0,
    "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "banking recruitment",
+   "clicks": 0,
+   "impressions": 2,
    "ctr": 0,
    "position": 2
   },
@@ -605,16 +633,9 @@
   {
    "query": "delhi university vacancy",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "dgqa kanpur recruitment",
-   "clicks": 0,
-   "impressions": 10,
-   "ctr": 0,
-   "position": 3.7
+   "position": 2.5
   },
   {
    "query": "field investigator jobs",
@@ -636,6 +657,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
+  },
+  {
+   "query": "government bank jobs in india",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "government recruitment 2026",
@@ -694,6 +722,13 @@
    "position": 79
   },
   {
+   "query": "iit dhanbad jrf position",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "indian bank career",
    "clicks": 0,
    "impressions": 1,
@@ -743,6 +778,13 @@
    "position": 2
   },
   {
+   "query": "karnataka govt jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "karnataka govt jobs 2026",
    "clicks": 0,
    "impressions": 1,
@@ -759,7 +801,7 @@
   {
    "query": "karnataka job recruitment 2026",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
    "position": 2
   },
@@ -783,6 +825,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "nfdc jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 7
   },
   {
    "query": "post job vacancy",
@@ -850,9 +899,16 @@
   {
    "query": "गल्फ जॉब",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 3,
    "ctr": 0,
-   "position": 4.8
+   "position": 4.3
+  },
+  {
+   "query": "भारत जॉब सरकारी",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "सुप्रीम कोर्ट वैकेंसी 2026",
@@ -887,12 +943,12 @@
    "clicks": 0,
    "impressions": 19,
    "ctr": 0,
-   "position": 6.9,
+   "position": 6.8,
    "queries": [
     {
      "q": "गल्फ जॉब",
-     "impressions": 4,
-     "position": 4.8
+     "impressions": 3,
+     "position": 4.3
     },
     {
      "q": "gulf job today",
@@ -917,20 +973,6 @@
      "q": "gbu university recruitment",
      "impressions": 1,
      "position": 3
-    }
-   ]
-  },
-  {
-   "page": "/jobs/dgqa-technician-2026/",
-   "clicks": 0,
-   "impressions": 12,
-   "ctr": 0,
-   "position": 4,
-   "queries": [
-    {
-     "q": "dgqa kanpur recruitment",
-     "impressions": 10,
-     "position": 3.7
     }
    ]
   },

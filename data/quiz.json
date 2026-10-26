@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-26",
+    "date": "2026-10-26",
+    "digest_id": "current-affairs-2026-10-26",
+    "title": "Current Affairs Quiz 26 October 2026",
+    "questions": [
+      {
+        "q": "What initiative highlights government focus on grassroots development?",
+        "options": [
+          "Operation Trident",
+          "PM's Varanasi Tour",
+          "National Urban Conference",
+          "AI × Food Tech Hackathon"
+        ],
+        "answer": 1,
+        "why": "The Prime Minister's Varanasi Tour showcased various developmental projects emphasizing grassroots development."
+      },
+      {
+        "q": "Which program did PM Modi use to highlight achievements in khadi and village industries?",
+        "options": [
+          "Mann Ki Baat",
+          "Operation Trident",
+          "AI × Food Tech Hackathon",
+          "National Urban Conference"
+        ],
+        "answer": 0,
+        "why": "PM Modi highlighted achievements in khadi and village industries during his 'Mann Ki Baat' program."
+      },
+      {
+        "q": "Which Union Minister presented shipbuilding opportunities in Korea?",
+        "options": [
+          "Piyush Goyal",
+          "Sarbananda Sonowal",
+          "Rajnath Singh",
+          "Amit Shah"
+        ],
+        "answer": 1,
+        "why": "Union Minister Sarbananda Sonowal showcased shipbuilding opportunities in India during his visit to Korea."
+      },
+      {
+        "q": "Where did Union Minister Piyush Goyal engage in trade talks?",
+        "options": [
+          "Korea",
+          "Netherlands",
+          "Bhubaneswar",
+          "Varanasi"
+        ],
+        "answer": 1,
+        "why": "Union Minister Piyush Goyal engaged in discussions on trade and investment in the Netherlands."
+      },
+      {
+        "q": "What event did NIFTEM-K organize related to food technology?",
+        "options": [
+          "National Urban Conference",
+          "Hack the Fork",
+          "Operation Trident",
+          "PM's Varanasi Tour"
+        ],
+        "answer": 1,
+        "why": "NIFTEM-K organized India's first 'AI × Food Tech Hackathon', titled 'Hack the Fork'."
+      },
+      {
+        "q": "What did PM Modi inaugurate in Bhubaneswar?",
+        "options": [
+          "New RBI data center and cyber security training institute",
+          "Shipbuilding facility",
+          "Khadi production unit",
+          "AI × Food Tech Hub"
+        ],
+        "answer": 0,
+        "why": "PM Modi inaugurated a new RBI data center and cyber security training institute in Bhubaneswar."
+      },
+      {
+        "q": "What was one of the main discussions at the National Urban Conference 2026?",
+        "options": [
+          "Trade relations",
+          "Korean investments",
+          "Urban administration and service delivery",
+          "Cyber security"
+        ],
+        "answer": 2,
+        "why": "The National Urban Conference focused on strengthening urban administration and service delivery."
+      },
+      {
+        "q": "What was 'Operation Trident' primarily focused on?",
+        "options": [
+          "Urban development",
+          "Drug trafficking",
+          "Economic ties",
+          "Food technology"
+        ],
+        "answer": 1,
+        "why": "Operation Trident was a significant anti-drug operation conducted by the NCB."
+      },
+      {
+        "q": "Which topic is crucial for students preparing for banking and finance-related exams?",
+        "options": [
+          "Urban development",
+          "Cyber security",
+          "Monetary policy and security measures",
+          "Trade policies"
+        ],
+        "answer": 2,
+        "why": "Knowledge of monetary policy and security measures is beneficial for banking and finance-related exams."
+      },
+      {
+        "q": "What significant theme emerged from the recent government engagements?",
+        "options": [
+          "Urban sustainability",
+          "International culinary innovations",
+          "Grassroots development and innovation",
+          "Maritime trade enhancement"
+        ],
+        "answer": 2,
+        "why": "The overall theme of government engagements emphasizes grassroots development and innovation across sectors."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-25",
     "date": "2026-10-25",
     "digest_id": "current-affairs-2026-10-25",

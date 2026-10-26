@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "runs": {},
   "fetch": {
-    "at": "2026-10-25T22:38:23.038Z",
+    "at": "2026-10-26T04:51:34.767Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,23 +11,26 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 8,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-24; 76 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-26; 71 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-17; 6 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-17; 9 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-25; 19 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-25; 21 already known"
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-25; 18 already known",
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-26; 9 already known"
     },
     "log": [
-      "Feeds: 5 | AI: OpenAI (gpt-4o-mini) | max jobs: 20 | max updates: 30",
-      "  100 items from https://www.freejobalert.com/feed/ (direct)",
-      "  10 items from https://rajsarkariresult.com/feed (direct)",
-      "  10 items from https://gulfjobvacancy.in/feed (direct)",
-      "  40 items from https://www.sarkariexam.com/feed/ (direct)",
-      "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
+      "   + Army Public School Happy Valley Driver cum MTS Recruitment 2026 – Apply Offline",
+      "   + USAC Recruitment 2026 – Walkin for 5 Junior Project Fellow, Field Assistant Posts",
+      "   ! no official link on source (0 candidates, feed html tried): MCA Job Opportunities in Government Sector 2026-27",
+      "   + MCA Job Opportunities in Government Sector 2026-27",
+      "   + IRCON Manager Recruitment 2026 – Walkin for 37 Posts",
+      "   + AIIMS Kalyani Senior Resident Recruitment 2026 – Apply Online for 12 Posts",
+      "   + EdCIL Consultant Recruitment 2026 - Apply Online for 18 Posts",
+      "   + Naval Dockyard Mumbai Apprenticeship Recruitment 2026 - Apply Online for 283 Posts",
+      "   + ITBP Head Constable Education & Stress Counsellor Vacancy 2026: Apply Online for 16 Posts",
       "   = duplicate of an existing recruitment, skipped: RRB Isolated Categories Recruitment 2027 (195 Posts) Short Notification Out",
       "   = duplicate of an existing recruitment, skipped: EIL Engineer & Officer Vacancy 2026 - Apply Online for 109 Posts",
       "   = duplicate of an existing recruitment, skipped: Sainik School Tilaiya Recruitment 2026 – Apply for 06 Teaching and Non-Teaching Posts",
@@ -39,7 +42,6 @@
       "   = duplicate of an existing recruitment, skipped: UPESSC TGT Recruitment Notification 2026 - Apply Online 17,735 Assistant Teacher Posts",
       "   = duplicate of an existing recruitment, skipped: TMC Counselor Recruitment 2026 – Walkin",
       "   = duplicate of an existing recruitment, skipped: NeGD Data Scientist Recruitment 2026 – Apply Online",
-      "   = duplicate of an existing recruitment, skipped: ICAR CIFE Young Professional Recruitment 2026 – Apply Online",
       "   = duplicate of an existing recruitment, skipped: Bihar BTSC Fishery Extension Officer Online Form 2026 – Last Date",
       "   = duplicate of an existing recruitment, skipped: Bihar BTSC Touring Veterinary Officer Online Form 2026 – Last Date",
       "   = duplicate of an existing recruitment, skipped: Railway RRB Station Master Online Form 2026 (1250 Posts)",
@@ -48,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-25T22:38:29.311Z",
+    "at": "2026-10-26T04:51:40.652Z",
     "sources": 59,
     "healthy": 7,
     "newLinks": 0,
@@ -109,12 +111,12 @@
       "tslprb": "paused (fails 14)",
       "slprb-ap": "paused (fails 14, geo-blocked)",
       "rbi": "20 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
-      "nta": "3 links, 0 new via direct",
-      "csbc": "197 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "jkssb": "2 links, 0 new via direct+aia"
+      "nta": "3 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
+      "csbc": "197 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via direct+aia",
+      "wbssc": "13 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -122,20 +124,20 @@
     ]
   },
   "gsc": {
-    "at": "2026-10-25T04:44:59.057Z",
+    "at": "2026-10-26T04:51:41.962Z",
     "ok": true,
     "property": "https://news-views.in/",
-    "clicks28d": 9,
-    "impressions28d": 468,
-    "pages": 128,
-    "opportunities": 5,
+    "clicks28d": 12,
+    "impressions28d": 495,
+    "pages": 132,
+    "opportunities": 4,
     "sitemap": 204,
     "log": [
       "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
   },
   "enrich": {
-    "at": "2026-10-25T22:38:30.050Z",
+    "at": "2026-10-26T04:53:13.284Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -143,30 +145,45 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 8,
+    "hindiJobs": 8,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
-    "opportunities": 5,
+    "opportunities": 4,
     "log": [
-      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
+      "Enrich/links: 2 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: MCA Job Opportunities in Government Sector 2026-27",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 8 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: Army Public School Happy Valley ड्राइवर कम MTS भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: USAC भर्ती 2026 – 5 जूनियर प्रोजेक्ट फेलो, फील्ड असिस्टेंट पदों के लिए वॉlkइन",
+      "  ✓ hindi: सरकारी क्षेत्र में MCA नौकरी के अवसर 2026-27",
+      "  ✓ hindi: IRCON प्रबंधक भर्ती 2026 – 37 पदों के लिए वॉक-इन",
+      "  ✓ hindi: AIIMS कालीगंज सीनियर रेजिडेंट भर्ती 2026 – 12 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: EdCIL कंसल्टेंट भर्ती 2026 - 18 पदों के लिए आवेदन करें",
+      "  ✓ hindi: नवल डॉकयार्ड मुंबई अप्रेंटिसशिप भर्ती 2026 - 283 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ITBP हेड कांस्टेबल शिक्षा और तनाव काउंसलर भर्ती 2026: 16 पदों के लिए ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-10-25T22:39:02.612Z",
+    "at": "2026-10-26T04:54:02.282Z",
     "ai": "OpenAI",
-    "published": 2,
-    "quizzes": 0,
-    "existing": 98,
-    "feeds": {},
+    "published": 3,
+    "quizzes": 1,
+    "existing": 100,
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    },
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 98",
-      "  current affairs for today already exists.",
-      "  + analysis: ESIC Pune Opens Walk-In Interviews for 40 Faculty Positions",
-      "  + analysis: Government Medical College Thiruvananthapuram Announces ECG Technician Recruitment via Walk-in Interview"
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 100",
+      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
+      "  20 source headlines for today's digest",
+      "  + digest: Current Affairs 26 October 2026: Key Government Updates for Exam Aspirants (314 words)",
+      "  + analysis: Army Public School Happy Valley Invites Applications for Driver cum MTS Recruitment",
+      "  + analysis: Uttarakhand Space Application Centre Invites Applications for Junior Project Fellow and Field Assistant Positions",
+      "  + quiz: Current Affairs Quiz 26 October 2026 (10 Qs)"
     ]
   }
 }
