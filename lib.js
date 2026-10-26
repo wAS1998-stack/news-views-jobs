@@ -159,6 +159,7 @@ function parseFeed(xml) {
       title: cleanTitle(stripTags(grab(b, "title"))),
       link: grab(b, "link") || (b.match(/<link[^>]*href="([^"]+)"/i)?.[1] || ""),
       summary: stripTags(grab(b, "description") || grab(b, "content:encoded")),
+      html: (grab(b, "content:encoded") || grab(b, "description")).replace(/^<!\[CDATA\[|\]\]>$/g, "").slice(0, 60000),
       date: grab(b, "pubDate") || grab(b, "dc:date"),
       guid: grab(b, "guid"),
     });
@@ -168,6 +169,7 @@ function parseFeed(xml) {
       title: cleanTitle(stripTags(grab(b, "title"))),
       link: b.match(/<link[^>]*href="([^"]+)"/i)?.[1] || grab(b, "id"),
       summary: stripTags(grab(b, "summary") || grab(b, "content")),
+      html: (grab(b, "content") || grab(b, "summary")).slice(0, 60000),
       date: grab(b, "updated") || grab(b, "published"),
       guid: grab(b, "id"),
     });
@@ -370,10 +372,10 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b/i;
+const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)/i;
 
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
-const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf/i;
+const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf|latest (govt|government|sarkari) jobs? (on|for|of) \d|\b\d[\d,]*\+? (all india )?vacancies open\b|government jobs on \d{1,2}(st|nd|rd|th)? \w+ 20\d\d|\(\d[\d,]*\+ [^)]*vacanc|\b\d[\d,]*\+ vacancies\b|closing govt jobs|free ?job ?alert|latest (\w+ )?(vacancy )?notifications\s*$|^latest\b[^–—:]*\b(govt|government|sarkari|railway|bank)\b[^–—:]*\bjobs\b|^[\w&.,' -]{0,30}\bgovt jobs 20\d\d\b|\b(govt|government) jobs for (diploma|engineers|graduates|10th|12th|iti|women|females?)\b/i;
 
 /** Same announcement from two feeds ("HPSC HCS Final Result 2026 Out - Check…" vs
  *  "HPSC HCS and Allied Services Final Result 2026"): compare the subject words before the
@@ -419,6 +421,11 @@ const OFFICIAL_HOMES = [
   [/\bbssc\b/i, "https://bssc.bihar.gov.in/"], [/\bjssc\b/i, "https://jssc.jharkhand.gov.in/"], [/\bgsssb\b/i, "https://gsssb.gujarat.gov.in/"],
   [/\bcsbc\b/i, "https://csbc.bihar.gov.in/"], [/\bbpssc\b/i, "https://bpssc.bihar.gov.in/"], [/\bkvs\b/i, "https://kvsangathan.nic.in/"],
   [/\bctet\b/i, "https://ctet.nic.in/"], [/\btnpsc\b/i, "https://www.tnpsc.gov.in/"], [/\bmpsc\b/i, "https://mpsc.gov.in/"],
+  [/\bupessc\b/i, "https://upessc.up.gov.in/"], [/\b(mpesb|mp ?esb)\b/i, "https://esb.mp.gov.in/"], [/\bnta\b/i, "https://nta.ac.in/"],
+  [/\bsupreme court\b|\bsci court\b/i, "https://www.sci.gov.in/"], [/\bisro\b/i, "https://www.isro.gov.in/"], [/\baai\b/i, "https://www.aai.aero/"],
+  [/\bassam rifles\b/i, "https://www.assamrifles.gov.in/"], [/\bindian army\b/i, "https://joinindianarmy.nic.in/"], [/\bbsf\b/i, "https://rectt.bsf.gov.in/"],
+  [/\bup police\b|\buppbpb\b|\buprpb\b/i, "https://uppbpb.gov.in/"], [/\bssb\b/i, "https://ssbrectt.gov.in/"], [/\buiic\b|\buiicl\b/i, "https://uiic.co.in/"],
+  [/\bcanara bank\b/i, "https://canarabank.bank.in/"], [/\bcci\b.*\bcotton\b|\bcotcorp\b/i, "https://cotcorp.org.in/"],
 ];
 function officialHomeFor(title) {
   for (const [re, url] of OFFICIAL_HOMES) if (re.test(String(title || ""))) return url;

@@ -779,6 +779,8 @@ function buildUpdatesIndex(updates) {
 </main>` + foot();
 }
 
+let HI_BROWSE = new Set();   // English browse paths with an indexable Hindi twin (set by the Hindi build)
+const hiAltFor = (en) => HI_BROWSE.has(en) ? { alternates: [{ hreflang: "en", href: SITE.url + en }, { hreflang: "hi", href: SITE.url + "/hi" + en }, { hreflang: "x-default", href: SITE.url + en }], langSwitch: "/hi" + en } : {};
 function buildQualPage(q, list) {
   const canonical = `${SITE.url}/qualification/${q.slug}/`;
   const live = list.filter((j) => statusOf(j).cls !== "closed");
@@ -790,7 +792,7 @@ function buildQualPage(q, list) {
       mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
-  return head({ title: `${q.h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc: q.desc, canonical, ld }) + `
+  return head({ title: `${q.h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc: q.desc, canonical, ld, ...hiAltFor(`/qualification/${q.slug}/`) }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; ${esc(q.name)}</p>
   <section class="cat-head">
@@ -825,7 +827,7 @@ function buildStatePage(st, list) {
       mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
-  return head({ title: `${h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc, canonical, ld }) + `
+  return head({ title: `${h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc, canonical, ld, ...hiAltFor(`/state/${st.slug}/`) }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/state/">States</a> &nbsp;&rsaquo;&nbsp; ${esc(st.name)}</p>
   <section class="cat-head">
@@ -931,7 +933,7 @@ function buildStatesIndex(stateCounts) {
     </a></li>`;
   };
   return head({ title: `Government Jobs by State ${BUILT.getFullYear()} — Statewise Sarkari Naukri | ${SITE.name}`,
-    desc: "Browse the latest government job notifications by state — Uttar Pradesh, Bihar, Maharashtra, Rajasthan and every other state, plus all-India central jobs.", canonical, ld }) + `
+    desc: "Browse the latest government job notifications by state — Uttar Pradesh, Bihar, Maharashtra, Rajasthan and every other state, plus all-India central jobs.", canonical, ld, ...hiAltFor("/state/") }) + `
 <main class="wrap" id="main">
   <section class="cat-head">
     <p class="eyebrow">Browse by state</p>
@@ -1279,7 +1281,7 @@ function buildJob(job, all) {
 
   <div class="apply-bar">
     ${job.apply_link ? `<a class="btn btn-primary" href="${esc(job.apply_link)}" target="_blank" rel="noopener nofollow">Apply on official site &uarr;</a>`
-      : (job.official_website || LIB.hostFromTitle(job.title)) ? `<a class="btn btn-primary" href="${esc(job.official_website || "https://" + LIB.hostFromTitle(job.title) + "/")}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
+      : (job.official_website || LIB.hostFromTitle(job.title) || LIB.officialHomeFor(job.title)) ? `<a class="btn btn-primary" href="${esc(job.official_website || (LIB.hostFromTitle(job.title) ? "https://" + LIB.hostFromTitle(job.title) + "/" : LIB.officialHomeFor(job.title)))}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
       : job.official_website ? `<a class="btn btn-primary" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
       : job.source ? `<a class="btn btn-primary" href="${esc(job.source)}" target="_blank" rel="noopener nofollow">View the notification &uarr;</a>` : ""}
     ${job.official_notification ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Read official notification</a>` : ""}
@@ -1824,7 +1826,8 @@ function main() {
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
-  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates });
+  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates, STATES, QUALS, statesOf, qualsOf });
+  HI_BROWSE = HINDI.hiBrowse;
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
   const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates, hiDate: require("./hindi.js").hiDate });

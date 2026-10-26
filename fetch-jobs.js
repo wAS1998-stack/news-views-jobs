@@ -119,12 +119,23 @@ const decodeEntities = L.decodeEntities;
 const parseFeed = L.parseFeed;
 
 /* ---- read the source page once: text + candidate official links --------- */
-async function readSource(link) {
+async function readSource(link, item) {
+  // The article page is best; when it can't be read (blocked, challenge page) or has no official
+  // links, fall back to the full post HTML many feeds ship in <content:encoded>.
+  let out = { text: "", cands: [] };
   try {
     const { text, type, url } = await L.fetchText(link, 15000);
-    if (!/html/i.test(type)) return { text: "", cands: [] };
-    return { text: L.stripTags(text).slice(0, 7000), cands: L.extractOfficialLinks(text, url) };
-  } catch { return { text: "", cands: [] }; }
+    if (/html/i.test(type)) out = { text: L.stripTags(text).slice(0, 7000), cands: L.extractOfficialLinks(text, url) };
+    else out.err = `not html (${type})`;
+  } catch (e) { out.err = String(e && e.message || e).slice(0, 80); }
+  const html = item && item.html;
+  if (html && !out.cands.length) {
+    const cands = L.extractOfficialLinks(html, link);
+    if (cands.length) out.cands = cands;
+    if (!out.text) out.text = L.stripTags(html).slice(0, 7000);
+    out.viaFeed = true;
+  }
+  return out;
 }
 function candList(cands) {
   return cands.length ? cands.map((c, i) => `${i + 1}. ${c.url}${c.text ? "  (link text: " + c.text + ")" : ""}${c.pdf ? "  [PDF]" : ""}`).join("\n") : "(none found)";
@@ -228,7 +239,7 @@ async function toJob(item, existingIds, fingerprints) {
   if (!id || existingIds.has(id)) return null;        // skip exact-slug duplicates
   const fp = fingerprint(item.title);
   if (fp && fingerprints && fingerprints.has(fp)) return null;  // skip near-duplicates
-  const src = await readSource(item.link);
+  const src = await readSource(item.link, item);
   const base = {
     id,
     title: item.title,
@@ -247,6 +258,11 @@ async function toJob(item, existingIds, fingerprints) {
   merged.apply_link = picked.apply_link || heur.apply_link || picked.official_notification || heur.official_notification || null;
   merged.official_notification = picked.official_notification || heur.official_notification || null;
   merged.official_website = picked.official_website || heur.official_website || null;
+  if (!merged.official_website) {   // no official link readable: the body's own homepage still beats the blog
+    const th = L.hostFromTitle(item.title);
+    merged.official_website = L.officialHomeFor(item.title) || (th ? `https://${th}/` : null);
+  }
+  if (!merged.apply_link) console.log(`   ! no official link on source (${src.err || (src.cands.length ? "no fit" : "0 candidates")}${src.viaFeed ? ", feed html tried" : ""}): ${item.title}`);
   if (!merged.organization || merged.organization === merged.title) merged.organization = L.orgFromTitle(item.title) || "Government of India";
   // Quality floor: ensure every page has substantial content even if extraction was sparse.
   if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) {
@@ -326,7 +342,7 @@ async function main() {
             date: new Date().toISOString().slice(0, 10), link: it.link,
             summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
               " Check the official website for the direct link and full details." };
-          const src = await readSource(it.link);
+          const src = await readSource(it.link, it);
           const ai = await aiUpdate(it, kind, src);
           updates.unshift(finishUpdate(base, ai, src));
           newUpdateIds.push(uid);
