@@ -1,20 +1,15 @@
 {
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-27",
-  "2026-10-24"
+  "2026-09-28",
+  "2026-10-25"
  ],
  "totals": {
-  "clicks": 12,
-  "impressions": 495
+  "clicks": 13,
+  "impressions": 514
  },
  "daily": [
-  {
-   "date": "2026-09-27",
-   "clicks": 0,
-   "impressions": 3
-  },
   {
    "date": "2026-09-28",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-10-24",
    "clicks": 3,
    "impressions": 27
+  },
+  {
+   "date": "2026-10-25",
+   "clicks": 1,
+   "impressions": 22
   }
  ],
  "topPages": [
@@ -183,16 +183,16 @@
   {
    "page": "/jobs/delhi-university-project-technical-support-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 7,
-   "ctr": 14.29,
-   "position": 2.6
+   "impressions": 10,
+   "ctr": 10,
+   "position": 2.9
   },
   {
    "page": "/jobs/dgqa-technician-2026/",
    "clicks": 1,
-   "impressions": 16,
-   "ctr": 6.25,
-   "position": 3.4
+   "impressions": 18,
+   "ctr": 5.56,
+   "position": 3.6
   },
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
@@ -202,18 +202,25 @@
    "position": 4
   },
   {
+   "page": "/jobs/indian-bank-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 20,
+   "ctr": 5,
+   "position": 2
+  },
+  {
    "page": "/jobs/nfsu-senior-project-associate-walkin-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 1,
-   "ctr": 100,
-   "position": 2
+   "impressions": 2,
+   "ctr": 50,
+   "position": 2.5
   },
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 10,
    "ctr": 0,
-   "position": 3.7
+   "position": 3.5
   },
   {
    "page": "/about/",
@@ -412,6 +419,20 @@
    "position": 9
   },
   {
+   "page": "/jobs/dcpu-tiruppur-support-persons-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
    "clicks": 0,
    "impressions": 1,
@@ -480,36 +501,22 @@
    "impressions": 3,
    "ctr": 0,
    "position": 16.7
-  },
-  {
-   "page": "/jobs/icai-branch-incharge-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 14
-  },
-  {
-   "page": "/jobs/icsil-deo-mts-driver-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 20
-  },
-  {
-   "page": "/jobs/igntu-junior-research-fellow-project-fellow-2026/",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 4
   }
  ],
  "topQueries": [
   {
+   "query": "bank recruitment",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
    "query": "dgqa kanpur recruitment",
    "clicks": 1,
-   "impressions": 12,
-   "ctr": 8.33,
-   "position": 3.4
+   "impressions": 14,
+   "ctr": 7.14,
+   "position": 3.6
   },
   {
    "query": "free job alert 2026",
@@ -582,6 +589,13 @@
    "position": 2
   },
   {
+   "query": "bank jobs in the last week",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "bank of india recruitment",
    "clicks": 0,
    "impressions": 1,
@@ -645,6 +659,13 @@
    "position": 2
   },
   {
+   "query": "forensic science job vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "free job alert 2026 karnataka",
    "clicks": 0,
    "impressions": 3,
@@ -661,7 +682,7 @@
   {
    "query": "government bank jobs in india",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 2
   },
@@ -731,6 +752,13 @@
   {
    "query": "indian bank career",
    "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "indian bank careers",
+   "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 2
@@ -741,6 +769,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 7
+  },
+  {
+   "query": "indian govt bank jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "indianbank career",
@@ -807,6 +842,13 @@
   },
   {
    "query": "karnataka recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "latest bank jobs notification",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -890,6 +932,13 @@
    "position": 4
   },
   {
+   "query": "tiruppur job vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "up govt jobs",
    "clicks": 0,
    "impressions": 1,
@@ -899,9 +948,9 @@
   {
    "query": "गल्फ जॉब",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 2,
    "ctr": 0,
-   "position": 4.3
+   "position": 3
   },
   {
    "query": "भारत जॉब सरकारी",
@@ -941,15 +990,10 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 19,
+   "impressions": 17,
    "ctr": 0,
-   "position": 6.8,
+   "position": 6.9,
    "queries": [
-    {
-     "q": "गल्फ जॉब",
-     "impressions": 3,
-     "position": 4.3
-    },
     {
      "q": "gulf job today",
      "impressions": 2,
@@ -959,6 +1003,11 @@
      "q": "gulf jobs 2025",
      "impressions": 2,
      "position": 7
+    },
+    {
+     "q": "गल्फ जॉब",
+     "impressions": 2,
+     "position": 3
     }
    ]
   },
