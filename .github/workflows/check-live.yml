@@ -1,0 +1,23 @@
+name: Check live site
+# On demand: records which build news-views.in and the Pages production address are serving.
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - name: Read live build stamps (bypassing caches)
+        run: |
+          t=$(date +%s)
+          dom=$(curl -fsS -H 'Cache-Control: no-cache' "https://news-views.in/version.json?t=$t" || echo '{"error":"fetch failed"}')
+          pages=$(curl -fsS -H 'Cache-Control: no-cache' "https://news-views-jobs.pages.dev/version.json?t=$t" || echo '{"error":"fetch failed"}')
+          hdr=$(curl -fsSI "https://news-views.in/?t=$t" | tr -d '\r' | grep -iE '^(cf-cache-status|age|cache-control|last-modified|cf-ray):' | tr '\n' ';' || true)
+          printf '{"checked":"%s","domain":%s,"pages":%s,"homepageHeaders":"%s"}\n' "$(date -u +%FT%TZ)" "$dom" "$pages" "$hdr" > data/live-check.json
+          cat data/live-check.json
+      - name: Save result (no site build)
+        run: |
+          git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
+          git add data/live-check.json && git commit -q -m "Live check [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main || true
