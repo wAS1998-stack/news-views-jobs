@@ -25,6 +25,14 @@ const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
 const DATA = path.join(ROOT, "data", "jobs.json");
 const BUILT = new Date();
+// Content fingerprints for static assets: a changed file gets a new URL, so no browser or CDN keeps an old copy.
+const ASSET_V = Object.fromEntries(["styles.css", "site.js"].map((f) => {
+  try { return [f, require("crypto").createHash("md5").update(require("fs").readFileSync(require("path").join(__dirname, "src", f))).digest("hex").slice(0, 8)]; }
+  catch { return [f, "1"]; }
+}));
+// Visitors are in India: show the build date/time in IST, not UTC (a build at 02:00 IST used to show yesterday's date).
+const IST_DATE = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(BUILT);   // YYYY-MM-DD
+const IST_TIME = new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit", hour12: true }).format(BUILT).replace(/\s?(am|pm)$/i, (m) => " " + m.trim().toUpperCase());
 const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA || "local").slice(0, 7)} ${BUILT.toISOString().slice(0, 16)}Z`;
 
 // Load the single user config file (config.json) and apply it.
@@ -318,7 +326,7 @@ ${o.modified || o.published ? `<meta property="article:modified_time" content="$
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 ${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">` : ""}
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=${ASSET_V["styles.css"]}">
 ${adsense}
 ${ldBlocks}
 </head>
@@ -352,7 +360,7 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
 
 function foot() {
   return `<footer class="site-foot"><div class="wrap">
-  <span>&copy; ${BUILT.getFullYear()} ${esc(SITE.brand)} &middot; Updated ${fmtDate(BUILT.toISOString().slice(0,10))}</span>
+  <span>&copy; ${BUILT.getFullYear()} ${esc(SITE.brand)} &middot; Updated <time datetime="${BUILT.toISOString()}">${fmtDate(IST_DATE)}, ${IST_TIME} IST</time></span>
   <span class="links">
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -376,7 +384,7 @@ function foot() {
     <a href="/feed.xml">RSS</a>
   </span>
 </div></footer>
-<script src="/site.js" defer></script>
+<script src="/site.js?v=${ASSET_V["site.js"]}" defer></script>
 </body></html>`;
 }
 
@@ -696,7 +704,7 @@ function buildLatestPage(jobs) {
   const canonical = `${SITE.url}/latest/`;
   const week = jobs.filter((j) => j.published && (BUILT - new Date(j.published + "T00:00:00")) / 86400000 <= 7);
   const list = (week.length >= 10 ? week : jobs.slice(0, 30)).filter((j) => statusOf(j).cls !== "closed");
-  const todayStr = fmtDate(BUILT.toISOString().slice(0, 10));
+  const todayStr = fmtDate(IST_DATE);
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Latest jobs", url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: `Latest Government Jobs — ${todayStr}`, url: canonical,
@@ -992,7 +1000,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
     alternates: jobs.filter((j) => j.hi && j.hi.title).length < 5 ? [] : [{ hreflang: "en", href: SITE.url + "/" }, { hreflang: "hi", href: SITE.url + "/hi/" }, { hreflang: "x-default", href: SITE.url + "/" }] }) + `
 <main class="wrap" id="main">
   <section class="hero">
-    <p class="eyebrow">${esc(SITE.section)} &middot; Updated ${fmtDate(BUILT.toISOString().slice(0,10))}</p>
+    <p class="eyebrow">${esc(SITE.section)} &middot; Updated <time datetime="${BUILT.toISOString()}">${fmtDate(IST_DATE)}, ${IST_TIME} IST</time></p>
     <h1>Government jobs, without the clutter.</h1>
     <p>${esc(SITE.tagline)}</p>
     <div class="search-row">
@@ -1479,7 +1487,7 @@ function pageShell(o) {
 </main>` + foot();
 }
 function policyPages() {
-  const updated = fmtDate(BUILT.toISOString().slice(0, 10));
+  const updated = fmtDate(IST_DATE);
   const out = {};
   out["about"] = pageShell({
     slug: "about", title: "About Us", desc: `About ${SITE.brand} — what we do and who we are.`,
@@ -1948,6 +1956,7 @@ function main() {
   ];
   write("all-urls.txt", [...new Set(allUrls)].join("\n") + "\n");
   write("feed.xml", buildFeed(jobs));
+  write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
 
   // 301s for pages that were removed or merged (off-topic, duplicates, re-classified),
   // so old URLs that Google already saw keep their value instead of 404ing.

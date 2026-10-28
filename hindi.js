@@ -189,7 +189,7 @@ function buildHindi(ctx) {
       desc: `सरकारी नौकरी ${year}: ${openJobs.length} भर्तियाँ, ${inr(vac)}+ पद। SSC, रेलवे, बैंक, पुलिस, राज्य भर्ती — योग्यता, अंतिम तिथि, ऑफिशियल लिंक, रिजल्ट और एडमिट कार्ड हिंदी में।`, canonical, ld,
       alternates: alt("/", "/hi/"), langSwitch: "/" }) + `
 <main class="wrap" id="main">
-  <section class="cat-head"><p class="eyebrow">अपडेट: ${hiDate(BUILT.toISOString().slice(0, 10))}</p>
+  <section class="cat-head"><p class="eyebrow">अपडेट: ${hiDate(new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(BUILT))}, ${new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit", hour12: true }).format(BUILT).toUpperCase()} IST</p>
   <h1>सरकारी नौकरी ${year} — लेटेस्ट सरकारी भर्ती हिंदी में</h1>
   <p class="lede">केंद्र और राज्य सरकार की नई भर्तियाँ, रिजल्ट और एडमिट कार्ड — सरल हिंदी में, ऑफिशियल लिंक के साथ। अभी <b>${openJobs.length}</b> भर्तियों में <b>${inr(vac)}+</b> पदों पर आवेदन जारी है।</p></section>
   <div class="glance">

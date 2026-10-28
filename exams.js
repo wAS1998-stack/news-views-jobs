@@ -201,7 +201,7 @@ function buildExamPages(ctx) {
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/exam/">Exams</a> &nbsp;&rsaquo;&nbsp; ${esc(e.cat)}</p>
   <article>
-    <p class="eyebrow">${esc(e.cat)} exam &middot; updated ${fmtDate(BUILT.toISOString().slice(0, 10))}</p>
+    <p class="eyebrow">${esc(e.cat)} exam &middot; updated ${fmtDate(new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(BUILT))}</p>
     <h1>${esc(e.name)} ${year} — notification, admit card, answer key &amp; result</h1>
     <p class="lede">${esc(e.about)}</p>
     ${open.length ? `<div class="closed-notice" style="border-color:var(--green);background:#EAF6F0"><strong>Applications open:</strong> ${open.map((x) => `<a href="${x.url}">${esc(x.title)}</a>${x.end ? ` — last date ${fmtDate(x.end)}` : ""}`).join(" · ")}</div>` : ""}

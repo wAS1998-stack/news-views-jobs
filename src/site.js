@@ -92,3 +92,28 @@ if ("serviceWorker" in navigator) {
     if (nav.classList.contains("open") && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
   });
 })();
+
+/* Freshness self-check: phones restore old tabs from memory and caches can hold an old copy.
+   Whenever the page is shown or brought back to the screen, ask the server (bypassing every cache)
+   which build is live; if it is newer than this page, reload once. */
+(function () {
+  var meta = document.querySelector('meta[name="nv-build"]');
+  if (!meta || !window.fetch) return;
+  var mine = meta.getAttribute("content"), last = 0;
+  function check() {
+    var now = Date.now();
+    if (now - last < 60000 || document.visibilityState === "hidden") return;
+    last = now;
+    fetch("/version.json?t=" + now, { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (v) {
+        if (!v || !v.build || v.build === mine) return;
+        try { if (sessionStorage.getItem("nv-reloaded") === v.build) return; sessionStorage.setItem("nv-reloaded", v.build); } catch (e) { /* private mode */ }
+        location.reload();
+      })
+      .catch(function () { /* offline: keep showing what we have */ });
+  }
+  window.addEventListener("pageshow", check);
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check(); });
+  setInterval(check, 10 * 60000);
+})();

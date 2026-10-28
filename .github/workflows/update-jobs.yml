@@ -5,6 +5,9 @@ on:
     # Every 2 hours at :17 (off-peak minute; GitHub drops many on-the-hour runs).
     # 12 runs/day keeps site builds within Cloudflare Pages' free 500/month.
     - cron: "17 */2 * * *"
+    # GitHub drops many scheduled runs under load (some days only 3 of 12 ran), so a second
+    # slot on the odd hours keeps the site fresh. Builds are paced in the commit step below.
+    - cron: "47 1-23/2 * * *"
   workflow_dispatch:
     inputs:
       enrich_links:
@@ -95,36 +98,57 @@ jobs:
         run: |
           git config user.name  "jobs-bot"
           git config user.email "actions@users.noreply.github.com"
+          # URLs added this run wait in data/pending-urls.txt until a build actually publishes them.
+          touch data/new-urls.txt data/pending-urls.txt
+          cat data/new-urls.txt data/pending-urls.txt | grep -E '^https?://' | sort -u > /tmp/pending || true
+          cp /tmp/pending data/pending-urls.txt
           git add data/
-          if ! git diff --cached --quiet; then
-            git commit -q -m "Auto: new jobs, updates & news"
-            git checkout -- . 2>/dev/null || true      # drop any stray non-data changes so rebase can run
-            ok=false
-            for i in 1 2 3 4; do
-              git fetch -q origin main
-              # Our run's data wins on a conflicting hunk (it is the newer work); other files rebase normally.
-              if git rebase -X theirs origin/main; then
-                # Never push data that no longer parses or no longer builds after an automatic merge.
-                if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8"))' || ! node build.js >/dev/null; then
-                  echo "::error::Merged data is invalid — discarding this run's data to protect the site"; git reset -q --hard origin/main; break
-                fi
-                if git push -q origin HEAD:main; then ok=true; break; fi
-              else
-                git rebase --abort || true
-              fi
-              echo "Push attempt $i failed — retrying"; sleep $((i * 7))
-            done
-            if [ "$ok" != true ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; echo "::warning::Data not pushed this run (next run will redo the work)"; exit 0; fi
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-            echo "Pushed — Cloudflare will redeploy automatically."
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes."
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "built=false" >> "$GITHUB_OUTPUT"; echo "No changes."; exit 0
           fi
+          # Build pacing: Cloudflare Pages' free plan allows 500 builds/month. Trigger a site build at most
+          # once per 110 minutes; runs in between still save their data, with [CF-Pages-Skip].
+          git fetch -q origin main
+          last=$(git log -1 --format=%ct --fixed-strings --invert-grep --grep='[CF-Pages-Skip]' origin/main || echo 0)
+          age=$(( $(date +%s) - ${last:-0} ))
+          if [ "$age" -ge 6600 ]; then
+            built=true; msg="Auto: new jobs, updates & news"
+            cp data/pending-urls.txt data/new-urls.txt; : > data/pending-urls.txt   # announce them after this build
+            git add data/
+          else
+            built=false; msg="Auto: data saved, build paced (last build $((age / 60)) min ago) [CF-Pages-Skip]"
+          fi
+          git commit -q -m "$msg"
+          git checkout -- . 2>/dev/null || true      # drop any stray non-data changes so rebase can run
+          ok=false
+          for i in 1 2 3 4; do
+            git fetch -q origin main
+            # Our run's data wins on a conflicting hunk (it is the newer work); other files rebase normally.
+            if git rebase -X theirs origin/main; then
+              # Never push data that no longer parses or no longer builds after an automatic merge.
+              if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8"))' || ! node build.js >/dev/null; then
+                echo "::error::Merged data is invalid — discarding this run's data to protect the site"; git reset -q --hard origin/main; break
+              fi
+              if git push -q origin HEAD:main; then ok=true; break; fi
+            else
+              git rebase --abort || true
+            fi
+            echo "Push attempt $i failed — retrying"; sleep $((i * 7))
+          done
+          if [ "$ok" != true ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; echo "built=false" >> "$GITHUB_OUTPUT"; echo "::warning::Data not pushed this run (next run will redo the work)"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "built=$built" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "Pushed (build: $built)."
+
+      - name: Wait until the new build is live
+        if: steps.commit.outputs.built == 'true'
+        env:
+          WAIT_SHA: ${{ steps.commit.outputs.sha }}
+        run: node wait-deploy.js
 
       - name: Purge Cloudflare cache once the new build is live
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.built == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
@@ -132,24 +156,24 @@ jobs:
         run: node purge-cache.js
 
       - name: Notify Google (Indexing API — job pages only)
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.built == 'true'
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: node ping-google.js
 
       - name: Post new jobs to Telegram channel (instant traffic)
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.built == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node telegram-post.js
 
       - name: Notify IndexNow (Bing / Yandex — instant, no auth)
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.built == 'true'
         run: node indexnow.js
 
       - name: Save Telegram posted-history (so nothing is posted twice)
-        if: steps.commit.outputs.changed == 'true'
+        if: steps.commit.outputs.built == 'true'
         run: |
           git add data/posted.json
           if git diff --cached --quiet; then echo "Nothing to save."; exit 0; fi

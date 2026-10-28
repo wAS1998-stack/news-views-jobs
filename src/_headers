@@ -17,3 +17,5 @@
   Cache-Control: public, max-age=0, must-revalidate
 /feed.xml
   Cache-Control: public, max-age=600
+/version.json
+  Cache-Control: no-store
