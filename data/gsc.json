@@ -1,20 +1,15 @@
 {
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-28",
-  "2026-10-25"
+  "2026-09-29",
+  "2026-10-26"
  ],
  "totals": {
-  "clicks": 13,
-  "impressions": 514
+  "clicks": 16,
+  "impressions": 549
  },
  "daily": [
-  {
-   "date": "2026-09-28",
-   "clicks": 0,
-   "impressions": 2
-  },
   {
    "date": "2026-09-29",
    "clicks": 0,
@@ -149,22 +144,27 @@
    "date": "2026-10-25",
    "clicks": 1,
    "impressions": 22
+  },
+  {
+   "date": "2026-10-26",
+   "clicks": 3,
+   "impressions": 37
   }
  ],
  "topPages": [
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 3,
-   "impressions": 24,
-   "ctr": 12.5,
+   "clicks": 4,
+   "impressions": 28,
+   "ctr": 14.29,
    "position": 2
   },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
    "clicks": 2,
-   "impressions": 8,
-   "ctr": 25,
-   "position": 2.4
+   "impressions": 9,
+   "ctr": 22.22,
+   "position": 3.2
   },
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
@@ -172,6 +172,13 @@
    "impressions": 37,
    "ctr": 5.41,
    "position": 5.5
+  },
+  {
+   "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 2,
+   "impressions": 5,
+   "ctr": 40,
+   "position": 2
   },
   {
    "page": "/guides/",
@@ -183,44 +190,44 @@
   {
    "page": "/jobs/delhi-university-project-technical-support-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 10,
-   "ctr": 10,
-   "position": 2.9
+   "impressions": 11,
+   "ctr": 9.09,
+   "position": 3
   },
   {
    "page": "/jobs/dgqa-technician-2026/",
    "clicks": 1,
-   "impressions": 18,
-   "ctr": 5.56,
-   "position": 3.6
+   "impressions": 27,
+   "ctr": 3.7,
+   "position": 3.7
   },
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
    "clicks": 1,
-   "impressions": 12,
-   "ctr": 8.33,
-   "position": 4
+   "impressions": 14,
+   "ctr": 7.14,
+   "position": 3.9
   },
   {
    "page": "/jobs/indian-bank-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 20,
-   "ctr": 5,
+   "impressions": 21,
+   "ctr": 4.76,
    "position": 2
   },
   {
    "page": "/jobs/nfsu-senior-project-associate-walkin-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
-   "position": 2.5
+   "impressions": 3,
+   "ctr": 33.33,
+   "position": 2.7
   },
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 10,
+   "impressions": 11,
    "ctr": 0,
-   "position": 3.5
+   "position": 4
   },
   {
    "page": "/about/",
@@ -316,9 +323,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 10,
    "ctr": 0,
-   "position": 70.2
+   "position": 69.5
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -442,7 +449,7 @@
   {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 3
   },
@@ -468,6 +475,13 @@
    "position": 2
   },
   {
+   "page": "/jobs/govt-insurance-company-open-now-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 33
+  },
+  {
    "page": "/jobs/gpt-guntakal-2026/",
    "clicks": 0,
    "impressions": 4,
@@ -487,20 +501,6 @@
    "impressions": 4,
    "ctr": 0,
    "position": 4.5
-  },
-  {
-   "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
-   "clicks": 0,
-   "impressions": 9,
-   "ctr": 0,
-   "position": 8.7
-  },
-  {
-   "page": "/jobs/hpcl-officers-2026/",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 16.7
   }
  ],
  "topQueries": [
@@ -514,9 +514,9 @@
   {
    "query": "dgqa kanpur recruitment",
    "clicks": 1,
-   "impressions": 14,
-   "ctr": 7.14,
-   "position": 3.6
+   "impressions": 23,
+   "ctr": 4.35,
+   "position": 3.8
   },
   {
    "query": "free job alert 2026",
@@ -541,6 +541,27 @@
   },
   {
    "query": "govt jobs recruitment 2026",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "job recruitment 2026 karnataka",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "metro job vacancy in chennai",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "railway job vacancy 2026",
    "clicks": 1,
    "impressions": 1,
    "ctr": 100,
@@ -645,11 +666,25 @@
    "position": 4
   },
   {
+   "query": "chennai metro jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "delhi job vacancy 2026 government",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "delhi university vacancy",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 2.5
+   "position": 3
   },
   {
    "query": "field investigator jobs",
@@ -673,6 +708,13 @@
    "position": 2
   },
   {
+   "query": "free job alert 2026 karnataka government",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "gbu university recruitment",
    "clicks": 0,
    "impressions": 1,
@@ -692,6 +734,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "govt insurance company vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 33
   },
   {
    "query": "govt jobs in karnataka",
@@ -731,9 +780,9 @@
   {
    "query": "how to prepare for ssc cgl exam",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 2,
    "ctr": 0,
-   "position": 81.7
+   "position": 84
   },
   {
    "query": "how to start preparation for ssc cgl",
@@ -869,6 +918,20 @@
    "position": 2
   },
   {
+   "query": "ministry vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "new notification 2026 karnataka",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "nfdc jobs",
    "clicks": 0,
    "impressions": 1,
@@ -881,6 +944,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "project assistant",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 7
   },
   {
    "query": "railway ssc banking",
@@ -911,6 +981,13 @@
    "position": 19
   },
   {
+   "query": "specialist officer in bank",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "specialist officer recruitment",
    "clicks": 0,
    "impressions": 1,
@@ -932,6 +1009,13 @@
    "position": 4
   },
   {
+   "query": "sub inspector job",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "query": "tiruppur job vacancy 2026",
    "clicks": 0,
    "impressions": 1,
@@ -948,9 +1032,9 @@
   {
    "query": "गल्फ जॉब",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 3
+   "position": 3.3
   },
   {
    "query": "भारत जॉब सरकारी",
@@ -990,10 +1074,15 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 17,
+   "impressions": 18,
    "ctr": 0,
-   "position": 6.9,
+   "position": 6.8,
    "queries": [
+    {
+     "q": "गल्फ जॉब",
+     "impressions": 3,
+     "position": 3.3
+    },
     {
      "q": "gulf job today",
      "impressions": 2,
@@ -1003,27 +1092,16 @@
      "q": "gulf jobs 2025",
      "impressions": 2,
      "position": 7
-    },
-    {
-     "q": "गल्फ जॉब",
-     "impressions": 2,
-     "position": 3
     }
    ]
   },
   {
-   "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
-   "clicks": 1,
-   "impressions": 12,
-   "ctr": 8.33,
+   "page": "/",
+   "clicks": 0,
+   "impressions": 11,
+   "ctr": 0,
    "position": 4,
-   "queries": [
-    {
-     "q": "gbu university recruitment",
-     "impressions": 1,
-     "position": 3
-    }
-   ]
+   "queries": []
   },
   {
    "page": "/jobs/wcd-chittoor-2026/",

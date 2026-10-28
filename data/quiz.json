@@ -1,5 +1,112 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-28",
+    "date": "2026-10-28",
+    "digest_id": "current-affairs-2026-10-28",
+    "title": "Current Affairs Quiz 28 October 2026",
+    "questions": [
+      {
+        "q": "Who hosted the Liechtenstein Royals in India?",
+        "options": [
+          "Union Minister B. L. Verma",
+          "Prime Minister Narendra Modi",
+          "India's President",
+          "Minister Smriti Irani"
+        ],
+        "answer": 2,
+        "why": "India's President hosted Prince Alois and Princess Sophie of Liechtenstein to strengthen bilateral ties."
+      },
+      {
+        "q": "What health initiative was launched by the Legislative Department?",
+        "options": [
+          "PPE Kits Distribution",
+          "Special Campaign 6 for Health Checkups",
+          "National Startup Awards",
+          "Emerging Science, Technology and Innovation Conference"
+        ],
+        "answer": 1,
+        "why": "'Special Campaign 6' promotes preventive healthcare and employee welfare through health checkup camps."
+      },
+      {
+        "q": "What did the Border Roads Organization celebrate?",
+        "options": [
+          "PPE Kits Distribution",
+          "19th Foundation Day of Arunank Project",
+          "Launch of National Startup Awards",
+          "High-Level Meeting of Hindi Advisory Committee"
+        ],
+        "answer": 1,
+        "why": "The Border Roads Organization marked the 19th foundation day of the Arunank project focusing on infrastructure development."
+      },
+      {
+        "q": "Which ministry held a meeting of the Hindi Advisory Committee?",
+        "options": [
+          "Ministry of Women and Child Development",
+          "Ministry of Culture",
+          "Ministry of Health",
+          "DPIIT"
+        ],
+        "answer": 0,
+        "why": "The Ministry of Women and Child Development's Hindi Advisory Committee met under Minister Smriti Irani."
+      },
+      {
+        "q": "What scheme was associated with the distribution of PPE kits and Ayushman cards?",
+        "options": [
+          "Namaste scheme",
+          "Swachh Bharat scheme",
+          "Startup scheme",
+          "Ayushman Bharat scheme"
+        ],
+        "answer": 0,
+        "why": "The distribution was part of the 'Namaste' scheme aimed at enhancing welfare for sanitation workers."
+      },
+      {
+        "q": "What event was inaugurated by Prime Minister Narendra Modi?",
+        "options": [
+          "PPE Kits Distribution",
+          "Foundation Day of Arunank Project",
+          "Emerging Science, Technology and Innovation Conference",
+          "Hindi Advisory Committee Meeting"
+        ],
+        "answer": 2,
+        "why": "Prime Minister Modi inaugurated the 'Emerging Science, Technology and Innovation Conference 2026' to promote advancements in science."
+      },
+      {
+        "q": "With which institution did the Ministry of Culture sign an MoU?",
+        "options": [
+          "Department of Health",
+          "Bibliothèque nationale de France",
+          "Ministry of Urban Development",
+          "Border Roads Organization"
+        ],
+        "answer": 1,
+        "why": "The Ministry of Culture signed an MoU with the Bibliothèque nationale de France to strengthen manuscript heritage."
+      },
+      {
+        "q": "What is the focus of the National Startup Awards?",
+        "options": [
+          "Preventive Healthcare",
+          "Entrepreneurship and Innovation",
+          "Cultural Heritage",
+          "Public Health"
+        ],
+        "answer": 1,
+        "why": "The National Startup Awards recognize innovation and entrepreneurship in India."
+      },
+      {
+        "q": "What is emphasized in a high-level meeting related to governance and culture?",
+        "options": [
+          "Infrastructure Development",
+          "Public Health",
+          "Language and Culture",
+          "Healthcare Initiatives"
+        ],
+        "answer": 2,
+        "why": "The meeting highlights the importance of language and culture in governance, crucial for UPSC aspirants."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-27",
     "date": "2026-10-27",
     "digest_id": "current-affairs-2026-10-27",
