@@ -110,19 +110,23 @@ function fmtDate(iso) {
   if (isNaN(d)) return esc(iso);
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
+// Deadlines are Indian dates: count whole calendar days from today in IST (0 = last day today, -1 = closed yesterday).
+// (The old "ceil of hours left in server time" kept a job "live" until 05:30 IST the next day and showed "Last day"
+// for a whole day after it had closed.)
+const TODAY_IST_MS = Date.parse(IST_DATE + "T00:00:00Z");
 function daysLeft(endIso) {
   if (!endIso) return null;
-  const end = new Date(endIso + "T23:59:59");
+  const end = Date.parse(String(endIso).slice(0, 10) + "T00:00:00Z");
   if (isNaN(end)) return null;
-  return Math.ceil((end - BUILT) / 86400000);
+  return Math.round((end - TODAY_IST_MS) / 86400000);
 }
-function ageDays(iso) { if (!iso) return null; const t = new Date(iso + "T00:00:00"); return isNaN(t) ? null : (BUILT - t) / 86400000; }
+function ageDays(iso) { if (!iso) return null; const t = new Date(String(iso).slice(0, 10) + "T00:00:00+05:30"); return isNaN(t) ? null : (BUILT - t) / 86400000; }
 function statusOf(job) {
   const d = daysLeft(job.application_end);
   // No last date known: treat as open only while the notice is recent; an undated 2025 notice is not "open" forever.
   if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS ? { cls: "closed", label: "Closed", live: false } : { cls: "open", label: "Open", live: true }; }
   if (d < 0) return { cls: "closed", label: "Closed", live: false };
-  if (d <= 7) return { cls: "soon", label: d === 0 ? "Last day" : `${d} days left`, live: true };
+  if (d <= 7) return { cls: "soon", label: d === 0 ? "Last day today" : d === 1 ? "Closes tomorrow" : `${d} days left`, live: true };
   return { cls: "open", label: "Open", live: true };
 }
 // A job is "stale" once its deadline passed more than STALE_DAYS ago.
@@ -133,10 +137,12 @@ function isStale(job) {
   if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS * 2; }
   return d < -STALE_DAYS;
 }
+// Listing order: jobs still accepting applications first (newest first), recently closed ones after them.
+const liveFirst = (a, b) => (statusOf(a).cls === "closed") - (statusOf(b).cls === "closed") || (b.published || "").localeCompare(a.published || "");
 function windowPct(job) {
   if (!job.application_start || !job.application_end) return null;
-  const s = new Date(job.application_start + "T00:00:00");
-  const e = new Date(job.application_end + "T23:59:59");
+  const s = new Date(job.application_start + "T00:00:00+05:30");
+  const e = new Date(job.application_end + "T23:59:59+05:30");
   if (isNaN(s) || isNaN(e) || e <= s) return null;
   const p = ((BUILT - s) / (e - s)) * 100;
   return Math.max(0, Math.min(100, p));
@@ -144,7 +150,7 @@ function windowPct(job) {
 const inr = (n) => (n === 0 || n) ? Number(n).toLocaleString("en-IN") : "—";
 function isNew(iso) {
   if (!iso) return false;
-  const d = new Date(iso + "T00:00:00");
+  const d = new Date(String(iso).slice(0, 10) + "T00:00:00+05:30");
   if (isNaN(d)) return false;
   const days = (BUILT - d) / 86400000;
   return days >= 0 && days <= 3;
@@ -408,7 +414,7 @@ function jobCard(job) {
     <div class="job-top">
       <span class="org-tag">${esc(orgKey(job) || job.organization)}</span>
       ${qualsOf(job).slice(0,2).map((q)=>`<span class="qual-tag">${esc(q.name)}</span>`).join("")}
-      ${isNew(job.published) ? `<span class="new-badge">NEW</span>` : ""}
+      ${st.live && isNew(job.published) ? `<span class="new-badge">NEW</span>` : ""}
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h2>${esc(job.title)}</h2>
@@ -416,7 +422,7 @@ function jobCard(job) {
     <div class="meta">
       <span class="stat"><span class="n">${inr(job.total_vacancies)}</span><span class="l">Posts</span></span>
       <span class="stat"><span class="n">${job.age_max ? (job.age_min ? job.age_min + "&ndash;" : "up to ") + job.age_max : "&mdash;"}</span><span class="l">Age</span></span>
-      <span class="deadline${st.cls === "soon" ? " soon" : ""}">Last date <b>${fmtDate(job.application_end)}</b></span>
+      <span class="deadline${st.cls === "soon" ? " soon" : ""}">${st.cls === "closed" && job.application_end ? "Closed on" : "Last date"} <b>${fmtDate(job.application_end)}</b></span>
     </div>
   </a></li>`;
 }
@@ -702,7 +708,7 @@ function buildUpdateTypeIndex(type, list) {
 }
 function buildLatestPage(jobs) {
   const canonical = `${SITE.url}/latest/`;
-  const week = jobs.filter((j) => j.published && (BUILT - new Date(j.published + "T00:00:00")) / 86400000 <= 7);
+  const week = jobs.filter((j) => j.published && (BUILT - new Date(j.published + "T00:00:00+05:30")) / 86400000 <= 7);
   const list = (week.length >= 10 ? week : jobs.slice(0, 30)).filter((j) => statusOf(j).cls !== "closed");
   const todayStr = fmtDate(IST_DATE);
   const ld = [
@@ -794,7 +800,7 @@ const hiAltFor = (en) => HI_BROWSE.has(en) ? { alternates: [{ hreflang: "en", hr
 function buildQualPage(q, list) {
   const canonical = `${SITE.url}/qualification/${q.slug}/`;
   const live = list.filter((j) => statusOf(j).cls !== "closed");
-  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...list].sort(liveFirst);
   const guides = (ALL_GUIDES || []).filter((g) => q.guideSlugs.includes(g.slug));
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: q.name, url: canonical }]),
@@ -822,7 +828,7 @@ function buildQualPage(q, list) {
 /* ---- Home ------------------------------------------------------- */
 function buildStatePage(st, list) {
   const canonical = `${SITE.url}/state/${st.slug}/`;
-  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...list].sort(liveFirst);
   const live = list.filter((j) => statusOf(j).cls !== "closed");
   const h1 = st.slug === "all-india" ? "All India & Central Government Jobs" : `${st.name} Government Jobs`;
   const desc = st.slug === "all-india"
@@ -859,7 +865,7 @@ function buildStatePage(st, list) {
    Generated only where enough live jobs exist, so no page is thin. */
 function buildStateQualPage(st, q, list) {
   const canonical = `${SITE.url}/state/${st.slug}/${q.slug}/`;
-  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...list].sort(liveFirst);
   const live = list.filter((j) => statusOf(j).cls !== "closed");
   const place = st.slug === "all-india" ? "All India" : st.name;
   const h1 = `${place} Government Jobs for ${q.name}`;
@@ -887,7 +893,7 @@ function buildStateQualPage(st, q, list) {
 }
 function buildGulfPage(g, list) {
   const canonical = `${SITE.url}/gulf/${g.slug}/`;
-  const sorted = [...list].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...list].sort(liveFirst);
   const live = list.filter((j) => statusOf(j).cls !== "closed");
   const h1 = `${g.name} Jobs for Indians`;
   const desc = `Latest ${g.name} job vacancies for Indian candidates — ${live.length} openings with salary, requirements and how to apply. Updated daily.`;
@@ -967,7 +973,7 @@ function stateSection(stateCounts) {
   </section>`;
 }
 function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts, news) {
-  const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...jobs].sort(liveFirst);
   const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
   const ld = [
     { "@context": "https://schema.org", "@type": "Organization", name: SITE.brand,
@@ -1075,7 +1081,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
 
 /* ---- Category pages (qualification / organization) -------------- */
 function buildCategory(kind, label, slugVal, jobs) {
-  const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  const sorted = [...jobs].sort(liveFirst);
   const isQ = kind === "qualification";
   const title = isQ
     ? `${label} Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri for ${label} | ${SITE.name}`
@@ -1331,7 +1337,7 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
   // lastmod must be honest: a page's own date, not "today" on every build (Google stops trusting a
   // sitemap whose dates are all today). Hubs genuinely change daily and keep today's date.
   // Jobs closed for 60+ days stay live and linked but leave the sitemap, so crawl slots go to new pages.
-  const today = BUILT.toISOString().slice(0, 10);
+  const today = IST_DATE;
   const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
   const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff));
   const urls = [

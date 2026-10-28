@@ -188,7 +188,7 @@ function buildHindiExamPages(ctx, EXAMS, items) {
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/hi/">होम</a> &nbsp;&rsaquo;&nbsp; <a href="/hi/exam/">परीक्षाएँ</a> &nbsp;&rsaquo;&nbsp; ${esc(CAT_HI[e.cat] || e.cat)}</p>
   <article>
-    <p class="eyebrow">${esc(CAT_HI[e.cat] || e.cat)} परीक्षा &middot; अपडेट: ${hiDate(BUILT.toISOString().slice(0, 10))}</p>
+    <p class="eyebrow">${esc(CAT_HI[e.cat] || e.cat)} परीक्षा &middot; अपडेट: ${hiDate(new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(BUILT))}</p>
     <h1>${esc(e.name)} ${year} — नोटिफिकेशन, एडमिट कार्ड, आंसर की और रिजल्ट</h1>
     <p class="lede">${esc(h.about)}</p>
     ${open.length ? `<div class="closed-notice" style="border-color:var(--green);background:#EAF6F0"><strong>आवेदन जारी:</strong> ${open.map((x) => `<a href="${x.url}"${x.lang === "en" ? ' lang="en"' : ""}>${esc(x.title)}</a>${x.end ? ` — अंतिम तिथि ${hiDate(x.end)}` : ""}`).join(" · ")}</div>` : ""}

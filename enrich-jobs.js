@@ -225,7 +225,7 @@ async function main() {
 
   // Pass 4 — Hindi edition (newest first; open jobs before closed ones)
   if (L.AI) {
-    const isOpen = (j) => !j.application_end || new Date(j.application_end + "T23:59:59") >= new Date();
+    const isOpen = (j) => !j.application_end || new Date(j.application_end + "T23:59:59+05:30") >= new Date();
     const hj = jobs.filter((j) => j && j.id && j.title && !j.hi && Array.isArray(j.overview) && j.overview.length)
       .sort((a, b) => (isOpen(b) - isOpen(a)) || String(b.published || "").localeCompare(String(a.published || "")));
     stats.hindiJobsPending = hj.length;
