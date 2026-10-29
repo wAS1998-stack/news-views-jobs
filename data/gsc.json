@@ -1,20 +1,15 @@
 {
- "date": "2026-10-28",
+ "date": "2026-10-29",
  "property": "https://news-views.in/",
  "range": [
-  "2026-09-29",
-  "2026-10-26"
+  "2026-09-30",
+  "2026-10-27"
  ],
  "totals": {
-  "clicks": 16,
-  "impressions": 549
+  "clicks": 17,
+  "impressions": 573
  },
  "daily": [
-  {
-   "date": "2026-09-29",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-09-30",
    "clicks": 0,
@@ -148,23 +143,28 @@
   {
    "date": "2026-10-26",
    "clicks": 3,
-   "impressions": 37
+   "impressions": 38
+  },
+  {
+   "date": "2026-10-27",
+   "clicks": 1,
+   "impressions": 23
   }
  ],
  "topPages": [
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 4,
-   "impressions": 28,
-   "ctr": 14.29,
+   "impressions": 31,
+   "ctr": 12.9,
    "position": 2
   },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
    "clicks": 2,
-   "impressions": 9,
-   "ctr": 22.22,
-   "position": 3.2
+   "impressions": 12,
+   "ctr": 16.67,
+   "position": 3.4
   },
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
@@ -176,8 +176,8 @@
   {
    "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 2,
-   "impressions": 5,
-   "ctr": 40,
+   "impressions": 6,
+   "ctr": 33.33,
    "position": 2
   },
   {
@@ -200,6 +200,13 @@
    "impressions": 27,
    "ctr": 3.7,
    "position": 3.7
+  },
+  {
+   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
+   "clicks": 1,
+   "impressions": 4,
+   "ctr": 25,
+   "position": 3
   },
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
@@ -225,9 +232,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 12,
    "ctr": 0,
-   "position": 4
+   "position": 4.5
   },
   {
    "page": "/about/",
@@ -433,13 +440,6 @@
    "position": 2
   },
   {
-   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
    "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
    "clicks": 0,
    "impressions": 1,
@@ -449,7 +449,7 @@
   {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
    "position": 3
   },
@@ -680,6 +680,13 @@
    "position": 4
   },
   {
+   "query": "delhi offline vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "delhi university vacancy",
    "clicks": 0,
    "impressions": 3,
@@ -771,13 +778,6 @@
    "position": 7
   },
   {
-   "query": "gulf shutdown jobs 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 8
-  },
-  {
    "query": "how to prepare for ssc cgl exam",
    "clicks": 0,
    "impressions": 2,
@@ -797,6 +797,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "income tax steno vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 8
   },
   {
    "query": "indian bank career",
@@ -883,9 +890,16 @@
    "position": 2
   },
   {
+   "query": "karnataka govt jobs recruitment 2026",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "karnataka job recruitment 2026",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 4,
    "ctr": 0,
    "position": 2
   },
@@ -925,6 +939,13 @@
    "position": 4
   },
   {
+   "query": "mp bhoj university",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "new notification 2026 karnataka",
    "clicks": 0,
    "impressions": 1,
@@ -951,6 +972,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 7
+  },
+  {
+   "query": "qewc careers",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "railway ssc banking",
@@ -1023,6 +1051,13 @@
    "position": 2
   },
   {
+   "query": "tiruppur recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "up govt jobs",
    "clicks": 0,
    "impressions": 1,
@@ -1035,6 +1070,13 @@
    "impressions": 3,
    "ctr": 0,
    "position": 3.3
+  },
+  {
+   "query": "भारत जॉब रिजल्ट",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "भारत जॉब सरकारी",
@@ -1098,9 +1140,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 12,
    "ctr": 0,
-   "position": 4,
+   "position": 4.5,
    "queries": []
   },
   {

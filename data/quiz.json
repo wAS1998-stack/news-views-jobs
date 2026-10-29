@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-29",
+    "date": "2026-10-29",
+    "digest_id": "current-affairs-2026-10-29",
+    "title": "Current Affairs Quiz 29 October 2026",
+    "questions": [
+      {
+        "q": "What reforms were discussed at the 'GeM संवाद 2026'?",
+        "options": [
+          "Advancements in e-waste management",
+          "Public procurement for small enterprises",
+          "Apprenticeship programs in CPSUs",
+          "Defense collaborations"
+        ],
+        "answer": 1,
+        "why": "The reforms aimed at making public procurement more accessible for micro and small enterprises were discussed at this event."
+      },
+      {
+        "q": "Why are the bilateral talks held between the Defense Minister and Singapore's Defense Minister important?",
+        "options": [
+          "To enhance regional defense cooperation",
+          "To discuss e-waste management",
+          "To promote educational initiatives",
+          "To improve apprenticeship engagement"
+        ],
+        "answer": 0,
+        "why": "These talks are essential for strengthening defense ties and enhancing regional security cooperation."
+      },
+      {
+        "q": "What initiative is the Ministry of New and Renewable Energy focused on?",
+        "options": [
+          "Quantum Communication",
+          "E-Waste Management",
+          "Public Procurement",
+          "Internship Engagement"
+        ],
+        "answer": 1,
+        "why": "The ministry has intensified efforts in e-waste management under 'Special Campaign 6.0.'"
+      },
+      {
+        "q": "What event did the Minister of State for Education participate in?",
+        "options": [
+          "GeM संवाद 2026",
+          "Developed India Buildathon 2025",
+          "CPSUs Skill Development",
+          "ESTIC 2026"
+        ],
+        "answer": 1,
+        "why": "The minister honored the winners of the 'Developed India Buildathon 2025' at this event."
+      },
+      {
+        "q": "Which minister's call is emphasized for enhancing apprenticeship opportunities?",
+        "options": [
+          "Defense Minister",
+          "Minister of New and Renewable Energy",
+          "Minister of State for Education",
+          "Minister of Skill Development and Entrepreneurship"
+        ],
+        "answer": 3,
+        "why": "The Ministry of Skill Development and Entrepreneurship is focusing on expediting engagement in apprenticeship programs."
+      },
+      {
+        "q": "What session was led by the Department of Telecommunications at ESTIC 2026?",
+        "options": [
+          "Bilateral Talks",
+          "Public Procurement Reforms",
+          "Intelligent Networks and Quantum Communication",
+          "E-Waste Management"
+        ],
+        "answer": 2,
+        "why": "The session focused on advancing communication technology through Intelligent Networks and Quantum Communication."
+      },
+      {
+        "q": "What is the government's goal regarding startups as stated by Union Minister Dr. Jitendra Singh?",
+        "options": [
+          "To improve academic performance",
+          "To facilitate market access for indigenous innovations",
+          "To enhance defense capabilities",
+          "To promote foreign relations"
+        ],
+        "answer": 1,
+        "why": "The government aims to promote linkages between startups and industry for better market access."
+      },
+      {
+        "q": "What was a key topic during interactions with the European Parliament Delegates?",
+        "options": [
+          "Apprenticeship programs",
+          "Defense cooperation",
+          "Environmental policy",
+          "Diplomatic relations"
+        ],
+        "answer": 3,
+        "why": "Meeting with the European Parliament Delegates is significant for discussions related to diplomatic relations and international cooperation."
+      },
+      {
+        "q": "What is a key focus area of the government's strategy mentioned in the article?",
+        "options": [
+          "Enhancing renewable energy",
+          "Achieving economic stability",
+          "Recognizing educational achievements",
+          "Improving national security"
+        ],
+        "answer": 0,
+        "why": "The government's strategic focus includes innovations in renewable energy as a key area."
+      },
+      {
+        "q": "Which group is the government targeting with the public procurement reforms?",
+        "options": [
+          "Large Corporations",
+          "Micro and Small Enterprises",
+          "International Organizations",
+          "Educational Institutions"
+        ],
+        "answer": 1,
+        "why": "The reforms aim to make public procurement more accessible for micro and small enterprises."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-28",
     "date": "2026-10-28",
     "digest_id": "current-affairs-2026-10-28",
