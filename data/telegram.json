@@ -1,4 +1,14 @@
 {
- "at": "2026-10-29T18:15:38.312Z",
- "error": "Not Found"
+ "at": "2026-10-29T18:16:35.890Z",
+ "tokenLength": 10,
+ "tokenLooksLike": "unexpected format",
+ "chatLooksLike": "unexpected format",
+ "checks": {
+  "raw": "HTTP 404 Not Found",
+  "trimmed": "HTTP 404 Not Found",
+  "unquoted": "HTTP 404 Not Found",
+  "noBotPrefix": "HTTP 404 Not Found",
+  "noWhitespace": "HTTP 404 Not Found"
+ },
+ "workingTokenForm": null
 }
