@@ -1,5 +1,3549 @@
 {
- "at": "2026-10-29T18:56:29.388Z",
- "urls": [],
- "error": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+ "at": "2026-10-29T19:01:00.687Z",
+ "urls": [
+  {
+   "path": "/jobs/bvfcl-apprentice-2026",
+   "clicks": 7,
+   "impressions": 74,
+   "queries": [
+    "bvfcl career (4 impr, pos 2)",
+    "brahmaputra fertilizer recruitment (1 impr, pos 6)",
+    "brahmaputra valley fertilizer corporation limited recruitment (7 impr, pos 6)",
+    "bvfcl namrup recruitment 2026 (3 impr, pos 6)",
+    "namrup fertilizer recruitment (1 impr, pos 6)"
+   ],
+   "position": 4.5,
+   "now": 308,
+   "to": "/jobs/bvfcl-apprentice-2026/"
+  },
+  {
+   "path": "/jobs/indian-bank-2026?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 5,
+   "impressions": 22,
+   "queries": [
+    "indian bank careers (4 impr, pos 2)",
+    "sbi job vacancy (2 impr, pos 2)",
+    "bank jobs notification (1 impr, pos 2)",
+    "bank of india careers (4 impr, pos 2)",
+    "banking sector job vacancy (1 impr, pos 2)",
+    "boi careers (1 impr, pos 2)",
+    "current recruitment in banks (1 impr, pos 2)",
+    "how to get bank jobs (1 impr, pos 2)"
+   ],
+   "position": 2,
+   "now": 308,
+   "to": "/jobs/indian-bank-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic"
+  },
+  {
+   "path": "/",
+   "clicks": 2,
+   "impressions": 38,
+   "queries": [
+    "newsviews (4 impr, pos 50)"
+   ],
+   "position": 7.8,
+   "captures": 127,
+   "first": "20100110082842",
+   "last": "20260316054523",
+   "now": 200
+  },
+  {
+   "path": "/jobs/saudi-aramco-gulf-2025",
+   "clicks": 2,
+   "impressions": 28,
+   "queries": [
+    "aramco job application online (2 impr, pos 6)",
+    "aramco job vacancy (1 impr, pos 1)",
+    "gulf jobs 2025 (1 impr, pos 7)",
+    "गल्फ जॉब (6 impr, pos 5)"
+   ],
+   "position": 5.4,
+   "now": 308,
+   "to": "/jobs/saudi-aramco-gulf-2025/"
+  },
+  {
+   "path": "/guides",
+   "clicks": 1,
+   "impressions": 12,
+   "queries": [],
+   "position": 3.3,
+   "now": 308,
+   "to": "/guides/"
+  },
+  {
+   "path": "/jobs/gpt-guntakal-2026",
+   "clicks": 1,
+   "impressions": 6,
+   "queries": [],
+   "position": 10.2,
+   "now": 308,
+   "to": "/jobs/gpt-guntakal-2026/"
+  },
+  {
+   "path": "/jobs/gulf-walkin-uae-shutdown-gulf-2024",
+   "clicks": 0,
+   "impressions": 81,
+   "queries": [
+    "gulf job requirement (2 impr, pos 1)",
+    "gulf jobs walkin (1 impr, pos 5)",
+    "gulf shutdown jobs (5 impr, pos 6)",
+    "gulf shutdown jobs 2026 (1 impr, pos 8)",
+    "gulfwalkin (24 impr, pos 2)",
+    "gulfwalkin jobs (1 impr, pos 5)",
+    "shutdown job vacancy in gulf (2 impr, pos 5)",
+    "shutdown jobs in gulf (28 impr, pos 2)"
+   ],
+   "position": 3.6,
+   "now": 308,
+   "to": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/"
+  },
+  {
+   "path": "/jobs/royal-jet-royal-jet-group-urgent",
+   "clicks": 0,
+   "impressions": 42,
+   "queries": [
+    "royal jet careers (33 impr, pos 2)",
+    "royaljet careers (8 impr, pos 2)"
+   ],
+   "position": 2.1,
+   "now": 308,
+   "to": "/jobs/royal-jet-royal-jet-group-urgent/"
+  },
+  {
+   "path": "/jobs/wcd-chittoor-2026",
+   "clicks": 0,
+   "impressions": 25,
+   "queries": [
+    "chittoor recruitment 2026 (2 impr, pos 5)"
+   ],
+   "position": 5,
+   "now": 308,
+   "to": "/jobs/wcd-chittoor-2026/"
+  },
+  {
+   "path": "/guides/how-to-prepare-ssc-cgl",
+   "clicks": 0,
+   "impressions": 17,
+   "queries": [
+    "how to prepare for ssc cgl exam (3 impr, pos 82)",
+    "ssc cgl preparation plan (1 impr, pos 97)",
+    "ssc cgl study plan (9 impr, pos 95)"
+   ],
+   "position": 79.9,
+   "now": 308,
+   "to": "/guides/how-to-prepare-ssc-cgl/"
+  },
+  {
+   "path": "/newspaper-dtp-font-guide",
+   "clicks": 0,
+   "impressions": 15,
+   "queries": [
+    "font kya hai (1 impr, pos 1)"
+   ],
+   "position": 3.4,
+   "now": 404
+  },
+  {
+   "path": "/kruti-dev-vs-shree-lipi",
+   "clicks": 0,
+   "impressions": 14,
+   "queries": [
+    "kruti dev to shree lipi (1 impr, pos 12)"
+   ],
+   "position": 6.1,
+   "captures": 1,
+   "first": "20260316055241",
+   "last": "20260316055241",
+   "now": 404
+  },
+  {
+   "path": "/jobs/ministry-health-project-saudi-arabia-gulf-2024",
+   "clicks": 0,
+   "impressions": 13,
+   "queries": [
+    "ministry of health jobs in saudi arabia (1 impr, pos 47)",
+    "ministry of health saudi arabia jobs (3 impr, pos 50)",
+    "ministry of health saudi arabia vacancies (2 impr, pos 46)",
+    "गल्फ जॉब (2 impr, pos 3)"
+   ],
+   "position": 24.8,
+   "now": 308,
+   "to": "/jobs/ministry-health-project-saudi-arabia-gulf-2024/"
+  },
+  {
+   "path": "/qualification/graduate",
+   "clicks": 0,
+   "impressions": 13,
+   "queries": [],
+   "position": 6.1,
+   "now": 308,
+   "to": "/qualification/graduate/"
+  },
+  {
+   "path": "/about",
+   "clicks": 0,
+   "impressions": 11,
+   "queries": [],
+   "position": 3.9,
+   "now": 308,
+   "to": "/about/"
+  },
+  {
+   "path": "/state/karnataka",
+   "clicks": 0,
+   "impressions": 11,
+   "queries": [],
+   "position": 6.3,
+   "now": 308,
+   "to": "/state/karnataka/"
+  },
+  {
+   "path": "/updates",
+   "clicks": 0,
+   "impressions": 11,
+   "queries": [],
+   "position": 4.3,
+   "now": 308,
+   "to": "/updates/"
+  },
+  {
+   "path": "/state/telangana",
+   "clicks": 0,
+   "impressions": 10,
+   "queries": [],
+   "position": 6.8,
+   "now": 308,
+   "to": "/state/telangana/"
+  },
+  {
+   "path": "/qualification/12th-pass",
+   "clicks": 0,
+   "impressions": 9,
+   "queries": [],
+   "position": 20.2,
+   "now": 308,
+   "to": "/qualification/12th-pass/"
+  },
+  {
+   "path": "/terms",
+   "clicks": 0,
+   "impressions": 9,
+   "queries": [],
+   "position": 2.9,
+   "now": 308,
+   "to": "/terms/"
+  },
+  {
+   "path": "/disclaimer",
+   "clicks": 0,
+   "impressions": 8,
+   "queries": [],
+   "position": 5.5,
+   "captures": 52,
+   "first": "20100306204017",
+   "last": "20260316060438",
+   "now": 308,
+   "to": "/disclaimer/"
+  },
+  {
+   "path": "/jobs/indian-bank-2026",
+   "clicks": 0,
+   "impressions": 8,
+   "queries": [
+    "indian bank recruitment 2026 (1 impr, pos 7)"
+   ],
+   "position": 7.6,
+   "now": 308,
+   "to": "/jobs/indian-bank-2026/"
+  },
+  {
+   "path": "/jobs/upsc-cds-2-2026",
+   "clicks": 0,
+   "impressions": 8,
+   "queries": [],
+   "position": 7.9,
+   "now": 308,
+   "to": "/jobs/upsc-cds-2-2026/"
+  },
+  {
+   "path": "/organization/upsc",
+   "clicks": 0,
+   "impressions": 7,
+   "queries": [],
+   "position": 5.1,
+   "now": 308,
+   "to": "/organization/upsc/"
+  },
+  {
+   "path": "/qualification/engineering-diploma",
+   "clicks": 0,
+   "impressions": 7,
+   "queries": [],
+   "position": 7.9,
+   "now": 308,
+   "to": "/qualification/engineering-diploma/"
+  },
+  {
+   "path": "/state/bihar",
+   "clicks": 0,
+   "impressions": 7,
+   "queries": [],
+   "position": 5.3,
+   "now": 308,
+   "to": "/state/bihar/"
+  },
+  {
+   "path": "/jobs/bihar-police-si-2026",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [
+    "bihar daroga syllabus (1 impr, pos 5)",
+    "daroga vacancy 2026 (1 impr, pos 12)"
+   ],
+   "position": 12.8,
+   "now": 308,
+   "to": "/jobs/bihar-police-si-2026/"
+  },
+  {
+   "path": "/qualification/10th-pass",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 8.3,
+   "now": 308,
+   "to": "/qualification/10th-pass/"
+  },
+  {
+   "path": "/state/assam",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 10.8,
+   "now": 308,
+   "to": "/state/assam/"
+  },
+  {
+   "path": "/state/delhi",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 7,
+   "now": 308,
+   "to": "/state/delhi/"
+  },
+  {
+   "path": "/state/goa",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 7.8,
+   "now": 308,
+   "to": "/state/goa/"
+  },
+  {
+   "path": "/state/maharashtra",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 8.8,
+   "now": 308,
+   "to": "/state/maharashtra/"
+  },
+  {
+   "path": "/state/rajasthan",
+   "clicks": 0,
+   "impressions": 6,
+   "queries": [],
+   "position": 9.7,
+   "now": 308,
+   "to": "/state/rajasthan/"
+  },
+  {
+   "path": "/guides/banking-exam-preparation-guide-beginners",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [
+    "bank exam preparation for beginners (1 impr, pos 94)"
+   ],
+   "position": 55,
+   "now": 308,
+   "to": "/guides/banking-exam-preparation-guide-beginners/"
+  },
+  {
+   "path": "/guides/quantitative-aptitude-preparation-tips",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [],
+   "position": 47.6,
+   "now": 308,
+   "to": "/guides/quantitative-aptitude-preparation-tips/"
+  },
+  {
+   "path": "/jobs/rri-engineer-2026",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [],
+   "position": 10.4,
+   "now": 308,
+   "to": "/jobs/rri-engineer-2026/"
+  },
+  {
+   "path": "/qualification/post-graduate",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [],
+   "position": 10.8,
+   "now": 308,
+   "to": "/qualification/post-graduate/"
+  },
+  {
+   "path": "/state/all-india",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [],
+   "position": 14,
+   "now": 308,
+   "to": "/state/all-india/"
+  },
+  {
+   "path": "/state/andhra-pradesh",
+   "clicks": 0,
+   "impressions": 5,
+   "queries": [],
+   "position": 12.2,
+   "now": 308,
+   "to": "/state/andhra-pradesh/"
+  },
+  {
+   "path": "/guides/ssc-vs-banking-vs-railway-jobs",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [
+    "railway ssc banking (1 impr, pos 66)"
+   ],
+   "position": 36.8,
+   "now": 308,
+   "to": "/guides/ssc-vs-banking-vs-railway-jobs/"
+  },
+  {
+   "path": "/jobs/bpsc-72nd-cce-2026",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 12.5,
+   "now": 308,
+   "to": "/jobs/bpsc-72nd-cce-2026/"
+  },
+  {
+   "path": "/jobs/ihmcl-systems-engineer-2026",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 13.5,
+   "now": 308,
+   "to": "/jobs/ihmcl-systems-engineer-2026/"
+  },
+  {
+   "path": "/jobs/ksp-constable-2026",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 13,
+   "now": 308,
+   "to": "/jobs/ksp-constable-2026/"
+  },
+  {
+   "path": "/jobs/pnb-2026",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 12.5,
+   "now": 308,
+   "to": "/jobs/pnb-2026/"
+  },
+  {
+   "path": "/state/himachal-pradesh",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 14.5,
+   "now": 308,
+   "to": "/state/himachal-pradesh/"
+  },
+  {
+   "path": "/state/uttar-pradesh",
+   "clicks": 0,
+   "impressions": 4,
+   "queries": [],
+   "position": 15.3,
+   "now": 308,
+   "to": "/state/uttar-pradesh/"
+  },
+  {
+   "path": "/guides/fill-online-government-job-form-without-mistakes",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 6.7,
+   "now": 308,
+   "to": "/guides/fill-online-government-job-form-without-mistakes/"
+  },
+  {
+   "path": "/guides/how-to-make-study-timetable-government-exam",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [
+    "timetable for exam (1 impr, pos 57)"
+   ],
+   "position": 25.7,
+   "now": 308,
+   "to": "/guides/how-to-make-study-timetable-government-exam/"
+  },
+  {
+   "path": "/guides/prepare-government-exams-while-working",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 19.7,
+   "now": 308,
+   "to": "/guides/prepare-government-exams-while-working/"
+  },
+  {
+   "path": "/guides/state-psc-vs-upsc-differences",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 15.7,
+   "now": 308,
+   "to": "/guides/state-psc-vs-upsc-differences/"
+  },
+  {
+   "path": "/guides/time-management-government-exam-preparation",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 6.3,
+   "now": 308,
+   "to": "/guides/time-management-government-exam-preparation/"
+  },
+  {
+   "path": "/jobs/hpcl-officers-2026",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 16.7,
+   "now": 308,
+   "to": "/jobs/hpcl-officers-2026/"
+  },
+  {
+   "path": "/organization/uppsc",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [
+    "uppsc civil services application form 2026 (1 impr, pos 86)"
+   ],
+   "position": 29.7,
+   "now": 308,
+   "to": "/organization/uppsc/"
+  },
+  {
+   "path": "/unicode-vs-shree-lipi",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 2,
+   "now": 404
+  },
+  {
+   "path": "/updates/upsssc-agta-result-2026",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [],
+   "position": 7.7,
+   "now": 308,
+   "to": "/updates/upsssc-agta-result-2026/"
+  },
+  {
+   "path": "/what-is-shree-lipi",
+   "clicks": 0,
+   "impressions": 3,
+   "queries": [
+    "shree lipi dev ratna (1 impr, pos 18)"
+   ],
+   "position": 8.7,
+   "now": 404
+  },
+  {
+   "path": "/guides/balance-studies-government-exam-preparation",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4.5,
+   "now": 308,
+   "to": "/guides/balance-studies-government-exam-preparation/"
+  },
+  {
+   "path": "/guides/common-reasons-candidates-fail-government-exams",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 8,
+   "now": 308,
+   "to": "/guides/common-reasons-candidates-fail-government-exams/"
+  },
+  {
+   "path": "/guides/english-preparation-tips-government-exams",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7,
+   "now": 308,
+   "to": "/guides/english-preparation-tips-government-exams/"
+  },
+  {
+   "path": "/guides/government-exam-preparation-without-coaching",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 6,
+   "now": 308,
+   "to": "/guides/government-exam-preparation-without-coaching/"
+  },
+  {
+   "path": "/guides/government-jobs-after-10th",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 1.5,
+   "now": 308,
+   "to": "/guides/government-jobs-after-10th/"
+  },
+  {
+   "path": "/guides/government-jobs-after-graduation",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2,
+   "now": 308,
+   "to": "/guides/government-jobs-after-graduation/"
+  },
+  {
+   "path": "/guides/how-to-prepare-current-affairs-government-exams",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 9.5,
+   "now": 308,
+   "to": "/guides/how-to-prepare-current-affairs-government-exams/"
+  },
+  {
+   "path": "/guides/how-to-revise-effectively-government-exam",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7.5,
+   "now": 308,
+   "to": "/guides/how-to-revise-effectively-government-exam/"
+  },
+  {
+   "path": "/guides/interview-tips-government-job-selection",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5.5,
+   "now": 308,
+   "to": "/guides/interview-tips-government-job-selection/"
+  },
+  {
+   "path": "/jobs/gims-clerical-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 15,
+   "now": 308,
+   "to": "/jobs/gims-clerical-2026/"
+  },
+  {
+   "path": "/jobs/mpesb-group2-subgroup1-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 17,
+   "now": 308,
+   "to": "/jobs/mpesb-group2-subgroup1-2026/"
+  },
+  {
+   "path": "/jobs/ssb-constable-sports-quota-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 24,
+   "now": 308,
+   "to": "/jobs/ssb-constable-sports-quota-2026/"
+  },
+  {
+   "path": "/jobs/upsc-cds-2-2026?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [
+    "sarkari job (1 impr, pos 2)"
+   ],
+   "position": 2,
+   "now": 308,
+   "to": "/jobs/upsc-cds-2-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic"
+  },
+  {
+   "path": "/organization/apcrda",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2.5,
+   "now": 404
+  },
+  {
+   "path": "/organization/bhel",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2,
+   "now": 308,
+   "to": "/organization/bhel/"
+  },
+  {
+   "path": "/organization/gims",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 3,
+   "now": 308,
+   "to": "/organization/gims/"
+  },
+  {
+   "path": "/organization/gulf-walkin-uae-shutdown-jobs-2024-124-gulf-job-vacancy-2024",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 6,
+   "now": 404
+  },
+  {
+   "path": "/organization/iit-hyd",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4,
+   "now": 404
+  },
+  {
+   "path": "/organization/iit-ism",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4.5,
+   "now": 308,
+   "to": "/organization/iit-ism/"
+  },
+  {
+   "path": "/organization/indian-army",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 3.5,
+   "now": 308,
+   "to": "/organization/indian-army/"
+  },
+  {
+   "path": "/organization/indian-bank",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5.5,
+   "now": 404
+  },
+  {
+   "path": "/organization/ts-bse",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5,
+   "now": 404
+  },
+  {
+   "path": "/state/chhattisgarh",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4,
+   "now": 308,
+   "to": "/state/chhattisgarh/"
+  },
+  {
+   "path": "/state/haryana",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 6,
+   "now": 308,
+   "to": "/state/haryana/"
+  },
+  {
+   "path": "/state/jharkhand",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2.5,
+   "now": 308,
+   "to": "/state/jharkhand/"
+  },
+  {
+   "path": "/state/kerala",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5.5,
+   "now": 308,
+   "to": "/state/kerala/"
+  },
+  {
+   "path": "/state/manipur",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 8.5,
+   "now": 308,
+   "to": "/state/manipur/"
+  },
+  {
+   "path": "/state/meghalaya",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 8,
+   "now": 308,
+   "to": "/state/meghalaya/"
+  },
+  {
+   "path": "/state/mizoram",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7.5,
+   "now": 308,
+   "to": "/state/mizoram/"
+  },
+  {
+   "path": "/state/odisha",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7,
+   "now": 308,
+   "to": "/state/odisha/"
+  },
+  {
+   "path": "/unicode-to-shree-lipi-converter",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2,
+   "now": 404
+  },
+  {
+   "path": "/updates/csir-ugc-net-exam-date-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7,
+   "now": 308,
+   "to": "/updates/csir-ugc-net-exam-date-2026/"
+  },
+  {
+   "path": "/updates/gujarat-tat-prelims-result-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5,
+   "now": 308,
+   "to": "/updates/gujarat-tat-prelims-result-2026/"
+  },
+  {
+   "path": "/updates/hssc-cet-jail-warder-admit-card-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 8,
+   "now": 308,
+   "to": "/updates/hssc-cet-jail-warder-admit-card-2026/"
+  },
+  {
+   "path": "/updates/india-post-gds-merit-list-4-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 7.5,
+   "now": 308,
+   "to": "/updates/india-post-gds-merit-list-4-2026/"
+  },
+  {
+   "path": "/updates/ksp-constable-exam-date-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4.5,
+   "now": 308,
+   "to": "/updates/ksp-constable-exam-date-2026/"
+  },
+  {
+   "path": "/updates/rbi-grade-b-phase1-result-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 5.5,
+   "now": 308,
+   "to": "/updates/rbi-grade-b-phase1-result-2026/"
+  },
+  {
+   "path": "/updates/rrb-alp-cbt1-result-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 4,
+   "now": 308,
+   "to": "/updates/rrb-alp-cbt1-result-2026/"
+  },
+  {
+   "path": "/updates/rrb-alp-cbt2-exam-date-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 6,
+   "now": 308,
+   "to": "/updates/rrb-alp-cbt2-exam-date-2026/"
+  },
+  {
+   "path": "/updates/rrb-ntpc-ug-answer-key-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 6.5,
+   "now": 308,
+   "to": "/updates/rrb-ntpc-ug-answer-key-2026/"
+  },
+  {
+   "path": "/updates/rssb-ldc-admit-card-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 3.5,
+   "now": 308,
+   "to": "/updates/rssb-ldc-admit-card-2026/"
+  },
+  {
+   "path": "/updates/sbi-apprentice-admit-card-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 3,
+   "now": 308,
+   "to": "/updates/sbi-apprentice-admit-card-2026/"
+  },
+  {
+   "path": "/updates/sbi-cbo-result-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2,
+   "now": 308,
+   "to": "/updates/sbi-cbo-result-2026/"
+  },
+  {
+   "path": "/updates/ssc-gd-answer-key-2026",
+   "clicks": 0,
+   "impressions": 2,
+   "queries": [],
+   "position": 2.5,
+   "now": 308,
+   "to": "/updates/ssc-gd-answer-key-2026/"
+  },
+  {
+   "path": "/guides/how-to-read-government-job-notification",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 4,
+   "now": 308,
+   "to": "/guides/how-to-read-government-job-notification/"
+  },
+  {
+   "path": "/jobs/andhra-university-assistant-professor-research-investigator",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 25,
+   "now": 308,
+   "to": "/jobs/andhra-university-assistant-professor-research-investigator/"
+  },
+  {
+   "path": "/jobs/apgb-financial-literacy-counsellors-2025",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 21,
+   "now": 308,
+   "to": "/jobs/apgb-financial-literacy-counsellors-2025/"
+  },
+  {
+   "path": "/jobs/apgenco-assistant-executive-engineer-aee-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 26,
+   "now": 308,
+   "to": "/jobs/apgenco-assistant-executive-engineer-aee-2026/"
+  },
+  {
+   "path": "/jobs/bihar-police-si-2026?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 3,
+   "now": 308,
+   "to": "/jobs/bihar-police-si-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic"
+  },
+  {
+   "path": "/jobs/icai-branch-incharge-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 14,
+   "now": 308,
+   "to": "/jobs/icai-branch-incharge-2026/"
+  },
+  {
+   "path": "/jobs/icsil-deo-mts-driver-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 20,
+   "now": 308,
+   "to": "/jobs/icsil-deo-mts-driver-2026/"
+  },
+  {
+   "path": "/jobs/iim-visakhapatnam-assistant-manager-associate-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 24,
+   "now": 308,
+   "to": "/jobs/iim-visakhapatnam-assistant-manager-associate-2026/"
+  },
+  {
+   "path": "/jobs/iit-hyderabad-non-teaching-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 19,
+   "now": 308,
+   "to": "/jobs/iit-hyderabad-non-teaching-2026/"
+  },
+  {
+   "path": "/jobs/mdl-trade-apprentice-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 15,
+   "now": 308,
+   "to": "/jobs/mdl-trade-apprentice-2026/"
+  },
+  {
+   "path": "/jobs/nlc-junior-overman-mining-sirdar-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 27,
+   "now": 308,
+   "to": "/jobs/nlc-junior-overman-mining-sirdar-2026/"
+  },
+  {
+   "path": "/jobs/rrb-technician-indian-railways-govt-alert-2025",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 28,
+   "now": 308,
+   "to": "/jobs/rrb-technician-indian-railways-govt-alert-2025/"
+  },
+  {
+   "path": "/jobs/ssc-cgl-staff-selection-commission-govt-2025",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 30,
+   "now": 308,
+   "to": "/jobs/ssc-cgl-staff-selection-commission-govt-2025/"
+  },
+  {
+   "path": "/jobs/ssc-chsl-staff-selection-commission-govt-2025",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 29,
+   "now": 308,
+   "to": "/jobs/ssc-chsl-staff-selection-commission-govt-2025/"
+  },
+  {
+   "path": "/jobs/tgpsc-seed-certification-officer-2026",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 22,
+   "now": 308,
+   "to": "/jobs/tgpsc-seed-certification-officer-2026/"
+  },
+  {
+   "path": "/organization/gulf-walkin-burjeel-holdings-careers-dubai-vacancy-124-gulf-jobs-100-vacancies",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 12,
+   "now": 404
+  },
+  {
+   "path": "/shree-lipi-to-unicode-converter",
+   "clicks": 0,
+   "impressions": 1,
+   "queries": [],
+   "position": 7,
+   "now": 404
+  },
+  {
+   "path": "/contact-us",
+   "captures": 46,
+   "first": "20100306204015",
+   "last": "20230511034044",
+   "now": 404
+  },
+  {
+   "path": "/about-us",
+   "captures": 43,
+   "first": "20120409204309",
+   "last": "20260613092113",
+   "now": 404
+  },
+  {
+   "path": "/category/politics",
+   "captures": 41,
+   "first": "20100212120953",
+   "last": "20141001052409",
+   "now": 404
+  },
+  {
+   "path": "/author/admin",
+   "captures": 40,
+   "first": "20100211051101",
+   "last": "20230605105421",
+   "now": 404
+  },
+  {
+   "path": "/category/business",
+   "captures": 40,
+   "first": "20100209022019",
+   "last": "20141001052701",
+   "now": 404
+  },
+  {
+   "path": "/cgi-sys/suspendedpage.cgi",
+   "captures": 40,
+   "first": "20141224221951",
+   "last": "20160110165833",
+   "now": 404
+  },
+  {
+   "path": "/category/international",
+   "captures": 36,
+   "first": "20100212121102",
+   "last": "20141001052255",
+   "now": 404
+  },
+  {
+   "path": "/category/education",
+   "captures": 35,
+   "first": "20100212121030",
+   "last": "20141220081026",
+   "now": 404
+  },
+  {
+   "path": "/category/entertainment",
+   "captures": 35,
+   "first": "20100212121054",
+   "last": "20141001052820",
+   "now": 404
+  },
+  {
+   "path": "/2010/02",
+   "captures": 34,
+   "first": "20100214084324",
+   "last": "20111202121856",
+   "now": 404
+  },
+  {
+   "path": "/2010/03",
+   "captures": 34,
+   "first": "20100307031327",
+   "last": "20111202121850",
+   "now": 404
+  },
+  {
+   "path": "/2010/04",
+   "captures": 34,
+   "first": "20100403043550",
+   "last": "20111211235418",
+   "now": 404
+  },
+  {
+   "path": "/2010/05",
+   "captures": 34,
+   "first": "20100507034331",
+   "last": "20111202121833",
+   "now": 404
+  },
+  {
+   "path": "/moscow-police-detain-about-100-protesters",
+   "captures": 34,
+   "first": "20100211051105",
+   "last": "20111202121956",
+   "now": 404
+  },
+  {
+   "path": "/2010/08",
+   "captures": 33,
+   "first": "20100803034024",
+   "last": "20111212003538",
+   "now": 404
+  },
+  {
+   "path": "/2010/06",
+   "captures": 32,
+   "first": "20100607085209",
+   "last": "20111212003525",
+   "now": 404
+  },
+  {
+   "path": "/category/sports",
+   "captures": 32,
+   "first": "20100212121009",
+   "last": "20141016051109",
+   "now": 404
+  },
+  {
+   "path": "/2010/07",
+   "captures": 31,
+   "first": "20100703145829",
+   "last": "20111202121814",
+   "now": 404
+  },
+  {
+   "path": "/category/health",
+   "captures": 31,
+   "first": "20100212120913",
+   "last": "20141016051045",
+   "now": 404
+  },
+  {
+   "path": "/category/national",
+   "captures": 30,
+   "first": "20100212120931",
+   "last": "20141001052300",
+   "now": 404
+  },
+  {
+   "path": "/category/sci-tech",
+   "captures": 29,
+   "first": "20100209022408",
+   "last": "20141016051103",
+   "now": 404
+  },
+  {
+   "path": "/2010/09",
+   "captures": 28,
+   "first": "20100904081217",
+   "last": "20111202121759",
+   "now": 404
+  },
+  {
+   "path": "/2010/10",
+   "captures": 28,
+   "first": "20101005071719",
+   "last": "20111213141449",
+   "now": 404
+  },
+  {
+   "path": "/1970/01",
+   "captures": 27,
+   "first": "20100904081159",
+   "last": "20111202121903",
+   "now": 404
+  },
+  {
+   "path": "/2010/11",
+   "captures": 27,
+   "first": "20101111001703",
+   "last": "20111202121743",
+   "now": 404
+  },
+  {
+   "path": "/category/international/egypt",
+   "captures": 27,
+   "first": "20100817055630",
+   "last": "20120125030425",
+   "now": 404
+  },
+  {
+   "path": "/category/art-culture",
+   "captures": 26,
+   "first": "20100214041718",
+   "last": "20120125054358",
+   "now": 404
+  },
+  {
+   "path": "/2010/12",
+   "captures": 25,
+   "first": "20101208065039",
+   "last": "20111212000318",
+   "now": 404
+  },
+  {
+   "path": "/2011/01",
+   "captures": 23,
+   "first": "20110120072624",
+   "last": "20111211235426",
+   "now": 404
+  },
+  {
+   "path": "/ansar-shaikh",
+   "captures": 23,
+   "first": "20200810223355",
+   "last": "20230127144733",
+   "now": 404
+  },
+  {
+   "path": "/category/international/americas",
+   "captures": 23,
+   "first": "20100209205540",
+   "last": "20111216163341",
+   "now": 404
+  },
+  {
+   "path": "/category/international/australasia",
+   "captures": 23,
+   "first": "20100212152003",
+   "last": "20120125050007",
+   "now": 404
+  },
+  {
+   "path": "/category/international/gulf-middle-east",
+   "captures": 23,
+   "first": "20100212152013",
+   "last": "20120125044829",
+   "now": 404
+  },
+  {
+   "path": "/2011/02",
+   "captures": 22,
+   "first": "20110221154222",
+   "last": "20111202121722",
+   "now": 404
+  },
+  {
+   "path": "/category/international/bangladesh",
+   "captures": 22,
+   "first": "20100212152007",
+   "last": "20120125044729",
+   "now": 404
+  },
+  {
+   "path": "/category/international/nepal",
+   "captures": 22,
+   "first": "20100212152018",
+   "last": "20120125035208",
+   "now": 404
+  },
+  {
+   "path": "/category/international/srilanka",
+   "captures": 22,
+   "first": "20100212152029",
+   "last": "20120125055139",
+   "now": 404
+  },
+  {
+   "path": "/2011/03",
+   "captures": 21,
+   "first": "20110309155442",
+   "last": "20111202121714",
+   "now": 404
+  },
+  {
+   "path": "/2011/04",
+   "captures": 21,
+   "first": "20110505032336",
+   "last": "20111202121704",
+   "now": 404
+  },
+  {
+   "path": "/2011/06",
+   "captures": 21,
+   "first": "20110611030724",
+   "last": "20111211235431",
+   "now": 404
+  },
+  {
+   "path": "/category/general",
+   "captures": 21,
+   "first": "20110611064623",
+   "last": "20141016154117",
+   "now": 404
+  },
+  {
+   "path": "/category/international/bhutan",
+   "captures": 21,
+   "first": "20100506022844",
+   "last": "20120125055337",
+   "now": 404
+  },
+  {
+   "path": "/ertugrul-quotes-in-hindi",
+   "captures": 21,
+   "first": "20200810221926",
+   "last": "20230605105102",
+   "now": 404
+  },
+  {
+   "path": "/2011/05",
+   "captures": 20,
+   "first": "20110520064914",
+   "last": "20111212002837",
+   "now": 404
+  },
+  {
+   "path": "/category/international/europe",
+   "captures": 19,
+   "first": "20100212121116",
+   "last": "20111216162958",
+   "now": 404
+  },
+  {
+   "path": "/category/international/gambia",
+   "captures": 19,
+   "first": "20100829051839",
+   "last": "20120125034710",
+   "now": 404
+  },
+  {
+   "path": "/category/international/islamic-republic-of",
+   "captures": 19,
+   "first": "20100817055226",
+   "last": "20120125052532",
+   "now": 404
+  },
+  {
+   "path": "/category/international/pakistan",
+   "captures": 19,
+   "first": "20100212152025",
+   "last": "20111216163014",
+   "now": 404
+  },
+  {
+   "path": "/category/international/africa",
+   "captures": 18,
+   "first": "20100214084408",
+   "last": "20111216163335",
+   "now": 404
+  },
+  {
+   "path": "/category/international/asia",
+   "captures": 18,
+   "first": "20100212152000",
+   "last": "20111216163346",
+   "now": 404
+  },
+  {
+   "path": "/category/international/chile",
+   "captures": 18,
+   "first": "20100907042537",
+   "last": "20120125023057",
+   "now": 404
+  },
+  {
+   "path": "/category/international/congo",
+   "captures": 18,
+   "first": "20100817055152",
+   "last": "20120125031013",
+   "now": 404
+  },
+  {
+   "path": "/category/international/dominican-republic",
+   "captures": 18,
+   "first": "20100923214808",
+   "last": "20120125030634",
+   "now": 404
+  },
+  {
+   "path": "/category/international/honduras",
+   "captures": 18,
+   "first": "20100829051844",
+   "last": "20120125034446",
+   "now": 404
+  },
+  {
+   "path": "/category/international/hungary",
+   "captures": 18,
+   "first": "20100817055218",
+   "last": "20120125061849",
+   "now": 404
+  },
+  {
+   "path": "/category/international/karachi",
+   "captures": 18,
+   "first": "20100819184213",
+   "last": "20120125001334",
+   "now": 404
+  },
+  {
+   "path": "/category/international/lebanon",
+   "captures": 18,
+   "first": "20100817055242",
+   "last": "20120125034518",
+   "now": 404
+  },
+  {
+   "path": "/category/international/maldives",
+   "captures": 18,
+   "first": "20100817055714",
+   "last": "20120125003127",
+   "now": 404
+  },
+  {
+   "path": "/category/international/nagaland",
+   "captures": 18,
+   "first": "20100822184727",
+   "last": "20120125052628",
+   "now": 404
+  },
+  {
+   "path": "/category/international/oman",
+   "captures": 18,
+   "first": "20100829051911",
+   "last": "20120125061758",
+   "now": 404
+  },
+  {
+   "path": "/category/international/portugal",
+   "captures": 18,
+   "first": "20100829053703",
+   "last": "20120125030411",
+   "now": 404
+  },
+  {
+   "path": "/category/international/shanghai",
+   "captures": 18,
+   "first": "20100829053457",
+   "last": "20120125030239",
+   "now": 404
+  },
+  {
+   "path": "/category/international/sudan",
+   "captures": 18,
+   "first": "20100829053731",
+   "last": "20120125002729",
+   "now": 404
+  },
+  {
+   "path": "/category/international/uganda",
+   "captures": 18,
+   "first": "20100817055805",
+   "last": "20120125030228",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/05",
+   "captures": 18,
+   "first": "20120126090307",
+   "last": "20141223091744",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/07",
+   "captures": 18,
+   "first": "20120126091653",
+   "last": "20141223092823",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/09",
+   "captures": 18,
+   "first": "20120126063605",
+   "last": "20141223065132",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/10",
+   "captures": 18,
+   "first": "20120127034209",
+   "last": "20141223095325",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/11",
+   "captures": 18,
+   "first": "20120126211900",
+   "last": "20141223062248",
+   "now": 404
+  },
+  {
+   "path": "/date/2010/12",
+   "captures": 18,
+   "first": "20120127014234",
+   "last": "20141223083411",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/02",
+   "captures": 18,
+   "first": "20120127014345",
+   "last": "20141223084300",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/03",
+   "captures": 18,
+   "first": "20120127002726",
+   "last": "20141223080931",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/04",
+   "captures": 18,
+   "first": "20120126211747",
+   "last": "20141223061744",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/06",
+   "captures": 18,
+   "first": "20120127001746",
+   "last": "20141223080450",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/07",
+   "captures": 18,
+   "first": "20120127014352",
+   "last": "20141223084619",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/09",
+   "captures": 18,
+   "first": "20120127004935",
+   "last": "20141223081714",
+   "now": 404
+  },
+  {
+   "path": "/date/2011/10",
+   "captures": 18,
+   "first": "20120127022243",
+   "last": "20141223090352",
+   "now": 404
+  },
+  {
+   "path": "/ilma-afroz",
+   "captures": 18,
+   "first": "20200810212856",
+   "last": "20230127140854",
+   "now": 404
+  },
+  {
+   "path": "/2011/07",
+   "captures": 17,
+   "first": "20110718143314",
+   "last": "20111211230102",
+   "now": 404
+  },
+  {
+   "path": "/best-romantic-shayari-in-hindi",
+   "captures": 17,
+   "first": "20200918095656",
+   "last": "20230127142609",
+   "now": 404
+  },
+  {
+   "path": "/category/international/auckland",
+   "captures": 17,
+   "first": "20101006072857",
+   "last": "20120125030251",
+   "now": 404
+  },
+  {
+   "path": "/category/international/austria",
+   "captures": 17,
+   "first": "20100817055615",
+   "last": "20120125021526",
+   "now": 404
+  },
+  {
+   "path": "/category/international/barbados",
+   "captures": 17,
+   "first": "20100920003610",
+   "last": "20120125003511",
+   "now": 404
+  },
+  {
+   "path": "/category/international/beijing",
+   "captures": 17,
+   "first": "20100906214259",
+   "last": "20120125061753"
+  },
+  {
+   "path": "/category/international/bolivia",
+   "captures": 17,
+   "first": "20100819184142",
+   "last": "20120125030800"
+  },
+  {
+   "path": "/category/international/cambodia",
+   "captures": 17,
+   "first": "20100819184147",
+   "last": "20120125002358"
+  },
+  {
+   "path": "/category/international/china",
+   "captures": 17,
+   "first": "20100817055147",
+   "last": "20120125030853"
+  },
+  {
+   "path": "/category/international/cincinnati",
+   "captures": 17,
+   "first": "20100829053658",
+   "last": "20120125032810"
+  },
+  {
+   "path": "/category/international/colombonew-delhi",
+   "captures": 17,
+   "first": "20100906214303",
+   "last": "20120125062030"
+  },
+  {
+   "path": "/category/international/cuba",
+   "captures": 17,
+   "first": "20100817055620",
+   "last": "20120125074149"
+  },
+  {
+   "path": "/category/international/dambulla",
+   "captures": 17,
+   "first": "20100817055625",
+   "last": "20120125031035"
+  },
+  {
+   "path": "/category/international/dubai",
+   "captures": 17,
+   "first": "20100817055157",
+   "last": "20120125021533"
+  },
+  {
+   "path": "/category/international/ecuador",
+   "captures": 17,
+   "first": "20100817055201",
+   "last": "20120125032744"
+  },
+  {
+   "path": "/category/international/ethiopia",
+   "captures": 17,
+   "first": "20100819184152",
+   "last": "20120125012513"
+  },
+  {
+   "path": "/category/international/finland",
+   "captures": 17,
+   "first": "20100817055636",
+   "last": "20120125032752"
+  },
+  {
+   "path": "/category/international/france",
+   "captures": 17,
+   "first": "20100817055206",
+   "last": "20120125044926"
+  },
+  {
+   "path": "/category/international/germany",
+   "captures": 17,
+   "first": "20100817055215",
+   "last": "20120125030711"
+  },
+  {
+   "path": "/category/international/ghana",
+   "captures": 17,
+   "first": "20100923214816",
+   "last": "20120125030144"
+  },
+  {
+   "path": "/category/international/greece",
+   "captures": 17,
+   "first": "20100923215249",
+   "last": "20120125045254"
+  },
+  {
+   "path": "/category/international/hong-kong",
+   "captures": 17,
+   "first": "20100829051849",
+   "last": "20120125030817"
+  },
+  {
+   "path": "/category/international/iraq",
+   "captures": 17,
+   "first": "20100817055646",
+   "last": "20120125030124"
+  },
+  {
+   "path": "/category/international/ireland",
+   "captures": 17,
+   "first": "20100819184157",
+   "last": "20120125030420"
+  },
+  {
+   "path": "/category/international/islamabad",
+   "captures": 17,
+   "first": "20100819184202",
+   "last": "20120125044904"
+  },
+  {
+   "path": "/category/international/jakarta",
+   "captures": 17,
+   "first": "20100829051854",
+   "last": "20120125030540"
+  },
+  {
+   "path": "/category/international/johannesburg",
+   "captures": 17,
+   "first": "20100822184222",
+   "last": "20120125040204"
+  },
+  {
+   "path": "/category/international/kathmandu",
+   "captures": 17,
+   "first": "20100907042541",
+   "last": "20120125080515"
+  },
+  {
+   "path": "/category/international/kazakhstan",
+   "captures": 17,
+   "first": "20100829051900",
+   "last": "20120125032729"
+  },
+  {
+   "path": "/category/international/korea",
+   "captures": 17,
+   "first": "20100817055237",
+   "last": "20120125030503"
+  },
+  {
+   "path": "/category/international/lahore",
+   "captures": 17,
+   "first": "20100906215930",
+   "last": "20120125040154"
+  },
+  {
+   "path": "/category/international/libyan-arab-jamahiriya",
+   "captures": 17,
+   "first": "20100817055656",
+   "last": "20120125062019"
+  },
+  {
+   "path": "/category/international/london",
+   "captures": 17,
+   "first": "20100817055701",
+   "last": "20120125041957"
+  },
+  {
+   "path": "/category/international/londonislamabad",
+   "captures": 17,
+   "first": "20100907042547",
+   "last": "20120125035932"
+  },
+  {
+   "path": "/category/international/los-angeles",
+   "captures": 17,
+   "first": "20100906223513",
+   "last": "20120125030824"
+  },
+  {
+   "path": "/category/international/luxembourg",
+   "captures": 17,
+   "first": "20100922095331",
+   "last": "20120125044746"
+  },
+  {
+   "path": "/category/international/manila",
+   "captures": 17,
+   "first": "20100923214820",
+   "last": "20120125035819"
+  },
+  {
+   "path": "/category/international/mauritania",
+   "captures": 17,
+   "first": "20100829051904",
+   "last": "20120125070322"
+  },
+  {
+   "path": "/category/international/melbourne",
+   "captures": 17,
+   "first": "20100923214827",
+   "last": "20120125030745"
+  },
+  {
+   "path": "/category/international/morocco",
+   "captures": 17,
+   "first": "20100817055719",
+   "last": "20120125032640"
+  },
+  {
+   "path": "/category/international/myanmar",
+   "captures": 17,
+   "first": "20100819184218",
+   "last": "20120125052332"
+  },
+  {
+   "path": "/category/international/netherlands",
+   "captures": 17,
+   "first": "20100817055252",
+   "last": "20120125055353"
+  },
+  {
+   "path": "/category/international/new-zealand",
+   "captures": 17,
+   "first": "20100817055258",
+   "last": "20120125030843"
+  },
+  {
+   "path": "/category/international/nigeria",
+   "captures": 17,
+   "first": "20100817055302",
+   "last": "20120125044737"
+  },
+  {
+   "path": "/category/international/north-korea",
+   "captures": 17,
+   "first": "20100822184032",
+   "last": "20120125040347"
+  },
+  {
+   "path": "/category/international/palestinian-territory",
+   "captures": 17,
+   "first": "20100819184228",
+   "last": "20120125001458"
+  },
+  {
+   "path": "/category/international/panama",
+   "captures": 17,
+   "first": "20101006073443",
+   "last": "20120125060410"
+  },
+  {
+   "path": "/category/international/paraguay",
+   "captures": 17,
+   "first": "20100829053919",
+   "last": "20120125003616"
+  },
+  {
+   "path": "/category/international/peru",
+   "captures": 17,
+   "first": "20100817055724",
+   "last": "20120125034714"
+  },
+  {
+   "path": "/category/international/philippines",
+   "captures": 17,
+   "first": "20100817055307",
+   "last": "20120125045153"
+  },
+  {
+   "path": "/category/international/poland",
+   "captures": 17,
+   "first": "20100817055312",
+   "last": "20120125012558"
+  },
+  {
+   "path": "/category/international/province-of-china",
+   "captures": 17,
+   "first": "20100822184037",
+   "last": "20120125035553"
+  },
+  {
+   "path": "/category/international/republic-of",
+   "captures": 17,
+   "first": "20100817055317",
+   "last": "20120125030516"
+  },
+  {
+   "path": "/category/international/russian-federation",
+   "captures": 17,
+   "first": "20100817055322",
+   "last": "20120125030833"
+  },
+  {
+   "path": "/category/international/serbia-and-montenegro",
+   "captures": 17,
+   "first": "20100906214308",
+   "last": "20120125005256"
+  },
+  {
+   "path": "/category/international/singapore",
+   "captures": 17,
+   "first": "20100819184239",
+   "last": "20120125030339"
+  },
+  {
+   "path": "/category/international/slovakia",
+   "captures": 17,
+   "first": "20100906214404",
+   "last": "20120125054435"
+  },
+  {
+   "path": "/category/international/somalia",
+   "captures": 17,
+   "first": "20100829053708",
+   "last": "20120125035428"
+  },
+  {
+   "path": "/category/international/south-africa",
+   "captures": 17,
+   "first": "20100817055735",
+   "last": "20120125030359"
+  },
+  {
+   "path": "/category/international/spain",
+   "captures": 17,
+   "first": "20100817055745",
+   "last": "20120125010925"
+  },
+  {
+   "path": "/category/international/sweden",
+   "captures": 17,
+   "first": "20100819184245",
+   "last": "20120125030521"
+  },
+  {
+   "path": "/category/international/switzerland",
+   "captures": 17,
+   "first": "20100817055755",
+   "last": "20120125035030"
+  },
+  {
+   "path": "/category/international/sydney",
+   "captures": 17,
+   "first": "20100923214830",
+   "last": "20120125030310"
+  },
+  {
+   "path": "/category/international/taiwan",
+   "captures": 17,
+   "first": "20100822183122",
+   "last": "20120125032739"
+  },
+  {
+   "path": "/category/international/tajikistan",
+   "captures": 17,
+   "first": "20100829053512",
+   "last": "20120125035807"
+  },
+  {
+   "path": "/category/international/the-democratic-republic-of-the",
+   "captures": 17,
+   "first": "20100817055334",
+   "last": "20120125001816"
+  },
+  {
+   "path": "/category/international/ukraine",
+   "captures": 17,
+   "first": "20100819170014",
+   "last": "20120125054451"
+  },
+  {
+   "path": "/category/international/united-nations",
+   "captures": 17,
+   "first": "20100906214407",
+   "last": "20120125054304"
+  },
+  {
+   "path": "/category/international/venezuela",
+   "captures": 17,
+   "first": "20100819184300",
+   "last": "20120125001327"
+  },
+  {
+   "path": "/category/international/viet-nam",
+   "captures": 17,
+   "first": "20100819184305",
+   "last": "20120125034610"
+  },
+  {
+   "path": "/date/2010/03",
+   "captures": 17,
+   "first": "20120126062931",
+   "last": "20141223064414"
+  },
+  {
+   "path": "/date/2010/04",
+   "captures": 17,
+   "first": "20120126233810",
+   "last": "20141017002622"
+  },
+  {
+   "path": "/date/2010/06",
+   "captures": 17,
+   "first": "20120126063308",
+   "last": "20141223064806"
+  },
+  {
+   "path": "/date/2010/08",
+   "captures": 17,
+   "first": "20120126091211",
+   "last": "20141223092356"
+  },
+  {
+   "path": "/date/2011/01",
+   "captures": 17,
+   "first": "20120126211741",
+   "last": "20141223061411"
+  },
+  {
+   "path": "/date/2011/05",
+   "captures": 17,
+   "first": "20120127035918",
+   "last": "20141017003104"
+  },
+  {
+   "path": "/date/2011/08",
+   "captures": 17,
+   "first": "20120127014300",
+   "last": "20141223083550"
+  },
+  {
+   "path": "/date/2012/01",
+   "captures": 17,
+   "first": "20120409212244",
+   "last": "20141223101926"
+  },
+  {
+   "path": "/date/2012/03",
+   "captures": 17,
+   "first": "20120409213159",
+   "last": "20141223082721"
+  },
+  {
+   "path": "/modi-sarkar-ka-bhashan",
+   "captures": 17,
+   "first": "20200810210907",
+   "last": "20230127133809"
+  },
+  {
+   "path": "/motivational-story-in-hindi",
+   "captures": 17,
+   "first": "20200810214117",
+   "last": "20230127142320"
+  },
+  {
+   "path": "/attitude-shayari-in-hindi-for-love",
+   "captures": 16,
+   "first": "20200810222128",
+   "last": "20230127152804"
+  },
+  {
+   "path": "/category/%E0%A4%AA%E0%A5%88%E0%A4%B8%E0%A4%BE-%E0%A4%95%E0%A4%AE%E0%A4%BE%E0%A4%AF%E0%A5%87",
+   "captures": 16,
+   "first": "20200810223513",
+   "last": "20230329013409"
+  },
+  {
+   "path": "/category/international/argentina",
+   "captures": 16,
+   "first": "20100817055609",
+   "last": "20120125075845"
+  },
+  {
+   "path": "/category/international/australia",
+   "captures": 16,
+   "first": "20100817055131",
+   "last": "20120125073831"
+  },
+  {
+   "path": "/category/international/belgium",
+   "captures": 16,
+   "first": "20100817055135",
+   "last": "20120125080815"
+  },
+  {
+   "path": "/category/international/brazil",
+   "captures": 16,
+   "first": "20100817055141",
+   "last": "20120125080222"
+  },
+  {
+   "path": "/category/international/bulgaria",
+   "captures": 16,
+   "first": "20101031073615",
+   "last": "20120125015855"
+  },
+  {
+   "path": "/category/international/cape-town",
+   "captures": 16,
+   "first": "20100922095325",
+   "last": "20120125063955"
+  },
+  {
+   "path": "/category/international/colombia",
+   "captures": 16,
+   "first": "20101006184833",
+   "last": "20120125030915"
+  },
+  {
+   "path": "/category/international/havana",
+   "captures": 16,
+   "first": "20100920003638",
+   "last": "20120125032720"
+  },
+  {
+   "path": "/category/international/helsinki",
+   "captures": 16,
+   "first": "20100920004542",
+   "last": "20120125074040"
+  },
+  {
+   "path": "/category/international/iran",
+   "captures": 16,
+   "first": "20100817055642",
+   "last": "20120125045853"
+  },
+  {
+   "path": "/category/international/italy",
+   "captures": 16,
+   "first": "20100819184207",
+   "last": "20120125073150"
+  },
+  {
+   "path": "/category/international/jordan",
+   "captures": 16,
+   "first": "20100920003654",
+   "last": "20120125083101"
+  },
+  {
+   "path": "/category/international/kenya",
+   "captures": 16,
+   "first": "20100829020715",
+   "last": "20120125015834"
+  },
+  {
+   "path": "/category/international/niger",
+   "captures": 16,
+   "first": "20100819184224",
+   "last": "20120125082632"
+  },
+  {
+   "path": "/category/international/peshawar",
+   "captures": 16,
+   "first": "20100922094832",
+   "last": "20120125075801"
+  },
+  {
+   "path": "/category/international/rwanda",
+   "captures": 16,
+   "first": "20100817055729",
+   "last": "20120125044822"
+  },
+  {
+   "path": "/category/international/saudi-arabia",
+   "captures": 16,
+   "first": "20100817055329",
+   "last": "20120125071943"
+  },
+  {
+   "path": "/category/international/sharjah",
+   "captures": 16,
+   "first": "20101025014644",
+   "last": "20120125030223"
+  },
+  {
+   "path": "/category/international/sydneynew-delhi",
+   "captures": 16,
+   "first": "20101006072903",
+   "last": "20120125010904"
+  },
+  {
+   "path": "/category/international/syrian-arab-republic",
+   "captures": 16,
+   "first": "20100819184250",
+   "last": "20120122082944"
+  },
+  {
+   "path": "/category/international/toronto",
+   "captures": 16,
+   "first": "20101025014648",
+   "last": "20120125035629"
+  },
+  {
+   "path": "/category/international/trinidad-and-tobago",
+   "captures": 16,
+   "first": "20100817055801",
+   "last": "20120125073544"
+  },
+  {
+   "path": "/category/international/united-arab-emirates",
+   "captures": 16,
+   "first": "20100817055811",
+   "last": "20120125015732"
+  },
+  {
+   "path": "/category/international/washington",
+   "captures": 16,
+   "first": "20100819184310",
+   "last": "20120125085230"
+  },
+  {
+   "path": "/category/international/western-sahara",
+   "captures": 16,
+   "first": "20101025014316",
+   "last": "20120125031108"
+  },
+  {
+   "path": "/category/international/yemen",
+   "captures": 16,
+   "first": "20100817055348",
+   "last": "20120125080024"
+  },
+  {
+   "path": "/category/international/zimbabwe",
+   "captures": 16,
+   "first": "20100817055353",
+   "last": "20120125064002"
+  },
+  {
+   "path": "/category/national/delhi",
+   "captures": 16,
+   "first": "20100817055821",
+   "last": "20120126062303"
+  },
+  {
+   "path": "/category/national/jammu-and-kashmir",
+   "captures": 16,
+   "first": "20100817060041",
+   "last": "20120126214619"
+  },
+  {
+   "path": "/date/2011/11",
+   "captures": 16,
+   "first": "20120126235350",
+   "last": "20141017003118"
+  },
+  {
+   "path": "/date/2012/04",
+   "captures": 16,
+   "first": "20120409213204",
+   "last": "20141017003128"
+  },
+  {
+   "path": "/date/2012/06",
+   "captures": 16,
+   "first": "20120611025853",
+   "last": "20141223171952"
+  },
+  {
+   "path": "/ipl-2020-live-score-dc-vs-csk-ipl-live-cricket-score-streaming-online-today-match-at-hotstar-star-sports-1-hindi-dream11-ipl-live-watch-online-csk-87-2-11-4-ipl-2020-dc-vs-csk-live-cricket-sc",
+   "captures": 16,
+   "first": "20201024045827",
+   "last": "20230127151710"
+  },
+  {
+   "path": "/low-cost-apple-iphone-14101",
+   "captures": 16,
+   "first": "20110219233302",
+   "last": "20111229140439"
+  },
+  {
+   "path": "/2011/08",
+   "captures": 15,
+   "first": "20110823051542",
+   "last": "20111212000325"
+  },
+  {
+   "path": "/category/international/cameroon",
+   "captures": 15,
+   "first": "20101031073032",
+   "last": "20120125032659"
+  },
+  {
+   "path": "/category/international/canberra",
+   "captures": 15,
+   "first": "20101007101559",
+   "last": "20120125085235"
+  },
+  {
+   "path": "/category/international/dominica",
+   "captures": 15,
+   "first": "20101006073413",
+   "last": "20120125075814"
+  },
+  {
+   "path": "/category/international/durban",
+   "captures": 15,
+   "first": "20101025014401",
+   "last": "20120125081158"
+  },
+  {
+   "path": "/category/international/iceland",
+   "captures": 15,
+   "first": "20101025013945",
+   "last": "20120125001250"
+  },
+  {
+   "path": "/category/international/israel",
+   "captures": 15,
+   "first": "20100817055232",
+   "last": "20120125063940"
+  },
+  {
+   "path": "/category/international/malaysia",
+   "captures": 15,
+   "first": "20100817055709",
+   "last": "20111117111215"
+  },
+  {
+   "path": "/category/international/moscow",
+   "captures": 15,
+   "first": "20101031073622",
+   "last": "20120125040754"
+  },
+  {
+   "path": "/category/international/new-york",
+   "captures": 15,
+   "first": "20101025013951",
+   "last": "20120125030138"
+  },
+  {
+   "path": "/category/international/rome",
+   "captures": 15,
+   "first": "20101031073748",
+   "last": "20120125030354"
+  },
+  {
+   "path": "/category/international/sana",
+   "captures": 15,
+   "first": "20101025014411",
+   "last": "20120125085247"
+  },
+  {
+   "path": "/category/international/slovenia",
+   "captures": 15,
+   "first": "20101031073754",
+   "last": "20120125034359"
+  },
+  {
+   "path": "/category/international/thailand",
+   "captures": 15,
+   "first": "20100819184255",
+   "last": "20111117103431"
+  },
+  {
+   "path": "/category/international/tokyo",
+   "captures": 15,
+   "first": "20101025014004",
+   "last": "20120125034658"
+  },
+  {
+   "path": "/category/international/united-states-america",
+   "captures": 15,
+   "first": "20100817055343",
+   "last": "20111117105816"
+  },
+  {
+   "path": "/category/national/andhra-pardesh",
+   "captures": 15,
+   "first": "20100817055358",
+   "last": "20120126094649"
+  },
+  {
+   "path": "/category/national/arunachal-pradesh",
+   "captures": 15,
+   "first": "20100819184315",
+   "last": "20120126211854"
+  },
+  {
+   "path": "/category/national/haryana",
+   "captures": 15,
+   "first": "20100817055426",
+   "last": "20120126101450"
+  },
+  {
+   "path": "/category/national/india",
+   "captures": 15,
+   "first": "20100817060034",
+   "last": "20120127014246"
+  },
+  {
+   "path": "/category/national/karnataka",
+   "captures": 15,
+   "first": "20100817060045",
+   "last": "20120126220319"
+  },
+  {
+   "path": "/category/national/madhya-pardesh",
+   "captures": 15,
+   "first": "20100817055443",
+   "last": "20120126093548"
+  },
+  {
+   "path": "/category/national/manipur",
+   "captures": 15,
+   "first": "20100817055453",
+   "last": "20120127005125"
+  },
+  {
+   "path": "/category/national/meghalaya",
+   "captures": 15,
+   "first": "20100817060055",
+   "last": "20120126071349"
+  },
+  {
+   "path": "/category/national/mizoram",
+   "captures": 15,
+   "first": "20100817055458",
+   "last": "20120126074821"
+  },
+  {
+   "path": "/category/national/nationalentertainmentdelhi",
+   "captures": 15,
+   "first": "20100822183648",
+   "last": "20120126223154"
+  },
+  {
+   "path": "/category/national/punjab",
+   "captures": 15,
+   "first": "20100817060105",
+   "last": "20111117105903"
+  },
+  {
+   "path": "/category/national/rajasthan",
+   "captures": 15,
+   "first": "20100819184320",
+   "last": "20120126084241"
+  },
+  {
+   "path": "/category/national/tamil-nadu",
+   "captures": 15,
+   "first": "20100817055503",
+   "last": "20120126075711"
+  },
+  {
+   "path": "/category/national/uttarakhand",
+   "captures": 15,
+   "first": "20100822184229",
+   "last": "20120126073153"
+  },
+  {
+   "path": "/category/national/west-bengal",
+   "captures": 15,
+   "first": "20100817055520",
+   "last": "20120126101445"
+  },
+  {
+   "path": "/date/2012/02",
+   "captures": 15,
+   "first": "20120409213154",
+   "last": "20141017003123"
+  },
+  {
+   "path": "/date/2012/07",
+   "captures": 15,
+   "first": "20120716075651",
+   "last": "20141017003133"
+  },
+  {
+   "path": "/1800-egyptians-eyes-get-infected",
+   "captures": 14,
+   "first": "20101126195935",
+   "last": "20111202122111"
+  },
+  {
+   "path": "/2011/09",
+   "captures": 14,
+   "first": "20110918083650",
+   "last": "20111212000329"
+  },
+  {
+   "path": "/author",
+   "captures": 14,
+   "first": "20120409211510",
+   "last": "20141017003007"
+  },
+  {
+   "path": "/author/ananya",
+   "captures": 14,
+   "first": "20101007100602",
+   "last": "20140429145015"
+  },
+  {
+   "path": "/category/art-culture/fashion",
+   "captures": 14,
+   "first": "20101006073549",
+   "last": "20111212003206"
+  },
+  {
+   "path": "/category/art-culture/occupied",
+   "captures": 14,
+   "first": "20100829051834",
+   "last": "20111117105653"
+  },
+  {
+   "path": "/category/international/abu-dhabi",
+   "captures": 14,
+   "first": "20100819184137",
+   "last": "20111117105659"
+  },
+  {
+   "path": "/category/international/afghanistan",
+   "captures": 14,
+   "first": "20100817055121",
+   "last": "20111117111424"
+  },
+  {
+   "path": "/category/international/american-samoa",
+   "captures": 14,
+   "first": "20100817055125",
+   "last": "20111117111434"
+  },
+  {
+   "path": "/category/international/indonesia",
+   "captures": 14,
+   "first": "20100817055222",
+   "last": "20111117105714"
+  },
+  {
+   "path": "/category/international/japan",
+   "captures": 14,
+   "first": "20100817055651",
+   "last": "20111117105724"
+  },
+  {
+   "path": "/category/international/kuala-lumpur",
+   "captures": 14,
+   "first": "20100920004612",
+   "last": "20111212000343"
+  },
+  {
+   "path": "/category/international/mexico",
+   "captures": 14,
+   "first": "20100817055247",
+   "last": "20111117110609"
+  },
+  {
+   "path": "/category/international/nairobi",
+   "captures": 14,
+   "first": "20101025014406",
+   "last": "20120125085239"
+  },
+  {
+   "path": "/category/international/norway",
+   "captures": 14,
+   "first": "20101025014626",
+   "last": "20120125075943"
+  },
+  {
+   "path": "/category/international/qatar",
+   "captures": 14,
+   "first": "20101031073338",
+   "last": "20120125064029"
+  },
+  {
+   "path": "/category/international/romania",
+   "captures": 14,
+   "first": "20100819184233",
+   "last": "20111117111534"
+  },
+  {
+   "path": "/category/international/south-korea",
+   "captures": 14,
+   "first": "20100817055740",
+   "last": "20111117105807"
+  },
+  {
+   "path": "/category/international/sri-lanka",
+   "captures": 14,
+   "first": "20100817055750",
+   "last": "20111116061644"
+  },
+  {
+   "path": "/category/international/turkey",
+   "captures": 14,
+   "first": "20100817055338",
+   "last": "20111117110040"
+  },
+  {
+   "path": "/category/international/united-kingdom",
+   "captures": 14,
+   "first": "20100816175746",
+   "last": "20111117110654"
+  },
+  {
+   "path": "/category/national/assam",
+   "captures": 14,
+   "first": "20100817055816",
+   "last": "20111117105826"
+  },
+  {
+   "path": "/category/national/bihar",
+   "captures": 14,
+   "first": "20100817055407",
+   "last": "20111117103441"
+  },
+  {
+   "path": "/category/national/canada",
+   "captures": 14,
+   "first": "20100817055411",
+   "last": "20111117103447"
+  },
+  {
+   "path": "/category/national/chhattisgarh",
+   "captures": 14,
+   "first": "20100817055416",
+   "last": "20111117111317"
+  },
+  {
+   "path": "/category/national/himachal-pradesh",
+   "captures": 14,
+   "first": "20100817055433",
+   "last": "20111117103501"
+  },
+  {
+   "path": "/category/national/jharkhand",
+   "captures": 14,
+   "first": "20100817055438",
+   "last": "20111117111321"
+  },
+  {
+   "path": "/category/national/kerala",
+   "captures": 14,
+   "first": "20100817060050",
+   "last": "20111117105831"
+  },
+  {
+   "path": "/category/national/maharashtra",
+   "captures": 14,
+   "first": "20100817055448",
+   "last": "20111117103532"
+  },
+  {
+   "path": "/category/national/orissa",
+   "captures": 14,
+   "first": "20100817060100",
+   "last": "20111117111600"
+  },
+  {
+   "path": "/category/national/tripura",
+   "captures": 14,
+   "first": "20100817055508",
+   "last": "20111117111341"
+  },
+  {
+   "path": "/category/national/uttar-pradesh",
+   "captures": 14,
+   "first": "20100817055513",
+   "last": "20111117105530"
+  },
+  {
+   "path": "/chilean-president-brings-rock-souvenir-to-britains-queen",
+   "captures": 14,
+   "first": "20101126195142",
+   "last": "20111202122152"
+  },
+  {
+   "path": "/date/2012/05",
+   "captures": 14,
+   "first": "20120522052839",
+   "last": "20141017002717"
+  },
+  {
+   "path": "/date/2012/08",
+   "captures": 14,
+   "first": "20120827070524",
+   "last": "20141017003138"
+  },
+  {
+   "path": "/date/2012/09",
+   "captures": 14,
+   "first": "20121001215810",
+   "last": "20141223082048"
+  },
+  {
+   "path": "/date/2012/11",
+   "captures": 14,
+   "first": "20121104191816",
+   "last": "20141223084855"
+  },
+  {
+   "path": "/egypt-unearths-4500-year-old-tomb",
+   "captures": 14,
+   "first": "20101126195036",
+   "last": "20111202122140"
+  },
+  {
+   "path": "/%E0%A4%B0%E0%A4%B5%E0%A4%BF%E0%A4%B6-%E0%A4%95%E0%A5%81%E0%A4%AE%E0%A4%BE%E0%A4%B0-%E0%A4%95%E0%A5%87-%E0%A4%B5%E0%A4%B9-%E0%A5%A7%E0%A5%A6-%E0%A4%96%E0%A4%BE%E0%A4%B8-%E0%A4%AC%E0%A4%BE%E0%A4%A4",
+   "captures": 13,
+   "first": "20200810214429",
+   "last": "20211128174156"
+  },
+  {
+   "path": "/300-indians-to-be-brought-back-from-egypt",
+   "captures": 13,
+   "first": "20110521042916",
+   "last": "20111202122442"
+  },
+  {
+   "path": "/author/madhuri",
+   "captures": 13,
+   "first": "20100724140629",
+   "last": "20140825152423"
+  },
+  {
+   "path": "/category/%E0%A4%AE%E0%A5%8B%E0%A4%9F%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%B6%E0%A4%A8%E0%A4%B2-%E0%A4%95%E0%A4%B9%E0%A4%BE%E0%A4%A8%E0%A5%80",
+   "captures": 13,
+   "first": "20200810222519",
+   "last": "20220128193325"
+  },
+  {
+   "path": "/category/art-culture/lifestyle",
+   "captures": 13,
+   "first": "20101006073557",
+   "last": "20111212000333"
+  },
+  {
+   "path": "/category/international/abuja",
+   "captures": 13,
+   "first": "20101025014619",
+   "last": "20111117110848"
+  },
+  {
+   "path": "/category/national/goa",
+   "captures": 13,
+   "first": "20100817055826",
+   "last": "20111117103455"
+  },
+  {
+   "path": "/category/national/gujarat",
+   "captures": 13,
+   "first": "20100817055421",
+   "last": "20111117110709"
+  },
+  {
+   "path": "/category/national/new-delhi",
+   "captures": 13,
+   "first": "20101024014010",
+   "last": "20111117111326"
+  },
+  {
+   "path": "/category/uncategorized",
+   "captures": 13,
+   "first": "20100217000853",
+   "last": "20251007115256"
+  },
+  {
+   "path": "/date/2012/10",
+   "captures": 13,
+   "first": "20121010010046",
+   "last": "20141017003145"
+  },
+  {
+   "path": "/egypt-rejoices-as-mubarak-steps-down-14102",
+   "captures": 13,
+   "first": "20110219234707",
+   "last": "20111202122046"
+  },
+  {
+   "path": "/egypt-wants-more-indian-tourists",
+   "captures": 13,
+   "first": "20110621063350",
+   "last": "20111202122850"
+  },
+  {
+   "path": "/hindi-poem",
+   "captures": 13,
+   "first": "20200918093313",
+   "last": "20230127132852"
+  },
+  {
+   "path": "/2011/10",
+   "captures": 12,
+   "first": "20111117111418",
+   "last": "20111202121612"
+  },
+  {
+   "path": "/category/%E0%A4%AA%E0%A5%89%E0%A4%B2%E0%A4%BF%E0%A4%9F%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B8",
+   "captures": 12,
+   "first": "20200810214841",
+   "last": "20220128201958"
+  },
+  {
+   "path": "/category/%E0%A4%AE%E0%A5%8B%E0%A4%9F%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%B6%E0%A4%A8%E0%A4%B2-%E0%A4%95%E0%A5%8B%E0%A4%9F%E0%A5%8D%E0%A4%B8",
+   "captures": 12,
+   "first": "20200810210439",
+   "last": "20220128183545"
+  },
+  {
+   "path": "/category/art-culture/select",
+   "captures": 12,
+   "first": "20101025014245",
+   "last": "20111117103400"
+  },
+  {
+   "path": "/category/art-culture/uncategorized",
+   "captures": 12,
+   "first": "20101126051639",
+   "last": "20111212000338"
+  },
+  {
+   "path": "/category/international/algeria",
+   "captures": 12,
+   "first": "20101025014256",
+   "last": "20111117111429"
+  },
+  {
+   "path": "/category/international/bosnia-and-herzegovina",
+   "captures": 12,
+   "first": "20101031073027",
+   "last": "20111117110853"
+  },
+  {
+   "path": "/category/international/egypt/page/2",
+   "captures": 12,
+   "first": "20101126200117",
+   "last": "20111202122400"
+  },
+  {
+   "path": "/category/national/hyderabad",
+   "captures": 12,
+   "first": "20101025014010",
+   "last": "20111117105520"
+  },
+  {
+   "path": "/chinas-ipad-users-get-free-tv-broadcast",
+   "captures": 12,
+   "first": "20101218044611",
+   "last": "20111202122131"
+  },
+  {
+   "path": "/common-williams-reunite",
+   "captures": 12,
+   "first": "20101126195325",
+   "last": "20111202122218"
+  },
+  {
+   "path": "/courts-verdict-on-ayodhya-binding-on-all-naidu",
+   "captures": 12,
+   "first": "20101218065709",
+   "last": "20111202122602"
+  },
+  {
+   "path": "/cwg-puts-many-delhiites-in-holiday-mood",
+   "captures": 12,
+   "first": "20101126195913",
+   "last": "20111202122237"
+  },
+  {
+   "path": "/date/2012/12",
+   "captures": 12,
+   "first": "20130102110122",
+   "last": "20141223070838"
+  },
+  {
+   "path": "/egypt-commemorates-arab-israeli-war-as-peace-talks-flounder",
+   "captures": 12,
+   "first": "20101126195205",
+   "last": "20111202122207"
+  },
+  {
+   "path": "/egypt-completes-canal-project-to-turn-desert-into-farmland",
+   "captures": 12,
+   "first": "20100820034404",
+   "last": "20111202121450"
+  },
+  {
+   "path": "/egypt-destroys-gaza-smuggling-tunnels",
+   "captures": 12,
+   "first": "20101126195702",
+   "last": "20111202122245"
+  },
+  {
+   "path": "/egypt-minister-appointed-world-bank-managing-director",
+   "captures": 12,
+   "first": "20101126194835",
+   "last": "20111202122320"
+  },
+  {
+   "path": "/farah-and-i-are-friends-srk",
+   "captures": 12,
+   "first": "20110719065025",
+   "last": "20111202122929"
+  },
+  {
+   "path": "/india-beat-sertanense-fc-3-2-in-portugal",
+   "captures": 12,
+   "first": "20101218065951",
+   "last": "20111202123005"
+  },
+  {
+   "path": "/kelly-osbourne-hides-tattoos-for-film",
+   "captures": 12,
+   "first": "20101126194927",
+   "last": "20111202122335"
+  },
+  {
+   "path": "/national/dce-to-dtu/1063200.html",
+   "captures": 12,
+   "first": "20120409211831",
+   "last": "20140902222708"
+  },
+  {
+   "path": "/17-dead-in-egypt-road-accidents",
+   "captures": 11,
+   "first": "20111121164738",
+   "last": "20111202122747"
+  },
+  {
+   "path": "/2011/11",
+   "captures": 11,
+   "first": "20111121163139",
+   "last": "20111215124020"
+  },
+  {
+   "path": "/author/amit",
+   "captures": 11,
+   "first": "20100806122335",
+   "last": "20130103044752"
+  },
+  {
+   "path": "/boeing-delivers-201st-c-17-airlifter-to-us-air-force",
+   "captures": 11,
+   "first": "20111121164854",
+   "last": "20111202122834"
+  },
+  {
+   "path": "/category/%E0%A4%9F%E0%A5%87%E0%A4%95-%E0%A4%9C%E0%A5%8D%E0%A4%9E%E0%A4%BE%E0%A4%A8",
+   "captures": 11,
+   "first": "20200810214747",
+   "last": "20220128184937"
+  },
+  {
+   "path": "/category/%E0%A4%A4%E0%A4%BE%E0%A5%9B%E0%A4%BE-%E0%A4%96%E0%A4%AC%E0%A4%B0",
+   "captures": 11,
+   "first": "20200810221651",
+   "last": "20220128184521"
+  },
+  {
+   "path": "/category/international/egypt/page/3",
+   "captures": 11,
+   "first": "20111121164905",
+   "last": "20111202122844"
+  },
+  {
+   "path": "/date/2013/02",
+   "captures": 11,
+   "first": "20130318075132",
+   "last": "20141017002743"
+  },
+  {
+   "path": "/date/2013/03",
+   "captures": 11,
+   "first": "20130316155757",
+   "last": "20141223170518"
+  },
+  {
+   "path": "/egypt-completes-canal-project-to-turn-desert-into-farmland/comment-page-1",
+   "captures": 11,
+   "first": "20100822182859",
+   "last": "20111202121947"
+  },
+  {
+   "path": "/egypt-to-hold-arab-economic-summit",
+   "captures": 11,
+   "first": "20100829053516",
+   "last": "20111202123203"
+  },
+  {
+   "path": "/egypt-to-host-second-round-of-mideast-peace-talks",
+   "captures": 11,
+   "first": "20111121164541",
+   "last": "20111202122646"
+  },
+  {
+   "path": "/egyptian-tycoon-offers-reward-for-stolen-van-gogh-painting",
+   "captures": 11,
+   "first": "20111121164652",
+   "last": "20111202122717"
+  },
+  {
+   "path": "/india-for-greater-engagement-among-commonwealth-countries",
+   "captures": 11,
+   "first": "20111121163949",
+   "last": "20111202122213"
+  },
+  {
+   "path": "/israel-palestine-direct-talks-end-in-egypt",
+   "captures": 11,
+   "first": "20111121164507",
+   "last": "20111202122619"
+  },
+  {
+   "path": "/krishna-to-go-to-egypt-six-pacts-on-cards",
+   "captures": 11,
+   "first": "20101218070130",
+   "last": "20111202122951"
+  },
+  {
+   "path": "/2020/01",
+   "captures": 10,
+   "first": "20250123114010",
+   "last": "20251109105924"
+  },
+  {
+   "path": "/23-die-as-more-mudslides-hit-china",
+   "captures": 10,
+   "first": "20111121165324",
+   "last": "20111202123218"
+  },
+  {
+   "path": "/24-soldiers-hurt-in-colombia-army-base-blast",
+   "captures": 10,
+   "first": "20111121165604",
+   "last": "20111202123359"
+  },
+  {
+   "path": "/3500-palestinians-cross-egypts-border-to-reach-gaza",
+   "captures": 10,
+   "first": "20111121165517",
+   "last": "20111202123325"
+  },
+  {
+   "path": "/57-ancient-tombs-found-in-egypt",
+   "captures": 10,
+   "first": "20111121165553",
+   "last": "20111202123347"
+  },
+  {
+   "path": "/arjun-singh-gives-rajiv-gandhi-clean-chit-on-bhopal",
+   "captures": 10,
+   "first": "20111121165403",
+   "last": "20111202123247"
+  },
+  {
+   "path": "/around-16500-palestinians-cross-egypts-border-with-gaza",
+   "captures": 10,
+   "first": "20111121165124",
+   "last": "20111202123052"
+  },
+  {
+   "path": "/author/admin/page/2",
+   "captures": 10,
+   "first": "20111123000129",
+   "last": "20230329003422"
+  },
+  {
+   "path": "/china-has-over-18-mn-3g-users",
+   "captures": 10,
+   "first": "20111121165822",
+   "last": "20111202123558"
+  },
+  {
+   "path": "/chinese-women-at-risk-as-male-female-ratio-widens",
+   "captures": 10,
+   "first": "20111121164844",
+   "last": "20111202122827"
+  },
+  {
+   "path": "/court-provides-relief-to-indraprastha-university-students",
+   "captures": 10,
+   "first": "20111121164529",
+   "last": "20111202122635"
+  },
+  {
+   "path": "/cpi-m-attacks-intellectuals-for-silence-on-maoist-violence",
+   "captures": 10,
+   "first": "20111121165714",
+   "last": "20111202123507"
+  },
+  {
+   "path": "/date/2013/01",
+   "captures": 10,
+   "first": "20130319093253",
+   "last": "20141017003148"
+  },
+  {
+   "path": "/egypt-court-convicts-26-hezbollah-men-for-plotting-terror-attacks",
+   "captures": 10,
+   "first": "20111121165727",
+   "last": "20111202123516"
+  },
+  {
+   "path": "/egypt-discovers-17-smuggling-tunnels-to-gaza",
+   "captures": 10,
+   "first": "20111121165338",
+   "last": "20111202123231"
+  },
+  {
+   "path": "/egypt-discovers-2000-year-old-bronze-coins",
+   "captures": 10,
+   "first": "20111121165806",
+   "last": "20111202123540"
+  },
+  {
+   "path": "/egypt-opens-rafah-crossing-for-stranded-palestinians",
+   "captures": 10,
+   "first": "20111121165649",
+   "last": "20111202123447"
+  },
+  {
+   "path": "/egypt-to-hold-arab-economic-summit/comment-page-1",
+   "captures": 10,
+   "first": "20111121165930",
+   "last": "20111202123648"
+  },
+  {
+   "path": "/egypt-voted-best-destination-by-travel-writers",
+   "captures": 10,
+   "first": "20111121165047",
+   "last": "20111202123019"
+  },
+  {
+   "path": "/eight-injured-as-anti-posco-protesters-clash-with-cops",
+   "captures": 10,
+   "first": "20111121165706",
+   "last": "20111202123502"
+  },
+  {
+   "path": "/family-gloomy-as-no-trace-of-freed-cops",
+   "captures": 10,
+   "first": "20111121164636",
+   "last": "20111202122707"
+  },
+  {
+   "path": "/general/current-scenario-for-availability-of-houses-for-rent-in-chennai/7535800.html",
+   "captures": 10,
+   "first": "20121110104901",
+   "last": "20141221074620"
+  },
+  {
+   "path": "/genetic-link-to-diseases-in-mixed-populations-decoded",
+   "captures": 10,
+   "first": "20111121165507",
+   "last": "20111202123320"
+  },
+  {
+   "path": "/gill-snubs-sushils-coach-announces-rs-1-million-for-the-wrestler",
+   "captures": 10,
+   "first": "20111121164521",
+   "last": "20111202122630"
+  },
+  {
+   "path": "/goa-takes-to-fishing-hook-line-and-sinker",
+   "captures": 10,
+   "first": "20111121165056",
+   "last": "20111202123030"
+  },
+  {
+   "path": "/government-policies-for-minorities-answer-to-fatwas-khurshid",
+   "captures": 10,
+   "first": "20111121165634",
+   "last": "20111202123431"
+  },
+  {
+   "path": "/iaea-approves-site-for-egypts-first-nuclear-plant",
+   "captures": 10,
+   "first": "20111121164443",
+   "last": "20111202122554"
+  },
+  {
+   "path": "/india-pummel-egypt-7-1-to-meet-south-korea-in-azlan-shah-final",
+   "captures": 10,
+   "first": "20111121165622",
+   "last": "20111202123417"
+  },
+  {
+   "path": "/indian-filmmaker-released-on-bail-in-us",
+   "captures": 10,
+   "first": "20111121164809",
+   "last": "20111202122804"
+  },
+  {
+   "path": "/johansson-designs-bag-to-raise-funds-for-haiti",
+   "captures": 10,
+   "first": "20111121165919",
+   "last": "20111202123640"
+  },
+  {
+   "path": "/lok-sabha-okays-n-liability-bill",
+   "captures": 10,
+   "first": "20111121164756",
+   "last": "20111202122756"
+  },
+  {
+   "path": "/modi-asked-amin-to-join-pune-bid-manohar",
+   "captures": 10,
+   "first": "20111121165534",
+   "last": "20111202123335"
+  },
+  {
+   "path": "/morgan-freeman-fronts-hurrincane-awareness-campaign",
+   "captures": 10,
+   "first": "20111121165827",
+   "last": "20111202123606"
+  },
+  {
+   "path": "/mumbaikars-react-sharply-to-fuel-price-hike",
+   "captures": 10,
+   "first": "20111121165140",
+   "last": "20111202123107"
+  },
+  {
+   "path": "/author/anurag",
+   "captures": 9,
+   "first": "20101028225048",
+   "last": "20131028094647"
+  },
+  {
+   "path": "/author/mayur",
+   "captures": 9,
+   "first": "20100701050847",
+   "last": "20130917210123"
+  },
+  {
+   "path": "/author/wasim-akram543210gmail-com",
+   "captures": 9,
+   "first": "20250123112714",
+   "last": "20251109105006"
+  },
+  {
+   "path": "/date/2013/04",
+   "captures": 9,
+   "first": "20130906014051",
+   "last": "20141223090102"
+  },
+  {
+   "path": "/date/2013/06",
+   "captures": 9,
+   "first": "20130906013623",
+   "last": "20141223170513"
+  },
+  {
+   "path": "/5-ways-to-lose-weight-in-7-days",
+   "captures": 8,
+   "first": "20110119001644",
+   "last": "20111201185154"
+  },
+  {
+   "path": "/bajaj-allianz-term-insurance-ensuring-financial-security-for-your-loved-ones",
+   "captures": 8,
+   "first": "20230813134250",
+   "last": "20240916094647"
+  },
+  {
+   "path": "/%E0%A4%A8%E0%A4%88-%E0%A4%A6%E0%A4%BF%E0%A4%B2%E0%A5%8D%E0%A4%B2%E0%A5%80%E0%A4%83-%E0%A4%A6%E0%A4%BF%E0%A4%B2%E0%A5%8D%E0%A4%B2%E0%A5%80-%E0%A4%B8%E0%A4%B0%E0%A4%95%E0%A4%BE%E0%A4%B0-%E0%A4%95",
+   "captures": 7,
+   "first": "20220128184606",
+   "last": "20230127150721"
+  },
+  {
+   "path": "/andhra-plea-for-muslim-quota-to-be-heard-march-22",
+   "captures": 7,
+   "first": "20101031073333",
+   "last": "20111117110502"
+  },
+  {
+   "path": "/category/art-culture/religion",
+   "captures": 7,
+   "first": "20100906050328",
+   "last": "20111005183538"
+  },
+  {
+   "path": "/date/2013/08",
+   "captures": 7,
+   "first": "20130906014432",
+   "last": "20141017002806"
+  },
+  {
+   "path": "/date/2013/10",
+   "captures": 7,
+   "first": "20131028095355",
+   "last": "20141223063714"
+  },
+  {
+   "path": "/eight-killed-at-us-off-road-race",
+   "captures": 7,
+   "first": "20100819002350",
+   "last": "20110919145824"
+  },
+  {
+   "path": "/families-refuse-to-accept-bodies-of-lovers-who-committed-suicidefamilies-refuse-to-accept-bodies-of-lovers",
+   "captures": 7,
+   "first": "20110309155347",
+   "last": "20111127074944"
+  },
+  {
+   "path": "/health/losing-virginity/5615600.html",
+   "captures": 7,
+   "first": "20120409211553",
+   "last": "20121118232618"
+  },
+  {
+   "path": "/mpro-max-life-insurance-ensuring-a-secure-future",
+   "captures": 7,
+   "first": "20230928180729",
+   "last": "20240916095005"
+  },
+  {
+   "path": "/200-homes-evacuated-due-to-wildfire-in-us",
+   "captures": 6,
+   "first": "20100828063226",
+   "last": "20111125181206"
+  },
+  {
+   "path": "/2024/12",
+   "captures": 6,
+   "first": "20250123092341",
+   "last": "20251109091103"
+  },
+  {
+   "path": "/aarp-life-insurance-a-complete-guide",
+   "captures": 6,
+   "first": "20230806131850",
+   "last": "20240916101743"
+  },
+  {
+   "path": "/archery-coach-lenin-dies-in-road-accident",
+   "captures": 6,
+   "first": "20101218125609",
+   "last": "20111012081642"
+  },
+  {
+   "path": "/ashok-chavan-removal-demanded-by-opposition-00123",
+   "captures": 6,
+   "first": "20101126082441",
+   "last": "20111206095111"
+  },
+  {
+   "path": "/author/rohan",
+   "captures": 6,
+   "first": "20101126151052",
+   "last": "20130105140437"
+  },
+  {
+   "path": "/author/swahil",
+   "captures": 6,
+   "first": "20100717052606",
+   "last": "20111012215550"
+  },
+  {
+   "path": "/bieber-to-launch-unisex-fragrance",
+   "captures": 6,
+   "first": "20101218023428",
+   "last": "20111011080807"
+  },
+  {
+   "path": "/bjp-sweeps-gujarat-local-bodies-elections",
+   "captures": 6,
+   "first": "20101218053312",
+   "last": "20111011031908"
+  },
+  {
+   "path": "/category/insurance",
+   "captures": 6,
+   "first": "20230807105807",
+   "last": "20240916091954"
+  },
+  {
+   "path": "/contact",
+   "captures": 6,
+   "first": "20250123105354",
+   "last": "20260316053412"
+  },
+  {
+   "path": "/court-reserves-verdict-on-karnataka-rebel-legislators",
+   "captures": 6,
+   "first": "20101218124341",
+   "last": "20111124184035"
+  },
+  {
+   "path": "/date/2013/12",
+   "captures": 6,
+   "first": "20140429153500",
+   "last": "20141223080136"
+  },
+  {
+   "path": "/delhi-building-collapse",
+   "captures": 6,
+   "first": "20101218085126",
+   "last": "20111011163221"
+  },
+  {
+   "path": "/gambhirs-tips-worked-for-karthik",
+   "captures": 6,
+   "first": "20100404133127",
+   "last": "20111130060415"
+  }
+ ],
+ "gscProperties": [
+  "https://news-views.in/ (siteOwner)"
+ ],
+ "gscMonths": {
+  "https://news-views.in/": {
+   "2026-02": {
+    "clicks": 0,
+    "impressions": 8
+   },
+   "2026-03": {
+    "clicks": 0,
+    "impressions": 5
+   },
+   "2026-04": {
+    "clicks": 0,
+    "impressions": 9
+   },
+   "2026-05": {
+    "clicks": 0,
+    "impressions": 6
+   },
+   "2026-06": {
+    "clicks": 0,
+    "impressions": 3
+   },
+   "2026-07": {
+    "clicks": 2,
+    "impressions": 89
+   },
+   "2026-08": {
+    "clicks": 11,
+    "impressions": 150
+   },
+   "2026-09": {
+    "clicks": 2,
+    "impressions": 69
+   },
+   "2026-10": {
+    "clicks": 2,
+    "impressions": 123
+   }
+  }
+ },
+ "counts": {
+  "searchConsole": 117,
+  "archive": 5356,
+  "merged": 5470
+ }
 }
