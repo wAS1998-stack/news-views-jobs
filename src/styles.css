@@ -858,3 +858,30 @@ a.stat-box { text-decoration: none; color: inherit; }
 .kd-grid textarea.kfont { font-family: "Kruti Dev 010", "KrutiDev010", "Kruti Dev 010 Regular", monospace; font-size: 1.25rem; }
 .kd-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
 .kd-font { display: flex; gap: 8px; align-items: flex-start; font-size: .86rem; color: var(--muted); margin-top: 8px; }
+
+/* ===========================  Typing test  =========================== */
+.tt-layout { font-size: .88rem; color: var(--muted); margin: 10px 0 0; }
+.tt-layout code, .tt-wrong span { font-family: "Spline Sans Mono", monospace; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+.tt-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 10px; }
+.tt-time { font-family: "Spline Sans Mono", monospace; font-size: 1.6rem; font-weight: 700; color: var(--ink); min-width: 4.5ch; }
+.tt-live { font-family: "Spline Sans Mono", monospace; color: var(--muted); }
+.tt-btns { margin-left: auto; display: flex; gap: 8px; }
+.tt-passage { max-height: 12.5em; overflow-y: auto; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); font-size: 1.12rem; line-height: 1.85; user-select: none; position: relative; }
+.tt-passage[lang="hi"] { font-family: "Noto Sans Devanagari", "Nirmala UI", "Mangal", system-ui, sans-serif; font-size: 1.2rem; }
+.tt-passage .ok { color: var(--green); }
+.tt-passage .bad { color: var(--red); text-decoration: underline wavy; }
+.tt-passage .cur { background: rgba(31,95,174,.14); border-radius: 4px; }
+.tt-input { width: 100%; margin-top: 12px; padding: 12px 14px; font: 1.1rem/1.7 "Noto Sans Devanagari", "Nirmala UI", "Mangal", system-ui, sans-serif; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; resize: vertical; }
+.tt-input:focus { outline: 2px solid var(--azure); outline-offset: 1px; border-color: var(--azure); }
+.tt-result:empty { display: none; }
+.tt-result { margin-top: 16px; }
+.tt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 10px; }
+.tt-wrong span { display: inline-block; margin: 2px 4px 2px 0; }
+
+/* long single words in headings (Thiruvananthapuram, Visakhapatnam) wrap instead of widening the page on phones */
+h1, h2, h3, .lede { overflow-wrap: break-word; }
+@media (max-width: 420px) { h1 { hyphens: auto; } }
+/* one-column grids never grow past the page: a long URL or word inside an item wraps instead */
+.steps, .faq, .guides, .updates, .quiz .opts, .bars { grid-template-columns: minmax(0, 1fr); }
+.steps > li, .faq > *, .guides > li, .updates > li, .bars > li { min-width: 0; }
+.steps li, .faq, .prose li, .prose p, .updates li { overflow-wrap: anywhere; }

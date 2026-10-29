@@ -484,17 +484,63 @@ ${SALARY_JS}
 
   // ---- Hindi typing: Kruti Dev <-> Unicode (two pages, one widget, opposite default direction) ----
   for (const dir of ["k2u", "u2k"]) defs.push(krutiTool(dir));
+  for (const lang of ["hi", "en"]) defs.push(typingTool(lang));
 
   return defs;
 }
 
 const KRUTI_SRC = require("fs").readFileSync(require("path").join(__dirname, "krutidev.js"), "utf8");
+const TT_SRC = require("fs").readFileSync(require("path").join(__dirname, "typingtest.js"), "utf8");
+const TT_PASSAGES = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "data", "typing-passages.json"), "utf8"));
+function typingTool(lang) {
+  const hi = lang === "hi";
+  return {
+    slug: hi ? "hindi-typing-test" : "english-typing-test", cat: "Typing & Hindi fonts",
+    h1: hi ? "Hindi Typing Test — Kruti Dev / Remington" : "English Typing Test for Government Exams",
+    title: hi ? "Hindi Typing Test Online – Kruti Dev & Remington, Free" : "English Typing Speed Test – 35 WPM Practice for SSC, Free",
+    desc: hi
+      ? "Free online Hindi typing test on the Kruti Dev / Remington layout, no font needed: 1, 2, 5 or 10 minutes, net and gross speed, accuracy and key depressions per hour."
+      : "Free English typing test for SSC CHSL, court and clerk exams: 1–10 minute passages with net and gross WPM, accuracy and key depressions per hour, the way skill tests count them.",
+    intro: hi
+      ? "Practise the Hindi skill test on the Kruti Dev / Remington keyboard layout. Press the keys exactly as you would in Kruti Dev — the text appears as Unicode Hindi on screen, so no font needs to be installed."
+      : "Practise for the typing skill test with exam-style passages. The timer starts with your first key; at the end you get net speed, gross speed, accuracy and key depressions per hour.",
+    body: `
+<div class="tool tt" id="tt" data-lang="${lang}">
+  <div class="tool-grid">
+    <label>Language<select id="tt-lang"><option value="hi"${hi ? " selected" : ""}>Hindi — Kruti Dev / Remington</option><option value="en"${hi ? "" : " selected"}>English</option></select></label>
+    <label>Time<select id="tt-min"><option value="1">1 minute</option><option value="2" selected>2 minutes</option><option value="5">5 minutes</option><option value="10">10 minutes</option></select></label>
+    <label>Passage<select id="tt-pass"></select></label>
+  </div>
+  <p class="tt-layout" id="tt-layout"${hi ? "" : " hidden"}>Kruti Dev / Remington layout: type <code>Hkkjr</code> for भारत, <code>f</code> before the letter for ि (<code>fgUnh</code> = हिन्दी), <code>Z</code> after the syllable for र्, <code>]</code> for a comma and <code>A</code> for ।. Use a physical keyboard.</p>
+  <div class="tt-bar"><span class="tt-time" id="tt-time">2:00</span><span class="tt-live" id="tt-live"></span>
+    <span class="tt-btns"><button type="button" class="btn btn-ghost" id="tt-restart">Restart</button><button type="button" class="btn btn-ghost" id="tt-finish">Finish now</button></span></div>
+  <div class="tt-passage" id="tt-passage" lang="${lang}" aria-label="Passage to type"></div>
+  <textarea id="tt-input" class="tt-input" rows="5" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" lang="${lang}" aria-label="Type the passage here" placeholder="Start typing here — the timer starts with your first key"></textarea>
+  <div id="tt-result" class="tt-result" aria-live="polite"></div>
+</div>
+<script type="application/json" id="tt-data">${JSON.stringify(TT_PASSAGES).replace(/</g, "\\u003c")}</script>
+<script>${KRUTI_SRC}</script>
+<script>${TT_SRC}</script>`,
+    article: [
+      ["How the speed is calculated", "Typing tests count a <b>word as five key depressions</b>, spaces included. <b>Gross speed</b> is your keystrokes divided by five, per minute. <b>Net speed</b> subtracts one word per minute for every word that is wrong, missed or extra, so accuracy matters as much as speed. <b>Key depressions per hour (KDPH)</b> is the measure used for data entry tests. This tool compares your words with the passage word by word, so one skipped word counts as one mistake instead of shifting every word after it."],
+      ["Typing tests in government recruitment", "Clerk, assistant, stenographer and data entry posts in SSC, high courts, state staff selection boards and many PSUs include a typing skill test on a computer. A common benchmark is 35 words per minute in English or 30 in Hindi — SSC treats these as about 10,500 and 9,000 key depressions per hour — and data entry operator tests ask for a key-depression rate instead. The test is qualifying, but only at the speed, duration, font and keyboard layout named in your notification, so read it and practise in the same setup."],
+      ["Kruti Dev, Remington and Mangal", "Kruti Dev is a Hindi font typed on the Remington (typewriter) layout, still used in many offices and court typing tests. Computer-based tests often use Unicode Hindi in the Mangal font with either the Remington (GAIL) layout — the same key positions as Kruti Dev — or the InScript layout. This test uses the Kruti Dev / Remington key positions and shows the result as Unicode, so you can practise without installing any font. To move practice text between Kruti Dev and Unicode, use the <a href=\"/tools/kruti-dev-to-unicode/\">Kruti Dev to Unicode converter</a>."],
+      ["How to type faster", "Keep your fingers on the home row and use all ten fingers; look at the screen, not the keyboard; aim for accuracy first and let speed follow; and practise 20 to 30 minutes a day with a timer. Take the 10-minute test once a week to see whether your speed holds up over the length of a real skill test."],
+    ],
+    faq: [
+      { q: hi ? "Do I need the Kruti Dev font for this Hindi typing test?" : "Is this typing test free?", a: hi ? "No. Type the keys exactly as you would in Kruti Dev; the test converts them and shows Unicode Hindi, so it works on any computer." : "Yes. It runs entirely in your browser with no sign-up, and nothing you type is sent anywhere." },
+      { q: "How is net speed calculated?", a: "Net speed = (keystrokes ÷ 5 − wrong words) ÷ minutes. A word that is misspelt, skipped or extra counts as one wrong word." },
+      { q: "Does the typing test work on a mobile phone?", a: "Use a computer with a physical keyboard — that is what the skill test uses. The English test also works with a phone keyboard, but the Hindi Kruti Dev mode needs a physical keyboard." },
+      { q: "What typing speed is needed for SSC CHSL?", a: "SSC CHSL has used 35 words per minute in English or 30 in Hindi for clerk posts and a data entry speed in key depressions per hour for DEO posts. Always check the speed and rules in the current notification." },
+    ],
+  };
+}
 function krutiTool(dir) {
   const k2u = dir === "k2u";
   const sampleK = "Hkkjr ljdkj dh ukSdjh ds fy, vkWuykbu vkosnu djsa";
   const sampleU = "भारत सरकार की नौकरी के लिए ऑनलाइन आवेदन करें";
   return {
-    slug: k2u ? "kruti-dev-to-unicode" : "unicode-to-kruti-dev", cat: "Hindi typing",
+    slug: k2u ? "kruti-dev-to-unicode" : "unicode-to-kruti-dev", cat: "Typing & Hindi fonts",
     h1: k2u ? "Kruti Dev to Unicode Converter (Mangal)" : "Unicode to Kruti Dev Converter",
     title: k2u ? "Kruti Dev to Unicode Converter – Kruti Dev 010 to Mangal" : "Unicode to Kruti Dev Converter – Mangal to Kruti Dev 010",
     desc: k2u
@@ -626,7 +672,7 @@ function buildToolPages(ctx) {
       { "@context": "https://schema.org", "@type": "CollectionPage", name: "Free tools for exam aspirants and government employees", url: canonical,
         mainEntity: { "@type": "ItemList", itemListElement: defs.map((d, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/tools/${d.slug}/`, name: d.h1 })) } }];
     pages.push({ path: "tools/index.html", url: canonical, html: head({ title: `Free Calculators & Tools for Govt Exams and Employees | ${SITE.name}`,
-      desc: "Photo & signature resizer, Kruti Dev to Unicode converter, age calculator, income tax calculator FY 2026-27, 7th and 8th pay commission salary calculators, percentage and exam score calculators — free, fast, private.", canonical, ld }) + `
+      desc: "Photo & signature resizer, Hindi and English typing test, Kruti Dev to Unicode converter, age calculator, income tax calculator FY 2026-27, 7th and 8th pay commission salary calculators, percentage and exam score calculators — free, fast, private.", canonical, ld }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Tools</p>
   <section class="cat-head">
