@@ -194,13 +194,14 @@
     ]
   },
   "notify": {
-    "at": "2026-10-29T10:47:59.459Z",
+    "at": "2026-10-29T11:25:54.328Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
     "feed.xml": 204,
     "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"feed.xml\":204}"
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
     ]
   }
 }
