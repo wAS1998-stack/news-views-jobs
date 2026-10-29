@@ -8,7 +8,7 @@
  * Deliberately narrow: GET only, government hosts only (checked again on every redirect), streamed
  * through without being stored, never indexed. /api/relay?trace=1 reports where the function ran.
  */
-const EXTRA_HOSTS = ["ibps.in", "nta.ac.in", "opportunities.rbi.org.in", "rbi.org.in", "aiimsexams.ac.in", "westbengalssc.com", "tgprb.in", "ncs.gov.in"];
+const EXTRA_HOSTS = ["ibps.in", "nta.ac.in", "opportunities.rbi.org.in", "rbi.org.in", "aiimsexams.ac.in", "westbengalssc.com", "tgprb.in", "ncs.gov.in", "cdac.in"];
 const allowed = (host) => {
   host = String(host || "").toLowerCase().replace(/\.$/, "");
   return /\.(gov|nic)\.in$/.test(host) || EXTRA_HOSTS.some((h) => host === h || host.endsWith("." + h));

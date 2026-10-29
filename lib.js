@@ -111,6 +111,10 @@ const CHAIN_ERR = /UNABLE_TO_VERIFY_LEAF_SIGNATURE|UNABLE_TO_GET_ISSUER_CERT_LOC
    -> public read-through proxies. The diagnostics in data/last-run.json say
    which route worked. */
 const PROXIES = [
+  // The site's own relay (functions/api/relay.js on Cloudflare, government hosts only). Tested 29 Oct: it reads 5
+  // official sites the runners cannot (certificate-chain errors, a 403, a timeout) but, running in US data centres,
+  // not the ones that block every foreign address.
+  (u) => `${(CONFIG.url || "https://news-views.in").replace(/\/$/, "")}/api/relay?url=${encodeURIComponent(u)}`,
   (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
   (u) => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}`,
 ];
