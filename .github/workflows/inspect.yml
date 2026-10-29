@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "inspect = index status of sample pages; indexing-test = send 2 Indexing API pings and record Google's reply; notify = submit fresh sitemap + feed now; telegram = read the channel's public details"
+        description: "inspect = index status of sample pages; indexing-test = send 2 Indexing API pings and record Google's reply; notify = submit fresh sitemap + feed now; telegram = read the channel's public details; wayback = list the domain's old pages"
         default: "inspect"
       urls:
         description: "inspect mode only: comma-separated page URLs to check instead of the automatic sample"
@@ -26,8 +26,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          case "${{ github.event.inputs.mode }}" in indexing-test) node tools-dev/test-indexing.js ;; notify) node notify-search.js ;; telegram) node tools-dev/telegram-info.js ;; *) node tools-dev/inspect-urls.js ;; esac
+          case "${{ github.event.inputs.mode }}" in indexing-test) node tools-dev/test-indexing.js ;; notify) node notify-search.js ;; telegram) node tools-dev/telegram-info.js ;; wayback) node tools-dev/wayback.js ;; *) node tools-dev/inspect-urls.js ;; esac
       - name: Save result (no site build)
         run: |
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
-          for f in data/url-inspection.json data/indexing-test.json data/last-run.json data/telegram.json; do [ -f "$f" ] && git add "$f"; done; git diff --cached --quiet || { git commit -q -m "Index inspection [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main; } || true
+          for f in data/url-inspection.json data/indexing-test.json data/last-run.json data/telegram.json data/old-urls.json; do [ -f "$f" ] && git add "$f"; done; git diff --cached --quiet || { git commit -q -m "Index inspection [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main; } || true
