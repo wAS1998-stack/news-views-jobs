@@ -1,0 +1,16 @@
+{
+ "model": "gpt-4o-mini",
+ "pricePerMillion": {
+  "in": 0.15,
+  "out": 0.6
+ },
+ "days": {
+  "2026-10-29": {
+   "calls": 56,
+   "in": 76973,
+   "out": 55639,
+   "usd": 0.0449
+  }
+ },
+ "note": "Token usage of the site automation's AI calls, per day (IST). usd = estimated cost at pricePerMillion."
+}
