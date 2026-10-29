@@ -1,0 +1,37 @@
+{
+ "at": "2026-10-29T09:11:33.276Z",
+ "serviceAccount": "indexing-bot@news-views-indexing.iam.gserviceaccount.com",
+ "project": "news-views-indexing",
+ "calls": [
+  {
+   "op": "publish",
+   "url": "https://news-views.in/jobs/namo-hospital-daman-anaesthetist-paediatrician-more-2026/",
+   "status": 200,
+   "body": "{\n  \"urlNotificationMetadata\": {\n    \"url\": \"https://news-views.in/jobs/namo-hospital-daman-anaesthetist-paediatrician-more-2026/\"\n  }\n}\n"
+  },
+  {
+   "op": "publish",
+   "url": "https://news-views.in/jobs/mca-full-time-member-2026/",
+   "status": 200,
+   "body": "{\n  \"urlNotificationMetadata\": {\n    \"url\": \"https://news-views.in/jobs/mca-full-time-member-2026/\"\n  }\n}\n"
+  },
+  {
+   "op": "metadata",
+   "url": "https://news-views.in/jobs/namo-hospital-daman-anaesthetist-paediatrician-more-2026/",
+   "status": 404,
+   "body": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Requested entity was not found.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
+  },
+  {
+   "op": "metadata",
+   "url": "https://news-views.in/jobs/mca-full-time-member-2026/",
+   "status": 404,
+   "body": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Requested entity was not found.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
+  },
+  {
+   "op": "metadata",
+   "url": "https://news-views.in/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
+   "status": 404,
+   "body": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Requested entity was not found.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n"
+  }
+ ]
+}
