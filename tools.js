@@ -482,7 +482,95 @@ ${SALARY_JS}
     ],
   });
 
+  // ---- Hindi typing: Kruti Dev <-> Unicode (two pages, one widget, opposite default direction) ----
+  for (const dir of ["k2u", "u2k"]) defs.push(krutiTool(dir));
+
   return defs;
+}
+
+const KRUTI_SRC = require("fs").readFileSync(require("path").join(__dirname, "krutidev.js"), "utf8");
+function krutiTool(dir) {
+  const k2u = dir === "k2u";
+  const sampleK = "Hkkjr ljdkj dh ukSdjh ds fy, vkWuykbu vkosnu djsa";
+  const sampleU = "भारत सरकार की नौकरी के लिए ऑनलाइन आवेदन करें";
+  return {
+    slug: k2u ? "kruti-dev-to-unicode" : "unicode-to-kruti-dev", cat: "Hindi typing",
+    h1: k2u ? "Kruti Dev to Unicode Converter (Mangal)" : "Unicode to Kruti Dev Converter",
+    title: k2u ? "Kruti Dev to Unicode Converter – Kruti Dev 010 to Mangal" : "Unicode to Kruti Dev Converter – Mangal to Kruti Dev 010",
+    desc: k2u
+      ? "Convert Kruti Dev 010 text to Unicode Hindi (Mangal, Nirmala UI) instantly, for online forms, email, websites and Word. Free, accurate, works offline in your browser."
+      : "Convert Unicode Hindi (Mangal, Nirmala UI, Google Docs) to Kruti Dev 010 instantly, for office documents and typing practice. Free, accurate, nothing is uploaded.",
+    intro: k2u
+      ? "Paste text typed in Kruti Dev 010 — it looks like English letters (Hkkjr) outside the Kruti Dev font — and get proper Unicode Hindi (भारत) that works everywhere: online application forms, WhatsApp, email and websites."
+      : "Paste Hindi typed in Unicode (Mangal, Nirmala UI, Google Input Tools, phone keyboards) and get the same text in Kruti Dev 010 encoding, ready for documents that use the Kruti Dev font.",
+    body: `
+<div class="tool kd" id="kd" data-dir="${dir}">
+  <div class="kd-seg" role="group" aria-label="Direction">
+    <button type="button" class="kd-dir" data-dir="k2u" aria-pressed="${k2u}">Kruti Dev &rarr; Unicode</button>
+    <button type="button" class="kd-dir" data-dir="u2k" aria-pressed="${!k2u}">Unicode &rarr; Kruti Dev</button>
+  </div>
+  <div class="kd-grid">
+    <label><span id="kd-in-l">${k2u ? "Kruti Dev text" : "Unicode Hindi text"}</span><textarea id="kd-in" rows="8" spellcheck="false" autocapitalize="off" autocomplete="off">${k2u ? sampleK : sampleU}</textarea></label>
+    <label><span id="kd-out-l">${k2u ? "Unicode Hindi (Mangal)" : "Kruti Dev 010 text"}</span><textarea id="kd-out" rows="8" spellcheck="false" readonly></textarea></label>
+  </div>
+  <div class="kd-actions">
+    <button type="button" class="btn btn-primary" id="kd-copy">Copy result</button>
+    <button type="button" class="btn btn-ghost" id="kd-swap">Swap direction</button>
+    <button type="button" class="btn btn-ghost" id="kd-clear">Clear</button>
+  </div>
+  <label class="kd-font"><input type="checkbox" id="kd-font"> Show Kruti Dev text in the Kruti Dev 010 font (if it is installed on this device)</label>
+  <p class="count" id="kd-count" aria-live="polite"></p>
+</div>
+<script>${KRUTI_SRC}</script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)}, box=$("kd"), dir=box.getAttribute("data-dir"), t;
+  var inp=$("kd-in"), out=$("kd-out");
+  function words(s){var m=s.trim().match(/\\S+/g);return m?m.length:0}
+  function run(){
+    out.value = dir==="k2u" ? KrutiDev.toUnicode(inp.value) : KrutiDev.toKruti(inp.value);
+    $("kd-count").textContent = words(inp.value)+" words · "+inp.value.length+" characters converted";
+    font();
+  }
+  function font(){
+    var on=$("kd-font").checked; inp.classList.toggle("kfont", on && dir==="k2u"); out.classList.toggle("kfont", on && dir==="u2k");
+  }
+  function setDir(d, carry){
+    if (d===dir) return; var prev=out.value; dir=d; box.setAttribute("data-dir", d);
+    $("kd-in-l").textContent = d==="k2u" ? "Kruti Dev text" : "Unicode Hindi text";
+    $("kd-out-l").textContent = d==="k2u" ? "Unicode Hindi (Mangal)" : "Kruti Dev 010 text";
+    document.querySelectorAll(".kd-dir").forEach(function(b){b.setAttribute("aria-pressed", String(b.getAttribute("data-dir")===d))});
+    if (carry) inp.value = prev;
+    run();
+  }
+  inp.addEventListener("input", function(){clearTimeout(t); t=setTimeout(run, 120)});
+  document.querySelectorAll(".kd-dir").forEach(function(b){b.addEventListener("click", function(){setDir(b.getAttribute("data-dir"), true)})});
+  $("kd-swap").addEventListener("click", function(){setDir(dir==="k2u"?"u2k":"k2u", true)});
+  $("kd-clear").addEventListener("click", function(){inp.value=""; run(); inp.focus()});
+  $("kd-font").addEventListener("change", font);
+  $("kd-copy").addEventListener("click", function(){
+    var b=this, done=function(){b.textContent="Copied ✓"; setTimeout(function(){b.textContent="Copy result"}, 1500)};
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(out.value).then(done, function(){out.select(); document.execCommand("copy"); done()});
+    else { out.select(); document.execCommand("copy"); done(); }
+  });
+  run();
+})();
+</script>`,
+    article: [
+      ["Kruti Dev and Unicode — what is the difference?", "Kruti Dev 010 is an older Hindi font that places Hindi letters on the codes of English letters: the word भारत is stored as <code>Hkkjr</code>, and it only looks like Hindi when the Kruti Dev font is applied. Unicode is the international standard used by Mangal, Nirmala UI, Noto Sans Devanagari, Google Docs and every phone, so Unicode Hindi looks right everywhere — in browsers, email, WhatsApp and online application forms. That is why Kruti Dev text must be converted before it can be pasted into a website or form."],
+      [k2u ? "How to convert Kruti Dev to Unicode" : "How to convert Unicode to Kruti Dev", k2u
+        ? "Copy the text from your Word or PageMaker file while it is still in the Kruti Dev font, paste it into the left box and the Unicode Hindi appears on the right as you type. Use <b>Copy result</b> and paste it anywhere; in Word, set the converted text to Mangal or Nirmala UI."
+        : "Paste Unicode Hindi into the left box; the Kruti Dev text appears on the right. Copy it into your document and apply the <b>Kruti Dev 010</b> font — without that font the result looks like English letters, which is expected."],
+      ["Hindi typing tests and Kruti Dev", "Many government offices and court typing tests still use Kruti Dev with the Remington keyboard, while computer-based tests usually use a Unicode font such as Mangal with the Remington (GAIL) or InScript layout. The recruitment notification names the font and layout that will be used — practise in the same one. This converter helps you move practice passages between the two."],
+      ["Accuracy and limitations", "The converter handles half letters, conjuncts (क्ष, त्र, ज्ञ, श्र, द्य), the short i-matra typed before the letter, reph (र्) typed after the syllable, nukta letters and Devanagari digits. Each Unicode to Kruti Dev result is checked by converting it back, and over 8 lakh words of Hindi text on this site convert back unchanged. English letters inside Hindi text cannot be represented in Kruti Dev (in that font every English key is a Hindi letter), and the symbols _ + % have no Kruti Dev glyph — check those by hand. It is built for Kruti Dev 010, the most common version; other Kruti Dev fonts that use the same keyboard layout convert the same way."],
+    ],
+    faq: [
+      { q: k2u ? "Why does my Kruti Dev text look like English letters?" : "Why does the Kruti Dev result look like English letters?", a: "Kruti Dev stores Hindi on English letter codes, so outside the Kruti Dev 010 font the text shows as letters such as Hkkjr. Apply the Kruti Dev 010 font in Word to see it as Hindi, or convert it to Unicode to use it anywhere." },
+      { q: "Is my text uploaded or saved?", a: "No. The conversion runs entirely in your browser; the text never leaves your device, and the page keeps working without an internet connection once it has loaded." },
+      { q: "Which Unicode font should I use after converting?", a: "Any Unicode Hindi font: Mangal and Nirmala UI on Windows, Kokila, Noto Sans Devanagari, or the default Hindi font on your phone. The text is the same in all of them." },
+      { q: "Can I convert Shree Lipi or Chanakya text with this tool?", a: "No. Shree Lipi, Chanakya and DevLys fonts use different character layouts, so this tool is only for Kruti Dev." },
+    ],
+  };
 }
 
 /* ---- pay-level pages --------------------------------------------- */
@@ -538,7 +626,7 @@ function buildToolPages(ctx) {
       { "@context": "https://schema.org", "@type": "CollectionPage", name: "Free tools for exam aspirants and government employees", url: canonical,
         mainEntity: { "@type": "ItemList", itemListElement: defs.map((d, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/tools/${d.slug}/`, name: d.h1 })) } }];
     pages.push({ path: "tools/index.html", url: canonical, html: head({ title: `Free Calculators & Tools for Govt Exams and Employees | ${SITE.name}`,
-      desc: "Photo & signature resizer, age calculator, income tax calculator FY 2026-27, 7th and 8th pay commission salary calculators, percentage and exam score calculators — free, fast, private.", canonical, ld }) + `
+      desc: "Photo & signature resizer, Kruti Dev to Unicode converter, age calculator, income tax calculator FY 2026-27, 7th and 8th pay commission salary calculators, percentage and exam score calculators — free, fast, private.", canonical, ld }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Tools</p>
   <section class="cat-head">

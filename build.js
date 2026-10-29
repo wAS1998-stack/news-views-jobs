@@ -462,6 +462,7 @@ function foot() {
     <a href="/tools/income-tax-calculator/">Income tax calculator</a>
     <a href="/salary/">7th pay matrix</a>
     <a href="/tools/age-calculator/">Age calculator</a>
+    <a href="/tools/kruti-dev-to-unicode/">Kruti Dev to Unicode</a>
     <a href="/quiz/">Daily quiz</a>
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
@@ -1309,7 +1310,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
 
   ${TOOL_DEFS.length ? `<section class="home-tools">
     <h2 class="section-h">🧰 Free tools</h2>
-    <ul class="tool-list">${["photo-resizer", "age-calculator", "income-tax-calculator", "7th-pay-commission-salary-calculator", "8th-pay-commission-salary-calculator", "exam-score-calculator"]
+    <ul class="tool-list">${["photo-resizer", "age-calculator", "kruti-dev-to-unicode", "income-tax-calculator", "7th-pay-commission-salary-calculator", "exam-score-calculator"]
       .map((sl) => TOOL_DEFS.find((d) => d.slug === sl)).filter(Boolean)
       .map((d) => `<li><a class="tool-card" href="/tools/${d.slug}/"><b>${esc(d.h1)}</b><span>${esc(d.desc.slice(0, 96))}…</span></a></li>`).join("")}</ul>
     <p class="backlink"><a href="/tools/">All tools &rarr;</a> &nbsp; <a href="/salary/">Salary by pay level &rarr;</a></p>
@@ -1675,7 +1676,11 @@ function buildIndexQueue({ jobs, updates }) {
   const U = updates.filter((u) => ago(u.date) <= 2)
     .sort((a, b) => (BIG.test(b.title) - BIG.test(a.title)) || String(b.date).localeCompare(String(a.date)))
     .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
-  const out = [];
+  // New evergreen pages go first for their first ten days, so the daily requests reach them once (the task skips
+  // anything it requested in the last 14 days).
+  const NEW_PAGES = [["vacancy-tracker/", "2026-10-30"], ["tools/kruti-dev-to-unicode/", "2026-10-30"], ["tools/unicode-to-kruti-dev/", "2026-10-30"],
+    ["walk-in-interview/", "2026-10-30"], ["jobs-without-exam/", "2026-10-30"], ["apprentice/", "2026-10-30"]];
+  const out = NEW_PAGES.filter(([, d]) => Date.parse(IST_DATE) - Date.parse(d) <= 10 * 86400000).map(([p]) => `${SITE.url}/${p}`);
   while (J.length || U.length) { out.push(...J.splice(0, 2)); out.push(...U.splice(0, 1)); }
   out.push(...["latest/", "closing-soon/", ...TOPIC_HUBS.map((t) => `${t.slug}/`), "updates/result/", "updates/admit-card/", "updates/answer-key/", "jobs/", "news/"].map((p) => `${SITE.url}/${p}`));
   return `# news-views.in — pages to request indexing for, most important first (built ${IST_DATE} ${IST_TIME} IST)\n` + [...new Set(out)].join("\n") + "\n";
