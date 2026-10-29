@@ -246,7 +246,13 @@ function isDuplicate(job) {
     if (v >= 10 && xv === v) return true;                                             // same body, same (distinctive) vacancy count
     // Same body and same post, with the same last date or the same count: one recruitment reported twice, or
     // re-reported with a corrected count (RRB Station Master: 1215 -> 1265 after a corrigendum; ~1250 short notice).
-    return !!(post && normPost(x.post_name) === post && ((end && x.application_end === end) || (v >= 2 && xv === v)));
+    if (!post || normPost(x.post_name) !== post) return false;
+    if ((end && x.application_end === end) || (v >= 2 && xv === v)) return true;
+    // A big national recruitment announced first as a short notice (no last date yet, approximate count) and then in
+    // full: same body and post, 500+ posts each within 6% of each other, within 30 days (RRB Station Master: short
+    // notice ~1200, full notice 1265). District-wise drives with similar counts stay separate (they are smaller).
+    return (!end || !x.application_end) && v >= 500 && xv >= 500 && Math.abs(v - xv) / Math.max(v, xv) <= 0.06 &&
+      Math.abs(new Date(x.published || 0).getTime() - t) < 30 * 86400000;
   });
 }
 async function toJob(item, existingIds, fingerprints) {

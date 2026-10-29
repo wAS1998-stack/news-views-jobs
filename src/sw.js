@@ -13,7 +13,7 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
-  if (new URL(req.url).pathname === "/version.json") return;   // freshness checks always go to the network
+  if (/^\/(version|search)\.json$/.test(new URL(req.url).pathname)) return;   // freshness check and search index always come from the network
   if (req.mode === "navigate") {
     // pages: always try network (fresh jobs), fall back to cache, then offline page
     e.respondWith(

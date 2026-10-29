@@ -2,12 +2,10 @@ name: Update jobs
 
 on:
   schedule:
-    # Every 2 hours at :17 (off-peak minute; GitHub drops many on-the-hour runs).
-    # 12 runs/day keeps site builds within Cloudflare Pages' free 500/month.
-    - cron: "17 */2 * * *"
-    # GitHub drops many scheduled runs under load (some days only 3 of 12 ran), so a second
-    # slot on the odd hours keeps the site fresh. Builds are paced in the commit step below.
-    - cron: "47 1-23/2 * * *"
+    # GitHub creates only a fraction of scheduled runs (29 Oct: 3 of 24 slots by 16:45 IST), so there are three
+    # slots an hour at quiet minutes. Frequent runs stay cheap: AI enrichment and the news digest run only when due
+    # (due.js), AI extraction runs only for genuinely new notices, and site builds are paced in the commit step.
+    - cron: "11,31,51 * * * *"
   workflow_dispatch:
     inputs:
       enrich_links:
@@ -45,6 +43,14 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Decide which heavy steps are due this run
+        id: due
+        env:
+          FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+        run: |
+          echo "enrich=$(node due.js enrich 100)" >> "$GITHUB_OUTPUT"
+          echo "news=$(node due.js news 100)" >> "$GITHUB_OUTPUT"
+
       - name: Fetch new jobs & updates from feeds (AI fills details + finds official links)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -71,6 +77,7 @@ jobs:
         run: node gsc.js
 
       - name: Enrich existing data (official links, rich update pages, full content)
+        if: steps.due.outputs.enrich == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -82,6 +89,7 @@ jobs:
         run: node enrich-jobs.js
 
       - name: Write news & analysis (grounded in official sources)
+        if: steps.due.outputs.news == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -106,17 +114,25 @@ jobs:
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"; echo "built=false" >> "$GITHUB_OUTPUT"; echo "No changes."; exit 0
           fi
-          # Build pacing: Cloudflare Pages' free plan allows 500 builds/month. Trigger a site build at most
-          # once per 110 minutes; runs in between still save their data, with [CF-Pages-Skip].
+          # Build pacing: Cloudflare Pages' free plan allows 500 builds/month. A regular build at most every 2 hours
+          # (12/day); a run that found a major notification (500+ posts, or a result/admit card of a big exam —
+          # priority.js) may build sooner: at least 30 min after the last build, at most 2 a day. Runs in between
+          # still save their data, with [CF-Pages-Skip].
           git fetch -q origin main
           last=$(git log -1 --format=%ct --fixed-strings --invert-grep --grep='[CF-Pages-Skip]' origin/main || echo 0)
           age=$(( $(date +%s) - ${last:-0} ))
-          if [ "$age" -ge 6600 ]; then
+          prio=$(node priority.js 2>/tmp/priority.log || echo no); cat /tmp/priority.log 2>/dev/null || true
+          prio_today=$(git log --since="$(TZ=Asia/Kolkata date +%F) 00:00 +0530" --fixed-strings --grep='Auto: priority build' --format=%h origin/main | wc -l)
+          if [ "$age" -ge 7200 ]; then
             built=true; msg="Auto: new jobs, updates & news"
-            cp data/pending-urls.txt data/new-urls.txt; : > data/pending-urls.txt   # announce them after this build
-            git add data/
+          elif [ "$prio" = "yes" ] && [ "$age" -ge 1800 ] && [ "$prio_today" -lt 2 ]; then
+            built=true; msg="Auto: priority build (major notification)"
           else
             built=false; msg="Auto: data saved, build paced (last build $((age / 60)) min ago) [CF-Pages-Skip]"
+          fi
+          if [ "$built" = true ]; then
+            cp data/pending-urls.txt data/new-urls.txt; : > data/pending-urls.txt   # announce them after this build
+            git add data/
           fi
           git commit -q -m "$msg"
           git checkout -- . 2>/dev/null || true      # drop any stray non-data changes so rebase can run

@@ -2,7 +2,7 @@
 /**
  * notify-search.js — runs right after a deploy is confirmed live (see update-jobs.yml).
  *
- *  1. Re-submits sitemap-latest.xml (pages from the last 3 days) and feed.xml to Search Console.
+ *  1. Re-submits sitemap-latest.xml (pages from the last 3 days), news-sitemap.xml and feed.xml to Search Console.
  *     Submitting through the Search Console API is Google's supported way to say "this sitemap changed"
  *     (the old sitemap ping URL was retired in 2023).
  *  2. Pings the WebSub hub declared in feed.xml, so feed subscribers fetch the new items straight away.
@@ -31,7 +31,7 @@ async function main() {
     try { prop = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "gsc.json"), "utf8")).property || prop; } catch {}
     try {
       const token = await G.getToken("https://www.googleapis.com/auth/webmasters");
-      for (const f of ["sitemap-latest.xml", "feed.xml"]) {
+      for (const f of ["sitemap-latest.xml", "news-sitemap.xml", "feed.xml"]) {
         const r = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(prop)}/sitemaps/${encodeURIComponent(`${SITE}/${f}`)}`,
           { method: "PUT", headers: { Authorization: `Bearer ${token}` }, signal: AbortSignal.timeout(20000) });
         res[f] = r.status;   // 204 = submitted

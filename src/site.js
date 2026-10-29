@@ -1,37 +1,66 @@
-// Lightweight homepage filter — no dependencies.
+// Homepage search over every open job and recent result / admit card / answer key.
+// The page itself lists only the newest jobs; /search.json (built with the site) is fetched on first use.
 (function () {
   var q = document.getElementById("q");
-  if (!q) return;
-  var items = Array.prototype.slice.call(document.querySelectorAll("#list > li"));
-  var count = document.getElementById("count");
-  var empty = document.getElementById("empty");
-
-  function tally(n) { if (count) count.textContent = n + (n === 1 ? " job listed" : " jobs listed"); }
-  tally(items.length);
-
-  q.addEventListener("input", function () {
-    var term = q.value.trim().toLowerCase();
-    var shown = 0;
-    items.forEach(function (li) {
-      var hay = li.querySelector(".job").getAttribute("data-text") || "";
-      var match = !term || hay.indexOf(term) !== -1;
-      li.hidden = !match;
-      if (match) shown++;
-    });
-    tally(shown);
-    if (empty) empty.hidden = shown !== 0;
-    var searching = term.length > 0;
-    // While searching, collapse everything between the search box and the results
-    // so the matches appear immediately below the search — not after the updates.
-    ["closing-sec"].forEach(function (id) {
-      var el = document.getElementById(id); if (el) el.style.display = searching ? "none" : "";
-    });
-    [".chips", ".edu-browse", ".home-updates", ".home-news", ".stats", ".home-guides", ".home-about", ".state-browse"].forEach(function (sel) {
+  if (!q || !window.fetch) return;
+  var box = document.getElementById("results"), list = document.getElementById("home-list");
+  var count = document.getElementById("count"), empty = document.getElementById("empty"), lh = document.getElementById("list-h");
+  var total = count ? count.getAttribute("data-total") : "", loading = null, timer = 0;
+  function load() {
+    if (!loading) loading = fetch("/search.json").then(function (r) { return r.json(); }).then(function (d) {
+      function hay(x, extra) { x._h = (x.t + " " + x.o + " " + (x.p || "") + " " + (x.q || []).join(" ") + " " + (extra || "")).toLowerCase(); }
+      d.jobs.forEach(function (x) { hay(x); }); d.updates.forEach(function (x) { hay(x, x.y); });
+      return d;
+    }).catch(function () { loading = null; return null; });
+    return loading;
+  }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function jobCard(j) {
+    return '<li><a class="job" href="/jobs/' + esc(j.i) + '/"><div class="job-top"><span class="org-tag">' + esc(j.o) + "</span>" +
+      (j.q || []).map(function (x) { return '<span class="qual-tag">' + esc(x) + "</span>"; }).join("") +
+      (j.n ? '<span class="new-badge">NEW</span>' : "") + '<span class="status ' + esc(j.s) + '">' + esc(j.l) + "</span></div>" +
+      "<h2>" + esc(j.t) + "</h2>" + (j.p ? '<p class="post">' + esc(j.p) + "</p>" : "") + '<div class="meta">' +
+      (j.v ? '<span class="stat"><span class="n">' + j.v.toLocaleString("en-IN") + '</span><span class="l">Posts</span></span>' : "") +
+      (j.a ? '<span class="stat"><span class="n">' + esc(j.a) + '</span><span class="l">Age</span></span>' : "") +
+      (j.d ? '<span class="deadline' + (j.s === "soon" ? " soon" : "") + '">' + (j.s === "closed" ? "Closed on" : "Last date") + " <b>" + esc(j.d) + "</b></span>" : "") +
+      "</div></a></li>";
+  }
+  function updCard(u) {
+    return '<li><a class="update" href="/updates/' + esc(u.i) + '/"><span class="upd-type upd-' + esc(u.c) + '">' + esc(u.y) + "</span>" +
+      '<span class="upd-title">' + esc(u.t) + '</span><span class="upd-meta">' + esc(u.o) + (u.d ? " &middot; " + esc(u.d) : "") + "</span></a></li>";
+  }
+  function sections(searching) {
+    var c = document.getElementById("closing-sec"); if (c) c.style.display = searching ? "none" : "";
+    [".stats", ".glance", ".tagrow", ".chips", ".edu-browse", ".home-updates", ".home-news", ".home-guides", ".home-about", ".state-browse", ".home-tools"].forEach(function (sel) {
       var el = document.querySelector(sel); if (el) el.style.display = searching ? "none" : "";
     });
-    var lh = document.getElementById("list-h");
     if (lh) lh.textContent = searching ? "Search results" : "Latest government jobs";
-  });
+  }
+  function run() {
+    var term = q.value.trim().toLowerCase();
+    sections(!!term);
+    if (!term) {
+      box.hidden = true; box.innerHTML = ""; if (list) list.hidden = false; if (empty) empty.hidden = true;
+      if (count) count.textContent = total + " open jobs"; return;
+    }
+    if (count) count.textContent = "Searching…";
+    load().then(function (d) {
+      if (!d || q.value.trim().toLowerCase() !== term) return;
+      var words = term.split(/\s+/);
+      function hit(x) { for (var k = 0; k < words.length; k++) if (x._h.indexOf(words[k]) === -1) return false; return true; }
+      var jobs = d.jobs.filter(hit), ups = d.updates.filter(hit);
+      var html = "";
+      if (jobs.length) html += '<ul class="jobs">' + jobs.slice(0, 40).map(jobCard).join("") + "</ul>";
+      if (ups.length) html += '<h2 class="section-h">Results, admit cards &amp; answer keys</h2><ul class="updates">' + ups.slice(0, 20).map(updCard).join("") + "</ul>";
+      box.innerHTML = html; box.hidden = !html; if (list) list.hidden = true;
+      if (empty) empty.hidden = !!html;
+      if (count) count.textContent = jobs.length + (jobs.length === 1 ? " job" : " jobs") + (ups.length ? " and " + ups.length + " result/admit card updates" : "") + " found";
+    });
+  }
+  q.addEventListener("focus", load);
+  q.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(run, 120); });
+  var m = location.search.match(/[?&]q=([^&]+)/);   // WebSite SearchAction target: /?q=term
+  if (m) { q.value = decodeURIComponent(m[1].replace(/\+/g, " ")); run(); }
 })();
 
 // Cookie consent banner (privacy / AdSense friendliness). Uses localStorage on the live site.

@@ -69,6 +69,11 @@ function buildHindi(ctx) {
     <p class="post">${esc(j.hi.post_name || "")}</p>
     <div class="meta">${j.total_vacancies ? `<span class="stat"><span class="n">${inr(j.total_vacancies)}</span><span class="l">पद</span></span>` : ""}
       <span class="deadline${st.cls === "soon" ? " soon" : ""}">अंतिम तिथि <b>${hiDate(j.application_end)}</b></span></div></a></li>`; };
+  // Long lists: rich cards for the first 40, then one line per job (keeps every job linked, pages light).
+  const jobLineHi = (j) => { const st = statusHi(j); const meta = [j.total_vacancies ? `${inr(j.total_vacancies)} पद` : "", j.application_end ? `अंतिम तिथि ${hiDate(j.application_end)}` : ""].filter(Boolean).join(" &middot; ");
+    return `<li><a href="/hi/jobs/${esc(j.id)}/">${esc(j.hi.title)}</a>${meta ? ` <span class="jl-meta${st.cls === "soon" ? " soon" : ""}">${meta}</span>` : ""}</li>`; };
+  const jobListHi = (list, rich = 40) => `<ul class="jobs">${list.slice(0, rich).map(jobCardHi).join("")}</ul>` +
+    (list.length > rich ? `<h2 class="section-h more-h">और भर्तियाँ <span class="grp-count">${list.length - rich}</span></h2><ul class="joblines">${list.slice(rich).map(jobLineHi).join("")}</ul>` : "");
   const updCardHi = (u) => `<li><a class="update" href="/hi/updates/${esc(u.id)}/"><span class="upd-type upd-${u.type}">${(HI_TYPES[u.type] || {}).label || "अपडेट"}</span>
     <span class="upd-title">${esc(u.hi.title)}</span><span class="upd-meta">${esc(u.org_short || "")} &middot; ${hiDate(u.date)}</span></a></li>`;
   const examLink = (title) => { const { examOf } = require("./exams.js"); const e = examOf(title);
@@ -198,7 +203,7 @@ function buildHindi(ctx) {
     ${col("एडमिट कार्ड", "/hi/updates/admit-card/", hiUpd.filter((u) => u.type === "admit-card").slice(0, 10).map((u) => `<li><a href="/hi/updates/${esc(u.id)}/">${esc(u.hi.title)}</a></li>`))}
   </div>
   <h2 class="section-h">आवेदन जारी — सभी भर्तियाँ</h2>
-  ${openJobs.length ? `<ul class="jobs">${openJobs.map(jobCardHi).join("")}</ul>` : `<p class="empty">हिंदी में भर्तियाँ जोड़ी जा रही हैं — तब तक <a href="/" lang="en">English</a> में देखें।</p>`}
+  ${openJobs.length ? jobListHi(openJobs.slice(0, 200)) + (openJobs.length > 200 ? `<p class="cta-row"><a class="btn btn-ghost" href="/jobs/" lang="en">सभी ${openJobs.length} भर्तियाँ देखें (English) &rarr;</a></p>` : "") : `<p class="empty">हिंदी में भर्तियाँ जोड़ी जा रही हैं — तब तक <a href="/" lang="en">English</a> में देखें।</p>`}
   <section class="related"><h2 class="section-h">राज्य और योग्यता के अनुसार</h2><p class="tagrow">${["uttar-pradesh", "bihar", "rajasthan", "madhya-pradesh", "haryana", "delhi", "jharkhand", "uttarakhand", "all-india"].map((s) => `<a class="chip" href="/hi/state/${s}/">${esc(s === "all-india" ? "केंद्र सरकार" : HI_STATES[s])}</a>`).join("")}<a class="chip" href="/hi/state/">सभी राज्य &rarr;</a></p>
   <p class="tagrow">${Object.entries(HI_QUALS).map(([k, q]) => `<a class="chip" href="/hi/qualification/${k}/">${esc(q.name)} नौकरी</a>`).join("")}</p></section>
   <section class="related"><h2 class="section-h">परीक्षा के अनुसार देखें</h2><p class="tagrow">${["ssc-cgl", "ssc-gd", "ssc-chsl", "ssc-mts", "rrb-ntpc", "rrb-group-d", "rrb-alp", "ibps-po", "sbi-po", "upsc-cse", "police-constable", "ctet", "india-post-gds", "agniveer"].map((s) => { const e = require("./exams.js").EXAMS.find((x) => x.slug === s); return e ? `<a class="chip" href="/hi/exam/${s}/">${esc(e.name)}</a>` : ""; }).join("")}<a class="chip" href="/hi/exam/">सभी परीक्षाएँ &rarr;</a></p></section>
@@ -234,7 +239,7 @@ function buildHindi(ctx) {
   <h1>${esc(h1)}</h1>
   <div class="prose">${intro.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
   ${chips ? `<p class="tagrow">${chips}</p>` : ""}</section>
-  ${list.length ? `<ul class="jobs">${list.map(jobCardHi).join("")}</ul>` : `<p class="empty">${empty}</p>`}
+  ${list.length ? jobListHi(list) : `<p class="empty">${empty}</p>`}
   <p class="cta-row"><a class="btn btn-ghost" href="${enPath}" lang="en">English में सभी भर्तियाँ देखें</a></p>
 </main>` + foot() });
     return !noindex;

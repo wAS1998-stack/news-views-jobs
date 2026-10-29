@@ -364,11 +364,24 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
 </div></header>`;
 }
 
+// Newest pages, linked from the footer of every page. Googlebot spends most of its visits re-reading pages it already
+// knows; this way each of those visits also passes it the newest jobs and results (set once per build in main()).
+let FOOT_LATEST = "";
+function footLatest(jobs, updates) {
+  const J = jobs.filter((j) => statusOf(j).live).sort((a, b) => String(b.published || "").localeCompare(String(a.published || ""))).slice(0, 8);
+  const U = updates.slice(0, 6);
+  return `<nav class="foot-latest" aria-label="Latest notifications">
+    <div><h2>Latest jobs</h2><ul>${J.map((j) => `<li><a href="/jobs/${esc(j.id)}/">${esc(j.title)}</a></li>`).join("")}</ul></div>
+    <div><h2>Latest results &amp; admit cards</h2><ul>${U.map((u) => `<li><a href="/updates/${esc(u.id)}/">${esc(u.title)}</a></li>`).join("")}</ul></div>
+  </nav>`;
+}
 function foot() {
   return `<footer class="site-foot"><div class="wrap">
+  ${FOOT_LATEST}
   <span>&copy; ${BUILT.getFullYear()} ${esc(SITE.brand)} &middot; Updated <time datetime="${BUILT.toISOString()}">${fmtDate(IST_DATE)}, ${IST_TIME} IST</time></span>
   <span class="links">
     <a href="/about/">About</a>
+    <a href="/editorial-policy/">How we verify</a>
     <a href="/contact/">Contact</a>
     <a href="/privacy-policy/">Privacy</a>
     <a href="/disclaimer/">Disclaimer</a>
@@ -385,10 +398,10 @@ function foot() {
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
     <a href="/updates/">Updates</a>
-    <a href="/updates/answer-key/">Answer keys</a></p>
-    <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}
+    <a href="/updates/answer-key/">Answer keys</a>
     <a href="/feed.xml">RSS</a>
   </span>
+  <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}</p>
 </div></footer>
 <script src="/site.js?v=${ASSET_V["site.js"]}" defer></script>
 </body></html>`;
@@ -406,11 +419,22 @@ function breadcrumbLd(trail) {
 }
 
 /* ---- Components -------------------------------------------------- */
+/* Long listings: rich cards for the first `rich` jobs, then one compact line per job. Every job stays linked from the
+   hub (Googlebot re-crawls hubs daily and finds new pages there) while hub pages drop from ~1 MB to ~150 KB, which
+   matters on Indian mobile networks and for Core Web Vitals. Search runs on /search.json, not on page markup. */
+function jobLine(job) {
+  const st = statusOf(job);
+  const meta = [job.total_vacancies ? `${inr(job.total_vacancies)} posts` : "", st.cls === "closed" ? "closed" : job.application_end ? `last date ${fmtDate(job.application_end)}` : ""].filter(Boolean).join(" &middot; ");
+  return `<li><a href="/jobs/${esc(job.id)}/">${esc(job.title)}</a>${meta ? ` <span class="jl-meta${st.cls === "soon" ? " soon" : ""}">${meta}</span>` : ""}</li>`;
+}
+function jobList(list, { rich = 40, id = "", moreTitle = "More jobs" } = {}) {
+  const cards = list.slice(0, rich), rest = list.slice(rich);
+  return `<ul class="jobs"${id ? ` id="${id}"` : ""}>${cards.map(jobCard).join("\n")}</ul>` +
+    (rest.length ? `<h2 class="section-h more-h">${esc(moreTitle)} <span class="grp-count">${rest.length}</span></h2><ul class="joblines">${rest.map(jobLine).join("")}</ul>` : "");
+}
 function jobCard(job) {
   const st = statusOf(job);
-  const text = (job.title + " " + job.organization + " " + (job.qualification||"") + " " +
-    (job.post_name||"") + " " + levelsOf(job).join(" ")).toLowerCase();
-  return `<li><a class="job" href="/jobs/${esc(job.id)}/" data-text="${esc(text)}">
+  return `<li><a class="job" href="/jobs/${esc(job.id)}/">
     <div class="job-top">
       <span class="org-tag">${esc(orgKey(job) || job.organization)}</span>
       ${qualsOf(job).slice(0,2).map((q)=>`<span class="qual-tag">${esc(q.name)}</span>`).join("")}
@@ -725,7 +749,7 @@ function buildLatestPage(jobs) {
     <h1>Latest government jobs &mdash; this week's new notifications</h1>
     <p class="lede">Every recruitment notification published in the last few days, newest first. Each page has the vacancies, eligibility, important dates and a link to apply on the official website.</p>
   </section>
-  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">No new notifications this week yet — check the <a href="/">homepage</a> for all open jobs.</p>`}
+  ${list.length ? jobList(list, { moreTitle: "More new jobs this week" }) : `<p class="empty">No new notifications this week yet — check the <a href="/">homepage</a> for all open jobs.</p>`}
   <div class="prose">
     <h2 class="section-h">How to use this page</h2>
     <p>Check it daily or subscribe to the <a href="/feed.xml">RSS feed</a> to catch notifications on day one — many recruitments have short application windows, and early applicants avoid last-day server problems. Jobs that are about to close are listed on the <a href="/closing-soon/">closing soon</a> page.</p>
@@ -748,7 +772,7 @@ function buildAllJobsPage(jobs) {
     <h1>All open government jobs</h1>
     <p class="lede">Every recruitment that is still accepting applications, newest first. Narrow it down by <a href="/qualification/graduate/">qualification</a>, <a href="/state/">state</a> or department, or see only <a href="/latest/">this week's new jobs</a> and the ones <a href="/closing-soon/">closing soon</a>.</p>
   </section>
-  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
+  ${list.length ? jobList(list, { moreTitle: "More open jobs" }) : `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
 </main>` + foot();
 }
 function buildClosingSoonPage(jobs) {
@@ -767,7 +791,7 @@ function buildClosingSoonPage(jobs) {
     <h1>Government jobs closing soon</h1>
     <p class="lede">Recruitments whose last date is in the next ten days, nearest deadline first. Apply early — official portals slow down on the final day.</p>
   </section>
-  ${list.length ? `<ul class="jobs">${list.map(jobCard).join("\n")}</ul>` : `<p class="empty">Nothing is closing in the next ten days. See <a href="/latest/">this week's new jobs</a>.</p>`}
+  ${list.length ? jobList(list, { moreTitle: "Also closing soon" }) : `<p class="empty">Nothing is closing in the next ten days. See <a href="/latest/">this week's new jobs</a>.</p>`}
 </main>` + foot();
 }
 function buildUpdatesIndex(updates) {
@@ -781,7 +805,7 @@ function buildUpdatesIndex(updates) {
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: "Sarkari Results, Admit Cards & Answer Keys", url: canonical,
-      mainEntity: { "@type": "ItemList", itemListElement: updates.map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/updates/${u.id}/`, name: u.title })) } },
+      mainEntity: { "@type": "ItemList", itemListElement: updates.slice(0, 50).map((u, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/updates/${u.id}/`, name: u.title })) } },
   ];
   return head({ title: `Sarkari Result, Admit Card & Answer Key ${BUILT.getFullYear()} — Latest Updates | ${SITE.name}`,
     desc: "Latest sarkari results, admit cards, answer keys and exam dates in one place — updated automatically with links to the official websites.", canonical, ld }) + `
@@ -805,7 +829,7 @@ function buildQualPage(q, list) {
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: q.name, url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: q.h1, url: canonical, description: q.desc,
-      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.slice(0, 50).map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
   return head({ title: `${q.h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc: q.desc, canonical, ld, ...hiAltFor(`/qualification/${q.slug}/`) }) + `
@@ -816,7 +840,7 @@ function buildQualPage(q, list) {
     <h1>${esc(q.h1)}</h1>
     <div class="prose qual-intro">${q.intro.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
   </section>
-  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+  ${sorted.length ? jobList(sorted)
     : `<p class="empty">No live notifications in this category right now — new jobs are added automatically several times a day, so check back soon or <a href="/">browse all current jobs</a>.</p>`}
   ${guides.length ? `<section class="related">
     <h2 class="section-h">Guides for ${esc(q.name)} candidates</h2>
@@ -840,7 +864,7 @@ function buildStatePage(st, list) {
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: st.name, url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
-      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.slice(0, 50).map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
   return head({ title: `${h1} ${BUILT.getFullYear()} — Latest Notifications | ${SITE.name}`, desc, canonical, ld, ...hiAltFor(`/state/${st.slug}/`) }) + `
@@ -857,7 +881,7 @@ function buildStatePage(st, list) {
     return avail.length ? `<nav class="chips" aria-label="By qualification">${avail.map((q) =>
       `<a class="chip" href="/state/${st.slug}/${q.slug}/">${esc(st.name)} jobs for ${esc(q.name)}</a>`).join("")}</nav>` : "";
   })()}
-  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+  ${sorted.length ? jobList(sorted)
     : `<p class="empty">No live notifications for ${esc(st.name)} right now — new jobs are added automatically several times a day. Meanwhile, <a href="/state/all-india/">browse all-India jobs</a> open to everyone, or <a href="/">see all current jobs</a>.</p>`}
 </main>` + foot();
 }
@@ -876,7 +900,7 @@ function buildStateQualPage(st, q, list) {
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: st.name, url: `${SITE.url}/state/${st.slug}/` }, { name: q.name, url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
-      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.slice(0, 50).map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
   return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld }) + `
@@ -887,7 +911,7 @@ function buildStateQualPage(st, q, list) {
     <h1>${esc(h1)}</h1>
     <p class="lede">${esc(intro)}</p>
   </section>
-  <ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>
+  ${jobList(sorted)}
   <p class="tagrow">Also see: <a href="/state/${st.slug}/">all ${esc(st.name)} jobs</a> &middot; <a href="/qualification/${q.slug}/">all ${esc(q.name)} jobs</a></p>
 </main>` + foot();
 }
@@ -900,7 +924,7 @@ function buildGulfPage(g, list) {
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Gulf Jobs", url: SITE.url + "/gulf/" }, { name: g.name, url: canonical }]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: h1, url: canonical, description: desc,
-      mainEntity: { "@type": "ItemList", itemListElement: sorted.map((j, i) => ({
+      mainEntity: { "@type": "ItemList", itemListElement: sorted.slice(0, 50).map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
   return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld }) + `
@@ -911,7 +935,7 @@ function buildGulfPage(g, list) {
     <h1>${esc(h1)}</h1>
     <p class="lede">Current job vacancies in ${esc(g.name)} open to Indian candidates, including walk-in interviews and direct recruitment. Each listing shows the role, requirements and how to apply, and links to the original source so you can verify the details before applying.</p>
   </section>
-  ${sorted.length ? `<ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>`
+  ${sorted.length ? jobList(sorted)
     : `<p class="empty">No ${esc(g.name)} vacancies listed right now — new overseas jobs are added automatically several times a day. Meanwhile, <a href="/gulf/">browse all Gulf jobs</a>.</p>`}
   <div class="prose"><h2 class="section-h">Before you apply for a job in ${esc(g.name)}</h2>
     <p>Always verify the recruiting agency and the employer before paying any fee. Registered recruitment agents in India are licensed by the Ministry of External Affairs, and genuine employers do not ask candidates for large upfront payments. Check the offer letter, the contract terms and the visa type carefully, and keep copies of everything you sign.</p>
@@ -985,7 +1009,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
       name: title, url: SITE.url + "/",
       mainEntity: {
         "@type": "ItemList",
-        itemListElement: sorted.map((j, i) => ({
+        itemListElement: sorted.slice(0, 50).map((j, i) => ({
           "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title,
         })),
       } },
@@ -1010,9 +1034,9 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
     <h1>Government jobs, without the clutter.</h1>
     <p>${esc(SITE.tagline)}</p>
     <div class="search-row">
-      <input class="search" id="q" type="search" placeholder="Search by post, department or qualification…" aria-label="Search jobs">
+      <input class="search" id="q" type="search" placeholder="Search all jobs, results &amp; admit cards — post, department, exam…" aria-label="Search jobs, results and admit cards" autocomplete="off">
     </div>
-    <p class="count" id="count"></p>
+    <p class="count" id="count" data-total="${live.length}">${live.length} open jobs</p>
     <nav class="hero-quick" aria-label="Browse by education">
       <span class="hq-label">Browse:</span>
       ${QUALS.map((q) => `<a class="hq-pill" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
@@ -1051,9 +1075,10 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   </section>` : ""}
 
   <h2 class="section-h list-h" id="list-h">Latest government jobs</h2>
-  ${sorted.length ? `<ul class="jobs" id="list">
-    ${sorted.map(jobCard).join("\n")}
-  </ul>
+  <div id="results" hidden></div>
+  ${live.length ? `<div id="home-list">${jobList(live.slice(0, Number(SITE.homeMax || 300)), { id: "list", moreTitle: "More open jobs" })}
+    <p class="cta-row"><a class="btn btn-ghost" href="/jobs/">See all ${live.length} open jobs &rarr;</a> <a class="btn btn-ghost" href="/updates/">Results &amp; admit cards &rarr;</a></p>
+  </div>
   <p class="empty" id="empty" hidden>No jobs match your search — try a department (SSC, RRB), a post, or a qualification.</p>` :
   `<p class="empty">New job notifications are being added automatically and will appear here shortly.</p>`}
 
@@ -1098,7 +1123,7 @@ function buildCategory(kind, label, slugVal, jobs) {
     ]),
     { "@context": "https://schema.org", "@type": "CollectionPage", name: title, url: canonical,
       mainEntity: { "@type": "ItemList",
-        itemListElement: sorted.map((j, i) => ({
+        itemListElement: sorted.slice(0, 50).map((j, i) => ({
           "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
   return head({ title, desc, canonical, ld }) + `
@@ -1110,7 +1135,7 @@ function buildCategory(kind, label, slugVal, jobs) {
     <p class="lede">${esc(desc)}</p>
   </section>
   <p class="count static">${sorted.length} ${sorted.length === 1 ? "job" : "jobs"}</p>
-  <ul class="jobs">${sorted.map(jobCard).join("\n")}</ul>
+  ${jobList(sorted)}
   <p class="backlink"><a href="/">&larr; All government jobs</a></p>
 </main>` + foot();
 }
@@ -1119,6 +1144,17 @@ function buildCategory(kind, label, slugVal, jobs) {
 function row(dt, dd, mono) {
   if (dd === undefined || dd === null || dd === "") return "";
   return `<dt>${esc(dt)}</dt><dd${mono ? ' class="mono"' : ""}>${dd}</dd>`;
+}
+// Google for Jobs fields: employment type from the post, and the state when the job is in one state.
+function employmentTypeOf(job) {
+  const t = `${job.title} ${job.post_name || ""}`.toLowerCase();
+  if (/\bapprentice|\btrainee\b|\binternship\b|\bintern\b/.test(t)) return "INTERN";
+  if (/\bwalk-?in\b|\bproject\b|\bcontract(ual)?\b|\bconsultant\b|\bresearch (fellow|associate|assistant)\b|\bjrf\b|\bsrf\b|\bguest\b|\bad[- ]?hoc\b|\btemporary\b|\bpart[- ]time\b/.test(t)) return /\bpart[- ]time\b/.test(t) ? "PART_TIME" : "TEMPORARY";
+  return "FULL_TIME";
+}
+function regionOf(job) {
+  const s = statesOf(job).filter((x) => x.slug !== "all-india");
+  return s.length === 1 ? { addressRegion: s[0].name } : {};
 }
 function jobLd(job) {
   const sal = parseSalary(job.salary);
@@ -1135,16 +1171,20 @@ function jobLd(job) {
     title: job.title,
     description: descHtml,
     datePosted: job.published,
-    employmentType: "FULL_TIME",
+    employmentType: employmentTypeOf(job),
     directApply: false,
     identifier: { "@type": "PropertyValue", name: job.organization, value: job.id },
     hiringOrganization: { "@type": "Organization", name: job.organization, ...(job.official_website || job.apply_link ? { sameAs: job.official_website || job.apply_link } : {}) },
     jobLocation: { "@type": "Place",
-      address: { "@type": "PostalAddress", addressLocality: job.location || "India", addressCountry: "IN" } },
+      address: { "@type": "PostalAddress", addressLocality: job.location || "India", ...regionOf(job), addressCountry: "IN" } },
     applicantLocationRequirements: { "@type": "Country", name: "India" },
   };
   if (job.application_end) ld.validThrough = job.application_end + "T23:59:59+05:30";
-  if (job.qualification) ld.educationRequirements = { "@type": "EducationalOccupationalCredential", credentialCategory: job.qualification };
+  // Google accepts only these credential categories; the lowest level the job asks for is what a candidate needs.
+  const cred = { "10th-pass": "high school", "12th-pass": "high school", "iti": "professional certificate", "engineering-diploma": "professional certificate",
+    "diploma": "professional certificate", "graduate": "bachelor degree", "post-graduate": "postgraduate degree" };
+  const lvl = qualsOf(job).map((q) => cred[q.slug]).find(Boolean);
+  if (lvl) ld.educationRequirements = { "@type": "EducationalOccupationalCredential", credentialCategory: lvl };
   if (sal) ld.baseSalary = { "@type": "MonetaryAmount", currency: "INR",
     value: { "@type": "QuantitativeValue", minValue: sal.min, maxValue: sal.max, unitText: sal.unit } };
   return ld;
@@ -1369,6 +1409,33 @@ function buildLatestSitemap({ jobs, updates, news }) {
   for (const a of news) if (fresh(a.date)) add(`news/${a.id}/`, day(a.date));
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>\n`;
 }
+/* Google News sitemap: results, admit cards, answer keys, exam dates and current-affairs articles from today and
+   yesterday (Google reads news sitemaps far more often than ordinary ones). Job pages use JobPosting instead. */
+function buildNewsSitemap({ updates, news }) {
+  const day = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
+  const recent = (x) => { const d = day(x) ? daysLeft(day(x)) : null; return d !== null && d <= 0 && d >= -1; };
+  const items = [
+    ...updates.filter((u) => recent(u.date)).map((u) => ({ loc: `${SITE.url}/updates/${u.id}/`, date: day(u.date), title: u.title })),
+    ...news.filter((a) => recent(a.date)).map((a) => ({ loc: `${SITE.url}/news/${a.id}/`, date: day(a.date), title: a.title })),
+  ].slice(0, 1000);
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">` +
+    items.map((x) => `<url><loc>${x.loc}</loc><news:news><news:publication><news:name>${esc(SITE.brand)}</news:name><news:language>en</news:language></news:publication><news:publication_date>${x.date}</news:publication_date><news:title>${esc(x.title)}</news:title></news:news></url>`).join("") +
+    `</urlset>\n`;
+}
+/* /search.json — loaded by the homepage only when someone starts typing: every open (and recently closed) job plus
+   the last 60 days of results/admit cards/answer keys, so search covers the whole site without heavy page markup. */
+function buildSearchIndex(jobs, updates) {
+  const J = [...jobs].filter((j) => !isStale(j)).sort(liveFirst).map((j) => {
+    const st = statusOf(j);
+    return { i: j.id, t: j.title, o: orgKey(j) || j.organization || "", p: j.post_name || "", q: levelsOf(j).slice(0, 2),
+      v: Number(j.total_vacancies) || 0, a: j.age_max ? `${j.age_min ? j.age_min + "–" : "up to "}${j.age_max}` : "",
+      d: j.application_end ? fmtDate(j.application_end) : "", s: st.cls, l: st.label, n: st.live && isNew(j.published) ? 1 : 0 };
+  });
+  const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  const U = updates.filter((u) => String(u.date || "") >= cutoff).map((u) => ({ i: u.id, t: u.title, o: u.org_short || "",
+    y: (UPDATE_TYPES[u.type] || {}).label || "Update", c: u.type, d: u.date ? fmtDate(String(u.date).slice(0, 10)) : "" }));
+  return JSON.stringify({ built: BUILD_ID, jobs: J, updates: U });
+}
 /* Queue for the owner's daily manual "Request indexing" in Search Console (10 a day): the newest pages most
    worth Google's attention first — the biggest open recruitments interleaved with results/admit cards of
    major exams, then the hubs. The daily task skips anything already on Google or requested in 14 days. */
@@ -1554,13 +1621,41 @@ function policyPages() {
 We aim to save you time. Government notifications are often long and hard to read; we condense the essentials and present them consistently. We are not a recruitment agency and we do not charge candidates any fee.
 
 ## Our editorial standards
-Our guides and listings are researched and written by the ${SITE.brand} editorial team. We follow a few firm principles: we base information on official notifications and authoritative sources; we write in plain, practical language that genuinely helps candidates; we keep our preparation guides factual and free of false promises or guaranteed-selection claims; and we review and update our content as exam patterns, eligibility rules and dates change. Where a detail can vary or change, we say so and point you to the official source.
+Our preparation guides are written by the ${SITE.brand} editorial team; job and result listings are compiled from official sources by an automated process with strict rules (see [how we verify](/editorial-policy/)). We follow a few firm principles: we base information on official notifications and authoritative sources; we write in plain, practical language that genuinely helps candidates; we keep our preparation guides factual and free of false promises or guaranteed-selection claims; and we review and update our content as exam patterns, eligibility rules and dates change. Where a detail can vary or change, we say so and point you to the official source.
 
 ## Why you can trust us
 We are independent and candidate-first. We never charge for information, we clearly separate official facts from general guidance, and we always link to the original notification so you can verify everything yourself. Our goal is to be a reliable, honest starting point for your government-job journey — not the final authority, which is always the official recruiting body.
 
 ## Accuracy
 We work to keep information correct and up to date, but details can change. Always confirm the final details on the official website before applying. If you spot an error, please [contact us](/contact/) and we will fix it quickly.`)
+  });
+  out["editorial-policy"] = pageShell({
+    slug: "editorial-policy", title: "How We Verify Notifications",
+    desc: `How ${SITE.brand} finds, checks and updates government job notifications, results and admit cards.`,
+    body: md(
+`${SITE.brand} publishes government job notifications, results, admit cards and answer keys quickly — but speed is worthless if the facts are wrong. This page explains exactly how a notification reaches the site and how we keep it accurate.
+
+## Where notifications come from
+- **Official websites.** We monitor the notice boards of central and state recruitment bodies directly — commissions, selection boards, police recruitment boards, railway and banking recruiters and other departments. New notices are read from the official page or PDF itself.
+- **Established job-news feeds.** We also watch well-known notification feeds to catch announcements early, then trace each one back to the official source before linking to it.
+
+## What we check before publishing
+- **Official links only.** The "Apply" and "Official notification" buttons point only to government or recruiting-organisation websites — never to another job portal.
+- **Facts come from the notice.** Vacancies, dates, age limits, fees and eligibility are taken from the notification text. If a detail is not in the notice, we leave it out rather than guess.
+- **Verified badge.** Pages marked "✓ Verified from the official website" were read directly from the recruiter's own website.
+- **No duplicates or filler.** When the same recruitment is reported twice, we merge the pages and redirect the old address. We do not publish generic "latest jobs" round-ups or work-from-home schemes.
+- **Indian dates.** Deadlines are calculated in Indian Standard Time, so a recruitment shows as closed as soon as its last date has passed in India.
+
+## How the pages are written
+Summaries, frequently asked questions, step-by-step application instructions and Hindi translations are drafted with the help of AI tools from the official notice text, then checked by automated rules — official-domain links, dates in range, no figures that do not appear in the source. Preparation guides are written by our editorial team.
+
+## Updates and corrections
+Recruiting bodies often publish corrigenda, extend last dates or change exam dates. When that happens we update the page; for example, when a corrigendum changed the number of posts in a railway recruitment, the page was corrected and duplicate listings with the old figure were merged into it. If you spot an error, please [contact us](/contact/) with the link to the official notice and we will correct it.
+
+## Independence
+${SITE.brand} is not a government body, is not affiliated with any recruiting organisation and never charges candidates a fee. Always confirm the final details on the official website before you apply or pay any fee.
+
+*Last updated: ${updated}*`),
   });
   out["contact"] = pageShell({
     slug: "contact", title: "Contact Us", desc: `Get in touch with the ${SITE.brand} team.`,
@@ -1867,6 +1962,7 @@ function main() {
   ALL_JOBS = jobs;
   const updates = readUpdates();
   const news = readNews();
+  FOOT_LATEST = footLatest(activeJobs, updates);   // before any page is rendered
 
   // Tools, salary pages (calculators that work in the browser)
   const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection,
@@ -2011,6 +2107,8 @@ function main() {
   write("feed.xml", buildFeed(jobs, updates));
   write("sitemap-latest.xml", buildLatestSitemap({ jobs, updates, news }));
   write("index-queue.txt", buildIndexQueue({ jobs, updates }));
+  write("search.json", buildSearchIndex(jobs, updates));
+  write("news-sitemap.xml", buildNewsSitemap({ updates, news }));
   write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
 
   // 301s for pages that were removed or merged (off-topic, duplicates, re-classified),
@@ -2061,7 +2159,7 @@ function main() {
   </section>
 </main>` + foot());
 
-  write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\n`);
+  write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
   if (SITE.adsenseId) {
     const pub = SITE.adsenseId.replace(/^ca-/, "");
     write("ads.txt", `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`);

@@ -805,3 +805,21 @@ html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
 .upd-type.upd-job { background: #EAF6F0; color: var(--green); }
 .verified { display: inline-block; margin: 2px 0 10px; padding: 4px 12px; border-radius: 999px; background: #EAF6F0; color: var(--green); font-weight: 600; font-size: .86rem; }
 .verified a { color: var(--green); }
+
+/* Compact one-line listings (long hubs) */
+.joblines { list-style: none; padding: 0; margin: 6px 0 40px; border-top: 1px solid var(--line); }
+.joblines li { padding: 11px 2px; border-bottom: 1px solid var(--line); line-height: 1.4; }
+.joblines a { color: var(--ink); font-weight: 600; }
+.joblines a:hover { text-decoration: underline; }
+.jl-meta { display: block; font-family: "Spline Sans Mono", monospace; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.jl-meta.soon { color: var(--saffron); }
+.more-h { margin-top: 6px; }
+#results .jobs { margin-top: 10px; }
+
+/* Site-wide "latest" block in the footer */
+.foot-latest { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 6px 28px; padding-bottom: 22px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.foot-latest h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink); margin: 0 0 8px; }
+.foot-latest ul { list-style: none; padding: 0; margin: 0; }
+.foot-latest li { padding: 4px 0; line-height: 1.35; }
+.foot-latest a { color: var(--ink); }
+.site-foot .foot-edu { margin: 0; width: 100%; }
