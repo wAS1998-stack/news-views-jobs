@@ -1,0 +1,1144 @@
+{
+  "at": "2026-10-29T19:06:48.338Z",
+  "sources": 59,
+  "directOk": 17,
+  "relayOk": 21,
+  "relayOnly": [
+    "bssc",
+    "jkssb",
+    "osssc",
+    "rpsc",
+    "tgpsc"
+  ],
+  "trace": {
+    "colo": "ATL",
+    "country": "US",
+    "cloudflare": "fl=1272f37\nh=www.cloudflare.com\nip=2a06:98c0:3600::103\nts=1793300611.725\nvisit_scheme=https\nuag=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\ncolo=ATL\nsliver=050-tier1\nhttp=http/1.1\nloc=US\ntls=TLSv1.3\nsni=plaintext\nwarp=off\ngateway=off\nrbi=off\nkex=X25519MLKEM768\n",
+    "ipinfo": "{\n  \"ip\": \"104.22.56.78\",\n  \"city\": \"Atlanta\",\n  \"region\": \"Georgia\",\n  \"country\": \"US\",\n  \"loc\": \"33.7490,-84.3880\",\n  \"org\": \"AS13335 Cloudflare, Inc.\",\n  \"postal\": \"30303\",\n  \"timezone\": \"America/New_York\",\n  \"readme\": \"https://ipinfo.io/missingauth\"\n}"
+  },
+  "rows": [
+    {
+      "id": "aiims",
+      "url": "https://www.aiimsexams.ac.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 35278,
+        "links": 34,
+        "ms": 733
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 35278,
+        "links": 34,
+        "ms": 935,
+        "colo": "ATL",
+        "final": "https://www.aiimsexams.ac.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "appsc",
+      "url": "https://psc.ap.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10122,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 500,
+        "bytes": 0,
+        "links": 0,
+        "ms": 6854,
+        "colo": "ATL",
+        "final": "https://psc.ap.gov.in/",
+        "note": ""
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "apsc",
+      "url": "https://apsc.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10379,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 22462,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "army",
+      "url": "https://joinindianarmy.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10432,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 22652,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "bpsc",
+      "url": "https://bpsc.bihar.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 1017,
+        "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      "relay": {
+        "status": 526,
+        "bytes": 7704,
+        "links": 7,
+        "ms": 2603,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "bpssc",
+      "url": "https://bpssc.bihar.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 254675,
+        "links": 328,
+        "ms": 1551
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 254675,
+        "links": 328,
+        "ms": 6294,
+        "colo": "BOS",
+        "final": "https://bpssc.bihar.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "bssc",
+      "url": "https://bssc.bihar.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 1232,
+        "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 10920,
+        "links": 8,
+        "ms": 2250,
+        "colo": "ATL",
+        "final": "https://bssc.bihar.gov.in/"
+      },
+      "directOk": false,
+      "relayOk": true
+    },
+    {
+      "id": "cgpsc",
+      "url": "https://psc.cg.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10399,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7231,
+        "links": 5,
+        "ms": 21577,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "csbc",
+      "url": "https://csbc.bihar.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 123500,
+        "links": 226,
+        "ms": 948
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 123500,
+        "links": 226,
+        "ms": 2364,
+        "colo": "ATL",
+        "final": "https://csbc.bihar.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "ctet",
+      "url": "https://ctet.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10459,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6402,
+        "links": 4,
+        "ms": 25372,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "dsssb",
+      "url": "https://dsssb.delhi.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 77893,
+        "links": 177,
+        "ms": 3225
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 77893,
+        "links": 177,
+        "ms": 4296,
+        "colo": "ATL",
+        "final": "https://dsssb.delhi.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "dsssb2",
+      "url": "https://dsssb.delhi.gov.in/notices-and-results",
+      "direct": {
+        "status": 404,
+        "bytes": 42438,
+        "links": 104,
+        "ms": 1919,
+        "note": "<!DOCTYPE html> <html lang=\"en\" dir=\"ltr\"> <head> <meta charset=\"utf-8\" /> <link rel=\"canonical\" href=\"https://dss"
+      },
+      "relay": {
+        "status": 404,
+        "bytes": 42438,
+        "links": 104,
+        "ms": 2547,
+        "colo": "ATL",
+        "final": "https://dsssb.delhi.gov.in/notices-and-results",
+        "note": "<!DOCTYPE html> <html lang=\"en\" dir=\"ltr\"> <head> <meta charset=\"utf-8\" /> <link rel=\"canonical\" href=\"https://dss"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "esb-mp",
+      "url": "https://esb.mp.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10035,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 21718,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "goapsc",
+      "url": "https://gpsc.goa.gov.in/",
+      "direct": {
+        "status": 403,
+        "bytes": 134,
+        "links": 0,
+        "ms": 1848,
+        "note": "<!doctype html><meta charset=\"utf-8\"><meta name=viewport content=\"width=device-width, initial-scale=1\"><title>403</title"
+      },
+      "relay": {
+        "status": 403,
+        "bytes": 134,
+        "links": 0,
+        "ms": 2964,
+        "colo": "ATL",
+        "final": "https://gpsc.goa.gov.in/",
+        "note": "<!doctype html><meta charset=\"utf-8\"><meta name=viewport content=\"width=device-width, initial-scale=1\"><title>403</title"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "gpsc",
+      "url": "https://gpsc.gujarat.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 835,
+        "error": "ETIMEDOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6399,
+        "links": 4,
+        "ms": 25067,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "gsssb",
+      "url": "https://gsssb.gujarat.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 523,
+        "error": "ETIMEDOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6398,
+        "links": 4,
+        "ms": 25127,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "hppsc",
+      "url": "https://www.hppsc.hp.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10033,
+        "error": "EAI_AGAIN"
+      },
+      "relay": {
+        "status": 530,
+        "bytes": 17,
+        "links": 0,
+        "ms": 6152,
+        "colo": "ATL",
+        "final": "https://www.hppsc.hp.gov.in/",
+        "note": "error code: 1016 "
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "hprca",
+      "url": "https://hprca.hp.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10160,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 530,
+        "bytes": 17,
+        "links": 0,
+        "ms": 6074,
+        "colo": "ATL",
+        "final": "https://hprca.hp.gov.in/",
+        "note": "error code: 1016 "
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "hpsc",
+      "url": "https://hpsc.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10192,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7235,
+        "links": 5,
+        "ms": 20596,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "hssc",
+      "url": "https://hssc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 21307,
+        "links": 55,
+        "ms": 1328
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 21307,
+        "links": 55,
+        "ms": 1898,
+        "colo": "ATL",
+        "final": "https://hssc.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "iaf-agniveer",
+      "url": "https://agnipathvayu.cdac.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10365,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 403,
+        "bytes": 38,
+        "links": 0,
+        "ms": 160,
+        "note": "host not allowed: agnipathvayu.cdac.in"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "ibps",
+      "url": "https://www.ibps.in/",
+      "direct": {
+        "status": 0,
+        "ms": 1413,
+        "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      "relay": {
+        "status": 526,
+        "bytes": 7704,
+        "links": 7,
+        "ms": 776,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "indiapost-gds",
+      "url": "https://indiapostgdsonline.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 83614,
+        "links": 173,
+        "ms": 2149
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 83614,
+        "links": 173,
+        "ms": 2106,
+        "colo": "ATL",
+        "final": "https://indiapostgdsonline.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "jkpsc",
+      "url": "https://jkpsc.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10485,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 20267,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "jkssb",
+      "url": "https://jkssb.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 748,
+        "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY"
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 32670,
+        "links": 74,
+        "ms": 2103,
+        "colo": "BOS",
+        "final": "https://jkssb.nic.in/"
+      },
+      "directOk": false,
+      "relayOk": true
+    },
+    {
+      "id": "jpsc",
+      "url": "https://www.jpsc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 34843,
+        "links": 127,
+        "ms": 1296
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 34843,
+        "links": 127,
+        "ms": 2164,
+        "colo": "ATL",
+        "final": "https://www.jpsc.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "jssc",
+      "url": "https://jssc.jharkhand.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10224,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 20772,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "kea",
+      "url": "https://cetonline.karnataka.gov.in/kea/",
+      "direct": {
+        "status": 0,
+        "ms": 10402,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 20606,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "keralapsc",
+      "url": "https://www.keralapsc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 70939,
+        "links": 112,
+        "ms": 4840
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 71317,
+        "links": 113,
+        "ms": 3754,
+        "colo": "BOS",
+        "final": "https://www.keralapsc.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "kpsc",
+      "url": "https://kpsc.kar.nic.in/",
+      "direct": {
+        "status": 0,
+        "ms": 1548,
+        "error": "Response does not match the HTTP/1.1 protocol (Invalid header token)"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 26524,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "kvs",
+      "url": "https://kvsangathan.nic.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 211795,
+        "links": 241,
+        "ms": 5982
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 211796,
+        "links": 241,
+        "ms": 8581,
+        "colo": "YYZ",
+        "final": "https://kvs.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "mppsc",
+      "url": "https://mppsc.mp.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10208,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 22572,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "mpsc",
+      "url": "https://mpsc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 4363,
+        "links": 0,
+        "ms": 726
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 4363,
+        "links": 0,
+        "ms": 966,
+        "colo": "ATL",
+        "final": "https://mpsc.gov.in/"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "navy",
+      "url": "https://www.joinindiannavy.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10299,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 23088,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "ncs",
+      "url": "https://www.ncs.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 278173,
+        "links": 123,
+        "ms": 2856
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 278402,
+        "links": 124,
+        "ms": 5142,
+        "colo": "ATL",
+        "final": "https://ncs.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "nta",
+      "url": "https://nta.ac.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 711648,
+        "links": 927,
+        "ms": 2207
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 711648,
+        "links": 927,
+        "ms": 7116,
+        "colo": "ATL",
+        "final": "https://nta.ac.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "nvs",
+      "url": "https://navodaya.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 763,
+        "error": "ETIMEDOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6399,
+        "links": 4,
+        "ms": 25063,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "opsc",
+      "url": "https://www.opsc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 43977,
+        "links": 54,
+        "ms": 3398
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 44202,
+        "links": 55,
+        "ms": 5368,
+        "colo": "MAN",
+        "final": "https://www.opsc.gov.in/Public/OPSC/Default.aspx"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "osssc",
+      "url": "https://www.osssc.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 5722,
+        "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 66593,
+        "links": 59,
+        "ms": 11371,
+        "colo": "ATL",
+        "final": "https://www.osssc.gov.in/Public/OSSSC/Default.aspx"
+      },
+      "directOk": false,
+      "relayOk": true
+    },
+    {
+      "id": "ppsc",
+      "url": "https://ppsc.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10165,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6399,
+        "links": 4,
+        "ms": 25104,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "rbi",
+      "url": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
+      "direct": {
+        "status": 200,
+        "bytes": 111782,
+        "links": 448,
+        "ms": 2363
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 45638,
+        "links": 1,
+        "ms": 1805,
+        "colo": "YYZ",
+        "final": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx"
+      },
+      "directOk": true,
+      "relayOk": false
+    },
+    {
+      "id": "rpsc",
+      "url": "https://rpsc.rajasthan.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 485,
+        "error": "ETIMEDOUT"
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 278150,
+        "links": 373,
+        "ms": 21850,
+        "colo": "MAN",
+        "final": "https://rpsc.rajasthan.gov.in/"
+      },
+      "directOk": false,
+      "relayOk": true
+    },
+    {
+      "id": "rrb-portal",
+      "url": "https://rrb.indianrailways.gov.in/secunderabad",
+      "direct": {
+        "status": 0,
+        "ms": 10331,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6399,
+        "links": 4,
+        "ms": 25148,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "rssb",
+      "url": "https://rssb.rajasthan.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10395,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 22312,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "slprb-ap",
+      "url": "https://slprb.ap.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10073,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6398,
+        "links": 4,
+        "ms": 25055,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "ssc",
+      "url": "https://ssc.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 80649,
+        "links": 0,
+        "ms": 1470
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 80649,
+        "links": 0,
+        "ms": 2141,
+        "colo": "ATL",
+        "final": "https://ssc.gov.in/"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "sssb-punjab",
+      "url": "https://sssb.punjab.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10253,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 502,
+        "bytes": 6398,
+        "links": 4,
+        "ms": 25083,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "tgpsc",
+      "url": "https://www.tgpsc.gov.in/",
+      "direct": {
+        "status": 403,
+        "bytes": 520,
+        "links": 0,
+        "ms": 1028,
+        "note": "<html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> </body> </html> <!"
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 24178,
+        "links": 18,
+        "ms": 1409,
+        "colo": "ATL",
+        "final": "https://www.tgpsc.gov.in/"
+      },
+      "directOk": false,
+      "relayOk": true
+    },
+    {
+      "id": "tnpsc",
+      "url": "https://www.tnpsc.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10243,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 22037,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "tnusrb",
+      "url": "https://www.tnusrb.tn.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10084,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7235,
+        "links": 5,
+        "ms": 22850,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "tslprb",
+      "url": "https://www.tgprb.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 2057,
+        "links": 0,
+        "ms": 1071
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 2057,
+        "links": 0,
+        "ms": 1221,
+        "colo": "ATL",
+        "final": "https://www.tgprb.in/"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "ukpsc",
+      "url": "https://psc.uk.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10045,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 21621,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "uksssc",
+      "url": "https://sssc.uk.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 119372,
+        "links": 102,
+        "ms": 1991
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 119373,
+        "links": 102,
+        "ms": 4115,
+        "colo": "ATL",
+        "final": "https://sssc.uk.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "uppbpb",
+      "url": "https://uppbpb.gov.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 70851,
+        "links": 92,
+        "ms": 1862
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 71054,
+        "links": 92,
+        "ms": 3971,
+        "colo": "ATL",
+        "final": "https://uppbpb.gov.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "uppsc",
+      "url": "https://uppsc.up.nic.in/",
+      "direct": {
+        "status": 200,
+        "bytes": 158817,
+        "links": 138,
+        "ms": 2153
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 158817,
+        "links": 138,
+        "ms": 6506,
+        "colo": "ATL",
+        "final": "https://uppsc.up.nic.in/"
+      },
+      "directOk": true,
+      "relayOk": true
+    },
+    {
+      "id": "upsc",
+      "url": "https://upsc.gov.in/whats-new",
+      "direct": {
+        "status": 0,
+        "ms": 10137,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 20134,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "upsssc",
+      "url": "https://upsssc.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10049,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7235,
+        "links": 5,
+        "ms": 20681,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "wbpsc",
+      "url": "https://psc.wb.gov.in/",
+      "direct": {
+        "status": 0,
+        "ms": 10239,
+        "error": "UND_ERR_CONNECT_TIMEOUT"
+      },
+      "relay": {
+        "status": 522,
+        "bytes": 7232,
+        "links": 5,
+        "ms": 21309,
+        "note": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]--> <!--[if IE 7]> <html class"
+      },
+      "directOk": false,
+      "relayOk": false
+    },
+    {
+      "id": "wbssc",
+      "url": "https://www.westbengalssc.com/",
+      "direct": {
+        "status": 200,
+        "bytes": 80934,
+        "links": 71,
+        "ms": 2743
+      },
+      "relay": {
+        "status": 200,
+        "bytes": 80573,
+        "links": 71,
+        "ms": 2555,
+        "colo": "ATL",
+        "final": "https://www.westbengalssc.com/otr/recruitment/"
+      },
+      "directOk": true,
+      "relayOk": true
+    }
+  ]
+}
