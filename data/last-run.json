@@ -192,5 +192,15 @@
       "  analysis below quality bar for namo-hospital-daman-anaesthetist-paediatrician-more-2026 (287 words, need 300) — not published.",
       "  + analysis: Ministry of Corporate Affairs Invites Applications for Full-Time Member Position in NFRA"
     ]
+  },
+  "notify": {
+    "at": "2026-10-29T10:47:59.459Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"feed.xml\":204}"
+    ]
   }
 }
