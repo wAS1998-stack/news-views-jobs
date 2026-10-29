@@ -6,6 +6,9 @@ on:
       mode:
         description: "inspect = index status of sample pages; indexing-test = send 2 Indexing API pings and record Google's reply; notify = submit fresh sitemap + feed now"
         default: "inspect"
+      urls:
+        description: "inspect mode only: comma-separated page URLs to check instead of the automatic sample"
+        default: ""
 permissions:
   contents: write
 jobs:
@@ -19,6 +22,7 @@ jobs:
       - name: Inspect URLs
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          URLS: ${{ github.event.inputs.urls }}
         run: |
           case "${{ github.event.inputs.mode }}" in indexing-test) node tools-dev/test-indexing.js ;; notify) node notify-search.js ;; *) node tools-dev/inspect-urls.js ;; esac
       - name: Save result (no site build)

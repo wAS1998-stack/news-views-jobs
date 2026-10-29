@@ -31,9 +31,14 @@ const istDate = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkat
     const arr = byDay.get(a) || []; if (arr.length < 6) { arr.push(j); byDay.set(a, arr); }
   }
   const targets = [];
+  // URLS="url1,url2" inspects just those pages (e.g. the ones sent to "Request indexing" today).
+  const only = String(process.env.URLS || "").split(/[\s,]+/).filter((u) => /^https:\/\/news-views\.in\//.test(u));
+  if (only.length) for (const u of only) targets.push({ kind: u.includes("/jobs/") ? "job" : u.includes("/updates/") ? "update" : "hub", age: null, url: u });
+  else {
   for (const [a, arr] of [...byDay.entries()].sort((x, y) => x[0] - y[0])) for (const j of arr) targets.push({ kind: "job", age: a, url: `${SITE}/jobs/${j.id}/` });
   for (const p of ["/", "/latest/", "/jobs/", "/updates/", "/closing-soon/", "/hi/"]) targets.push({ kind: "hub", age: null, url: SITE + p });
   for (const u of updates.slice(0, 8)) targets.push({ kind: "update", age: u.date ? ageOf(u.date) : null, url: `${SITE}/updates/${u.id}/` });
+  }
 
   const rows = [];
   for (const t of targets) {
