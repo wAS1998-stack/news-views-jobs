@@ -1,6 +1,11 @@
 name: Inspect Google index status
 # On demand: what Google knows about a sample of our pages (indexed? crawled? JobPosting detected?).
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "inspect = index status of sample pages; indexing-test = send 2 Indexing API pings and record Google's reply"
+        default: "inspect"
 permissions:
   contents: write
 jobs:
@@ -14,8 +19,9 @@ jobs:
       - name: Inspect URLs
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-        run: node tools-dev/inspect-urls.js
+        run: |
+          if [ "${{ github.event.inputs.mode }}" = "indexing-test" ]; then node tools-dev/test-indexing.js; else node tools-dev/inspect-urls.js; fi
       - name: Save result (no site build)
         run: |
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
-          git add data/url-inspection.json && git commit -q -m "Index inspection [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main || true
+          git add data/url-inspection.json data/indexing-test.json 2>/dev/null; git diff --cached --quiet || { git commit -q -m "Index inspection [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main; } || true
