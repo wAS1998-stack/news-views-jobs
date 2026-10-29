@@ -7,5 +7,10 @@
     "build": "node build.js",
     "fetch": "node fetch-jobs.js"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@resvg/resvg-wasm": "2.6.2"
+  }
 }

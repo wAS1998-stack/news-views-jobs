@@ -317,21 +317,21 @@ ${o.modified || o.published ? `<meta property="article:modified_time" content="$
 <meta property="og:title" content="${esc(o.title)}">
 <meta property="og:description" content="${esc(o.desc)}">
 <meta property="og:url" content="${esc(o.canonical)}">
-<meta property="og:image" content="${SITE.url}/og.png">
+<meta property="og:image" content="${o.image || SITE.url + "/og.png"}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(o.title)}">
 <meta name="twitter:description" content="${esc(o.desc)}">
-<meta name="twitter:image" content="${SITE.url}/og.png">
+<meta name="twitter:image" content="${o.image || SITE.url + "/og.png"}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="${esc(SITE.brand)} Jobs" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${FONTS}">
-${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">` : ""}
+<link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${FONTS}"></noscript>
+${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" media="print" onload="this.media='all'">` : ""}
 <link rel="stylesheet" href="/styles.css?v=${ASSET_V["styles.css"]}">
 ${adsense}
 ${ldBlocks}
@@ -364,6 +364,26 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
 </div></header>`;
 }
 
+/* Share images (og.js): rendered only in the Cloudflare Pages build (CF_PAGES) or with OG=1, never in GitHub Actions.
+   Pages point at their own image only if it was actually produced; otherwise the generic /og.png. */
+let OG_SET = new Set();
+const ogImage = (file) => OG_SET.has(file) ? `${SITE.url}/${file}` : undefined;
+function makeShareImages(jobs, updates) {
+  if (process.env.GITHUB_ACTIONS || !(process.env.CF_PAGES || process.env.OG === "1")) return;
+  const fact = (n, w) => n ? `${inr(n)} ${w}` : "";
+  const items = [
+    ...jobs.filter((j) => !isStale(j)).map((j) => ({ file: `og/jobs/${j.id}.png`, kicker: `${orgKey(j) || "Govt job"} · Recruitment`, title: j.title,
+      facts: [fact(Number(j.total_vacancies), Number(j.total_vacancies) === 1 ? "post" : "posts"), j.application_end ? `Last date ${fmtDate(j.application_end)}` : "", levelsOf(j)[0] || ""] })),
+    ...updates.filter((u) => UPDATE_TYPES[u.type]).slice(0, 400).map((u) => ({ file: `og/updates/${u.id}.png`, kicker: `${u.org_short || "Update"} · ${UPDATE_TYPES[u.type].label}`,
+      title: u.title, facts: [UPDATE_TYPES[u.type].label, u.date ? fmtDate(String(u.date).slice(0, 10)) : ""] })),
+  ];
+  const manifest = path.join(require("os").tmpdir(), `nv-og-${process.pid}.json`);
+  try {
+    fs.writeFileSync(manifest, JSON.stringify(items));
+    require("child_process").execFileSync(process.execPath, [path.join(ROOT, "og.js"), manifest, DIST], { stdio: "inherit", timeout: 12 * 60 * 1000 });
+  } catch (e) { console.log("Share images skipped: " + e.message); }
+  OG_SET = new Set(items.map((it) => it.file).filter((f) => fs.existsSync(path.join(DIST, f))));
+}
 // Newest pages, linked from the footer of every page. Googlebot spends most of its visits re-reading pages it already
 // knows; this way each of those visits also passes it the newest jobs and results (set once per build in main()).
 let FOOT_LATEST = "";
@@ -663,7 +683,7 @@ function buildUpdatePage(u, all) {
   if (!/download|check|out\b/i.test(shortT) && shortT.length < 44) shortT += u.type === "result" ? " – Check Now" : u.type === "admit-card" ? " – Download Link" : u.type === "answer-key" ? " – Download PDF" : "";
   const pageTitle = (shortT + ` | ${SITE.name}`).length <= 72 ? `${shortT} | ${SITE.name}` : shortT;
   const hiAltU = u.hi && u.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/updates/${u.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/updates/${u.id}/` } : {};
-  return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date, ...hiAltU }) + `
+  return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date, image: ogImage(`og/updates/${u.id}.png`), ...hiAltU }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/${esc(u.type)}/">${esc((UPDATE_TYPES[u.type] || {}).plural || typeLabel)}</a></p>
   <article>
@@ -1283,7 +1303,7 @@ function buildJob(job, all) {
     : "";
 
   const hiAlt = job.hi && job.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/jobs/${job.id}/` } : {};
-  return head({ title, desc, canonical, ld, ogType: "article", ...hiAlt }) + `
+  return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt }) + `
 <main class="wrap" id="main">
   ${job.hi && job.hi.title ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
   <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(orgKey(job)))
@@ -1963,6 +1983,7 @@ function main() {
   const updates = readUpdates();
   const news = readNews();
   FOOT_LATEST = footLatest(activeJobs, updates);   // before any page is rendered
+  makeShareImages(jobs, updates);                  // before job/update pages, which link their own image
 
   // Tools, salary pages (calculators that work in the browser)
   const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection,
