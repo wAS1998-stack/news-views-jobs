@@ -296,6 +296,28 @@ const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || process.env.CLAUDE_MODEL 
 const AI = OPENAI_KEY ? "OpenAI" : (ANTHROPIC_KEY ? "Claude" : "");
 const AI_LABEL = AI ? `${AI} (${AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL})` : "off";
 
+/* ---- AI cost meter: every call's token usage is added to data/ai-usage.json (per IST day, last 60 days) when the
+   process exits, so the real daily cost is known instead of guessed. Prices are USD per 1M tokens. */
+const AI_PRICES = { "gpt-4o-mini": [0.15, 0.60], "claude-haiku-4-5-20251001": [1.00, 5.00] };
+const USAGE = { calls: 0, in: 0, out: 0 };
+process.on("exit", () => {
+  if (!USAGE.calls) return;
+  try {
+    const file = path.join(ROOT, "data", "ai-usage.json");
+    let u = {}; try { u = JSON.parse(fs.readFileSync(file, "utf8")); } catch {}
+    const model = AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL;
+    const [pi, po] = (CONFIG.aiPricePerM && [CONFIG.aiPricePerM.in, CONFIG.aiPricePerM.out]) || AI_PRICES[model] || [0.15, 0.60];
+    const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
+    u.model = model; u.pricePerMillion = { in: pi, out: po }; u.days = u.days || {};
+    const d = u.days[day] || { calls: 0, in: 0, out: 0 };
+    d.calls += USAGE.calls; d.in += USAGE.in; d.out += USAGE.out;
+    d.usd = +((d.in * pi + d.out * po) / 1e6).toFixed(4);
+    u.days[day] = d;
+    for (const k of Object.keys(u.days).sort().slice(0, -60)) delete u.days[k];
+    u.note = "Token usage of the site automation's AI calls, per day (IST). usd = estimated cost at pricePerMillion.";
+    fs.writeFileSync(file, JSON.stringify(u, null, 1) + "\n");
+  } catch { /* metering must never break a run */ }
+});
 async function askAI(prompt, { maxTokens = 3000, attempt = 1 } = {}) {
   if (!AI) return null;
   try {
@@ -311,6 +333,7 @@ async function askAI(prompt, { maxTokens = 3000, attempt = 1 } = {}) {
         console.log(`  (OpenAI HTTP ${res.status})`); return null;
       }
       const d = await res.json();
+      USAGE.calls++; USAGE.in += (d.usage && d.usage.prompt_tokens) || 0; USAGE.out += (d.usage && d.usage.completion_tokens) || 0;
       return d.choices?.[0]?.message?.content || "";
     }
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -321,6 +344,7 @@ async function askAI(prompt, { maxTokens = 3000, attempt = 1 } = {}) {
     });
     if (!res.ok) { console.log(`  (Claude HTTP ${res.status})`); return null; }
     const d = await res.json();
+    USAGE.calls++; USAGE.in += (d.usage && d.usage.input_tokens) || 0; USAGE.out += (d.usage && d.usage.output_tokens) || 0;
     return (d.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
   } catch (e) { console.log("  (AI error: " + e.message + ")"); return null; }
 }
