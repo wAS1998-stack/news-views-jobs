@@ -1,24 +1,40 @@
 #!/usr/bin/env node
-/* telegram-info.js — reads the public details of the site's Telegram channel (title, @username or existing invite
-   link, subscriber count) with the bot that already posts there, and saves them to data/telegram.json so the site
-   can show a "Join our Telegram channel" button. Read-only: never creates or revokes invite links. */
+/* telegram-info.js — checks the Telegram bot token and channel (read-only) and saves public details to
+   data/telegram.json: which token clean-up (if any) makes the token valid, the channel title, @username or existing
+   invite link, and subscriber count. Never prints the token; never creates or revokes invite links. */
 const fs = require("fs"), path = require("path");
-const TOKEN = process.env.TELEGRAM_BOT_TOKEN || "", CHAT = process.env.TELEGRAM_CHAT_ID || "";
+const RAW = process.env.TELEGRAM_BOT_TOKEN || "", CHAT_RAW = process.env.TELEGRAM_CHAT_ID || "";
+const variants = {
+  raw: RAW,
+  trimmed: RAW.trim(),
+  unquoted: RAW.trim().replace(/^["']|["']$/g, ""),
+  noBotPrefix: RAW.trim().replace(/^["']|["']$/g, "").replace(/^bot/i, ""),
+  noWhitespace: RAW.replace(/\s+/g, "").replace(/^["']|["']$/g, "").replace(/^bot/i, ""),
+};
 (async () => {
-  const out = { at: new Date().toISOString() };
-  if (!TOKEN || !CHAT) { out.error = "telegram secrets not set"; }
+  const out = { at: new Date().toISOString(), tokenLength: RAW.length, tokenLooksLike: /^\d{6,}:[\w-]{30,}$/.test(variants.noWhitespace) ? "id:secret" : "unexpected format",
+    chatLooksLike: /^@\w+$/.test(CHAT_RAW.trim()) ? "@username" : /^-?\d+$/.test(CHAT_RAW.trim()) ? "numeric id" : "unexpected format", checks: {} };
+  if (!RAW || !CHAT_RAW) { out.error = "telegram secrets not set"; }
   else {
-    const call = async (m, q) => { const r = await fetch(`https://api.telegram.org/bot${TOKEN}/${m}?${new URLSearchParams(q)}`); return r.json(); };
-    try {
-      const c = await call("getChat", { chat_id: CHAT });
+    let good = null;
+    for (const [name, tok] of Object.entries(variants)) {
+      try {
+        const r = await fetch(`https://api.telegram.org/bot${tok}/getMe`); const j = await r.json();
+        out.checks[name] = j.ok ? `ok (@${j.result.username})` : `HTTP ${r.status} ${j.description || ""}`.trim();
+        if (j.ok && !good) good = { name, tok };
+      } catch (e) { out.checks[name] = "error " + e.message; }
+    }
+    out.workingTokenForm = good ? good.name : null;
+    if (good) {
+      const call = async (m, q) => (await fetch(`https://api.telegram.org/bot${good.tok}/${m}?${new URLSearchParams(q)}`)).json();
+      const chat = CHAT_RAW.trim();
+      const c = await call("getChat", { chat_id: chat });
       if (c.ok) {
         const r = c.result;
-        Object.assign(out, { type: r.type, title: r.title || null, username: r.username || null,
-          link: r.username ? `https://t.me/${r.username}` : (r.invite_link || null) });
-        const n = await call("getChatMemberCount", { chat_id: CHAT });
-        if (n.ok) out.members = n.result;
-      } else out.error = String(c.description || "getChat failed").slice(0, 160);
-    } catch (e) { out.error = e.message; }
+        Object.assign(out, { type: r.type, title: r.title || null, username: r.username || null, link: r.username ? `https://t.me/${r.username}` : (r.invite_link || null) });
+        const n = await call("getChatMemberCount", { chat_id: chat }); if (n.ok) out.members = n.result;
+      } else out.chatError = String(c.description || "getChat failed").slice(0, 160);
+    }
   }
   fs.writeFileSync(path.join(__dirname, "..", "data", "telegram.json"), JSON.stringify(out, null, 1) + "\n");
   console.log(JSON.stringify(out));
