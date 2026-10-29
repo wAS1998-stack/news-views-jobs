@@ -1,36 +1,50 @@
 name: Keep updates flowing
-# GitHub creates only a few of the scheduled "Update jobs" runs for this repo (29 Oct: 1 in 7 hours), so each finished
-# run starts the next one so that runs begin ~40 minutes apart.
-# Preferred: the "pace-30m" environment's wait timer (repo Settings -> Environments) delays this job while no runner
-# is used, and the job then starts the next run straight away. Until that timer is set, the job waits here instead
-# (temporary fallback, ~20-25 minutes per cycle). A newer link cancels an older one, so chains never multiply.
+# GitHub creates only a fraction of the scheduled "Update jobs" runs for this repo (29 Oct: 1 in 7 hours), and a chain
+# of runs that start each other is cut off after three links. So this scheduler stays up for about 5.5 hours and
+# starts an "Update jobs" run whenever the last one has finished and began at least 40 minutes ago. Before it stops
+# it starts a fresh scheduler; its own cron and every finished update run also queue one, so there is always a
+# scheduler waiting to take over (only one runs at a time).
 on:
+  schedule:
+    - cron: "7,27,47 * * * *"
   workflow_run:
     workflows: ["Update jobs"]
     types: [completed]
+  workflow_dispatch:
 concurrency:
-  group: chain
-  cancel-in-progress: true
+  group: scheduler
+  cancel-in-progress: false
 permissions:
   actions: write
   contents: read
 jobs:
-  next:
+  schedule:
     runs-on: ubuntu-latest
-    environment: pace-30m
-    timeout-minutes: 45
+    timeout-minutes: 350
     steps:
-      - name: Start the next update run ~40 minutes after the last one started
+      - name: Start an update run every ~40 minutes for 5.5 hours
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
-          started() { gh api "repos/$REPO/actions/workflows/update-jobs.yml/runs?per_page=1" --jq '.workflow_runs[0].created_at'; }
-          age=$(( $(date +%s) - $(date -d "$(started)" +%s) ))
-          if [ "$age" -lt 2400 ]; then
-            echo "Last run started ${age}s ago; waiting $((2400 - age))s (fallback until the pace-30m wait timer is set)."
-            sleep $((2400 - age))
-          fi
-          age=$(( $(date +%s) - $(date -d "$(started)" +%s) ))
-          if [ "$age" -lt 1200 ]; then echo "Another run started ${age}s ago — not starting one more."; exit 0; fi
-          gh workflow run update-jobs.yml --repo "$REPO" --ref main && echo "Next update run started."
+          stop=$(( $(date +%s) + 330 * 60 ))
+          while [ "$(date +%s)" -lt "$stop" ]; do
+            last=$(gh api "repos/$REPO/actions/workflows/update-jobs.yml/runs?per_page=1" --jq '.workflow_runs[0] | "\(.created_at) \(.status)"' 2>/dev/null || echo "")
+            if [ -n "$last" ]; then
+              age=$(( $(date +%s) - $(date -d "${last%% *}" +%s) )); status="${last##* }"
+            else
+              age=99999; status=completed
+            fi
+            if [ "$status" = "completed" ] && [ "$age" -ge 2400 ]; then
+              if gh api -X POST "repos/$REPO/actions/workflows/update-jobs.yml/dispatches" -f ref=main; then
+                echo "$(date -u +%H:%M) started an update run (previous one began $((age / 60)) min ago)"; sleep 180; continue
+              fi
+            fi
+            sleep 60
+          done
+      - name: Hand over to a fresh scheduler
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: gh api -X POST "repos/$REPO/actions/workflows/chain.yml/dispatches" -f ref=main || true
