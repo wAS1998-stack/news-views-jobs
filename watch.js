@@ -27,6 +27,8 @@ const ROOT = __dirname;
 const SRC = path.join(ROOT, "data", "sources-official.json");
 const STATE = path.join(ROOT, "data", "watch-state.json");
 const JOBS = path.join(ROOT, "data", "jobs.json");
+// Job pages retired on purpose (merged duplicates, notices that were not recruitments) must not come back.
+const RETIRED = new Set((() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/jobs\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean); } catch { return []; } })());
 const UPDATES = path.join(ROOT, "data", "updates.json");
 const NEWURLS = path.join(ROOT, "data", "new-urls.txt");
 const SITE_URL = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
@@ -212,7 +214,7 @@ async function main() {
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
       const id = F.cleanSlug(title);
-      if (!id || jobs.some((j) => j.id === id)) { skipped.push("id taken: " + id); continue; }
+      if (!id || jobs.some((j) => j.id === id) || RETIRED.has(id)) { skipped.push("id taken: " + id); continue; }
       const job = Object.fromEntries(Object.entries({ ...o, headline: undefined, is_recruitment: undefined, is_specific_notice: undefined }).filter(([, v]) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && !v.length)));
       const sameHostCands = doc.cands.filter((c) => c.url);
       Object.assign(job, {

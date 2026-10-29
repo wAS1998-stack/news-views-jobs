@@ -278,7 +278,7 @@ a:focus-visible, .search:focus-visible, button:focus-visible {
 
 /* Job cards laid out in a responsive grid where there's room */
 @media (min-width: 720px) {
-  .related .jobs { grid-template-columns: 1fr 1fr; }
+  .related .jobs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
 /* ===========================  v3: articles, FAQ, guides  =========================== */
@@ -597,6 +597,11 @@ html { scroll-behavior: smooth; }
 
 /* ===========================  v11: mobile overflow fix (job cards at scale)  =========================== */
 .job, .update, .job * { min-width: 0; }
+/* a card list is one column the width of the page; a long body name without a short form ("Rajasthan Local Self
+   Government Department") is cut with an ellipsis instead of pushing the cards off the screen */
+.jobs { grid-template-columns: minmax(0, 1fr); }
+.jobs > li { min-width: 0; }
+.org-tag { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .job .meta { flex-wrap: wrap; row-gap: 6px; }
 .job h3, .job .post, .upd-title { overflow-wrap: anywhere; }
 @media (max-width: 560px) {
@@ -828,3 +833,15 @@ html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
 .tg-cta { margin: 18px 0; }
 .tg-cta a { display: block; padding: 14px 16px; border-radius: 12px; background: #E8F4FD; border: 1px solid #B9DDF6; color: #0B5C8F; font-weight: 600; }
 .tg-cta a:hover { text-decoration: underline; }
+
+/* Vacancy tracker bars */
+.bars { list-style: none; padding: 0; margin: 10px 0 34px; display: grid; gap: 8px; }
+.bars li { display: grid; grid-template-columns: minmax(110px, 30%) 1fr auto; align-items: center; gap: 10px; font-size: 14.5px; }
+.bar-l { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-t { background: var(--line); border-radius: 6px; height: 12px; overflow: hidden; }
+.bar-f { display: block; height: 100%; background: var(--saffron); border-radius: 6px; }
+.bar-v { font-family: "Spline Sans Mono", monospace; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.top-list { padding-left: 22px; margin: 10px 0 34px; }
+.top-list li { padding: 6px 0; }
+a.stat-box { text-decoration: none; color: inherit; }
+@media (max-width: 520px) { .bars li { grid-template-columns: 1fr auto; } .bar-t { grid-column: 1 / -1; order: 3; } }

@@ -259,15 +259,58 @@ function gulfOf(job) {
   return GULF.find((g) => g.kw.some((k) => new RegExp(`\\b${k}\\b`).test(t))) || null;
 }
 function isGulf(job) { return !!gulfOf(job); }
+// State recruiting bodies, for notices that carry no location ("RPSC", "UPESSC", "OUSSSC" …).
+const STATE_BODIES = {
+  "uttar-pradesh": /\b(UPSSSC|UPPSC|UPESSC|UPPRPB|UPPCL|UPRVUNL|UPSRTC|UPHESC|UPSESSB|UPBEB|UPNHM)\b/,
+  "bihar": /\b(BPSC|BSSC|CSBC|BPSSC|BCECEB|BSPHCL|BTSC|BSEB|SHSB)\b/,
+  "jharkhand": /\b(JSSC|JPSC|JUVNL)\b/,
+  "rajasthan": /\b(RPSC|RSMSSB|RSSB|RVUNL|RRVUNL|JVVNL|AVVNL|RAJUVAS)\b/,
+  "madhya-pradesh": /\b(MPPSC|MPESB|MPPEB|MPPKVVCL|MPSOS)\b/,
+  "haryana": /\b(HPSC|HSSC|HVPNL|DHBVN|UHBVN)\b/,
+  "punjab": /\b(PPSC|PSSSB|PSPCL|PSTCL)\b/,
+  "himachal-pradesh": /\b(HPPSC|HPRCA|HPSSC|HPSEBL)\b/,
+  "uttarakhand": /\b(UKPSC|UKSSSC|UKMSSB|UJVNL)\b/,
+  "gujarat": /\b(GPSC|GSSSB|GPRB|GSECL|GUVNL|OJAS|GSRTC)\b/,
+  "maharashtra": /\b(MPSC|MAHAGENCO|MAHATRANSCO|MSRTC|MHADA)\b/,
+  "karnataka": /\b(KPSC|KEA|KPTCL|BESCOM)\b/,
+  "tamil-nadu": /\b(TNPSC|TNUSRB|TNMRB|TANGEDCO|TNSTC)\b/,
+  "andhra-pradesh": /\b(APPSC|APSLPRB|APTRANSCO)\b/,
+  "telangana": /\b(TSPSC|TGPSC|TSLPRB|TGLPRB|TSGENCO|TSNPDCL|TSSPDCL)\b/,
+  "odisha": /\b(OPSC|OSSC|OSSSC|OUSSSC|OSEPA|OPTCL|OHPC|OPRB)\b/,
+  "west-bengal": /\b(WBPSC|WBSSC|WBPRB|WBSEDCL|WBHRB)\b/,
+  "assam": /\b(ADRE|APDCL|SEBA)\b|\bAPSC\b(?!.*andhra)/,
+  "chhattisgarh": /\b(CGPSC|CSPDCL|VYAPAM)\b/i,
+  "jammu-kashmir": /\b(JKSSB|JKPSC)\b/,
+  "delhi": /\b(DSSSB|DSEU|DMRC|DJB|NDMC)\b/,
+  "tripura": /\b(TPSC|JRBT)\b/,
+};
+// National banks named after a state still recruit for all of India.
+const NATIONAL_NAMES = /punjab (national|& sind|and sind) bank|bank of maharashtra|central bank|indian (overseas )?bank|state bank|bank of india/i;
+function inferState(job) {
+  const text = `${job.organization || ""} ${job.org_short || ""} ${job.title || ""}`;
+  if (NATIONAL_NAMES.test(text)) return [];
+  const byBody = STATES.filter((s) => STATE_BODIES[s.slug] && STATE_BODIES[s.slug].test(text));
+  if (byBody.length === 1) return byBody;
+  const low = text.toLowerCase();
+  const byName = STATES.filter((s) => s.slug !== "all-india" && new RegExp(`\\b${s.kw[0]}\\b`).test(low));
+  if (byName.length === 1) return byName;
+  if (byName.length > 1) return [];
+  const byCity = STATES.filter((s) => s.slug !== "all-india" && s.kw.slice(1).some((k) => new RegExp(`\\b${k}\\b`).test(low)));
+  return byCity.length === 1 ? byCity : [];
+}
 function statesOf(job) {
   // Overseas roles must never fall into the Indian state buckets.
   if (isGulf(job)) return [];
   const loc = String(job.location || "").toLowerCase();
-  if (!loc) return [STATES[0]];
   // All-India jobs go under the central bucket (anyone can apply regardless of state).
-  if (STATES[0].kw.some((k) => loc.includes(k))) return [STATES[0]];
-  const matched = STATES.filter((s) => s.slug !== "all-india" && s.kw.some((k) => loc.includes(k)));
-  return matched.length ? matched : [STATES[0]];
+  if (loc && STATES[0].kw.some((k) => loc.includes(k))) return [STATES[0]];
+  const matched = loc ? STATES.filter((s) => s.slug !== "all-india" && s.kw.some((k) => loc.includes(k))) : [];
+  if (matched.length) return matched;
+  // Union territories without a page of their own stay in the central bucket (a Kochi employer hiring in Andaman is not a Kerala job).
+  if (/andaman|nicobar|lakshadweep|puducherry|pondicherry|ladakh|chandigarh|dadra|daman|\bdiu\b/.test(loc)) return [STATES[0]];
+  // No location, or one that names no state: the recruiting body usually tells us (a state PSC, a state department).
+  const inferred = inferState(job);
+  return inferred.length ? inferred : [STATES[0]];
 }
 
 
@@ -422,6 +465,10 @@ function foot() {
     <a href="/quiz/">Daily quiz</a>
     <a href="/latest/">Latest jobs</a>
     <a href="/closing-soon/">Closing soon</a>
+    <a href="/walk-in-interview/">Walk-in interviews</a>
+    <a href="/jobs-without-exam/">Jobs without exam</a>
+    <a href="/apprentice/">Apprentice jobs</a>
+    <a href="/vacancy-tracker/">Vacancy tracker</a>
     <a href="/updates/">Updates</a>
     <a href="/updates/answer-key/">Answer keys</a>
     <a href="/feed.xml">RSS</a>${TG ? `\n    <a href="${esc(TG.link)}" target="_blank" rel="noopener">Telegram</a>` : ""}
@@ -820,6 +867,155 @@ function buildClosingSoonPage(jobs) {
   ${list.length ? jobList(list, { moreTitle: "Also closing soon" }) : `<p class="empty">Nothing is closing in the next ten days. See <a href="/latest/">this week's new jobs</a>.</p>`}
 </main>` + foot();
 }
+/* ---- Topic hubs built from the data: big searches ("walk in interview", "govt job without exam", "apprentice
+   vacancy") answered with every matching open job. Matching uses each notice's own title and selection process. */
+const selText = (j) => (Array.isArray(j.selection_process) ? j.selection_process.join(" ") : String(j.selection_process || "")).toLowerCase();
+const TOPIC_HUBS = [
+  { slug: "walk-in-interview", short: "Walk-in interviews", h1: "Walk-in Interview Government Jobs",
+    test: (j) => /walk[- ]?in/i.test(`${j.title} ${j.post_name || ""}`) || /walk[- ]?in/.test(selText(j)),
+    title: (n, y) => `Walk-in Interview Govt Jobs ${y} — ${n} Openings, Dates & Venues`,
+    desc: (n) => `${n} government walk-in interviews open now — hospitals, AIIMS, universities, research institutes and PSUs. Interview dates, venues, eligibility and official notices.`,
+    lede: "Recruitments where you attend an interview on the given date instead of applying online first — common at AIIMS and other hospitals, universities, research institutes and PSUs. Each listing links to the official notice with the date, reporting time, venue and documents to carry.",
+    faq: [
+      ["What is a walk-in interview?", "In a walk-in recruitment you go to the venue on the date and time given in the notification, with your documents and usually a filled application form, and are interviewed the same day. There is normally no online application, although some notices ask you to register or email your details first — always follow the notice."],
+      ["What should I carry to a walk-in interview?", "Carry the documents the notification lists — typically your certificates and mark sheets, a photo ID, passport-size photographs, caste or category certificate if applicable, experience certificates and the application form. Take originals and a set of self-attested copies."],
+      ["Are walk-in government jobs permanent?", "Many walk-in posts are for a fixed term, project or contract, but not all. The notification states the nature and tenure of the post, so check it before you go."],
+    ] },
+  { slug: "jobs-without-exam", short: "Jobs without written exam", h1: "Government Jobs Without a Written Exam",
+    test: (j) => { const s = selText(j); return !!s && !/written|exam|test|cbt|computer[- ]based|prelim|mains|objective|typing|skill/.test(s) && /interview|merit|shortlist|document|walk/.test(s); },
+    title: (n, y) => `Govt Jobs Without Exam ${y} — ${n} Openings (Interview / Merit Based)`,
+    desc: (n) => `${n} open government jobs where selection is by interview, merit or document verification — no written exam, as stated in the official notification.`,
+    lede: "Open recruitments whose official notification lists no written exam: selection is by interview, by merit in the qualifying examination, or by shortlisting and document verification. Many are fixed-term, project or contract posts; the selection process shown on each page comes from the notice itself.",
+    faq: [
+      ["How are candidates selected without an exam?", "Depending on the notification, selection is by interview, by merit (marks in the qualifying examination), or by shortlisting followed by document verification. Each job page shows the selection process stated in its official notice."],
+      ["Are jobs without exams permanent?", "Some are, but many interview- or merit-based posts are contractual, project-based or for a fixed tenure. The notification states the nature of the post."],
+      ["Can the selection process change?", "Yes. If there are many applicants, a recruiting body may add a screening test. Always read the latest notice or corrigendum on the official website."],
+    ] },
+  { slug: "apprentice", short: "Apprentice jobs", h1: "Apprentice Vacancies in Government & PSUs",
+    test: (j) => /apprentice/i.test(`${j.title} ${j.post_name || ""}`),
+    title: (n, y) => `Apprentice Vacancy ${y} — ${n} Govt & PSU Apprenticeships`,
+    desc: (n) => `${n} open apprenticeships in railways, PSUs, banks and government bodies — trade, technician and graduate apprentices, with stipend, eligibility and how to apply.`,
+    lede: "Trade, technician (diploma) and graduate apprenticeships in railways, public-sector companies, banks and government bodies. An apprenticeship is paid training under the Apprentices Act, 1961 — not a permanent job — and usually needs registration on the official apprenticeship portal.",
+    faq: [
+      ["Is an apprenticeship a permanent government job?", "No. An apprenticeship is training for a fixed period with a monthly stipend, under the Apprentices Act, 1961. It gives valuable experience, and some recruiters give weightage to their own apprentices in later recruitment, as stated in their rules."],
+      ["Where do I register for apprenticeships?", "Trade apprentices usually register on the Apprenticeship India portal (apprenticeshipindia.gov.in), and graduate and technician (diploma) apprentices on the NATS portal (nats.education.gov.in). Each notification says which portal to use."],
+      ["Who can apply for apprentice posts?", "It depends on the category: ITI holders for trade apprentices, diploma holders for technician apprentices and graduates for graduate apprentices, usually within an age limit and often only for those who passed recently. Check the notification for the exact eligibility."],
+    ] },
+];
+function buildTopicHub(t, jobs) {
+  const canonical = `${SITE.url}/${t.slug}/`;
+  const list = jobs.filter((j) => statusOf(j).live && t.test(j)).sort(liveFirst);
+  const y = BUILT.getFullYear();
+  const faqs = t.faq.map(([q, a]) => ({ q, a }));
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: t.short, url: canonical }]),
+    { "@context": "https://schema.org", "@type": "CollectionPage", name: t.h1, url: canonical,
+      mainEntity: { "@type": "ItemList", itemListElement: list.slice(0, 50).map((j, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
+    faqLd(faqs)];
+  const others = TOPIC_HUBS.filter((x) => x.slug !== t.slug).map((x) => `<a class="chip" href="/${x.slug}/">${esc(x.short)}</a>`).join("");
+  return head({ title: `${t.title(list.length, y)} | ${SITE.name}`, desc: t.desc(list.length), canonical, ld }) + `
+<main class="wrap" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; ${esc(t.short)}</p>
+  <section class="cat-head">
+    <p class="eyebrow">Updated ${fmtDate(IST_DATE)} &middot; ${list.length} open</p>
+    <h1>${esc(t.h1)} ${y}</h1>
+    <p class="lede">${esc(t.lede)}</p>
+    <p class="tagrow">Also see: ${others} <a class="chip" href="/closing-soon/">Closing soon</a> <a class="chip" href="/latest/">This week's new jobs</a></p>
+  </section>
+  ${list.length ? jobList(list, { moreTitle: "More openings" }) : `<p class="empty">No openings right now — new notifications are added automatically every hour. See <a href="/latest/">this week's new jobs</a>.</p>`}
+  ${faqSection(faqs)}
+</main>` + foot();
+}
+/* ---- Vacancy tracker: live statistics compiled from every notification the site tracks — figures nobody else
+   publishes, so other sites and journalists have a reason to cite (and link to) news-views.in. */
+function buildVacancyTracker(jobs, updates) {
+  const canonical = `${SITE.url}/vacancy-tracker/`;
+  const month = IST_DATE.slice(0, 7);
+  const monthName = new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(month + "-01T00:00:00Z"));
+  const day = (x) => String(x || "").slice(0, 10);
+  const ago = (x) => { const d = daysLeft(day(x)); return d === null ? 9999 : -d; };
+  const posts = (j) => (Number(j.total_vacancies) > 0 ? Number(j.total_vacancies) : 0);
+  // Only genuine new recruitment notices count: not results or marks lists filed as jobs, not notices whose last date
+  // had already passed before the month began, and one entry per recruitment when the same big drive was reported
+  // twice with slightly different counts (same body, within 5%, 1,000+ posts).
+  const RESULTISH = /\b(result|marks|merit list|admit card|answer key|cut ?off|score ?card|reserve list|selection list)\b/i;
+  const genuine = (arr, from) => {
+    const ok = arr.filter((j) => !RESULTISH.test(j.title) && !(j.application_end && day(j.application_end) < from));
+    const kept = [];
+    for (const j of [...ok].sort((a, b) => String(b.published).localeCompare(String(a.published)))) {
+      const dup = posts(j) >= 1000 && kept.some((k) => (orgKey(k) || k.organization) === (orgKey(j) || j.organization) && posts(k) >= 1000 &&
+        Math.abs(posts(k) - posts(j)) / Math.max(posts(k), posts(j)) <= 0.05);
+      if (!dup) kept.push(j);
+    }
+    return kept;
+  };
+  // When a notice came out: its application start date if that is earlier than the day the site first saw it (notices
+  // already open when tracking began), otherwise the day it was first seen. A September notice still open in October
+  // is not counted as an October notification.
+  const released = (j) => { const p = day(j.published), s = day(j.application_start); return /^\d{4}-\d{2}-\d{2}$/.test(s) && s < p ? s : p; };
+  const weekAgo = new Date(Date.parse(IST_DATE + "T00:00:00Z") - 6 * 86400000).toISOString().slice(0, 10);
+  const M = genuine(jobs.filter((j) => released(j).startsWith(month)), month + "-01");
+  const W = genuine(jobs.filter((j) => released(j) >= weekAgo && released(j) <= IST_DATE), weekAgo);
+  const sum = (arr) => arr.reduce((n, j) => n + posts(j), 0);
+  const tally = (arr, keysOf) => {
+    const m = new Map();
+    for (const j of arr) for (const k of keysOf(j)) { const v = m.get(k) || { n: 0, p: 0 }; v.n++; v.p += posts(j); m.set(k, v); }
+    return [...m.entries()].map(([k, v]) => ({ k, ...v })).sort((a, b) => b.p - a.p || b.n - a.n);
+  };
+  const byState = tally(M, (j) => statesOf(j).map((s) => s.name));
+  const byDept = tally(M, (j) => [orgKey(j) || j.organization || "Other"]).slice(0, 15);
+  const byQual = tally(M, (j) => qualsOf(j).map((q) => q.name));
+  const top = [...M].sort((a, b) => posts(b) - posts(a)).filter((j) => posts(j) > 0).slice(0, 10);
+  // last 8 weeks (Monday to Sunday, IST)
+  const today = new Date(IST_DATE + "T00:00:00Z"), dow = (today.getUTCDay() + 6) % 7;
+  const since = SITE.trackingSince || "2026-10-14";   // the day the site began tracking notifications
+  const weeks = [];
+  for (let i = 7; i >= 0; i--) {
+    const start = new Date(today.getTime() - (dow + 7 * i) * 86400000), end = new Date(start.getTime() + 6 * 86400000);
+    const a = start.toISOString().slice(0, 10), b = end.toISOString().slice(0, 10);
+    if (b < since) continue;
+    const inW = genuine(jobs.filter((j) => released(j) >= a && released(j) <= b), a);
+    weeks.push({ label: `${fmtDate(a).replace(/ \d{4}$/, "")}${a < since ? " (partial)" : ""}`, n: inW.length, p: sum(inW) });
+  }
+  const updM = updates.filter((u) => day(u.date).startsWith(month));
+  const updBy = Object.keys(UPDATE_TYPES).map((k) => ({ k: UPDATE_TYPES[k].plural, n: updM.filter((u) => u.type === k).length }));
+  const bars = (rows, val, fmt) => { const max = Math.max(1, ...rows.map(val)); return `<ul class="bars">${rows.map((r) => `<li><span class="bar-l">${esc(r.k || r.label)}</span><span class="bar-t"><span class="bar-f" style="width:${(val(r) / max * 100).toFixed(1)}%"></span></span><span class="bar-v">${fmt(r)}</span></li>`).join("")}</ul>`; };
+  const fmtNP = (r) => `${inr(r.p)} posts · ${r.n}`;
+  const title = `Govt Job Vacancy Tracker ${monthName}: ${inr(sum(M))} Posts in ${inr(M.length)} Notifications`;
+  const desc = `Live statistics of Indian government job notifications in ${monthName}: ${inr(M.length)} notifications and ${inr(sum(M))} posts so far — by state, department and qualification, with the biggest recruitments. Updated hourly.`;
+  const ld = [breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Vacancy tracker", url: canonical }]),
+    { "@context": "https://schema.org", "@type": "Dataset", name: `Indian government job vacancy statistics — ${monthName}`, description: desc, url: canonical,
+      creator: { "@type": "Organization", name: SITE.brand, url: SITE.url + "/" }, temporalCoverage: `${month}-01/${IST_DATE}`, spatialCoverage: "India",
+      variableMeasured: ["Number of recruitment notifications", "Number of posts (vacancies)"], isAccessibleForFree: true, dateModified: BUILT.toISOString() }];
+  return head({ title: `${title} | ${SITE.name}`, desc, canonical, ld }) + `
+<main class="wrap article" id="main">
+  <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; Vacancy tracker</p>
+  <h1>Government Job Vacancy Tracker — ${esc(monthName)}</h1>
+  <p class="lede">Every central and state government recruitment notification tracked by ${esc(SITE.brand)} this month, added up. Updated ${fmtDate(IST_DATE)}, ${IST_TIME} IST.</p>
+  <div class="stats" aria-label="This month">
+    <div class="stat-box"><span class="n">${inr(M.length)}</span><span class="l">New notifications in ${esc(monthName.split(" ")[0])}</span></div>
+    <div class="stat-box"><span class="n">${inr(sum(M))}</span><span class="l">Posts in ${esc(monthName.split(" ")[0])}</span></div>
+    <div class="stat-box"><span class="n">${inr(W.length)}</span><span class="l">New notifications, last 7 days</span></div>
+    <div class="stat-box"><span class="n">${inr(updM.length)}</span><span class="l">Results, admit cards &amp; keys</span></div>
+  </div>
+  <h2 class="section-h">Biggest recruitments this month</h2>
+  <ol class="top-list">${top.map((j) => `<li><a href="/jobs/${esc(j.id)}/">${esc(j.title)}</a> <span class="jl-meta">${inr(posts(j))} posts${j.application_end ? ` &middot; last date ${fmtDate(j.application_end)}` : ""}</span></li>`).join("")}</ol>
+  <h2 class="section-h">Posts by state</h2>
+  ${bars(byState.slice(0, 20), (r) => r.p, fmtNP)}
+  <h2 class="section-h">Top recruiting departments</h2>
+  ${bars(byDept, (r) => r.p, fmtNP)}
+  <h2 class="section-h">By qualification</h2>
+  ${bars(byQual, (r) => r.p, fmtNP)}
+  <h2 class="section-h">Notifications per week</h2>
+  ${bars(weeks, (r) => r.n, (r) => `${r.n} · ${inr(r.p)} posts`)}
+  <h2 class="section-h">Results, admit cards and answer keys this month</h2>
+  ${bars(updBy, (r) => r.n, (r) => String(r.n))}
+  <div class="prose">
+    <h2 class="section-h">How these numbers are counted</h2>
+    <p>Figures cover the recruitment notifications ${esc(SITE.brand)} tracked from official websites and job-news sources since the start of the month (dates in IST; tracking began on ${fmtDate(since)}). A notice counts in the month (or week) it came out — its application start date when known — so a notification from September that is still open is not counted again in October. Results, marks lists and notices whose last date had already passed are not counted, and a big recruitment reported twice is counted once. Weeks before tracking began are incomplete and marked “partial”. "Posts" is the number of vacancies stated in each notice; notices that do not state a number are counted as notifications but add no posts. A recruitment open to candidates from several states is counted in each of them, so the state rows add up to more than the total. Duplicate reports of the same recruitment are merged. See <a href="/editorial-policy/">how we verify notifications</a>.</p>
+    <p>You are welcome to quote these figures — please link to this page as the source.</p>
+  </div>
+</main>` + foot();
+}
 function buildUpdatesIndex(updates) {
   const canonical = SITE.url + "/updates/";
   const groups = Object.keys(UPDATE_TYPES).map((k) => {
@@ -1067,13 +1263,14 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
     <nav class="hero-quick" aria-label="Browse by education">
       <span class="hq-label">Browse:</span>
       ${QUALS.map((q) => `<a class="hq-pill" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
+      ${TOPIC_HUBS.map((t) => `<a class="hq-pill" href="/${t.slug}/">${esc(t.short)}</a>`).join("")}
     </nav>
     ${tgCta("every new notification")}
   </section>
 
   <div class="stats" aria-label="At a glance">
     <div class="stat-box"><span class="n">${live.length}</span><span class="l">Live notifications</span></div>
-    <div class="stat-box"><span class="n">${totalPosts ? inr(totalPosts) + "+" : "—"}</span><span class="l">Total vacancies</span></div>
+    <a class="stat-box" href="/vacancy-tracker/"><span class="n">${totalPosts ? inr(totalPosts) + "+" : "—"}</span><span class="l">Total vacancies &rarr;</span></a>
     <div class="stat-box"><span class="n">${orgs.length}</span><span class="l">Departments</span></div>
     <div class="stat-box"><span class="n">Daily</span><span class="l">Updated &amp; free</span></div>
   </div>
@@ -1430,7 +1627,7 @@ function buildLatestSitemap({ jobs, updates, news }) {
   const fresh = (x) => { const d = day(x) && daysLeft(day(x)); return d !== null && d !== undefined && d <= 0 && d >= -2; };
   const urls = [];
   const add = (p, mod) => urls.push(`<url><loc>${SITE.url}/${p}</loc><lastmod>${mod}</lastmod></url>`);
-  for (const h of ["", "latest/", "jobs/", "closing-soon/", "updates/", ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`), "news/"]) add(h, IST_DATE);
+  for (const h of ["", "latest/", "jobs/", "closing-soon/", ...TOPIC_HUBS.map((t) => `${t.slug}/`), "vacancy-tracker/", "updates/", ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`), "news/"]) add(h, IST_DATE);
   // English pages only: while Google's crawl budget for the site is small, the fresh list points it at the
   // primary job/result pages first (the Hindi twins stay in sitemap.xml and are linked via hreflang).
   for (const j of jobs) if (fresh(j.published)) add(`jobs/${j.id}/`, day(j.published));
@@ -1480,7 +1677,7 @@ function buildIndexQueue({ jobs, updates }) {
     .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
   const out = [];
   while (J.length || U.length) { out.push(...J.splice(0, 2)); out.push(...U.splice(0, 1)); }
-  out.push(...["latest/", "closing-soon/", "updates/result/", "updates/admit-card/", "updates/answer-key/", "jobs/", "news/"].map((p) => `${SITE.url}/${p}`));
+  out.push(...["latest/", "closing-soon/", ...TOPIC_HUBS.map((t) => `${t.slug}/`), "updates/result/", "updates/admit-card/", "updates/answer-key/", "jobs/", "news/"].map((p) => `${SITE.url}/${p}`));
   return `# news-views.in — pages to request indexing for, most important first (built ${IST_DATE} ${IST_TIME} IST)\n` + [...new Set(out)].join("\n") + "\n";
 }
 // RSS feed of the newest jobs AND results/admit cards. Google accepts RSS as a sitemap and re-reads feeds often;
@@ -2028,6 +2225,8 @@ function main() {
   write("latest/index.html", buildLatestPage(activeJobs));
   write("jobs/index.html", buildAllJobsPage(activeJobs));
   write("closing-soon/index.html", buildClosingSoonPage(activeJobs));
+  for (const t of TOPIC_HUBS) write(`${t.slug}/index.html`, buildTopicHub(t, activeJobs));
+  write("vacancy-tracker/index.html", buildVacancyTracker(jobs, updates));
 
   const cats = [];
   cats.push({ kind: "news", slug: "" });
@@ -2092,6 +2291,8 @@ function main() {
     ...ALL_QUIZ.map((z) => `quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.path.replace(/index\.html$/, "")),
     "closing-soon/",
+    ...TOPIC_HUBS.map((t) => `${t.slug}/`),
+    "vacancy-tracker/",
     ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
     ...updates.map((u) => `updates/${u.id}/`),
     ...guides.map((g) => `guides/${g.slug}/`),

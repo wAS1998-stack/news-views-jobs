@@ -36,10 +36,13 @@ function classify(title) {
   if (/प्रवेश ?पत्र|एडमिट कार्ड|हॉल टिकट/i.test(s)) return "admit-card";
   if (/परिणाम|रिजल्ट|मेरिट सूची|चयन सूची|कट ?ऑफ/i.test(s)) return "result";
   if (/परीक्षा (तिथि|कार्यक्रम)|साक्षात्कार (कार्यक्रम|तिथि)/i.test(s)) return "exam-date";
-  if (/admit card|call letter|hall ticket|city intimation|exam city/i.test(s)) return "admit-card";
+  if (/admit card|call letter|hall ticket|city intimation|exam city|application status|mock test/i.test(s)) return "admit-card";
   if (/date (change|extended|postponed)|postpone|reschedul|revised (exam )?(date|schedule)|exam.{0,20}date/i.test(s) && !/recruit|advt|advertisement|vacanc/i.test(s)) return "exam-date";
-  if (/result|merit list|rank list|cut[- ]?off|short ?list|marks (obtained|of)|score ?card/i.test(s)) return "result";
+  if (/result|merit list|rank list|cut[- ]?off|short ?list|marks (obtained|of)|score ?card|marks? list|provisional marks|\bfinal marks\b|\bmarks\b.{0,12}\b(out|released|list|pdf)\b|reserve list|select(ion)? list|final selection|waiting list/i.test(s)) return "result";
   if (/exam date|exam schedule|exam from|interview schedule|interview date|dv schedule|document verification|\bdv date|walk-?in date|exam city/i.test(s)) return "exam-date";
+  // later stages of a recruitment that is already listed (skill/typing/physical tests, document upload, correction window)
+  if (/(skill|typing|physical|stenography|shorthand|trade) test|\bpet\b|\bpst\b|documents? upload|correction window|exam cent(re|er)s?/i.test(s) &&
+      !/recruit|advt|advertisement|vacanc|online form|apply online/i.test(s)) return "exam-date";
   return "job";
 }
 
@@ -309,6 +312,8 @@ async function toJob(item, existingIds, fingerprints) {
 async function main() {
   const existing = JSON.parse(fs.readFileSync(DATA, "utf8"));
   const ids = new Set(existing.map((j) => j.id));
+  // Job pages that were retired on purpose (merged duplicates, notices that were not recruitments) stay retired.
+  try { for (const [from] of JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8"))) { const m = /^\/jobs\/([^/]+)\/$/.exec(from); if (m) ids.add(m[1]); } } catch {}
   EXISTING_FOR_DUPES = existing;
   const fps = new Set(existing.map((j) => fingerprint(j.title)));
   const feeds = loadFeeds();

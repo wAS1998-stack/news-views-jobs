@@ -404,7 +404,14 @@ const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this we
 /** Evergreen listicles, not a notification ("Latest High Court Jobs 2026 – Court Vacancies in India",
  *  "Government Jobs Without Exam", "Earn Money Online…"). Only rejected when the title names no post count. */
 const GENERIC_LIST = /\blatest\b.*\b(jobs?|vacancies)\b|\bjobs? without exam\b|\bjob opportunities in\b|\bearn money\b|\bwork from home\b|\b(govt|government|sarkari) jobs list\b/i;
-const isGenericList = (title) => GENERIC_LIST.test(String(title || "")) && !/\b\d[\d,]*\+?\s*(posts?|vacanc\w*|seats?|openings?)\b/i.test(String(title || ""));
+// Evergreen explainers ("NABARD Grade A Eligibility Criteria 2026 - Check Age Limit…") are articles, not notifications.
+const EVERGREEN = /\b(eligibility criteria|syllabus|exam pattern|salary (structure|details|slip)|previous year (question )?papers?|preparation (tips|strategy)|how to prepare|books? list|selection process explained)\b/i;
+const isGenericList = (title) => {
+  const t = String(title || "");
+  const counted = /\b\d[\d,]*\+?\s*(posts?|vacanc\w*|seats?|openings?)\b/i.test(t);
+  if (GENERIC_LIST.test(t) && !counted) return true;
+  return EVERGREEN.test(t) && !counted && !/recruit|vacanc|apply|online form|notification|bharti|भर्ती|walk[- ]?in/i.test(t);
+};
 
 /** Same announcement from two feeds ("HPSC HCS Final Result 2026 Out - Check…" vs
  *  "HPSC HCS and Allied Services Final Result 2026"): compare the subject words before the
