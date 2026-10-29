@@ -1,16 +1,16 @@
 name: Keep updates flowing
-# GitHub creates only ~4-6 of the scheduled "Update jobs" runs a day for this repo, however many cron slots there
-# are, so each finished run starts the next one ~30 minutes later. The delay comes from the "pace-30m" environment's
-# wait timer (Settings -> Environments), so no runner sits idle while waiting. Safety: if the wait timer is missing,
-# the job sees that the last run started under 25 minutes ago and stops instead of looping; the cron slots in
-# update-jobs.yml remain the backstop either way.
+# GitHub creates only a few of the scheduled "Update jobs" runs for this repo (29 Oct: 1 in 7 hours), so each finished
+# run starts the next one so that runs begin ~40 minutes apart.
+# Preferred: the "pace-30m" environment's wait timer (repo Settings -> Environments) delays this job while no runner
+# is used, and the job then starts the next run straight away. Until that timer is set, the job waits here instead
+# (temporary fallback, ~20-25 minutes per cycle). A newer link cancels an older one, so chains never multiply.
 on:
   workflow_run:
     workflows: ["Update jobs"]
     types: [completed]
 concurrency:
   group: chain
-  cancel-in-progress: true     # one pending link at a time, so chains never multiply
+  cancel-in-progress: true
 permissions:
   actions: write
   contents: read
@@ -18,12 +18,19 @@ jobs:
   next:
     runs-on: ubuntu-latest
     environment: pace-30m
+    timeout-minutes: 45
     steps:
-      - name: Start the next update run, unless one started recently
+      - name: Start the next update run ~40 minutes after the last one started
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
-          last=$(gh api "repos/${{ github.repository }}/actions/workflows/update-jobs.yml/runs?per_page=1" --jq '.workflow_runs[0].created_at')
-          age=$(( $(date +%s) - $(date -d "$last" +%s) ))
-          if [ "$age" -lt 1500 ]; then echo "Last run started ${age}s ago — not starting another (is the pace-30m wait timer set?)."; exit 0; fi
-          gh workflow run update-jobs.yml --repo "${{ github.repository }}" --ref main && echo "Next update run started (previous one began ${age}s ago)."
+          started() { gh api "repos/$REPO/actions/workflows/update-jobs.yml/runs?per_page=1" --jq '.workflow_runs[0].created_at'; }
+          age=$(( $(date +%s) - $(date -d "$(started)" +%s) ))
+          if [ "$age" -lt 2400 ]; then
+            echo "Last run started ${age}s ago; waiting $((2400 - age))s (fallback until the pace-30m wait timer is set)."
+            sleep $((2400 - age))
+          fi
+          age=$(( $(date +%s) - $(date -d "$(started)" +%s) ))
+          if [ "$age" -lt 1200 ]; then echo "Another run started ${age}s ago — not starting one more."; exit 0; fi
+          gh workflow run update-jobs.yml --repo "$REPO" --ref main && echo "Next update run started."
