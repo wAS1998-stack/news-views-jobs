@@ -1,0 +1,21 @@
+name: Inspect Google index status
+# On demand: what Google knows about a sample of our pages (indexed? crawled? JobPosting detected?).
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - name: Inspect URLs
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: node tools-dev/inspect-urls.js
+      - name: Save result (no site build)
+        run: |
+          git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
+          git add data/url-inspection.json && git commit -q -m "Index inspection [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main || true
