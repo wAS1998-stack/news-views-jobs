@@ -834,5 +834,45 @@
   [
     "/hi/jobs/bpsc-tre-school-teacher-from-september-2026/",
     "/hi/jobs/bpsc-tre-out-school-teacher-2026/"
+  ],
+  [
+    "/contact-us",
+    "/contact/"
+  ],
+  [
+    "/contact-us/",
+    "/contact/"
+  ],
+  [
+    "/about-us",
+    "/about/"
+  ],
+  [
+    "/about-us/",
+    "/about/"
+  ],
+  [
+    "/author/*",
+    "/about/"
+  ],
+  [
+    "/category/education",
+    "/guides/"
+  ],
+  [
+    "/category/education/",
+    "/guides/"
+  ],
+  [
+    "/category/education/*",
+    "/guides/"
+  ],
+  [
+    "/category/uncategorized",
+    "/"
+  ],
+  [
+    "/category/uncategorized/",
+    "/"
   ]
 ]
