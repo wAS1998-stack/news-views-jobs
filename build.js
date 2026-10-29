@@ -1351,22 +1351,46 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
     urls.map((u) => `<url><loc>${u.loc}</loc><lastmod>${u.mod}</lastmod></url>`).join("") +
     `</urlset>`;
 }
-function buildFeed(jobs) {
-  const sorted = [...jobs].sort((a, b) => (b.published || "").localeCompare(a.published || "")).slice(0, 30);
-  const items = sorted.map((j) => `
-  <item>
-    <title>${esc(j.title)}</title>
-    <link>${SITE.url}/jobs/${j.id}/</link>
-    <guid isPermaLink="true">${SITE.url}/jobs/${j.id}/</guid>
-    <pubDate>${new Date((j.published || BUILT.toISOString().slice(0,10)) + "T09:00:00+05:30").toUTCString()}</pubDate>
-    <description>${esc(j.summary || j.post_name || j.title)}</description>
-  </item>`).join("");
+/* Fresh-URL sitemap: only pages published today and the two days before (IST), plus the hubs that list them.
+   It stays small and is re-submitted to Search Console after every deploy (notify-search.js), so Google
+   can find brand-new pages without wading through the full sitemap. Dates are the pages' own dates. */
+function buildLatestSitemap({ jobs, updates, news }) {
+  const day = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
+  const fresh = (x) => { const d = day(x) && daysLeft(day(x)); return d !== null && d !== undefined && d <= 0 && d >= -2; };
+  const urls = [];
+  const add = (p, mod) => urls.push(`<url><loc>${SITE.url}/${p}</loc><lastmod>${mod}</lastmod></url>`);
+  for (const h of ["", "latest/", "jobs/", "closing-soon/", "updates/", ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`), "news/"]) add(h, IST_DATE);
+  // English pages only: while Google's crawl budget for the site is small, the fresh list points it at the
+  // primary job/result pages first (the Hindi twins stay in sitemap.xml and are linked via hreflang).
+  for (const j of jobs) if (fresh(j.published)) add(`jobs/${j.id}/`, day(j.published));
+  for (const u of updates) if (fresh(u.date)) add(`updates/${u.id}/`, day(u.date));
+  for (const a of news) if (fresh(a.date)) add(`news/${a.id}/`, day(a.date));
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>\n`;
+}
+// RSS feed of the newest jobs AND results/admit cards. Google accepts RSS as a sitemap and re-reads feeds often;
+// the WebSub hub link lets notify-search.js announce each update the moment a deploy is live.
+function buildFeed(jobs, updates = []) {
+  const items = [
+    ...jobs.map((j) => ({ title: j.title, url: `${SITE.url}/jobs/${j.id}/`, date: j.published, desc: j.summary || j.post_name || j.title })),
+    ...updates.map((u) => ({ title: u.title, url: `${SITE.url}/updates/${u.id}/`, date: u.date, desc: u.summary || u.title })),
+  ].filter((x) => /^\d{4}-\d{2}-\d{2}/.test(String(x.date || ""))).sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 60);
+  const when = (d) => new Date(Math.min(Date.parse(String(d).slice(0, 10) + "T09:00:00+05:30"), BUILT.getTime())).toUTCString();
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
-  <title>${esc(SITE.brand)} — Government Jobs</title>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+  <title>${esc(SITE.brand)} — Government Jobs, Results &amp; Admit Cards</title>
   <link>${SITE.url}/</link>
+  <atom:link href="${SITE.url}/feed.xml" rel="self" type="application/rss+xml"/>
+  <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
   <description>${esc(SITE.tagline)}</description>
-  <language>en-in</language>${items}
+  <language>en-in</language>
+  <lastBuildDate>${BUILT.toUTCString()}</lastBuildDate>${items.map((x) => `
+  <item>
+    <title>${esc(x.title)}</title>
+    <link>${x.url}</link>
+    <guid isPermaLink="true">${x.url}</guid>
+    <pubDate>${when(x.date)}</pubDate>
+    <description>${esc(x.desc)}</description>
+  </item>`).join("")}
 </channel></rss>`;
 }
 
@@ -1961,7 +1985,8 @@ function main() {
     ...Object.keys(pages).map((s) => `${SITE.url}/${s}/`),
   ];
   write("all-urls.txt", [...new Set(allUrls)].join("\n") + "\n");
-  write("feed.xml", buildFeed(jobs));
+  write("feed.xml", buildFeed(jobs, updates));
+  write("sitemap-latest.xml", buildLatestSitemap({ jobs, updates, news }));
   write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
 
   // 301s for pages that were removed or merged (off-topic, duplicates, re-classified),
@@ -2012,7 +2037,7 @@ function main() {
   </section>
 </main>` + foot());
 
-  write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
+  write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\n`);
   if (SITE.adsenseId) {
     const pub = SITE.adsenseId.replace(/^ca-/, "");
     write("ads.txt", `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`);

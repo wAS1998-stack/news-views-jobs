@@ -147,6 +147,12 @@ jobs:
           WAIT_SHA: ${{ steps.commit.outputs.sha }}
         run: node wait-deploy.js
 
+      - name: Tell Google where the new pages are (fresh sitemap + feed)
+        if: steps.commit.outputs.built == 'true'
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: node notify-search.js
+
       - name: Purge Cloudflare cache once the new build is live
         if: steps.commit.outputs.built == 'true'
         env:
@@ -172,10 +178,10 @@ jobs:
         if: steps.commit.outputs.built == 'true'
         run: node indexnow.js
 
-      - name: Save Telegram posted-history (so nothing is posted twice)
+      - name: Save Telegram posted-history and notification results (so nothing is posted twice)
         if: steps.commit.outputs.built == 'true'
         run: |
-          git add data/posted.json
+          git add data/posted.json data/last-run.json
           if git diff --cached --quiet; then echo "Nothing to save."; exit 0; fi
           git commit -q -m "Auto: telegram posted-history [CF-Pages-Skip]"
           for i in 1 2 3; do

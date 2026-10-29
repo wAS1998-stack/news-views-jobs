@@ -90,7 +90,9 @@ async function main() {
       source = "new-urls.txt";
     } catch { /* fall through */ }
   }
-  if (!urls.length) {
+  // Re-pinging every job is only done on explicit request: a run with no new jobs must not spend the daily
+  // quota re-announcing old pages (Google treats repeated, unchanged notifications as abuse of the API).
+  if (!urls.length && process.env.PING_ALL === "1") {
     try {
       const jobs = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "jobs.json"), "utf8"));
       urls = jobs.filter((j) => j && j.id).map((j) => `${SITE_URL}/jobs/${j.id}/`);
@@ -118,6 +120,7 @@ async function main() {
     await new Promise((r) => setTimeout(r, 120)); // gentle pacing
   }
   console.log(`Indexing API: submitted ${ok} job URL(s) to Google${fail ? `, ${fail} failed/limited` : ""}.`);
+  try { require("./lib.js").logRun("indexing-api", { ok: fail === 0, submitted: ok, failed: fail, source }); } catch { /* logging is optional */ }
 }
 
 main().catch((e) => { console.log("Indexing API error (non-fatal): " + e.message); });
