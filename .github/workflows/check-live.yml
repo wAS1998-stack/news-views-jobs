@@ -15,7 +15,9 @@ jobs:
           dom=$(curl -fsS -H 'Cache-Control: no-cache' "https://news-views.in/version.json?t=$t" || echo '{"error":"fetch failed"}')
           pages=$(curl -fsS -H 'Cache-Control: no-cache' "https://news-views-jobs.pages.dev/version.json?t=$t" || echo '{"error":"fetch failed"}')
           hdr=$(curl -fsSI "https://news-views.in/?t=$t" | tr -d '\r' | grep -iE '^(cf-cache-status|age|cache-control|last-modified|cf-ray):' | tr '\n' ';' || true)
-          printf '{"checked":"%s","domain":%s,"pages":%s,"homepageHeaders":"%s"}\n' "$(date -u +%FT%TZ)" "$dom" "$pages" "$hdr" > data/live-check.json
+          files=""; for f in robots.txt sitemap.xml sitemap-latest.xml feed.xml index-queue.txt; do c=$(curl -s -o /tmp/f -w '%{http_code}' "https://news-views.in/$f?t=$t"); files="$files$f:$c:$(wc -c < /tmp/f)B;"; done
+          q=$(curl -fsS "https://news-views.in/index-queue.txt?t=$t" | grep -c '^https' || true)
+          printf '{"checked":"%s","domain":%s,"pages":%s,"homepageHeaders":"%s","files":"%s","queueUrls":%s}\n' "$(date -u +%FT%TZ)" "$dom" "$pages" "$hdr" "$files" "${q:-0}" > data/live-check.json
           cat data/live-check.json
       - name: Save result (no site build)
         run: |
