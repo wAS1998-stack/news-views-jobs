@@ -36,6 +36,10 @@ const variants = {
       } else out.chatError = String(c.description || "getChat failed").slice(0, 160);
     }
   }
-  fs.writeFileSync(path.join(__dirname, "..", "data", "telegram.json"), JSON.stringify(out, null, 1) + "\n");
-  console.log(JSON.stringify(out));
+  // Write only when something changed or once a day, so frequent runs don't create commit noise.
+  const file = path.join(__dirname, "..", "data", "telegram.json");
+  let prev = {}; try { prev = JSON.parse(fs.readFileSync(file, "utf8")); } catch {}
+  const same = (a, b) => JSON.stringify({ ...a, at: 0, checks: 0, members: 0 }) === JSON.stringify({ ...b, at: 0, checks: 0, members: 0 });
+  if (!same(prev, out) || !prev.at || Date.now() - Date.parse(prev.at) > 86400000) fs.writeFileSync(file, JSON.stringify(out, null, 1) + "\n");
+  console.log(JSON.stringify({ ...out, checks: undefined }));
 })();

@@ -384,6 +384,11 @@ function makeShareImages(jobs, updates) {
   } catch (e) { console.log("Share images skipped: " + e.message); }
   OG_SET = new Set(items.map((it) => it.file).filter((f) => fs.existsSync(path.join(DIST, f))));
 }
+// Telegram channel (data/telegram.json, refreshed by tools-dev/telegram-info.js). The "Join" buttons appear only
+// once the channel is really reachable by the bot, so nothing broken is ever shown.
+let TG = null;
+function readTelegram() { try { const t = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "telegram.json"), "utf8")); return t && t.link ? t : null; } catch { return null; } }
+const tgCta = (what) => TG ? `<p class="tg-cta"><a href="${esc(TG.link)}" target="_blank" rel="noopener">📢 Get ${what} first on Telegram — join ${esc(TG.username ? "@" + TG.username : (TG.title || "our channel"))}${TG.members >= 100 ? ` (${inr(TG.members)} members)` : ""} &rarr;</a></p>` : "";
 // Newest pages, linked from the footer of every page. Googlebot spends most of its visits re-reading pages it already
 // knows; this way each of those visits also passes it the newest jobs and results (set once per build in main()).
 let FOOT_LATEST = "";
@@ -419,7 +424,7 @@ function foot() {
     <a href="/closing-soon/">Closing soon</a>
     <a href="/updates/">Updates</a>
     <a href="/updates/answer-key/">Answer keys</a>
-    <a href="/feed.xml">RSS</a>
+    <a href="/feed.xml">RSS</a>${TG ? `\n    <a href="${esc(TG.link)}" target="_blank" rel="noopener">Telegram</a>` : ""}
   </span>
   <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}</p>
 </div></footer>
@@ -707,6 +712,7 @@ function buildUpdatePage(u, all) {
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
     ${details.length ? `<div class="prose"><h2 class="section-h">What candidates should know</h2>${details.map((d) => `<p>${esc(d)}</p>`).join("")}</div>` : ""}
     ${(() => { const ex = require("./exams.js").examOf(u.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates &rarr;</a></p>` : ""; })()}
+    ${tgCta("results and admit cards")}
     ${faqSection(faqs)}
     <p class="smallprint">Always verify on the official website — ${esc(SITE.brand)} summarises publicly announced updates and is not a government body.</p>
     ${relJobs.length ? `<section class="related"><h2 class="section-h">Related jobs</h2><ul class="jobs">${relJobs.map(jobCard).join("")}</ul></section>` : ""}
@@ -1022,7 +1028,8 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   const ld = [
     { "@context": "https://schema.org", "@type": "Organization", name: SITE.brand,
       url: SITE.url + "/", logo: SITE.url + "/icon-512.png",
-      description: `${SITE.brand} is an independent platform that publishes the latest Indian government job notifications and in-depth, fact-checked preparation guides. It is not a government body and never charges candidates a fee.` },
+      description: `${SITE.brand} is an independent platform that publishes the latest Indian government job notifications and in-depth, fact-checked preparation guides. It is not a government body and never charges candidates a fee.`,
+      ...(TG && TG.username ? { sameAs: [`https://t.me/${TG.username}`] } : {}) },
     { "@context": "https://schema.org", "@type": "WebSite", name: SITE.brand, url: SITE.url + "/",
       potentialAction: { "@type": "SearchAction", target: `${SITE.url}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
     { "@context": "https://schema.org", "@type": "CollectionPage",
@@ -1061,6 +1068,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
       <span class="hq-label">Browse:</span>
       ${QUALS.map((q) => `<a class="hq-pill" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("")}
     </nav>
+    ${tgCta("every new notification")}
   </section>
 
   <div class="stats" aria-label="At a glance">
@@ -1364,6 +1372,7 @@ function buildJob(job, all) {
     ${job.official_website && job.apply_link && hostOf(job.official_website) !== hostOf(job.apply_link) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Official website</a>` : ""}
   </div>
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
+  ${tgCta("new government jobs")}
 
   ${(() => { const ex = require("./exams.js").examOf(job.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates — admit card, answer key, result &rarr;</a></p>` : ""; })()}
   ${prepTips(job)}
@@ -1982,6 +1991,7 @@ function main() {
   ALL_JOBS = jobs;
   const updates = readUpdates();
   const news = readNews();
+  TG = readTelegram();
   FOOT_LATEST = footLatest(activeJobs, updates);   // before any page is rendered
   makeShareImages(jobs, updates);                  // before job/update pages, which link their own image
 

@@ -823,3 +823,8 @@ html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
 .foot-latest li { padding: 4px 0; line-height: 1.35; }
 .foot-latest a { color: var(--ink); }
 .site-foot .foot-edu { margin: 0; width: 100%; }
+
+/* Telegram "join" call-to-action (shown only when the channel is set up) */
+.tg-cta { margin: 18px 0; }
+.tg-cta a { display: block; padding: 14px 16px; border-radius: 12px; background: #E8F4FD; border: 1px solid #B9DDF6; color: #0B5C8F; font-weight: 600; }
+.tg-cta a:hover { text-decoration: underline; }

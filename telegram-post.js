@@ -22,8 +22,9 @@ const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 
 const SITE = (CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const BRAND = CONFIG.brand || CONFIG.name || "News-Views";
 
-const TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
-const CHAT = process.env.TELEGRAM_CHAT_ID || "";
+// Tolerate common paste slips in the secrets: spaces/newlines, quotes, or a leading "bot".
+const TOKEN = (process.env.TELEGRAM_BOT_TOKEN || "").replace(/\s+/g, "").replace(/^["']|["']$/g, "").replace(/^bot(?=\d)/i, "");
+const CHAT = (process.env.TELEGRAM_CHAT_ID || "").trim().replace(/^["']|["']$/g, "");
 const MAX_POSTS = Number(process.env.TELEGRAM_MAX || CONFIG.maxTelegramPerRun || 8);
 
 const JOBS = path.join(ROOT, "data", "jobs.json");
