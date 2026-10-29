@@ -2391,7 +2391,9 @@ function main() {
   </section>
 </main>` + foot());
 
-  write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
+  write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
+  // Only /api/* runs as a Cloudflare Pages Function (functions/); every page and file stays a free static asset.
+  write("_routes.json", JSON.stringify({ version: 1, include: ["/api/*"], exclude: [] }) + "\n");
   if (SITE.adsenseId) {
     const pub = SITE.adsenseId.replace(/^ca-/, "");
     write("ads.txt", `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`);
