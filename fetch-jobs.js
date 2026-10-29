@@ -227,12 +227,27 @@ function fingerprint(title) {
 }
 let EXISTING_FOR_DUPES = [];
 const normOrg = (x) => String(x.org_short || x.organization || "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "").slice(0, 14);
+// Organisation identity for duplicate checks: the FULL normalised name (the old 14-character prefix made every
+// "Indian Institute of ..." look like one body), plus a long short-form. Prefix match tolerates suffixes such as
+// "Railway Recruitment Board" vs "Railway Recruitment Boards (RRBs), Ministry of Railways".
+const orgNorm = (s) => String(s || "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "").replace(/s$/, "");
+const orgKeys = (x) => [orgNorm(x.organization), orgNorm(x.org_short)].filter((k, i) => k.length >= (i === 0 ? 4 : 6));
+const sameOrg = (a, b) => orgKeys(a).some((k1) => orgKeys(b).some((k2) => k1 === k2 ||
+  (Math.min(k1.length, k2.length) >= 12 && (k1.startsWith(k2) || k2.startsWith(k1)))));
+const normPost = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\b(posts?|vacanc(y|ies)|recruitment|and|of|the|for)\b/g, " ").replace(/\s+/g, " ").trim();
 function isDuplicate(job) {
   const v = Number(job.total_vacancies) || 0;
-  if (v < 2) return false;
-  const o = normOrg(job), t = new Date(job.published || Date.now()).getTime();
-  return EXISTING_FOR_DUPES.some((x) => normOrg(x) === o && Number(x.total_vacancies) === v &&
-    Math.abs(new Date(x.published || 0).getTime() - t) < 60 * 86400000);
+  const t = new Date(job.published || Date.now()).getTime();
+  const post = normPost(job.post_name), end = job.application_end;
+  return EXISTING_FOR_DUPES.some((x) => {
+    if (Math.abs(new Date(x.published || 0).getTime() - t) >= 60 * 86400000) return false;
+    if (!sameOrg(job, x)) return false;
+    const xv = Number(x.total_vacancies) || 0;
+    if (v >= 10 && xv === v) return true;                                             // same body, same (distinctive) vacancy count
+    // Same body and same post, with the same last date or the same count: one recruitment reported twice, or
+    // re-reported with a corrected count (RRB Station Master: 1215 -> 1265 after a corrigendum; ~1250 short notice).
+    return !!(post && normPost(x.post_name) === post && ((end && x.application_end === end) || (v >= 2 && xv === v)));
+  });
 }
 async function toJob(item, existingIds, fingerprints) {
   let id = cleanSlug(item.title);
@@ -331,6 +346,7 @@ async function main() {
       // Stop only when BOTH caps are hit (jobs and updates are independent).
       if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
       if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title)) continue;   // PDF dumps, syllabus, admissions, university results
+      if (L.isGenericList(it.title)) continue;                                    // evergreen "Latest X Jobs" listicles, not a notification
       const kind = classify(it.title);
       if (kind !== "job") {
         if (updatesAdded >= MAX_UPDATES) continue;

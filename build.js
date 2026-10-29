@@ -1338,7 +1338,9 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
   // sitemap whose dates are all today). Hubs genuinely change daily and keep today's date.
   // Jobs closed for 60+ days stay live and linked but leave the sitemap, so crawl slots go to new pages.
   const today = IST_DATE;
-  const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  // Google crawls a young site only ~100-200 pages a day, so the sitemap lists what is worth that budget:
+  // jobs leave it 15 days after closing (config sitemapClosedDays); their pages stay live and linked.
+  const cutoff = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays || 15) * 86400000).toISOString().slice(0, 10);
   const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff));
   const urls = [
     { loc: SITE.url + "/", mod: today },
@@ -1366,6 +1368,24 @@ function buildLatestSitemap({ jobs, updates, news }) {
   for (const u of updates) if (fresh(u.date)) add(`updates/${u.id}/`, day(u.date));
   for (const a of news) if (fresh(a.date)) add(`news/${a.id}/`, day(a.date));
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>\n`;
+}
+/* Queue for the owner's daily manual "Request indexing" in Search Console (10 a day): the newest pages most
+   worth Google's attention first — the biggest open recruitments interleaved with results/admit cards of
+   major exams, then the hubs. The daily task skips anything already on Google or requested in 14 days. */
+function buildIndexQueue({ jobs, updates }) {
+  const day = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
+  const ago = (x) => { const d = day(x) ? daysLeft(day(x)) : null; return d === null ? 99 : -d; };
+  const BIG = /\b(ssc|rrb|railway|ibps|sbi|upsc|nvs|jnvst?|ctet|tet|police|constable|army|navy|air ?force|agniveer|bpsc|uppsc|upsssc|mppsc|mpesb|rpsc|rssb|rsmssb|hpsc|hssc|kpsc|kea|tnpsc|tspsc|tgpsc|appsc|opsc|osssc|wbpsc|wbssc|gpsc|gsssb|mpsc|jkssb|bssc|dsssb|kvs|aiims|drdo|isro|bel|bhel|ntpc|ongc|iocl|lic|gds|post office|high court)\b/i;
+  const J = jobs.filter((j) => ago(j.published) <= 3 && statusOf(j).live)
+    .sort((a, b) => (Number(b.total_vacancies) || 0) - (Number(a.total_vacancies) || 0) || String(b.published).localeCompare(String(a.published)))
+    .slice(0, 24).map((j) => `${SITE.url}/jobs/${j.id}/`);
+  const U = updates.filter((u) => ago(u.date) <= 2)
+    .sort((a, b) => (BIG.test(b.title) - BIG.test(a.title)) || String(b.date).localeCompare(String(a.date)))
+    .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
+  const out = [];
+  while (J.length || U.length) { out.push(...J.splice(0, 2)); out.push(...U.splice(0, 1)); }
+  out.push(...["latest/", "closing-soon/", "updates/result/", "updates/admit-card/", "updates/answer-key/", "jobs/", "news/"].map((p) => `${SITE.url}/${p}`));
+  return `# news-views.in — pages to request indexing for, most important first (built ${IST_DATE} ${IST_TIME} IST)\n` + [...new Set(out)].join("\n") + "\n";
 }
 // RSS feed of the newest jobs AND results/admit cards. Google accepts RSS as a sitemap and re-reads feeds often;
 // the WebSub hub link lets notify-search.js announce each update the moment a deploy is live.
@@ -1961,7 +1981,10 @@ function main() {
   for (const g of guides) if (d(g.meta && g.meta.date)) mods.set(`guides/${g.slug}/`, d(g.meta.date));
   const cutoff60 = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
   const oldClosed = new Set(jobs.filter((j) => j.application_end && j.application_end < cutoff60).map((j) => `hi/jobs/${j.id}/`));
-  write("sitemap.xml", buildSitemap(jobs, cats, extra.filter((u) => !oldClosed.has(u)), mods));
+  // Hindi twins stay out of the sitemap while Google's crawl budget for the site is small (they were 45% of it
+  // and earn almost no impressions yet); they stay live and Google still finds them via hreflang links.
+  // Set config.json "sitemapHindi": true to list them again.
+  write("sitemap.xml", buildSitemap(jobs, cats, extra.filter((u) => !oldClosed.has(u) && (SITE.sitemapHindi || !u.startsWith("hi/"))), mods));
 
   // Human-readable master list of every URL — handy for checking/indexing.
   const allUrls = [
@@ -1987,6 +2010,7 @@ function main() {
   write("all-urls.txt", [...new Set(allUrls)].join("\n") + "\n");
   write("feed.xml", buildFeed(jobs, updates));
   write("sitemap-latest.xml", buildLatestSitemap({ jobs, updates, news }));
+  write("index-queue.txt", buildIndexQueue({ jobs, updates }));
   write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
 
   // 301s for pages that were removed or merged (off-topic, duplicates, re-classified),

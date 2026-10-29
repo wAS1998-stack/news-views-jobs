@@ -377,6 +377,11 @@ const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
 const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf|latest (govt|government|sarkari) jobs? (on|for|of) \d|\b\d[\d,]*\+? (all india )?vacancies open\b|government jobs on \d{1,2}(st|nd|rd|th)? \w+ 20\d\d|\(\d[\d,]*\+ [^)]*vacanc|\b\d[\d,]*\+ vacancies\b|closing govt jobs|free ?job ?alert|latest (\w+ )?(vacancy )?notifications\s*$|^latest\b[^–—:]*\b(govt|government|sarkari|railway|bank)\b[^–—:]*\bjobs\b|^[\w&.,' -]{0,30}\bgovt jobs 20\d\d\b|\b(govt|government) jobs for (diploma|engineers|graduates|10th|12th|iti|women|females?)\b/i;
 
+/** Evergreen listicles, not a notification ("Latest High Court Jobs 2026 – Court Vacancies in India",
+ *  "Government Jobs Without Exam", "Earn Money Online…"). Only rejected when the title names no post count. */
+const GENERIC_LIST = /\blatest\b.*\b(jobs?|vacancies)\b|\bjobs? without exam\b|\bjob opportunities in\b|\bearn money\b|\bwork from home\b|\b(govt|government|sarkari) jobs list\b/i;
+const isGenericList = (title) => GENERIC_LIST.test(String(title || "")) && !/\b\d[\d,]*\+?\s*(posts?|vacanc\w*|seats?|openings?)\b/i.test(String(title || ""));
+
 /** Same announcement from two feeds ("HPSC HCS Final Result 2026 Out - Check…" vs
  *  "HPSC HCS and Allied Services Final Result 2026"): compare the subject words before the
  *  event keyword, plus the event itself (final result ≠ pre result ≠ exam city). */
@@ -437,5 +442,5 @@ function officialHomeFor(title) {
   return null;
 }
 
-module.exports = { fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+module.exports = { isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };
