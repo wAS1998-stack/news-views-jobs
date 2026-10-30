@@ -73,6 +73,9 @@ jobs:
 
       - name: Find the real application pages (from the official notice / website)
         timeout-minutes: 8
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node apply-links.js
 
       - name: Search Console sync (sitemap submit + performance + opportunities, once a day)

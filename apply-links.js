@@ -6,10 +6,15 @@
  * form. For each such job (at most APPLY_MAX per run, oldest check first) this looks, in order, at:
  *   1. the official notification itself (PDF text or notice page) — notices print the application URL;
  *   2. the official homepage — its "Recruitment / Careers / Apply online" links.
- * A link is accepted only if it belongs to the same organisation (its domain, a sub-domain, or a host that matches
- * the organisation's name), goes beyond the homepage (or is a dedicated application portal), is not a PDF, and does
- * not answer 404. Nothing is invented: every link comes from the official notice or site. The previous link is kept
- * in apply_link_prev; jobs without a better link are re-tried after 7 days, at most 3 times.
+ * Precision over recall — a wrong "Apply" link is worse than an honest "Official website". A link is accepted only if:
+ *   - it belongs to the same organisation, goes beyond the homepage (or is a dedicated portal), is not a PDF, answers;
+ *   - it is tied to THIS recruitment: the notice prints it next to "apply / application / register / website", or the
+ *     homepage link's text names this post or its advertisement number;
+ *   - it is not an admissions / exam / result / student / journal / tender page;
+ *   - and, when an AI key is set, the model confirms it is this recruitment's application or page (else only links
+ *     printed in the notice itself are trusted).
+ * Nothing is invented: every link comes from the official notice or site. The previous link is kept in
+ * apply_link_prev; jobs without a better link are re-tried after 7 days, at most 3 times.
  * Run after watch.js (needs pdf-parse, installed by the workflow). Never fails the workflow.
  */
 const fs = require("fs");
@@ -17,7 +22,7 @@ const path = require("path");
 const L = require("./lib.js");
 
 const FILE = path.join(__dirname, "data", "jobs.json");
-const MAX = Number(process.env.APPLY_MAX || 30);
+const MAX = Number(process.env.APPLY_MAX || 20);
 const BUDGET_MS = Number(process.env.APPLY_BUDGET_MS || 5 * 60 * 1000);
 const TODAY = new Date().toISOString().slice(0, 10);
 let pdfParse = null;
@@ -92,39 +97,59 @@ async function alive(url) {
   } catch { return null; }
 }
 
-function keywords(job) {
-  return [...new Set(String(`${job.post_name || ""} ${job.title || ""}`).toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/)
-    .filter((w) => w.length >= 4 && !/^(recruitment|notification|apply|online|offline|posts?|vacanc\w*|govt|2026|2027|more|other|various|walkin)$/.test(w)))];
+const GENERIC = /^(recruitment|notification|apply|online|offline|posts?|vacanc\w*|govt|government|20\d\d|more|other|various|walkin|walk|interview|assistant|officer|professor|associate|senior|junior|project|technical|staff|research|fellow|manager|engineer|executive|consultant|clerk|grade|level|cum|and|the|for|with|contract|basis|temporary|regular|guest|faculty|india|national|state|district|university|institute)$/;
+/** Phrases that tie a link to THIS recruitment: the post name, distinctive words, the advertisement number. */
+function tiesOf(job) {
+  const norm = (x) => String(x || "").toLowerCase().replace(/\(.*?\)/g, " ").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  const orgWords = new Set(norm(`${job.organization || ""} ${job.org_short || ""}`).split(" "));
+  const phrases = String(job.post_name || "").split(/,|\/|&| and | or /i).map(norm).filter((x) => x.split(" ").length >= 2).slice(0, 5);
+  const words = [...new Set(norm(job.post_name || job.title).split(" ").filter((w) => w.length >= 6 && !GENERIC.test(w) && !orgWords.has(w)))];
+  const advt = (String(`${job.title} ${job.summary || ""}`).match(/advt\.?\s*no\.?\s*[:.]?\s*([a-z0-9/_-]{2,20})/i) || [])[1];
+  return { phrases, words, advt: advt ? advt.toLowerCase() : "" };
 }
-function score(c, job, kws) {
-  const s = `${c.url} ${c.text || ""}`.toLowerCase();
-  let n = c.from === "notice" ? 2 : 0;
-  if (APPLY_WORDS.test(s)) n += 3;
-  if (RECRUIT_WORDS.test(s)) n += 2;
-  if (kws.some((k) => s.includes(k))) n += 2;
-  if (/20(26|27)/.test(s)) n += 1;
-  if (L.linkKind(c.url, job) === "portal") n += 1;
-  return n;
+function tied(text, t) {
+  const s = String(text || "").toLowerCase();
+  return t.phrases.some((p) => s.includes(p)) || (t.advt && s.includes(t.advt)) || t.words.some((w) => s.includes(w));
+}
+const WRONG_KIND = /admission|student|\bstd\b|std[-_]|exam(?!ination)|result|journal|tender|alumni|hostel|syllabus|scholarship|fee[-_ ]?pay|convocation|library|press[-_ ]?release|newsletter|eligibility[-_ ]status|shortlist|interview[-_ ]schedule|answer[-_ ]key|admit/i;
+const APPLY_CONTEXT = /apply|application|register|registration|online|submit|website|portal|link/i;
+
+async function aiConfirm(job, list) {
+  if (!L.AI || !list.length) return null;
+  const prompt = `An Indian government job notice: "${job.title}" by ${job.organization || job.org_short || "the recruiting body"}` +
+    `${job.post_name ? `, post: ${job.post_name}` : ""}. Below are links found in its official notice or on the official website, each with the text around it.\n` +
+    list.map((c, i) => `${i + 1}. ${c.url}\n   text: ${(c.context || c.text || "").slice(0, 240)}`).join("\n") +
+    `\n\nWhich ONE link is where candidates apply for THIS recruitment (its online application form, registration or recruitment portal), or the official page for THIS specific recruitment? ` +
+    `Not an admissions, exam, result, journal or general page, and not a different recruitment. Answer with only the number, or 0 if none clearly is.`;
+  const ans = String(await L.askAI(prompt, { maxTokens: 10 }).catch(() => "") || "").trim();
+  const n = Number((ans.match(/\d+/) || [])[0]);
+  return n >= 1 && n <= list.length ? list[n - 1] : null;
 }
 
 async function findFor(job) {
   const orgHosts = [job.official_website, job.apply_link, job.official_notification].map(L.hostOf).filter((h) => h && !CDN_HOST.test(h));
-  const kws = keywords(job);
+  const ties = tiesOf(job);
   const cands = [];
-  // 1. the official notification
+  // 1. links the official notice prints, with the words around them
   if (job.official_notification) {
     const n = await readNotice(job.official_notification);
     if (n) {
-      for (const u of urlsInText(n.text)) cands.push({ url: u, text: "", from: "notice" });
-      for (const a of n.links) cands.push({ ...a, from: "notice" });
+      const flat = n.text.replace(/\s+/g, " ");
+      for (const u of urlsInText(flat)) {
+        const raw = u.replace(/^https:\/\/(?=www\.)/, "");
+        const i = Math.max(flat.indexOf(raw), flat.indexOf(u));
+        const context = i >= 0 ? flat.slice(Math.max(0, i - 160), i + raw.length + 80) : "";
+        cands.push({ url: u, text: "", context, from: "notice" });
+      }
+      for (const a of n.links) cands.push({ ...a, context: a.text, from: "notice" });
     }
   }
-  // 2. the official homepage
+  // 2. homepage links whose text names this post / advertisement
   const home = L.linkKind(job.apply_link, job) === "home" ? job.apply_link : job.official_website;
   if (home) {
     const r = await getBuf(home, 20000);
     if (r && r.buf && !/pdf/i.test(r.type)) {
-      for (const a of anchors(r.buf.toString("utf8"), r.url)) if (RECRUIT_WORDS.test(`${a.text} ${a.url}`) || APPLY_WORDS.test(a.text)) cands.push({ ...a, from: "site" });
+      for (const a of anchors(r.buf.toString("utf8"), r.url)) if (RECRUIT_WORDS.test(`${a.text} ${a.url}`) && tied(a.text, ties)) cands.push({ ...a, context: a.text, from: "site" });
     }
   }
   const cur = String(job.apply_link || "").replace(/\/+$/, "").toLowerCase();
@@ -135,17 +160,21 @@ async function findFor(job) {
     seen.add(key);
     const kind = L.linkKind(c.url, job);
     if (kind !== "deep" && kind !== "portal") return false;
-    if (/\.(jpg|jpeg|png|gif|svg|css|js|zip|docx?|xlsx?)(\?|$)/i.test(c.url) || /mailto:|javascript:/i.test(c.url)) return false;
-    if (/(tender|rti|gallery|photo|press|news|circular|holiday|contact|feedback|grievance|sitemap|disclaimer|privacy|faq|result|admit|answer)/i.test(c.url + " " + c.text) && !APPLY_WORDS.test(c.url + " " + c.text)) return false;
-    return related(L.hostOf(c.url), job, orgHosts);
-  }).map((c) => ({ ...c, score: score(c, job, kws) })).filter((c) => c.score >= (c.from === "notice" ? 4 : 5)).sort((a, b) => b.score - a.score);
-  for (const c of ok.slice(0, 3)) {
-    const live = await alive(c.url);
-    if (live === false) continue;
-    if (live === null && c.from !== "notice") continue;   // unverifiable homepage scrape: not good enough
-    return c;
-  }
-  return null;
+    if (/\.(jpg|jpeg|png|gif|svg|css|js|zip|docx?|xlsx?|pdf)(\?|$)/i.test(c.url) || /mailto:|javascript:/i.test(c.url)) return false;
+    if (WRONG_KIND.test(decodeURIComponent(c.url)) || WRONG_KIND.test(c.text || "")) return false;
+    if (!related(L.hostOf(c.url), job, orgHosts)) return false;
+    // tied to this recruitment: printed in the notice next to apply/register/website, or named after the post
+    if (c.from === "notice") return APPLY_CONTEXT.test(c.context || "") || tied(c.context, ties);
+    return tied(c.text, ties);
+  });
+  if (!ok.length) return null;
+  let pick;
+  if (L.AI) pick = await aiConfirm(job, ok.slice(0, 6));
+  else pick = ok.find((c) => c.from === "notice" && APPLY_CONTEXT.test(c.context || "")) || null;
+  if (!pick) return null;
+  const live = await alive(pick.url);
+  if (live === false || (live === null && pick.from !== "notice")) return null;
+  return { ...pick, score: pick.from };
 }
 
 async function main() {
@@ -180,4 +209,4 @@ async function main() {
   L.logRun("apply", { ok: true, checked, found, due: todo.length, log: log.slice(0, 30) });
 }
 if (require.main === module) main().catch((e) => console.log("apply-links error (non-fatal): " + e.message));
-module.exports = { urlsInText, related, baseOf, findFor };
+module.exports = { urlsInText, related, baseOf, findFor, tiesOf, tied, WRONG_KIND };

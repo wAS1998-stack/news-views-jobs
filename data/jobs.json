@@ -297,8 +297,6 @@
         "a": "The official notification does not specify any application fee."
       }
     ],
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1,
     "hi": {
       "title": "AIIMS गोरखपुर भर्ती 2026 – 2 प्रोजेक्ट रिसर्च साइंटिस्ट, प्रोजेक्ट टेक्निकल सपोर्ट पदों के लिए ऑनलाइन आवेदन करें",
       "organization": "अखिल भारतीय आयुर्विज्ञान संस्थान, गोरखपुर",
@@ -1543,11 +1541,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": null,
-    "apply_link": "https://www.aai.aero/en/recruitment/press-note/618077",
-    "apply_src": "site"
+    }
   },
   {
     "id": "spa-vijayawada-assistant-professor-walkin-2026",
@@ -2395,9 +2389,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "district-collector-magistrate-jayashankar-bhupalpally-ayush",
@@ -3252,9 +3244,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "neiah-residential-medical-officer-biostatistician-more-2026",
@@ -4336,7 +4326,7 @@
     "title": "Delhi University Recruitment 2026 – Apply Online for 8 Trained Graduate Teacher, Assistant Teacher Posts",
     "organization": "Delhi University",
     "summary": "Delhi University has released a notification for 8 vacancies for the positions of Trained Graduate Teacher (TGT) and Assistant Teacher (Primary). The application process is online and will close on 18 November 2026. Candidates must meet the educational qualifications and CTET requirement to apply.",
-    "apply_link": "https://www.du.ac.in/index.php?page=research-journals",
+    "apply_link": "https://www.du.ac.in",
     "official_notification": "https://www.du.ac.in/index.php?mact=News,cntnt01,detail,0&cntnt01articleid=19103&cntnt01returnid=219",
     "source": "https://www.freejobalert.com/articles/delhi-university-recruitment-2026-apply-online-for-8-trained-graduate-teacher-assistant-teacher-posts-3077141",
     "published": "2026-10-30",
@@ -4460,10 +4450,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://www.du.ac.in",
-    "apply_src": "notice"
+    }
   },
   {
     "id": "rites-am-assistant-manager-2026",
@@ -4711,9 +4698,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "assam-rifles-technical-tradesman-rally-cancelled-2026",
@@ -5452,9 +5437,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "vmrf-erp-implementation-coordinator-2026",
@@ -8897,7 +8880,7 @@
     "title": "ARI Pune Scientist Recruitment 2026 - Apply Online for 02 Posts",
     "organization": "MACS-Agharkar Research Institute (ARI), Pune",
     "summary": "ARI Pune is recruiting for two Scientist-C posts in Genetics & Plant Breeding and Developmental Biology. Eligible candidates with a First Class M.Sc. degree and a minimum of four years of research experience can apply online by November 30, 2026.",
-    "apply_link": "https://arijob.ourlib.in/post_instruction.php?rnn=Genetics-Plant-Breeding/Scientist-C/2026&PID=141",
+    "apply_link": "https://arijob.ourlib.in/",
     "official_notification": "https://aripune.res.in/wp-content/uploads/2026/10/Advertisement-_Scientist-C_01_2026.pdf",
     "source": "https://www.indgovtjobs.in/2026/10/ari-pune-scientist-recruitment.html",
     "published": "2026-10-30",
@@ -9014,10 +8997,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://arijob.ourlib.in/",
-    "apply_src": "site"
+    }
   },
   {
     "id": "arci-various-assistant-scientist-technician-driver-2026",
@@ -9623,9 +9603,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "aiims-bibinagar-project-technical-support-ii-2026",
@@ -10598,9 +10576,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "gmc-rajanna-sircilla-nursing-officer-dhobi-2026",
@@ -12268,9 +12244,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "grid-india-intern-2026",
@@ -12394,9 +12368,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "bank-baroda-senior-manager-manager-more-2026",
@@ -13582,9 +13554,7 @@
         }
       ],
       "at": "2026-10-30"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "nipgr-research-associate-i-2026",
@@ -15595,7 +15565,7 @@
     "title": "NITC Recruitment 2026 – Apply Online for 6 Office Assistant, Support Engineer and More Posts",
     "organization": "National Institute of Technology Calicut",
     "summary": "National Institute of Technology Calicut (NITC) has released a recruitment notification for 6 vacancies in various posts including Office Assistant, Support Engineer, and GYM Trainer. The application process starts on 27 October 2026 and closes on 4 November 2026. Candidates must be under 56 years of age as of 1 January 2026.",
-    "apply_link": "https://www.nitc.ac.in/loginpanel/login.php",
+    "apply_link": "https://nitc.ac.in",
     "official_notification": "https://nitc.ac.in/imgserver/uploads/attachments/examination-and-interview-notice-for-various-posts-to-be-recruited-through-manpower-agency_ee0ed1e0-14df-4b2f-bef9-5e7a6466eda3_0.pdf",
     "source": "https://www.freejobalert.com/articles/nitc-recruitment-2026-office-assistant-support-engineer-3076809",
     "published": "2026-10-29",
@@ -15704,10 +15674,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://nitc.ac.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "pfi-senior-analyst-2026",
@@ -16793,9 +16760,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "ctcri-young-professional-ii-walkin-2026",
@@ -17152,9 +17117,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "embassy-india-marketing-assistant-2026",
@@ -17850,7 +17813,7 @@
     "title": "Gurucharan University Recruitment 2026 – Apply Online for 14 Assistant Professor, Controller of Examination Posts",
     "organization": "Gurucharan University",
     "summary": "Gurucharan University is recruiting for 14 posts, including Assistant Professors in various subjects and one Controller of Examination. The application process is entirely online, with the last date to apply being November 21, 2026. Selected candidates will be offered salaries ranging from ₹57,700 to ₹2,18,200 per month.",
-    "apply_link": "https://www.gurucharanuniversity.ac.in/FYIMP-std-list.php",
+    "apply_link": "https://www.gurucharanuniversity.ac.in",
     "official_notification": "https://www.gurucharanuniversity.ac.in/notice/Advertisment_Teaching_and_CoE%20-%20Google%20Docs.pdf",
     "source": "https://www.freejobalert.com/articles/gurucharan-university-recruitment-2026-apply-online-for-14-assistant-professor-controller-of-examination-posts-3076927",
     "published": "2026-10-29",
@@ -17957,10 +17920,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://www.gurucharanuniversity.ac.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "iti-kurud-guest-lecturer-2026",
@@ -18422,9 +18382,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "iit-kanpur-research-analyst-2026",
@@ -19987,7 +19945,7 @@
     "title": "CMHO South Bastar Dantewada Paediatrician Recruitment 2026 – Apply Online",
     "organization": "Chief Medical and Health Officer South Bastar Dantewada",
     "summary": "The Chief Medical and Health Officer South Bastar Dantewada is seeking to fill one position for a Paediatrician on a contract basis. The role is geared towards enhancing health services at the District Hospital with a monthly remuneration of ₹3,00,000. Applications can be submitted online until November 5, 2026.",
-    "apply_link": "https://dantewada.nic.in/notice/%e0%a4%95%e0%a4%be%e0%a4%b0%e0%a5%8d%e0%a4%af%e0%a4%be%e0%a4%b2%e0%a4%af-%e0%a4%a8%e0%a4%97%e0%a4%b0-%e0%a4%aa%e0%a4%be%e0%a4%b2%e0%a4%bf%e0%a4%95%e0%a4%be-%e0%a4%aa%e0%a4%b0%e0%a4%bf%e0%a4%b7-35/",
+    "apply_link": "https://dantewada.nic.in",
     "official_notification": "https://cdn.s3waas.gov.in/s3556f391937dfd4398cbac35e050a2177/uploads/2026/10/17932745412544.pdf",
     "source": "https://www.freejobalert.com/articles/cmho-south-bastar-dantewada-paediatrician-recruitment-2026-apply-online-3076945",
     "published": "2026-10-29",
@@ -20101,10 +20059,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://dantewada.nic.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "lakshadweep-administration-transport-sector-expert-2026",
@@ -20464,7 +20419,7 @@
     "title": "VNSGU Office Superintendent Recruitment 2026 – Apply Online",
     "organization": "Veer Narmad South Gujarat University",
     "summary": "VNSGU has announced the recruitment for the post of Office Superintendent with one vacancy available. Candidates are required to have a Bachelor's Degree and relevant administrative experience. The application period is from October 29, 2026, to November 30, 2026.",
-    "apply_link": "https://cccexam.vnsgu.ac.in/",
+    "apply_link": "https://www.vnsgu.ac.in",
     "official_notification": "https://vnsgu.ac.in/uploads/assetlinks/c02f4631-ca31-43c2-adfd-8cf0130ca05b.pdf",
     "source": "https://www.freejobalert.com/articles/vnsgu-office-superintendent-recruitment-2026-3076926",
     "published": "2026-10-29",
@@ -20587,10 +20542,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://www.vnsgu.ac.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "district-child-protection-unit-supervisor-2026",
@@ -21170,9 +21122,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "up-meerut-ecce-educator-2026",
@@ -21751,16 +21701,14 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "iig-stenographer-technical-assistant-more-2026",
     "title": "IIG Recruitment 2026 – Apply Online for 8 Stenographer, Technical Assistant and More Posts",
     "organization": "Indian Institute of Geomagnetism",
     "summary": "The Indian Institute of Geomagnetism (IIG) is inviting applications for 8 different posts, including Stenographer and Technical Assistant. The online application window is from October 16, 2026, to November 10, 2026. The positions offer a salary ranging from ₹25,500 to ₹2,08,700 based on the specific role.",
-    "apply_link": "https://iigm.res.in/careers/positionvacancies",
+    "apply_link": "https://iigm.res.in",
     "official_notification": "https://iigm.res.in/sites/default/files/Advt.%20for%20recruitment%20of%20administrative,technical%20and%20academic%20staff-17.10.2026_1.pdf",
     "source": "https://www.freejobalert.com/articles/iig-recruitment-2026-apply-online-for-8-stenographer-technical-assistant-and-more-posts-3076872",
     "published": "2026-10-29",
@@ -21884,10 +21832,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://iigm.res.in",
-    "apply_src": "notice"
+    }
   },
   {
     "id": "wdra-under-secretary-2026",
@@ -22135,7 +22080,7 @@
     "title": "IUST Recruitment 2026 – Apply Online for 48 Assistant Professor Posts",
     "organization": "Islamic University of Science & Technology, Kashmir",
     "summary": "Islamic University of Science & Technology, Kashmir, has released a notification for 48 Assistant Professor posts across various departments. Eligible candidates can apply online from November 2, 2026, to December 2, 2026. Applicants must submit a printed copy of the application form to the Registrar's office by December 7, 2026.",
-    "apply_link": "https://admission.iust.ac.in/Account/Login",
+    "apply_link": "https://www.iust.ac.in",
     "official_notification": "https://www.iust.ac.in/Notifications/Jobs/261029155914.pdf",
     "source": "https://www.freejobalert.com/articles/iust-recruitment-2026-assistant-professor-3076864",
     "published": "2026-10-29",
@@ -22242,10 +22187,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://www.iust.ac.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "dowr-rd-gr-senior-joint-commissioner-2026",
@@ -22374,7 +22316,7 @@
     "title": "CUS Recruitment 2026 – Apply Online for 22 Associate Professor, Professor and More Posts",
     "organization": "Cluster University of Srinagar",
     "summary": "Cluster University of Srinagar is conducting the recruitment for 22 posts of Associate Professors and Professors across various subjects including Artificial Intelligence, Biochemistry, and more. Interested candidates can apply online between November 1 and November 21, 2026. The selected candidates will receive a monthly salary ranging from ₹1,31,400 to ₹2,18,200.",
-    "apply_link": "https://cusrinagarnt.samarth.edu.in/index.php/site/login",
+    "apply_link": "http://www.cusrinagar.edu.in",
     "official_notification": "https://www.cusrinagar.edu.in/foldermanager/notification/c57984ba332c426cb8226e8af66bb39d.pdf",
     "source": "https://www.freejobalert.com/articles/cus-recruitment-2026-associate-professor-professor-3076859",
     "published": "2026-10-29",
@@ -22481,10 +22423,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "http://www.cusrinagar.edu.in",
-    "apply_src": "site"
+    }
   },
   {
     "id": "panjab-university-walkin-interns-research-associate-2026",
@@ -23928,7 +23867,7 @@
     "title": "AUD Research Assistant Recruitment 2026 – Apply Online",
     "organization": "Dr. B.R. Ambedkar University Delhi",
     "summary": "Dr. B.R. Ambedkar University Delhi has announced the recruitment for the position of Research Assistant for an ICSSR-funded project. The candidate will be appointed for an initial period of 2 months with a monthly salary of ₹37,000. Online applications are accepted until November 6, 2026.",
-    "apply_link": "https://aud.delhi.gov.in/notices-dated-21102026eligibility-status-candidates-post-studio-assistant-advt-no-aud02hr2023",
+    "apply_link": "https://aud.delhi.gov.in/",
     "official_notification": "https://aud.delhi.gov.in/sites/default/files/2026-10/adobe_scan_29-oct-2026_1.pdf",
     "source": "https://www.freejobalert.com/articles/aud-research-assistant-recruitment-2026-3076664",
     "published": "2026-10-29",
@@ -24048,10 +23987,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://aud.delhi.gov.in/",
-    "apply_src": "site"
+    }
   },
   {
     "id": "medical-education-department-section-officer-senior-2026",
@@ -24771,9 +24707,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "iiit-pune-teaching-assistant-professor-2026",
@@ -25139,7 +25073,7 @@
     "title": "AIIMS Project Research Scientist III Recruitment 2026 – Apply Online",
     "organization": "All India Institute of Medical Sciences, New Delhi",
     "summary": "AIIMS has invited online applications for the post of Project Research Scientist-III (Medical) for an ICMR-funded project. The last date to apply is November 11, 2026. Candidates should have an MDS in Oral Medicine or Oral Pathology with a minimum of 3 years of experience.",
-    "apply_link": "https://www.aiims.edu/index.php/en/2015-01-23-06-34-59/2021-02-02-05-34-28",
+    "apply_link": "https://www.aiims.edu/",
     "official_notification": "https://www.aiims.edu/images/pdf/recruitment/advertisement/cder-29-10-26.pdf",
     "source": "https://www.freejobalert.com/articles/aiims-project-research-scientist-iii-medical-recruitment-2026-3076655",
     "published": "2026-10-29",
@@ -25247,10 +25181,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "https://www.aiims.edu/",
-    "apply_src": "site"
+    }
   },
   {
     "id": "aiims-junior-resident-walkin-2026",
@@ -25732,9 +25663,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_tries": 1
+    }
   },
   {
     "id": "bhu-associate-professor-assistant-professor-more-2026",
@@ -27435,7 +27364,7 @@
     "title": "NHSRC Consultant - Full Stack Developer Recruitment 2026 – Apply Online",
     "organization": "National Health Systems Resource Centre",
     "summary": "NHSRC is recruiting for 3 positions of Consultant - Full Stack Developer (Node.js) on a short-term basis. The last date to apply online is 11 November 2026. Eligible candidates with required qualifications can submit their applications through the official website.",
-    "apply_link": "https://nhsrcindia.org/invitation-applications-54th-batch-external-assessors-training",
+    "apply_link": "http://nhsrcindia.org",
     "official_notification": "https://recruitment.nhsrcindia.org/web/content/2946401?download=true",
     "source": "https://www.freejobalert.com/articles/nhsrc-consultant-full-stack-developer-node-js-short-recruitment-2026-3076457",
     "published": "2026-10-28",
@@ -27540,10 +27469,7 @@
         }
       ],
       "at": "2026-10-29"
-    },
-    "apply_checked": "2026-10-30",
-    "apply_link_prev": "http://nhsrcindia.org",
-    "apply_src": "site"
+    }
   },
   {
     "id": "nhsrc-consultant-qa-test-engineer-2026",
