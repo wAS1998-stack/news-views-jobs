@@ -167,6 +167,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             val faq = h?.faq?.ifEmpty { null } ?: j.faq
             if (faq.isNotEmpty()) Section(s.faq) { FaqList(faq) }
             TextButton(onClick = { openUrl(ctx, j.url) }, modifier = Modifier.padding(top = 16.dp)) { Text(s.openOnSite) }
+            Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             Spacer(Modifier.height(24.dp))
         }
     }
@@ -204,6 +205,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             val faq = h?.faq?.ifEmpty { null } ?: u.faq
             if (faq.isNotEmpty()) Section(s.faq) { FaqList(faq) }
             TextButton(onClick = { openUrl(ctx, u.url) }, modifier = Modifier.padding(top = 16.dp)) { Text(s.openOnSite) }
+            Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             Spacer(Modifier.height(24.dp))
         }
     }

@@ -1716,7 +1716,15 @@ function appUpdateDetail(u) {
     hi: h.title ? { title: h.title, summary: h.summary || u.summary_hi || "", steps: appArr(h.steps), details: appArr(h.details), faq: appFaq(h.faq) } : null,
   });
 }
+// Android App Links: news-views.in/jobs/... and /updates/... open in the app. Add the Play "app signing key" SHA-256
+// (Play Console → Test and release → App integrity) to config.json "androidCertSha256" after the first upload.
+const ANDROID_CERTS = [
+  "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // upload key
+  ...[].concat(SITE.androidCertSha256 || []),
+];
 function writeAppFeed(jobs, updates) {
+  write(".well-known/assetlinks.json", JSON.stringify([{ relation: ["delegate_permission/common.handle_all_urls"],
+    target: { namespace: "android_app", package_name: "in.newsviews.app", sha256_cert_fingerprints: [...new Set(ANDROID_CERTS)] } }], null, 2) + "\n");
   write("app/v1/index.json", buildAppIndex(jobs, updates));
   const J = appJobsInFeed(jobs), U = appUpdatesInFeed(updates);
   for (const j of J) write(`app/v1/j/${j.id}.json`, appJobDetail(j));

@@ -138,6 +138,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             TextButton(onClick = { ctx.startActivity(Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, ctx.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }) {
                 Text(if (st.hindi) "नोटिफ़िकेशन सेटिंग" else "Notification settings")
             }
+            Text(s.disclaimer, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 4.dp, bottom = 8.dp))
             Text("v${BuildConfig.VERSION_NAME}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 12.dp, bottom = 12.dp))
         }
     }
@@ -163,5 +164,6 @@ fun Onboarding(vm: MainViewModel, s: Strings) {
             if (Build.VERSION.SDK_INT >= 33) askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) else vm.finishOnboarding()
         }, modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) { Text(s.continueBtn) }
         TextButton(onClick = { vm.finishOnboarding() }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(s.skip) }
+        Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 12.dp))
     }
 }

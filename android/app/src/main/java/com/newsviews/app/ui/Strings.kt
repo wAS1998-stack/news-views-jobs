@@ -20,6 +20,7 @@ data class Strings(
     val about: String, val rate: String, val shareApp: String, val privacy: String, val shareText: String,
     val welcome: String, val welcomeHint: String, val continueBtn: String, val skip: String, val chooseState: String,
     val ageRange: (Double, Double) -> String,
+    val disclaimer: String,
 ) {
     companion object {
         val EN = Strings(
@@ -40,6 +41,7 @@ data class Strings(
             about = "About", rate = "Rate the app", shareApp = "Share the app", privacy = "Privacy policy", shareText = "Govt job alerts for your state and qualification — News-Views",
             welcome = "Welcome to News-Views", welcomeHint = "Pick your state and qualification and we'll alert you about matching government jobs.", continueBtn = "Continue", skip = "Skip", chooseState = "Choose states",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
+            disclaimer = "News-Views is an independent publisher. It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
         )
         val HI = Strings(
             jobs = "नौकरियाँ", results = "रिजल्ट", saved = "सेव", alerts = "अलर्ट",
@@ -59,6 +61,7 @@ data class Strings(
             about = "जानकारी", rate = "ऐप को रेट करें", shareApp = "ऐप शेयर करें", privacy = "गोपनीयता नीति", shareText = "आपके राज्य और योग्यता के सरकारी नौकरी अलर्ट — News-Views",
             welcome = "News-Views में स्वागत है", welcomeHint = "अपना राज्य और योग्यता चुनें — मेल खाती सरकारी नौकरियों का अलर्ट मिलेगा।", continueBtn = "आगे बढ़ें", skip = "छोड़ें", chooseState = "राज्य चुनें",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
+            disclaimer = "News-Views एक स्वतंत्र प्रकाशक है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
         )
     }
 }
