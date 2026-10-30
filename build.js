@@ -763,7 +763,7 @@ function buildUpdatePage(u, all) {
       ${row("Released on", fmtDate(u.event_date || u.date))}
       ${row("Official website", officialHost ? `<a href="${esc(official)}" rel="nofollow noopener" target="_blank">${esc(officialHost)}</a>` : "")}
     </dl></div>
-    <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">Download / check on ${esc(officialHost)} &rarr;</a>` : ""}${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
+    <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">${{ pdf: "Download the PDF from", home: "Go to the official website,", none: "Go to" }[LIB.linkKind(official, u)] || "Download / check on"} ${esc(officialHost)} &rarr;</a>` : ""}${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
     ${adSlot("update-mid")}
     <h2 class="section-h">How to download the ${esc(u.org_short || u.organization)} ${esc(typeLabel.toLowerCase())}</h2>
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
