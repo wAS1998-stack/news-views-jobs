@@ -133,6 +133,8 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.android.gms:play-services-ads:25.5.0")
     implementation("com.google.android.ump:user-messaging-platform:4.0.0")
+    implementation("com.google.android.play:review:2.0.2")        // Play's in-app rating sheet
+    implementation("com.google.android.play:app-update:2.1.0")    // Play's in-app update download
     mediation.mapNotNull { mediationAdapters[it] }.forEach { implementation(it) }
     testImplementation("junit:junit:4.13.2")
 }

@@ -135,16 +135,16 @@ object Ads {
     /** A job or result page was opened. */
     fun pageOpened() { pagesSince++ }
 
-    /** The user went back from a page to a list: a natural break, the only place a full-screen ad may appear. */
-    fun backFromPage(activity: Activity) {
-        if (!_ready.value || !on()) return
+    /** The user went back from a page to a list: a natural break, the only place a full-screen ad may appear. Returns true if one is shown. */
+    fun backFromPage(activity: Activity): Boolean {
+        if (!_ready.value || !on()) return false
         val c = _config.value
         val now = SystemClock.elapsedRealtime()
         val due = forceNext || (c.interstitial && pagesSince >= c.every.coerceAtLeast(1) &&
             now - lastShown >= c.gap.coerceAtLeast(60) * 1000L && now - appStart >= 60_000L)
         val ad = interstitial
         Log.i(TAG, "back from page: due=$due loaded=${ad != null} pages=$pagesSince")
-        if (!due || ad == null) { preload(activity); return }
+        if (!due || ad == null) { preload(activity); return false }
         forceNext = false
         interstitial = null
         ad.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -154,6 +154,7 @@ object Ads {
         pagesSince = 0
         lastShown = now
         ad.show(activity)
+        return true
     }
 }
 

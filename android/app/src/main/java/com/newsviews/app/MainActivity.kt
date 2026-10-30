@@ -50,6 +50,8 @@ import androidx.navigation.navArgument
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.BottomBanner
 import com.newsviews.app.ads.findActivity
+import com.newsviews.app.play.PlayPrompts
+import androidx.activity.result.contract.ActivityResultContracts
 import com.newsviews.app.ui.AlertsScreen
 import com.newsviews.app.ui.Brand
 import com.newsviews.app.ui.JobDetailScreen
@@ -67,6 +69,7 @@ class MainActivity : ComponentActivity() {
     private val vm: MainViewModel by viewModels()
     /** A job or update to open, from a notification tap or a news-views.in link. */
     private val pending = MutableStateFlow<Pair<String, String>?>(null)
+    private val updateLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -74,11 +77,17 @@ class MainActivity : ComponentActivity() {
         handle(intent)
         setContent { NewsViewsTheme { Root(vm, pending) } }
         Ads.start(this)
+        PlayPrompts.checkForUpdate(this, updateLauncher)
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handle(intent)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        PlayPrompts.installIfDownloaded()
     }
 
     override fun onResume() {
@@ -134,7 +143,8 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     LaunchedEffect(route) {
         val isPage = route.startsWith("job/") || route.startsWith("update/")
         val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
-        if (isPage) Ads.pageOpened() else if (wasPage && activity != null) Ads.backFromPage(activity)
+        if (isPage) { Ads.pageOpened(); activity?.let { PlayPrompts.pageOpened(it) } }
+        else if (wasPage && activity != null && !Ads.backFromPage(activity)) PlayPrompts.maybeAskReview(activity)
         prevRoute = route
     }
 
