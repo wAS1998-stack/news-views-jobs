@@ -1,30 +1,22 @@
-10-30 11:38:07.270  2601  2601 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1103)
-10-30 11:38:13.103  1477  4762 I Ads     : Initialized AdMob in container 23.18.18 (190800-535401451)
-10-30 11:38:15.902  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:38:17.094  2601  3641 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:38:17.095  2601  3641 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:38:20.014  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:38:20.230  2601  4558 W Ads     : Not retrying to fetch app settings
-10-30 11:38:20.773  2601  4557 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:38:20.774  2601  4557 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:38:33.477  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:38:33.754  2601  4560 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:38:33.755  2601  4560 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:38:42.277  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:38:42.703  2601  3824 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:38:42.705  2601  3824 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:38:50.988  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:38:51.536  2601  4558 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:38:51.536  2601  4558 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:39:09.634  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:39:10.268  2601  5978 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:39:10.271  2601  5978 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:39:10.388  5622  5721 I Ads     : Parental control value is stale. Refreshing.
-10-30 11:39:10.388  5622  5721 W Ads     : Play store is not installed or the service for parental controls is not available.
-10-30 11:39:10.390  5622  5721 I Ads     : Initialized AdMob in container 23.18.18 (190800-535401451)
-10-30 11:39:17.429  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:39:17.800  2601  4558 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:39:17.800  2601  4558 I Ads     : HTTP timeout: 60000 milliseconds.
-10-30 11:39:24.923  2601  3710 I Ads     : This request is sent from a test device.
-10-30 11:39:25.314  2601  4554 I Ads     : SDK version: afma-sdk-a-v263305000.263305000.0
-10-30 11:39:25.315  2601  4554 I Ads     : HTTP timeout: 60000 milliseconds.
+--------- beginning of main
+10-30 11:45:00.851  2744  2744 I NVAds   : banner request 411x128.0.dp
+10-30 11:45:13.450  2744  2744 I NVAds   : interstitial loaded
+10-30 11:45:13.528  2744  2744 I NVAds   : banner loaded 411x128.0.dp
+10-30 11:45:23.065  2744  2744 I NVAds   : banner request 411x128.0.dp
+10-30 11:45:25.686  2744  2744 I NVAds   : banner loaded 411x128.0.dp
+10-30 11:45:25.854  2744  2744 I NVAds   : banner request 300x249.90475.dp
+10-30 11:45:27.549  2744  2744 I NVAds   : banner loaded 300x249.90475.dp
+10-30 11:45:41.430  2744  2744 I NVAds   : banner request 300x249.90475.dp
+10-30 11:45:43.671  2744  2744 I NVAds   : banner loaded 300x249.90475.dp
+10-30 11:45:50.681  2744  2744 I NVAds   : banner request 300x249.90475.dp
+10-30 11:45:52.980  2744  2744 I NVAds   : banner loaded 300x249.90475.dp
+10-30 11:45:58.929  2744  2744 I NVAds   : banner request 300x249.90475.dp
+10-30 11:46:00.511  2744  2744 I NVAds   : banner loaded 300x249.90475.dp
+10-30 11:46:06.994  2744  2744 I NVAds   : banner request 411x128.0.dp
+10-30 11:46:07.099  2744  2744 I NVAds   : back from page: due=false loaded=true pages=3
+10-30 11:46:08.413  2744  2744 I NVAds   : banner loaded 411x128.0.dp
+10-30 11:46:19.969  2744  2744 I NVAds   : banner request 300x249.90475.dp
+10-30 11:46:21.086  2744  2744 I NVAds   : banner loaded 300x249.90475.dp
+10-30 11:46:27.685  2744  2744 I NVAds   : banner request 411x128.0.dp
+10-30 11:46:27.775  2744  2744 I NVAds   : back from page: due=true loaded=true pages=4
+10-30 11:46:30.535  2744  2744 I NVAds   : banner loaded 411x128.0.dp
