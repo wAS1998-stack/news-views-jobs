@@ -86,7 +86,7 @@ jobs:
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
           git add android/ci/last-build.txt
           git commit -q -m "Android build ${{ github.run_number }}: ${{ steps.build.outcome }} [CF-Pages-Skip]" || exit 0
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          for i in 1 2 3; do git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && break; git rebase --abort 2>/dev/null; sleep 5; done   # -X theirs: this run's result wins over an older run's
 
   screens:
     needs: build
@@ -116,4 +116,4 @@ jobs:
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
           git add android/ci/screens 2>/dev/null || true
           git commit -q -m "Android screenshots ${{ github.run_number }} [CF-Pages-Skip]" || exit 0
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+          for i in 1 2 3; do git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && break; git rebase --abort 2>/dev/null; sleep 5; done   # -X theirs: this run's result wins over an older run's
