@@ -145,12 +145,17 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                     color = if (fits) Brand.Green else Brand.Saffron, modifier = Modifier.padding(top = 10.dp))
             }
             Spacer(Modifier.height(14.dp))
-            val apply = j.apply_link.ifBlank { j.official_website }
-            if (apply.isNotBlank()) Button(onClick = { openUrl(ctx, apply) }, modifier = Modifier.fillMaxWidth()) {
-                Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(s.apply)
+            // the main button says what it really opens (the feed decides: apply page, offline form, walk-in notice, notice or homepage)
+            val ctaUrl = j.cta_url.ifBlank { j.apply_link.ifBlank { j.official_website } }
+            val ctaLabel = when (j.cta) { "apply" -> s.ctaApply; "form" -> s.ctaForm; "walkin" -> s.ctaWalkin; "notice" -> s.ctaNotice; "website" -> s.ctaWebsite; else -> s.apply }
+            if (ctaUrl.isNotBlank()) Button(onClick = { openUrl(ctx, ctaUrl) }, modifier = Modifier.fillMaxWidth()) {
+                Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(ctaLabel)
+            }
+            when (j.cta) { "form" -> s.hintForm; "walkin" -> s.hintWalkin; "website" -> s.hintWebsite; else -> null }?.let {
+                Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
-                if (j.official_notification.isNotBlank()) OutlinedButton(onClick = { openUrl(ctx, j.official_notification) }, modifier = Modifier.weight(1f)) {
+                if (j.official_notification.isNotBlank() && j.official_notification.trimEnd('/') != ctaUrl.trimEnd('/')) OutlinedButton(onClick = { openUrl(ctx, j.official_notification) }, modifier = Modifier.weight(1f)) {
                     Icon(Icons.Filled.Description, null); Spacer(Modifier.width(6.dp)); Text(s.notification, maxLines = 1)
                 }
                 OutlinedButton(onClick = { vm.toggleSaved(item) }) { Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save) }

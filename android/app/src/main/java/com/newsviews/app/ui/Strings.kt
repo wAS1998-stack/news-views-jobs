@@ -25,6 +25,8 @@ data class Strings(
     val ageFits: String, val ageCategory: String, val dob: String, val setDob: String, val category: String,
     val catGen: String, val catObc: String, val catSc: String, val ageNote: String,
     val ageOk: (Int) -> String, val ageOver: (Int) -> String, val ageUnder: (Int) -> String, val ok: String, val cancel: String, val walkIn: String,
+    val ctaApply: String, val ctaForm: String, val ctaWalkin: String, val ctaNotice: String, val ctaWebsite: String,
+    val hintForm: String, val hintWalkin: String, val hintWebsite: String,
     val disclaimer: String,
 ) {
     companion object {
@@ -53,6 +55,10 @@ data class Strings(
             ageNote = "Used only on this phone, to show jobs that fit your age. Upper-age relaxation follows central government rules (OBC +3, SC/ST +5 years); states and departments can differ, so always check the notice.",
             ageOk = { "Your age $it — within the limit" }, ageOver = { "Your age $it — above the limit (check the notice for relaxations)" }, ageUnder = { "Your age $it — below the minimum age" },
             ok = "OK", cancel = "Cancel", walkIn = "Walk-in",
+            ctaApply = "Apply online", ctaForm = "Download notice & form", ctaWalkin = "Walk-in notice", ctaNotice = "Official notification", ctaWebsite = "Official website",
+            hintForm = "Offline application: download the notice and form, fill it in and send it as the notice says.",
+            hintWalkin = "Walk-in interview: go to the venue on the date in the notice, with the documents it lists.",
+            hintWebsite = "The notice gives no direct application page — open the Recruitment / Careers section of the official website. Steps below.",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
             disclaimer = "News-Views is an independent publisher. It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
         )
@@ -81,6 +87,10 @@ data class Strings(
             ageNote = "केवल इसी फ़ोन पर रहती है, ताकि आपकी आयु के अनुसार नौकरियाँ दिखें। ऊपरी आयु छूट केंद्र सरकार के नियमों से (OBC +3, SC/ST +5 वर्ष); राज्य और विभाग अलग हो सकते हैं — अधिसूचना ज़रूर जाँचें।",
             ageOk = { "आपकी आयु $it — सीमा के भीतर" }, ageOver = { "आपकी आयु $it — सीमा से अधिक (छूट के लिए अधिसूचना देखें)" }, ageUnder = { "आपकी आयु $it — न्यूनतम आयु से कम" },
             ok = "ठीक है", cancel = "रद्द करें", walkIn = "वॉक-इन",
+            ctaApply = "ऑनलाइन आवेदन करें", ctaForm = "नोटिस और फ़ॉर्म डाउनलोड करें", ctaWalkin = "वॉक-इन नोटिस", ctaNotice = "ऑफिशियल नोटिफिकेशन", ctaWebsite = "ऑफिशियल वेबसाइट",
+            hintForm = "ऑफलाइन आवेदन: नोटिस और फ़ॉर्म डाउनलोड करें, भरें और नोटिस में दिए तरीके से भेजें।",
+            hintWalkin = "वॉक-इन इंटरव्यू: नोटिस में दी गई तारीख पर, बताए गए दस्तावेज़ों के साथ पहुँचें।",
+            hintWebsite = "नोटिस में सीधा आवेदन पेज नहीं है — ऑफिशियल वेबसाइट के Recruitment / Careers सेक्शन में देखें। तरीका नीचे है।",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
             disclaimer = "News-Views एक स्वतंत्र प्रकाशक है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
         )

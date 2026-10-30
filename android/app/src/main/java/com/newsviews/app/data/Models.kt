@@ -138,6 +138,9 @@ data class JobDetail(
     val apply_link: String = "",
     val official_website: String = "",
     val hi: JobHi? = null,
+    val cta: String = "",          // apply | form | walkin | notice | website (what the main button really opens)
+    val cta_url: String = "",
+    val apply_mode: String = "",
 )
 
 @Serializable

@@ -33,6 +33,10 @@ hurting users or breaking Google's policies.
 
 ## Rules that matter
 - **Never invent facts.** Every job detail must come from the notice or official site; when unsure, leave it out.
+- **The Apply button must say what it opens** (`lib.js` `applyInfo`/`linkKind`/`applyMode`, rendered by `ctaHtml`/`keyFacts` in
+  build.js, `cta`/`cta_url` in the app feed): "Apply online" only for a real application page or portal; offline jobs get
+  "Download notice & form", walk-ins "Walk-in notice", a bare homepage "Official website" with a hint. `apply-links.js`
+  (runs after watch.js) upgrades homepage links to the real application page found in the official notice or site.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
   logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits.

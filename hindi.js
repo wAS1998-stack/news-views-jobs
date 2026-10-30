@@ -100,6 +100,7 @@ function buildHindi(ctx) {
     <div class="headline-row"><span class="org-tag">${esc(h.organization || j.organization)}</span><span class="status ${st.cls}">${esc(st.label)}</span></div>
     <h1>${esc(h.title)}</h1>
     ${st.cls === "closed" ? `<div class="closed-notice"><strong>यह भर्ती बंद हो चुकी है।</strong> आवेदन की अंतिम तिथि ${hiDate(j.application_end)} थी। <a href="/hi/">नई सरकारी नौकरियाँ देखें</a>।</div>` : ""}
+    ${st.cls === "closed" ? "" : (ctx.keyFacts ? ctx.keyFacts(j, "hi") : "")}
     <p class="lede">${esc(h.summary)}</p>
   </div>
   ${(h.overview || []).length ? `<div class="prose"><h2 class="section-h">भर्ती की जानकारी</h2>${h.overview.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
@@ -122,8 +123,7 @@ function buildHindi(ctx) {
   ${(h.selection_process || []).length ? `<h2 class="section-h">चयन प्रक्रिया</h2><ol class="steps">${h.selection_process.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   ${(h.how_to_apply || []).length ? `<h2 class="section-h">आवेदन कैसे करें</h2><ol class="steps">${h.how_to_apply.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   <div class="apply-bar">
-    ${apply ? `<a class="btn btn-primary" href="${esc(apply)}" target="_blank" rel="noopener nofollow">${j.apply_link ? "ऑफिशियल साइट पर आवेदन करें" : "ऑफिशियल वेबसाइट"} &uarr;</a>` : ""}
-    ${j.official_notification ? `<a class="btn btn-ghost" href="${esc(j.official_notification)}" target="_blank" rel="noopener nofollow">ऑफिशियल नोटिफिकेशन</a>` : ""}
+    ${ctx.ctaHtml ? ctx.ctaHtml(j, "hi", { hint: false }) : (apply ? `<a class="btn btn-primary" href="${esc(apply)}" target="_blank" rel="noopener nofollow">ऑफिशियल वेबसाइट &uarr;</a>` : "")}
     <a class="btn btn-ghost" href="${enPath}" lang="en">Read in English</a>
   </div>
   <p class="note">आवेदन से पहले ऑफिशियल वेबसाइट पर तिथियाँ और पात्रता ज़रूर जाँच लें। ${esc(SITE.brand)} सार्वजनिक नोटिफिकेशन की जानकारी देता है, यह कोई सरकारी संस्था नहीं है।</p>

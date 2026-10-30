@@ -477,5 +477,55 @@ function officialHomeFor(title) {
   return null;
 }
 
-module.exports = { isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+/* ---- the Apply button: what kind of link we really have, and how to label it honestly ---- */
+const PORTAL_HOST = /(recruit|career|apply|online|regist|exam|jobs|portal|onlineapp|candidate|ibpsonline|digialm|cbt|admission|vacanc)/i;
+/** "deep" (a page beyond the homepage), "portal" (the homepage of an application portal, e.g. becilregistration.in),
+    "pdf", "home" (the organisation's main homepage — not where anyone applies) or "none". */
+function linkKind(u, job = {}) {
+  if (!u) return "none";
+  let x; try { x = new URL(u); } catch { return "none"; }
+  const path = x.pathname.replace(/\/+$/, "");
+  if (/\.pdf$/i.test(path)) return "pdf";
+  if ((path && !/^\/(index|default|home)(\.(php|html?|aspx?|jsp))?$/i.test(path)) || x.search) return "deep";
+  const host = x.host.toLowerCase().replace(/^www\./, "");
+  const site = hostOf(job.official_website || "");
+  if (PORTAL_HOST.test(host) && host !== site) return "portal";
+  if (PORTAL_HOST.test(host.split(".")[0])) return "portal";
+  return "home";
+}
+/** walkin | offline | email | online | unknown — from the title first, then the notice's own steps. */
+function applyMode(job = {}) {
+  const t = String(job.title || "");
+  if (/walk[- ]?in/i.test(t)) return "walkin";
+  if (/apply offline|offline (application|form|mode)/i.test(t)) return "offline";
+  if (/apply online|online (application|form|registration)/i.test(t)) return "online";
+  const body = [job.post_name, ...(job.how_to_apply || []), ...(job.selection_process || []), job.summary, job.eligibility_notes].join(" ");
+  if (/walk[- ]?in/i.test(body)) return "walkin";
+  if (/apply online|online (application|form|registration|mode)|register online|registration portal|online portal|submit (the|your) application online/i.test(body)) return "online";
+  if (/apply offline|offline (application|form|mode)|by (registered |speed )?post|through (registered |speed )?post|hard ?copy|send (the|your) (filled|completed|duly)/i.test(body)) return "offline";
+  if (/(apply|send|submit)[^.]{0,40}(by|via|through|to) e-?mail|e-?mail (your|the) (application|cv|resume)/i.test(body)) return "email";
+  return "unknown";
+}
+/** The primary call to action for a job page and the app: { cta, url, mode, applyKind }.
+    cta: apply (a real application page) | form (offline: notice + form) | walkin (interview notice) |
+         notice (the official notification) | website (only the homepage is known — labelled as such, never "Apply"). */
+function applyInfo(job = {}) {
+  const mode = applyMode(job);
+  const apply = job.apply_link || "";
+  const notif = job.official_notification || "";
+  const site = job.official_website || "";
+  const ak = linkKind(apply, job), nk = linkKind(notif, job);
+  const notice = notif || (ak === "pdf" ? apply : "");
+  if (mode === "walkin" && (notice || ak === "deep")) return { cta: "walkin", url: notice || apply, mode, applyKind: ak };
+  if (mode === "offline" && notice) return { cta: "form", url: notice, mode, applyKind: ak };
+  if (mode === "email" && notice) return { cta: "notice", url: notice, mode, applyKind: ak };
+  if (ak === "deep" || ak === "portal") return { cta: "apply", url: apply, mode, applyKind: ak };
+  if (notice && (ak === "pdf" || ak === "none" || mode !== "online")) return { cta: "notice", url: notice, mode, applyKind: ak };
+  const home = (ak === "home" ? apply : "") || site || (nk === "deep" ? notif : "");
+  if (home) return { cta: "website", url: home, mode, applyKind: ak };
+  if (notice) return { cta: "notice", url: notice, mode, applyKind: ak };
+  return { cta: "", url: "", mode, applyKind: ak };
+}
+
+module.exports = { linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };

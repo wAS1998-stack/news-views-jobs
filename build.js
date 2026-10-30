@@ -1519,6 +1519,65 @@ function mediationPolicy() {
   if (!list.length) return "";
   return `\n\nGoogle AdMob may also fill ad spaces with ads from these partner networks, chosen by an automatic auction: ${list.join(", ")}. They may collect the same kinds of information described above, under their own privacy policies.`;
 }
+/* The job page's call to action, labelled for what the link really is (lib.js applyInfo): never "Apply" for a
+   homepage. Also used by the Hindi pages (lang "hi") and, as cta/cta_url, by the app. */
+const CTA_TEXT = {
+  en: { apply: "Apply online", form: "Download notice &amp; form", walkin: "Walk-in notice", notice: "Read official notification", website: "Official website",
+    hintApply: "Opens the official application page.",
+    hintForm: "Offline application: download the notice and form, fill it in and send it as the notice says.",
+    hintWalkin: "Walk-in interview: go to the venue on the date in the notice, with the documents it lists.",
+    hintNotice: "The official notification explains how to apply.",
+    hintWebsite: "The official notice gives no direct application page — open the official website’s Recruitment / Careers section. The steps are below.",
+    notif: "Notification PDF", site: "Official website", modes: { online: "Online", offline: "Offline (by post / in person)", walkin: "Walk-in interview", email: "By email", unknown: "" } },
+  hi: { apply: "ऑनलाइन आवेदन करें", form: "नोटिस और फ़ॉर्म डाउनलोड करें", walkin: "वॉक-इन नोटिस", notice: "ऑफिशियल नोटिफिकेशन पढ़ें", website: "ऑफिशियल वेबसाइट",
+    hintApply: "ऑफिशियल आवेदन पेज खुलेगा।",
+    hintForm: "ऑफलाइन आवेदन: नोटिस और फ़ॉर्म डाउनलोड करें, भरें और नोटिस में दिए तरीके से भेजें।",
+    hintWalkin: "वॉक-इन इंटरव्यू: नोटिस में दी गई तारीख पर, बताए गए दस्तावेज़ों के साथ पहुँचें।",
+    hintNotice: "आवेदन का तरीका ऑफिशियल नोटिफिकेशन में दिया है।",
+    hintWebsite: "नोटिस में सीधा आवेदन पेज नहीं है — ऑफिशियल वेबसाइट के Recruitment / Careers सेक्शन में देखें। तरीका नीचे दिया है।",
+    notif: "नोटिफिकेशन PDF", site: "ऑफिशियल वेबसाइट", modes: { online: "ऑनलाइन", offline: "ऑफलाइन (डाक / स्वयं)", walkin: "वॉक-इन इंटरव्यू", email: "ईमेल से", unknown: "" } },
+};
+function ctaOf(job) {
+  const a = LIB.applyInfo(job);
+  if (a.cta) return a;
+  // no official link stored: the body's homepage from its name, or the non-aggregator source page
+  const home = LIB.hostFromTitle(job.title) ? `https://${LIB.hostFromTitle(job.title)}/` : LIB.officialHomeFor(job.title);
+  if (home) return { ...a, cta: "website", url: home };
+  if (job.source && !LIB.isAggregator(hostOf(job.source))) return { ...a, cta: "notice", url: job.source };
+  return a;
+}
+function ctaHtml(job, lang = "en", { hint = true } = {}) {
+  const T = CTA_TEXT[lang], c = ctaOf(job);
+  if (!c.cta) return "";
+  const ext = `target="_blank" rel="noopener nofollow"`;
+  const same = (u) => u && c.url && u.replace(/\/+$/, "") === c.url.replace(/\/+$/, "");
+  const notif = job.official_notification && !same(job.official_notification) ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" ${ext}>${T.notif}</a>` : "";
+  const site = job.official_website && c.cta !== "website" && hostOf(job.official_website) !== hostOf(c.url) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" ${ext}>${T.site}</a>` : "";
+  const hintText = { apply: T.hintApply, form: T.hintForm, walkin: T.hintWalkin, notice: T.hintNotice, website: T.hintWebsite }[c.cta];
+  return `<div class="cta-row"><a class="btn btn-primary btn-cta" href="${esc(c.url)}" ${ext}>${T[c.cta]} &#8599;</a>${notif}${site}</div>${hint && hintText ? `<p class="cta-hint">${hintText}</p>` : ""}`;
+}
+function keyFacts(job, lang = "en") {
+  const hi = lang === "hi", T = CTA_TEXT[lang];
+  const d = daysLeft(job.application_end);
+  const left = d === null ? "" : d < 0 ? (hi ? "बंद" : "closed") : d === 0 ? (hi ? "आज अंतिम दिन" : "last day today") : (hi ? `${d} दिन बाकी` : `${d} day${d === 1 ? "" : "s"} left`);
+  const date = (x) => (hi ? hiDateKF(x) : fmtDate(x));
+  const facts = [
+    job.total_vacancies ? [hi ? "कुल पद" : "Posts", inr(job.total_vacancies)] : null,
+    job.application_end ? [hi ? "अंतिम तिथि" : "Last date", `${date(job.application_end)}${left ? `<small class="kf-left ${d !== null && d <= 7 ? "soon" : ""}">${left}</small>` : ""}`] : null,
+    job.age_max ? [hi ? "आयु सीमा" : "Age limit", `${job.age_min ? job.age_min + "–" : (hi ? "" : "Up to ")}${job.age_max}${hi ? " वर्ष" : " years"}`] : null,
+    qualsOf(job).length ? [hi ? "योग्यता" : "Qualification", esc(qualsOf(job).map((q) => (hi ? QUAL_HI_KF[q.slug] : "") || q.name).slice(0, 2).join(" / "))] : null,
+    T.modes[LIB.applyMode(job)] ? [hi ? "आवेदन का तरीका" : "How to apply", T.modes[LIB.applyMode(job)]] : null,
+  ].filter(Boolean);
+  if (!facts.length && !ctaOf(job).cta) return "";
+  return `<section class="keyfacts" aria-label="${hi ? "मुख्य जानकारी" : "Key facts"}">
+    ${facts.length ? `<dl class="kf-grid">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>` : ""}
+    ${ctaHtml(job, lang)}
+  </section>`;
+}
+const QUAL_HI_KF = { "10th-pass": "10वीं पास", "12th-pass": "12वीं पास", graduate: "स्नातक", "engineering-diploma": "इंजीनियरिंग / डिप्लोमा", "post-graduate": "स्नातकोत्तर" };
+const HI_MONTHS_KF = ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
+function hiDateKF(iso) { const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? `${Number(m[3])} ${HI_MONTHS_KF[Number(m[2]) - 1]} ${m[1]}` : ""; }
+
 function buildJob(job, all) {
   const st = statusOf(job);
   const canonical = `${SITE.url}/jobs/${job.id}/`;
@@ -1554,17 +1613,13 @@ function buildJob(job, all) {
     <h1>${esc(job.title)}</h1>
     ${job.via === "official" ? `<p class="verified">✓ Verified from the official website${job.official_website ? ` — <a href="${esc(job.official_website)}" rel="nofollow noopener" target="_blank">${esc(hostOf(job.official_website))}</a>` : ""}</p>` : ""}
     ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> The last date to apply was ${fmtDate(job.application_end)}. This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
+    ${isStale(job) ? "" : keyFacts(job)}
     <p class="lede">${esc(job.summary || "")}</p>
     ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
     ${pct !== null ? `<div class="window" role="img" aria-label="Application window from ${fmtDate(job.application_start)} to ${fmtDate(job.application_end)}">
       <div class="bar"><span class="fill ${st.cls}" style="width:${pct.toFixed(0)}%"></span></div>
       <div class="window-ends"><span>${fmtDate(job.application_start)}</span><span>${fmtDate(job.application_end)}</span></div>
     </div>` : ""}
-  </div>
-
-  <div class="prose">
-    <h2 class="section-h">Overview</h2>
-    ${overviewProse(job)}
   </div>
 
   <h2 class="section-h">Recruitment details</h2>
@@ -1592,13 +1647,11 @@ function buildJob(job, all) {
 
   ${steps ? `<h2 class="section-h">How to apply</h2><ol class="steps">${steps}</ol>` : ""}
 
-  <div class="apply-bar">
-    ${job.apply_link ? `<a class="btn btn-primary" href="${esc(job.apply_link)}" target="_blank" rel="noopener nofollow">Apply on official site &uarr;</a>`
-      : (job.official_website || LIB.hostFromTitle(job.title) || LIB.officialHomeFor(job.title)) ? `<a class="btn btn-primary" href="${esc(job.official_website || (LIB.hostFromTitle(job.title) ? "https://" + LIB.hostFromTitle(job.title) + "/" : LIB.officialHomeFor(job.title)))}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
-      : job.official_website ? `<a class="btn btn-primary" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Go to official website &uarr;</a>`
-      : (job.source && !LIB.isAggregator(hostOf(job.source))) ? `<a class="btn btn-primary" href="${esc(job.source)}" target="_blank" rel="noopener nofollow">View the notification &uarr;</a>` : ""}
-    ${job.official_notification ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Read official notification</a>` : ""}
-    ${job.official_website && job.apply_link && hostOf(job.official_website) !== hostOf(job.apply_link) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" target="_blank" rel="noopener nofollow">Official website</a>` : ""}
+  ${ctaHtml(job, "en", { hint: false }) ? `<div class="apply-bar">${ctaHtml(job, "en", { hint: false })}</div>` : ""}
+
+  <div class="prose">
+    <h2 class="section-h">About this recruitment</h2>
+    ${overviewProse(job)}
   </div>
   <p class="note">Always verify dates and eligibility on the official website before applying. ${esc(SITE.brand)} aggregates publicly available notifications and is not a government body.</p>
   ${tgCta("new government jobs")}
@@ -1767,6 +1820,7 @@ function appJobDetail(j) {
     summary: j.summary || "", overview: appArr(j.overview), eligibility_notes: j.eligibility_notes ? String(j.eligibility_notes) : "",
     selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
+    cta: ctaOf(j).cta || "", cta_url: ctaOf(j).url || "", apply_mode: LIB.applyMode(j),
     hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
       selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq) } : null,
   });
@@ -2370,7 +2424,7 @@ function main() {
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
-  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates, STATES, QUALS, statesOf, qualsOf });
+  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates, STATES, QUALS, statesOf, qualsOf, keyFacts, ctaHtml });
   HI_BROWSE = HINDI.hiBrowse;
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);

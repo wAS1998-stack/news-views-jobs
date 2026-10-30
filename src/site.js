@@ -69,8 +69,8 @@
   var bar = document.createElement("div");
   bar.className = "cookiebar";
   bar.innerHTML =
-    '<p>We use cookies to improve your experience and to show ads. By using this site you agree to our <a href="/privacy-policy/">Privacy Policy</a>.</p>' +
-    '<button type="button" class="cookie-ok">Got it</button>';
+    '<p>Cookies help us run the site and show ads. <a href="/privacy-policy/">Privacy policy</a></p>' +
+    '<button type="button" class="cookie-ok">OK</button>';
   document.body.appendChild(bar);
   bar.querySelector(".cookie-ok").addEventListener("click", function () {
     try { localStorage.setItem("nv_cookie_ok", "1"); } catch (e) {}

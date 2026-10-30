@@ -886,3 +886,28 @@ h1, h2, h3, .lede { overflow-wrap: break-word; }
 .steps, .faq, .guides, .updates, .quiz .opts, .bars { grid-template-columns: minmax(0, 1fr); }
 .steps > li, .faq > *, .guides > li, .updates > li, .bars > li { min-width: 0; }
 .steps li, .faq, .prose li, .prose p, .updates li { overflow-wrap: anywhere; }
+
+/* ===========================  Key facts + honest call to action (job pages)  =========================== */
+.keyfacts { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 18px 18px; margin: 16px 0 20px; }
+.kf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px 18px; margin: 0 0 16px; }
+.kf-grid > div { min-width: 0; }
+.kf-grid dt { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 2px; }
+.kf-grid dd { margin: 0; font-weight: 700; font-size: 1.02rem; color: var(--ink); overflow-wrap: anywhere; }
+.kf-left { display: block; font-size: 12.5px; font-weight: 600; color: var(--green, #1E7B4E); margin-top: 1px; }
+.kf-left.soon { color: var(--saffron); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn-cta { font-size: 1rem; padding: 12px 20px; }
+.cta-hint { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.apply-bar .cta-row { width: 100%; }
+.cta-row .btn { justify-content: center; text-align: center; }
+@media (max-width: 560px) {
+  .kf-grid { grid-template-columns: 1fr 1fr; }
+  .cta-row .btn { flex: 1 1 40%; }
+  .cta-row .btn-ghost { padding: 10px 10px; font-size: 14.5px; }
+  .btn-cta { flex-basis: 100% !important; }
+}
+/* the cookie notice: one slim line, not a quarter of the screen */
+.cookiebar { padding: 10px 14px; gap: 12px; border-radius: 12px; left: 10px; right: 10px; bottom: 10px; }
+.cookiebar p { font-size: 13px; line-height: 1.4; }
+.cookie-ok { padding: 7px 14px; font-size: 13px; }
+@media (max-width: 520px) { .cookiebar { flex-direction: row; align-items: center; } }
