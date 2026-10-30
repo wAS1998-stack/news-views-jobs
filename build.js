@@ -2328,6 +2328,17 @@ function main() {
       o.total_vacancies = Number.isFinite(n) ? n : null;
     }
     if (o.how_to_apply != null && !Array.isArray(o.how_to_apply)) o.how_to_apply = [String(o.how_to_apply)];
+    // Source headlines say "Apply Online" for email and postal applications too; the notice decides (lib.js applyMode).
+    if (o.title && /apply online/i.test(o.title)) {
+      const m = LIB.applyMode(o);
+      if (m === "email") o.title = o.title.replace(/apply online/i, "Apply by Email");
+      else if (m === "offline") o.title = o.title.replace(/apply online/i, "Apply Offline");
+    }
+    if (o.hi && o.hi.title && /ऑनलाइन आवेदन/.test(o.hi.title)) {
+      const m = LIB.applyMode(o);
+      if (m === "email") o.hi = { ...o.hi, title: o.hi.title.replace(/ऑनलाइन आवेदन/, "ईमेल से आवेदन") };
+      else if (m === "offline") o.hi = { ...o.hi, title: o.hi.title.replace(/ऑनलाइन आवेदन/, "ऑफलाइन आवेदन") };
+    }
     // Guarantee a URL-safe id no matter what's in the data (spaces/unicode/empty).
     const safeId = String(o.id || o.title || "")
       .toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
