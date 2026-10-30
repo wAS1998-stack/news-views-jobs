@@ -1698,22 +1698,59 @@ function appUpdatesInFeed(updates) {
   const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
   return updates.filter((u) => UPDATE_TYPES[u.type] && appDay(u.date) >= cutoff).sort((a, b) => String(b.date).localeCompare(String(a.date)));
 }
+/* Categories the app lets people browse and filter by (sent in the feed, so they can change without an app update).
+   A job can be in more than one (BPSC teacher recruitment = PSC + Teaching). */
+const APP_CATS = [
+  ["railway", "Railway", "रेलवे", /\b(rrb|rrc|railways?|ircon|rites|irctc|dfccil|metro rail|rvnl|konkan railway)\b/i],
+  ["bank", "Bank & insurance", "बैंक व बीमा", /\b(banks?|banking|ibps|sbi|rbi|nabard|sidbi|exim|dccb|lic|insurance|niacl|uiic|sebi|irdai)\b/i],
+  ["ssc", "SSC & selection boards", "SSC व चयन बोर्ड", /\b(ssc|staff selection commission|sssc|sssb|osssc|dsssb|hssc|jssc|wbssc|rsmssb|rssb|upsssc|uksssc|psssb|gsssb|hpssc|hprca|jkssb|tnusrb|kea|selection board|subordinate services?)\b/i],
+  ["post", "Post office", "डाक विभाग", /\b(india post|postal|post office|gds|dak sevak)\b/i],
+  ["psc", "UPSC & State PSC", "UPSC व राज्य PSC", /psc\b|public service commission/i],
+  ["police", "Police", "पुलिस", /\b(police|constables?|sub[- ]inspectors?|home guards?|jail warders?|prisons?)\b/i],
+  ["defence", "Defence & forces", "रक्षा व सशस्त्र बल", /\b(army|navy|naval|air force|iaf|agniveer|agnipath|bsf|crpf|cisf|itbp|ssb|assam rifles|coast guard|nda|cds|afcat|echs|military|defence|territorial army)\b/i],
+  ["teaching", "Teaching", "शिक्षक", /\b(teachers?|tgt|pgt|prt|lecturers?|professors?|faculty|principal|kvs|nvs|tet|ctet|tre|schools?)\b/i],
+  ["medical", "Medical & nursing", "मेडिकल व नर्सिंग", /\b(nurs(e|es|ing)|aiims|esic|jipmer|medical|doctors?|anm|gnm|pharmacists?|hospitals?|health|nhm|cho|residents?|lab technicians?|paramedical)\b/i],
+  ["psu", "PSU", "PSU", /\b(ntpc|bhel|ongc|iocl|indian oil|gail|sail|coal india|bel|hal|power ?grid|nhpc|nlc|npcil|hpcl|bpcl|ecil|becil|cwc|rinl|nmdc|mecon|engineers india|psu)\b/i],
+  ["research", "University & research", "विश्वविद्यालय व रिसर्च", /\b(universit(y|ies)|iit|nit|iiit|iim|iiser|iisc|aiish|isro|drdo|barc|csir|icar|icmr|institute|research|fellow(ship)?|jrf|srf|project (assistant|associate|scientist|fellow))\b/i],
+  ["court", "Courts", "कोर्ट", /\b(high court|district court|supreme court|courts?|judicial|judiciary)\b/i],
+  ["local", "District & local bodies", "जिला व स्थानीय निकाय", /\b(district|zilla|zila|collector(ate)?|municipal|nagar (nigam|palika)|panchayat|cantonment)\b/i],
+];
+const appCats = (text) => APP_CATS.filter(([, , , re]) => re.test(text)).map(([slug]) => slug);
+/* Short title for app lists: the headline up to "…Recruitment 2026" / "…Admit Card 2026", without the SEO tail
+   ("Notification Out – Apply Online for 78 Posts"). The full title stays on the job page. */
+function shortTitle(t) {
+  t = String(t || "").trim();
+  const m = t.match(/(recruitment|vacancy|admit card|hall ticket|result|answer key|exam date|exam city|cut ?off|merit list|syllabus|typing test|skill test|interview schedule|भर्ती|रिजल्ट|परिणाम|प्रवेश पत्र|एडमिट कार्ड|उत्तर कुंजी|आंसर की|टेस्ट|लिस्ट|तारीख|तिथि|कट ऑफ)(\s+20\d\d)?/i);
+  if (!m) return t;
+  const end = m.index + m[0].length;
+  const rest = t.slice(end);
+  const sep = rest.search(/\s[–—-]\s|:\s|\s\|\s|,\s(?=apply|download|check)/i);
+  let head = sep >= 0 ? t.slice(0, end + sep) : t;
+  head = head.replace(/\s+(notification|notice|advertisement)?\s*(out|released|declared|issued)(\s+today|\s+now)?$/i, "").replace(/\s+notification$/i, "")
+    .replace(/\s+(आज\s+)?(जारी|घोषित|सूचना|अधिसूचना)(\s+हुआ|\s+हुई|\s+किया गया)?$/, "").trim();
+  return head.length >= 12 ? head : t;
+}
 function buildAppIndex(jobs, updates) {
   const J = appJobsInFeed(jobs).map((j) => ({
     id: j.id, t: j.title, th: (j.hi && j.hi.title) || "", o: orgKey(j) || "", p: j.post_name || "",
     v: Math.round(Number(j.total_vacancies)) || 0, q: qualsOf(j).map((x) => x.slug), s: appStates(j),
     a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
     pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
+    tc: shortTitle(j.title), thc: shortTitle((j.hi && j.hi.title) || ""), w: /walk[- ]?in/i.test(`${j.title} ${j.post_name || ""}`) ? 1 : 0,
+    c: appCats(`${orgKey(j)} ${j.organization || ""} ${j.title} ${j.post_name || ""}`),
   }));
   const U = appUpdatesInFeed(updates).map((u) => ({
     id: u.id, t: u.title, th: (u.hi && u.hi.title) || "", o: u.org_short || "", ty: u.type, d: appDay(u.date), ev: appDay(u.event_date),
     big: /\b(ssc|rrb|railway|ibps|sbi|upsc|ctet|police|constable|army|navy|agniveer|nvs|kvs|bpsc|uppsc|upsssc|rpsc|rssb|mppsc|tnpsc|kpsc|kea|hssc|dsssb|ntpc|lic)\b/i.test(u.title) ? 1 : 0,
+    tc: shortTitle(u.title), thc: shortTitle((u.hi && u.hi.title) || ""),
+    c: appCats(`${u.org_short || ""} ${u.organization || ""} ${u.title} ${u.exam_name || ""}`),
   }));
   return JSON.stringify({
     api: APP_API, built: BUILD_ID, at: BUILT.toISOString(), site: SITE.url,
     states: STATES.map((x) => ({ slug: x.slug, name: x.name })).concat([{ slug: "gulf", name: "Gulf / abroad" }]),
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
+    cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
     ads: Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {}),
   });

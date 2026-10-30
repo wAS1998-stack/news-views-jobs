@@ -22,7 +22,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-data class Filters(val query: String = "", val state: String = "", val qual: String = "", val closingSoon: Boolean = false, val updateType: String = "")
+data class Filters(
+    val query: String = "", val state: String = "", val qual: String = "", val closingSoon: Boolean = false, val updateType: String = "",
+    val cat: String = "",              // a category slug, or FOLLOWING
+    val ageFits: Boolean = false,
+    val updateFollowing: Boolean = false,
+) { companion object { const val FOLLOWING = "_following" } }
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
     val repo = Repository(app)
@@ -75,12 +80,15 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     fun setFilters(f: Filters) { _filters.value = f }
 
-    fun visibleJobs(idx: AppIndex, f: Filters): List<JobItem> {
+    fun visibleJobs(idx: AppIndex, f: Filters, s: Settings): List<JobItem> {
         val words = f.query.lowercase().split(' ').filter { it.isNotBlank() }
+        val age = s.age()
         return idx.jobs.filter { j ->
             (f.state.isEmpty() || f.state in j.s) &&
                 (f.qual.isEmpty() || f.qual in j.q) &&
                 (!f.closingSoon || j.status() == Status.SOON) &&
+                (f.cat.isEmpty() || (if (f.cat == Filters.FOLLOWING) s.follows(j.o) else f.cat in j.c)) &&
+                (!f.ageFits || (age != null && j.ageFits(age, s.relaxation()) == true)) &&
                 (words.isEmpty() || words.all { w -> "${j.t} ${j.th} ${j.o} ${j.p}".lowercase().contains(w) })
         }
     }
@@ -117,6 +125,14 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         Alerts.sync(getApplication(), prefs)
     }
     fun clearStates() = viewModelScope.launch { prefs.setStates(emptySet()); Alerts.sync(getApplication(), prefs) }
+    fun toggleFollow(org: String) = viewModelScope.launch { if (org.isNotBlank()) { prefs.toggleFollow(org); Alerts.sync(getApplication(), prefs) } }
+    fun setDob(iso: String) = viewModelScope.launch { prefs.setDob(iso) }
+    fun setCategory(c: String) = viewModelScope.launch { prefs.setCategory(c) }
+    /** Debug builds only (CI screenshots): a sample date of birth and two followed departments. */
+    fun demoProfile() = viewModelScope.launch {
+        prefs.setDob("2000-01-15")
+        for (o in listOf("SSC", "RRB")) if (!prefs.current().follows(o)) prefs.toggleFollow(o)
+    }
     fun finishOnboarding() = viewModelScope.launch { prefs.setOnboarded(); Alerts.sync(getApplication(), prefs) }
     fun syncAlerts() { resync() }
 }

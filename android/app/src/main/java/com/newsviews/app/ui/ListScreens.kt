@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -94,8 +95,10 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val f by vm.filters.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
     val hindi = settings.hindi
-    val list = remember(idx, f) { idx?.let { vm.visibleJobs(it, f) } ?: emptyList() }
+    val list = remember(idx, f, settings) { idx?.let { vm.visibleJobs(it, f, settings) } ?: emptyList() }
     val listState = rememberLazyListState()
+    var dobDialog by remember { mutableStateOf(false) }
+    if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
     Column(Modifier.fillMaxSize()) {
         OutlinedTextField(
@@ -107,6 +110,18 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
             colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = MaterialTheme.colorScheme.surface, focusedContainerColor = MaterialTheme.colorScheme.surface),
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
         )
+        // categories (from the feed) and followed departments
+        LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            item { FilterChip(selected = f.cat.isEmpty(), onClick = { vm.setFilters(f.copy(cat = "")) }, label = { Text(s.allTypes) }) }
+            if (settings.follows.isNotEmpty()) item {
+                FilterChip(selected = f.cat == Filters.FOLLOWING, onClick = { vm.setFilters(f.copy(cat = if (f.cat == Filters.FOLLOWING) "" else Filters.FOLLOWING)) },
+                    label = { Text(s.following) }, leadingIcon = { Icon(Icons.Filled.Star, null) })
+            }
+            items(idx?.cats ?: emptyList(), key = { it.slug }) { c ->
+                FilterChip(selected = f.cat == c.slug, onClick = { vm.setFilters(f.copy(cat = if (f.cat == c.slug) "" else c.slug)) },
+                    label = { Text(if (hindi && c.hi.isNotBlank()) c.hi else c.name) })
+            }
+        }
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
                 val st = (idx?.states ?: Builtin.states).firstOrNull { it.slug == f.state }
@@ -119,6 +134,10 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                     { vm.setFilters(f.copy(qual = it)) }, s.allQuals, QUAL_HI, hindi)
             }
             item { FilterChip(selected = f.closingSoon, onClick = { vm.setFilters(f.copy(closingSoon = !f.closingSoon)) }, label = { Text(s.closingSoon) }) }
+            item {
+                FilterChip(selected = f.ageFits, label = { Text(s.ageFits) },
+                    onClick = { if (settings.age() == null) dobDialog = true else vm.setFilters(f.copy(ageFits = !f.ageFits)) })
+            }
         }
         StatusLine(idx, error, s, hindi, if (idx != null) list.size else null) { vm.refresh() }
         PullToRefreshBox(isRefreshing = loading, onRefresh = { vm.refresh() }, modifier = Modifier.fillMaxSize()) {
@@ -144,13 +163,20 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val loading by vm.loading.collectAsStateWithLifecycle()
     val error by vm.error.collectAsStateWithLifecycle()
     val f by vm.filters.collectAsStateWithLifecycle()
-    val hindi = vm.settings.collectAsStateWithLifecycle().value.hindi
-    val list = remember(idx, f.updateType) { idx?.updates?.filter { f.updateType.isEmpty() || it.ty == f.updateType } ?: emptyList() }
+    val settings by vm.settings.collectAsStateWithLifecycle()
+    val hindi = settings.hindi
+    val list = remember(idx, f.updateType, f.updateFollowing, settings.follows) {
+        idx?.updates?.filter { (f.updateType.isEmpty() || it.ty == f.updateType) && (!f.updateFollowing || settings.follows(it.o)) } ?: emptyList()
+    }
     val typeName = { slug: String -> if (hindi) TYPE_HI[slug] ?: slug else idx?.types?.firstOrNull { it.slug == slug }?.name?.removeSuffix("s") ?: slug }
 
     Column(Modifier.fillMaxSize()) {
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { FilterChip(selected = f.updateType.isEmpty(), onClick = { vm.setFilters(f.copy(updateType = "")) }, label = { Text(s.allTypes) }) }
+            if (settings.follows.isNotEmpty()) item {
+                FilterChip(selected = f.updateFollowing, onClick = { vm.setFilters(f.copy(updateFollowing = !f.updateFollowing)) },
+                    label = { Text(s.following) }, leadingIcon = { Icon(Icons.Filled.Star, null) })
+            }
             items(idx?.types ?: Builtin.types) { t ->
                 FilterChip(selected = f.updateType == t.slug, onClick = { vm.setFilters(f.copy(updateType = t.slug)) },
                     label = { Text(if (hindi) TYPE_HI[t.slug] ?: t.name else t.name) })

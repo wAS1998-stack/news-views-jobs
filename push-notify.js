@@ -7,6 +7,7 @@
  *   q-<qualification>           every level the person qualifies for ("Graduate" = q-10th-pass, q-12th-pass, q-graduate)
  *   results                     results / admit cards / answer keys of major exams
  *   l-en or l-hi                language of the notification
+ *   o-<department>              departments the person follows (e.g. o-ssc, o-rrb): every new job, admit card, result…
  * A job is sent once per language to: (its state or s-any) AND (its lowest qualification level) AND language.
  * At most 6 jobs (largest first) and 3 results per build; data/pushed.json remembers what was sent.
  * Needs the FIREBASE_SERVICE_ACCOUNT_JSON secret (Firebase console → Project settings → Service accounts →
@@ -20,7 +21,9 @@ const L = require("./lib.js");
 const ROOT = __dirname;
 const SITE = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const PUSHED = path.join(ROOT, "data", "pushed.json");
-const MAX_JOBS = 6, MAX_UPDATES = 3;
+const MAX_JOBS = 6, MAX_UPDATES = 3, MAX_FOLLOW = 20;
+// same rule as the app (Alerts.orgTopic) and build.js slug()
+const orgTopic = (o) => "o-" + String(o || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 // lowest level first; engineering/diploma is its own track
 const RANK = { "10th-pass": 1, "12th-pass": 2, "graduate": 3, "post-graduate": 4 };
 
@@ -55,7 +58,13 @@ async function main() {
   const updIds = new Set(urls.map((u) => idOf(u, "updates")).filter(Boolean));
   const jobs = index.jobs.filter((j) => jobIds.has(j.id) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, MAX_JOBS);
   const updates = index.updates.filter((u) => updIds.has(u.id) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`]).slice(0, MAX_UPDATES);
-  if (!jobs.length && !updates.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }
+  // followers of a department get everything new from it (same notification tag, so a phone that also matched the
+  // state/qualification alert sees it once)
+  const follow = [
+    ...index.jobs.filter((j) => jobIds.has(j.id) && j.o && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
+    ...index.updates.filter((u) => updIds.has(u.id) && u.o && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
+  ].slice(0, MAX_FOLLOW);
+  if (!jobs.length && !updates.length && !follow.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }
 
   const token = await G.getToken("https://www.googleapis.com/auth/firebase.messaging", key);
   const send = async (message) => {
@@ -94,6 +103,24 @@ async function main() {
     }
     pushed[`u:${u.id}`] = new Date().toISOString().slice(0, 10);
   }
+  for (const { kind, x } of follow) {
+    const topic = orgTopic(x.o);
+    if (topic === "o-") continue;
+    for (const lang of ["en", "hi"]) {
+      const title = cut(lang === "hi" && (x.thc || x.th) ? (x.thc || x.th) : (x.tc || x.t), 90);
+      const body = kind === "job"
+        ? [x.v ? `${x.v.toLocaleString("en-IN")} ${lang === "hi" ? "पद" : x.v === 1 ? "post" : "posts"}` : "", x.en ? `${lang === "hi" ? "अंतिम तिथि" : "Last date"} ${fmtDate(x.en)}` : ""].filter(Boolean).join(" · ") || (lang === "hi" ? "नई भर्ती" : "New recruitment")
+        : (typeName[x.ty] || ["Update", "अपडेट"])[lang === "hi" ? 1 : 0] + ` · ${x.o}`;
+      const res = await send({
+        condition: `'${topic}' in topics && 'l-${lang}' in topics`,
+        notification: { title, body },
+        data: { kind, id: x.id, url: `${SITE}/${kind === "job" ? "jobs" : "updates"}/${x.id}/` },
+        android: { priority: "HIGH", notification: { channel_id: kind === "job" ? "jobs" : "results", tag: `${kind === "job" ? "j" : "u"}-${x.id}` } },
+      });
+      log.push(`follow ${topic} ${x.id} ${lang}: ${res}`); if (res === "ok") sent++;
+    }
+    pushed[`${kind === "job" ? "fj" : "fu"}:${x.id}`] = new Date().toISOString().slice(0, 10);
+  }
   // keep 60 days of history
   const keep = new Date(Date.now() - 60 * 86400000).toISOString().slice(0, 10);
   for (const k of Object.keys(pushed)) if (pushed[k] < keep) delete pushed[k];
@@ -102,4 +129,4 @@ async function main() {
   L.logRun("push", { ok: log.every((x) => x.endsWith(": ok")), sent, log: log.slice(0, 30) });
 }
 if (require.main === module) main().catch((e) => console.log("push-notify error (non-fatal): " + e.message));
-module.exports = { jobCondition, jobTopic };
+module.exports = { jobCondition, jobTopic, orgTopic };

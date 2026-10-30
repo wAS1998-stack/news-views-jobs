@@ -21,7 +21,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.DisplayMode
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.InputChip
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -42,7 +51,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.BuildConfig
+import com.newsviews.app.data.Dates
 import com.newsviews.app.data.Qual
+import java.time.Instant
+import java.time.ZoneOffset
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.push.Alerts
@@ -116,6 +128,13 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             ToggleRow(s.reminders, s.remindersHint, st.reminders) { vm.setReminders(it) }
         }
         Group {
+            Text(s.following, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
+            Text(if (st.follows.isEmpty()) s.noFollows else s.followHint, style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 8.dp))
+            if (st.follows.isNotEmpty()) FollowedList(st.follows) { vm.toggleFollow(it) }
+            Spacer(Modifier.height(8.dp))
+        }
+        Group {
             Text(s.myStates, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             Text(s.myStatesHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 8.dp))
             StatePicker(vm, st.hindi, st.states, s.allStates)
@@ -124,6 +143,21 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         Group {
             Text(s.myQual, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             QualPicker(vm, st.hindi, st.qual)
+        }
+        Group {
+            var dobDialog by remember { mutableStateOf(false) }
+            if (dobDialog) DobDialog(s, st.dob, onDismiss = { dobDialog = false }) { vm.setDob(it); dobDialog = false }
+            Text(s.eligibility, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
+            TextButton(onClick = { dobDialog = true }) {
+                Text(if (st.dob.isBlank()) s.setDob else "${s.dob}: ${Dates.pretty(st.dob)}" + (st.age()?.let { " ($it)" } ?: ""))
+            }
+            Text(s.category, style = MaterialTheme.typography.labelLarge, modifier = Modifier.padding(top = 4.dp, bottom = 4.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                ChoiceChip(s.catGen, st.category == "gen") { vm.setCategory("gen") }
+                ChoiceChip(s.catObc, st.category == "obc") { vm.setCategory("obc") }
+                ChoiceChip(s.catSc, st.category == "scst") { vm.setCategory("scst") }
+            }
+            Text(s.ageNote, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp, bottom = 12.dp))
         }
         Group {
             Text(s.language, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp, bottom = 6.dp))
@@ -145,6 +179,37 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             Text(s.disclaimer, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 4.dp, bottom = 8.dp))
             Text("v${BuildConfig.VERSION_NAME}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 12.dp, bottom = 12.dp))
         }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun FollowedList(follows: Set<String>, onRemove: (String) -> Unit) {
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        follows.sorted().forEach { o ->
+            InputChip(selected = true, onClick = { onRemove(o) }, label = { Text(o) }, trailingIcon = { Icon(Icons.Filled.Close, null) })
+        }
+    }
+}
+
+/** Date of birth, typed (faster than scrolling back 25 years); kept only on the phone. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DobDialog(s: Strings, current: String, onDismiss: () -> Unit, onPick: (String) -> Unit) {
+    val year = Dates.today().year
+    val initial = Dates.parse(current)?.atStartOfDay(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
+    val state = rememberDatePickerState(initialSelectedDateMillis = initial, yearRange = (year - 70)..(year - 14), initialDisplayMode = DisplayMode.Input)
+    DatePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(onClick = {
+                val ms = state.selectedDateMillis
+                if (ms != null) onPick(Instant.ofEpochMilli(ms).atZone(ZoneOffset.UTC).toLocalDate().toString()) else onDismiss()
+            }) { Text(s.ok) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(s.cancel) } },
+    ) {
+        DatePicker(state = state, title = { Text(s.dob, modifier = Modifier.padding(start = 24.dp, end = 12.dp, top = 16.dp)) })
     }
 }
 

@@ -10,6 +10,9 @@ hurting users or breaking Google's policies.
   push to `main`.
 - **Android app** (`android/`) — native Kotlin + Jetpack Compose. Package `in.newsviews.app`. Its "backend" is the
   same build: `build.js` writes a static JSON feed to `/app/v1/` (index.json, j/<id>.json, u/<id>.json).
+  The index carries short list titles (`tc`/`thc`, from `shortTitle()`), categories (`c`, from `APP_CATS`, sent as
+  `cats` so chips can change without an app update), walk-in flag `w`, and the `ads` switches. Fields are additive:
+  never rename or remove one (old app versions read it); bump `APP_API` only for a breaking change.
 - **Automation** — GitHub Actions fetch new notifications, enrich them with AI, rebuild and notify search engines,
   Telegram and app users, around the clock.
 
@@ -20,7 +23,7 @@ hurting users or breaking Google's policies.
 | `build.js` | The whole site generator: pages, sitemaps, schema (JobPosting, NewsArticle), redirects, robots, app feed, ads.txt / app-ads.txt |
 | `fetch-jobs.js`, `watch.js`, `lib.js` | Pull job/result notices from feeds and official sites; `classify()` sorts jobs vs results; `isDuplicate()` merges twins |
 | `enrich-jobs.js`, `due.js`, `hindi.js` | AI enrichment (summaries, eligibility, Hindi) within daily cost caps |
-| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`) |
+| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`, `o-<department>` for followers — same slug rule in the app's `orgSlug`) |
 | `notify-search.js`, `indexnow.js`, `gsc.js`, `google.js` | IndexNow, Search Console data, Google APIs |
 | `tools.js`, `krutidev.js`, `typingtest.js` | Tool pages (salary calculators, Kruti Dev converter, typing tests) |
 | `functions/api/relay.js` | The only server code: a Pages Function that fetches .gov.in/.nic.in pages for the fetchers |

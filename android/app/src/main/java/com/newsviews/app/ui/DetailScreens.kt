@@ -45,6 +45,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.data.Dates
@@ -109,7 +110,11 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
         val item = idx?.jobs?.firstOrNull { it.id == id } ?: JobItem(id = j.id, t = j.title, th = j.hi?.title ?: "", o = j.org_short, v = j.total_vacancies, en = j.application_end, pub = j.published)
         val saved = id in settings.saved
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 12.dp)) {
-            Text(j.org_short.ifBlank { j.organization }, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(j.org_short.ifBlank { j.organization }, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
+                FollowChip(j.org_short, settings.follows(j.org_short), s) { vm.toggleFollow(j.org_short) }
+            }
             Spacer(Modifier.height(4.dp))
             Text(h?.title?.ifBlank { null } ?: j.title, style = MaterialTheme.typography.titleLarge)
             if (j.organization.isNotBlank() && j.organization != j.org_short) Text(j.organization, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
@@ -130,6 +135,14 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                     s.ageRange(j.age_min, j.age_max).takeIf { it.isNotBlank() }?.let { Fact(s.age, it) }
                     if (j.exam_date.isNotBlank()) Fact(s.examDate, Dates.pretty(j.exam_date))
                 }
+            }
+            // the reader's own age against the limit (date of birth from Alerts › Age & category)
+            val age = settings.age()
+            if (age != null && j.age_max > 0) {
+                val under = j.age_min > 0 && age < j.age_min
+                val fits = !under && age <= j.age_max + settings.relaxation()
+                Text(if (fits) s.ageOk(age) else if (under) s.ageUnder(age) else s.ageOver(age), style = MaterialTheme.typography.labelLarge,
+                    color = if (fits) Brand.Green else Brand.Saffron, modifier = Modifier.padding(top = 10.dp))
             }
             Spacer(Modifier.height(14.dp))
             val apply = j.apply_link.ifBlank { j.official_website }
@@ -178,7 +191,8 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
 @Composable
 fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
     val ctx = LocalContext.current
-    val hindi = vm.settings.collectAsStateWithLifecycle().value.hindi
+    val settings by vm.settings.collectAsStateWithLifecycle()
+    val hindi = settings.hindi
     Loader(id, { vm.repo.update(id) }, s) { u: UpdateDetail ->
         val h = if (hindi) u.hi else null
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 12.dp)) {
@@ -187,6 +201,9 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                 Pill(if (hindi) TYPE_HI[u.type] ?: u.type_name else u.type_name, c, c.copy(alpha = .12f))
                 Spacer(Modifier.width(8.dp))
                 Text(listOf(u.org_short, Dates.pretty(u.date)).filter { it.isNotBlank() }.joinToString(" · "), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (u.org_short.isNotBlank()) Row(Modifier.padding(top = 6.dp)) {
+                FollowChip(u.org_short, settings.follows(u.org_short), s) { vm.toggleFollow(u.org_short) }
             }
             Spacer(Modifier.height(8.dp))
             Text(h?.title?.ifBlank { null } ?: u.title, style = MaterialTheme.typography.titleLarge)

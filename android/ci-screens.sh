@@ -14,11 +14,15 @@ adb logcat -c
 adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
 
 # 1. first launch: welcome screen
-adb shell am start -n $PKG/$ACT; shot 01-welcome 8
-# 2. job list (skip the welcome screen through the debug-only hook)
-adb shell am start -n $PKG/$ACT --ez skip_onboarding true; shot 02-jobs 12
+adb shell am start -n $PKG/$ACT; shot 01-welcome 12
+# start-up time: two cold starts after the first run (debug build on an emulator, so slower than a real phone)
+for i in 1 2; do adb shell am force-stop $PKG; sleep 2; adb shell am start -W -n $PKG/$ACT | grep -E "TotalTime|WaitTime" | tr '\n' ' ' >> "$OUT/startup.txt"; echo >> "$OUT/startup.txt"; sleep 4; done
+# 2. job list (skip the welcome screen; sample date of birth + followed departments, both debug-only hooks)
+adb shell am start -n $PKG/$ACT --ez skip_onboarding true --ez demo_profile true; shot 02-jobs 12
 adb shell am start -n $PKG/$ACT --es tab updates; shot 02b-results 6
 adb shell am start -n $PKG/$ACT --es tab alerts; shot 02c-alerts 5
+adb shell input swipe 540 1900 540 500 400; shot 02d-alerts-follow 3
+adb shell input swipe 540 1900 540 300 400; adb shell input swipe 540 1900 540 300 400; shot 02e-alerts-age 3
 adb shell am start -n $PKG/$ACT --es tab jobs; sleep 2
 # 3. a job page: the first job in the live feed
 JOB=$(curl -s https://news-views.in/app/v1/index.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["jobs"][0]["id"])' 2>/dev/null)

@@ -29,8 +29,15 @@ data class JobItem(
     val pub: String = "",
     val x: String = "",
     val ok: Int = 0,
+    val tc: String = "",               // short title for lists ("GSSSB Surveyor Recruitment 2026")
+    val thc: String = "",
+    val w: Int = 0,                    // walk-in interview
+    val c: List<String> = emptyList(), // categories (railway, bank, ssc, …)
 ) {
     fun title(hindi: Boolean) = if (hindi && th.isNotBlank()) th else t
+    fun short(hindi: Boolean) = if (hindi && thc.isNotBlank()) thc else if (hindi && th.isNotBlank()) th else tc.ifBlank { t }
+    /** null = the notice gives no upper age limit; otherwise whether [age] fits (with [extra] years of relaxation). */
+    fun ageFits(age: Int, extra: Int): Boolean? = if (a1 <= 0.0) null else (a0 <= 0.0 || age >= a0) && age <= a1 + extra
 }
 
 @Serializable
@@ -43,9 +50,20 @@ data class UpdateItem(
     val d: String = "",
     val ev: String = "",
     val big: Int = 0,
+    val tc: String = "",
+    val thc: String = "",
+    val c: List<String> = emptyList(),
 ) {
     fun title(hindi: Boolean) = if (hindi && th.isNotBlank()) th else t
+    fun short(hindi: Boolean) = if (hindi && thc.isNotBlank()) thc else if (hindi && th.isNotBlank()) th else tc.ifBlank { t }
 }
+
+/** A browsable category, sent with the feed. */
+@Serializable
+data class Cat(val slug: String, val name: String, val hi: String = "")
+
+/** Department key used for "Follow" and its alert topic — the same rule as build.js / push-notify.js. */
+fun orgSlug(o: String): String = o.lowercase().replace(Regex("[^a-z0-9]+"), "-").trim('-')
 
 @Serializable
 data class AppIndex(
@@ -58,6 +76,7 @@ data class AppIndex(
     val types: List<Named> = emptyList(),
     val jobs: List<JobItem> = emptyList(),
     val updates: List<UpdateItem> = emptyList(),
+    val cats: List<Cat> = emptyList(),
     val ads: AdsConfig = AdsConfig(),
 )
 

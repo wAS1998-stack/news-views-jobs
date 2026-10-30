@@ -21,6 +21,10 @@ data class Strings(
     val welcome: String, val welcomeHint: String, val continueBtn: String, val skip: String, val chooseState: String,
     val ageRange: (Double, Double) -> String,
     val ad: String, val adPrivacy: String,
+    val following: String, val follow: (String) -> String, val followingOrg: String, val followHint: String, val noFollows: String,
+    val ageFits: String, val eligibility: String, val dob: String, val setDob: String, val category: String,
+    val catGen: String, val catObc: String, val catSc: String, val ageNote: String,
+    val ageOk: (Int) -> String, val ageOver: (Int) -> String, val ageUnder: (Int) -> String, val ok: String, val cancel: String, val walkIn: String,
     val disclaimer: String,
 ) {
     companion object {
@@ -42,6 +46,13 @@ data class Strings(
             about = "About", rate = "Rate the app", shareApp = "Share the app", privacy = "Privacy policy", shareText = "Govt job alerts for your state and qualification — News-Views",
             welcome = "Welcome to News-Views", welcomeHint = "Pick your state and qualification and we'll alert you about matching government jobs.", continueBtn = "Continue", skip = "Skip", chooseState = "Choose states",
             ad = "Advertisement", adPrivacy = "Ad privacy choices",
+            following = "Following", follow = { "Follow $it" }, followingOrg = "Following", followHint = "Every new job, admit card and result from these departments reaches you, whatever your other alert settings.",
+            noFollows = "Tap “Follow” on any job or result page to get everything from that department (SSC, RRB, UPSC…).",
+            ageFits = "Fits my age", eligibility = "Age & category", dob = "Date of birth", setDob = "Set date of birth", category = "Category",
+            catGen = "General / EWS", catObc = "OBC", catSc = "SC / ST",
+            ageNote = "Used only on this phone, to show jobs that fit your age. Upper-age relaxation follows central government rules (OBC +3, SC/ST +5 years); states and departments can differ, so always check the notice.",
+            ageOk = { "Your age $it — within the limit" }, ageOver = { "Your age $it — above the limit (check the notice for relaxations)" }, ageUnder = { "Your age $it — below the minimum age" },
+            ok = "OK", cancel = "Cancel", walkIn = "Walk-in",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
             disclaimer = "News-Views is an independent publisher. It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
         )
@@ -63,6 +74,13 @@ data class Strings(
             about = "जानकारी", rate = "ऐप को रेट करें", shareApp = "ऐप शेयर करें", privacy = "गोपनीयता नीति", shareText = "आपके राज्य और योग्यता के सरकारी नौकरी अलर्ट — News-Views",
             welcome = "News-Views में स्वागत है", welcomeHint = "अपना राज्य और योग्यता चुनें — मेल खाती सरकारी नौकरियों का अलर्ट मिलेगा।", continueBtn = "आगे बढ़ें", skip = "छोड़ें", chooseState = "राज्य चुनें",
             ad = "विज्ञापन", adPrivacy = "विज्ञापन गोपनीयता विकल्प",
+            following = "फ़ॉलो किए", follow = { "$it फ़ॉलो करें" }, followingOrg = "फ़ॉलो कर रहे", followHint = "इन विभागों की हर नई भर्ती, प्रवेश पत्र और रिजल्ट की सूचना आपको मिलेगी, बाकी अलर्ट सेटिंग चाहे जो हों।",
+            noFollows = "किसी भी नौकरी या रिजल्ट पेज पर “फ़ॉलो करें” दबाएँ — उस विभाग (SSC, RRB, UPSC…) की हर सूचना मिलेगी।",
+            ageFits = "मेरी आयु के अनुसार", eligibility = "आयु और वर्ग", dob = "जन्म तिथि", setDob = "जन्म तिथि चुनें", category = "वर्ग",
+            catGen = "सामान्य / EWS", catObc = "OBC", catSc = "SC / ST",
+            ageNote = "केवल इसी फ़ोन पर रहती है, ताकि आपकी आयु के अनुसार नौकरियाँ दिखें। ऊपरी आयु छूट केंद्र सरकार के नियमों से (OBC +3, SC/ST +5 वर्ष); राज्य और विभाग अलग हो सकते हैं — अधिसूचना ज़रूर जाँचें।",
+            ageOk = { "आपकी आयु $it — सीमा के भीतर" }, ageOver = { "आपकी आयु $it — सीमा से अधिक (छूट के लिए अधिसूचना देखें)" }, ageUnder = { "आपकी आयु $it — न्यूनतम आयु से कम" },
+            ok = "ठीक है", cancel = "रद्द करें", walkIn = "वॉक-इन",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
             disclaimer = "News-Views एक स्वतंत्र प्रकाशक है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
         )

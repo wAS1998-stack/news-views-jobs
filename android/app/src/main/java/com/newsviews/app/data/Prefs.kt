@@ -35,7 +35,15 @@ data class Settings(
     val qual: Qual = Qual.ANY,
     val saved: Set<String> = emptySet(),
     val subscribed: Set<String> = emptySet(),
-)
+    val follows: Set<String> = emptySet(),   // departments followed (as shown, e.g. "SSC")
+    val dob: String = "",                     // date of birth, yyyy-mm-dd — kept only on the phone
+    val category: String = "gen",             // gen | obc | scst — for upper-age relaxation
+) {
+    fun age(): Int? = Dates.parse(dob)?.let { java.time.Period.between(it, Dates.today()).years }
+    /** Upper-age relaxation under central government rules (state rules can differ; the app says so). */
+    fun relaxation(): Int = when (category) { "obc" -> 3; "scst" -> 5; else -> 0 }
+    fun follows(o: String): Boolean = o.isNotBlank() && follows.any { orgSlug(it) == orgSlug(o) }
+}
 
 class Prefs(private val context: Context) {
     private object K {
@@ -48,6 +56,9 @@ class Prefs(private val context: Context) {
         val qual = stringPreferencesKey("qual")
         val saved = stringSetPreferencesKey("saved")
         val subscribed = stringSetPreferencesKey("subscribed")
+        val follows = stringSetPreferencesKey("follows")
+        val dob = stringPreferencesKey("dob")
+        val category = stringPreferencesKey("category")
     }
 
     val flow: Flow<Settings> = context.store.data.map { p ->
@@ -61,6 +72,9 @@ class Prefs(private val context: Context) {
             qual = Qual.of(p[K.qual]),
             saved = p[K.saved] ?: emptySet(),
             subscribed = p[K.subscribed] ?: emptySet(),
+            follows = p[K.follows] ?: emptySet(),
+            dob = p[K.dob] ?: "",
+            category = p[K.category] ?: "gen",
         )
     }
 
@@ -74,6 +88,13 @@ class Prefs(private val context: Context) {
     suspend fun setStates(v: Set<String>) = context.store.edit { it[K.states] = v }
     suspend fun setQual(q: Qual) = context.store.edit { it[K.qual] = q.key }
     suspend fun setSubscribed(v: Set<String>) = context.store.edit { it[K.subscribed] = v }
+    suspend fun setDob(v: String) = context.store.edit { it[K.dob] = v }
+    suspend fun setCategory(v: String) = context.store.edit { it[K.category] = v }
+    suspend fun toggleFollow(org: String) = context.store.edit {
+        val cur = it[K.follows] ?: emptySet()
+        val match = cur.firstOrNull { f -> orgSlug(f) == orgSlug(org) }
+        it[K.follows] = if (match != null) cur - match else cur + org
+    }
     suspend fun toggleSaved(id: String): Boolean {
         var nowSaved = false
         context.store.edit {

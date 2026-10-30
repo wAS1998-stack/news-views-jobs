@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -101,6 +102,7 @@ class MainActivity : ComponentActivity() {
         // test hooks for the automated screenshots (debug builds only)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("skip_onboarding", false)) vm.finishOnboarding()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("ad_test", false)) Ads.forceNext = true
+        if (BuildConfig.DEBUG && intent.getBooleanExtra("demo_profile", false)) vm.demoProfile()
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
         if (BuildConfig.DEBUG && intent.hasExtra("tab")) { pending.value = "tab" to (intent.getStringExtra("tab") ?: "jobs"); return }
         val kind = intent.getStringExtra("kind")
@@ -139,6 +141,12 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     var prevRoute by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
+    val argId = entry?.arguments?.getString("id")
+    val detailTitle = when {
+        route.startsWith("job/") -> idx?.jobs?.firstOrNull { it.id == argId }?.short(settings.hindi)
+        route.startsWith("update/") -> idx?.updates?.firstOrNull { it.id == argId }?.short(settings.hindi)
+        else -> null
+    }
     // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
     LaunchedEffect(route) {
         val isPage = route.startsWith("job/") || route.startsWith("update/")
@@ -165,6 +173,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         topBar = {
             TopAppBar(
                 title = {
+                    if (!top) detailTitle?.let { Text(it, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis) }
                     if (top) Row(verticalAlignment = Alignment.CenterVertically) {
                         Text("News-Views", fontWeight = FontWeight.ExtraBold)
                         Text(".", color = Brand.Saffron, fontWeight = FontWeight.ExtraBold)

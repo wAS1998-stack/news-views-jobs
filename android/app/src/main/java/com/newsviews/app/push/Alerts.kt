@@ -32,14 +32,19 @@ object Alerts {
     const val CH_REMINDERS = "reminders"
 
     fun topicsFor(s: Settings): Set<String> {
-        if (!s.alerts) return emptySet()
         val t = mutableSetOf<String>()
-        if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
-        s.qual.levels.forEach { t += "q-$it" }
-        t += if (s.hindi) "l-hi" else "l-en"
-        if (s.results) t += "results"
+        if (s.alerts) {
+            if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
+            s.qual.levels.forEach { t += "q-$it" }
+            if (s.results) t += "results"
+        }
+        // followed departments: everything new from them, even with general job alerts off
+        s.follows.map { orgTopic(it) }.filter { it != "o-" }.forEach { t += it }
+        if (t.isNotEmpty()) t += if (s.hindi) "l-hi" else "l-en"
         return t
     }
+
+    fun orgTopic(org: String) = "o-" + com.newsviews.app.data.orgSlug(org)
 
     fun firebaseReady(context: Context): Boolean =
         BuildConfig.HAS_FIREBASE && try { FirebaseApp.getApps(context).isNotEmpty() } catch (e: Exception) { false }

@@ -18,7 +18,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.Card
@@ -92,25 +94,32 @@ fun JobCard(job: JobItem, hindi: Boolean, s: Strings, saved: Boolean, onSave: ()
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
     ) {
-        Column(Modifier.padding(start = 16.dp, top = 12.dp, end = 4.dp, bottom = 12.dp)) {
+        Column(Modifier.padding(start = 16.dp, top = 4.dp, end = 4.dp, bottom = 12.dp)) {
+            // department + badges on the left, bookmark pinned to the right edge
             Row(verticalAlignment = Alignment.CenterVertically) {
-                if (job.o.isNotBlank()) {
-                    Text(job.o, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold,
-                        maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
-                    Spacer(Modifier.width(8.dp))
+                Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
+                    if (job.o.isNotBlank()) {
+                        Text(job.o, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold,
+                            maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
+                        Spacer(Modifier.width(8.dp))
+                    }
+                    if (job.isNew()) Pill(s.new, Color.White, Brand.Saffron)
+                    if (job.ok == 1) { Spacer(Modifier.width(6.dp)); Icon(Icons.Filled.Verified, s.verified, tint = Brand.Green, modifier = Modifier.padding(top = 1.dp)) }
                 }
-                if (job.isNew()) Pill(s.new, Color.White, Brand.Saffron)
-                if (job.ok == 1) { Spacer(Modifier.width(6.dp)); Icon(Icons.Filled.Verified, s.verified, tint = Brand.Green, modifier = Modifier.padding(top = 1.dp)) }
-                Spacer(Modifier.weight(1f))
                 IconButton(onClick = onSave) {
                     Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save,
                         tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
-            Text(job.title(hindi), style = MaterialTheme.typography.titleMedium, maxLines = 3, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(end = 12.dp))
+            Text(job.short(hindi), style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(end = 12.dp))
+            // the posts, when the short title doesn't already name them
+            if (job.p.isNotBlank() && !job.short(hindi).contains(job.p, ignoreCase = true))
+                Text(job.p, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1,
+                    overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 2.dp, end = 12.dp))
             Spacer(Modifier.padding(top = 8.dp))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(end = 12.dp)) {
                 StatusPill(job, s)
+                if (job.w == 1) Pill(s.walkIn, Brand.Azure, Brand.Azure.copy(alpha = .12f))
                 if (job.v > 0) Pill(s.posts(job.v), MaterialTheme.colorScheme.onSurface, MaterialTheme.colorScheme.surfaceVariant)
                 if (job.en.isNotBlank()) Pill("${s.lastDate} ${Dates.short(job.en)}", MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant)
                 job.q.firstOrNull()?.let { q -> Pill(if (hindi) QUAL_HI[q] ?: q else qualName(q), MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer) }
@@ -141,7 +150,7 @@ fun UpdateRow(u: UpdateItem, hindi: Boolean, typeName: String, onClick: () -> Un
                 Text(Dates.short(u.d), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             Spacer(Modifier.padding(top = 6.dp))
-            Text(u.title(hindi), style = MaterialTheme.typography.titleMedium, maxLines = 3, overflow = TextOverflow.Ellipsis)
+            Text(u.short(hindi), style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
     }
 }
@@ -165,6 +174,17 @@ fun Bullets(items: List<String>, numbered: Boolean = false) {
             }
         }
     }
+}
+
+/** "Follow SSC" / "Following ✓" — every new job, admit card and result of that department as a notification. */
+@Composable
+fun FollowChip(org: String, following: Boolean, s: Strings, onClick: () -> Unit) {
+    if (org.isBlank()) return
+    androidx.compose.material3.FilterChip(
+        selected = following, onClick = onClick,
+        label = { Text(if (following) s.followingOrg else s.follow(org), maxLines = 1, overflow = TextOverflow.Ellipsis) },
+        leadingIcon = { Icon(if (following) Icons.Filled.Check else Icons.Filled.Add, null) },
+    )
 }
 
 @Composable
