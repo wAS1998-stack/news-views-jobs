@@ -33,7 +33,7 @@ val mediationAdapters = mapOf(
     "applovin" to "com.google.ads.mediation:applovin:13.6.4.2",
     "inmobi" to "com.google.ads.mediation:inmobi:11.5.0.0",
     "liftoff" to "com.google.ads.mediation:vungle:7.7.9.0",        // Liftoff Monetize (Vungle)
-    "unity" to "com.google.ads.mediation:unity:4.21.0.0",          // Unity Ads
+    "unity" to "com.google.ads.mediation:unity:4.21.0.0",          // Unity Ads (its SDK is added below: the adapter leaves it out)
     "mintegral" to "com.google.ads.mediation:mintegral:17.1.81.1",
     "ironsource" to "com.google.ads.mediation:ironsource:9.7.0.0",
     "dtexchange" to "com.google.ads.mediation:fyber:8.5.0.0",      // Digital Turbine DT Exchange
@@ -139,5 +139,7 @@ dependencies {
     implementation("com.google.android.play:review:2.0.2")        // Play's in-app rating sheet
     implementation("com.google.android.play:app-update:2.1.0")    // Play's in-app update download
     mediation.mapNotNull { mediationAdapters[it] }.forEach { implementation(it) }
+    // SDKs that an adapter's published POM deliberately omits (found by the R8 release build: missing classes)
+    if ("unity" in mediation) implementation("com.unity3d.ads:unity-ads:4.21.0")
     testImplementation("junit:junit:4.13.2")
 }
