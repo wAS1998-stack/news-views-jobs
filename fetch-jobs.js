@@ -419,7 +419,7 @@ async function main() {
   }
 
   if (updatesAdded) {
-    updates = updates.slice(0, 600);
+    updates = updates.slice(0, 800);   // same cap as watch.js (a lower cap here evicted pages and added redirects)
     fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }
