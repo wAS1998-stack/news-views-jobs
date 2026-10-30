@@ -53,10 +53,16 @@ export async function onRequestGet({ request }) {
     }
     const len = Number(r.headers.get("content-length") || 0);
     if (len > MAX_BYTES) return reply(413, "too large", { "x-relay-colo": colo });
+    // Served as inert text (PDFs stay PDFs for the fetchers): a hacked .gov.in page must never run as news-views.in.
+    // The original type travels in x-relay-content-type; the sandbox CSP and nosniff stop any rendering or scripts.
+    const upstreamType = r.headers.get("content-type") || "application/octet-stream";
+    const charset = (upstreamType.match(/charset=([^;\s]+)/i) || [])[1];
+    const safeType = /pdf/i.test(upstreamType) ? "application/pdf" : `text/plain${charset ? "; charset=" + charset : ""}`;
     return new Response(r.body, {
       status: r.status,
       headers: {
-        "content-type": r.headers.get("content-type") || "application/octet-stream",
+        "content-type": safeType, "x-relay-content-type": upstreamType,
+        "content-security-policy": "sandbox; default-src 'none'", "x-content-type-options": "nosniff",
         "x-relay-final-url": target.toString(), "x-relay-colo": colo,
         "cache-control": "no-store", "x-robots-tag": "noindex",
       },

@@ -40,6 +40,8 @@ function classify(title) {
   if (/date (change|extended|postponed)|postpone|reschedul|revised (exam )?(date|schedule)|exam.{0,20}date/i.test(s) && !/recruit|advt|advertisement|vacanc/i.test(s)) return "exam-date";
   if (/result|merit list|rank list|cut[- ]?off|short ?list|marks (obtained|of)|score ?card|marks? list|provisional marks|\bfinal marks\b|\bmarks\b.{0,12}\b(out|released|list|pdf)\b|reserve list|select(ion)? list|final selection|waiting list/i.test(s)) return "result";
   if (/exam date|exam schedule|exam from|interview schedule|interview date|dv schedule|document verification|\bdv date|walk-?in date|exam city/i.test(s)) return "exam-date";
+  // notices about a recruitment that is already listed, even when the title names it ("… Recruitment 2026 Correction Form")
+  if (/correction (form|window|facility|link|date)|application (form )?correction|edit (form|window)|\b(cancel+ed|cancel+ation|postponed|deferred|withdrawn)\b/i.test(s)) return "exam-date";
   // later stages of a recruitment that is already listed (skill/typing/physical tests, document upload, correction window)
   if (/(skill|typing|physical|stenography|shorthand|trade) test|\bpet\b|\bpst\b|documents? upload|correction window|exam cent(re|er)s?/i.test(s) &&
       !/recruit|advt|advertisement|vacanc|online form|apply online/i.test(s)) return "exam-date";
@@ -101,7 +103,9 @@ function cleanSlug(title) {
       if (noise.has(w)) return false;
       return true;
     });
-  let s = words.slice(0, 6).join("-");
+  let s = safe(words.slice(0, 6).join("-"));
+  const room = 60 - (year ? year.length + 1 : 0);
+  if (s.length > room) s = s.slice(0, room).replace(/-[^-]*$/, "");   // cut at a whole word, keep the year whole
   if (year && s) s += "-" + year;
   s = safe(s);   // guarantee URL-safe even after joining
   // The cleaned slug must have real letters beyond a bare year; otherwise fall back
@@ -115,7 +119,8 @@ function cleanSlug(title) {
   return s;
 }
 const stripTags = L.stripTags;
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => L.todayIST();   // dates are Indian dates (UTC is still "yesterday" until 05:30 IST)
+const istDate = (d) => { const t = new Date(d); return isNaN(t) ? today() : new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(t); };
 
 const decodeEntities = L.decodeEntities;
 
@@ -249,6 +254,7 @@ function isDuplicate(job) {
     const xv = Number(x.total_vacancies) || 0;
     // District-wise drives of one department (UP ECCE Educator: Meerut 98, Kushinagar 29, same dates) are separate
     // recruitments: small notices for different places never count as twins.
+    if (v >= 10 && xv === v) return true;              // same body, same (distinctive) count — "Assam" vs "All India" spellings of one notice
     const place = (l) => String(l || "").toLowerCase().split(/[,(]/)[0].replace(/[^a-z]/g, "");
     const pj = place(job.location), px = place(x.location);
     if (v < 500 && xv < 500 && pj && px && pj !== px && !String(x.location).toLowerCase().includes(pj) && !String(job.location).toLowerCase().includes(px)) return false;
@@ -267,7 +273,7 @@ function isDuplicate(job) {
       Math.abs(new Date(x.published || 0).getTime() - t) < 30 * 86400000;
   });
   // An extension notice carries the new last date: move the existing listing's deadline instead of adding a twin.
-  if (hit && end && /extend|extension|last date/i.test(String(job.title)) && (!hit.application_end || String(end) > String(hit.application_end))) {
+  if (hit && end && /\b(extend(ed|s)?|extension)\b|last date (extended|revised|increased)/i.test(String(job.title)) && (!hit.application_end || String(end) > String(hit.application_end))) {
     console.log(`   ~ last date extended: ${hit.id} ${hit.application_end || "?"} -> ${end}`);
     hit.application_end = end; EXTENDED++;
   }
@@ -287,10 +293,20 @@ async function toJob(item, existingIds, fingerprints) {
     apply_link: null,
     official_notification: null,
     source: item.link,
-    published: item.date ? new Date(item.date).toISOString().slice(0, 10) : today(),
+    published: item.date ? istDate(item.date) : today(),
   };
-  const extra = await aiExtract(item, src);
+  // only the fields an extraction may set, with the right shapes (objects → text, numbers, YYYY-MM-DD, http links)
+  const extra = L.aiJobFields(await aiExtract(item, src));
   const merged = { ...base, ...extra, id, title: item.title };
+  // a last date before the notice was even published is not real (extraction picked another year / a template
+  // "1–31 January"): treat the dates as unknown rather than show a wrong deadline
+  const ext = /\b(extend(ed|s)?|extension)\b|last date (extended|revised)/i.test(item.title);
+  if (merged.application_end && merged.application_end < today() && !ext) {
+    // the template "1 – 31 January" on a notice published months later is an extraction error: dates unknown
+    const template = /-01-31$/.test(merged.application_end) && (!merged.application_start || /-01-(0\d|10)$/.test(merged.application_start)) && String(merged.published).slice(5, 7) >= "04";
+    if (template) { console.log(`   ? template dates dropped (${merged.application_start || "?"}–${merged.application_end}): ${item.title}`); delete merged.application_end; delete merged.application_start; }
+    else { console.log(`   - already closed, skipped: ${item.title}`); return null; }
+  }
   // Links: AI's choice must be a real candidate from the page; otherwise heuristic; never the aggregator.
   const picked = L.validateLinks(extra, src.cands);
   const heur = L.pickLinksHeuristic(src.cands);
@@ -319,6 +335,7 @@ async function toJob(item, existingIds, fingerprints) {
       `Check the eligibility, important dates and application details below, and apply through the official website before the last date.`;
   }
   for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
+  Object.assign(merged, L.sanitizeJob(merged));
   if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return null; }
   return merged;
 }
@@ -394,6 +411,8 @@ async function main() {
         continue;
       }
       if (fresh.length >= MAX_NEW) continue;
+      const srcKey = String(it.link || "").replace(/[?#].*$/, "").replace(/\/+$/, "").toLowerCase();
+      if (srcKey && existing.some((j) => String(j.source || "").replace(/[?#].*$/, "").replace(/\/+$/, "").toLowerCase() === srcKey)) { console.log(`   = same source page as an existing job, skipped: ${it.title}`); continue; }
       const job = await toJob(it, ids, fps);
       if (job) { fresh.push(job); ids.add(job.id); fps.add(fingerprint(job.title)); console.log(`   + ${job.title}`); }
     } catch (e) { console.log(`  item error (${it.title}): ${e.message}`); }

@@ -760,7 +760,8 @@ function buildUpdatePage(u, all) {
       ${row("Organisation", esc(u.organization))}
       ${row("Exam / post", esc(u.exam_name))}
       ${row("Type of update", esc(typeLabel))}
-      ${row("Released on", fmtDate(u.event_date || u.date))}
+      ${row("Released on", fmtDate(u.date))}
+      ${u.event_date && u.event_date !== u.date ? row(u.type === "exam-date" ? "Exam / event date" : "Date in the notice", fmtDate(u.event_date)) : ""}
       ${row("Official website", officialHost ? `<a href="${esc(official)}" rel="nofollow noopener" target="_blank">${esc(officialHost)}</a>` : "")}
     </dl></div>
     <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">${{ pdf: "Download the PDF from", home: "Go to the official website,", none: "Go to" }[LIB.linkKind(official, u)] || "Download / check on"} ${esc(officialHost)} &rarr;</a>` : ""}${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
@@ -1250,7 +1251,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   ];
   const live = sorted.filter((j) => statusOf(j).cls !== "closed");
   const closingSoon = sorted.filter((j) => statusOf(j).cls === "soon");
-  const totalPosts = sorted.reduce((s, j) => s + (Number(j.total_vacancies) || 0), 0);
+  const totalPosts = live.reduce((s, j) => s + (Number(j.total_vacancies) || 0), 0);   // open jobs only, like /jobs/
   const homeDesc = `Sarkari Naukri ${BUILT.getFullYear()}: ${live.length} live government job notifications, ${totalPosts ? inr(totalPosts) + "+ vacancies" : "all vacancies"}, results, admit cards, answer keys, daily current affairs quiz and free exam tools.`;
   const glanceCol = (t, href, items) => `<section class="glance-col"><h2><a href="${href}">${t}</a></h2><ul>${items.join("")}</ul><a class="glance-more" href="${href}">View all &rarr;</a></section>`;
   const byType = (t) => (updates || []).filter((u) => u.type === t).slice(0, 10).map((u) => `<li><a href="/updates/${esc(u.id)}/">${esc(u.title)}</a>${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</li>`);
@@ -1403,7 +1404,7 @@ function jobLd(job) {
   const ld = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
-    title: job.title,
+    title: ldJobTitle(job),
     description: descHtml,
     datePosted: job.published,
     employmentType: employmentTypeOf(job),
@@ -1414,7 +1415,8 @@ function jobLd(job) {
       address: { "@type": "PostalAddress", addressLocality: job.location || "India", ...regionOf(job), addressCountry: "IN" } },
     applicantLocationRequirements: { "@type": "Country", name: "India" },
   };
-  if (job.application_end) ld.validThrough = job.application_end + "T23:59:59+05:30";
+  // without a printed last date the listing is treated as closed STALE_DAYS after publication — tell Google the same
+  ld.validThrough = (job.application_end || addDays(job.published, Number(SITE.staleDays || 45))) + "T23:59:59+05:30";
   // Google accepts only these credential categories; the lowest level the job asks for is what a candidate needs.
   const cred = { "10th-pass": "high school", "12th-pass": "high school", "iti": "professional certificate", "engineering-diploma": "professional certificate",
     "diploma": "professional certificate", "graduate": "bachelor degree", "post-graduate": "postgraduate degree" };
@@ -1562,7 +1564,7 @@ function ctaHtml(job, lang = "en", { hint = true } = {}) {
   const hintText = { apply: T.hintApply, page: T.hintPage, form: T.hintForm, walkin: T.hintWalkin, email: T.hintEmail, careers: T.hintCareers, notice: T.hintNotice, website: T.hintWebsite }[c.cta];
   return `<div class="cta-row"><a class="btn btn-primary btn-cta" href="${esc(c.url)}" ${ext}>${T[c.cta]} &#8599;</a>${notif}${site}</div>${hint && hintText ? `<p class="cta-hint">${hintText}</p>` : ""}`;
 }
-function keyFacts(job, lang = "en") {
+function keyFacts(job, lang = "en", { cta = true } = {}) {
   const hi = lang === "hi", T = CTA_TEXT[lang];
   const d = daysLeft(job.application_end);
   const left = d === null ? "" : d < 0 ? (hi ? "बंद" : "closed") : d === 0 ? (hi ? "आज अंतिम दिन" : "last day today") : (hi ? `${d} दिन बाकी` : `${d} day${d === 1 ? "" : "s"} left`);
@@ -1574,15 +1576,23 @@ function keyFacts(job, lang = "en") {
     qualsOf(job).length ? [hi ? "योग्यता" : "Qualification", esc(qualsOf(job).map((q) => (hi ? QUAL_HI_KF[q.slug] : "") || q.name).slice(0, 2).join(" / "))] : null,
     T.modes[LIB.applyMode(job)] ? [hi ? "आवेदन का तरीका" : "How to apply", T.modes[LIB.applyMode(job)]] : null,
   ].filter(Boolean);
-  if (!facts.length && !ctaOf(job).cta) return "";
+  if (!facts.length && !(cta && ctaOf(job).cta)) return "";
   return `<section class="keyfacts" aria-label="${hi ? "मुख्य जानकारी" : "Key facts"}">
     ${facts.length ? `<dl class="kf-grid">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>` : ""}
-    ${ctaHtml(job, lang)}
+    ${cta ? ctaHtml(job, lang) : ""}
   </section>`;
 }
 const QUAL_HI_KF = { "10th-pass": "10वीं पास", "12th-pass": "12वीं पास", graduate: "स्नातक", "engineering-diploma": "इंजीनियरिंग / डिप्लोमा", "post-graduate": "स्नातकोत्तर" };
 const HI_MONTHS_KF = ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
 function hiDateKF(iso) { const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? `${Number(m[3])} ${HI_MONTHS_KF[Number(m[2]) - 1]} ${m[1]}` : ""; }
+
+/* JobPosting "title" is the job (the post), not the headline: Google asks for the role without company or "Apply Online". */
+function ldJobTitle(job) {
+  const p = String(job.post_name || "").replace(/\s+/g, " ").trim();
+  if (p && p.length <= 110 && !/^(various|more|other|multiple|different)( posts?)?$/i.test(p)) return p;
+  return shortTitle(job.title).replace(/\s*\b(recruitment|notification|vacancy|bharti)\s*20\d\d\s*$/i, "").trim() || job.title;
+}
+function addDays(iso, n) { const t = Date.parse(String(iso || "").slice(0, 10)); return isNaN(t) ? new Date(BUILT.getTime() + n * 86400000).toISOString().slice(0, 10) : new Date(t + n * 86400000).toISOString().slice(0, 10); }
 
 function buildJob(job, all) {
   const st = statusOf(job);
@@ -1618,8 +1628,8 @@ function buildJob(job, all) {
     </div>
     <h1>${esc(job.title)}</h1>
     ${job.via === "official" ? `<p class="verified">✓ Verified from the official website${job.official_website ? ` — <a href="${esc(job.official_website)}" rel="nofollow noopener" target="_blank">${esc(hostOf(job.official_website))}</a>` : ""}</p>` : ""}
-    ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> The last date to apply was ${fmtDate(job.application_end)}. This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
-    ${isStale(job) ? "" : keyFacts(job)}
+    ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> ${job.application_end ? `The last date to apply was ${fmtDate(job.application_end)}.` : `Its notice is more than ${Number(SITE.staleDays || 45)} days old.`} This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
+    ${keyFacts(job, "en", { cta: statusOf(job).live })}
     <p class="lede">${esc(job.summary || "")}</p>
     ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
     ${pct !== null ? `<div class="window" role="img" aria-label="Application window from ${fmtDate(job.application_start)} to ${fmtDate(job.application_end)}">
@@ -1653,7 +1663,9 @@ function buildJob(job, all) {
 
   ${steps ? `<h2 class="section-h">How to apply</h2><ol class="steps">${steps}</ol>` : ""}
 
-  ${ctaHtml(job, "en", { hint: false }) ? `<div class="apply-bar">${ctaHtml(job, "en", { hint: false })}</div>` : ""}
+  ${statusOf(job).live
+    ? (ctaHtml(job, "en", { hint: false }) ? `<div class="apply-bar">${ctaHtml(job, "en", { hint: false })}</div>` : "")
+    : (job.official_notification ? `<div class="apply-bar"><a class="btn btn-ghost" href="${esc(job.official_notification)}" target="_blank" rel="noopener nofollow">Official notification (for reference)</a></div>` : "")}
 
   <div class="prose">
     <h2 class="section-h">About this recruitment</h2>
@@ -2323,11 +2335,11 @@ function main() {
     "summary", "summary_hindi", "location", "fee", "salary", "apply_link",
     "application_start", "application_end", "exam_date", "published"];
   const jobs = (Array.isArray(rawJobs) ? rawJobs : []).map((j) => {
-    const o = { ...j };
+    // same hygiene as the automation: objects become "Key: value" text (never "[object Object]"), numbers numbers,
+    // dates YYYY-MM-DD, links http(s), list fields arrays of strings
+    const o = LIB.sanitizeJob(j);
     for (const k of TEXT) {
-      if (o[k] != null && typeof o[k] !== "string") {
-        o[k] = Array.isArray(o[k]) ? o[k].join(", ") : String(o[k]);
-      }
+      if (o[k] != null && typeof o[k] !== "string") o[k] = LIB.toText(o[k], k);
     }
     if (o.total_vacancies != null && typeof o.total_vacancies !== "number") {
       const n = parseInt(String(o.total_vacancies).replace(/[^\d]/g, ""), 10);
@@ -2614,6 +2626,14 @@ function main() {
       const dst = /^https?:/.test(to) || to.includes("*") ? to : resolve(to);
       if (dst === from) continue;
       seen.add(from); lines.push(`${from} ${dst} 301`);
+    }
+    // Cloudflare Pages allows 2,000 static redirects: past 1,900, keep the specific ones (merged pages) over the
+    // fallbacks to a section page, so the file never stops working as a whole
+    if (lines.length > 1900) {
+      const generic = (l) => /\s\/(jobs|updates|hi\/jobs|hi\/updates|organization|hi)?\/?\s301$/.test(l);
+      const keep = [...lines.filter((l) => !generic(l)), ...lines.filter(generic)].slice(0, 1900);
+      console.log(`Redirects: ${lines.length} rules, capped at 1900 (dropped ${lines.length - 1900} fallbacks to section pages)`);
+      lines.length = 0; lines.push(...keep);
     }
     if (lines.length) { write("_redirects", lines.join("\n") + "\n"); console.log(`Redirects: ${lines.length} retired URL(s) -> 301.`); }
   } catch { /* no redirects file */ }

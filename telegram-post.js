@@ -119,7 +119,8 @@ async function main() {
   for (const id of ids) {
     if (posted.has(id) || queue.some((j) => j.id === id)) continue;
     const job = jobs.find((j) => j.id === id);
-    if (job && job.title) queue.push(job);
+    const closed = job && job.application_end && String(job.application_end).slice(0, 10) < require("./lib.js").todayIST();
+    if (job && job.title && !closed) queue.push(job);   // never announce a job whose last date has passed
     if (queue.length >= MAX_POSTS) break;
   }
 

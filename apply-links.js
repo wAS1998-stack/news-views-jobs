@@ -24,7 +24,7 @@ const L = require("./lib.js");
 const FILE = path.join(__dirname, "data", "jobs.json");
 const MAX = Number(process.env.APPLY_MAX || 20);
 const BUDGET_MS = Number(process.env.APPLY_BUDGET_MS || 5 * 60 * 1000);
-const TODAY = new Date().toISOString().slice(0, 10);
+const TODAY = L.todayIST();
 let pdfParse = null;
 try { pdfParse = require("pdf-parse/lib/pdf-parse.js"); } catch { /* optional: notices then read as pages only */ }
 

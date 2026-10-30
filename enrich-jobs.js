@@ -90,8 +90,8 @@ async function enrichContent(job) {
   if (overview.length < 2 || overview.join(" ").split(/\s+/).length < 100 || faq.length < 3) return null;
   return {
     overview,
-    about_organization: String(o.about_organization || "").trim() || undefined,
-    eligibility_notes: String(o.eligibility_notes || "").trim() || undefined,
+    about_organization: L.toText(o.about_organization, "about_organization") || undefined,
+    eligibility_notes: L.toText(o.eligibility_notes, "eligibility_notes") || undefined,
     preparation_tips: L.strArr(o.preparation_tips, 5),
     faq,
   };
@@ -123,10 +123,10 @@ async function hindiJob(job) {
   const o = L.parseJson(await L.askAI(prompt, { maxTokens: 4000 }));
   if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
   const hi = {
-    title: String(o.title).trim(), organization: String(o.organization || "").trim(), post_name: String(o.post_name || "").trim(),
-    qualification: String(o.qualification || "").trim(), fee: String(o.fee || "").trim(), salary: String(o.salary || "").trim(),
-    location: String(o.location || "").trim(), summary: String(o.summary).trim(), overview: L.strArr(o.overview, 5),
-    eligibility_notes: String(o.eligibility_notes || "").trim(), about_organization: String(o.about_organization || "").trim(),
+    title: String(o.title).trim(), organization: L.toText(o.organization, "organization"), post_name: L.toText(o.post_name, "post_name"),
+    qualification: L.toText(o.qualification, "qualification"), fee: L.toText(o.fee, "fee"), salary: L.toText(o.salary, "salary"),
+    location: L.toText(o.location, "location"), summary: String(o.summary).trim(), overview: L.strArr(o.overview, 5),
+    eligibility_notes: L.toText(o.eligibility_notes, "eligibility_notes"), about_organization: L.toText(o.about_organization, "about_organization"),
     how_to_apply: L.strArr(o.how_to_apply, 8), selection_process: L.strArr(o.selection_process, 8),
     preparation_tips: L.strArr(o.preparation_tips, 6), faq: L.faqArr(o.faq, 6),
     at: new Date().toISOString().slice(0, 10),
@@ -141,7 +141,7 @@ async function hindiUpdate(u) {
     `For "title", write a Hindi headline in the usual style, e.g. "SSC GD कांस्टेबल रिजल्ट 2026 जारी – ऐसे करें चेक".\n\nINPUT:\n${JSON.stringify(src)}`;
   const o = L.parseJson(await L.askAI(prompt, { maxTokens: 3000 }));
   if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
-  const hi = { title: String(o.title).trim(), organization: String(o.organization || "").trim(), exam_name: String(o.exam_name || "").trim(),
+  const hi = { title: String(o.title).trim(), organization: L.toText(o.organization, "organization"), exam_name: String(o.exam_name || "").trim(),
     summary: String(o.summary).trim(), steps: L.strArr(o.steps, 8), details: L.strArr(o.details, 5), faq: L.faqArr(o.faq, 6), at: new Date().toISOString().slice(0, 10) };
   for (const k of Object.keys(hi)) if (hi[k] === "" || (Array.isArray(hi[k]) && !hi[k].length)) delete hi[k];
   return hi;
@@ -216,7 +216,10 @@ async function main() {
     for (const job of pending.slice(0, MAX_CONTENT)) {
       const rich = await enrichContent(job);
       if (!rich) { console.log(`  - skipped (quality gate): ${job.title}`); continue; }
-      Object.assign(job, rich); jobsDirty = true; stats.contentWritten++;
+      // the model's output gets the same shape checks as everything else (objects → text, arrays of strings, …)
+      const clean = L.sanitizeJob({ ...job, ...rich });
+      for (const k of Object.keys(job)) delete job[k];
+      Object.assign(job, clean); jobsDirty = true; stats.contentWritten++;
       console.log(`  ✓ content: ${job.title}`);
       await sleep(800);
     }

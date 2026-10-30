@@ -70,12 +70,14 @@ async function main() {
   const idOf = (u, kind) => ((u.match(new RegExp(`/${kind}/([^/]+)/`)) || [])[1]);
   const jobIds = new Set(urls.map((u) => idOf(u, "jobs")).filter(Boolean));
   const updIds = new Set(urls.map((u) => idOf(u, "updates")).filter(Boolean));
-  const jobs = index.jobs.filter((j) => jobIds.has(j.id) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, MAX_JOBS);
+  const today = L.todayIST();
+  const open = (j) => !(j.en && j.en < today);            // never alert about a job whose last date has passed
+  const jobs = index.jobs.filter((j) => jobIds.has(j.id) && open(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, MAX_JOBS);
   const updates = index.updates.filter((u) => updIds.has(u.id) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`]).slice(0, MAX_UPDATES);
   // followers of a department get everything new from it (same notification tag, so a phone that also matched the
   // state/qualification alert sees it once)
   const follow = [
-    ...index.jobs.filter((j) => jobIds.has(j.id) && j.o && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
+    ...index.jobs.filter((j) => jobIds.has(j.id) && j.o && open(j) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
     ...index.updates.filter((u) => updIds.has(u.id) && u.o && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
   ].slice(0, MAX_FOLLOW);
   if (!jobs.length && !updates.length && !follow.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }

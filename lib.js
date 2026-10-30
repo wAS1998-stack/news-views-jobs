@@ -24,15 +24,17 @@ const HDRS = {
 /* ---- text ------------------------------------------------------- */
 const NAMED = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", ndash: "–", mdash: "—",
   hellip: "…", lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”", rupee: "₹", copy: "©", reg: "®", trade: "™", bull: "•", middot: "·" };
+// a malformed numeric entity (&#9999999;) must not throw and lose every item of a feed
+const cp = (n, m) => (Number.isInteger(n) && n > 0 && n <= 0x10ffff && !(n >= 0xd800 && n <= 0xdfff) ? String.fromCodePoint(n) : m);
 function decodeEntities(s) {
   return String(s || "")
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (m, h) => cp(parseInt(h, 16), m))
+    .replace(/&#(\d+);/g, (m, d) => cp(parseInt(d, 10), m))
     .replace(/&([a-z]+);/gi, (m, n) => (NAMED[n.toLowerCase()] != null ? NAMED[n.toLowerCase()] : m))
     // second pass: feeds often double-encode ("&amp;#8211;")
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (m, h) => cp(parseInt(h, 16), m))
+    .replace(/&#(\d+);/g, (m, d) => cp(parseInt(d, 10), m))
     .replace(/&([a-z]+);/gi, (m, n) => (NAMED[n.toLowerCase()] != null ? NAMED[n.toLowerCase()] : m));
 }
 const stripTags = (s) => decodeEntities(String(s || "").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
@@ -400,7 +402,7 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)/i;
+const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b/i;
 
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
 const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf|latest (govt|government|sarkari) jobs? (on|for|of) \d|\b\d[\d,]*\+? (all india )?vacancies open\b|government jobs on \d{1,2}(st|nd|rd|th)? \w+ 20\d\d|\(\d[\d,]*\+ [^)]*vacanc|\b\d[\d,]*\+ vacancies\b|closing govt jobs|free ?job ?alert|latest (\w+ )?(vacancy )?notifications\s*$|^latest\b[^–—:]*\b(govt|government|sarkari|railway|bank)\b[^–—:]*\bjobs\b|^[\w&.,' -]{0,30}\bgovt jobs 20\d\d\b|\b(govt|government) jobs for (diploma|engineers|graduates|10th|12th|iti|women|females?)\b/i;
@@ -524,7 +526,8 @@ function applyInfo(job = {}) {
   const notif = job.official_notification || "";
   const site = job.official_website || "";
   const ak = linkKind(apply, job), nk = linkKind(notif, job);
-  const notice = notif || (ak === "pdf" ? apply : "");
+  // a "notification" that is only a homepage is not a notice (16 jobs had indiapost.gov.in/ there)
+  const notice = (notif && nk !== "home" ? notif : "") || (ak === "pdf" ? apply : "");
   if (mode === "walkin" && (notice || ak === "deep")) return { cta: "walkin", url: notice || apply, mode, applyKind: ak };
   if (mode === "offline" && notice) return { cta: "form", url: notice, mode, applyKind: ak };
   if (mode === "email" && (notice || ak === "deep")) return { cta: "email", url: notice || apply, mode, applyKind: ak };
@@ -538,5 +541,62 @@ function applyInfo(job = {}) {
   return { cta: "", url: "", mode, applyKind: ak };
 }
 
-module.exports = { linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+/* ---- record hygiene: what the AI returns is not trusted to have the right shape ---- */
+const JOB_TEXT = ["title", "organization", "org_short", "post_name", "qualification", "fee", "salary", "location", "summary", "summary_hindi",
+  "eligibility_notes", "about_organization"];
+const JOB_ARR = ["how_to_apply", "selection_process", "overview", "preparation_tips"];
+const JOB_DATE = ["application_start", "application_end", "exam_date", "published"];
+const JOB_LINK = ["apply_link", "official_notification", "official_website", "source", "careers_link"];
+/** The fields an AI extraction may set on a job (never via, id, careers_link or anything else). */
+const AI_JOB_FIELDS = new Set([...JOB_TEXT.filter((k) => k !== "title"), ...JOB_ARR, ...JOB_DATE.filter((k) => k !== "published"),
+  "total_vacancies", "age_min", "age_max", "faq", "apply_link", "official_notification", "official_website"]);
+const human = (k) => { const t = String(k).replace(/_/g, " ").replace(/\s+/g, " ").trim();
+  return /^(sc|st|obc|ews|ur|pwd|pwbd|ph|bc|mbc|sebc|esm|xsm|gen|sc\/st|obc\/ews)$/i.test(t) ? t.toUpperCase() : t.replace(/^./, (c) => c.toUpperCase()); };
+/** Any value as display text: objects become "Key: value; …" (a location object becomes "City, State"). */
+function toText(v, key = "") {
+  if (v == null) return "";
+  if (typeof v === "string") return v.trim();
+  if (typeof v === "number" || typeof v === "boolean") return String(v);
+  if (Array.isArray(v)) return v.map((x) => toText(x)).filter(Boolean).join(", ");
+  if (typeof v === "object") {
+    if (key === "location") {
+      const parts = ["city", "district", "town", "state"].map((k) => toText(v[k])).filter(Boolean);
+      if (parts.length) return [...new Set(parts)].join(", ");
+    }
+    return Object.entries(v).map(([k, x]) => { const t = toText(x); return t ? `${human(k)}: ${t}` : ""; }).filter(Boolean).join("; ");
+  }
+  return String(v);
+}
+const isoDate = (v) => { const m = String(v || "").match(/^(\d{4})-(\d{2})-(\d{2})/); return m && !isNaN(Date.parse(m[0])) ? m[0] : null; };
+const toNum = (v) => { if (typeof v === "number" && isFinite(v)) return v; const m = String(v ?? "").replace(/,/g, "").match(/\d+(\.\d+)?/); return m ? Number(m[0]) : null; };
+/** Age given per post ({"Scientist": 45, "YP II": 35}): the widest range across the posts. */
+function ageNum(v, pick) {
+  if (v && typeof v === "object" && !Array.isArray(v)) { const ns = Object.values(v).map(toNum).filter((n) => n && n > 0); return ns.length ? pick(...ns) : null; }
+  const n = toNum(v); return n && n > 0 && n < 100 ? n : null;
+}
+/** Cleans a job record in place-safe fashion and returns it: text fields are strings, numbers are numbers, dates are
+    YYYY-MM-DD, links are http(s), list fields are arrays of strings, FAQ entries have q and a. Unknown shapes are dropped. */
+function sanitizeJob(j) {
+  const o = { ...j };
+  for (const k of JOB_TEXT) if (o[k] != null && typeof o[k] !== "string") o[k] = toText(o[k], k);
+  for (const k of JOB_ARR) if (o[k] != null) o[k] = (Array.isArray(o[k]) ? o[k] : [o[k]]).map((x) => toText(x)).filter(Boolean);
+  for (const k of JOB_DATE) if (o[k] != null) { const d = isoDate(o[k]); if (d) o[k] = d; else delete o[k]; }
+  for (const k of JOB_LINK) if (o[k] != null && !/^https?:\/\/[^\s]+$/i.test(String(o[k]))) delete o[k];
+  if (o.total_vacancies != null) { const n = toNum(o.total_vacancies); if (n) o.total_vacancies = Math.round(n); else delete o.total_vacancies; }
+  if (o.age_min != null) { const n = ageNum(o.age_min, Math.min); if (n) o.age_min = n; else delete o.age_min; }
+  if (o.age_max != null) { const n = ageNum(o.age_max, Math.max); if (n) o.age_max = n; else delete o.age_max; }
+  if (o.faq != null) o.faq = (Array.isArray(o.faq) ? o.faq : []).filter((f) => f && f.q && f.a).map((f) => ({ q: toText(f.q), a: toText(f.a) }));
+  for (const k of Object.keys(o)) if (o[k] === "" || o[k] === null || o[k] === undefined) delete o[k];
+  return o;
+}
+/** Only the fields an AI extraction is allowed to set, sanitised. */
+function aiJobFields(obj) {
+  const out = {};
+  for (const [k, v] of Object.entries(obj || {})) if (AI_JOB_FIELDS.has(k) && v !== null && v !== undefined && v !== "") out[k] = v;
+  return sanitizeJob(out);
+}
+/** Today's date in India (the automation runs on UTC machines; between 00:00 and 05:30 IST UTC is still yesterday). */
+function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
+
+module.exports = { sanitizeJob, aiJobFields, toText, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };

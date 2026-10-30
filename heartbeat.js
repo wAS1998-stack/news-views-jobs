@@ -15,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FILE = path.join(__dirname, "data", "last-run.json");
-const today = new Date().toISOString().slice(0, 10);
+const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());   // Indian date
 
 let prev = null, cur = {};
 try { cur = JSON.parse(fs.readFileSync(FILE, "utf8")) || {}; prev = cur.date || null; } catch { /* first run */ }

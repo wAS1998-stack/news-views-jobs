@@ -34,7 +34,7 @@ const NEWURLS = path.join(ROOT, "data", "new-urls.txt");
 const SITE_URL = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const MAX_PUBLISH = Number(process.env.WATCH_MAX || L.CONFIG.maxWatchPerRun || 25);
 const CONCURRENCY = 8;
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => L.todayIST();   // Indian date
 
 const KEEP = /recruit|vacanc|advertis|\badvt\b|notification|\bnoti\b|category no|cat\.? ?no|\bposts?\b|engagement|walk[- ]?in|admit card|hall ?ticket|call letter|e-?admit|result|merit list|rank ?list|short ?list|select(ed|ion) list|provisional list|final list|score ?card|marks|cut[- ]?off|answer key|answer sheet|exam(ination)? (date|schedule|notice|calendar|city)|time ?table|interview|document verification|\bdv\b|written (test|exam)|\bcbt\b|online application|apply online|assistant|officer|teacher|lecturer|professor|constable|clerk|engineer|inspector|nurse|technician|driver|steno|typist|peon|guard|accountant|pharmacist|librarian|भर्ती|विज्ञापन|विज्ञप्ति|परिणाम|प्रवेश पत्र|उत्तर कुंजी|परीक्षा|रिक्ति|साक्षात्कार|मेरिट/i;
 const DROP = /procedure|guideline|instruction|how to|steps to|user manual|\bhelp\b|scheme of exam|syllabus|exam pattern|calendar of|annual (exam )?calendar|citizen charter|organi[sz]ation chart|who.?s who|\bmission\b|\bvision\b|about us|act and rules|service rules|bye-?laws|office order|\bmeetings?\b|\bminutes\b|newsletter|magazine|tender|quotation|auction|e-?procurement|\brti\b|annual report|budget|press release|gallery|photo|video|holiday|transfer|posting order|promotion order|seniority|pension|salary slip|court case|judgment|archive|old (notices|results)|sitemap|log ?in|sign ?in|register here|contact|disclaimer|screen reader|skip to|privacy|copyright|feedback|grievance|faq|help ?desk|home ?page|click here$|^more$|^view all|^read more|^download$|^new$/i;
@@ -187,8 +187,12 @@ async function main() {
       health[s.id] = `error: ${String(e.message).slice(0, 120)} (fails ${st.fails})`;
     }
   });
+  // links found earlier but not handled then (over the publish cap, or the AI / the notice was unreachable) go first
+  const bySrc = Object.fromEntries(sources.map((x) => [x.id, x]));
+  const retry = (state._retry || []).filter((r) => bySrc[r.src] && (r.tries || 0) < 3).map((r) => ({ src: bySrc[r.src], link: r.link, tries: r.tries || 0 }));
+  fresh.unshift(...retry.filter((r) => !fresh.some((f) => f.link.key === r.link.key)));
   fs.writeFileSync(STATE, JSON.stringify(state) + "\n");
-  console.log(`Watch: ${fresh.length} new official notice link(s).`);
+  console.log(`Watch: ${fresh.length} new official notice link(s) (${retry.length} retried).`);
 
   // 2) publish the new ones
   const existingUrls = new Set([...jobs.flatMap((j) => [j.official_notification, j.apply_link, j.source]), ...updates.flatMap((u) => [u.official_link, u.link, u.source])].filter(Boolean).map(norm));
@@ -197,7 +201,9 @@ async function main() {
   let upgraded = 0;   // feed updates given their official notice link
   if (!L.AI) console.log("Watch: no AI key — new links recorded but not published.");
   const thisYear = new Date().getFullYear();
-  for (const { src, link } of (L.AI ? fresh : []).slice(0, MAX_PUBLISH)) {
+  const again = [];   // handled later: AI or fetch failed this time
+  for (const item of (L.AI ? fresh : []).slice(0, MAX_PUBLISH)) {
+    const { src, link } = item;
     if (existingUrls.has(norm(link.url))) { skipped.push("known url"); continue; }
     // Old notices re-surfacing on a homepage ("Cut-off Marks (01/2018)") are not news.
     const years = (link.text.match(/\b(20\d{2})\b/g) || []).map(Number).concat((link.text.match(/\/(\d{2})\b/g) || []).map((x) => 2000 + Number(x.slice(1))).filter((y) => y >= 2010 && y <= thisYear + 1));
@@ -206,7 +212,10 @@ async function main() {
     const doc = await readDoc(link.url);
     if (kind === "job") {
       const o = await extractJob(src, link, doc);
-      if (!o || o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
+      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + 1 }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
+      // an extraction with "null"/"undefined" in the headline ("… – Null Posts") is cleaned, never published as is
+      if (o.headline) o.headline = String(o.headline).replace(/\s*[–—-]?\s*\b(null|undefined|nan)\b(\s+posts?)?/gi, "").replace(/\s{2,}/g, " ").replace(/\s*[–—-]\s*$/, "").trim();
+      if (o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
       if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) && o.application_end < today()) { skipped.push("already closed: " + o.headline); continue; }
       // A job page needs real substance: a post name AND (vacancies, a last date or an advertisement number).
       if (!o.post_name || !(Number(o.total_vacancies) > 0 || /^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) || o.advt_no)) { skipped.push("too thin: " + link.text.slice(0, 50)); continue; }
@@ -215,7 +224,8 @@ async function main() {
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
       const id = F.cleanSlug(title);
       if (!id || jobs.some((j) => j.id === id) || RETIRED.has(id)) { skipped.push("id taken: " + id); continue; }
-      const job = Object.fromEntries(Object.entries({ ...o, headline: undefined, is_recruitment: undefined, is_specific_notice: undefined }).filter(([, v]) => v !== null && v !== undefined && v !== "" && !(Array.isArray(v) && !v.length)));
+      // only the fields an extraction may set, in the right shapes (never via / careers_link / ids from the model)
+      const job = L.aiJobFields(o);
       const sameHostCands = doc.cands.filter((c) => c.url);
       Object.assign(job, {
         id, title, published: today(), via: "official", source: link.url, state_hint: src.state,
@@ -228,7 +238,8 @@ async function main() {
       console.log(`   + [${src.name}] ${title}`);
     } else {
       const o = await extractUpdate(src, link, doc, kind);
-      if (!o || o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
+      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + 1 }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
+      if (o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
       if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.event_date || "")) && (Date.now() - new Date(o.event_date).getTime()) > 45 * 86400000) { skipped.push("old update: " + o.headline); continue; }
       const title = L.cleanTitle(o.headline);
       const fp = F.fingerprint(title);
@@ -254,6 +265,10 @@ async function main() {
     await new Promise((r) => setTimeout(r, 400));
   }
 
+  // over the cap this run, or failed: keep for the next runs (at most 3 tries, 60 links)
+  const over = (L.AI ? fresh.slice(MAX_PUBLISH) : []).map((f) => ({ src: f.src.id, link: f.link, tries: f.tries || 0 }));
+  state._retry = [...again, ...over].slice(0, 60);
+  fs.writeFileSync(STATE, JSON.stringify(state) + "\n");
   if (added.jobs.length) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
   if (added.updates.length || upgraded) fs.writeFileSync(UPDATES, JSON.stringify(updates.slice(0, 800), null, 2) + "\n");
   if (added.jobs.length || added.updates.length) {

@@ -46,6 +46,9 @@ const HI_QUALS = {
       "ऐसी भर्तियाँ कम लेकिन विषय-विशेष होती हैं, इसलिए अपने विषय से जुड़ी संस्थाओं पर नज़र रखें और दस्तावेज़ तैयार रखें। अंतिम पात्रता हमेशा ऑफिशियल नोटिफिकेशन में जाँचें।"] },
 };
 
+const arr = (x) => (Array.isArray(x) ? x : x ? [x] : []).map((v) => (typeof v === "string" ? v : v == null ? "" : String(v))).filter(Boolean);
+const faqs = (x) => (Array.isArray(x) ? x : []).filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) }));
+
 function buildHindi(ctx) {
   const { head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates } = ctx;
   const { STATES = [], QUALS = [], statesOf = () => [], qualsOf = () => [] } = ctx;
@@ -82,7 +85,9 @@ function buildHindi(ctx) {
 
   /* ---- job pages ---- */
   for (const j of hiJobs) {
-    const h = j.hi, st = statusHi(j);
+    // list fields may arrive as a single string from the translator: always arrays here (a string .map() crashed the build)
+    const h = { ...j.hi, overview: arr(j.hi.overview), how_to_apply: arr(j.hi.how_to_apply), selection_process: arr(j.hi.selection_process),
+      preparation_tips: arr(j.hi.preparation_tips), faq: faqs(j.hi.faq) }, st = statusHi(j);
     const enPath = `/jobs/${j.id}/`, hiPath = `/hi/jobs/${j.id}/`, canonical = SITE.url + hiPath;
     const vac = Number(j.total_vacancies) > 0 ? ` – ${inr(j.total_vacancies)} पद` : "";
     let title = `${h.title.split(/[:–|]/)[0].trim()}${vac}`;
@@ -99,8 +104,8 @@ function buildHindi(ctx) {
   <div class="detail-head">
     <div class="headline-row"><span class="org-tag">${esc(h.organization || j.organization)}</span><span class="status ${st.cls}">${esc(st.label)}</span></div>
     <h1>${esc(h.title)}</h1>
-    ${st.cls === "closed" ? `<div class="closed-notice"><strong>यह भर्ती बंद हो चुकी है।</strong> आवेदन की अंतिम तिथि ${hiDate(j.application_end)} थी। <a href="/hi/">नई सरकारी नौकरियाँ देखें</a>।</div>` : ""}
-    ${st.cls === "closed" ? "" : (ctx.keyFacts ? ctx.keyFacts(j, "hi") : "")}
+    ${st.cls === "closed" ? `<div class="closed-notice"><strong>यह भर्ती बंद हो चुकी है।</strong> ${j.application_end ? `आवेदन की अंतिम तिथि ${hiDate(j.application_end)} थी।` : "इसका नोटिस 45 दिन से अधिक पुराना है।"} <a href="/hi/">नई सरकारी नौकरियाँ देखें</a>।</div>` : ""}
+    ${ctx.keyFacts ? ctx.keyFacts(j, "hi", { cta: st.cls !== "closed" }) : ""}
     <p class="lede">${esc(h.summary)}</p>
   </div>
   ${(h.overview || []).length ? `<div class="prose"><h2 class="section-h">भर्ती की जानकारी</h2>${h.overview.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
@@ -123,7 +128,8 @@ function buildHindi(ctx) {
   ${(h.selection_process || []).length ? `<h2 class="section-h">चयन प्रक्रिया</h2><ol class="steps">${h.selection_process.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   ${(h.how_to_apply || []).length ? `<h2 class="section-h">आवेदन कैसे करें</h2><ol class="steps">${h.how_to_apply.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   <div class="apply-bar">
-    ${ctx.ctaHtml ? ctx.ctaHtml(j, "hi", { hint: false }) : (apply ? `<a class="btn btn-primary" href="${esc(apply)}" target="_blank" rel="noopener nofollow">ऑफिशियल वेबसाइट &uarr;</a>` : "")}
+    ${st.cls === "closed" ? (j.official_notification ? `<a class="btn btn-ghost" href="${esc(j.official_notification)}" target="_blank" rel="noopener nofollow">ऑफिशियल नोटिफिकेशन (संदर्भ के लिए)</a>` : "")
+      : ctx.ctaHtml ? ctx.ctaHtml(j, "hi", { hint: false }) : (apply ? `<a class="btn btn-primary" href="${esc(apply)}" target="_blank" rel="noopener nofollow">ऑफिशियल वेबसाइट &uarr;</a>` : "")}
     <a class="btn btn-ghost" href="${enPath}" lang="en">Read in English</a>
   </div>
   <p class="note">आवेदन से पहले ऑफिशियल वेबसाइट पर तिथियाँ और पात्रता ज़रूर जाँच लें। ${esc(SITE.brand)} सार्वजनिक नोटिफिकेशन की जानकारी देता है, यह कोई सरकारी संस्था नहीं है।</p>
@@ -139,7 +145,7 @@ function buildHindi(ctx) {
 
   /* ---- update pages ---- */
   for (const u of hiUpd) {
-    const h = u.hi, T = HI_TYPES[u.type] || HI_TYPES.result;
+    const h = { ...u.hi, steps: arr(u.hi.steps), details: arr(u.hi.details), faq: faqs(u.hi.faq) }, T = HI_TYPES[u.type] || HI_TYPES.result;
     const enPath = `/updates/${u.id}/`, hiPath = `/hi/updates/${u.id}/`, canonical = SITE.url + hiPath;
     const L = require("./lib.js"), notAgg = (x) => { try { return x && !L.isAggregator(new URL(x).hostname); } catch { return false; } };
     const official = (notAgg(u.official_link) && u.official_link) || (notAgg(u.official_website) && u.official_website) || L.officialHomeFor(u.title) || (notAgg(u.link) && u.link) || "";

@@ -40,6 +40,11 @@ hurting users or breaking Google's policies.
   strictly (tied to this post, never admissions/exam/result pages, AI-confirmed; its first loose version was wrong
   most of the time) — and stores the organisation's Recruitment/Careers page as `careers_link` ("Official
   recruitment page" button) when only the homepage is known.
+- **Every record goes through `L.sanitizeJob` / `L.aiJobFields`** (lib.js): AI output is never stored as-is (it once put
+  objects into fee/salary and showed "[object Object]" on 110 pages). Only whitelisted fields, objects → "Key: value"
+  text, numbers, YYYY-MM-DD dates, http(s) links. build.js applies the same on load. Dates are Indian dates (`L.todayIST`).
+- A last date before publication is either a closed notice (skip it) or the extraction template "1–31 January" (drop the
+  dates). Closed jobs never show an Apply button, are never pushed or posted to Telegram.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
   logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits.
