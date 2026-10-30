@@ -33,6 +33,13 @@ hurting users or breaking Google's policies.
 
 ## Rules that matter
 - **Never invent facts.** Every job detail must come from the notice or official site; when unsure, leave it out.
+- **Government employers only** (central/state/local government, PSUs, statutory bodies, government-funded
+  institutions). `L.NON_GOVT`/`L.isNonGovt` (lib.js) blocks private universities, private-sector and urban co-op banks,
+  companies/contractors ("Pvt Ltd", "M/s."), private school chains and NGOs — in fetch-jobs.js and watch.js (headline
+  and again after extraction) and in build.js on load. Admission entrance tests are `OFF_TOPIC`. Grey areas kept on
+  purpose: Army Public Schools, cooperatives under state cooperative departments (IFFCO, DCCBs, milk unions). 47
+  private listings were retired with redirects on 31 Oct. The app shows no Gulf/overseas jobs (private); the website's
+  Gulf section says they are private and is noindex (and out of the sitemap) while it has no live job.
 - **The Apply button must say what it opens** (`lib.js` `applyInfo`/`linkKind`/`applyMode`, rendered by `ctaHtml`/`keyFacts` in
   build.js, `cta`/`cta_url` in the app feed): "Apply online" only for a real application page or portal; offline jobs get
   "Download notice & form", walk-ins "Walk-in notice", a bare homepage "Official website" with a hint. `apply-links.js`

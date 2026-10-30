@@ -106,7 +106,7 @@ function noticeLinks(html, base) {
   const seen = new Set(), out = [];
   for (const a of anchors(html, base)) {
     const blob = `${a.text} ${decodeURIComponent(a.url).replace(/[_\-/.]+/g, " ")}`;
-    if (a.text.length < 8 || !KEEP.test(blob) || DROP.test(a.text) || L.OFF_TOPIC.test(a.text)) continue;
+    if (a.text.length < 8 || !KEEP.test(blob) || DROP.test(a.text) || L.OFF_TOPIC.test(a.text) || L.NON_GOVT.test(a.text)) continue;
     if (!isSpecific(a)) continue;   // menu / section links ("Notifications", "Results") are not notices
     const k = hash(norm(a.url) + "|" + a.text.toLowerCase().slice(0, 80));
     if (seen.has(k)) continue; seen.add(k);
@@ -226,6 +226,7 @@ async function main() {
       if (!id || jobs.some((j) => j.id === id) || RETIRED.has(id)) { skipped.push("id taken: " + id); continue; }
       // only the fields an extraction may set, in the right shapes (never via / careers_link / ids from the model)
       const job = L.aiJobFields(o);
+      if (L.isNonGovt({ ...job, title })) { skipped.push("not a government employer: " + title); continue; }
       const sameHostCands = doc.cands.filter((c) => c.url);
       Object.assign(job, {
         id, title, published: today(), via: "official", source: link.url, state_hint: src.state,

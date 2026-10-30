@@ -298,6 +298,8 @@ async function toJob(item, existingIds, fingerprints) {
   // only the fields an extraction may set, with the right shapes (objects → text, numbers, YYYY-MM-DD, http links)
   const extra = L.aiJobFields(await aiExtract(item, src));
   const merged = { ...base, ...extra, id, title: item.title };
+  // government jobs only: the extraction may reveal a private employer the headline didn't name
+  if (L.isNonGovt(merged)) { console.log(`   - not a government employer, skipped: ${item.title}`); return null; }
   // a last date before the notice was even published is not real (extraction picked another year / a template
   // "1–31 January"): treat the dates as unknown rather than show a wrong deadline
   const ext = /\b(extend(ed|s)?|extension)\b|last date (extended|revised)/i.test(item.title);
@@ -388,7 +390,7 @@ async function main() {
     try {
       // Stop only when BOTH caps are hit (jobs and updates are independent).
       if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
-      if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title)) continue;   // PDF dumps, syllabus, admissions, university results
+      if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title) || L.NON_GOVT.test(it.title)) continue;   // PDF dumps, syllabus, admissions, university results, private employers
       if (L.isGenericList(it.title)) continue;                                    // evergreen "Latest X Jobs" listicles, not a notification
       const kind = classify(it.title);
       if (kind !== "job") {

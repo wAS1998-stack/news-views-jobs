@@ -1179,13 +1179,13 @@ function buildGulfPage(g, list) {
       mainEntity: { "@type": "ItemList", itemListElement: sorted.slice(0, 50).map((j, i) => ({
         "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
-  return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld }) + `
+  return head({ title: `${h1} ${BUILT.getFullYear()} — ${live.length} Live Vacancies | ${SITE.name}`, desc, canonical, ld, noindex: !live.length }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/gulf/">Gulf Jobs</a> &nbsp;&rsaquo;&nbsp; ${esc(g.name)}</p>
   <section class="cat-head">
     <p class="eyebrow">Overseas &middot; ${live.length} live</p>
     <h1>${esc(h1)}</h1>
-    <p class="lede">Current job vacancies in ${esc(g.name)} open to Indian candidates, including walk-in interviews and direct recruitment. Each listing shows the role, requirements and how to apply, and links to the original source so you can verify the details before applying.</p>
+    <p class="lede">Current job vacancies in ${esc(g.name)} open to Indian candidates, including walk-in interviews and direct recruitment. These are private overseas jobs, not Indian government jobs. Each listing shows the role, requirements and how to apply, and links to the original source so you can verify the details before applying.</p>
   </section>
   ${sorted.length ? jobList(sorted)
     : `<p class="empty">No ${esc(g.name)} vacancies listed right now — new overseas jobs are added automatically several times a day. Meanwhile, <a href="/gulf/">browse all Gulf jobs</a>.</p>`}
@@ -1203,12 +1203,13 @@ function buildGulfIndex(counts) {
     return `<li><a class="edu-card" href="/gulf/${g.slug}/"><span class="edu-count">${n}</span><span class="edu-name">${esc(g.name)}</span><span class="edu-sub">${n === 1 ? "live job" : "live jobs"}</span></a></li>`;
   };
   return head({ title: `Gulf Jobs for Indians ${BUILT.getFullYear()} — UAE, Saudi, Qatar, Kuwait, Oman | ${SITE.name}`,
-    desc: "Latest Gulf job vacancies for Indian candidates in UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — walk-in interviews and direct recruitment, updated daily.", canonical, ld }) + `
+    desc: "Latest Gulf job vacancies for Indian candidates in UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — walk-in interviews and direct recruitment, updated daily.", canonical, ld,
+    noindex: ![...counts.values()].some((n) => n > 0) }) + `
 <main class="wrap" id="main">
   <section class="cat-head">
     <p class="eyebrow">Overseas jobs</p>
     <h1>Gulf Jobs for Indians</h1>
-    <p class="lede">Job vacancies across the Gulf — UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — open to Indian candidates, including walk-in interviews and direct company recruitment. New openings are added automatically every day.</p>
+    <p class="lede">Job vacancies across the Gulf — UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain — open to Indian candidates, including walk-in interviews and direct company recruitment. These are private overseas jobs, not Indian government jobs: check that any recruiting agent is licensed by the Ministry of External Affairs before you pay anything. New openings are added automatically every day.</p>
   </section>
   <ul class="edu-grid states-grid">${GULF.map(card).join("")}</ul>
 </main>` + foot();
@@ -1778,7 +1779,8 @@ const appArr = (x) => (Array.isArray(x) ? x.filter(Boolean).map(String) : x ? [S
 const appFaq = (x) => (Array.isArray(x) ? x.filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) })) : []);
 function appStates(job) { return isGulf(job) ? ["gulf"] : statesOf(job).map((st) => st.slug); }
 function appJobsInFeed(jobs) {
-  return jobs.filter((j) => { if (isStale(j)) return false; const d = daysLeft(j.application_end); return statusOf(j).live || (d !== null && d >= -15); }).sort(liveFirst);
+  // the app is "Govt Job Alerts": overseas (Gulf) jobs are private, so they stay on the website's labelled Gulf section only
+  return jobs.filter((j) => { if (isStale(j) || isGulf(j)) return false; const d = daysLeft(j.application_end); return statusOf(j).live || (d !== null && d >= -15); }).sort(liveFirst);
 }
 function appUpdatesInFeed(updates) {
   const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
@@ -1833,7 +1835,7 @@ function buildAppIndex(jobs, updates) {
   }));
   return JSON.stringify({
     api: APP_API, built: BUILD_ID, at: BUILT.toISOString(), site: SITE.url,
-    states: STATES.map((x) => ({ slug: x.slug, name: x.name })).concat([{ slug: "gulf", name: "Gulf / abroad" }]),
+    states: STATES.map((x) => ({ slug: x.slug, name: x.name })),
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
@@ -2388,7 +2390,7 @@ function main() {
       .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").replace(/-{2,}/g, "-").slice(0, 70).replace(/-+$/g, "");
     o.id = safeId;
     return o;
-  }).filter((j) => j.id && j.id.length >= 2 && j.title);
+  }).filter((j) => j.id && j.id.length >= 2 && j.title && !LIB.isNonGovt(j));   // government employers only (lib.js NON_GOVT)
   // Drop duplicate ids that could collide into the same URL (keep first/newest).
   { const seen = new Set(); for (let i = jobs.length - 1; i >= 0; i--) {
       if (seen.has(jobs[i].id)) jobs.splice(i, 1); else seen.add(jobs[i].id);
@@ -2585,7 +2587,10 @@ function main() {
   // Hindi twins stay out of the sitemap while Google's crawl budget for the site is small (they were 45% of it
   // and earn almost no impressions yet); they stay live and Google still finds them via hreflang links.
   // Set config.json "sitemapHindi": true to list them again.
-  write("sitemap.xml", buildSitemap(jobs, cats, extra.filter((u) => !oldClosed.has(u) && (SITE.sitemapHindi || !u.startsWith("hi/"))), mods));
+  // Gulf pages are noindex while they list no live job, so they stay out of the sitemap until they do
+  const anyGulf = [...gulfCounts.values()].some((n) => n > 0);
+  const mapCats = cats.filter((c) => c.kind !== "gulf" || (c.slug ? gulfCounts.get(c.slug) > 0 : anyGulf));
+  write("sitemap.xml", buildSitemap(jobs, mapCats, extra.filter((u) => !oldClosed.has(u) && (SITE.sitemapHindi || !u.startsWith("hi/"))), mods));
 
   // Human-readable master list of every URL — handy for checking/indexing.
   const allUrls = [
@@ -2602,8 +2607,9 @@ function main() {
     ...TOOLS.pages.map((p) => p.url),
     ...news.map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
-    SITE.url + "/gulf/",
-    ...GULF.map((g) => `${SITE.url}/gulf/${g.slug}/`),
+    // Gulf pages are noindex while they have no live job — keep them out of the sitemap too
+    ...([...gulfCounts.values()].some((n) => n > 0) ? [SITE.url + "/gulf/"] : []),
+    ...GULF.filter((g) => gulfCounts.get(g.slug) > 0).map((g) => `${SITE.url}/gulf/${g.slug}/`),
     ...guides.map((g) => `${SITE.url}/guides/${g.slug}/`),
     SITE.url + "/guides/",
     ...Object.keys(pages).map((s) => `${SITE.url}/${s}/`),
