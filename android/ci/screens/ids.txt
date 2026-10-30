@@ -1,1 +1,1 @@
-job=vmrf-erp-implementation-coordinator-2026 update=opsc-ocs-mains-admit-card-2026-out-download-hall-ticket-at-opsc-gov-in
+job=gsssb-surveyor-out-2026 update=delhi-high-court-spa-pa-typing-test-date-2026
