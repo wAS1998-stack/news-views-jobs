@@ -490,7 +490,8 @@ function foot() {
 // @id), so Google ties the name "News-Views.in" to this site and to what it actually is. sameAs lists only real profiles.
 const orgId = () => SITE.url + "/#organization";
 const websiteId = () => SITE.url + "/#website";
-const brandAlt = () => [...new Set([SITE.name, SITE.name.replace(/-/g, "")])];   // "News-Views", "NewsViews"
+// in order of preference; Google suggests the lowercase domain as the last fallback
+const brandAlt = () => [...new Set([SITE.name, SITE.name.replace(/-/g, ""), SITE.url.replace(/^https?:\/\/(www\.)?/, "").toLowerCase()])];   // News-Views, NewsViews, news-views.in
 function orgLd() {
   return { "@context": "https://schema.org", "@type": "Organization", "@id": orgId(), name: SITE.brand, alternateName: brandAlt(),
     url: SITE.url + "/", logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png", width: 512, height: 512 },
