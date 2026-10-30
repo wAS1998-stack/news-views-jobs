@@ -1,2 +1,2 @@
-OK build 3 1e983d1 2026-10-30T11:00:25Z signed=false
--rw-r--r-- 1 runner runner 19900103 Oct 30 11:00 android/app/build/outputs/apk/debug/app-debug.apk
+OK build 4 cc3d9ed 2026-10-30T11:35:30Z signed=false
+-rw-r--r-- 1 runner runner 23986926 Oct 30 11:35 android/app/build/outputs/apk/debug/app-debug.apk
