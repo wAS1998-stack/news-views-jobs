@@ -650,9 +650,12 @@ function buildNewsPage(a, all) {
     { "@context": "https://schema.org", "@type": "NewsArticle", headline: a.title, url: canonical,
       datePublished: a.date, dateModified: a.date, description: a.summary || a.title,
       author: { "@type": "Organization", name: SITE.publisher },
-      publisher: { "@type": "Organization", name: SITE.brand } },
+      publisher: { "@type": "Organization", name: SITE.brand, logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png" } },
+      mainEntityOfPage: canonical,
+      // Top Stories and Discover need an image of at least 1200px: the related job's share card, else the site card
+      image: (job && ogImage(`og/jobs/${job.id}.png`)) || SITE.url + "/og.png" },
   ];
-  return head({ title: `${a.title} | ${SITE.name}`, desc: (a.summary || a.title).slice(0, 155), canonical, ld }) + `
+  return head({ title: `${a.title} | ${SITE.name}`, desc: (a.summary || a.title).slice(0, 155), canonical, ld, image: job && ogImage(`og/jobs/${job.id}.png`) }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/news/">News</a></p>
   <article class="prose">
@@ -726,7 +729,7 @@ function buildUpdatePage(u, all) {
       dateModified: u.enriched && /^\d{4}/.test(u.enriched) ? u.enriched : u.date, description: desc,
       author: { "@type": "Organization", name: SITE.publisher },
       publisher: { "@type": "Organization", name: SITE.brand, logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png" } },
-      mainEntityOfPage: canonical, image: SITE.url + "/og.png" },
+      mainEntityOfPage: canonical, image: ogImage(`og/updates/${u.id}.png`) || SITE.url + "/og.png" },
     { "@context": "https://schema.org", "@type": "HowTo", name: `How to download the ${u.org_short || u.organization} ${typeLabel}`,
       step: steps.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) },
   ];
@@ -1332,7 +1335,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
 }
 
 /* ---- Category pages (qualification / organization) -------------- */
-function buildCategory(kind, label, slugVal, jobs) {
+function buildCategory(kind, label, slugVal, jobs, opts = {}) {
   const sorted = [...jobs].sort(liveFirst);
   const isQ = kind === "qualification";
   const title = isQ
@@ -1353,7 +1356,7 @@ function buildCategory(kind, label, slugVal, jobs) {
         itemListElement: sorted.slice(0, 50).map((j, i) => ({
           "@type": "ListItem", position: i + 1, url: `${SITE.url}/jobs/${j.id}/`, name: j.title })) } },
   ];
-  return head({ title, desc, canonical, ld }) + `
+  return head({ title, desc, canonical, ld, noindex: !!opts.noindex }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${esc(isQ ? "Qualification" : "Department")}</p>
   <section class="cat-head">
@@ -1613,7 +1616,7 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
   const urls = [
     { loc: SITE.url + "/", mod: today },
     ...extra.map((u) => ({ loc: `${SITE.url}/${u}`, mod: mods.get(u) || today })),
-    ...cats.map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`, mod: mods.get(`${c.kind}/${c.slug ? c.slug + "/" : ""}`) || today })),
+    ...cats.filter((c) => !c.noindex).map((c) => ({ loc: `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`, mod: mods.get(`${c.kind}/${c.slug ? c.slug + "/" : ""}`) || today })),
     ...mapJobs.map((j) => ({ loc: `${SITE.url}/jobs/${j.id}/`, mod: j.published || today })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -2269,11 +2272,17 @@ function main() {
     }
   }
   if (comboCount) console.log(`Long-tail: ${comboCount} state x qualification page(s) (min ${MIN_COMBO} live jobs each).`);
+  // A body with fewer than 3 listings makes a thin page (~80 words, 1-2 links): visitors still get it, but it stays
+  // out of Google's index and the sitemap until it has 3, so crawling goes to pages with substance.
+  const MIN_ORG_INDEX = Number(SITE.minOrgIndex || 3);
+  let thinOrgs = 0;
   for (const { short, jobs: list } of orgMap.values()) {
-    const s = slug(short);
-    write(`organization/${s}/index.html`, buildCategory("organization", short, s, list));
-    cats.push({ kind: "organization", slug: s });
+    const s = slug(short), thin = list.length < MIN_ORG_INDEX;
+    if (thin) thinOrgs++;
+    write(`organization/${s}/index.html`, buildCategory("organization", short, s, list, { noindex: thin }));
+    cats.push({ kind: "organization", slug: s, noindex: thin });
   }
+  if (thinOrgs) console.log(`Organisation pages: ${thinOrgs} with fewer than ${MIN_ORG_INDEX} listings kept out of the index.`);
 
   write("404.html", build404());
 
@@ -2370,13 +2379,19 @@ function main() {
       if (auto) console.log(`Redirects: ${auto} vanished URL(s) auto-redirected to their parent page.`);
       fs.writeFileSync(KNOWN, JSON.stringify([...new Set([...known, ...current])].sort(), null, 0) + "\n");
     } catch (e) { console.log("known-urls: " + e.message); }
+    // A redirect whose target has itself gone (a merged update, an organisation page that fell below 2 listings) follows
+    // the chain of redirects, else falls back to the target's nearest existing parent — a retired URL never 404s.
+    const exists = (p) => p === "/" || fs.existsSync(path.join(DIST, p.replace(/^\//, ""), "index.html"));
+    const redirTo = new Map(reds.map(([f, t]) => [f, t]));
+    const parentOf = (p) => { let q = p.replace(/[^/]+\/$/, ""); while (q.length > 1 && !exists(q)) q = q.replace(/[^/]+\/$/, ""); return q || "/"; };
+    const resolve = (t) => { const hops = new Set(); while (!exists(t) && redirTo.has(t) && !hops.has(t)) { hops.add(t); t = redirTo.get(t); } return exists(t) ? t : parentOf(t); };
     const lines = [], seen = new Set();
     for (const [from, to] of reds) {
       if (!from || !to || seen.has(from)) continue;
-      const srcExists = fs.existsSync(path.join(DIST, from, "index.html"));
-      const dstExists = fs.existsSync(path.join(DIST, to.replace(/^\//, ""), "index.html")) || to === "/";
-      if (srcExists || !dstExists) continue;
-      seen.add(from); lines.push(`${from} ${to} 301`);
+      if (fs.existsSync(path.join(DIST, from, "index.html"))) continue;
+      const dst = /^https?:/.test(to) || to.includes("*") ? to : resolve(to);
+      if (dst === from) continue;
+      seen.add(from); lines.push(`${from} ${dst} 301`);
     }
     if (lines.length) { write("_redirects", lines.join("\n") + "\n"); console.log(`Redirects: ${lines.length} retired URL(s) -> 301.`); }
   } catch { /* no redirects file */ }
