@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-10-30",
+    "date": "2026-10-30",
+    "digest_id": "current-affairs-2026-10-30",
+    "title": "Current Affairs Quiz 30 October 2026",
+    "questions": [
+      {
+        "q": "What is the main focus of the NAMASTE scheme?",
+        "options": [
+          "Healthcare",
+          "Workplace safety",
+          "Financial inclusion",
+          "Cyber security"
+        ],
+        "answer": 1,
+        "why": "The NAMASTE scheme is focused on transitioning from unsafe workplace conditions to ensuring safety and respect for workers."
+      },
+      {
+        "q": "What initiative was inaugurated on the sixth anniversary of AIIA-iCAINE?",
+        "options": [
+          "NAMASTE scheme",
+          "National Cyber Security Awareness Webinar",
+          "National Ayurvedic AI Challenge",
+          "New Educational Building"
+        ],
+        "answer": 2,
+        "why": "The National Ayurvedic AI Challenge was inaugurated on the sixth anniversary of AIIA-iCAINE, integrating AI into Ayurvedic practices."
+      },
+      {
+        "q": "Which two organizations are strengthening their partnership for KYC services?",
+        "options": [
+          "India Post and SBI",
+          "UTI Mutual Fund and LIC",
+          "India Post and UTI Mutual Fund",
+          "NABARD and RBI"
+        ],
+        "answer": 2,
+        "why": "India Post and UTI Mutual Fund are enhancing their partnership to expand pan-India KYC verification services."
+      },
+      {
+        "q": "Who inaugurated the new academic building for NIEPA?",
+        "options": [
+          "Shri JP Nadda",
+          "Shri Pralhad Joshi",
+          "Shri Amit Shah",
+          "Shri Rajnath Singh"
+        ],
+        "answer": 1,
+        "why": "Union Education Minister Shri Pralhad Joshi inaugurated the new academic building for the National Institute of Educational Planning and Administration."
+      },
+      {
+        "q": "What does the review at AIIMS focus on?",
+        "options": [
+          "Financial services",
+          "Cyber hygiene",
+          "Cleanliness initiatives",
+          "KYC verification"
+        ],
+        "answer": 2,
+        "why": "The review at AIIMS focuses on cleanliness initiatives under Special Campaign 6."
+      },
+      {
+        "q": "What was the theme of the National Cyber Security Awareness Webinar?",
+        "options": [
+          "Digital marketing",
+          "Social justice",
+          "Building a culture of cyber hygiene",
+          "Healthcare policies"
+        ],
+        "answer": 2,
+        "why": "The webinar organized by the Telecom Department's Cyber Security team focused on building a culture of cyber hygiene."
+      },
+      {
+        "q": "What is the goal of the initiatives showcased at the Diwali fair by NCSC-DA?",
+        "options": [
+          "Promote financial inclusion",
+          "Showcase entrepreneurship skills",
+          "Enhance cyber security",
+          "Improve educational infrastructure"
+        ],
+        "answer": 1,
+        "why": "The initiatives showcased the craftsmanship and entrepreneurship talents of differently-abled individuals."
+      },
+      {
+        "q": "What recent meeting involved the Narmada Control Authority?",
+        "options": [
+          "Cleanliness initiatives review",
+          "KYC services partnership",
+          "Review meeting for NWDT award projects",
+          "National Ayurvedic AI Challenge launch"
+        ],
+        "answer": 2,
+        "why": "The 15th meeting of the Narmada Control Authority's review committee approved the Attorney General's opinion and the MoU regarding NWDT award projects."
+      },
+      {
+        "q": "What type of advancements are highlighted in the current affairs updates?",
+        "options": [
+          "Technological advancements",
+          "Environmental policies",
+          "Healthcare advancements",
+          "Educational advancements"
+        ],
+        "answer": 3,
+        "why": "The updates highlight significant initiatives focusing on educational advancements among others."
+      },
+      {
+        "q": "Which exam aspirants would find the NAMASTE scheme particularly relevant?",
+        "options": [
+          "Banking",
+          "Healthcare",
+          "Labor laws",
+          "Environmental management"
+        ],
+        "answer": 2,
+        "why": "The NAMASTE scheme is particularly relevant for aspirants focusing on labor laws and workplace safety regulations."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-29",
     "date": "2026-10-29",
     "digest_id": "current-affairs-2026-10-29",
