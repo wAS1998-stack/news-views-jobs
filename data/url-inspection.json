@@ -1,19 +1,11 @@
 {
- "at": "2026-10-29T14:46:17.504Z",
+ "at": "2026-10-30T18:48:53.988Z",
  "property": "https://news-views.in/",
- "inspected": 10,
+ "inspected": 4,
  "jobsNotifiedViaIndexingApi": 0,
  "summary": {
   "hub": {
-   "Submitted and indexed": 1
-  },
-  "job n/a": {
-   "Submitted and indexed": 5,
-   "Discovered – currently not indexed": 1
-  },
-  "update": {
-   "Submitted and indexed": 1,
-   "Discovered – currently not indexed": 1,
+   "Submitted and indexed": 3,
    "URL is unknown to Google": 1
   }
  },
@@ -21,75 +13,17 @@
   {
    "kind": "hub",
    "age": null,
-   "url": "https://news-views.in/latest/",
+   "url": "https://news-views.in/",
    "verdict": "PASS",
    "coverage": "Submitted and indexed",
    "indexing": "INDEXING_ALLOWED",
    "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:20:32Z",
+   "lastCrawl": "2026-10-29T15:30:57Z",
    "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/latest/",
-   "userCanonical": "https://news-views.in/latest/",
-   "sitemaps": 1,
-   "referring": 0,
-   "rich": {
-    "verdict": "PASS",
-    "types": [
-     "Breadcrumbs"
-    ]
-   }
-  },
-  {
-   "kind": "job",
-   "age": null,
-   "url": "https://news-views.in/jobs/railway-rrb-station-master-2026/",
-   "verdict": "PASS",
-   "coverage": "Submitted and indexed",
-   "indexing": "INDEXING_ALLOWED",
-   "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:20:32Z",
-   "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/jobs/railway-rrb-station-master-2026/",
-   "userCanonical": "https://news-views.in/jobs/railway-rrb-station-master-2026/",
+   "googleCanonical": "https://news-views.in/",
+   "userCanonical": "https://news-views.in/",
    "sitemaps": 0,
-   "referring": 0,
-   "rich": {
-    "verdict": "PASS",
-    "types": [
-     "Breadcrumbs",
-     "Job Postings"
-    ]
-   },
-   "indexingApi": "HTTP 404"
-  },
-  {
-   "kind": "job",
-   "age": null,
-   "url": "https://news-views.in/jobs/jrhms-community-health-officer-2026/",
-   "verdict": "NEUTRAL",
-   "coverage": "Discovered – currently not indexed",
-   "indexing": "INDEXING_STATE_UNSPECIFIED",
-   "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "robots": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "sitemaps": 1,
-   "referring": 0,
-   "rich": null,
-   "indexingApi": "HTTP 404"
-  },
-  {
-   "kind": "update",
-   "age": null,
-   "url": "https://news-views.in/updates/jnvst-2027-nvs-class-6-admit-card-out-release-date-november-28-exam-do/",
-   "verdict": "PASS",
-   "coverage": "Submitted and indexed",
-   "indexing": "INDEXING_ALLOWED",
-   "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:24:33Z",
-   "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/updates/jnvst-2027-nvs-class-6-admit-card-out-release-date-november-28-exam-do/",
-   "userCanonical": "https://news-views.in/updates/jnvst-2027-nvs-class-6-admit-card-out-release-date-november-28-exam-do/",
-   "sitemaps": 2,
-   "referring": 0,
+   "referring": 5,
    "rich": {
     "verdict": "PASS",
     "types": [
@@ -98,114 +32,46 @@
    }
   },
   {
-   "kind": "update",
+   "kind": "hub",
    "age": null,
-   "url": "https://news-views.in/updates/rrb-je-new-exam-date-2026-out-check-postponed-cbt-1-reschedule-pdf/",
-   "verdict": "NEUTRAL",
-   "coverage": "Discovered – currently not indexed",
-   "indexing": "INDEXING_STATE_UNSPECIFIED",
-   "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-   "robots": "ROBOTS_TXT_STATE_UNSPECIFIED",
-   "sitemaps": 2,
+   "url": "https://news-views.in/about/",
+   "verdict": "PASS",
+   "coverage": "Submitted and indexed",
+   "indexing": "INDEXING_ALLOWED",
+   "fetch": "SUCCESSFUL",
+   "lastCrawl": "2026-10-19T10:33:50Z",
+   "robots": "ALLOWED",
+   "googleCanonical": "https://news-views.in/about/",
+   "userCanonical": "https://news-views.in/about/",
+   "sitemaps": 1,
    "referring": 0,
    "rich": null
   },
   {
-   "kind": "job",
+   "kind": "hub",
    "age": null,
-   "url": "https://news-views.in/jobs/bel-probationary-engineer-out-from-oct-2026/",
+   "url": "https://news-views.in/hi/",
    "verdict": "PASS",
    "coverage": "Submitted and indexed",
    "indexing": "INDEXING_ALLOWED",
    "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:26:33Z",
+   "lastCrawl": "2026-10-27T16:29:42Z",
    "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/jobs/bel-probationary-engineer-out-from-oct-2026/",
-   "userCanonical": "https://news-views.in/jobs/bel-probationary-engineer-out-from-oct-2026/",
+   "googleCanonical": "https://news-views.in/hi/",
+   "userCanonical": "https://news-views.in/hi/",
    "sitemaps": 0,
-   "referring": 0,
+   "referring": 2,
    "rich": {
     "verdict": "PASS",
     "types": [
-     "Breadcrumbs",
-     "Job Postings"
+     "Breadcrumbs"
     ]
-   },
-   "indexingApi": "HTTP 404"
+   }
   },
   {
-   "kind": "job",
+   "kind": "hub",
    "age": null,
-   "url": "https://news-views.in/jobs/jkssb-junior-engineer-2026/",
-   "verdict": "PASS",
-   "coverage": "Submitted and indexed",
-   "indexing": "INDEXING_ALLOWED",
-   "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:28:33Z",
-   "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/jobs/jkssb-junior-engineer-2026/",
-   "userCanonical": "https://news-views.in/jobs/jkssb-junior-engineer-2026/",
-   "sitemaps": 1,
-   "referring": 0,
-   "rich": {
-    "verdict": "PASS",
-    "types": [
-     "Breadcrumbs",
-     "Job Postings"
-    ]
-   },
-   "indexingApi": "HTTP 404"
-  },
-  {
-   "kind": "job",
-   "age": null,
-   "url": "https://news-views.in/jobs/bpsc-auditor-mains-2026/",
-   "verdict": "PASS",
-   "coverage": "Submitted and indexed",
-   "indexing": "INDEXING_ALLOWED",
-   "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:28:33Z",
-   "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/jobs/bpsc-auditor-mains-2026/",
-   "userCanonical": "https://news-views.in/jobs/bpsc-auditor-mains-2026/",
-   "sitemaps": 0,
-   "referring": 0,
-   "rich": {
-    "verdict": "PASS",
-    "types": [
-     "Breadcrumbs",
-     "Job Postings"
-    ]
-   },
-   "indexingApi": "HTTP 404"
-  },
-  {
-   "kind": "job",
-   "age": null,
-   "url": "https://news-views.in/jobs/swr-goods-train-manager-junior-engineer-2026/",
-   "verdict": "PASS",
-   "coverage": "Submitted and indexed",
-   "indexing": "INDEXING_ALLOWED",
-   "fetch": "SUCCESSFUL",
-   "lastCrawl": "2026-10-29T09:30:34Z",
-   "robots": "ALLOWED",
-   "googleCanonical": "https://news-views.in/jobs/swr-goods-train-manager-junior-engineer-2026/",
-   "userCanonical": "https://news-views.in/jobs/swr-goods-train-manager-junior-engineer-2026/",
-   "sitemaps": 0,
-   "referring": 0,
-   "rich": {
-    "verdict": "PASS",
-    "types": [
-     "Breadcrumbs",
-     "Job Postings"
-    ]
-   },
-   "indexingApi": "HTTP 404"
-  },
-  {
-   "kind": "update",
-   "age": null,
-   "url": "https://news-views.in/updates/kpsc-kas-exam-date-2026-out-check-exam-schedule-pdf/",
+   "url": "https://news-views.in/latest-jobs/",
    "verdict": "NEUTRAL",
    "coverage": "URL is unknown to Google",
    "indexing": "INDEXING_STATE_UNSPECIFIED",
