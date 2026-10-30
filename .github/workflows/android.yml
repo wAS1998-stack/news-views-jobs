@@ -1,0 +1,117 @@
+name: Android app
+# Builds the News-Views Android app (android/) on every change to it:
+#  - debug APK always (published to the "app-latest" release so it can be installed and tried),
+#  - signed release bundle (.aab for Play) and APK when the signing secrets exist,
+#  - then runs the app on an emulator and saves screenshots to android/ci/screens/.
+# Results (OK / the compiler errors) are written to android/ci/last-build.txt because build logs can't be read from
+# Claude's sandbox. Optional secrets: GOOGLE_SERVICES_JSON (Firebase alerts), ANDROID_KEYSTORE_B64,
+# ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS (default "upload").
+on:
+  push:
+    branches: [main]
+    paths: ["android/**", ".github/workflows/android.yml", "!android/ci/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: android
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      ok: ${{ steps.build.outcome == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Firebase config (optional)
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: if [ -n "$GOOGLE_SERVICES_JSON" ]; then printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json; echo "Firebase on"; else echo "Firebase off"; fi
+      - name: Signing key (optional)
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KS_B64" ]; then echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/upload.jks"; echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"; echo "signed=true" >> "$GITHUB_ENV"; else echo "signed=false" >> "$GITHUB_ENV"; fi
+      - name: Build
+        id: build
+        working-directory: android
+        env:
+          APP_VERSION_CODE: ${{ github.run_number }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          set -o pipefail
+          tasks="assembleDebug"
+          if [ "$signed" = true ]; then tasks="$tasks bundleRelease assembleRelease"; fi
+          ./gradlew --no-daemon --stacktrace $tasks 2>&1 | tee "$RUNNER_TEMP/build.log"
+      - name: Upload APKs
+        if: steps.build.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: |
+            android/app/build/outputs/apk/**/*.apk
+            android/app/build/outputs/bundle/**/*.aab
+      - name: Publish to the "app-latest" release
+        if: steps.build.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/debug/app-debug.apk out/news-views-debug.apk
+          [ -f android/app/build/outputs/apk/release/app-release.apk ] && cp android/app/build/outputs/apk/release/app-release.apk out/news-views.apk || true
+          [ -f android/app/build/outputs/bundle/release/app-release.aab ] && cp android/app/build/outputs/bundle/release/app-release.aab out/news-views.aab || true
+          notes="Build ${{ github.run_number }} from ${GITHUB_SHA::7} ($(date -u +%F' '%H:%M) UTC). news-views-debug.apk installs alongside the Play version."
+          gh release view app-latest >/dev/null 2>&1 || gh release create app-latest --title "News-Views Android app (latest build)" --notes "$notes" --prerelease
+          gh release edit app-latest --notes "$notes"
+          gh release upload app-latest out/* --clobber
+      - name: Write the build result back to the repo
+        if: always()
+        run: |
+          mkdir -p android/ci
+          if [ "${{ steps.build.outcome }}" = success ]; then
+            echo "OK build ${{ github.run_number }} ${GITHUB_SHA::7} $(date -u +%FT%TZ) signed=$signed" > android/ci/last-build.txt
+            ls -l android/app/build/outputs/apk/*/*.apk android/app/build/outputs/bundle/*/*.aab 2>/dev/null >> android/ci/last-build.txt || true
+          else
+            echo "FAILED build ${{ github.run_number }} ${GITHUB_SHA::7} $(date -u +%FT%TZ)" > android/ci/last-build.txt
+            grep -E "^e: |error:|What went wrong|Could not|FAILURE|> [A-Z]|Unresolved|not found|Exception" "$RUNNER_TEMP/build.log" | head -120 >> android/ci/last-build.txt || true
+            echo "----- tail -----" >> android/ci/last-build.txt; tail -80 "$RUNNER_TEMP/build.log" >> android/ci/last-build.txt || true
+          fi
+          git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
+          git add android/ci/last-build.txt
+          git commit -q -m "Android build ${{ github.run_number }}: ${{ steps.build.outcome }} [CF-Pages-Skip]" || exit 0
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
+
+  screens:
+    needs: build
+    if: needs.build.outputs.ok == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: apk, path: apk }
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Run the app on an emulator and take screenshots
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: bash android/ci-screens.sh "$(find apk -name 'app-debug.apk' | head -1)"
+      - name: Save screenshots to the repo
+        if: always()
+        run: |
+          git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
+          git add android/ci/screens 2>/dev/null || true
+          git commit -q -m "Android screenshots ${{ github.run_number }} [CF-Pages-Skip]" || exit 0
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

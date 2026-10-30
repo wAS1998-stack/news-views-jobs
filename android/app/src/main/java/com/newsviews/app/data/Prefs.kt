@@ -1,0 +1,86 @@
+package com.newsviews.app.data
+
+import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+
+private val Context.store by preferencesDataStore("settings")
+
+/** Highest qualification choices; each covers the levels a person with it can apply for. */
+enum class Qual(val key: String, val en: String, val hi: String, val levels: List<String>) {
+    TENTH("10th", "10th pass", "10वीं पास", listOf("10th-pass")),
+    TWELFTH("12th", "12th pass", "12वीं पास", listOf("10th-pass", "12th-pass")),
+    DIPLOMA("diploma", "Diploma / ITI", "डिप्लोमा / ITI", listOf("10th-pass", "12th-pass", "engineering-diploma")),
+    GRADUATE("graduate", "Graduate", "स्नातक", listOf("10th-pass", "12th-pass", "graduate")),
+    ENGINEER("engineer", "Engineering (B.E./B.Tech)", "इंजीनियरिंग (B.E./B.Tech)", listOf("10th-pass", "12th-pass", "graduate", "engineering-diploma")),
+    PG("pg", "Post graduate", "स्नातकोत्तर", listOf("10th-pass", "12th-pass", "graduate", "post-graduate")),
+    ANY("any", "Show all", "सभी दिखाएँ", listOf("10th-pass", "12th-pass", "graduate", "engineering-diploma", "post-graduate"));
+
+    companion object { fun of(key: String?) = entries.firstOrNull { it.key == key } ?: ANY }
+}
+
+data class Settings(
+    val hindi: Boolean = false,
+    val onboarded: Boolean = false,
+    val alerts: Boolean = true,
+    val results: Boolean = true,
+    val reminders: Boolean = true,
+    val states: Set<String> = emptySet(),
+    val qual: Qual = Qual.ANY,
+    val saved: Set<String> = emptySet(),
+    val subscribed: Set<String> = emptySet(),
+)
+
+class Prefs(private val context: Context) {
+    private object K {
+        val hindi = booleanPreferencesKey("hindi")
+        val onboarded = booleanPreferencesKey("onboarded")
+        val alerts = booleanPreferencesKey("alerts")
+        val results = booleanPreferencesKey("results")
+        val reminders = booleanPreferencesKey("reminders")
+        val states = stringSetPreferencesKey("states")
+        val qual = stringPreferencesKey("qual")
+        val saved = stringSetPreferencesKey("saved")
+        val subscribed = stringSetPreferencesKey("subscribed")
+    }
+
+    val flow: Flow<Settings> = context.store.data.map { p ->
+        Settings(
+            hindi = p[K.hindi] ?: false,
+            onboarded = p[K.onboarded] ?: false,
+            alerts = p[K.alerts] ?: true,
+            results = p[K.results] ?: true,
+            reminders = p[K.reminders] ?: true,
+            states = p[K.states] ?: emptySet(),
+            qual = Qual.of(p[K.qual]),
+            saved = p[K.saved] ?: emptySet(),
+            subscribed = p[K.subscribed] ?: emptySet(),
+        )
+    }
+
+    suspend fun current(): Settings = flow.first()
+
+    suspend fun setHindi(v: Boolean) = context.store.edit { it[K.hindi] = v }
+    suspend fun setOnboarded() = context.store.edit { it[K.onboarded] = true }
+    suspend fun setAlerts(v: Boolean) = context.store.edit { it[K.alerts] = v }
+    suspend fun setResults(v: Boolean) = context.store.edit { it[K.results] = v }
+    suspend fun setReminders(v: Boolean) = context.store.edit { it[K.reminders] = v }
+    suspend fun setStates(v: Set<String>) = context.store.edit { it[K.states] = v }
+    suspend fun setQual(q: Qual) = context.store.edit { it[K.qual] = q.key }
+    suspend fun setSubscribed(v: Set<String>) = context.store.edit { it[K.subscribed] = v }
+    suspend fun toggleSaved(id: String): Boolean {
+        var nowSaved = false
+        context.store.edit {
+            val cur = it[K.saved] ?: emptySet()
+            nowSaved = id !in cur
+            it[K.saved] = if (nowSaved) cur + id else cur - id
+        }
+        return nowSaved
+    }
+}
