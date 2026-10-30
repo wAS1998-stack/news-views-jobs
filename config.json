@@ -3,6 +3,22 @@
   "url": "https://news-views.in",
   "email": "contact@news-views.in",
   "adsenseId": "",
+  "adsenseSlot": "",
+  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes.",
+  "admob": {
+    "appId": "",
+    "banner": "",
+    "inline": "",
+    "interstitial": ""
+  },
+  "appAds": {
+    "on": true,
+    "banner": true,
+    "inline": true,
+    "interstitial": true,
+    "every": 4,
+    "gap": 240
+  },
   "feeds": [
     "https://www.freejobalert.com/feed/",
     "https://rajsarkariresult.com/feed",

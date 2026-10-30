@@ -58,6 +58,18 @@ data class AppIndex(
     val types: List<Named> = emptyList(),
     val jobs: List<JobItem> = emptyList(),
     val updates: List<UpdateItem> = emptyList(),
+    val ads: AdsConfig = AdsConfig(),
+)
+
+/** Ad switches sent with the feed (config.json "appAds"), so placements can be tuned or turned off without an app update. */
+@Serializable
+data class AdsConfig(
+    val on: Boolean = true,
+    val banner: Boolean = true,        // anchored banner under the job / result / saved lists
+    val inline: Boolean = true,        // one in-content unit on job and result pages
+    val interstitial: Boolean = true,  // full-screen ad when going back from a page, capped below
+    val every: Int = 4,                // at most once per this many pages opened
+    val gap: Int = 240,                // and at least this many seconds apart
 )
 
 @Serializable

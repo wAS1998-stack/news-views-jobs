@@ -29,8 +29,14 @@ Website: https://news-views.in · Privacy policy: https://news-views.in/privacy-
 
 **Category:** Education (or Business) · **Tags:** Jobs, Education
 **Contact email:** the site's contact email · **Privacy policy URL:** https://news-views.in/privacy-policy/
-**Ads:** No · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
+**Ads:** Yes (Google AdMob) · **Advertising ID:** Yes, used for advertising · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
 
-**Data safety (what the app actually does):** no account, no personal data collected. Saved jobs and settings stay on the phone. For alerts, Firebase Cloud Messaging assigns an anonymous device token (device ID category: collected, used only for app functionality, not shared, not linked to the person). No location, contacts, photos or analytics. Data is sent over HTTPS.
+**Data safety (what the app actually does):** no account; saved jobs and settings stay on the phone. Data is encrypted in transit (HTTPS/TLS). Declare:
+- **Device or other IDs** — collected and shared: Firebase alert token (app functionality) and, through the Google Mobile Ads SDK, the advertising ID / app set ID (advertising, analytics, fraud prevention).
+- **Location › Approximate location** — collected and shared by the ads SDK from the IP address (advertising, fraud prevention).
+- **App activity › App interactions** — collected and shared by the ads SDK: taps, ad views (advertising, analytics).
+- **App info and performance › Diagnostics** — collected and shared by the ads SDK (analytics, fraud prevention).
+- Not collected: name, email, phone, contacts, photos, files, precise location. Users can't request deletion through us because we hold none of it; they can reset or delete the advertising ID in phone settings.
+(Source: Google's own disclosure for the Mobile Ads SDK — developers.google.com/admob/android/privacy/play-data-disclosure.)
 
 **Graphics:** `icon-512.png`, `feature-graphic-1024x500.png`, phone screenshots `screen-1…5.png` (1080×2400).

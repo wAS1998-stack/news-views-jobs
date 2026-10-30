@@ -50,5 +50,16 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="jobs" />
+
+        <!-- Google AdMob: the app ID comes from config.json (test ID in debug builds) through build.gradle.kts -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+            android:value="true" />
     </application>
 </manifest>

@@ -43,6 +43,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.BuildConfig
 import com.newsviews.app.data.Qual
+import com.newsviews.app.ads.Ads
+import com.newsviews.app.ads.findActivity
 import com.newsviews.app.push.Alerts
 
 @Composable
@@ -93,6 +95,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
     val st by vm.settings.collectAsStateWithLifecycle()
     var granted by remember { mutableStateOf(Alerts.canNotify(ctx)) }
     val askPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted = it }
+    val adPrivacy by Ads.privacyRequired.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         if (!granted && Build.VERSION.SDK_INT >= 33) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
@@ -134,6 +137,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             TextButton(onClick = { openUrl(ctx, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.rate) }
             TextButton(onClick = { shareText(ctx, s.shareText, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.shareApp) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/privacy-policy/") }) { Text(s.privacy) }
+            if (adPrivacy) TextButton(onClick = { ctx.findActivity()?.let { Ads.showPrivacyOptions(it) } }) { Text(s.adPrivacy) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/") }) { Text("news-views.in") }
             TextButton(onClick = { ctx.startActivity(Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, ctx.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }) {
                 Text(if (st.hindi) "नोटिफ़िकेशन सेटिंग" else "Notification settings")

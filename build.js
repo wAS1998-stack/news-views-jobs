@@ -19,6 +19,9 @@ const SITE = {
   email: "contact@news-views.in",        // shown on Contact/Privacy pages — change to yours
   publisher: "News-Views.in Editorial Team",
   adsenseId: "",                         // e.g. "ca-pub-1234567890123456" — paste after AdSense approval
+  adsenseSlot: "",                       // optional in-article ad unit ID ("1234567890"); without it Auto ads place the ads
+  admob: {},                             // Android app ads: { appId, banner, inline, interstitial } — also read by android/app/build.gradle.kts
+  appAds: {},                            // app ad switches sent in the feed: { on, banner, inline, interstitial, every, gap }
 };
 
 const ROOT = __dirname;
@@ -38,7 +41,8 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 // Load the single user config file (config.json) and apply it.
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
-  for (const k of ["url", "email", "adsenseId", "brand", "name", "tagline", "staleDays"]) {
+  for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
+    "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -346,7 +350,7 @@ function head(o) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="nv-build" content="${BUILD_ID}">
-<title>${esc(o.title)}</title>
+${SITE.adsenseId ? `<meta name="google-adsense-account" content="${esc(SITE.adsenseId)}">\n` : ""}<title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.desc)}">
 <link rel="canonical" href="${esc(o.canonical)}">
 ${(o.alternates || []).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}">`).join("\n")}
@@ -1485,10 +1489,11 @@ function prepTips(job) {
    clean (and policy-safe) until AdSense is approved. In-article placements
    earn far more than relying on Auto Ads alone. */
 function adSlot(label) {
-  if (!SITE.adsenseId) return "";
+  // A manual unit needs its ad-unit ID (config.json "adsenseSlot"); until then Auto ads (switched on in AdSense) place the ads.
+  if (!SITE.adsenseId || !SITE.adsenseSlot) return "";
   return `<aside class="ad-slot" aria-label="Advertisement" data-slot="${esc(label || "")}">
     <span class="ad-label">Advertisement</span>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="${esc(SITE.adsenseId)}" data-ad-format="fluid" data-ad-layout="in-article"></ins>
+    <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="${esc(SITE.adsenseId)}" data-ad-slot="${esc(SITE.adsenseSlot)}" data-ad-format="fluid" data-ad-layout="in-article"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </aside>`;
 }
@@ -1688,6 +1693,7 @@ function buildAppIndex(jobs, updates) {
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
     jobs: J, updates: U,
+    ads: Object.assign({ on: true, banner: true, inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {}),
   });
 }
 function appJobDetail(j) {
@@ -1998,6 +2004,8 @@ We may use analytics tools to measure traffic and usage patterns in aggregate. T
 
 ## Android app
 The ${SITE.brand} Android app has no accounts and collects no personal information. Saved jobs, your language and your alert choices (states and qualifications) are stored only on your phone. To send job alerts, the app registers with Google's Firebase Cloud Messaging, which gives your phone an anonymous token and subscribes it to the alert topics you choose; we never receive your name, phone number or contacts. You can turn alerts off in the app or uninstall it at any time.
+
+The app is free and is supported by ads from Google AdMob. To show and measure ads and to prevent fraud, Google's ad software may collect your device's advertising ID, your IP address (which gives an approximate location), diagnostic information and how you interact with ads. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. Anywhere, you can reset or delete your advertising ID in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads). Learn more in [Google's privacy policy](https://policies.google.com/technologies/partner-sites).
 
 ## Your choices
 You can disable cookies in your browser settings at any time. Doing so may affect how some parts of the site function.
@@ -2503,6 +2511,10 @@ function main() {
     const pub = SITE.adsenseId.replace(/^ca-/, "");
     write("ads.txt", `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`);
   }
+  // app-ads.txt: AdMob checks this file on the developer website named in the Play listing (news-views.in).
+  // The publisher ID is the part of the AdMob app ID between "ca-app-" and "~".
+  const appPub = String((SITE.admob || {}).appId || "").match(/^ca-app-(pub-\d+)~/);
+  if (appPub) write("app-ads.txt", `google.com, ${appPub[1]}, DIRECT, f08c47fec0942fa0\n`);
 
   console.log(`Built: home + ${jobs.length} jobs + ${cats.length} categories + ${guides.length} guides + ${Object.keys(pages).length} pages + 404/sitemap/feed -> dist/`);
 }

@@ -31,6 +31,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -43,6 +47,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.newsviews.app.ads.Ads
+import com.newsviews.app.ads.BottomBanner
+import com.newsviews.app.ads.findActivity
 import com.newsviews.app.ui.AlertsScreen
 import com.newsviews.app.ui.Brand
 import com.newsviews.app.ui.JobDetailScreen
@@ -66,6 +73,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         handle(intent)
         setContent { NewsViewsTheme { Root(vm, pending) } }
+        Ads.start(this)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -83,6 +91,7 @@ class MainActivity : ComponentActivity() {
         intent ?: return
         // test hooks for the automated screenshots (debug builds only)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("skip_onboarding", false)) vm.finishOnboarding()
+        if (BuildConfig.DEBUG && intent.getBooleanExtra("ad_test", false)) Ads.forceNext = true
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
         if (BuildConfig.DEBUG && intent.hasExtra("tab")) { pending.value = "tab" to (intent.getStringExtra("tab") ?: "jobs"); return }
         val kind = intent.getStringExtra("kind")
@@ -116,6 +125,18 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val route = entry?.destination?.route ?: "jobs"
     val top = TABS.any { it.route == route }
     val open by pending.collectAsStateWithLifecycle()
+    val idx by vm.index.collectAsStateWithLifecycle()
+    val activity = LocalContext.current.findActivity()
+    var prevRoute by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
+    // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
+    LaunchedEffect(route) {
+        val isPage = route.startsWith("job/") || route.startsWith("update/")
+        val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
+        if (isPage) Ads.pageOpened() else if (wasPage && activity != null) Ads.backFromPage(activity)
+        prevRoute = route
+    }
 
     LaunchedEffect(open) {
         val p = open ?: return@LaunchedEffect
@@ -146,14 +167,17 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
             )
         },
         bottomBar = {
-            if (top) NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
-                TABS.forEach { t ->
-                    NavigationBarItem(
-                        selected = route == t.route,
-                        onClick = { go(nav, t.route) },
-                        icon = { Icon(t.icon, null) },
-                        label = { Text(t.label(s)) },
-                    )
+            if (top) Column {
+                if (route != "alerts") BottomBanner()
+                NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
+                    TABS.forEach { t ->
+                        NavigationBarItem(
+                            selected = route == t.route,
+                            onClick = { go(nav, t.route) },
+                            icon = { Icon(t.icon, null) },
+                            label = { Text(t.label(s)) },
+                        )
+                    }
                 }
             }
         },

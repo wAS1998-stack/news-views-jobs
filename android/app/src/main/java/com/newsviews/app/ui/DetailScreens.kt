@@ -1,5 +1,6 @@
 package com.newsviews.app.ui
 
+import com.newsviews.app.ads.InlineAd
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -144,6 +145,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             }
             val summary = h?.summary?.ifBlank { null } ?: j.summary
             if (summary.isNotBlank()) Section(s.summary) { Text(summary, style = MaterialTheme.typography.bodyLarge) }
+            InlineAd(s.ad)
             val overview = h?.overview?.ifEmpty { null } ?: j.overview
             if (overview.isNotEmpty()) Section(s.details) { Bullets(overview) }
             val facts = listOfNotNull(
@@ -198,6 +200,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             }
             val summary = h?.summary?.ifBlank { null } ?: u.summary
             if (summary.isNotBlank()) Section(s.summary) { Text(summary, style = MaterialTheme.typography.bodyLarge) }
+            InlineAd(s.ad)
             val steps = h?.steps?.ifEmpty { null } ?: u.steps
             if (steps.isNotEmpty()) Section(s.steps) { Bullets(steps, numbered = true) }
             val details = h?.details?.ifEmpty { null } ?: u.details
