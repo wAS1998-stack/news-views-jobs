@@ -151,6 +151,20 @@
    "impressions": 15
   }
  ],
+ "home": {
+  "page": "/",
+  "clicks": 0,
+  "impressions": 13,
+  "ctr": 0,
+  "position": 4.9
+ },
+ "brand": {
+  "range": [
+   "2026-07-31",
+   "2026-10-28"
+  ],
+  "rows": []
+ },
  "topPages": [
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
