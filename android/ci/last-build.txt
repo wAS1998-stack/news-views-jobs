@@ -1,0 +1,2 @@
+OK build 1 e22ff36 2026-10-30T10:48:01Z signed=false
+-rw-r--r-- 1 runner runner 19900103 Oct 30 10:47 android/app/build/outputs/apk/debug/app-debug.apk
