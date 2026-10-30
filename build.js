@@ -1655,6 +1655,74 @@ function buildNewsSitemap({ updates, news }) {
 }
 /* /search.json — loaded by the homepage only when someone starts typing: every open (and recently closed) job plus
    the last 60 days of results/admit cards/answer keys, so search covers the whole site without heavy page markup. */
+/* ---- Android app data: /app/v1/ (static JSON on Cloudflare — the app's whole backend) ----
+   index.json  open jobs + those closed in the last 15 days, results/admit cards of the last 60 days, filter lists
+   j/<id>.json one job in full, u/<id>.json one update in full. Field names are short in the index (it is fetched on
+   every app refresh) and long in the detail files. Bump APP_API when a field changes meaning. */
+const APP_API = 1;
+const appDay = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0] || "";
+const appArr = (x) => (Array.isArray(x) ? x.filter(Boolean).map(String) : x ? [String(x)] : []);
+const appFaq = (x) => (Array.isArray(x) ? x.filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) })) : []);
+function appStates(job) { return isGulf(job) ? ["gulf"] : statesOf(job).map((st) => st.slug); }
+function appJobsInFeed(jobs) {
+  return jobs.filter((j) => { if (isStale(j)) return false; const d = daysLeft(j.application_end); return statusOf(j).live || (d !== null && d >= -15); }).sort(liveFirst);
+}
+function appUpdatesInFeed(updates) {
+  const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  return updates.filter((u) => UPDATE_TYPES[u.type] && appDay(u.date) >= cutoff).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+function buildAppIndex(jobs, updates) {
+  const J = appJobsInFeed(jobs).map((j) => ({
+    id: j.id, t: j.title, th: (j.hi && j.hi.title) || "", o: orgKey(j) || "", p: j.post_name || "",
+    v: Number(j.total_vacancies) || 0, q: qualsOf(j).map((x) => x.slug), s: appStates(j),
+    a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
+    pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
+  }));
+  const U = appUpdatesInFeed(updates).map((u) => ({
+    id: u.id, t: u.title, th: (u.hi && u.hi.title) || "", o: u.org_short || "", ty: u.type, d: appDay(u.date), ev: appDay(u.event_date),
+    big: /\b(ssc|rrb|railway|ibps|sbi|upsc|ctet|police|constable|army|navy|agniveer|nvs|kvs|bpsc|uppsc|upsssc|rpsc|rssb|mppsc|tnpsc|kpsc|kea|hssc|dsssb|ntpc|lic)\b/i.test(u.title) ? 1 : 0,
+  }));
+  return JSON.stringify({
+    api: APP_API, built: BUILD_ID, at: BUILT.toISOString(), site: SITE.url,
+    states: STATES.map((x) => ({ slug: x.slug, name: x.name })).concat([{ slug: "gulf", name: "Gulf / abroad" }]),
+    quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
+    types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
+    jobs: J, updates: U,
+  });
+}
+function appJobDetail(j) {
+  const h = j.hi || {};
+  return JSON.stringify({
+    id: j.id, url: `${SITE.url}/jobs/${j.id}/`, title: j.title, organization: j.organization || "", org_short: orgKey(j) || "",
+    post_name: j.post_name || "", total_vacancies: Number(j.total_vacancies) || 0, qualification: j.qualification ? String(j.qualification) : "",
+    quals: levelsOf(j), states: statesOf(j).map((x) => x.name), age_min: Number(j.age_min) || 0, age_max: Number(j.age_max) || 0,
+    salary: j.salary ? String(j.salary) : "", fee: j.fee ? (typeof j.fee === "string" ? j.fee : JSON.stringify(j.fee)) : "",
+    application_start: appDay(j.application_start), application_end: appDay(j.application_end), exam_date: appDay(j.exam_date),
+    location: j.location ? String(j.location) : "", published: appDay(j.published), verified: j.via === "official",
+    summary: j.summary || "", overview: appArr(j.overview), eligibility_notes: j.eligibility_notes ? String(j.eligibility_notes) : "",
+    selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
+    official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
+    hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
+      selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq) } : null,
+  });
+}
+function appUpdateDetail(u) {
+  const h = u.hi || {};
+  return JSON.stringify({
+    id: u.id, url: `${SITE.url}/updates/${u.id}/`, type: u.type, type_name: (UPDATE_TYPES[u.type] || {}).label || "Update", title: u.title,
+    organization: u.organization || "", org_short: u.org_short || "", exam_name: u.exam_name || "", date: appDay(u.date), event_date: appDay(u.event_date),
+    summary: u.summary || "", steps: appArr(u.steps), details: appArr(u.details), faq: appFaq(u.faq),
+    official_link: u.official_link || "", official_website: u.official_website || "", link: u.link || "",
+    hi: h.title ? { title: h.title, summary: h.summary || u.summary_hi || "", steps: appArr(h.steps), details: appArr(h.details), faq: appFaq(h.faq) } : null,
+  });
+}
+function writeAppFeed(jobs, updates) {
+  write("app/v1/index.json", buildAppIndex(jobs, updates));
+  const J = appJobsInFeed(jobs), U = appUpdatesInFeed(updates);
+  for (const j of J) write(`app/v1/j/${j.id}.json`, appJobDetail(j));
+  for (const u of U) write(`app/v1/u/${u.id}.json`, appUpdateDetail(u));
+  console.log(`App feed: ${J.length} jobs, ${U.length} updates -> app/v1/`);
+}
 function buildSearchIndex(jobs, updates) {
   const J = [...jobs].filter((j) => !isStale(j)).sort(liveFirst).map((j) => {
     const st = statusOf(j);
@@ -1919,6 +1987,9 @@ We may use third-party advertising companies, including Google, to serve ads whe
 
 ## Analytics
 We may use analytics tools to measure traffic and usage patterns in aggregate. This data is not used to personally identify you.
+
+## Android app
+The ${SITE.brand} Android app has no accounts and collects no personal information. Saved jobs, your language and your alert choices (states and qualifications) are stored only on your phone. To send job alerts, the app registers with Google's Firebase Cloud Messaging, which gives your phone an anonymous token and subscribes it to the alert topics you choose; we never receive your name, phone number or contacts. You can turn alerts off in the app or uninstall it at any time.
 
 ## Your choices
 You can disable cookies in your browser settings at any time. Doing so may affect how some parts of the site function.
@@ -2355,6 +2426,7 @@ function main() {
   write("sitemap-latest.xml", buildLatestSitemap({ jobs, updates, news }));
   write("index-queue.txt", buildIndexQueue({ jobs, updates }));
   write("search.json", buildSearchIndex(jobs, updates));
+  writeAppFeed(jobs, updates);
   write("news-sitemap.xml", buildNewsSitemap({ updates, news }));
   write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
 

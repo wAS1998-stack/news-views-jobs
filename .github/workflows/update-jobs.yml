@@ -196,6 +196,12 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node telegram-post.js
 
+      - name: Android app alerts (Firebase Cloud Messaging — new jobs and major results)
+        if: steps.commit.outputs.built == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: node push-notify.js
+
       - name: Notify IndexNow (Bing / Yandex — instant, no auth)
         if: steps.commit.outputs.built == 'true'
         run: node indexnow.js
@@ -203,7 +209,8 @@ jobs:
       - name: Save Telegram posted-history and notification results (so nothing is posted twice)
         if: steps.commit.outputs.built == 'true'
         run: |
-          git add data/posted.json data/last-run.json
+          touch data/pushed.json; [ -s data/pushed.json ] || echo "{}" > data/pushed.json
+          git add data/posted.json data/pushed.json data/last-run.json
           if git diff --cached --quiet; then echo "Nothing to save."; exit 0; fi
           git commit -q -m "Auto: telegram posted-history [CF-Pages-Skip]"
           for i in 1 2 3; do

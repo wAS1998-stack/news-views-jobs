@@ -19,3 +19,6 @@
   Cache-Control: public, max-age=600
 /version.json
   Cache-Control: no-store
+/app/v1/*
+  Cache-Control: public, max-age=300
+  X-Robots-Tag: noindex
