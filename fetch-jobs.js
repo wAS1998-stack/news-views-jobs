@@ -238,15 +238,24 @@ const orgKeys = (x) => [orgNorm(x.organization), orgNorm(x.org_short)].filter((k
 const sameOrg = (a, b) => orgKeys(a).some((k1) => orgKeys(b).some((k2) => k1 === k2 ||
   (Math.min(k1.length, k2.length) >= 12 && (k1.startsWith(k2) || k2.startsWith(k1)))));
 const normPost = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\b(posts?|vacanc(y|ies)|recruitment|and|of|the|for)\b/g, " ").replace(/\s+/g, " ").trim();
+let EXTENDED = 0;   // existing jobs whose last date was moved by an extension notice this run
 function isDuplicate(job) {
   const v = Number(job.total_vacancies) || 0;
   const t = new Date(job.published || Date.now()).getTime();
-  const post = normPost(job.post_name), end = job.application_end;
-  return EXISTING_FOR_DUPES.some((x) => {
+  const post = normPost(job.post_name), end = job.application_end, start = job.application_start;
+  const hit = EXISTING_FOR_DUPES.find((x) => {
     if (Math.abs(new Date(x.published || 0).getTime() - t) >= 60 * 86400000) return false;
     if (!sameOrg(job, x)) return false;
     const xv = Number(x.total_vacancies) || 0;
+    // District-wise drives of one department (UP ECCE Educator: Meerut 98, Kushinagar 29, same dates) are separate
+    // recruitments: small notices for different places never count as twins.
+    const place = (l) => String(l || "").toLowerCase().split(/[,(]/)[0].replace(/[^a-z]/g, "");
+    const pj = place(job.location), px = place(x.location);
+    if (v < 500 && xv < 500 && pj && px && pj !== px && !String(x.location).toLowerCase().includes(pj) && !String(job.location).toLowerCase().includes(px)) return false;
     if (v >= 10 && xv === v) return true;                                             // same body, same (distinctive) vacancy count
+    // The same recruitment announced again — "last date extended", a corrigendum — often with a slightly different
+    // count from another source (BPSC TRE 4.0: 32,388 vs 33,320, both opening 25 Sep): same body, same opening date.
+    if (start && x.application_start === start && v >= 100 && xv >= 100 && Math.abs(v - xv) / Math.max(v, xv) <= 0.05) return true;
     // Same body and same post, with the same last date or the same count: one recruitment reported twice, or
     // re-reported with a corrected count (RRB Station Master: 1215 -> 1265 after a corrigendum; ~1250 short notice).
     if (!post || normPost(x.post_name) !== post) return false;
@@ -257,6 +266,12 @@ function isDuplicate(job) {
     return (!end || !x.application_end) && v >= 500 && xv >= 500 && Math.abs(v - xv) / Math.max(v, xv) <= 0.06 &&
       Math.abs(new Date(x.published || 0).getTime() - t) < 30 * 86400000;
   });
+  // An extension notice carries the new last date: move the existing listing's deadline instead of adding a twin.
+  if (hit && end && /extend|extension|last date/i.test(String(job.title)) && (!hit.application_end || String(end) > String(hit.application_end))) {
+    console.log(`   ~ last date extended: ${hit.id} ${hit.application_end || "?"} -> ${end}`);
+    hit.application_end = end; EXTENDED++;
+  }
+  return !!hit;
 }
 async function toJob(item, existingIds, fingerprints) {
   let id = cleanSlug(item.title);
@@ -400,7 +415,7 @@ async function main() {
     console.log(`Recorded ${newUrls.length} new URL(s) for indexing.`);
   } catch {}
 
-  if (!fresh.length) { console.log("No new jobs found. jobs.json unchanged."); return; }
+  if (!fresh.length && !EXTENDED) { console.log("No new jobs found. jobs.json unchanged."); return; }
   const merged = [...fresh, ...existing]
     .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   fs.writeFileSync(DATA, JSON.stringify(merged, null, 2) + "\n");
