@@ -2,7 +2,7 @@
   "date": "2026-10-30",
   "runs": {},
   "fetch": {
-    "at": "2026-10-30T02:39:45.064Z",
+    "at": "2026-10-30T03:19:01.650Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -44,7 +44,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-30T02:40:00.991Z",
+    "at": "2026-10-30T03:19:11.655Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -87,8 +87,8 @@
       "rssb": "paused (fails 19, geo-blocked)",
       "esb-mp": "paused (fails 19, geo-blocked)",
       "bssc": "paused (fails 7, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via direct",
       "jssc": "paused (fails 19, geo-blocked)",
       "osssc": "paused (fails 7, geo-blocked)",
       "gsssb": "paused (fails 19, geo-blocked)",
@@ -96,21 +96,21 @@
       "hprca": "paused (fails 19, geo-blocked)",
       "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 19, geo-blocked)",
-      "jkssb": "2 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 19, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
       "keralapsc": "6 links, 0 new via direct",
-      "uksssc": "28 links, 0 new via direct",
+      "dsssb2": "paused (fails 19, geo-blocked)",
+      "jkssb": "2 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "tnusrb": "paused (fails 19, geo-blocked)",
       "tslprb": "paused (fails 19)",
       "slprb-ap": "paused (fails 19, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via direct",
+      "csbc": "197 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in"
+      "indiapost-gds": "142 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -131,7 +131,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-30T02:40:01.800Z",
+    "at": "2026-10-30T03:19:12.479Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -152,17 +152,17 @@
     ]
   },
   "news": {
-    "at": "2026-10-30T02:40:25.026Z",
+    "at": "2026-10-30T03:19:34.344Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 143,
+    "existing": 144,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 143",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 144",
       "  current affairs for today already exists.",
-      "  + analysis: MPPGCL Recruitment 2026: Applications Open for Electrician, Fitter and More Posts",
-      "  analysis below quality bar for iit-guwahati-senior-research-fellow-2026 (276 words, need 300) — not published."
+      "  analysis below quality bar for iit-guwahati-senior-research-fellow-2026 (280 words, need 300) — not published.",
+      "  + analysis: SCTIMST Announces Walk-in Interview for Project Assistant Position in Thiruvananthapuram"
     ]
   },
   "notify": {
