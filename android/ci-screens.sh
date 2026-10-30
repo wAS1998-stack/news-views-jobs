@@ -10,6 +10,9 @@ OUT=android/ci/screens
 mkdir -p "$OUT"; rm -f "$OUT"/*.png "$OUT"/*.txt
 shot() { sleep "${2:-6}"; adb exec-out screencap -p > "$OUT/$1.png"; echo "shot $1"; }
 
+# the emulator's own launcher sometimes stops responding under load: keep its "isn't responding" dialogs off the shots
+adb shell settings put secure anr_show_background 0 >/dev/null 2>&1 || true
+adb shell settings put global hide_error_dialogs 1 >/dev/null 2>&1 || true
 adb install -r "$APK" || { echo "install failed" > "$OUT/error.txt"; exit 0; }
 adb logcat -c
 adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
@@ -55,6 +58,7 @@ if [ -n "$REL" ] && [ -f "$REL" ]; then
   if adb install "$REL"; then
     adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
     adb shell am start -n $PKG/$ACT; shot 10-release-welcome 12
+    for i in 1 2; do adb shell am force-stop $PKG; sleep 2; echo "release $(adb shell am start -W -n $PKG/$ACT | grep -E 'TotalTime' | tr -d '\r')" >> "$OUT/startup.txt"; sleep 4; done
     adb shell am start -a android.intent.action.VIEW -d "https://news-views.in/jobs/$JOB/" $PKG; shot 11-release-job 10
     adb shell input keyevent 4; shot 12-release-back 4
     echo "release ok" > "$OUT/release.txt"

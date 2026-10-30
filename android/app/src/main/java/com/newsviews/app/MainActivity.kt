@@ -156,6 +156,9 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val idx by vm.index.collectAsStateWithLifecycle()
     val activity = LocalContext.current.findActivity()
     var prevRoute by rememberSaveable { mutableStateOf<String?>(null) }
+    // arrived through a link or a notification before finishing the welcome screen: show what they came for first;
+    // the welcome screen comes on the next start (it used to flash the job and jump back to the welcome screen)
+    var linkVisit by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
     val argId = entry?.arguments?.getString("id")
@@ -177,12 +180,13 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     LaunchedEffect(open) {
         val p = open ?: return@LaunchedEffect
         // debug hook: a plain jump to the tab, clearing open pages (go() would restore the tab's saved stack)
+        if (p.first != "tab") linkVisit = true
         if (p.first == "tab") nav.navigate(p.second) { popUpTo("jobs"); launchSingleTop = true }
         else nav.navigate(if (p.first == "update") "update/${p.second}" else "job/${p.second}") { launchSingleTop = true }
         pending.value = null
     }
 
-    if (!settings.onboarded && open == null) {
+    if (!settings.onboarded && open == null && !linkVisit) {
         Scaffold { pad -> Column(Modifier.padding(pad)) { Onboarding(vm, s) } }
         return
     }
