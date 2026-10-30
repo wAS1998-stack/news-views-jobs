@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-30T20:04:26.134Z",
+    "at": "2026-10-30T20:43:18.631Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 5,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-30; 89 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-30; 93 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 7 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-30; 18 already known",
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-30T20:04:35.147Z",
+    "at": "2026-10-30T20:43:26.203Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -105,18 +105,18 @@
       "uppsc": "1 links, 0 new via direct",
       "dsssb2": "paused (fails 24, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 24, geo-blocked)",
       "tslprb": "paused (fails 24)",
       "slprb-ap": "paused (fails 24, geo-blocked)",
       "uksssc": "28 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
-      "jkssb": "2 links, 0 new via news-views.in"
+      "ctet": "4 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,21 +124,60 @@
     ]
   },
   "apply": {
-    "at": "2026-10-30T20:09:58.434Z",
+    "at": "2026-10-30T20:47:04.419Z",
     "ok": true,
-    "checked": 16,
+    "checked": 20,
     "found": 0,
     "due": 20,
-    "cands": 5,
-    "passed": 1,
-    "jobsWithCands": 1,
-    "careers": 2,
+    "cands": 124,
+    "passed": 3,
+    "jobsWithCands": 2,
+    "careers": 7,
     "log": [
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 21",
-      "apply-links: checked 16, found 0 real application pages (20 due, pdf reader on)",
-      "  candidates seen 5, passed the rules 1 (in 1 jobs); recruitment pages found: 2"
+      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
+      "  candidates seen 124, passed the rules 3 (in 2 jobs); recruitment pages found: 7"
+    ]
+  },
+  "enrich": {
+    "at": "2026-10-30T20:48:25.903Z",
+    "ai": "OpenAI (gpt-4o-mini)",
+    "linksFixed": 0,
+    "linksPending": 0,
+    "updatesEnriched": 0,
+    "updatesPending": 0,
+    "contentWritten": 0,
+    "contentPending": 0,
+    "hindiJobsPending": 6,
+    "hindiJobs": 6,
+    "hindiUpdatesPending": 0,
+    "searchFaqPages": 0,
+    "opportunities": 5,
+    "log": [
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
+      "Enrich/content: 0 job(s) on template content | doing up to 5",
+      "Enrich/hindi: 6 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: JCI डिप्टी मैनेजर भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: DH&FWS झारग्राम भर्ती 2026 – 33 फार्मासिस्ट, स्टाफ नर्स और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CBMR परियोजना शोध वैज्ञानिक I भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IISER तिरुवनन्तपुरम प्रोजेक्ट असिस्टेंट भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NRLM कर्नाटका ब्लॉक तकनीकी समन्वयक – उद्यम प्रोत्साहन OSF भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IIT खड़गपुर जूनियर रिसर्च फेलो (केमिकल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें"
+    ]
+  },
+  "news": {
+    "at": "2026-10-30T20:48:51.928Z",
+    "ai": "OpenAI",
+    "published": 2,
+    "quizzes": 0,
+    "existing": 181,
+    "feeds": {},
+    "log": [
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 181",
+      "  current affairs for today already exists.",
+      "  + analysis: JCI Invites Applications for Deputy Manager (Law) Position in Kolkata",
+      "  + analysis: Jhargram DH&FWS Recruitment 2026: 33 Vacancies for Healthcare Professionals Announced"
     ]
   }
 }
