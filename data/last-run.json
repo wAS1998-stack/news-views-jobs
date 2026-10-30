@@ -2,7 +2,7 @@
   "date": "2026-10-30",
   "runs": {},
   "fetch": {
-    "at": "2026-10-30T10:38:59.542Z",
+    "at": "2026-10-30T11:18:13.817Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,54 +11,45 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 7,
-    "newUpdates": 1,
+    "newJobs": 0,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-30; 72 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-30; 79 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-30; 21 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-30; 10 already known"
     },
     "log": [
+      "Feeds: 5 | AI: OpenAI (gpt-4o-mini) | max jobs: 20 | max updates: 30",
+      "  100 items from https://www.freejobalert.com/feed/ (direct)",
+      "  10 items from https://rajsarkariresult.com/feed (direct)",
       "  10 items from https://gulfjobvacancy.in/feed (direct)",
       "  40 items from https://www.sarkariexam.com/feed/ (direct)",
       "  25 items from https://www.indgovtjobs.in/feeds/posts/default?alt=rss (direct)",
       "  176 candidate item(s) across feeds (newest first)",
-      "   * update: Delhi High Court SPA & PA Typing Test Date 2026",
       "   = duplicate of an existing recruitment, skipped: NTPC Executive Recruitment 2026 – Apply Online",
-      "   + GSSSB Surveyor Recruitment 2026 Notification Out – Apply Online for 78 Posts",
-      "   + Assam Rifles Technical and Tradesman Recruitment Rally 2026 Cancelled – Fresh Notification Awaited",
-      "   + RIMS Ranchi Recruitment 2026 - Walk-in Interview for 113 Ayushman Mitra, Operational Manager and Other Posts",
-      "   + Delhi University Assistant Recruitment 2026 Notification Out – Apply Online for 215 Posts",
-      "   + ECHS Barnala Recruitment 2026 – Apply Offline for 9 Clerk, Driver and More Posts",
       "   = duplicate of an existing recruitment, skipped: GMC Rajanna Sircilla Recruitment 2026 – Apply Offline for 49 Nursing Officer, Lab Attendant and More Posts",
-      "   + ESIC Chennai Adjunct Faculty/Visiting Faculty Recruitment 2026 – Walkin",
       "   = duplicate of an existing recruitment, skipped: ESIC Chennai Senior Resident Recruitment 2026 – Walkin for 88 Posts",
       "   = duplicate of an existing recruitment, skipped: BBMB Apprentice Recruitment 2026 – Apply Online for 58 Posts",
       "   = duplicate of an existing recruitment, skipped: Bank of Baroda Finance Department Recruitment 2026 - Apply Online for 11 Posts",
-      "   + HAL Korwa Apprentice Recruitment 2026 - Apply Online for Graduate and Diploma Apprentices",
       "   = duplicate of an existing recruitment, skipped: RRB Station Master recruitment 2026 - Apply Online for 1265 Posts",
       "   = duplicate of an existing recruitment, skipped: NPCC Various Posts Recruitment 2026 - Apply Online for 52 Posts",
       "   = duplicate of an existing recruitment, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
       "   = duplicate of an existing recruitment, skipped: RBI Pharmacist Recruitment 2026 (22 Posts): Notification, Application Form",
-      "   = duplicate of an existing recruitment, skipped: IREL Tradesman Trainees Recruitment 2026 - Apply Online for 131 Posts",
       "   = duplicate of an existing recruitment, skipped: Supreme Court SCI Junior Court Assistant Online Form 2026 – Last Date",
-      "   = duplicate of an existing recruitment, skipped: NICL Administrative Officers AO Online Form 2026 – Last Date",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = duplicate of an existing recruitment, skipped: NICL Administrative Officers AO Online Form 2026 – Last Date"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-30T10:40:27.906Z",
+    "at": "2026-10-30T11:19:01.819Z",
     "sources": 59,
     "healthy": 16,
-    "newLinks": 1,
+    "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [
-      "not a specific recruitment: विज्ञापन संख्या 02/2026 के तहत प्रतिनियुक्ति के आध"
-    ],
+    "skipped": [],
     "sources_health": {
       "upsc": "paused (fails 21, geo-blocked)",
       "ssc": "paused (fails 21)",
@@ -83,10 +74,10 @@
       "hpsc": "paused (fails 21, geo-blocked)",
       "hppsc": "paused (fails 21, geo-blocked)",
       "ukpsc": "paused (fails 21, geo-blocked)",
-      "nta": "3 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "cgpsc": "paused (fails 21, geo-blocked)",
       "gpsc": "paused (fails 21, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "nta": "3 links, 0 new via direct",
       "ppsc": "paused (fails 21, geo-blocked)",
       "apsc": "paused (fails 21, geo-blocked)",
       "jkpsc": "paused (fails 21, geo-blocked)",
@@ -95,34 +86,34 @@
       "rssb": "paused (fails 21, geo-blocked)",
       "esb-mp": "paused (fails 21, geo-blocked)",
       "bssc": "paused (fails 9, geo-blocked)",
-      "jpsc": "47 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "jssc": "paused (fails 21, geo-blocked)",
       "osssc": "paused (fails 9, geo-blocked)",
       "gsssb": "paused (fails 21, geo-blocked)",
       "sssb-punjab": "paused (fails 21, geo-blocked)",
       "hprca": "paused (fails 21, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via direct",
       "kea": "paused (fails 21, geo-blocked)",
       "uppsc": "1 links, 0 new via direct",
       "dsssb2": "paused (fails 21, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
       "keralapsc": "6 links, 0 new via direct",
-      "csbc": "197 links, 0 new via direct",
       "tnusrb": "paused (fails 21, geo-blocked)",
       "tslprb": "paused (fails 21)",
       "slprb-ap": "paused (fails 21, geo-blocked)",
-      "kvs": "7 links, 1 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "csbc": "197 links, 0 new via direct",
       "jkssb": "2 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
       "bpssc": "208 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "ctet": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "ctet": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 1 new official notice link(s)."
+      "Watch: 0 new official notice link(s)."
     ]
   },
   "gsc": {
@@ -139,7 +130,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-30T10:41:45.180Z",
+    "at": "2026-10-30T11:19:02.670Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -147,10 +138,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 7,
-    "hindiJobs": 7,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 5,
     "log": [
@@ -158,29 +147,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 7 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: GSSSB सर्वेयर भर्ती 2026: 78 पदों के लिए ऑनलाइन आवेदन",
-      "  ✓ hindi: RIMS Ranchi भर्ती 2026 - 113 आयुष्मान मित्र, ऑपरेशनल मैनेजर और अन्य पदों के लिए वॉक-इन इंटरव्यू",
-      "  ✓ hindi: दिल्ली यूनिवर्सिटी सहायक भर्ती 2026: 215 पदों के लिए ऑनलाइन आवेदन",
-      "  ✓ hindi: ECHS Barnala भर्ती 2026 – 9 क्लर्क, ड्राइवर और अधिक पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: ESIC चennai सहायक फैकल्टी/आगंतुक फैकल्टी भर्ती 2026 - वॉकइन",
-      "  ✓ hindi: HAL कोरवा अपरेंटिस भर्ती 2026 - स्नातक और डिप्लोमा अपरेंटिस के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: असम राइफल्स तकनीकी और ट्रेड्समैन भर्ती रैली 2026 रद्द – नए नोटिफिकेशन की प्रतीक्षा",
-      "  ✓ hindi update: दिल्ली हाई कोर्ट SPA और PA टाइपिंग टेस्ट की तारीख 2026"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-10-30T10:42:05.906Z",
+    "at": "2026-10-30T11:19:19.367Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 157,
+    "existing": 159,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 157",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 159",
       "  current affairs for today already exists.",
-      "  + analysis: GSSSB Surveyor Recruitment 2026 Notification Out – Apply Online for 78 Posts",
-      "  + analysis: Assam Rifles Technical and Tradesman Recruitment Rally 2026 Cancelled – Fresh Notification Awaited"
+      "  + analysis: RIMS Ranchi Opens Recruitment for 113 Ayushman Mitra and Managerial Positions",
+      "  + analysis: Delhi University Announces Recruitment of 215 Assistants for 2026"
     ]
   },
   "notify": {
