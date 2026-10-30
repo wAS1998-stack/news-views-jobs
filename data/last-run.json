@@ -172,5 +172,24 @@
       "  analysis below quality bar for bhatkhande-sanskriti-vishwavidyalaya-walkin-guest-teacher-20 (270 words, need 300) — not published.",
       "  + quiz: Current Affairs Quiz 30 October 2026 (10 Qs)"
     ]
+  },
+  "notify": {
+    "at": "2026-10-30T00:07:16.871Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-10-30T00:07:17.782Z",
+    "ok": true,
+    "submitted": 2,
+    "failed": 0,
+    "source": "new-urls.txt",
+    "log": []
   }
 }
