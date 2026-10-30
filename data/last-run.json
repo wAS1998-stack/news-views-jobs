@@ -2,7 +2,7 @@
   "date": "2026-10-30",
   "runs": {},
   "fetch": {
-    "at": "2026-10-30T01:57:38.445Z",
+    "at": "2026-10-30T02:39:45.064Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -44,9 +44,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-30T01:58:39.687Z",
+    "at": "2026-10-30T02:40:00.991Z",
     "sources": 59,
-    "healthy": 16,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -78,7 +78,7 @@
       "nta": "3 links, 0 new via direct",
       "cgpsc": "paused (fails 19, geo-blocked)",
       "gpsc": "paused (fails 19, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "ppsc": "paused (fails 19, geo-blocked)",
       "apsc": "paused (fails 19, geo-blocked)",
       "jkpsc": "paused (fails 19, geo-blocked)",
@@ -87,8 +87,8 @@
       "rssb": "paused (fails 19, geo-blocked)",
       "esb-mp": "paused (fails 19, geo-blocked)",
       "bssc": "paused (fails 7, geo-blocked)",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via direct",
       "jssc": "paused (fails 19, geo-blocked)",
       "osssc": "paused (fails 7, geo-blocked)",
       "gsssb": "paused (fails 19, geo-blocked)",
@@ -96,21 +96,21 @@
       "hprca": "paused (fails 19, geo-blocked)",
       "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 19, geo-blocked)",
-      "keralapsc": "6 links, 0 new via direct",
-      "dsssb2": "paused (fails 19, geo-blocked)",
       "jkssb": "2 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 19, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "dsssb": "6 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via direct",
       "tnusrb": "paused (fails 19, geo-blocked)",
       "tslprb": "paused (fails 19)",
       "slprb-ap": "paused (fails 19, geo-blocked)",
-      "uksssc": "28 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
       "bpssc": "208 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
-      "kvs": "7 links, 0 new via news-views.in",
-      "ctet": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 5)"
+      "wbssc": "13 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -131,7 +131,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-30T01:23:17.986Z",
+    "at": "2026-10-30T02:40:01.800Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -152,17 +152,17 @@
     ]
   },
   "news": {
-    "at": "2026-10-30T01:23:39.264Z",
+    "at": "2026-10-30T02:40:25.026Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 142,
+    "existing": 143,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 142",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 143",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for mppgcl-electrician-fitter-more-2026 (283 words, need 300) — not published.",
-      "  + analysis: Deendayal Port Authority Opens Recruitment for Deputy Chief Engineer (Civil) Positions"
+      "  + analysis: MPPGCL Recruitment 2026: Applications Open for Electrician, Fitter and More Posts",
+      "  analysis below quality bar for iit-guwahati-senior-research-fellow-2026 (276 words, need 300) — not published."
     ]
   },
   "notify": {
