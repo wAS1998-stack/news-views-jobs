@@ -1,18 +1,24 @@
 {
   "date": "2026-10-30",
   "runs": {},
-  "gsc": {
-    "at": "2026-10-30T18:59:36.892Z",
+  "notify": {
+    "at": "2026-10-30T18:59:14.872Z",
     "ok": true,
-    "property": "https://news-views.in/",
-    "clicks28d": 19,
-    "impressions28d": 588,
-    "pages": 151,
-    "opportunities": 5,
-    "sitemap": 204,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
     "log": [
-      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
     ]
   },
-  "note": "Written by the automation after each step so run health can be checked without opening Actions logs."
+  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
+  "indexing-api": {
+    "at": "2026-10-30T18:59:17.779Z",
+    "ok": true,
+    "submitted": 11,
+    "failed": 0,
+    "source": "new-urls.txt",
+    "log": []
+  }
 }
