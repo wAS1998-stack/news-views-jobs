@@ -78,7 +78,18 @@ async function main() {
   // low CTR on good positions → title/description problem
   const lowCtr = pages.filter((p) => p.position <= 6 && p.impressions >= 50 && p.ctr < 2).slice(0, 30);
 
+  // 4) the site's own name: where do we rank when people search "news-views.in", "newsviews"…? (90 days — brand
+  // searches are rare; Google hides very rare queries, so an empty list means "too few to show", not "never searched")
+  const bStart = new Date(end.getTime() - 89 * 86400000);
+  const byBrand = await api(token, "POST", `https://www.googleapis.com/webmasters/v3/sites/${P}/searchAnalytics/query`,
+    { startDate: day(bStart), endDate: day(end), dimensions: ["query", "page"], rowLimit: 100, dataState: "all",
+      dimensionFilterGroups: [{ filters: [{ dimension: "query", operator: "includingRegex", expression: "(?i)news.?views?" }] }] });
+  const brand = { range: [day(bStart), day(end)], ...(byBrand.ok
+    ? { rows: rows(byBrand).map((r) => ({ query: r.keys[0], page: r.keys[1].replace(SITE, "") || "/", impressions: r.impressions, clicks: r.clicks, position: r.position })) }
+    : { error: `HTTP ${byBrand.status}: ${JSON.stringify(byBrand.j).slice(0, 160)}` }) };
+
   const out = { date: day(new Date()), property: prop, range: [day(start), day(end)], totals, daily,
+    home: pages.find((p) => p.page === "/") || null, brand,
     topPages: pages.slice(0, 50), topQueries: queries.slice(0, 100), opportunities: opp, lowCtr };
   fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + "\n");
   L.logRun("gsc", { ok: true, property: prop, clicks28d: totals.clicks, impressions28d: totals.impressions, pages: pages.length, opportunities: opp.length, sitemap: sm.status });

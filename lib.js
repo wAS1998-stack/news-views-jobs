@@ -37,7 +37,23 @@ function decodeEntities(s) {
     .replace(/&#(\d+);/g, (m, d) => cp(parseInt(d, 10), m))
     .replace(/&([a-z]+);/gi, (m, n) => (NAMED[n.toLowerCase()] != null ? NAMED[n.toLowerCase()] : m));
 }
-const stripTags = (s) => decodeEntities(String(s || "").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+// Cloudflare hides e-mail addresses on many official sites: the page text says "[email protected]" and the real
+// address sits in data-cfemail (hex, each byte XOR the first). Decode it before the tags go, so the address survives.
+function cfEmail(hex) {
+  try { const k = parseInt(hex.slice(0, 2), 16); let e = "";
+    for (let i = 2; i + 1 < hex.length; i += 2) e += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16) ^ k);
+    return /^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(e) ? e : ""; } catch { return ""; }
+}
+const unhideEmails = (h) => String(h || "")
+  .replace(/<(a|span)\b[^>]*\bdata-cfemail="([0-9a-f]+)"[^>]*>[\s\S]*?<\/\1>/gi, (m, t, hex) => cfEmail(hex) || m)
+  .replace(/href="\/cdn-cgi\/l\/email-protection#([0-9a-f]+)"/gi, (m, hex) => { const e = cfEmail(hex); return e ? `href="mailto:${e}"` : m; });
+const stripTags = (s) => decodeEntities(unhideEmails(s).replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+// Text saved before that fix still says "[email protected]": say where the address really is instead.
+const HIDDEN_EMAIL = /\[\s*email(?:&#160;|&nbsp;|\u00a0|\s)+protected\s*\]/gi;
+const fixHiddenEmail = (s) => typeof s === "string" && /\[\s*email(?:&#160;|&nbsp;|\u00a0|\s)+protected\s*\]/i.test(s)
+  ? s.replace(HIDDEN_EMAIL, /[\u0900-\u097F]/.test(s) ? "आधिकारिक नोटिस में दिए गए ईमेल पते" : "the e-mail address given in the official notice") : s;
+const deepFixEmail = (v) => typeof v === "string" ? fixHiddenEmail(v) : Array.isArray(v) ? v.map(deepFixEmail)
+  : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, deepFixEmail(x)])) : v;
 
 /** Normalise a headline: decode entities, collapse spaces, unify dashes, trim trailing junk. */
 function cleanTitle(t) {
@@ -499,7 +515,7 @@ function linkKind(u, job = {}) {
     beats the headline: aggregator titles say "Apply Online" for email and postal applications too. */
 const ONLINE_RE = /apply online|online (application|form|registration|mode)|register online|registration portal|online portal|(submit|fill)[^.]{0,30} online|apply through the (official )?(website|portal)/i;
 const OFFLINE_RE = /apply offline|offline (application|form|mode)|by (registered |speed )?post|through (registered |speed )?post|hard ?copy|send (the|your) (filled|completed|duly)|in person at|submitted? (by hand|in person)/i;
-const EMAIL_RE = /(apply|send|submit|forward)[^.]{0,60}\b(by|via|through|to) e-?mail|e-?mail (your|the) (application|cv|resume|bio-?data)|applications? (via|by|through) e-?mail/i;
+const EMAIL_RE = /(apply|send|submit|forward)[^.]{0,60}\b(by|via|through|to) e-?mail|e-?mail (your|the) ([\w-]+ ){0,3}(application|form|cv|resume|bio-?data)|applications? ((process|form) )?((is|are|must be|should be|will be) )?(sent |accepted |received |submitted )?(via|by|through) e-?mail|e-?mailed to|(send|submit|forward)[^.]{0,60}\bto [^\s@]+@[^\s@]+\.[a-z]{2,}|\bto \[\s*email(\s|&#160;|\u00a0)+protected\s*\]/i;
 function applyMode(job = {}) {
   const t = String(job.title || "");
   const body = [job.post_name, ...(job.how_to_apply || []), ...(job.selection_process || []), job.summary, job.eligibility_notes].join(" ");
@@ -577,7 +593,7 @@ function ageNum(v, pick) {
 /** Cleans a job record in place-safe fashion and returns it: text fields are strings, numbers are numbers, dates are
     YYYY-MM-DD, links are http(s), list fields are arrays of strings, FAQ entries have q and a. Unknown shapes are dropped. */
 function sanitizeJob(j) {
-  const o = { ...j };
+  const o = deepFixEmail({ ...j });
   for (const k of JOB_TEXT) if (o[k] != null && typeof o[k] !== "string") o[k] = toText(o[k], k);
   for (const k of JOB_ARR) if (o[k] != null) o[k] = (Array.isArray(o[k]) ? o[k] : [o[k]]).map((x) => toText(x)).filter(Boolean);
   for (const k of JOB_DATE) if (o[k] != null) { const d = isoDate(o[k]); if (d) o[k] = d; else delete o[k]; }
@@ -598,5 +614,5 @@ function aiJobFields(obj) {
 /** Today's date in India (the automation runs on UTC machines; between 00:00 and 05:30 IST UTC is still yesterday). */
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
-module.exports = { sanitizeJob, aiJobFields, toText, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };

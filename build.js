@@ -389,7 +389,7 @@ ${ldBlocks}
 <header class="site-head"><div class="wrap">
   <a class="brand" href="/" aria-label="${esc(SITE.brand)} home">
     <span class="mark" aria-hidden="true">N<span class="dot">.</span></span>
-    News-Views<span class="dot">.</span>
+    <span class="word">News-Views<span class="dot">.</span>in</span>
   </a>
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav" aria-label="Primary">
@@ -484,6 +484,24 @@ function foot() {
 </div></footer>
 <script src="/site.js?v=${ASSET_V["site.js"]}" defer></script>
 </body></html>`;
+}
+
+// Who we are, in one place: the homepage and the About page both carry this Organization + WebSite data (linked by
+// @id), so Google ties the name "News-Views.in" to this site and to what it actually is. sameAs lists only real profiles.
+const orgId = () => SITE.url + "/#organization";
+const websiteId = () => SITE.url + "/#website";
+const brandAlt = () => [...new Set([SITE.name, SITE.name.replace(/-/g, "")])];   // "News-Views", "NewsViews"
+function orgLd() {
+  return { "@context": "https://schema.org", "@type": "Organization", "@id": orgId(), name: SITE.brand, alternateName: brandAlt(),
+    url: SITE.url + "/", logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png", width: 512, height: 512 },
+    description: `${SITE.brand} is an independent Indian website for government jobs: Sarkari Naukri notifications, results, admit cards and answer keys in English and Hindi, each linked to its official source, with exam-preparation guides and free tools. It is not a government body and never charges candidates a fee.`,
+    publishingPrinciples: SITE.url + "/editorial-policy/", areaServed: { "@type": "Country", name: "India" }, knowsLanguage: ["en", "hi"],
+    ...(TG && TG.username ? { sameAs: [`https://t.me/${TG.username}`] } : {}) };
+}
+function websiteLd() {
+  return { "@context": "https://schema.org", "@type": "WebSite", "@id": websiteId(), name: SITE.brand, alternateName: brandAlt(),
+    url: SITE.url + "/", inLanguage: ["en-IN", "hi-IN"], publisher: { "@id": orgId() },
+    potentialAction: { "@type": "SearchAction", target: `${SITE.url}/?q={search_term_string}`, "query-input": "required name=search_term_string" } };
 }
 
 function breadcrumbLd(trail) {
@@ -1231,14 +1249,10 @@ function stateSection(stateCounts) {
 }
 function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts, news) {
   const sorted = [...jobs].sort(liveFirst);
-  const title = `Latest Government Jobs ${BUILT.getFullYear()} — Sarkari Naukri Notifications | ${SITE.name}`;
-  const ld = [
-    { "@context": "https://schema.org", "@type": "Organization", name: SITE.brand,
-      url: SITE.url + "/", logo: SITE.url + "/icon-512.png",
-      description: `${SITE.brand} is an independent platform that publishes the latest Indian government job notifications and in-depth, fact-checked preparation guides. It is not a government body and never charges candidates a fee.`,
-      ...(TG && TG.username ? { sameAs: [`https://t.me/${TG.username}`] } : {}) },
-    { "@context": "https://schema.org", "@type": "WebSite", name: SITE.brand, url: SITE.url + "/",
-      potentialAction: { "@type": "SearchAction", target: `${SITE.url}/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+  // Brand first, and the same name everywhere Google reads it on the homepage (title, header, og:site_name, WebSite
+  // and Organization data): a search for the site's own name has to find this page, not old pages with a similar name.
+  const title = `${SITE.brand}: Latest Govt Jobs ${BUILT.getFullYear()}, Sarkari Naukri & Results`;
+  const ld = [orgLd(), websiteLd(),
     { "@context": "https://schema.org", "@type": "CollectionPage",
       name: title, url: SITE.url + "/",
       mainEntity: {
@@ -1252,7 +1266,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
   const live = sorted.filter((j) => statusOf(j).cls !== "closed");
   const closingSoon = sorted.filter((j) => statusOf(j).cls === "soon");
   const totalPosts = live.reduce((s, j) => s + (Number(j.total_vacancies) || 0), 0);   // open jobs only, like /jobs/
-  const homeDesc = `Sarkari Naukri ${BUILT.getFullYear()}: ${live.length} live government job notifications, ${totalPosts ? inr(totalPosts) + "+ vacancies" : "all vacancies"}, results, admit cards, answer keys, daily current affairs quiz and free exam tools.`;
+  const homeDesc = `${SITE.brand}: ${live.length} live government job notifications (Sarkari Naukri ${BUILT.getFullYear()}), ${totalPosts ? inr(totalPosts) + "+ vacancies" : "all vacancies"}, results, admit cards & answer keys — in English and Hindi.`;
   const glanceCol = (t, href, items) => `<section class="glance-col"><h2><a href="${href}">${t}</a></h2><ul>${items.join("")}</ul><a class="glance-more" href="${href}">View all &rarr;</a></section>`;
   const byType = (t) => (updates || []).filter((u) => u.type === t).slice(0, 10).map((u) => `<li><a href="/updates/${esc(u.id)}/">${esc(u.title)}</a>${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</li>`);
   const glance = `<div class="glance" aria-label="Latest at a glance">
@@ -1264,7 +1278,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
     alternates: jobs.filter((j) => j.hi && j.hi.title).length < 5 ? [] : [{ hreflang: "en", href: SITE.url + "/" }, { hreflang: "hi", href: SITE.url + "/hi/" }, { hreflang: "x-default", href: SITE.url + "/" }] }) + `
 <main class="wrap" id="main">
   <section class="hero">
-    <p class="eyebrow">${esc(SITE.section)} &middot; Updated <time datetime="${BUILT.toISOString()}">${fmtDate(IST_DATE)}, ${IST_TIME} IST</time></p>
+    <p class="eyebrow">${esc(SITE.brand)} &middot; Updated <time datetime="${BUILT.toISOString()}">${fmtDate(IST_DATE)}, ${IST_TIME} IST</time></p>
     <h1>Government jobs, without the clutter.</h1>
     <p>${esc(SITE.tagline)}</p>
     <div class="search-row">
@@ -1899,7 +1913,8 @@ function buildIndexQueue({ jobs, updates }) {
     .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
   // New evergreen pages go first for their first ten days, so the daily requests reach them once (the task skips
   // anything it requested in the last 14 days).
-  const NEW_PAGES = [["vacancy-tracker/", "2026-10-30"], ["tools/kruti-dev-to-unicode/", "2026-10-30"], ["tools/unicode-to-kruti-dev/", "2026-10-30"], ["tools/hindi-typing-test/", "2026-10-30"], ["tools/english-typing-test/", "2026-10-30"],
+  const NEW_PAGES = [["", "2026-10-31"], ["about/", "2026-10-31"],   // homepage + About: brand-first title and Organization data
+    ["vacancy-tracker/", "2026-10-30"], ["tools/kruti-dev-to-unicode/", "2026-10-30"], ["tools/unicode-to-kruti-dev/", "2026-10-30"], ["tools/hindi-typing-test/", "2026-10-30"], ["tools/english-typing-test/", "2026-10-30"],
     ["walk-in-interview/", "2026-10-30"], ["jobs-without-exam/", "2026-10-30"], ["apprentice/", "2026-10-30"]];
   const out = NEW_PAGES.filter(([, d]) => Date.parse(IST_DATE) - Date.parse(d) <= 10 * 86400000).map(([p]) => `${SITE.url}/${p}`);
   while (J.length || U.length) { out.push(...J.splice(0, 2)); out.push(...U.splice(0, 1)); }
@@ -2046,9 +2061,9 @@ function faqLd(faqs) {
 
 /* ---- Static pages (About / Contact / Privacy / Disclaimer / Terms) */
 function pageShell(o) {
-  // o: {slug, title, desc, h1, body, ld?}
+  // o: {slug, title, desc, h1, body, ld?, fullTitle?}
   const canonical = `${SITE.url}/${o.slug}/`;
-  return head({ title: `${o.title} | ${SITE.name}`, desc: o.desc, canonical, ld: o.ld || [] }) + `
+  return head({ title: o.fullTitle || `${o.title} | ${SITE.name}`, desc: o.desc, canonical, ld: o.ld || [] }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; ${esc(o.title)}</p>
   <h1>${esc(o.h1 || o.title)}</h1>
@@ -2058,10 +2073,19 @@ function pageShell(o) {
 function policyPages() {
   const updated = fmtDate(IST_DATE);
   const out = {};
+  // The page Google and readers use to learn what "News-Views.in" is: say it plainly in the first sentence.
+  const channels = [`this website, **news-views.in**`, ...(TG ? [`our Telegram channel [${TG.username ? "@" + TG.username : "News-Views.in"}](${TG.link})`] : [])];
   out["about"] = pageShell({
-    slug: "about", title: "About Us", desc: `About ${SITE.brand} — what we do and who we are.`,
+    slug: "about", title: "About Us", h1: `About ${SITE.brand}`,
+    fullTitle: `About ${SITE.brand} — Independent Government Jobs Website`,
+    desc: `${SITE.brand} (News-Views) is an independent Indian website for government jobs — Sarkari Naukri notifications, results and admit cards in English and Hindi. Who we are and how we work.`,
+    ld: [orgLd(), { "@context": "https://schema.org", "@type": "AboutPage", url: SITE.url + "/about/", name: `About ${SITE.brand}`,
+      isPartOf: { "@id": websiteId() }, about: { "@id": orgId() } }],
     body: md(
-`${SITE.brand} is an independent platform that publishes the latest government job (Sarkari Naukri) notifications in India in a clear, simple format. For every recruitment we summarise the vacancies, eligibility, important dates, application fee and a step-by-step application process, and we link to the official source so you can verify and apply.
+`**${SITE.brand}** (also written ${SITE.name}) is an independent Indian website for government jobs. We publish Sarkari Naukri notifications, results, admit cards and answer keys in English and Hindi, in a clear, simple format. For every recruitment we summarise the vacancies, eligibility, important dates, application fee and a step-by-step application process, and we link to the official source so you can verify and apply.
+
+## Official channels
+${SITE.brand} is published only on ${channels.join(" and ")}. Any other page, profile or group that uses the name "${SITE.name}" or "News - Views" is not run by us unless this website links to it. We never ask candidates for money, passwords or documents, and we never promise anyone a job.
 
 ## What we cover
 - Central and state government job notifications

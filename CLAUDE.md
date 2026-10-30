@@ -43,6 +43,13 @@ hurting users or breaking Google's policies.
 - **Every record goes through `L.sanitizeJob` / `L.aiJobFields`** (lib.js): AI output is never stored as-is (it once put
   objects into fee/salary and showed "[object Object]" on 110 pages). Only whitelisted fields, objects → "Key: value"
   text, numbers, YYYY-MM-DD dates, http(s) links. build.js applies the same on load. Dates are Indian dates (`L.todayIST`).
+  `L.stripTags` decodes Cloudflare-hidden e-mail addresses (`data-cfemail`); older text that says "[email protected]"
+  is rewritten by `sanitizeJob` to point at the official notice (it was showing on 55 job pages).
+- **One brand name: News-Views.in** (alternates "News-Views", "NewsViews"). The homepage title starts with it, and the
+  header, `og:site_name` and the Organization + WebSite JSON-LD (`orgLd()`/`websiteLd()` in build.js, also on /about/)
+  all use it — change it everywhere or nowhere. `sameAs` lists only real profiles (Telegram once it works; add the Play
+  listing and any official social profiles the owner creates). Background: the domain hosted a general news blog in
+  2010–2014 and old Facebook pages called "News - Views" still describe that, so Google's AI Overview mixed the two up.
 - A last date before publication is either a closed notice (skip it) or the extraction template "1–31 January" (drop the
   dates). Closed jobs never show an Apply button, are never pushed or posted to Telegram.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
@@ -87,6 +94,9 @@ hurting users or breaking Google's policies.
 
 ## Where things stand / what's next
 - Google Jobs already sends clicks; manual "Request indexing" in Search Console is done daily by a scheduled task.
+- Brand search: the homepage is indexed (URL Inspection, Oct 30) but didn't rank for "news-views.in"; brand signals
+  were added Oct 31. `data/gsc.json` → `brand` (searches for the site's own name, 90 days) and `home` track progress;
+  run inspect.yml with mode `gsc` to refresh it on demand.
 - App: built and verified in CI; waiting for the owner's Play Console upload (12 testers × 14 days for new personal
   accounts), Firebase secrets (instant alerts) and AdMob IDs. After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
