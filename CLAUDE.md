@@ -48,7 +48,7 @@ hurting users or breaking Google's policies.
 - **App (AdMob):** put `admob.appId` ("ca-app-pub-…~…") and `admob.banner`, `admob.inline`, `admob.interstitial`
   ("ca-app-pub-…/…") in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
   writes `app-ads.txt`. Debug builds always use Google's test IDs. `appAds` switches reach installed apps through the
-  feed within minutes (turn placements off, change caps) with no app update.
+  feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large") with no app update.
 - Code: `android/app/src/main/java/com/newsviews/app/ads/Ads.kt` (consent via Google UMP, banners, interstitial).
 
 ## Working in Claude's cloud sandbox

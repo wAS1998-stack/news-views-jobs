@@ -1693,7 +1693,7 @@ function buildAppIndex(jobs, updates) {
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
     jobs: J, updates: U,
-    ads: Object.assign({ on: true, banner: true, inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {}),
+    ads: Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {}),
   });
 }
 function appJobDetail(j) {

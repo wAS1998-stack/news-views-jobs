@@ -170,8 +170,14 @@ fun BottomBanner() {
     val cfg by Ads.config.collectAsStateWithLifecycle()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank()) return
     val width = LocalConfiguration.current.screenWidthDp
-    AdBox(BuildConfig.AD_BANNER, { ctx -> AdSize.getLargeAnchoredAdaptiveBannerAdSize(ctx, width) }, label = null, reserve = true)
+    val large = cfg.bannerSize == "large"
+    AdBox(BuildConfig.AD_BANNER, { ctx -> if (large) AdSize.getLargeAnchoredAdaptiveBannerAdSize(ctx, width) else standardAnchored(ctx, width) },
+        label = null, reserve = true, key = large)
 }
+
+/** The regular anchored adaptive size (deprecated in SDK 25 in favour of the "large" one, which is up to twice as tall). */
+@Suppress("DEPRECATION")
+private fun standardAnchored(ctx: Context, width: Int): AdSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(ctx, width)
 
 /** One in-content unit on job and result pages, labelled so it can't be mistaken for page content. */
 @Composable
@@ -183,14 +189,14 @@ fun InlineAd(label: String) {
 }
 
 @Composable
-private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier, reserve: Boolean = false) {
+private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier, reserve: Boolean = false, key: Any? = null) {
     val ctx = LocalContext.current
     val density = LocalDensity.current
-    var loaded by remember(unit) { mutableStateOf(false) }
-    var failed by remember(unit) { mutableStateOf(false) }
-    val adSize = remember(unit) { size(ctx) }
-    val heightDp = remember(unit) { with(density) { adSize.getHeightInPixels(ctx).toDp() } }
-    val view = remember(unit) {
+    var loaded by remember(unit, key) { mutableStateOf(false) }
+    var failed by remember(unit, key) { mutableStateOf(false) }
+    val adSize = remember(unit, key) { size(ctx) }
+    val heightDp = remember(unit, key) { with(density) { adSize.getHeightInPixels(ctx).toDp() } }
+    val view = remember(unit, key) {
         AdView(ctx).apply {
             adUnitId = unit
             setAdSize(adSize)

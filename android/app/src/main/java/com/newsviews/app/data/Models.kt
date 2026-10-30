@@ -66,6 +66,7 @@ data class AppIndex(
 data class AdsConfig(
     val on: Boolean = true,
     val banner: Boolean = true,        // anchored banner under the job / result / saved lists
+    val bannerSize: String = "standard", // "standard" (~50-90 dp) or "large" (up to ~130 dp, can also carry video ads)
     val inline: Boolean = true,        // one in-content unit on job and result pages
     val interstitial: Boolean = true,  // full-screen ad when going back from a page, capped below
     val every: Int = 4,                // at most once per this many pages opened
