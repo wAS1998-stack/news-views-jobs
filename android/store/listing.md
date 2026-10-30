@@ -8,6 +8,8 @@
 
 **Full description:**
 
+Independent app — not affiliated with any government body. Job details come from official recruitment notifications and government websites, which are linked on every job.
+
 Sarkari Radar brings every new government job notification to your phone — and only the ones that fit you.
 
 Pick your state and your highest qualification once. When a matching recruitment is announced, you get an alert with the number of posts and the last date. All-India central jobs (SSC, Railway, banks, defence, PSUs) always come through.
@@ -32,6 +34,10 @@ Sarkari Radar is an independent app by News-Views (news-views.in). It is not aff
 Website: https://news-views.in · Privacy policy: https://news-views.in/privacy-policy/
 
 ---
+
+**Play Console › App content (owner fills in):** Government apps declaration → "not developed by or for a government
+entity" (Google requires this for apps that share government information) · Ads → contains ads · Advertising ID → yes,
+advertising · Target audience → 18+ · Data safety → as below · Content rating questionnaire.
 
 **Category:** Education (or Business) · **Tags:** Jobs, Education
 **Contact email:** the site's contact email · **Privacy policy URL:** https://news-views.in/privacy-policy/
