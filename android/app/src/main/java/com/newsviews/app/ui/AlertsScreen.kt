@@ -47,6 +47,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.compose.LifecycleResumeEffect
+import android.content.pm.PackageManager
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -109,14 +113,26 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
     val ctx = LocalContext.current
     val st by vm.settings.collectAsStateWithLifecycle()
     var granted by remember { mutableStateOf(Alerts.canNotify(ctx)) }
-    val askPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted = it }
+    var denied by rememberSaveable { mutableStateOf(false) }
+    // re-checked whenever the screen comes back (the user may have changed it in system settings)
+    LifecycleResumeEffect(Unit) { granted = Alerts.canNotify(ctx); onPauseOrDispose { } }
+    val askPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { ok -> granted = Alerts.canNotify(ctx); if (!ok) denied = true }
+    val openNotificationSettings = {
+        ctx.startActivity(Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, ctx.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    }
+    // Android 13+ asks with its own dialog until the person says no twice; after that, and on older Android, only settings can change it
+    val fixNotifications = {
+        if (Build.VERSION.SDK_INT >= 33 && !denied && ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
+            askPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        else openNotificationSettings()
+    }
     val adPrivacy by Ads.privacyRequired.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
-        if (!granted && Build.VERSION.SDK_INT >= 33) {
+        if (!granted) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
                 Row(Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(s.permissionNeeded, modifier = Modifier.weight(1f), color = MaterialTheme.colorScheme.onSecondaryContainer)
-                    Button(onClick = { askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) }) { Text(s.allow) }
+                    Button(onClick = fixNotifications) { Text(if (denied || Build.VERSION.SDK_INT < 33) s.openSettings else s.allow) }
                 }
             }
         }
@@ -124,7 +140,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             Text(s.alertsNeedSetup, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
         }
         Group {
-            ToggleRow(s.alertsOn, s.alertsOnHint, st.alerts) { vm.setAlerts(it); if (it && !granted && Build.VERSION.SDK_INT >= 33) askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) }
+            ToggleRow(s.alertsOn, s.alertsOnHint, st.alerts) { vm.setAlerts(it); if (it && !granted) fixNotifications() }
             HorizontalDivider()
             ToggleRow(s.resultsAlerts, s.resultsHint, st.results) { vm.setResults(it) }
             HorizontalDivider()
@@ -134,7 +150,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             Text(s.following, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             Text(if (st.follows.isEmpty()) s.noFollows else s.followHint, style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 8.dp))
-            if (st.follows.isNotEmpty()) FollowedList(st.follows) { vm.toggleFollow(it) }
+            if (st.follows.isNotEmpty()) FollowedList(st.follows, s.remove) { vm.toggleFollow(it) }
             Spacer(Modifier.height(8.dp))
         }
         Group {
@@ -187,10 +203,10 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun FollowedList(follows: Set<String>, onRemove: (String) -> Unit) {
+private fun FollowedList(follows: Set<String>, removeLabel: String, onRemove: (String) -> Unit) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         follows.sorted().forEach { o ->
-            InputChip(selected = true, onClick = { onRemove(o) }, label = { Text(o) }, trailingIcon = { Icon(Icons.Filled.Close, null) })
+            InputChip(selected = true, onClick = { onRemove(o) }, label = { Text(o) }, trailingIcon = { Icon(Icons.Filled.Close, removeLabel) })
         }
     }
 }

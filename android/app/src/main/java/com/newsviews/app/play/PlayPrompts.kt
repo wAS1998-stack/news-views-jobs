@@ -40,8 +40,8 @@ object PlayPrompts {
         if (p.getInt("pages", 0) < 6 || p.getInt("days", 0) < 3 || now - p.getLong("askedAt", 0) < 90L * 86_400_000) return
         p.edit().putLong("askedAt", now).apply()
         val manager = ReviewManagerFactory.create(activity)
-        manager.requestReviewFlow().addOnCompleteListener { task ->
-            if (task.isSuccessful) manager.launchReviewFlow(activity, task.result)
+        manager.requestReviewFlow().addOnCompleteListener(activity) { task ->
+            if (task.isSuccessful && !activity.isFinishing && !activity.isDestroyed) manager.launchReviewFlow(activity, task.result)
             else Log.i(TAG, "review not available: ${task.exception?.message}")
         }
     }
@@ -51,7 +51,7 @@ object PlayPrompts {
     /** On start: if Play has a newer version, offer a background ("flexible") download — at most every 3 days per version. */
     fun checkForUpdate(activity: Activity, launcher: ActivityResultLauncher<IntentSenderRequest>) {
         val m = updates ?: AppUpdateManagerFactory.create(activity.applicationContext).also { updates = it }
-        m.appUpdateInfo.addOnSuccessListener { info ->
+        m.appUpdateInfo.addOnSuccessListener(activity) { info ->   // activity-scoped: dropped if the screen is destroyed
             if (info.installStatus() == InstallStatus.DOWNLOADED) return@addOnSuccessListener   // installed on onStop
             if (info.updateAvailability() != UpdateAvailability.UPDATE_AVAILABLE || !info.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) return@addOnSuccessListener
             val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
@@ -60,7 +60,7 @@ object PlayPrompts {
             if (now - p.getLong(key, 0) < 3L * 86_400_000) return@addOnSuccessListener
             p.edit().putLong(key, now).apply()
             m.startUpdateFlowForResult(info, launcher, AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build())
-        }.addOnFailureListener { Log.i(TAG, "update check: ${it.message}") }
+        }.addOnFailureListener(activity) { Log.i(TAG, "update check: ${it.message}") }
     }
 
     /** When the app goes to the background, a downloaded update installs quietly (no interruption while reading). */

@@ -1,0 +1,8 @@
+<resources>
+    <!-- dark mode: the window behind the first frame matches the app's dark background (no white flash at launch) -->
+    <style name="Theme.NewsViews" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/brand_night</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

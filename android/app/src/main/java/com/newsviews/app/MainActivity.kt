@@ -36,6 +36,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
@@ -78,20 +79,19 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        handle(intent)
+        // only on a fresh start: after rotation / dark-mode switch the same intent would reopen the page the user left
+        if (savedInstanceState == null) handle(intent)
         setContent { NewsViewsTheme { Root(vm, pending) } }
-        Ads.start(this)
-        PlayPrompts.checkForUpdate(this, updateLauncher)
+        if (savedInstanceState == null) {
+            Ads.start(this)
+            PlayPrompts.checkForUpdate(this, updateLauncher)
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        setIntent(intent)
         handle(intent)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        PlayPrompts.installIfDownloaded()
     }
 
     override fun onResume() {
@@ -108,15 +108,28 @@ class MainActivity : ComponentActivity() {
         if (BuildConfig.DEBUG && intent.getBooleanExtra("demo_profile", false)) vm.demoProfile()
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
         if (BuildConfig.DEBUG && intent.hasExtra("tab")) { pending.value = "tab" to (intent.getStringExtra("tab") ?: "jobs"); return }
+        // ids come from notifications and links any app can send: accept only the feed's own id format
+        val ok = { id: String? -> id != null && ID_RE.matches(id) }
         val kind = intent.getStringExtra("kind")
         val id = intent.getStringExtra("id")
-        if (kind != null && id != null) { pending.value = kind to id; return }
+        if ((kind == "job" || kind == "update") && ok(id)) { pending.value = kind!! to id!!; return }
         val uri = intent.data ?: return
         val seg = uri.pathSegments
-        if (seg.size >= 2 && seg[0] == "jobs") pending.value = "job" to seg[1]
-        else if (seg.size >= 2 && seg[0] == "updates") pending.value = "update" to seg[1]
+        when {
+            seg.size >= 2 && seg[0] == "jobs" && ok(seg[1]) -> pending.value = "job" to seg[1]
+            // the site's result / admit-card / answer-key / exam-date list pages open the Results tab, filtered
+            seg.size >= 2 && seg[0] == "updates" && seg[1] in UPDATE_TYPES -> {
+                vm.setFilters(vm.filters.value.copy(updateType = seg[1], upcoming = false))
+                pending.value = "tab" to "updates"
+            }
+            seg.size >= 2 && seg[0] == "updates" && ok(seg[1]) -> pending.value = "update" to seg[1]
+            seg.firstOrNull() == "updates" -> pending.value = "tab" to "updates"
+        }
     }
 }
+
+private val ID_RE = Regex("^[a-z0-9][a-z0-9-]{0,140}$")
+private val UPDATE_TYPES = setOf("result", "admit-card", "answer-key", "exam-date")
 
 private data class Tab(val route: String, val label: (Strings) -> String, val icon: androidx.compose.ui.graphics.vector.ImageVector)
 
@@ -141,7 +154,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val open by pending.collectAsStateWithLifecycle()
     val idx by vm.index.collectAsStateWithLifecycle()
     val activity = LocalContext.current.findActivity()
-    var prevRoute by remember { mutableStateOf<String?>(null) }
+    var prevRoute by rememberSaveable { mutableStateOf<String?>(null) }
 
     LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
     val argId = entry?.arguments?.getString("id")
@@ -152,6 +165,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     }
     // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
     LaunchedEffect(route) {
+        if (prevRoute == route) return@LaunchedEffect          // recreated screen (rotation): not a new page view
         val isPage = route.startsWith("job/") || route.startsWith("update/")
         val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
         if (isPage) { Ads.pageOpened(); activity?.let { PlayPrompts.pageOpened(it) } }
@@ -195,7 +209,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         },
         bottomBar = {
             if (top) Column {
-                if (route != "alerts") BottomBanner()
+                if (route != "alerts") BottomBanner(s.ad)
                 NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                     TABS.forEach { t ->
                         NavigationBarItem(

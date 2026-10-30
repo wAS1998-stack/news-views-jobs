@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabColorSchemeParams
+import androidx.browser.customtabs.CustomTabsClient
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -44,16 +45,31 @@ import com.newsviews.app.data.UpdateItem
 import com.newsviews.app.data.isNew
 import com.newsviews.app.data.status
 
+/** A browser app on the phone (not this app): news-views.in links are verified App Links, so without a browser
+    package they would open straight back in the app. */
+private fun browserPackage(context: Context): String? {
+    CustomTabsClient.getPackageName(context, null)?.let { return it }
+    val probe = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.example.com")).addCategory(Intent.CATEGORY_BROWSABLE)
+    val pkg = context.packageManager.resolveActivity(probe, android.content.pm.PackageManager.MATCH_DEFAULT_ONLY)?.activityInfo?.packageName
+    return pkg?.takeIf { it != "android" && it != context.packageName }
+}
+
 fun openUrl(context: Context, url: String) {
     if (url.isBlank()) return
+    val uri = Uri.parse(url)
+    val ownSite = uri.host?.let { it == "news-views.in" || it.endsWith(".news-views.in") } == true
+    val browser = if (ownSite) browserPackage(context) else null
     try {
-        CustomTabsIntent.Builder()
+        val tabs = CustomTabsIntent.Builder()
             .setDefaultColorSchemeParams(CustomTabColorSchemeParams.Builder().setToolbarColor(Brand.Ink.toArgb()).build())
             .setShowTitle(true)
             .build()
-            .launchUrl(context, Uri.parse(url))
-    } catch (e: ActivityNotFoundException) {
-        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) } catch (_: Exception) {}
+        if (browser != null) tabs.intent.setPackage(browser)
+        tabs.launchUrl(context, uri)
+    } catch (e: Exception) {
+        try {
+            context.startActivity(Intent(Intent.ACTION_VIEW, uri).apply { if (browser != null) setPackage(browser) }.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (_: Exception) {}
     }
 }
 
@@ -103,7 +119,7 @@ fun JobCard(job: JobItem, hindi: Boolean, s: Strings, saved: Boolean, onSave: ()
                             maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
                         Spacer(Modifier.width(8.dp))
                     }
-                    if (job.isNew()) Pill(s.new, Color.White, Brand.Saffron)
+                    if (job.isNew()) Pill(s.new, Color.White, Color(0xFFB84A0E))   // darker saffron: 4.9:1 with white
                     if (job.ok == 1) { Spacer(Modifier.width(6.dp)); Icon(Icons.Filled.Verified, s.verified, tint = Brand.Green, modifier = Modifier.padding(top = 1.dp)) }
                 }
                 IconButton(onClick = onSave) {

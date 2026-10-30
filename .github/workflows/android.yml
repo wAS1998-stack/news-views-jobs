@@ -45,8 +45,8 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
           set -o pipefail
-          tasks="assembleDebug"
-          if [ "$signed" = true ]; then tasks="$tasks bundleRelease assembleRelease"; fi
+          tasks="assembleDebug assembleRelease"
+          if [ "$signed" = true ]; then tasks="$tasks bundleRelease"; fi
           ./gradlew --no-daemon --stacktrace $tasks 2>&1 | tee "$RUNNER_TEMP/build.log"
       - name: Upload APKs
         if: steps.build.outcome == 'success'
@@ -63,10 +63,10 @@ jobs:
         run: |
           mkdir -p out
           cp android/app/build/outputs/apk/debug/app-debug.apk out/news-views-debug.apk
-          [ -f android/app/build/outputs/apk/release/app-release.apk ] && cp android/app/build/outputs/apk/release/app-release.apk out/news-views.apk || true
+          if [ "$signed" = true ] && [ -f android/app/build/outputs/apk/release/app-release.apk ]; then cp android/app/build/outputs/apk/release/app-release.apk out/news-views.apk; fi
           [ -f android/app/build/outputs/bundle/release/app-release.aab ] && cp android/app/build/outputs/bundle/release/app-release.aab out/news-views.aab || true
-          notes="Build ${{ github.run_number }} from ${GITHUB_SHA::7} ($(date -u +%F' '%H:%M) UTC). news-views-debug.apk installs alongside the Play version."
-          gh release view app-latest >/dev/null 2>&1 || gh release create app-latest --title "News-Views Android app (latest build)" --notes "$notes" --prerelease
+          notes="Sarkari Radar — build ${{ github.run_number }} from ${GITHUB_SHA::7} ($(date -u +%F' '%H:%M) UTC). news-views-debug.apk is the test build (uninstall it before installing the Play version)."
+          gh release view app-latest >/dev/null 2>&1 || gh release create app-latest --title "Sarkari Radar Android app (latest build)" --notes "$notes" --prerelease
           gh release edit app-latest --notes "$notes"
           gh release upload app-latest out/* --clobber
       - name: Write the build result back to the repo
@@ -107,7 +107,7 @@ jobs:
           arch: x86_64
           profile: pixel_6
           disable-animations: true
-          script: bash android/ci-screens.sh "$(find apk -name 'app-debug.apk' | head -1)"
+          script: bash android/ci-screens.sh "$(find apk -name 'app-debug.apk' | head -1)" "$(find apk -name 'app-release*.apk' | head -1)"
       - name: Save screenshots to the repo
         if: always()
         run: |

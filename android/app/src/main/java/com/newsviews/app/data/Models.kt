@@ -10,12 +10,12 @@ import java.util.Locale
 /* Mirrors https://news-views.in/app/v1/ (written by build.js on every site build). */
 
 @Serializable
-data class Named(val slug: String, val name: String)
+data class Named(val slug: String = "", val name: String = "")
 
 @Serializable
 data class JobItem(
-    val id: String,
-    val t: String,
+    val id: String = "",
+    val t: String = "",
     val th: String = "",
     val o: String = "",
     val p: String = "",
@@ -42,8 +42,8 @@ data class JobItem(
 
 @Serializable
 data class UpdateItem(
-    val id: String,
-    val t: String,
+    val id: String = "",
+    val t: String = "",
     val th: String = "",
     val o: String = "",
     val ty: String = "",
@@ -93,7 +93,7 @@ data class AdsConfig(
 )
 
 @Serializable
-data class Faq(val q: String, val a: String)
+data class Faq(val q: String = "", val a: String = "")
 
 @Serializable
 data class JobHi(
@@ -108,7 +108,7 @@ data class JobHi(
 
 @Serializable
 data class JobDetail(
-    val id: String,
+    val id: String = "",
     val url: String = "",
     val title: String = "",
     val organization: String = "",
@@ -154,7 +154,7 @@ data class UpdateHi(
 
 @Serializable
 data class UpdateDetail(
-    val id: String,
+    val id: String = "",
     val url: String = "",
     val type: String = "",
     val type_name: String = "",

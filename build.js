@@ -1811,7 +1811,11 @@ function buildAppIndex(jobs, updates) {
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
-    ads: Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {}),
+    ads: (() => { // whole numbers only: the app reads every/gap as integers
+      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {});
+      for (const k of ["every", "gap"]) a[k] = Math.max(1, Math.round(Number(a[k]) || (k === "every" ? 4 : 240)));
+      return a;
+    })(),
   });
 }
 function appJobDetail(j) {

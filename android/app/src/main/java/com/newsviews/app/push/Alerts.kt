@@ -19,7 +19,10 @@ import com.newsviews.app.MainActivity
 import com.newsviews.app.R
 import com.newsviews.app.data.Prefs
 import com.newsviews.app.data.Settings
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * Job alerts are Firebase topics; the server (push-notify.js on the site) sends each new job to
@@ -36,8 +39,8 @@ object Alerts {
         if (s.alerts) {
             if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
             s.qual.levels.forEach { t += "q-$it" }
-            if (s.results) t += "results"
         }
+        if (s.results) t += "results"     // its own switch on the Alerts screen
         // followed departments: everything new from them, even with general job alerts off
         s.follows.map { orgTopic(it) }.filter { it != "o-" }.forEach { t += it }
         if (t.isNotEmpty()) t += if (s.hindi) "l-hi" else "l-en"
@@ -49,17 +52,22 @@ object Alerts {
     fun firebaseReady(context: Context): Boolean =
         BuildConfig.HAS_FIREBASE && try { FirebaseApp.getApps(context).isNotEmpty() } catch (e: Exception) { false }
 
-    /** Subscribe/unsubscribe only the difference; remembers what the phone is subscribed to. */
+    private val syncLock = Mutex()
+
+    /** Subscribe/unsubscribe only the difference; remembers what the phone is subscribed to. One sync at a time
+        (settings changes, app resume and a new token can all ask at once), each topic call bounded by a timeout. */
     suspend fun sync(context: Context, prefs: Prefs) {
         if (!firebaseReady(context)) return
-        val s = prefs.current()
-        val want = topicsFor(s)
-        val have = s.subscribed
-        val fm = FirebaseMessaging.getInstance()
-        val done = have.toMutableSet()
-        for (t in have - want) runCatching { fm.unsubscribeFromTopic(t).await(); done -= t }
-        for (t in want - have) runCatching { fm.subscribeToTopic(t).await(); done += t }
-        prefs.setSubscribed(done)
+        syncLock.withLock {
+            val s = prefs.current()
+            val want = topicsFor(s)
+            val have = s.subscribed
+            val fm = FirebaseMessaging.getInstance()
+            val done = have.toMutableSet()
+            for (t in have - want) if (withTimeoutOrNull(15_000) { runCatching { fm.unsubscribeFromTopic(t).await() }.isSuccess } == true) done -= t
+            for (t in want - have) if (withTimeoutOrNull(15_000) { runCatching { fm.subscribeToTopic(t).await() }.isSuccess } == true) done += t
+            prefs.setSubscribed(done)
+        }
     }
 
     fun createChannels(context: Context) {
@@ -75,15 +83,20 @@ object Alerts {
         })
     }
 
+    /** Notifications can really be shown: the Android 13+ permission and the app-level switch in system settings. */
     fun canNotify(context: Context): Boolean =
-        Build.VERSION.SDK_INT < 33 ||
-            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+        (Build.VERSION.SDK_INT < 33 ||
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) &&
+            NotificationManagerCompat.from(context).areNotificationsEnabled()
+
+    const val OPEN_ITEM = "in.newsviews.app.OPEN_ITEM"
 
     @SuppressLint("MissingPermission")   // canNotify() is checked first
     fun show(context: Context, channel: String, tag: String, title: String, body: String, kind: String, id: String) {
         if (!canNotify(context)) return
         val intent = Intent(context, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            action = OPEN_ITEM
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             putExtra("kind", kind)
             putExtra("id", id)
         }
@@ -95,6 +108,7 @@ object Alerts {
             .setContentText(body)
             .setStyle(NotificationCompat.BigTextStyle().bigText(body))
             .setAutoCancel(true)
+            .setOnlyAlertOnce(true)          // the same job sent to two of the phone's topics buzzes once
             .setContentIntent(pi)
             .build()
         try { NotificationManagerCompat.from(context).notify(tag, 1, n) } catch (e: SecurityException) { /* permission revoked */ }

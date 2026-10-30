@@ -1,5 +1,8 @@
 package com.newsviews.app.ui
 
+import androidx.compose.ui.text.style.TextAlign
+import com.newsviews.app.BuildConfig
+import com.newsviews.app.data.NotInFeed
 import com.newsviews.app.ads.InlineAd
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -81,19 +84,33 @@ private fun FaqList(faqs: List<Faq>) {
     }
 }
 
+/** Fees come as text, or as a JSON object of category → amount ({"General":"₹500","SC/ST":"Nil"}) — only the latter is reformatted. */
+private fun feeText(raw: String): String {
+    val t = raw.trim()
+    if (!t.startsWith("{")) return t
+    return Regex("\"([^\"]+)\"\\s*:\\s*\"?([^\",}]*)\"?").findAll(t).joinToString(" · ") { "${it.groupValues[1]}: ${it.groupValues[2].trim()}" }.ifBlank { t }
+}
+
 @Composable
-private fun <T> Loader(key: String, load: suspend () -> T, s: Strings, content: @Composable (T) -> Unit) {
+private fun <T> Loader(key: String, load: suspend () -> T, s: Strings, web: String, content: @Composable (T) -> Unit) {
+    val ctx = LocalContext.current
     var data by remember(key) { mutableStateOf<T?>(null) }
     var failed by remember(key) { mutableStateOf(false) }
+    var gone by remember(key) { mutableStateOf(false) }
     var attempt by remember(key) { mutableStateOf(0) }
     LaunchedEffect(key, attempt) {
         failed = false
-        try { data = load() } catch (e: Exception) { failed = true }
+        try { data = load() } catch (e: NotInFeed) { gone = true; failed = true } catch (e: Exception) { failed = true }
     }
     val d = data
     when {
         d != null -> content(d)
-        failed -> Centered(s.couldNotLoad, s.retry) { attempt++ }
+        failed -> Column(Modifier.fillMaxSize().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+            // not in the app feed any more (an older or retired page): the website still has it, or redirects
+            Text(if (gone) s.notInApp else s.couldNotLoad, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
+            Button(onClick = { openUrl(ctx, web) }, modifier = Modifier.padding(top = 14.dp)) { Text(s.openOnSite) }
+            if (!gone) TextButton(onClick = { attempt++ }) { Text(s.retry) }
+        }
         else -> Centered(s.loading)
     }
 }
@@ -105,7 +122,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
     val settings by vm.settings.collectAsStateWithLifecycle()
     val idx by vm.index.collectAsStateWithLifecycle()
     val hindi = settings.hindi
-    Loader(id, { vm.repo.job(id) }, s) { j: JobDetail ->
+    Loader(id, { vm.repo.job(id) }, s, web = "${BuildConfig.SITE}/jobs/$id/") { j: JobDetail ->
         val h = if (hindi) j.hi else null
         val item = idx?.jobs?.firstOrNull { it.id == id } ?: JobItem(id = j.id, t = j.title, th = j.hi?.title ?: "", o = j.org_short, v = j.total_vacancies, en = j.application_end, pub = j.published)
         val saved = id in settings.saved
@@ -137,7 +154,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                 }
             }
             // the reader's own age against the limit (date of birth from Alerts › Age & category)
-            val age = settings.age()
+            val age = settings.age(Dates.parse(j.application_end) ?: Dates.today())   // on the last date, the usual cut-off
             if (age != null && j.age_max > 0) {
                 val under = j.age_min > 0 && age < j.age_min
                 val fits = !under && age <= j.age_max + settings.relaxation()
@@ -169,7 +186,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             val facts = listOfNotNull(
                 j.qualification.takeIf { it.isNotBlank() }?.let { s.qualification to it },
                 j.salary.takeIf { it.isNotBlank() }?.let { s.salary to it },
-                j.fee.takeIf { it.isNotBlank() && it != "{}" }?.let { s.fee to it.replace(Regex("[{}\"]"), "").replace(",", ", ").replace(":", ": ") },
+                j.fee.takeIf { it.isNotBlank() && it != "{}" }?.let { s.fee to feeText(it) },
                 j.location.takeIf { it.isNotBlank() }?.let { s.location to it },
                 j.post_name.takeIf { it.isNotBlank() }?.let { s.postName to it },
             )
@@ -198,7 +215,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
     val ctx = LocalContext.current
     val settings by vm.settings.collectAsStateWithLifecycle()
     val hindi = settings.hindi
-    Loader(id, { vm.repo.update(id) }, s) { u: UpdateDetail ->
+    Loader(id, { vm.repo.update(id) }, s, web = "${BuildConfig.SITE}/updates/$id/") { u: UpdateDetail ->
         val h = if (hindi) u.hi else null
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 12.dp)) {
             val c = when (u.type) { "result" -> Brand.Green; "admit-card" -> Brand.Azure; "answer-key" -> Brand.Saffron; else -> Brand.Muted }

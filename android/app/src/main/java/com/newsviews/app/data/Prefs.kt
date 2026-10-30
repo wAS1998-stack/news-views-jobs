@@ -6,11 +6,16 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
+import androidx.datastore.preferences.core.emptyPreferences
+import java.io.IOException
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-private val Context.store by preferencesDataStore("settings")
+// a corrupted settings file is replaced with defaults instead of crashing the app on every start
+private val Context.store by preferencesDataStore("settings", corruptionHandler = ReplaceFileCorruptionHandler { emptyPreferences() })
 
 /** Highest qualification choices; each covers the levels a person with it can apply for. */
 enum class Qual(val key: String, val en: String, val hi: String, val levels: List<String>) {
@@ -39,7 +44,9 @@ data class Settings(
     val dob: String = "",                     // date of birth, yyyy-mm-dd — kept only on the phone
     val category: String = "gen",             // gen | obc | scst — for upper-age relaxation
 ) {
-    fun age(): Int? = Dates.parse(dob)?.let { java.time.Period.between(it, Dates.today()).years }
+    /** Age in whole years on [on] (notices count age on a cut-off date; the job's last date is the usual one). */
+    fun age(on: java.time.LocalDate = Dates.today()): Int? = Dates.parse(dob)?.let { java.time.Period.between(it, on).years }
+    fun ageFor(job: JobItem): Int? = age(Dates.parse(job.en) ?: Dates.today())
     /** Upper-age relaxation under central government rules (state rules can differ; the app says so). */
     fun relaxation(): Int = when (category) { "obc" -> 3; "scst" -> 5; else -> 0 }
     fun follows(o: String): Boolean = o.isNotBlank() && follows.any { orgSlug(it) == orgSlug(o) }
@@ -61,7 +68,7 @@ class Prefs(private val context: Context) {
         val category = stringPreferencesKey("category")
     }
 
-    val flow: Flow<Settings> = context.store.data.map { p ->
+    val flow: Flow<Settings> = context.store.data.catch { e -> if (e is IOException) emit(emptyPreferences()) else throw e }.map { p ->
         Settings(
             hindi = p[K.hindi] ?: false,
             onboarded = p[K.onboarded] ?: false,

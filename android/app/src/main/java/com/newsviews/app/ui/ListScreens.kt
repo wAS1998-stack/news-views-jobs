@@ -44,6 +44,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
+import com.newsviews.app.data.Status
+import com.newsviews.app.data.status
+import androidx.compose.runtime.produceState
+import androidx.compose.runtime.saveable.rememberSaveable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.newsviews.app.data.Dates
 import com.newsviews.app.data.Named
 import java.time.Duration
@@ -102,12 +108,14 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     var dobDialog by remember { mutableStateOf(false) }
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
+    // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
+    var query by rememberSaveable { mutableStateOf(f.query) }
     Column(Modifier.fillMaxSize()) {
         OutlinedTextField(
-            value = f.query, onValueChange = { vm.setFilters(f.copy(query = it)) },
+            value = query, onValueChange = { query = it; vm.setFilters(vm.filters.value.copy(query = it)) },
             placeholder = { Text(s.search) }, singleLine = true,
             leadingIcon = { Icon(Icons.Filled.Search, null) },
-            trailingIcon = { if (f.query.isNotEmpty()) IconButton(onClick = { vm.setFilters(f.copy(query = "")) }) { Icon(Icons.Filled.Clear, null) } },
+            trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = ""; vm.setFilters(vm.filters.value.copy(query = "")) }) { Icon(Icons.Filled.Clear, s.clear) } },
             shape = RoundedCornerShape(14.dp),
             colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = MaterialTheme.colorScheme.surface, focusedContainerColor = MaterialTheme.colorScheme.surface),
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
@@ -141,7 +149,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                     onClick = { if (settings.age() == null) dobDialog = true else vm.setFilters(f.copy(ageFits = !f.ageFits)) })
             }
         }
-        StatusLine(idx, error, s, hindi, if (idx != null) list.size else null) { vm.refresh() }
+        StatusLine(idx, error, s, hindi, if (idx != null) list.count { it.status() != Status.CLOSED } else null) { vm.refresh() }
         PullToRefreshBox(isRefreshing = loading, onRefresh = { vm.refresh() }, modifier = Modifier.fillMaxSize()) {
             when {
                 idx == null && loading -> Centered(s.loading)
@@ -238,7 +246,10 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
 fun SavedScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val idx by vm.index.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
-    val list = remember(idx, settings.saved) { vm.savedJobs(idx, settings.saved) }
+    // snapshots of saved jobs are files: read them off the main thread
+    val list by produceState(initialValue = emptyList<com.newsviews.app.data.JobItem>(), idx, settings.saved) {
+        value = withContext(Dispatchers.IO) { vm.savedJobs(idx, settings.saved) }
+    }
     if (list.isEmpty()) {
         Column(Modifier.fillMaxSize().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(Icons.Outlined.BookmarkBorder, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(bottom = 12.dp))

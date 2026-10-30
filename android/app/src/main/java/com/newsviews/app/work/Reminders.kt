@@ -34,6 +34,13 @@ object Reminders {
         }
     }
 
+    /** After each refresh: saved jobs follow their current last date (deadlines are often extended). REPLACE keeps it idempotent. */
+    fun rescheduleAll(context: Context, jobs: List<com.newsviews.app.data.JobItem>, hindi: Boolean) {
+        for (j in jobs) if (j.en.isNotBlank()) schedule(context, j.id, j.title(hindi), j.en)
+    }
+
+    fun cancelAll(context: Context, ids: Collection<String>) { for (id in ids) cancel(context, id) }
+
     fun cancel(context: Context, id: String) {
         val wm = WorkManager.getInstance(context)
         wm.cancelUniqueWork(name(id, "2d"))

@@ -76,7 +76,9 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfigs.findByName("release")?.let { signingConfig = it }
+            // without the upload key (CI before the secrets exist) the release build is still made — signed with the debug
+            // key — so the shrunk/optimised build is compiled and smoke-tested on every change, not first at Play upload
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
             manifestPlaceholders["admobAppId"] = if (liveAds) adId("appId") else testAppId
             buildConfigField("boolean", "ADS", liveAds.toString())
             buildConfigField("String", "AD_BANNER", "\"${adId("banner")}\"")
@@ -84,7 +86,7 @@ android {
             buildConfigField("String", "AD_INTERSTITIAL", "\"${adId("interstitial")}\"")
         }
         debug {
-            applicationIdSuffix = ".debug"
+            // same package as release: Firebase (google-services.json) is registered for in.newsviews.app only
             versionNameSuffix = "-debug"
             manifestPlaceholders["admobAppId"] = testAppId
             buildConfigField("boolean", "ADS", "true")
@@ -123,6 +125,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.9.1")
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
     implementation("androidx.browser:browser:1.8.0")

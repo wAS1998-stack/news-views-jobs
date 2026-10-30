@@ -144,7 +144,7 @@ object Ads {
             now - lastShown >= c.gap.coerceAtLeast(60) * 1000L && now - appStart >= 60_000L)
         val ad = interstitial
         Log.i(TAG, "back from page: due=$due loaded=${ad != null} pages=$pagesSince")
-        if (!due || ad == null) { preload(activity); return false }
+        if (!due || ad == null || activity.isFinishing || activity.isDestroyed) { preload(activity); return false }
         forceNext = false
         interstitial = null
         ad.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -166,14 +166,15 @@ fun Context.findActivity(): Activity? {
 
 /** Anchored adaptive banner (under the lists). Its height is kept free while it loads (no jump); it folds away if no ad comes. */
 @Composable
-fun BottomBanner() {
+fun BottomBanner(adLabel: String) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank()) return
     val width = LocalConfiguration.current.screenWidthDp
     val large = cfg.bannerSize == "large"
+    // labelled and kept off the tab bar (a 6 dp gap), so it can't be mistaken for app content or tapped by accident
     AdBox(BuildConfig.AD_BANNER, { ctx -> if (large) AdSize.getLargeAnchoredAdaptiveBannerAdSize(ctx, width) else standardAnchored(ctx, width) },
-        label = null, reserve = true, key = large)
+        label = adLabel, reserve = true, key = large, modifier = Modifier.padding(bottom = 6.dp))
 }
 
 /** The regular anchored adaptive size (deprecated in SDK 25 in favour of the "large" one, which is up to twice as tall). */
@@ -216,7 +217,8 @@ private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modif
     }
     if (failed) return
     Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        if (label != null && loaded) Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 4.dp))
+        // the reserved banner keeps the label's line too, so nothing moves when the ad arrives
+        if (label != null && (loaded || reserve)) Text(if (loaded) label else " ", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 2.dp))
         // the view must be attached to load; an in-page unit waits at height 0, the anchored banner keeps its space
         Box(Modifier.fillMaxWidth().height(if (loaded || reserve) heightDp else 0.dp), contentAlignment = Alignment.Center) {
             AndroidView(factory = { view })

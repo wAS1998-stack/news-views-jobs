@@ -13,7 +13,9 @@ import com.newsviews.app.data.Status
 import com.newsviews.app.data.status
 import com.newsviews.app.push.Alerts
 import com.newsviews.app.work.Reminders
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -34,7 +36,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val repo = Repository(app)
     val prefs = Prefs(app)
 
-    private val _index = MutableStateFlow<AppIndex?>(repo.cachedIndex())
+    private val _index = MutableStateFlow<AppIndex?>(null)   // the cached copy is read off the main thread in init
     val index: StateFlow<AppIndex?> = _index.asStateFlow()
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading.asStateFlow()
@@ -47,7 +49,13 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     /** false until the saved settings have been read (avoids flashing the welcome screen). */
     val settingsLoaded: StateFlow<Boolean> = prefs.flow.map { true }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
-    init { refresh() }
+    init {
+        viewModelScope.launch {
+            val cached = withContext(Dispatchers.IO) { repo.cachedIndex() }
+            if (_index.value == null && cached != null) _index.value = cached
+        }
+        refresh()
+    }
 
     private var lastOk = 0L
 
@@ -59,9 +67,11 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             try {
                 for (attempt in 0 until 3) {
                     try {
-                        _index.value = repo.fetchIndex()
+                        val idx = repo.fetchIndex()
+                        _index.value = idx
                         _error.value = false
                         lastOk = System.currentTimeMillis()
+                        runCatching { afterRefresh(idx) }      // a reminder problem must not mark the feed as offline
                         break
                     } catch (e: Exception) {
                         _error.value = true
@@ -72,6 +82,14 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 _loading.value = false
             }
         }
+    }
+
+    /** Saved jobs follow their current last date (extensions) — also restores reminders after a backup restore. */
+    private suspend fun afterRefresh(idx: AppIndex) {
+        val s = prefs.current()
+        if (!s.reminders || s.saved.isEmpty()) return
+        val byId = idx.jobs.associateBy { it.id }
+        Reminders.rescheduleAll(getApplication(), s.saved.mapNotNull { byId[it] }, s.hindi)
     }
 
     /** Coming back to the app: refresh if the data is more than 10 minutes old or the last try failed. */
@@ -89,7 +107,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 (f.qual.isEmpty() || f.qual in j.q) &&
                 (!f.closingSoon || j.status() == Status.SOON) &&
                 (f.cat.isEmpty() || (if (f.cat == Filters.FOLLOWING) s.follows(j.o) else f.cat in j.c)) &&
-                (!f.ageFits || (age != null && j.ageFits(age, s.relaxation()) == true)) &&
+                (!f.ageFits || (age != null && s.ageFor(j)?.let { a -> j.ageFits(a, s.relaxation()) } == true)) &&
                 (words.isEmpty() || words.all { w -> "${j.t} ${j.th} ${j.o} ${j.p}".lowercase().contains(w) })
         }
     }
@@ -118,7 +136,12 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setHindi(v: Boolean) = viewModelScope.launch { prefs.setHindi(v); Alerts.sync(getApplication(), prefs) }
     fun setAlerts(v: Boolean) = viewModelScope.launch { prefs.setAlerts(v); Alerts.sync(getApplication(), prefs) }
     fun setResults(v: Boolean) = viewModelScope.launch { prefs.setResults(v); Alerts.sync(getApplication(), prefs) }
-    fun setReminders(v: Boolean) = viewModelScope.launch { prefs.setReminders(v) }
+    fun setReminders(v: Boolean) = viewModelScope.launch {
+        prefs.setReminders(v)
+        val s = prefs.current()
+        if (v) _index.value?.let { idx -> val byId = idx.jobs.associateBy { it.id }; Reminders.rescheduleAll(getApplication(), s.saved.mapNotNull { byId[it] }, s.hindi) }
+        else Reminders.cancelAll(getApplication(), s.saved)
+    }
     fun setQual(q: Qual) = viewModelScope.launch { prefs.setQual(q); Alerts.sync(getApplication(), prefs) }
     fun toggleState(slug: String) = viewModelScope.launch {
         val cur = settings.value.states

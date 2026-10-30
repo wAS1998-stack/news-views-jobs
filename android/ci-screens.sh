@@ -3,7 +3,8 @@
 # with real data from news-views.in and saves screenshots (plus any crash log) to android/ci/screens/.
 set -u
 APK="$1"
-PKG=in.newsviews.app.debug
+REL="${2:-}"
+PKG=in.newsviews.app
 ACT=com.newsviews.app.MainActivity
 OUT=android/ci/screens
 mkdir -p "$OUT"; rm -f "$OUT"/*.png "$OUT"/*.txt
@@ -43,6 +44,22 @@ adb shell am start -n $PKG/$ACT --es tab jobs; sleep 3
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez ad_test true --es kind job --es id "$JOB"; sleep 8
   adb shell input keyevent 4; shot 08-interstitial 7; adb shell input keyevent 4; shot 09-jobs-after-ad 8; fi
 adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
+
+# 9. the release build (shrunk with R8, no debug hooks): install, open, and look for a crash
+if [ -n "$REL" ] && [ -f "$REL" ]; then
+  adb logcat -d -s AndroidRuntime:E | tail -60 > "$OUT/crash-debug.txt"; [ -s "$OUT/crash-debug.txt" ] || rm -f "$OUT/crash-debug.txt"
+  adb logcat -c
+  adb uninstall $PKG >/dev/null 2>&1 || true
+  if adb install "$REL"; then
+    adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
+    adb shell am start -n $PKG/$ACT; shot 10-release-welcome 12
+    adb shell am start -a android.intent.action.VIEW -d "https://news-views.in/jobs/$JOB/" $PKG; shot 11-release-job 10
+    adb shell input keyevent 4; shot 12-release-back 4
+    echo "release ok" > "$OUT/release.txt"
+  else
+    echo "release install failed" > "$OUT/release.txt"
+  fi
+fi
 
 adb logcat -d -s AndroidRuntime:E | tail -60 > "$OUT/crash.txt"
 [ -s "$OUT/crash.txt" ] || rm -f "$OUT/crash.txt"
