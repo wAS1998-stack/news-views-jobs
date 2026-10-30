@@ -35,9 +35,10 @@ if [ -n "$JOB" ]; then adb shell am start -a android.intent.action.VIEW -d "http
 adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot 07-jobs-hindi 6
 adb shell am start -n $PKG/$ACT --ez hindi false; sleep 3
 # 8. Google test ads: the full-screen ad on the way back from a page (caps bypassed by the debug-only ad_test hook)
+adb shell am start -n $PKG/$ACT --es tab jobs; sleep 3
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez ad_test true --es kind job --es id "$JOB"; sleep 8
-  adb shell input keyevent 4; shot 08-interstitial 7; adb shell input keyevent 4; sleep 2; fi
-adb logcat -d -s Ads:* | tail -30 > "$OUT/ads-log.txt"
+  adb shell input keyevent 4; shot 08-interstitial 7; adb shell input keyevent 4; shot 09-jobs-after-ad 8; fi
+adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
 
 adb logcat -d -s AndroidRuntime:E | tail -60 > "$OUT/crash.txt"
 [ -s "$OUT/crash.txt" ] || rm -f "$OUT/crash.txt"

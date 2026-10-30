@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.LifecycleResumeEffect
@@ -58,7 +59,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  * nothing loads until the SDK says ads may be requested. Release builds without real IDs never start the SDK.
  */
 object Ads {
-    private const val TAG = "Ads"
+    const val TAG = "NVAds"
     private val started = AtomicBoolean(false)
     private val _ready = MutableStateFlow(false)
     val ready: StateFlow<Boolean> = _ready.asStateFlow()
@@ -126,7 +127,7 @@ object Ads {
         if (!on() || !_config.value.interstitial || interstitial != null || loading || BuildConfig.AD_INTERSTITIAL.isBlank()) return
         loading = true
         InterstitialAd.load(ctx.applicationContext, BuildConfig.AD_INTERSTITIAL, AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
-            override fun onAdLoaded(ad: InterstitialAd) { interstitial = ad; loading = false }
+            override fun onAdLoaded(ad: InterstitialAd) { interstitial = ad; loading = false; Log.i(TAG, "interstitial loaded") }
             override fun onAdFailedToLoad(error: LoadAdError) { interstitial = null; loading = false; Log.i(TAG, "interstitial: ${error.message}") }
         })
     }
@@ -142,6 +143,7 @@ object Ads {
         val due = forceNext || (c.interstitial && pagesSince >= c.every.coerceAtLeast(1) &&
             now - lastShown >= c.gap.coerceAtLeast(60) * 1000L && now - appStart >= 60_000L)
         val ad = interstitial
+        Log.i(TAG, "back from page: due=$due loaded=${ad != null} pages=$pagesSince")
         if (!due || ad == null) { preload(activity); return }
         forceNext = false
         interstitial = null
@@ -161,14 +163,14 @@ fun Context.findActivity(): Activity? {
     return null
 }
 
-/** Anchored adaptive banner (under the lists). Takes no space until an ad has actually loaded. */
+/** Anchored adaptive banner (under the lists). Its height is kept free while it loads (no jump); it folds away if no ad comes. */
 @Composable
 fun BottomBanner() {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank()) return
     val width = LocalConfiguration.current.screenWidthDp
-    AdBox(BuildConfig.AD_BANNER, { ctx -> AdSize.getLargeAnchoredAdaptiveBannerAdSize(ctx, width) }, label = null)
+    AdBox(BuildConfig.AD_BANNER, { ctx -> AdSize.getLargeAnchoredAdaptiveBannerAdSize(ctx, width) }, label = null, reserve = true)
 }
 
 /** One in-content unit on job and result pages, labelled so it can't be mistaken for page content. */
@@ -181,19 +183,22 @@ fun InlineAd(label: String) {
 }
 
 @Composable
-private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier) {
+private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier, reserve: Boolean = false) {
     val ctx = LocalContext.current
+    val density = LocalDensity.current
     var loaded by remember(unit) { mutableStateOf(false) }
     var failed by remember(unit) { mutableStateOf(false) }
     val adSize = remember(unit) { size(ctx) }
+    val heightDp = remember(unit) { with(density) { adSize.getHeightInPixels(ctx).toDp() } }
     val view = remember(unit) {
         AdView(ctx).apply {
             adUnitId = unit
             setAdSize(adSize)
             adListener = object : AdListener() {
-                override fun onAdLoaded() { loaded = true }
-                override fun onAdFailedToLoad(error: LoadAdError) { failed = true; Log.i("Ads", "banner: ${error.message}") }
+                override fun onAdLoaded() { loaded = true; Log.i(Ads.TAG, "banner loaded ${adSize.width}x$heightDp") }
+                override fun onAdFailedToLoad(error: LoadAdError) { failed = true; Log.i(Ads.TAG, "banner failed ${error.code}: ${error.message}") }
             }
+            Log.i(Ads.TAG, "banner request ${adSize.width}x$heightDp")
             loadAd(AdRequest.Builder().build())
         }
     }
@@ -205,8 +210,8 @@ private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modif
     if (failed) return
     Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         if (label != null && loaded) Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 4.dp))
-        // the view must be attached to load; until then it sits at height 0 so nothing jumps around
-        Box(Modifier.fillMaxWidth().height(if (loaded) adSize.height.dp else 0.dp), contentAlignment = Alignment.Center) {
+        // the view must be attached to load; an in-page unit waits at height 0, the anchored banner keeps its space
+        Box(Modifier.fillMaxWidth().height(if (loaded || reserve) heightDp else 0.dp), contentAlignment = Alignment.Center) {
             AndroidView(factory = { view })
         }
     }
