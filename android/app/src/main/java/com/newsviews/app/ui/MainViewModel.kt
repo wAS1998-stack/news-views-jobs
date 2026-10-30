@@ -27,6 +27,7 @@ data class Filters(
     val cat: String = "",              // a category slug, or FOLLOWING
     val ageFits: Boolean = false,
     val updateFollowing: Boolean = false,
+    val upcoming: Boolean = false,      // Results tab: upcoming exam / admit card / result dates, soonest first
 ) { companion object { const val FOLLOWING = "_following" } }
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The site's "N." mark: a white N with a saffron dot, inside the 66dp safe zone of a 108dp adaptive icon -->
+<!-- Sarkari Radar mark: radar rings and sweep in white, the "spotted job" blip in saffron, inside the 66dp safe zone -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#FFFFFFFF"
-        android:pathData="M34,74 L34,34 L43,34 L59,58 L59,34 L68,34 L68,74 L59,74 L43,50 L43,74 Z" />
-    <path android:fillColor="#FFE8772E"
-        android:pathData="M78,69.5 m-4.5,0 a4.5,4.5 0 1,0 9,0 a4.5,4.5 0 1,0 -9,0" />
+    <path android:strokeColor="#59FFFFFF" android:strokeWidth="3.5" android:fillColor="#00000000"
+        android:pathData="M54,24 a30,30 0 1,1 0,60 a30,30 0 1,1 0,-60" />
+    <path android:strokeColor="#99FFFFFF" android:strokeWidth="3.5" android:fillColor="#00000000"
+        android:pathData="M54,35 a19,19 0 1,1 0,38 a19,19 0 1,1 0,-38" />
+    <path android:fillColor="#38FFFFFF" android:pathData="M54,54 L69,28.02 A30,30 0 0,1 84,54 Z" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:pathData="M54,54 L69,28.02" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M54,54 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFE8772E" android:pathData="M72,41 m-5.5,0 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0" />
 </vector>

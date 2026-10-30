@@ -176,6 +176,23 @@ fun Bullets(items: List<String>, numbered: Boolean = false) {
     }
 }
 
+@Composable
+fun CalRow(c: com.newsviews.app.ui.CalItem, onClick: () -> Unit) {
+    Card(onClick = onClick, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
+        Row(Modifier.padding(horizontal = 14.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            val col = when (c.type) { "result" -> Brand.Green; "admit-card" -> Brand.Azure; "answer-key" -> Brand.Saffron; "exam" -> Brand.Saffron; else -> Brand.Muted }
+            Pill(c.label, col, col.copy(alpha = .12f))
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Text(c.title, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                if (c.org.isNotBlank()) Text(c.org, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
+        }
+    }
+}
+
 /** "Follow SSC" / "Following ✓" — every new job, admit card and result of that department as a notification. */
 @Composable
 fun FollowChip(org: String, following: Boolean, s: Strings, onClick: () -> Unit) {

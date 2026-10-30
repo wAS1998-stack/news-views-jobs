@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Bookmark
@@ -175,14 +178,18 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
                 title = {
                     if (!top) detailTitle?.let { Text(it, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis) }
                     if (top) Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text("News-Views", fontWeight = FontWeight.ExtraBold)
-                        Text(".", color = Brand.Saffron, fontWeight = FontWeight.ExtraBold)
-                        Spacer(Modifier.width(10.dp))
-                        Text(if (route == "alerts") s.alertsTitle else s.tagline, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Image(painterResource(R.drawable.ic_brand), null, modifier = Modifier.size(28.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text("Sarkari", fontWeight = FontWeight.ExtraBold)
+                        Text(" Radar", color = Brand.Saffron, fontWeight = FontWeight.ExtraBold)
+                        if (route == "alerts") {
+                            Spacer(Modifier.width(10.dp))
+                            Text(s.alertsTitle, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        }
                     }
                 },
-                navigationIcon = { if (!top) IconButton(onClick = { if (!nav.popBackStack()) nav.navigate("jobs") }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, null) } },
-                actions = { if (route == "jobs" || route == "updates") IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, null) } },
+                navigationIcon = { if (!top) IconButton(onClick = { if (!nav.popBackStack()) nav.navigate("jobs") }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, if (settings.hindi) "वापस" else "Back") } },
+                actions = { if (route == "jobs" || route == "updates") IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, if (settings.hindi) "रीफ़्रेश" else "Refresh") } },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
             )
         },
@@ -205,7 +212,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     ) { pad ->
         NavHost(nav, startDestination = "jobs", modifier = Modifier.padding(pad)) {
             composable("jobs") { JobsScreen(vm, s) { nav.navigate("job/$it") } }
-            composable("updates") { UpdatesScreen(vm, s) { nav.navigate("update/$it") } }
+            composable("updates") { UpdatesScreen(vm, s, onOpen = { nav.navigate("update/$it") }, onOpenJob = { nav.navigate("job/$it") }) }
             composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
             composable("alerts") { AlertsScreen(vm, s) }
             composable("job/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {

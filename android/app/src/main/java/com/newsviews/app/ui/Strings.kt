@@ -28,6 +28,7 @@ data class Strings(
     val ctaApply: String, val ctaForm: String, val ctaWalkin: String, val ctaNotice: String, val ctaWebsite: String,
     val hintForm: String, val hintWalkin: String, val hintWebsite: String,
     val ctaPage: String, val ctaEmail: String, val hintPage: String, val hintEmail: String, val ctaCareers: String, val hintCareers: String,
+    val upcoming: String, val examLabel: String, val today: String, val tomorrow: String, val noUpcoming: String, val values: List<String>,
     val disclaimer: String,
 ) {
     companion object {
@@ -46,8 +47,8 @@ data class Strings(
             myStates = "My states", myStatesHint = "All-India jobs always come through. Leave empty for every state.", myQual = "My highest qualification",
             resultsAlerts = "Results & admit cards", resultsHint = "Major exams only (SSC, Railway, banks, state PSCs, police…)", reminders = "Last-date reminders", remindersHint = "For saved jobs: 2 days before and on the last day.", language = "Language",
             alertsNeedSetup = "Instant alerts are being switched on — reminders for saved jobs already work.", permissionNeeded = "Notifications are blocked for this app.", allow = "Allow",
-            about = "About", rate = "Rate the app", shareApp = "Share the app", privacy = "Privacy policy", shareText = "Govt job alerts for your state and qualification — News-Views",
-            welcome = "Welcome to News-Views", welcomeHint = "Pick your state and qualification and we'll alert you about matching government jobs.", continueBtn = "Continue", skip = "Skip", chooseState = "Choose states",
+            about = "About", rate = "Rate the app", shareApp = "Share the app", privacy = "Privacy policy", shareText = "Sarkari Radar — govt job alerts for your state and qualification",
+            welcome = "Welcome to Sarkari Radar", welcomeHint = "Pick your state and qualification and we'll alert you about matching government jobs.", continueBtn = "Continue", skip = "Skip", chooseState = "Choose states",
             ad = "Advertisement", adPrivacy = "Ad privacy choices",
             following = "Following", follow = { "Follow $it" }, followingOrg = "Following", followHint = "Every new job, admit card and result from these departments reaches you, whatever your other alert settings.",
             noFollows = "Tap “Follow” on any job or result page to get everything from that department (SSC, RRB, UPSC…).",
@@ -64,8 +65,10 @@ data class Strings(
             hintPage = "Opens this recruitment’s page on the official site — the notice and application details are there.",
             hintEmail = "Apply by email: the address, format and documents are given in the notice.",
             ctaCareers = "Official recruitment page", hintCareers = "Opens the organisation’s Recruitment / Careers page, where this notice and its application link are listed.",
+            upcoming = "Upcoming dates", examLabel = "Exam", today = "Today", tomorrow = "Tomorrow", noUpcoming = "No upcoming exam or result dates right now.",
+            values = listOf("Alerts only for jobs that fit your state and qualification", "Reminders before the last date of jobs you save", "The official notice and website linked on every job"),
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
-            disclaimer = "News-Views is an independent publisher. It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
+            disclaimer = "Sarkari Radar is an independent app by News-Views (news-views.in). It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
         )
         val HI = Strings(
             jobs = "नौकरियाँ", results = "रिजल्ट", saved = "सेव", alerts = "अलर्ट",
@@ -82,8 +85,8 @@ data class Strings(
             myStates = "मेरे राज्य", myStatesHint = "अखिल भारतीय नौकरियाँ हमेशा आएँगी। सभी राज्यों के लिए खाली छोड़ें।", myQual = "मेरी उच्चतम योग्यता",
             resultsAlerts = "रिजल्ट और प्रवेश पत्र", resultsHint = "केवल बड़ी परीक्षाएँ (SSC, रेलवे, बैंक, राज्य PSC, पुलिस…)", reminders = "अंतिम तिथि रिमाइंडर", remindersHint = "सेव नौकरियों के लिए: 2 दिन पहले और अंतिम दिन।", language = "भाषा",
             alertsNeedSetup = "तुरंत अलर्ट जल्द शुरू होंगे — सेव नौकरियों के रिमाइंडर अभी से काम करते हैं।", permissionNeeded = "इस ऐप के नोटिफ़िकेशन बंद हैं।", allow = "अनुमति दें",
-            about = "जानकारी", rate = "ऐप को रेट करें", shareApp = "ऐप शेयर करें", privacy = "गोपनीयता नीति", shareText = "आपके राज्य और योग्यता के सरकारी नौकरी अलर्ट — News-Views",
-            welcome = "News-Views में स्वागत है", welcomeHint = "अपना राज्य और योग्यता चुनें — मेल खाती सरकारी नौकरियों का अलर्ट मिलेगा।", continueBtn = "आगे बढ़ें", skip = "छोड़ें", chooseState = "राज्य चुनें",
+            about = "जानकारी", rate = "ऐप को रेट करें", shareApp = "ऐप शेयर करें", privacy = "गोपनीयता नीति", shareText = "सरकारी रडार — आपके राज्य और योग्यता के सरकारी नौकरी अलर्ट",
+            welcome = "सरकारी रडार में स्वागत है", welcomeHint = "अपना राज्य और योग्यता चुनें — मेल खाती सरकारी नौकरियों का अलर्ट मिलेगा।", continueBtn = "आगे बढ़ें", skip = "छोड़ें", chooseState = "राज्य चुनें",
             ad = "विज्ञापन", adPrivacy = "विज्ञापन गोपनीयता विकल्प",
             following = "फ़ॉलो किए", follow = { "$it फ़ॉलो करें" }, followingOrg = "फ़ॉलो कर रहे", followHint = "इन विभागों की हर नई भर्ती, प्रवेश पत्र और रिजल्ट की सूचना आपको मिलेगी, बाकी अलर्ट सेटिंग चाहे जो हों।",
             noFollows = "किसी भी नौकरी या रिजल्ट पेज पर “फ़ॉलो करें” दबाएँ — उस विभाग (SSC, RRB, UPSC…) की हर सूचना मिलेगी।",
@@ -100,8 +103,10 @@ data class Strings(
             hintPage = "ऑफिशियल साइट पर इस भर्ती का पेज खुलेगा — नोटिस और आवेदन की जानकारी वहीं है।",
             hintEmail = "ईमेल से आवेदन: पता, फ़ॉर्मेट और दस्तावेज़ नोटिस में दिए हैं।",
             ctaCareers = "ऑफिशियल भर्ती पेज", hintCareers = "संस्था का Recruitment / Careers पेज खुलेगा — यह नोटिस और उसका आवेदन लिंक वहीं मिलेगा।",
+            upcoming = "आगामी तिथियाँ", examLabel = "परीक्षा", today = "आज", tomorrow = "कल", noUpcoming = "अभी कोई आगामी परीक्षा या रिजल्ट तिथि नहीं।",
+            values = listOf("सिर्फ़ आपके राज्य और योग्यता की नौकरियों के अलर्ट", "सेव की गई नौकरियों की अंतिम तिथि से पहले रिमाइंडर", "हर नौकरी पर ऑफिशियल नोटिस और वेबसाइट का लिंक"),
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
-            disclaimer = "News-Views एक स्वतंत्र प्रकाशक है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
+            disclaimer = "सरकारी रडार News-Views (news-views.in) का एक स्वतंत्र ऐप है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
         )
     }
 }

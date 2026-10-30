@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- in-app logo: the launcher mark on its navy tile -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp" android:height="32dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#FF14213D" android:pathData="M24,0 H84 A24,24 0 0,1 108,24 V84 A24,24 0 0,1 84,108 H24 A24,24 0 0,1 0,84 V24 A24,24 0 0,1 24,0 Z" />
+    <path android:strokeColor="#59FFFFFF" android:strokeWidth="5" android:fillColor="#00000000"
+        android:pathData="M54,16 a38,38 0 1,1 0,76 a38,38 0 1,1 0,-76" />
+    <path android:strokeColor="#99FFFFFF" android:strokeWidth="5" android:fillColor="#00000000"
+        android:pathData="M54,31 a23,23 0 1,1 0,46 a23,23 0 1,1 0,-46" />
+    <path android:fillColor="#38FFFFFF" android:pathData="M54,54 L73,21.09 A38,38 0 0,1 92,54 Z" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="5" android:strokeLineCap="round" android:pathData="M54,54 L73,21.09" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M54,54 m-6.5,0 a6.5,6.5 0 1,0 13,0 a6.5,6.5 0 1,0 -13,0" />
+    <path android:fillColor="#FFE8772E" android:pathData="M76,38 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+</vector>

@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -43,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
+import com.newsviews.app.data.Dates
 import com.newsviews.app.data.Named
 import java.time.Duration
 import java.time.Instant
@@ -156,9 +158,30 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     }
 }
 
+/** One dated entry in the "Upcoming dates" view: an exam / admit card / result date, or a job's exam date. */
+data class CalItem(val date: String, val isJob: Boolean, val id: String, val title: String, val org: String, val label: String, val type: String)
+
+fun upcomingItems(idx: AppIndex, hindi: Boolean, s: Strings, typeName: (String) -> String): List<CalItem> {
+    val today = Dates.today().toString()
+    val ups = idx.updates.filter { it.ev >= today && it.ev.length >= 10 }
+        .map { CalItem(it.ev.take(10), false, it.id, it.short(hindi), it.o, typeName(it.ty), it.ty) }
+    val exams = idx.jobs.filter { it.x >= today && it.x.length >= 10 }
+        .map { CalItem(it.x.take(10), true, it.id, it.short(hindi), it.o, s.examLabel, "exam") }
+    return (ups + exams).sortedWith(compareBy({ it.date }, { it.isJob }))
+}
+
+@Composable
+private fun DateHeader(iso: String, s: Strings, hindi: Boolean) {
+    val d = Dates.parse(iso) ?: return
+    val diff = java.time.temporal.ChronoUnit.DAYS.between(Dates.today(), d)
+    val label = when (diff) { 0L -> s.today; 1L -> s.tomorrow; else -> d.format(java.time.format.DateTimeFormatter.ofPattern("EEE, d MMM", if (hindi) java.util.Locale.forLanguageTag("hi") else java.util.Locale.ENGLISH)) }
+    Text(label, style = MaterialTheme.typography.titleSmall, color = if (diff <= 1L) Brand.Saffron else MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(top = 10.dp, bottom = 2.dp))
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
+fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpenJob: (String) -> Unit = {}) {
     val idx by vm.index.collectAsStateWithLifecycle()
     val loading by vm.loading.collectAsStateWithLifecycle()
     val error by vm.error.collectAsStateWithLifecycle()
@@ -172,13 +195,17 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
 
     Column(Modifier.fillMaxSize()) {
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            item { FilterChip(selected = f.updateType.isEmpty(), onClick = { vm.setFilters(f.copy(updateType = "")) }, label = { Text(s.allTypes) }) }
+            item { FilterChip(selected = f.updateType.isEmpty() && !f.upcoming, onClick = { vm.setFilters(f.copy(updateType = "", upcoming = false)) }, label = { Text(s.allTypes) }) }
+            item {
+                FilterChip(selected = f.upcoming, onClick = { vm.setFilters(f.copy(upcoming = !f.upcoming, updateType = "")) },
+                    label = { Text(s.upcoming) }, leadingIcon = { Icon(Icons.Filled.Event, null) })
+            }
             if (settings.follows.isNotEmpty()) item {
                 FilterChip(selected = f.updateFollowing, onClick = { vm.setFilters(f.copy(updateFollowing = !f.updateFollowing)) },
                     label = { Text(s.following) }, leadingIcon = { Icon(Icons.Filled.Star, null) })
             }
             items(idx?.types ?: Builtin.types) { t ->
-                FilterChip(selected = f.updateType == t.slug, onClick = { vm.setFilters(f.copy(updateType = t.slug)) },
+                FilterChip(selected = f.updateType == t.slug && !f.upcoming, onClick = { vm.setFilters(f.copy(updateType = t.slug, upcoming = false)) },
                     label = { Text(if (hindi) TYPE_HI[t.slug] ?: t.name else t.name) })
             }
         }
@@ -187,6 +214,17 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
             when {
                 idx == null && loading -> Centered(s.loading)
                 idx == null -> Centered(s.couldNotLoad, s.retry) { vm.refresh() }
+                f.upcoming -> {
+                    val cal = remember(idx, hindi) { idx?.let { upcomingItems(it, hindi, s, typeName) } ?: emptyList() }
+                    if (cal.isEmpty()) Centered(s.noUpcoming)
+                    else LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 0.dp, bottom = 24.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxSize()) {
+                        cal.forEachIndexed { i, c ->
+                            if (i == 0 || cal[i - 1].date != c.date) item(key = "h-${c.date}") { DateHeader(c.date, s, hindi) }
+                            item(key = "${if (c.isJob) "j" else "u"}-${c.id}") { CalRow(c) { if (c.isJob) onOpenJob(c.id) else onOpen(c.id) } }
+                        }
+                    }
+                }
                 else -> LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
                     items(list, key = { it.id }) { u -> UpdateRow(u, hindi, typeName(u.ty)) { onOpen(u.id) } }

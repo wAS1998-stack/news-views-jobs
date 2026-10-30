@@ -18,6 +18,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -219,8 +222,19 @@ fun Onboarding(vm: MainViewModel, s: Strings) {
     val st by vm.settings.collectAsStateWithLifecycle()
     val askPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { vm.finishOnboarding() }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp)) {
-        Text(s.welcome, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+        androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(com.newsviews.app.R.drawable.ic_brand), null,
+            modifier = Modifier.padding(top = 8.dp, bottom = 14.dp).size(64.dp))
+        Text(s.welcome, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
         Text(s.welcomeHint, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
+        Column(Modifier.padding(top = 14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            s.values.forEach { v ->
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(androidx.compose.material.icons.Icons.Filled.CheckCircle, null, tint = Brand.Green, modifier = Modifier.size(20.dp))
+                    Spacer(Modifier.width(10.dp))
+                    Text(v, style = MaterialTheme.typography.bodyMedium)
+                }
+            }
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(top = 14.dp)) {
             ChoiceChip("English", !st.hindi) { vm.setHindi(false) }
             ChoiceChip("हिंदी", st.hindi) { vm.setHindi(true) }

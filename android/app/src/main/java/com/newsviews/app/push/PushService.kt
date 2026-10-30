@@ -26,6 +26,6 @@ class PushService : FirebaseMessagingService() {
         val kind = message.data["kind"] ?: "job"
         val id = message.data["id"] ?: return
         val channel = if (kind == "update") Alerts.CH_RESULTS else Alerts.CH_JOBS
-        Alerts.show(applicationContext, channel, "$kind-$id", n.title ?: "News-Views", n.body ?: "", kind, id)
+        Alerts.show(applicationContext, channel, "$kind-$id", n.title ?: "Sarkari Radar", n.body ?: "", kind, id)
     }
 }
