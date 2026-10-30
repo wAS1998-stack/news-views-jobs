@@ -147,7 +147,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         Group {
             var dobDialog by remember { mutableStateOf(false) }
             if (dobDialog) DobDialog(s, st.dob, onDismiss = { dobDialog = false }) { vm.setDob(it); dobDialog = false }
-            Text(s.eligibility, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
+            Text(s.ageCategory, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             TextButton(onClick = { dobDialog = true }) {
                 Text(if (st.dob.isBlank()) s.setDob else "${s.dob}: ${Dates.pretty(st.dob)}" + (st.age()?.let { " ($it)" } ?: ""))
             }
