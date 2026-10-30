@@ -13,6 +13,7 @@ import com.newsviews.app.data.Status
 import com.newsviews.app.data.status
 import com.newsviews.app.push.Alerts
 import com.newsviews.app.work.Reminders
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -42,19 +43,34 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     init { refresh() }
 
+    private var lastOk = 0L
+
+    /** Downloads the feed; retries a few times (a phone that has just woken up often has no network yet). */
     fun refresh() {
         if (_loading.value) return
         viewModelScope.launch {
             _loading.value = true
             try {
-                _index.value = repo.fetchIndex()
-                _error.value = false
-            } catch (e: Exception) {
-                _error.value = true
+                for (attempt in 0 until 3) {
+                    try {
+                        _index.value = repo.fetchIndex()
+                        _error.value = false
+                        lastOk = System.currentTimeMillis()
+                        break
+                    } catch (e: Exception) {
+                        _error.value = true
+                        if (attempt < 2) delay(if (attempt == 0) 2000L else 5000L)
+                    }
+                }
             } finally {
                 _loading.value = false
             }
         }
+    }
+
+    /** Coming back to the app: refresh if the data is more than 10 minutes old or the last try failed. */
+    fun refreshIfStale() {
+        if (_error.value || System.currentTimeMillis() - lastOk > 10 * 60 * 1000) refresh()
     }
 
     fun setFilters(f: Filters) { _filters.value = f }

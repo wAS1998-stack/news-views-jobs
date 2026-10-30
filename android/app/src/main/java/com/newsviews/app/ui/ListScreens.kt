@@ -41,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.data.AppIndex
+import com.newsviews.app.data.Builtin
 import com.newsviews.app.data.Named
 import java.time.Duration
 import java.time.Instant
@@ -108,13 +109,13 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
         )
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
-                val st = idx?.states?.firstOrNull { it.slug == f.state }
-                Dropdown(if (st == null) s.allStates else if (hindi) STATE_HI[st.slug] ?: st.name else st.name, st != null, idx?.states ?: emptyList(),
+                val st = (idx?.states ?: Builtin.states).firstOrNull { it.slug == f.state }
+                Dropdown(if (st == null) s.allStates else if (hindi) STATE_HI[st.slug] ?: st.name else st.name, st != null, idx?.states ?: Builtin.states,
                     { vm.setFilters(f.copy(state = it)) }, s.allStates, STATE_HI, hindi)
             }
             item {
-                val q = idx?.quals?.firstOrNull { it.slug == f.qual }
-                Dropdown(if (q == null) s.allQuals else if (hindi) QUAL_HI[q.slug] ?: q.name else q.name, q != null, idx?.quals ?: emptyList(),
+                val q = (idx?.quals ?: Builtin.quals).firstOrNull { it.slug == f.qual }
+                Dropdown(if (q == null) s.allQuals else if (hindi) QUAL_HI[q.slug] ?: q.name else q.name, q != null, idx?.quals ?: Builtin.quals,
                     { vm.setFilters(f.copy(qual = it)) }, s.allQuals, QUAL_HI, hindi)
             }
             item { FilterChip(selected = f.closingSoon, onClick = { vm.setFilters(f.copy(closingSoon = !f.closingSoon)) }, label = { Text(s.closingSoon) }) }
@@ -150,7 +151,7 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     Column(Modifier.fillMaxSize()) {
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { FilterChip(selected = f.updateType.isEmpty(), onClick = { vm.setFilters(f.copy(updateType = "")) }, label = { Text(s.allTypes) }) }
-            items(idx?.types ?: emptyList()) { t ->
+            items(idx?.types ?: Builtin.types) { t ->
                 FilterChip(selected = f.updateType == t.slug, onClick = { vm.setFilters(f.copy(updateType = t.slug)) },
                     label = { Text(if (hindi) TYPE_HI[t.slug] ?: t.name else t.name) })
             }

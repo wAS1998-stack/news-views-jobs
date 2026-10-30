@@ -1,5 +1,7 @@
 package com.newsviews.app.ui
 
+fun num(d: Double): String = if (d % 1.0 == 0.0) d.toInt().toString() else d.toString()
+
 /** All UI text in English and Hindi; the language switch in Alerts changes the UI and the job titles together. */
 data class Strings(
     val jobs: String, val results: String, val saved: String, val alerts: String,
@@ -17,7 +19,7 @@ data class Strings(
     val alertsNeedSetup: String, val permissionNeeded: String, val allow: String,
     val about: String, val rate: String, val shareApp: String, val privacy: String, val shareText: String,
     val welcome: String, val welcomeHint: String, val continueBtn: String, val skip: String, val chooseState: String,
-    val ageRange: (Int, Int) -> String,
+    val ageRange: (Double, Double) -> String,
 ) {
     companion object {
         val EN = Strings(
@@ -37,7 +39,7 @@ data class Strings(
             alertsNeedSetup = "Instant alerts are being switched on — reminders for saved jobs already work.", permissionNeeded = "Notifications are blocked for this app.", allow = "Allow",
             about = "About", rate = "Rate the app", shareApp = "Share the app", privacy = "Privacy policy", shareText = "Govt job alerts for your state and qualification — News-Views",
             welcome = "Welcome to News-Views", welcomeHint = "Pick your state and qualification and we'll alert you about matching government jobs.", continueBtn = "Continue", skip = "Skip", chooseState = "Choose states",
-            ageRange = { a, b -> if (a > 0 && b > 0) "$a–$b years" else if (b > 0) "Up to $b years" else "" },
+            ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
         )
         val HI = Strings(
             jobs = "नौकरियाँ", results = "रिजल्ट", saved = "सेव", alerts = "अलर्ट",
@@ -56,7 +58,7 @@ data class Strings(
             alertsNeedSetup = "तुरंत अलर्ट जल्द शुरू होंगे — सेव नौकरियों के रिमाइंडर अभी से काम करते हैं।", permissionNeeded = "इस ऐप के नोटिफ़िकेशन बंद हैं।", allow = "अनुमति दें",
             about = "जानकारी", rate = "ऐप को रेट करें", shareApp = "ऐप शेयर करें", privacy = "गोपनीयता नीति", shareText = "आपके राज्य और योग्यता के सरकारी नौकरी अलर्ट — News-Views",
             welcome = "News-Views में स्वागत है", welcomeHint = "अपना राज्य और योग्यता चुनें — मेल खाती सरकारी नौकरियों का अलर्ट मिलेगा।", continueBtn = "आगे बढ़ें", skip = "छोड़ें", chooseState = "राज्य चुनें",
-            ageRange = { a, b -> if (a > 0 && b > 0) "$a–$b वर्ष" else if (b > 0) "$b वर्ष तक" else "" },
+            ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
         )
     }
 }

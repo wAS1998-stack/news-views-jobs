@@ -1674,7 +1674,7 @@ function appUpdatesInFeed(updates) {
 function buildAppIndex(jobs, updates) {
   const J = appJobsInFeed(jobs).map((j) => ({
     id: j.id, t: j.title, th: (j.hi && j.hi.title) || "", o: orgKey(j) || "", p: j.post_name || "",
-    v: Number(j.total_vacancies) || 0, q: qualsOf(j).map((x) => x.slug), s: appStates(j),
+    v: Math.round(Number(j.total_vacancies)) || 0, q: qualsOf(j).map((x) => x.slug), s: appStates(j),
     a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
     pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
   }));
@@ -1694,7 +1694,7 @@ function appJobDetail(j) {
   const h = j.hi || {};
   return JSON.stringify({
     id: j.id, url: `${SITE.url}/jobs/${j.id}/`, title: j.title, organization: j.organization || "", org_short: orgKey(j) || "",
-    post_name: j.post_name || "", total_vacancies: Number(j.total_vacancies) || 0, qualification: j.qualification ? String(j.qualification) : "",
+    post_name: j.post_name || "", total_vacancies: Math.round(Number(j.total_vacancies)) || 0, qualification: j.qualification ? String(j.qualification) : "",
     quals: levelsOf(j), states: statesOf(j).map((x) => x.name), age_min: Number(j.age_min) || 0, age_max: Number(j.age_max) || 0,
     salary: j.salary ? String(j.salary) : "", fee: j.fee ? (typeof j.fee === "string" ? j.fee : JSON.stringify(j.fee)) : "",
     application_start: appDay(j.application_start), application_end: appDay(j.application_end), exam_date: appDay(j.exam_date),

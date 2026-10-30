@@ -76,6 +76,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         vm.syncAlerts()
+        vm.refreshIfStale()
     }
 
     private fun handle(intent: Intent?) {
@@ -83,6 +84,7 @@ class MainActivity : ComponentActivity() {
         // test hooks for the automated screenshots (debug builds only)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("skip_onboarding", false)) vm.finishOnboarding()
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
+        if (BuildConfig.DEBUG && intent.hasExtra("tab")) { pending.value = "tab" to (intent.getStringExtra("tab") ?: "jobs"); return }
         val kind = intent.getStringExtra("kind")
         val id = intent.getStringExtra("id")
         if (kind != null && id != null) { pending.value = kind to id; return }
@@ -117,7 +119,8 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
 
     LaunchedEffect(open) {
         val p = open ?: return@LaunchedEffect
-        nav.navigate(if (p.first == "update") "update/${p.second}" else "job/${p.second}") { launchSingleTop = true }
+        if (p.first == "tab") go(nav, p.second)
+        else nav.navigate(if (p.first == "update") "update/${p.second}" else "job/${p.second}") { launchSingleTop = true }
         pending.value = null
     }
 

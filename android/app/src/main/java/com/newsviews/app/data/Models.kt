@@ -22,8 +22,8 @@ data class JobItem(
     val v: Int = 0,
     val q: List<String> = emptyList(),
     val s: List<String> = emptyList(),
-    val a0: Int = 0,
-    val a1: Int = 0,
+    val a0: Double = 0.0,
+    val a1: Double = 0.0,
     val st: String = "",
     val en: String = "",
     val pub: String = "",
@@ -86,8 +86,8 @@ data class JobDetail(
     val qualification: String = "",
     val quals: List<String> = emptyList(),
     val states: List<String> = emptyList(),
-    val age_min: Int = 0,
-    val age_max: Int = 0,
+    val age_min: Double = 0.0,
+    val age_max: Double = 0.0,
     val salary: String = "",
     val fee: String = "",
     val application_start: String = "",
@@ -138,6 +138,20 @@ data class UpdateDetail(
     val link: String = "",
     val hi: UpdateHi? = null,
 )
+
+/* Filter lists built into the app, so the welcome screen works before the first download. */
+object Builtin {
+    val states = listOf(
+        "all-india" to "All India / Central", "andhra-pradesh" to "Andhra Pradesh", "arunachal-pradesh" to "Arunachal Pradesh", "assam" to "Assam",
+        "bihar" to "Bihar", "chhattisgarh" to "Chhattisgarh", "delhi" to "Delhi (NCR)", "goa" to "Goa", "gujarat" to "Gujarat", "haryana" to "Haryana",
+        "himachal-pradesh" to "Himachal Pradesh", "jharkhand" to "Jharkhand", "karnataka" to "Karnataka", "kerala" to "Kerala", "madhya-pradesh" to "Madhya Pradesh",
+        "maharashtra" to "Maharashtra", "manipur" to "Manipur", "meghalaya" to "Meghalaya", "mizoram" to "Mizoram", "nagaland" to "Nagaland", "odisha" to "Odisha",
+        "punjab" to "Punjab", "rajasthan" to "Rajasthan", "sikkim" to "Sikkim", "tamil-nadu" to "Tamil Nadu", "telangana" to "Telangana", "tripura" to "Tripura",
+        "uttar-pradesh" to "Uttar Pradesh", "uttarakhand" to "Uttarakhand", "west-bengal" to "West Bengal", "jammu-kashmir" to "Jammu & Kashmir", "gulf" to "Gulf / abroad",
+    ).map { Named(it.first, it.second) }
+    val quals = listOf("10th-pass" to "10th Pass", "12th-pass" to "12th Pass", "graduate" to "Graduate", "engineering-diploma" to "Engineering / Diploma", "post-graduate" to "Post Graduate").map { Named(it.first, it.second) }
+    val types = listOf("result" to "Results", "admit-card" to "Admit Cards", "answer-key" to "Answer Keys", "exam-date" to "Exam Dates").map { Named(it.first, it.second) }
+}
 
 /* ---- dates: every deadline is an Indian date ---- */
 object Dates {

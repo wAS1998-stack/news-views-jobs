@@ -68,7 +68,7 @@ private fun Group(content: @Composable () -> Unit) {
 @Composable
 fun StatePicker(vm: MainViewModel, hindi: Boolean, selected: Set<String>, allLabel: String) {
     val idx by vm.index.collectAsStateWithLifecycle()
-    val states = (idx?.states ?: emptyList()).filter { it.slug != "all-india" }
+    val states = (idx?.states ?: com.newsviews.app.data.Builtin.states).filter { it.slug != "all-india" }
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         ChoiceChip(allLabel, selected.isEmpty()) { vm.clearStates() }
         states.forEach { st -> ChoiceChip(if (hindi) STATE_HI[st.slug] ?: st.name else st.name, st.slug in selected) { vm.toggleState(st.slug) } }
