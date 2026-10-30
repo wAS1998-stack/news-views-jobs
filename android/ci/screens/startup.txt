@@ -1,0 +1,2 @@
+TotalTime: 4021 WaitTime: 4034 
+TotalTime: 3141 WaitTime: 3153 
