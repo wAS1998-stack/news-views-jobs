@@ -34,7 +34,7 @@ val mediationAdapters = mapOf(
     "inmobi" to "com.google.ads.mediation:inmobi:11.5.0.0",
     "liftoff" to "com.google.ads.mediation:vungle:7.7.9.0",        // Liftoff Monetize (Vungle)
     "unity" to "com.google.ads.mediation:unity:4.21.0.0",          // Unity Ads
-    "mintegral" to "com.google.ads.mediation:mintegral:17.1.91.0",
+    "mintegral" to "com.google.ads.mediation:mintegral:17.1.81.1",
     "ironsource" to "com.google.ads.mediation:ironsource:9.7.0.0",
     "dtexchange" to "com.google.ads.mediation:fyber:8.5.0.0",      // Digital Turbine DT Exchange
     "moloco" to "com.google.ads.mediation:moloco:4.13.0.0",
