@@ -120,12 +120,15 @@ async function aiConfirm(job, list) {
     `${job.post_name ? `, post: ${job.post_name}` : ""}. Below are links found in its official notice or on the official website, each with the text around it.\n` +
     list.map((c, i) => `${i + 1}. ${c.url}\n   text: ${(c.context || c.text || "").slice(0, 240)}`).join("\n") +
     `\n\nWhich ONE link is where candidates apply for THIS recruitment (its online application form, registration or recruitment portal), or the official page for THIS specific recruitment? ` +
-    `Not an admissions, exam, result, journal or general page, and not a different recruitment. Answer with only the number, or 0 if none clearly is.`;
-  const ans = String(await L.askAI(prompt, { maxTokens: 10 }).catch(() => "") || "").trim();
-  const n = Number((ans.match(/\d+/) || [])[0]);
+    `Not an admissions, exam, result, journal or general page, and not a different recruitment. ` +
+    `Reply with JSON only: {"pick": <the number>} or {"pick": 0} if none clearly is.`;
+  const ans = await L.askAI(prompt, { maxTokens: 30 }).catch(() => "");
+  const obj = L.parseJson(ans) || {};
+  const n = Number(obj.pick ?? (String(ans || "").match(/\d+/) || [])[0]);
   return n >= 1 && n <= list.length ? list[n - 1] : null;
 }
 
+const STATS = { cands: 0, passed: 0, jobsWithCands: 0 };
 async function findFor(job) {
   const orgHosts = [job.official_website, job.apply_link, job.official_notification].map(L.hostOf).filter((h) => h && !CDN_HOST.test(h));
   const ties = tiesOf(job);
@@ -167,6 +170,7 @@ async function findFor(job) {
     if (c.from === "notice") return APPLY_CONTEXT.test(c.context || "") || tied(c.context, ties);
     return tied(c.text, ties);
   });
+  STATS.cands += cands.length; STATS.passed += ok.length; if (ok.length) STATS.jobsWithCands++;
   if (!ok.length) return null;
   let pick;
   if (L.AI) pick = await aiConfirm(job, ok.slice(0, 6));
@@ -206,7 +210,8 @@ async function main() {
   if (checked) fs.writeFileSync(FILE, JSON.stringify(jobs, null, 2) + "\n");
   console.log(`apply-links: checked ${checked}, found ${found} real application pages (${todo.length} due, pdf reader ${pdfParse ? "on" : "off"})`);
   for (const l of log) console.log("  " + l);
-  L.logRun("apply", { ok: true, checked, found, due: todo.length, log: log.slice(0, 30) });
+  console.log(`  candidates seen ${STATS.cands}, passed the rules ${STATS.passed} (in ${STATS.jobsWithCands} jobs)`);
+  L.logRun("apply", { ok: true, checked, found, due: todo.length, ...STATS, log: log.slice(0, 30) });
 }
 if (require.main === module) main().catch((e) => console.log("apply-links error (non-fatal): " + e.message));
 module.exports = { urlsInText, related, baseOf, findFor, tiesOf, tied, WRONG_KIND };
