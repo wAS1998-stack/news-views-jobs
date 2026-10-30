@@ -911,3 +911,8 @@ h1, h2, h3, .lede { overflow-wrap: break-word; }
 .cookiebar p { font-size: 13px; line-height: 1.4; }
 .cookie-ok { padding: 7px 14px; font-size: 13px; }
 @media (max-width: 520px) { .cookiebar { flex-direction: row; align-items: center; } }
+
+/* update rows: a long body name in the meta line can't push the page wider than the phone */
+.update { grid-template-columns: auto minmax(0, 1fr) auto; }
+.upd-meta { overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+@media (max-width: 560px) { .update { grid-template-columns: auto minmax(0, 1fr); } }
