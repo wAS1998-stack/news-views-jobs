@@ -531,6 +531,7 @@ function applyInfo(job = {}) {
   if (ak === "portal" || (ak === "deep" && isApplyUrl(apply))) return { cta: "apply", url: apply, mode, applyKind: ak };
   if (ak === "deep") return { cta: "page", url: apply, mode, applyKind: ak };
   if (notice && (ak === "pdf" || ak === "none" || mode !== "online")) return { cta: "notice", url: notice, mode, applyKind: ak };
+  if (job.careers_link) return { cta: "careers", url: job.careers_link, mode, applyKind: ak };
   const home = (ak === "home" ? apply : "") || site || (nk === "deep" ? notif : "");
   if (home) return { cta: "website", url: home, mode, applyKind: ak };
   if (notice) return { cta: "notice", url: notice, mode, applyKind: ak };

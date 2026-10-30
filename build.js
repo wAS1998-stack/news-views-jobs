@@ -1525,6 +1525,7 @@ const CTA_TEXT = {
   en: { apply: "Apply online", page: "Recruitment page", form: "Download notice &amp; form", walkin: "Walk-in notice", email: "Notice (apply by email)", notice: "Read official notification", website: "Official website",
     hintPage: "Opens this recruitment’s page on the official site — the notice and application details are there.",
     hintEmail: "Apply by email: the address, format and documents are given in the notice.",
+    careers: "Official recruitment page", hintCareers: "Opens the organisation’s official Recruitment / Careers page, where this notice and its application link are listed.",
     hintApply: "Opens the official application page.",
     hintForm: "Offline application: download the notice and form, fill it in and send it as the notice says.",
     hintWalkin: "Walk-in interview: go to the venue on the date in the notice, with the documents it lists.",
@@ -1534,6 +1535,7 @@ const CTA_TEXT = {
   hi: { apply: "ऑनलाइन आवेदन करें", page: "भर्ती पेज", form: "नोटिस और फ़ॉर्म डाउनलोड करें", walkin: "वॉक-इन नोटिस", email: "नोटिस (ईमेल से आवेदन)", notice: "ऑफिशियल नोटिफिकेशन पढ़ें", website: "ऑफिशियल वेबसाइट",
     hintPage: "ऑफिशियल साइट पर इस भर्ती का पेज खुलेगा — नोटिस और आवेदन की जानकारी वहीं है।",
     hintEmail: "ईमेल से आवेदन: पता, फ़ॉर्मेट और दस्तावेज़ नोटिस में दिए हैं।",
+    careers: "ऑफिशियल भर्ती पेज", hintCareers: "संस्था का ऑफिशियल Recruitment / Careers पेज खुलेगा — यह नोटिस और उसका आवेदन लिंक वहीं मिलेगा।",
     hintApply: "ऑफिशियल आवेदन पेज खुलेगा।",
     hintForm: "ऑफलाइन आवेदन: नोटिस और फ़ॉर्म डाउनलोड करें, भरें और नोटिस में दिए तरीके से भेजें।",
     hintWalkin: "वॉक-इन इंटरव्यू: नोटिस में दी गई तारीख पर, बताए गए दस्तावेज़ों के साथ पहुँचें।",
@@ -1557,7 +1559,7 @@ function ctaHtml(job, lang = "en", { hint = true } = {}) {
   const same = (u) => u && c.url && u.replace(/\/+$/, "") === c.url.replace(/\/+$/, "");
   const notif = job.official_notification && !same(job.official_notification) ? `<a class="btn btn-ghost" href="${esc(job.official_notification)}" ${ext}>${T.notif}</a>` : "";
   const site = job.official_website && c.cta !== "website" && hostOf(job.official_website) !== hostOf(c.url) ? `<a class="btn btn-ghost" href="${esc(job.official_website)}" ${ext}>${T.site}</a>` : "";
-  const hintText = { apply: T.hintApply, page: T.hintPage, form: T.hintForm, walkin: T.hintWalkin, email: T.hintEmail, notice: T.hintNotice, website: T.hintWebsite }[c.cta];
+  const hintText = { apply: T.hintApply, page: T.hintPage, form: T.hintForm, walkin: T.hintWalkin, email: T.hintEmail, careers: T.hintCareers, notice: T.hintNotice, website: T.hintWebsite }[c.cta];
   return `<div class="cta-row"><a class="btn btn-primary btn-cta" href="${esc(c.url)}" ${ext}>${T[c.cta]} &#8599;</a>${notif}${site}</div>${hint && hintText ? `<p class="cta-hint">${hintText}</p>` : ""}`;
 }
 function keyFacts(job, lang = "en") {

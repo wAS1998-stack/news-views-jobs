@@ -113,6 +113,9 @@ function tied(text, t) {
 }
 const WRONG_KIND = /admission|student|\bstd\b|std[-_]|exam(?!ination)|result|journal|tender|alumni|hostel|syllabus|scholarship|fee[-_ ]?pay|convocation|library|press[-_ ]?release|newsletter|eligibility[-_ ]status|shortlist|interview[-_ ]schedule|answer[-_ ]key|admit/i;
 const APPLY_CONTEXT = /apply|application|register|registration|online|submit|website|portal|link/i;
+// the menu link to the organisation's list of current recruitments: exact, short link text and a matching address
+const CAREERS_TEXT = /^\s*(recruitments?|careers?|vacanc(y|ies)|jobs?|job opportunities|current (openings|vacancies)|employment( notices?)?|work with us|join us|recruitment (notices?|cell)|advertisements?|भर्ती|रिक्तियाँ)\s*$/i;
+const CAREERS_PATH = /recruit|career|vacanc|job|employment|advertis|opportunit/i;
 
 async function aiConfirm(job, list) {
   if (!L.AI || !list.length) return null;
@@ -147,14 +150,20 @@ async function findFor(job) {
       for (const a of n.links) cands.push({ ...a, context: a.text, from: "notice" });
     }
   }
-  // 2. homepage links whose text names this post / advertisement
+  // 2. homepage links whose text names this post / advertisement — and the site's own "Recruitment / Careers" page
   const home = L.linkKind(job.apply_link, job) === "home" ? job.apply_link : job.official_website;
+  let careers = null;
   if (home) {
     const r = await getBuf(home, 20000);
     if (r && r.buf && !/pdf/i.test(r.type)) {
-      for (const a of anchors(r.buf.toString("utf8"), r.url)) if (RECRUIT_WORDS.test(`${a.text} ${a.url}`) && tied(a.text, ties)) cands.push({ ...a, context: a.text, from: "site" });
+      for (const a of anchors(r.buf.toString("utf8"), r.url)) {
+        if (RECRUIT_WORDS.test(`${a.text} ${a.url}`) && tied(a.text, ties)) cands.push({ ...a, context: a.text, from: "site" });
+        if (!careers && CAREERS_TEXT.test(a.text) && CAREERS_PATH.test(decodeURIComponent(a.url)) && !WRONG_KIND.test(decodeURIComponent(a.url))
+          && L.linkKind(a.url, job) === "deep" && related(L.hostOf(a.url), job, orgHosts)) careers = a.url;
+      }
     }
   }
+  if (careers && (await alive(careers)) !== false) job.careers_link = careers;
   const cur = String(job.apply_link || "").replace(/\/+$/, "").toLowerCase();
   const seen = new Set();
   const ok = cands.filter((c) => {
@@ -185,11 +194,11 @@ async function main() {
   let jobs; try { jobs = JSON.parse(fs.readFileSync(FILE, "utf8")); } catch { console.log("apply-links: no jobs.json"); return; }
   const open = (j) => !j.application_end || j.application_end >= TODAY;
   const due = (j) => !j.apply_checked || (j.apply_tries || 0) < 3 && (Date.parse(TODAY) - Date.parse(j.apply_checked)) >= 7 * 86400000;
-  const todo = jobs.filter((j) => open(j) && L.applyInfo(j).cta === "website" && due(j))
+  const todo = jobs.filter((j) => open(j) && ["website", "careers"].includes(L.applyInfo(j).cta) && due(j))
     .sort((a, b) => String(a.apply_checked || "").localeCompare(String(b.apply_checked || "")) || String(b.published || "").localeCompare(String(a.published || "")))
     .slice(0, MAX);
   const t0 = Date.now();
-  let found = 0, checked = 0;
+  let found = 0, checked = 0, careers0 = jobs.filter((j) => j.careers_link).length;
   const log = [];
   for (const job of todo) {
     if (Date.now() - t0 > BUDGET_MS) break;
@@ -210,7 +219,8 @@ async function main() {
   if (checked) fs.writeFileSync(FILE, JSON.stringify(jobs, null, 2) + "\n");
   console.log(`apply-links: checked ${checked}, found ${found} real application pages (${todo.length} due, pdf reader ${pdfParse ? "on" : "off"})`);
   for (const l of log) console.log("  " + l);
-  console.log(`  candidates seen ${STATS.cands}, passed the rules ${STATS.passed} (in ${STATS.jobsWithCands} jobs)`);
+  console.log(`  candidates seen ${STATS.cands}, passed the rules ${STATS.passed} (in ${STATS.jobsWithCands} jobs); recruitment pages found: ${jobs.filter((j) => j.careers_link).length - careers0}`);
+  STATS.careers = jobs.filter((j) => j.careers_link).length - careers0;
   L.logRun("apply", { ok: true, checked, found, due: todo.length, ...STATS, log: log.slice(0, 30) });
 }
 if (require.main === module) main().catch((e) => console.log("apply-links error (non-fatal): " + e.message));
