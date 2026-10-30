@@ -78,7 +78,9 @@ jobs:
             ls -l android/app/build/outputs/apk/*/*.apk android/app/build/outputs/bundle/*/*.aab 2>/dev/null >> android/ci/last-build.txt || true
           else
             echo "FAILED build ${{ github.run_number }} ${GITHUB_SHA::7} $(date -u +%FT%TZ)" > android/ci/last-build.txt
-            grep -E "^e: |error:|What went wrong|Could not|FAILURE|> [A-Z]|Unresolved|not found|Exception" "$RUNNER_TEMP/build.log" | head -120 >> android/ci/last-build.txt || true
+            grep -E "^e: |[Ee]rror:|What went wrong|Could not|FAILURE|> [A-Z]|Unresolved|not found|Exception|Missing class|\[[A-Za-z]+\]$" "$RUNNER_TEMP/build.log" | grep -vE "^\s+at " | head -120 >> android/ci/last-build.txt || true
+            # lint's own report names every fatal issue (release builds run "lint vital")
+            for f in android/app/build/intermediates/lint_vital_intermediate_text_report/release/*/*.txt android/app/build/reports/lint-results-release.txt; do [ -f "$f" ] && { echo "----- lint: $f -----"; head -80 "$f"; } >> android/ci/last-build.txt; done || true
             echo "----- tail -----" >> android/ci/last-build.txt; tail -80 "$RUNNER_TEMP/build.log" >> android/ci/last-build.txt || true
           fi
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"

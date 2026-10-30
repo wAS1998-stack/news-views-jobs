@@ -126,6 +126,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.1")
     implementation("androidx.lifecycle:lifecycle-process:2.9.1")
+    // the ad SDKs pull in an old androidx.fragment; the Activity Result API (permission + update prompts) needs ≥ 1.3
+    // (release lint: InvalidFragmentVersionForActivityResult)
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
     implementation("androidx.browser:browser:1.8.0")
