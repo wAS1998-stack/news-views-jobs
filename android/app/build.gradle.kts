@@ -25,6 +25,26 @@ fun adId(key: String): String = (admob[key] as? String)?.trim().orEmpty()
 val testAppId = "ca-app-pub-3940256099942544~3347511713"
 val liveAds = adId("appId").startsWith("ca-app-pub-") && adId("banner").startsWith("ca-app-pub-")
 
+// AdMob mediation: other ad networks compete for every ad slot through AdMob (bidding). Each network listed in
+// config.json "admob.mediation" adds its Google-made adapter to the app; it earns only after it is switched on in
+// AdMob › Mediation (and the network's own account is linked). Versions: github.com/googleads/googleads-mobile-android-mediation
+val mediationAdapters = mapOf(
+    "meta" to "com.google.ads.mediation:facebook:6.22.0.1",        // Meta Audience Network
+    "applovin" to "com.google.ads.mediation:applovin:13.6.4.2",
+    "inmobi" to "com.google.ads.mediation:inmobi:11.5.0.0",
+    "liftoff" to "com.google.ads.mediation:vungle:7.7.9.0",        // Liftoff Monetize (Vungle)
+    "unity" to "com.google.ads.mediation:unity:4.21.0.0",          // Unity Ads
+    "mintegral" to "com.google.ads.mediation:mintegral:17.1.91.0",
+    "ironsource" to "com.google.ads.mediation:ironsource:9.7.0.0",
+    "dtexchange" to "com.google.ads.mediation:fyber:8.5.0.0",      // Digital Turbine DT Exchange
+    "moloco" to "com.google.ads.mediation:moloco:4.13.0.0",
+    "pangle" to "com.google.ads.mediation:pangle:8.3.0.4.0",
+    "pubmatic" to "com.google.ads.mediation:pubmatic:5.4.1.0",
+    "bigo" to "com.google.ads.mediation:bigo:6.1.0.0",
+    "chartboost" to "com.google.ads.mediation:chartboost:9.14.1.0",
+)
+val mediation: List<String> = ((admob["mediation"] as? List<*>) ?: emptyList<Any>()).map { it.toString().trim().lowercase() }
+
 android {
     namespace = "com.newsviews.app"
     compileSdk = 36
@@ -113,5 +133,6 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.android.gms:play-services-ads:25.5.0")
     implementation("com.google.android.ump:user-messaging-platform:4.0.0")
+    mediation.mapNotNull { mediationAdapters[it] }.forEach { implementation(it) }
     testImplementation("junit:junit:4.13.2")
 }

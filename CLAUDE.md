@@ -49,6 +49,12 @@ hurting users or breaking Google's policies.
   ("ca-app-pub-…/…") in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
   writes `app-ads.txt`. Debug builds always use Google's test IDs. `appAds` switches reach installed apps through the
   feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large") with no app update.
+- **More ad networks (bidding):** `admob.mediation` in `config.json` lists the networks whose AdMob mediation adapters are
+  built into the app (meta, applovin, inmobi, liftoff, unity, mintegral, ironsource, dtexchange, moloco; also available:
+  pangle, pubmatic, bigo, chartboost — versions in `android/app/build.gradle.kts`). The owner switches each on in
+  AdMob › Mediation with that network's account; `admob.appAdsTxt` holds the extra app-ads.txt lines they ask for.
+  The privacy policy lists the networks automatically. Website: `adsTxtExtra` (ads.txt lines) and `webAdsHead`
+  (a partner's script, e.g. a header-bidding / Ad Manager partner) are ready for other web ad partners.
 - Code: `android/app/src/main/java/com/newsviews/app/ads/Ads.kt` (consent via Google UMP, banners, interstitial).
 
 ## Working in Claude's cloud sandbox

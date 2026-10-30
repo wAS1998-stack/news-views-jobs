@@ -4,12 +4,27 @@
   "email": "contact@news-views.in",
   "adsenseId": "",
   "adsenseSlot": "",
+  "adsTxtExtra": [],
+  "webAdsHead": "",
   "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes.",
   "admob": {
     "appId": "",
     "banner": "",
     "inline": "",
-    "interstitial": ""
+    "interstitial": "",
+    "mediation": [
+      "meta",
+      "applovin",
+      "inmobi",
+      "liftoff",
+      "unity",
+      "mintegral",
+      "ironsource",
+      "dtexchange",
+      "moloco"
+    ],
+    "_mediationNote": "Ad networks built into the app for AdMob mediation/bidding. Also available: pangle, pubmatic, bigo, chartboost. Remove any you don't sign up for (each adds app size). Turn each on in AdMob > Mediation.",
+    "appAdsTxt": []
   },
   "appAds": {
     "on": true,

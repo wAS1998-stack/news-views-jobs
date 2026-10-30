@@ -38,5 +38,6 @@ Website: https://news-views.in · Privacy policy: https://news-views.in/privacy-
 - **App info and performance › Diagnostics** — collected and shared by the ads SDK (analytics, fraud prevention).
 - Not collected: name, email, phone, contacts, photos, files, precise location. Users can't request deletion through us because we hold none of it; they can reset or delete the advertising ID in phone settings.
 (Source: Google's own disclosure for the Mobile Ads SDK — developers.google.com/admob/android/privacy/play-data-disclosure.)
+- **Mediation networks** (config.json "admob.mediation": Meta Audience Network, AppLovin, InMobi, Liftoff, Unity Ads, Mintegral, ironSource, DT Exchange, Moloco): their SDKs are inside the app, so check each network's own Play data-safety guide and add anything it collects beyond the four types above (they are usually the same types: device IDs, approximate location, app interactions, diagnostics).
 
 **Graphics:** `icon-512.png`, `feature-graphic-1024x500.png`, phone screenshots `screen-1…5.png` (1080×2400).

@@ -42,7 +42,7 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
   for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
-    "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax"]) {
+    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -381,6 +381,7 @@ ${o.modified || o.published ? `<meta property="article:modified_time" content="$
 ${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" media="print" onload="this.media='all'">` : ""}
 <link rel="stylesheet" href="/styles.css?v=${ASSET_V["styles.css"]}">
 ${adsense}
+${SITE.webAdsHead || ""}
 ${ldBlocks}
 </head>
 <body>
@@ -1497,6 +1498,27 @@ function adSlot(label) {
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </aside>`;
 }
+/* The ad networks that may serve ads in the Android app through AdMob mediation (config.json "admob.mediation"). */
+const AD_NETWORKS = {
+  meta: "Meta Audience Network",
+  applovin: "AppLovin",
+  inmobi: "InMobi",
+  liftoff: "Liftoff Monetize (Vungle)",
+  unity: "Unity Ads",
+  mintegral: "Mintegral",
+  ironsource: "ironSource",
+  dtexchange: "Digital Turbine DT Exchange",
+  moloco: "Moloco",
+  pangle: "Pangle",
+  pubmatic: "PubMatic",
+  bigo: "Bigo Ads",
+  chartboost: "Chartboost",
+};
+function mediationPolicy() {
+  const list = [].concat((SITE.admob || {}).mediation || []).map((k) => AD_NETWORKS[String(k).toLowerCase()]).filter(Boolean);
+  if (!list.length) return "";
+  return `\n\nGoogle AdMob may also fill ad spaces with ads from these partner networks, chosen by an automatic auction: ${list.join(", ")}. They may collect the same kinds of information described above, under their own privacy policies.`;
+}
 function buildJob(job, all) {
   const st = statusOf(job);
   const canonical = `${SITE.url}/jobs/${job.id}/`;
@@ -2005,7 +2027,7 @@ We may use analytics tools to measure traffic and usage patterns in aggregate. T
 ## Android app
 The ${SITE.brand} Android app has no accounts and collects no personal information. Saved jobs, your language and your alert choices (states and qualifications) are stored only on your phone. To send job alerts, the app registers with Google's Firebase Cloud Messaging, which gives your phone an anonymous token and subscribes it to the alert topics you choose; we never receive your name, phone number or contacts. You can turn alerts off in the app or uninstall it at any time.
 
-The app is free and is supported by ads from Google AdMob. To show and measure ads and to prevent fraud, Google's ad software may collect your device's advertising ID, your IP address (which gives an approximate location), diagnostic information and how you interact with ads. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. Anywhere, you can reset or delete your advertising ID in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads). Learn more in [Google's privacy policy](https://policies.google.com/technologies/partner-sites).
+The app is free and is supported by ads from Google AdMob. To show and measure ads and to prevent fraud, Google's ad software may collect your device's advertising ID, your IP address (which gives an approximate location), diagnostic information and how you interact with ads. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. Anywhere, you can reset or delete your advertising ID in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads). Learn more in [Google's privacy policy](https://policies.google.com/technologies/partner-sites).${mediationPolicy()}
 
 ## Your choices
 You can disable cookies in your browser settings at any time. Doing so may affect how some parts of the site function.
@@ -2511,10 +2533,18 @@ function main() {
     const pub = SITE.adsenseId.replace(/^ca-/, "");
     write("ads.txt", `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`);
   }
+  // Other web ad partners (a header-bidding / Ad Manager partner, another network) give their own ads.txt lines.
+  const adsExtra = [].concat(SITE.adsTxtExtra || []).map(String).filter(Boolean);
+  if (adsExtra.length) {
+    const prev = SITE.adsenseId ? fs.readFileSync(path.join(DIST, "ads.txt"), "utf8") : "";
+    write("ads.txt", prev + adsExtra.join("\n") + "\n");
+  }
   // app-ads.txt: AdMob checks this file on the developer website named in the Play listing (news-views.in).
   // The publisher ID is the part of the AdMob app ID between "ca-app-" and "~".
   const appPub = String((SITE.admob || {}).appId || "").match(/^ca-app-(pub-\d+)~/);
-  if (appPub) write("app-ads.txt", `google.com, ${appPub[1]}, DIRECT, f08c47fec0942fa0\n`);
+  // Mediation networks (Meta Audience Network etc.) ask for their own lines too: config.json "admob.appAdsTxt".
+  const appExtra = [].concat((SITE.admob || {}).appAdsTxt || []).map(String).filter(Boolean);
+  if (appPub || appExtra.length) write("app-ads.txt", (appPub ? `google.com, ${appPub[1]}, DIRECT, f08c47fec0942fa0\n` : "") + appExtra.map((l) => l + "\n").join(""));
 
   console.log(`Built: home + ${jobs.length} jobs + ${cats.length} categories + ${guides.length} guides + ${Object.keys(pages).length} pages + 404/sitemap/feed -> dist/`);
 }
