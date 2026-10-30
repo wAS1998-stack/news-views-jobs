@@ -739,7 +739,7 @@ function buildUpdatePage(u, all) {
   if (shortT.length > 60) shortT = shortT.slice(0, 58).replace(/\s+\S*$/, "");
   if (!/download|check|out\b/i.test(shortT) && shortT.length < 44) shortT += u.type === "result" ? " – Check Now" : u.type === "admit-card" ? " – Download Link" : u.type === "answer-key" ? " – Download PDF" : "";
   const pageTitle = (shortT + ` | ${SITE.name}`).length <= 72 ? `${shortT} | ${SITE.name}` : shortT;
-  const hiAltU = u.hi && u.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/updates/${u.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/updates/${u.id}/` } : {};
+  const hiAltU = u.hi && u.hi.title ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/updates/${u.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/updates/${u.id}/` } : {};
   return head({ title: pageTitle, desc, canonical, ld, ogType: "article", published: u.date, modified: u.date, image: ogImage(`og/updates/${u.id}.png`), ...hiAltU }) + `
 <main class="wrap article" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/">Updates</a> &nbsp;&rsaquo;&nbsp; <a href="/updates/${esc(u.type)}/">${esc((UPDATE_TYPES[u.type] || {}).plural || typeLabel)}</a></p>
@@ -1512,7 +1512,7 @@ function buildJob(job, all) {
     ? `<h2 class="section-h">Selection process</h2><ol class="steps">${job.selection_process.map((s)=>`<li>${esc(s)}</li>`).join("")}</ol>`
     : "";
 
-  const hiAlt = job.hi && job.hi.title ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }], langSwitch: `/hi/jobs/${job.id}/` } : {};
+  const hiAlt = job.hi && job.hi.title ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/jobs/${job.id}/` } : {};
   return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt }) + `
 <main class="wrap" id="main">
   ${job.hi && job.hi.title ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
@@ -2412,7 +2412,11 @@ function main() {
   </section>
 </main>` + foot());
 
-  write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
+  // Google crawls this young site only ~100-240 times a day, so the ~1,650 machine-translated Hindi job and update
+  // pages (2 impressions in a month) are kept out of its crawl until the English pages are indexed; visitors still
+  // get them and the Hindi hub pages stay crawlable. Set config.json "crawlHindiDetail": true to open them again.
+  const hiBlock = SITE.crawlHindiDetail ? "" : "Disallow: /hi/jobs/\nDisallow: /hi/updates/\n";
+  write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /api/\n${hiBlock}Sitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
   // Only /api/* runs as a Cloudflare Pages Function (functions/); every page and file stays a free static asset.
   write("_routes.json", JSON.stringify({ version: 1, include: ["/api/*"], exclude: [] }) + "\n");
   if (SITE.adsenseId) {
