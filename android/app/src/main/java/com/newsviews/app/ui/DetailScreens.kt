@@ -147,11 +147,11 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             Spacer(Modifier.height(14.dp))
             // the main button says what it really opens (the feed decides: apply page, offline form, walk-in notice, notice or homepage)
             val ctaUrl = j.cta_url.ifBlank { j.apply_link.ifBlank { j.official_website } }
-            val ctaLabel = when (j.cta) { "apply" -> s.ctaApply; "form" -> s.ctaForm; "walkin" -> s.ctaWalkin; "notice" -> s.ctaNotice; "website" -> s.ctaWebsite; else -> s.apply }
+            val ctaLabel = when (j.cta) { "apply" -> s.ctaApply; "page" -> s.ctaPage; "form" -> s.ctaForm; "walkin" -> s.ctaWalkin; "email" -> s.ctaEmail; "notice" -> s.ctaNotice; "website" -> s.ctaWebsite; else -> s.apply }
             if (ctaUrl.isNotBlank()) Button(onClick = { openUrl(ctx, ctaUrl) }, modifier = Modifier.fillMaxWidth()) {
                 Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(ctaLabel)
             }
-            when (j.cta) { "form" -> s.hintForm; "walkin" -> s.hintWalkin; "website" -> s.hintWebsite; else -> null }?.let {
+            when (j.cta) { "page" -> s.hintPage; "form" -> s.hintForm; "walkin" -> s.hintWalkin; "email" -> s.hintEmail; "website" -> s.hintWebsite; else -> null }?.let {
                 Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {

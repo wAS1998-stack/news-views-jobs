@@ -493,21 +493,30 @@ function linkKind(u, job = {}) {
   if (PORTAL_HOST.test(host.split(".")[0])) return "portal";
   return "home";
 }
-/** walkin | offline | email | online | unknown — from the title first, then the notice's own steps. */
+/** walkin | offline | email | online | unknown. The notice's own wording (summary / steps, written from the notice)
+    beats the headline: aggregator titles say "Apply Online" for email and postal applications too. */
+const ONLINE_RE = /apply online|online (application|form|registration|mode)|register online|registration portal|online portal|(submit|fill)[^.]{0,30} online|apply through the (official )?(website|portal)/i;
+const OFFLINE_RE = /apply offline|offline (application|form|mode)|by (registered |speed )?post|through (registered |speed )?post|hard ?copy|send (the|your) (filled|completed|duly)|in person at|submitted? (by hand|in person)/i;
+const EMAIL_RE = /(apply|send|submit|forward)[^.]{0,60}\b(by|via|through|to) e-?mail|e-?mail (your|the) (application|cv|resume|bio-?data)|applications? (via|by|through) e-?mail/i;
 function applyMode(job = {}) {
   const t = String(job.title || "");
-  if (/walk[- ]?in/i.test(t)) return "walkin";
-  if (/apply offline|offline (application|form|mode)/i.test(t)) return "offline";
-  if (/apply online|online (application|form|registration)/i.test(t)) return "online";
   const body = [job.post_name, ...(job.how_to_apply || []), ...(job.selection_process || []), job.summary, job.eligibility_notes].join(" ");
+  const on = ONLINE_RE.test(body), off = OFFLINE_RE.test(body), mail = EMAIL_RE.test(body);
+  if (/walk[- ]?in/i.test(t)) return "walkin";
+  if (mail && !on) return "email";
+  if (/apply offline|offline (application|form|mode)/i.test(t) || (off && !on)) return "offline";
+  if (/apply online|online (application|form|registration)/i.test(t) || on) return "online";
   if (/walk[- ]?in/i.test(body)) return "walkin";
-  if (/apply online|online (application|form|registration|mode)|register online|registration portal|online portal|submit (the|your) application online/i.test(body)) return "online";
-  if (/apply offline|offline (application|form|mode)|by (registered |speed )?post|through (registered |speed )?post|hard ?copy|send (the|your) (filled|completed|duly)/i.test(body)) return "offline";
-  if (/(apply|send|submit)[^.]{0,40}(by|via|through|to) e-?mail|e-?mail (your|the) (application|cv|resume)/i.test(body)) return "email";
+  if (mail) return "email";
   return "unknown";
 }
+/** Does a deep link look like the application itself (form, login, registration, portal) rather than an information page? */
+const APPLY_PATH = /apply|regist|online|login|signin|sign-in|candidate|application|onlineapp|portal/i;
+const APPLY_SUB = /^(recruit\w*|careers?|jobs?|apply|online\w*|regist\w*)\./i;
+const isApplyUrl = (u) => { try { const x = new URL(u); return APPLY_SUB.test(x.host.replace(/^www\./i, "")) || APPLY_PATH.test(x.pathname + x.search); } catch { return false; } };
 /** The primary call to action for a job page and the app: { cta, url, mode, applyKind }.
-    cta: apply (a real application page) | form (offline: notice + form) | walkin (interview notice) |
+    cta: apply (a real application page or portal) | page (this recruitment's page on the official site) |
+         form (offline: notice + form) | walkin (interview notice) | email (apply by email: the notice has the address) |
          notice (the official notification) | website (only the homepage is known — labelled as such, never "Apply"). */
 function applyInfo(job = {}) {
   const mode = applyMode(job);
@@ -518,8 +527,9 @@ function applyInfo(job = {}) {
   const notice = notif || (ak === "pdf" ? apply : "");
   if (mode === "walkin" && (notice || ak === "deep")) return { cta: "walkin", url: notice || apply, mode, applyKind: ak };
   if (mode === "offline" && notice) return { cta: "form", url: notice, mode, applyKind: ak };
-  if (mode === "email" && notice) return { cta: "notice", url: notice, mode, applyKind: ak };
-  if (ak === "deep" || ak === "portal") return { cta: "apply", url: apply, mode, applyKind: ak };
+  if (mode === "email" && (notice || ak === "deep")) return { cta: "email", url: notice || apply, mode, applyKind: ak };
+  if (ak === "portal" || (ak === "deep" && isApplyUrl(apply))) return { cta: "apply", url: apply, mode, applyKind: ak };
+  if (ak === "deep") return { cta: "page", url: apply, mode, applyKind: ak };
   if (notice && (ak === "pdf" || ak === "none" || mode !== "online")) return { cta: "notice", url: notice, mode, applyKind: ak };
   const home = (ak === "home" ? apply : "") || site || (nk === "deep" ? notif : "");
   if (home) return { cta: "website", url: home, mode, applyKind: ak };

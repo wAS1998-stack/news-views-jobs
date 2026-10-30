@@ -27,6 +27,7 @@ data class Strings(
     val ageOk: (Int) -> String, val ageOver: (Int) -> String, val ageUnder: (Int) -> String, val ok: String, val cancel: String, val walkIn: String,
     val ctaApply: String, val ctaForm: String, val ctaWalkin: String, val ctaNotice: String, val ctaWebsite: String,
     val hintForm: String, val hintWalkin: String, val hintWebsite: String,
+    val ctaPage: String, val ctaEmail: String, val hintPage: String, val hintEmail: String,
     val disclaimer: String,
 ) {
     companion object {
@@ -59,6 +60,9 @@ data class Strings(
             hintForm = "Offline application: download the notice and form, fill it in and send it as the notice says.",
             hintWalkin = "Walk-in interview: go to the venue on the date in the notice, with the documents it lists.",
             hintWebsite = "The notice gives no direct application page — open the Recruitment / Careers section of the official website. Steps below.",
+            ctaPage = "Recruitment page", ctaEmail = "Notice (apply by email)",
+            hintPage = "Opens this recruitment’s page on the official site — the notice and application details are there.",
+            hintEmail = "Apply by email: the address, format and documents are given in the notice.",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
             disclaimer = "News-Views is an independent publisher. It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
         )
@@ -91,6 +95,9 @@ data class Strings(
             hintForm = "ऑफलाइन आवेदन: नोटिस और फ़ॉर्म डाउनलोड करें, भरें और नोटिस में दिए तरीके से भेजें।",
             hintWalkin = "वॉक-इन इंटरव्यू: नोटिस में दी गई तारीख पर, बताए गए दस्तावेज़ों के साथ पहुँचें।",
             hintWebsite = "नोटिस में सीधा आवेदन पेज नहीं है — ऑफिशियल वेबसाइट के Recruitment / Careers सेक्शन में देखें। तरीका नीचे है।",
+            ctaPage = "भर्ती पेज", ctaEmail = "नोटिस (ईमेल से आवेदन)",
+            hintPage = "ऑफिशियल साइट पर इस भर्ती का पेज खुलेगा — नोटिस और आवेदन की जानकारी वहीं है।",
+            hintEmail = "ईमेल से आवेदन: पता, फ़ॉर्मेट और दस्तावेज़ नोटिस में दिए हैं।",
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
             disclaimer = "News-Views एक स्वतंत्र प्रकाशक है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
         )
