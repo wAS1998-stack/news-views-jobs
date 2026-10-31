@@ -1,0 +1,448 @@
+{
+  "at": "2026-10-31T08:56:19.589Z",
+  "indiaRelay": false,
+  "results": [
+    {
+      "url": "https://ssc.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://ssc.gov.in/",
+      "bytes": 80649,
+      "title": "Home | Staff Selection Commission | GoI",
+      "anchors": 0,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://ssc.gov.in/assets/library/jquery/js/jquery.min.js",
+        "https://ssc.gov.in/assets/library/bootstrap/js/bootstrap.min.js",
+        "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
+        "https://ssc.gov.in/polyfills.0367287dae1c626f.js",
+        "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
+        "https://ssc.gov.in/main.a0c7cc91f09156b9.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
+          "ok": true,
+          "bytes": 3644,
+          "via": "direct"
+        },
+        {
+          "src": "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
+          "ok": true,
+          "bytes": 80514,
+          "via": "direct"
+        },
+        {
+          "src": "https://ssc.gov.in/main.a0c7cc91f09156b9.js",
+          "ok": true,
+          "bytes": 1636440,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "/api/admin/5.1/sendOtp",
+        "https://ssc.gov.in/api",
+        "/api/attachment/uploads/masterData/Others/debarreds_as_of_6th_April_2026_060426.pdf",
+        "/api/attachment/uploads/masterData/NoticeBoards/Scribe%20Procedure%20Notice251024.pdf"
+      ],
+      "bases": [
+        "https://ssc.gov.in/api",
+        "https://ssc.gov.in"
+      ],
+      "textSample": "Home | Staff Selection Commission | GoI"
+    },
+    {
+      "url": "https://www.ncs.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://ncs.gov.in/",
+      "bytes": 278173,
+      "title": "NcsNewWebsite",
+      "anchors": 123,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://ncs.gov.in/assets/js/tracking-init.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-154MM856DY",
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+        "https://ncs.gov.in/polyfills-FFHMD2TL.js",
+        "https://ncs.gov.in/scripts-CWJO5AXB.js",
+        "https://ncs.gov.in/main-ENWR5Y2A.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://ncs.gov.in/assets/js/tracking-init.js",
+          "ok": true,
+          "bytes": 472,
+          "via": "direct"
+        },
+        {
+          "src": "https://ncs.gov.in/scripts-CWJO5AXB.js",
+          "ok": true,
+          "bytes": 129948,
+          "via": "direct"
+        },
+        {
+          "src": "https://ncs.gov.in/main-ENWR5Y2A.js",
+          "ok": true,
+          "bytes": 638337,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "https://api.ncs.gov.in/api/location/state",
+        "https://api.ncs.gov.in/api/locations",
+        "https://api.ncs.gov.in/api/jobseeker/profiles/career-timeline/get-skills?keyword=Technical%20support",
+        "/api/news/classifieds?page=${this.pageNumber}&size=${this.pageSize}&search=${e}",
+        "/api/grievance/tickets/list",
+        "/api/grievance/tickets/view?userId=${this.userId}&ticketNumber=${e.ticketNumber}",
+        "/api/grievance/tickets/user-response",
+        "/api/grievance/tickets/reopen",
+        "/api/grievance/tickets/case-types",
+        "/api/grievance/tickets/case-categories",
+        "/api/grievance/tickets/case-sub-categories?caseCategoryId=${e.id}",
+        "/api/grievance/tickets/create",
+        "https://jsdm.jharkhand.gov.in/jsdm/cms/en/",
+        "/api/yp/",
+        "/api/jobseeker/profiles/upload-image",
+        "/api/jobseeker/profiles/get-image",
+        "/api/jobseeker/profiles/upload-resume",
+        "/api/jobseeker/profiles/download-resume",
+        "/api/jobseeker/profiles/upload-cover-letter",
+        "/api/jobseeker/profiles/cover-letters/download",
+        "/api/jobseeker/profiles/cover-letters/delete",
+        "/api/jobseeker/profiles/resumes/names",
+        "/api/jobseeker/profiles/cover-letters/names",
+        "/api/jobseeker/profiles/delete-resume",
+        "/api/digilocker-sso/authorize",
+        "/api/digilocker-sso/callback",
+        "/api/digilocker-sso/complete-registration",
+        "/api/digilocker-sso/revoke-token",
+        "/api/digilocker-sso/fetch-documents",
+        "/api/digilocker-sso/pull-document",
+        "/api/digilocker-sso/get/documents",
+        "/api/digilocker-sso/refresh-token",
+        "/api/emigrate-jobs/countries",
+        "/api/grievance/tickets/view",
+        "/api/grievance/tickets/case-sub-categories",
+        "/api/location/state",
+        "/api/location/districts",
+        "/api/location/sub-districts",
+        "/api/location/cities",
+        "/api/pincode",
+        "/api/pincode/upload",
+        "/api/education/qualifications",
+        "/api/education/qualifications/degrees",
+        "/api/education/qualifications/degrees/specializations",
+        "/api/jobseeker/profiles/career-timeline/qualifications",
+        "/api/jobseeker/profiles/career-timeline/qualifications/degrees",
+        "/api/jobseeker/profiles/career-timeline/degrees/specializations",
+        "/api/jobseeker/profiles/career-timeline/get-industries",
+        "/api/jobseeker/profiles/career-timeline/get-skills",
+        "/api/jobseeker/profiles/career-timeline/delete",
+        "/api/jobseeker/profiles/career-timeline/get",
+        "/api/jobseeker/profiles/career-timeline/delete-education",
+        "/api/jobseeker/profiles/career-timeline/experience-type",
+        "/api/jobseeker/profiles/career-timeline/location-type",
+        "/api/jobseeker/profiles/career-timeline/get-location",
+        "/api/events/getEvents",
+        "/api/job-titles/suggest",
+        "/api/locations/suggest",
+        "/api/news/newsletter/upload",
+        "/api/jobseeker/documents/upload",
+        "/api/pmis/sso/login",
+        "/api/integration/redirect/pmis",
+        "/api/v1/ncs/mybharat/exchange-code",
+        "/api/integration/redirect/mentortogether",
+        "/api/v1/ncs/sidh/exchange-code",
+        "/api/v1/ncs/sidh/course/search",
+        "/api/v1/ncs/sidh/course/master",
+        "/api/sidh/register",
+        "https://api.ncs.gov.in/zobique/api/course-recommendations/recommend",
+        "/api/v1/nats/apprenticeships/search",
+        "/api/integration/redirect/NATS",
+        "/api/v1/international-job-posts/get",
+        "/api/integration/redirect/bluedot",
+        "/api/v1/employer-image/upload-image"
+      ],
+      "bases": [],
+      "textSample": "NcsNewWebsite --> Government of India Toll Free Helpline - 1514 Jobseekers Employers Counsellors Career Centers Jobseekers Employers Counsellors Career Centers Resources Classified Jobs ☰ ✖ Jobseekers Get Started Login Register Registration Flowchart Search for Jobs Find Domestic Jobs Find International Jobs E-migrate Advisories for International Jobseeker Jobs in Health Sector Jobs in Government "
+    },
+    {
+      "url": "https://mpsc.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://mpsc.gov.in/",
+      "bytes": 4363,
+      "title": "MPSC",
+      "anchors": 0,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
+        "https://mpsc.gov.in/static/js/main.137462b8.chunk.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
+          "ok": true,
+          "bytes": 1259319,
+          "via": "direct"
+        },
+        {
+          "src": "https://mpsc.gov.in/static/js/main.137462b8.chunk.js",
+          "ok": true,
+          "bytes": 243529,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "http://localhost:8080/web/api/v1/otps",
+        "https://smbmpscweb.com/web/api/v1/otps",
+        "https://mpsc.gov.in/web/api/v1/otps"
+      ],
+      "bases": [
+        "http://localhost:8080/web/api/v1/otps",
+        "https://smbmpscweb.com/web/api/v1/otps",
+        "https://mpsc.gov.in/web/api/v1/otps",
+        "/web/api/v1/otps"
+      ],
+      "textSample": "MPSC You need to enable JavaScript to run this app."
+    },
+    {
+      "url": "https://www.aiimsexams.ac.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://www.aiimsexams.ac.in/",
+      "bytes": 35278,
+      "title": "All India Institute of Medical Sciences",
+      "anchors": 34,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://www.aiimsexams.ac.in/_next/static/chunks/fd9d1056-d26bc9912af903a4.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/2117-8892a5382aef4615.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/13b76428-62a6e4bbed6f1919.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/9400-2a9afe74383de5c2.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/6981-3b34fee79731de7a.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/605-c7a812dd8a936ae8.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/9565-9dbae70f3de7cae6.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/5410-1fa4afc63e854c37.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/1514-62b2a9fe419a37f4.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/7271-be3a42bf1851d211.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/3145-c4ea53740ca5c000.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/9987-e7e806c0e150cbc1.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/337-4da3cf0e973256e4.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/7821-36f2b474e82ee5fc.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/7648-1a4e8c99f9893831.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/7287-b4590b3c2263ac46.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/6602-e325bce02b19441b.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/3505-15d50973955a3d5b.js",
+        "https://www.aiimsexams.ac.in/_next/static/chunks/5869-93bbc1ffa5e48287.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/fd9d1056-d26bc9912af903a4.js",
+          "ok": true,
+          "bytes": 172837,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/2117-8892a5382aef4615.js",
+          "ok": true,
+          "bytes": 124671,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
+          "ok": true,
+          "bytes": 471,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/13b76428-62a6e4bbed6f1919.js",
+          "ok": true,
+          "bytes": 59304,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/9400-2a9afe74383de5c2.js",
+          "ok": true,
+          "bytes": 71986,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/6981-3b34fee79731de7a.js",
+          "ok": true,
+          "bytes": 22495,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/605-c7a812dd8a936ae8.js",
+          "ok": true,
+          "bytes": 34371,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/9565-9dbae70f3de7cae6.js",
+          "ok": true,
+          "bytes": 20736,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "/api/auth/signin?",
+        "http://localhost:3000/api/auth"
+      ],
+      "bases": [],
+      "textSample": "All India Institute of Medical Sciences Skip to main content 🔔 Important Notices: About text_fields record_voice_over menu Home About Academic Courses Recruitments Key Dates Notices Contact Support text_fields translate home event Key Dates notifications Notices call Contact support_agent Support Home About Key Dates Notices Contact Support Assessment & Examination Registration Portal, Upholding "
+    },
+    {
+      "url": "https://www.opsc.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
+      "bytes": 44028,
+      "title": "Odisha Public Service Commission|OPSC",
+      "anchors": 53,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://www.opsc.gov.in/js/responsive-modernizr.js",
+        "https://www.opsc.gov.in/js/jquery-latest.min.js",
+        "https://www.opsc.gov.in/js/jquery-ui.min.js",
+        "https://www.opsc.gov.in/js/jquery.cookie.js",
+        "https://www.opsc.gov.in/js/SHA1.js",
+        "https://www.opsc.gov.in/js/myeffects.js",
+        "https://www.opsc.gov.in/datatable/jquery.dataTables.min.js",
+        "https://www.opsc.gov.in/datatable/dataTables.buttons.min.js",
+        "https://www.opsc.gov.in/datatable/buttons.flash.min.js",
+        "https://www.opsc.gov.in/datatable/jszip.min.js",
+        "https://www.opsc.gov.in/datatable/pdfmake.min.js",
+        "https://www.opsc.gov.in/datatable/vfs_fonts.js",
+        "https://www.opsc.gov.in/datatable/buttons.html5.min.js",
+        "https://www.opsc.gov.in/datatable/buttons.print.min.js",
+        "https://www.opsc.gov.in/WebResource.axd?d=lQhZWOTWje9t-_Tl8XXKkYg8GosyiElJHzU3pTxUEWU8Z79YpYN2Ej9lemdrtOo4QK3AD0d9L43_elhHwOJlCU3Cap-WJzicACi4vNBtN6o1&t=637034319561480679",
+        "https://www.opsc.gov.in/ScriptResource.axd?d=rLgnPXezTi46sFt2Tjw4vtjbXuttjr2SOiVQIbncBxdHcdvEiP-d0uq4PQfYUtliK8EVvr9GLahBOJ1sqEB1cL6RJM1S90CjtER3qX540UaI2UAO0kYDGf7ZfGqcHSiIr0CDLch9smthJwODPtES53trKXgIu8wd1fLQKa0msWg1&t=ffffffffa580202a",
+        "https://www.opsc.gov.in/ScriptResource.axd?d=z-1tTxT4IzLq3RudwVIPKc1hHy6QFa6UMz0aKVTSU8ReSIFsuSLAVwl2eKhorHoBjvlwhlfdYH3I5dmZkcej08pMxPbPcYxwgxEIzZYBRAR1TFOL2O6q_TgrlRdqfxtBZI4n2UFk_t_ddMTaKYfug_L0PIvS1eLTKX5kKqrgd0EUbpsvyAe-IPMI8zzzN1bL0&t=ffffffffa580202a",
+        "https://www.opsc.gov.in/js/jquery.bxslider.min.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://www.opsc.gov.in/js/responsive-modernizr.js",
+          "ok": true,
+          "bytes": 14448,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/js/SHA1.js",
+          "ok": true,
+          "bytes": 2581,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/js/myeffects.js",
+          "ok": true,
+          "bytes": 1606,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/dataTables.buttons.min.js",
+          "ok": true,
+          "bytes": 16436,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/buttons.flash.min.js",
+          "ok": true,
+          "bytes": 25456,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/jszip.min.js",
+          "ok": true,
+          "bytes": 101555,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/pdfmake.min.js",
+          "ok": true,
+          "bytes": 832816,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/vfs_fonts.js",
+          "ok": true,
+          "bytes": 955603,
+          "via": "direct"
+        }
+      ],
+      "apis": [],
+      "bases": [],
+      "textSample": "Odisha Public Service Commission|OPSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Public Service Commission (OPSC) --> Login Apply Online Chairman's Message Brigadier Laxmi Charan Patnaik (Retd.), Hon'ble Chairman Vision & Mission Role and Functions Organization History Commission & Incumbency Chart OPSC Manuals Ann"
+    },
+    {
+      "url": "https://www.tgprb.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://www.tgprb.in/",
+      "bytes": 2057,
+      "title": "Telangana Police Recruitment Board",
+      "anchors": 0,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://code.jquery.com/jquery-3.7.1.min.js",
+        "https://code.jquery.com/ui/1.14.2/jquery-ui.min.js",
+        "https://www.tgprb.in/js/app.config.js",
+        "https://www.tgprb.in/js/bootstrap/bootstrap.min.js",
+        "https://www.tgprb.in/js/app.min.js",
+        "https://www.tgprb.in/assets/index-C1RGemmW.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://www.tgprb.in/js/app.config.js",
+          "ok": true,
+          "bytes": 13735,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.tgprb.in/js/app.min.js",
+          "ok": true,
+          "bytes": 25994,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.tgprb.in/assets/index-C1RGemmW.js",
+          "ok": true,
+          "bytes": 274753,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "http://maps.google.com/maps/api/js?sensor=false&callback=gMapsCallback",
+        "https://api.tgprb.in/api/account/visit"
+      ],
+      "bases": [],
+      "textSample": "Telangana Police Recruitment Board"
+    },
+    {
+      "url": "https://gpsc.goa.gov.in/",
+      "ok": false,
+      "error": "direct: HTTP 403 | alt-ua: HTTP 403 | news-views.in: HTTP 403 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522"
+    },
+    {
+      "url": "https://www.employmentnews.gov.in/",
+      "ok": false,
+      "error": "direct: HTTP 404 | alt-ua: HTTP 404 | news-views.in: HTTP 404 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522"
+    }
+  ]
+}
