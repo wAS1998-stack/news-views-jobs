@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T08:56:19.589Z",
+  "at": "2026-10-31T08:59:17.279Z",
   "indiaRelay": false,
   "results": [
     {
@@ -51,167 +51,31 @@
         "https://ssc.gov.in/api",
         "https://ssc.gov.in"
       ],
+      "grep": [
+        "[main.a0c7cc91f09156b9.js] 8\\u0932\\u0947\\u0902\\u0921\\u0930\",url:\"/ssc-calender\"}],oe={bannerKeys:{banner:\"Banners\",advertisement:\"Advertisement\",govIntiatives:\"govInitiatives\"},pageKeys:{noticeBoard:\"notice-board\",ribbons:\"ribbons\",calendar:\"ssc-calendar\",browseByExamination:\"browse-by-examination\"}},xe=[{english:\"Homepage\",hindi:\"\\u0939\\u094b\\u092e\",url:\"",
+        "[main.a0c7cc91f09156b9.js] \\u0902\\u0921\\u0930\",url:\"/ssc-calender\"}],oe={bannerKeys:{banner:\"Banners\",advertisement:\"Advertisement\",govIntiatives:\"govInitiatives\"},pageKeys:{noticeBoard:\"notice-board\",ribbons:\"ribbons\",calendar:\"ssc-calendar\",browseByExamination:\"browse-by-examination\"}},xe=[{english:\"Homepage\",hindi:\"\\u0939\\u094b\\u092e\",url:\"/home\"},{engli",
+        "[main.a0c7cc91f09156b9.js] 0940\\u0902 \\u0939\\u0948\"},viewAll:{english:\"View All\",hindi:\"\\u0938\\u092d\\u0940 \\u0926\\u0947\\u0916\\u0947\\u0902\"},All:{english:\"All\",hindi:\"\\u0938\\u092d\\u0940\"},noticeBoard:{english:\"Notice Board\",hindi:\"\\u0928\\u0935\\u0940\\u0928\\u0924\\u092e \\u0938\\u092e\\u093e\\u091a\\u093e\\u0930\"},quickLinks:{english:\"Quick Links\",hindi:\"\\u0924\\u094",
+        "[main.a0c7cc91f09156b9.js] n\\u2019s hallmark is in its transparency and fair play.\"},content2:{english:\"A number of significant developments are taking place in the methods of\\n recruitment, procedures of selection and use of Information Technology all over\\n the world. This has brought new challenges for the recruiting bodies. To meet\\n ",
+        "[main.a0c7cc91f09156b9.js] dies\\n strengthen their institutional and human capacities.\",hindi:\"A number of significant developments are taking place in the methods of\\n recruitment, procedures of selection and use of Information Technology all over\\n the world. This has brought new challenges for the recruiting bodies. To meet\\n ",
+        "[main.a0c7cc91f09156b9.js] ,functionOfCommission:{english:\"Function of Commission\",hindi:\"\\u0906\\u092f\\u094b\\u0917 \\u0915\\u093e \\u0915\\u093e\\u0930\\u094d\\u092f\",content1:{english:\"To make recruitment to (i) all Group \\u201cB\\u201d posts in the various Ministries/Departments of the Govt. of India and their Attached and Subordinate Offices which are in the pa",
+        "[main.a0c7cc91f09156b9.js] 0947 \\u0938\\u0947 \\u091b\\u0942\\u091f \\u0926\\u0940 \\u0917\\u0908 \\u0939\\u0948\\u0964'},content2:{english:\"In particular, to hold Open Competitive Examinations for recruitment to\\n the posts of:\",hindi:\"\\u0935\\u093f\\u0936\\u0947\\u0937\\u0915\\u0930, \\u092d\\u0930\\u094d\\u0924\\u0940 \\u0915\\u0947 \\u0932\\u093f\\u090f \\u0916\\u0941\\u09",
+        "[main.a0c7cc91f09156b9.js] 2f\\u093e\\u0932\\u092f\\u0964 \\u0906\\u0936\\u0941\\u0932\\u093f\\u092a\\u093f\\u0915 \\u0938\\u0947\\u0935\\u093e.'},content22:{english:\"The Commission prepares schemes for recruitment to all Group \\u201cB\\u201d posts\\n which are in the pay scale of Rs 9300 to 34800 with a grade pay of Rs\\n 42000 or below and Group \\u201cC\\u",
+        "[main.a0c7cc91f09156b9.js] d\\u092f\\u093e\\u0932\\u092f\\n \\u0938\\u0902\\u092c\\u0902\\u0927\\u093f\\u0924\\u0964'},content23:{english:\"The Commission conducts examinations/selections for recruitment to all\\n Group \\u201cB\\u201d posts which are in the pay scales the maximum of which is\\n Rs.10, 500 or below and all Group \\u201cC\\u201d non-",
+        "[main.a0c7cc91f09156b9.js] u0938\\u092e\\u0942\\u0939 '\\u0938\\u0940' (\\u0917\\u0948\\u0930-\\u0924\\u0915\\u0928\\u0940\\u0915\\u0940) \\u0938\\u094d\\u0924\\u0930\\u0964\"},content2:{english:\"To develop recruitment processes which will enable recruitment of manpower conductive for good\\n governance.\",hindi:\"\\u092d\\u0930\\u094d\\u0924\\u0940 \\u092a\\u094d\\u0930\\u0915\\",
+        "[main.a0c7cc91f09156b9.js] \\u0917\\u0948\\u0930-\\u0924\\u0915\\u0928\\u0940\\u0915\\u0940) \\u0938\\u094d\\u0924\\u0930\\u0964\"},content2:{english:\"To develop recruitment processes which will enable recruitment of manpower conductive for good\\n governance.\",hindi:\"\\u092d\\u0930\\u094d\\u0924\\u0940 \\u092a\\u094d\\u0930\\u0915\\u094d\\u0930\\u093f\\u092f\\u093e\\u0913\\u090",
+        "[main.a0c7cc91f09156b9.js] 094d\\u0937\\u092e \\u092c\\u0928\\u093e\\u090f\\u0917\\u093e\\n \\u0936\\u093e\\u0938\\u0928.\"},content3:{english:\"To ensure total objectivity and impartiality in recruitment of personnel for the government.\",hindi:\"\\u0938\\u0930\\u0915\\u093e\\u0930 \\u0915\\u0947 \\u0932\\u093f\\u090f \\u0915\\u0930\\u094d\\u092e\\u093f\\u092f\\u094b\\u0902 \\u0915",
+        "[main.a0c7cc91f09156b9.js] tDataByType(K){const X=this.buildQueryParams(K);return this.http.get(`${this.url}${this.apiPath}records`,{params:X}).pipe((0,q.W)(H=>this.handleLocalError(H)))}getNoticeBoard(K){const X=this.buildQueryParams(K);return this.http.get(`${this.url}${this.apiPath}notice-boards`,{params:X}).pipe((0,q.W)(H=>this.handleLocalError(H)))}",
+        "[main.a0c7cc91f09156b9.js] ords`,{params:X}).pipe((0,q.W)(H=>this.handleLocalError(H)))}getNoticeBoard(K){const X=this.buildQueryParams(K);return this.http.get(`${this.url}${this.apiPath}notice-boards`,{params:X}).pipe((0,q.W)(H=>this.handleLocalError(H)))}getCalendar(K){const X=this.buildQueryParams(K);return this.http.get(`${this.url}${this.apiPath}ssc-ca",
+        "[main.a0c7cc91f09156b9.js] nction Mi(c,p){if(1&c){const o=a.RV6();a.j41(0,\"a\",32),a.bIt(\"click\",function(){a.eBV(o);const m=a.XpG();return a.Njj(m.nav(\"/api/attachment/uploads/masterData/NoticeBoards/Scribe%20Procedure%20Notice251024.pdf\"))}),a.EFF(1),a.k0s()}if(2&c){const o=a.XpG();a.R7$(),a.SpI(\"\",null==o.menuData||null==o.menuData.forCandidates?null:o.m",
+        "[main.a0c7cc91f09156b9.js] ls.candidate:me.qq.urls.candidate,this.redirectAdminUri=\"localhost\"===Me.c.host?me.sB.urls[\"Super Admin\"]:me.qq.urls[\"Super Admin\"],this.query={page:1,limit:10,contentType:\"browse-exam\",key:\"createdAt\",order:\"DESC\",isPaginationRequired:!1,isAttachment:!0,language:\"english\",attributes:\"id,headline,examId,contentType,startDate,endD",
+        "[main.a0c7cc91f09156b9.js] age:1,limit:10,contentType:\"browse-exam\",key:\"createdAt\",order:\"DESC\",isPaginationRequired:!1,isAttachment:!0,language:\"english\",attributes:\"id,headline,examId,contentType,startDate,endDate,language,createdAt\"},this.isSubMenuOpen=!1,this.submenu=!1,this.closeMenu=!1,this.closeMenu11=!1,this.closeMenu2=!1,this.parent1Active=!1,thi",
+        "[main.a0c7cc91f09156b9.js]  ce?this.body.toString():\"object\"==typeof this.body||\"boolean\"==typeof this.body||Array.isArray(this.body)?JSON.stringify(this.body):this.body.toString()}detectContentTypeHeader(){return null===this.body||Se(this.body)?null:De(this.body)?this.body.type||null:Fe(this.body)?null:\"string\"==typeof this.body?\"text/plain\":this.body ins",
+        "[main.a0c7cc91f09156b9.js] n,gn.join(\",\"))),ot.headers.has(\"Accept\")||xt.setRequestHeader(\"Accept\",\"application/json, text/plain, */*\"),!ot.headers.has(\"Content-Type\")){const tn=ot.detectContentTypeHeader();null!==tn&&xt.setRequestHeader(\"Content-Type\",tn)}if(ot.responseType){const tn=ot.responseType.toLowerCase();xt.responseType=\"json\"!==tn?tn:\"text\"}cons",
+        "[main.a0c7cc91f09156b9.js] yChangesHead=this._identityChangesTail=null}}_mismatch(t,n,s,u){let b;return null===t?b=this._itTail:(b=t._prev,this._remove(t)),null!==(t=null===this._unlinkedRecords?null:this._unlinkedRecords.get(s,null))?(Object.is(t.item,n)||this._addIdentityChange(t,n),this._reinsertAfter(t,b,u)):null!==(t=null===this._linkedRecords?null",
+        "[main.a0c7cc91f09156b9.js] nkedRecords?null:this._unlinkedRecords.get(s,null))?(Object.is(t.item,n)||this._addIdentityChange(t,n),this._reinsertAfter(t,b,u)):null!==(t=null===this._linkedRecords?null:this._linkedRecords.get(s,u))?(Object.is(t.item,n)||this._addIdentityChange(t,n),this._moveAfter(t,b,u)):t=this._addAfter(new _T(n,s),b,u),t}_verifyReinser",
+        "[main.a0c7cc91f09156b9.js] t.is(t.item,n)||this._addIdentityChange(t,n),this._moveAfter(t,b,u)):t=this._addAfter(new _T(n,s),b,u),t}_verifyReinsertion(t,n,s,u){let b=null===this._unlinkedRecords?null:this._unlinkedRecords.get(s,null);return null!==b?t=this._reinsertAfter(b,t._prev,u):t.currentIndex!=u&&(t.currentIndex=u,this._addToMoves(t,u)),t}_truncat"
+      ],
       "textSample": "Home | Staff Selection Commission | GoI"
-    },
-    {
-      "url": "https://www.ncs.gov.in/",
-      "ok": true,
-      "via": "direct",
-      "final": "https://ncs.gov.in/",
-      "bytes": 278173,
-      "title": "NcsNewWebsite",
-      "anchors": 123,
-      "noticeLinks": 0,
-      "sampleNotices": [],
-      "feeds": [],
-      "scripts": [
-        "https://ncs.gov.in/assets/js/tracking-init.js",
-        "https://www.googletagmanager.com/gtag/js?id=G-154MM856DY",
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
-        "https://ncs.gov.in/polyfills-FFHMD2TL.js",
-        "https://ncs.gov.in/scripts-CWJO5AXB.js",
-        "https://ncs.gov.in/main-ENWR5Y2A.js"
-      ],
-      "scriptInfo": [
-        {
-          "src": "https://ncs.gov.in/assets/js/tracking-init.js",
-          "ok": true,
-          "bytes": 472,
-          "via": "direct"
-        },
-        {
-          "src": "https://ncs.gov.in/scripts-CWJO5AXB.js",
-          "ok": true,
-          "bytes": 129948,
-          "via": "direct"
-        },
-        {
-          "src": "https://ncs.gov.in/main-ENWR5Y2A.js",
-          "ok": true,
-          "bytes": 638337,
-          "via": "direct"
-        }
-      ],
-      "apis": [
-        "https://api.ncs.gov.in/api/location/state",
-        "https://api.ncs.gov.in/api/locations",
-        "https://api.ncs.gov.in/api/jobseeker/profiles/career-timeline/get-skills?keyword=Technical%20support",
-        "/api/news/classifieds?page=${this.pageNumber}&size=${this.pageSize}&search=${e}",
-        "/api/grievance/tickets/list",
-        "/api/grievance/tickets/view?userId=${this.userId}&ticketNumber=${e.ticketNumber}",
-        "/api/grievance/tickets/user-response",
-        "/api/grievance/tickets/reopen",
-        "/api/grievance/tickets/case-types",
-        "/api/grievance/tickets/case-categories",
-        "/api/grievance/tickets/case-sub-categories?caseCategoryId=${e.id}",
-        "/api/grievance/tickets/create",
-        "https://jsdm.jharkhand.gov.in/jsdm/cms/en/",
-        "/api/yp/",
-        "/api/jobseeker/profiles/upload-image",
-        "/api/jobseeker/profiles/get-image",
-        "/api/jobseeker/profiles/upload-resume",
-        "/api/jobseeker/profiles/download-resume",
-        "/api/jobseeker/profiles/upload-cover-letter",
-        "/api/jobseeker/profiles/cover-letters/download",
-        "/api/jobseeker/profiles/cover-letters/delete",
-        "/api/jobseeker/profiles/resumes/names",
-        "/api/jobseeker/profiles/cover-letters/names",
-        "/api/jobseeker/profiles/delete-resume",
-        "/api/digilocker-sso/authorize",
-        "/api/digilocker-sso/callback",
-        "/api/digilocker-sso/complete-registration",
-        "/api/digilocker-sso/revoke-token",
-        "/api/digilocker-sso/fetch-documents",
-        "/api/digilocker-sso/pull-document",
-        "/api/digilocker-sso/get/documents",
-        "/api/digilocker-sso/refresh-token",
-        "/api/emigrate-jobs/countries",
-        "/api/grievance/tickets/view",
-        "/api/grievance/tickets/case-sub-categories",
-        "/api/location/state",
-        "/api/location/districts",
-        "/api/location/sub-districts",
-        "/api/location/cities",
-        "/api/pincode",
-        "/api/pincode/upload",
-        "/api/education/qualifications",
-        "/api/education/qualifications/degrees",
-        "/api/education/qualifications/degrees/specializations",
-        "/api/jobseeker/profiles/career-timeline/qualifications",
-        "/api/jobseeker/profiles/career-timeline/qualifications/degrees",
-        "/api/jobseeker/profiles/career-timeline/degrees/specializations",
-        "/api/jobseeker/profiles/career-timeline/get-industries",
-        "/api/jobseeker/profiles/career-timeline/get-skills",
-        "/api/jobseeker/profiles/career-timeline/delete",
-        "/api/jobseeker/profiles/career-timeline/get",
-        "/api/jobseeker/profiles/career-timeline/delete-education",
-        "/api/jobseeker/profiles/career-timeline/experience-type",
-        "/api/jobseeker/profiles/career-timeline/location-type",
-        "/api/jobseeker/profiles/career-timeline/get-location",
-        "/api/events/getEvents",
-        "/api/job-titles/suggest",
-        "/api/locations/suggest",
-        "/api/news/newsletter/upload",
-        "/api/jobseeker/documents/upload",
-        "/api/pmis/sso/login",
-        "/api/integration/redirect/pmis",
-        "/api/v1/ncs/mybharat/exchange-code",
-        "/api/integration/redirect/mentortogether",
-        "/api/v1/ncs/sidh/exchange-code",
-        "/api/v1/ncs/sidh/course/search",
-        "/api/v1/ncs/sidh/course/master",
-        "/api/sidh/register",
-        "https://api.ncs.gov.in/zobique/api/course-recommendations/recommend",
-        "/api/v1/nats/apprenticeships/search",
-        "/api/integration/redirect/NATS",
-        "/api/v1/international-job-posts/get",
-        "/api/integration/redirect/bluedot",
-        "/api/v1/employer-image/upload-image"
-      ],
-      "bases": [],
-      "textSample": "NcsNewWebsite --> Government of India Toll Free Helpline - 1514 Jobseekers Employers Counsellors Career Centers Jobseekers Employers Counsellors Career Centers Resources Classified Jobs ☰ ✖ Jobseekers Get Started Login Register Registration Flowchart Search for Jobs Find Domestic Jobs Find International Jobs E-migrate Advisories for International Jobseeker Jobs in Health Sector Jobs in Government "
-    },
-    {
-      "url": "https://mpsc.gov.in/",
-      "ok": true,
-      "via": "direct",
-      "final": "https://mpsc.gov.in/",
-      "bytes": 4363,
-      "title": "MPSC",
-      "anchors": 0,
-      "noticeLinks": 0,
-      "sampleNotices": [],
-      "feeds": [],
-      "scripts": [
-        "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
-        "https://mpsc.gov.in/static/js/main.137462b8.chunk.js"
-      ],
-      "scriptInfo": [
-        {
-          "src": "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
-          "ok": true,
-          "bytes": 1259319,
-          "via": "direct"
-        },
-        {
-          "src": "https://mpsc.gov.in/static/js/main.137462b8.chunk.js",
-          "ok": true,
-          "bytes": 243529,
-          "via": "direct"
-        }
-      ],
-      "apis": [
-        "http://localhost:8080/web/api/v1/otps",
-        "https://smbmpscweb.com/web/api/v1/otps",
-        "https://mpsc.gov.in/web/api/v1/otps"
-      ],
-      "bases": [
-        "http://localhost:8080/web/api/v1/otps",
-        "https://smbmpscweb.com/web/api/v1/otps",
-        "https://mpsc.gov.in/web/api/v1/otps",
-        "/web/api/v1/otps"
-      ],
-      "textSample": "MPSC You need to enable JavaScript to run this app."
     },
     {
       "url": "https://www.aiimsexams.ac.in/",
@@ -301,6 +165,14 @@
         "http://localhost:3000/api/auth"
       ],
       "bases": [],
+      "grep": [
+        "[page] none fs-6\" href=\"/landingpage/courses/undefined\">Academic Courses</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/courses/undefined\">Recruitments</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"",
+        "[page] s=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/",
+        "[page] al-symbols-rounded \">event</span>Key Dates</a><a class=\"block px-4 py-2 text-white text-decoration-none fs-6 d-flex gap-2 align-items-center\" href=\"/landingpage/notice\"><span class=\"material-symbols-rounded \">notifications</span>Notices</a><a class=\"block px-4 py-2 text-white text-decoration-none fs-6 d-flex gap-2 align-items",
+        "[page] s=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/",
+        "[page] a></li><li><a class=\"quick-link\" href=\"/landingpage/courses/undefined\">Academic Courses</a></li><li><a class=\"quick-link\" href=\"/landingpage/courses/undefined\">Recruitments</a></li><li><a class=\"quick-link\" href=\"/landingpage/key-dates\">Key Dates</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a ",
+        "[page] e/courses/undefined\">Recruitments</a></li><li><a class=\"quick-link\" href=\"/landingpage/key-dates\">Key Dates</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a class=\"quick-link\" href=\"/landingpage/miscellaneous-notice\">Miscellaneous Notice</a></li><li><a class=\"quick-link\" href=\"/support\">Supp"
+      ],
       "textSample": "All India Institute of Medical Sciences Skip to main content 🔔 Important Notices: About text_fields record_voice_over menu Home About Academic Courses Recruitments Key Dates Notices Contact Support text_fields translate home event Key Dates notifications Notices call Contact support_agent Support Home About Key Dates Notices Contact Support Assessment & Examination Registration Portal, Upholding "
     },
     {
@@ -386,6 +258,18 @@
       ],
       "apis": [],
       "bases": [],
+      "grep": [
+        "[page] – 1, Physics – 25, Telgu – 1, Botany – 9, Chemistry – 17, English – 21, English – 43, Mathematics – 20, Odia – 27, Physics - 16), Public Prosecutor, Spl. Drive recruitment for SC & ST Candidates – 6 , Total - 4866 </marquee> </div> <div class=\"clr\"></div> </div> <div id=\"generic_masterpage1_div_latest_notice",
+        "[page] _content\"> <span id=\"generic_masterpage1_div_latest_notice_content\" class=\"usha\">OPSC follows a robust, transparent and merit based process in all the recruitments. Any assurance for selection by unscrupulous elements should not only be ignored, but be brought to our notice for remedial measures. Please inform to t",
+        "[page] close_pop\" class=\"close\">&times;</div> <div class=\"pop_content\"> <p>It has come to the notice of the Hon’ble Commission that some fake advertisements for recruitments in the name of OPSC along with links for deposit of application fees are available in social media. This may mislead innocent candidates, who can fall into tr",
+        "[page] /a></li><li><a href=\"../Pages/View_Content.aspx?id=N5n/48rKoj1sNGZtqat51w==\" target=\"_self\"><span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span><span>Recruitment Calendar</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=5b9HSNplj2JDUafP+k7rrg==\" target=\"_self\"><span><i class=\"fa fa-file-pdf-o\" aria-hidden=\"true",
+        "[buttons.flash.min.js] l\":'<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/xml\" /><Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\" /><Default Extension=\"jpeg\" ContentType=\"i",
+        "[buttons.flash.min.js] ><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/xml\" /><Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\" /><Default Extension=\"jpeg\" ContentType=\"image/jpeg\" /><Override PartName=\"/xl/workbook.xml\" Content",
+        "[buttons.flash.min.js] l\" ContentType=\"application/xml\" /><Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\" /><Default Extension=\"jpeg\" ContentType=\"image/jpeg\" /><Override PartName=\"/xl/workbook.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml\" /><Override PartN",
+        "[buttons.flash.min.js] entType=\"application/vnd.openxmlformats-package.relationships+xml\" /><Default Extension=\"jpeg\" ContentType=\"image/jpeg\" /><Override PartName=\"/xl/workbook.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml\" /><Override PartName=\"/xl/worksheets/sheet1.xml\" ContentType=\"application/vnd.open",
+        "[buttons.flash.min.js] me=\"/xl/workbook.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml\" /><Override PartName=\"/xl/worksheets/sheet1.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\" /><Override PartName=\"/xl/styles.xml\" ContentType=\"application/vnd.openxmlformats-o",
+        "[buttons.flash.min.js] tName=\"/xl/worksheets/sheet1.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml\" /><Override PartName=\"/xl/styles.xml\" ContentType=\"application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml\" /></Types>', \"xl/workbook.xml\":'<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?"
+      ],
       "textSample": "Odisha Public Service Commission|OPSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Public Service Commission (OPSC) --> Login Apply Online Chairman's Message Brigadier Laxmi Charan Patnaik (Retd.), Hon'ble Chairman Vision & Mission Role and Functions Organization History Commission & Incumbency Chart OPSC Manuals Ann"
     },
     {
@@ -432,17 +316,101 @@
         "https://api.tgprb.in/api/account/visit"
       ],
       "bases": [],
+      "grep": [
+        "[page] mage/x-icon\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\" /> <title>Telangana Police Recruitment Board</title> <!-- Basic Styles --> <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"/css/bootstrap.min.css\" /> <link rel=\"styleshe",
+        "[page] type=\"text/css\" media=\"screen\" href=\"/css/your_style.css\" /> <link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"/css/demo.min.css\" /> <!-- Recruitment board fonts --> <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&",
+        "[index-C1RGemmW.js] ,(0,j.jsx)(`footer`,{className:`tslprb-footer`,children:(0,j.jsxs)(`div`,{className:`container`,children:[(0,j.jsxs)(`span`,{children:[`© 2026 Telangana Police Recruitment Board. All rights reserved`,(0,j.jsx)(`a`,{href:`https://www.tslprb.in/account/login?Length=7`,target:`_blank`,rel:`noreferrer`,children:`.`}),`\\xA0 \\xA0 \\xA0 ",
+        "[index-C1RGemmW.js] 12 Oct 2026`,title:`APP — Press Release`,href:`https://www.tgprb.in/APP_PDF/Press Note for APP-25 Result dtd 12-10-2026.pdf`},{date:`17 Sep 2026`,title:`Police Recruitment — Press Release`,href:`https://www.tgprb.in/SI_PC_2026/Press Note dated 17-09-2026.pdf`},{date:`10 Sep 2026`,title:`Police Recruitment — Press Release`,href:`h",
+        "[index-C1RGemmW.js]  Sep 2026`,title:`Police Recruitment — Press Release`,href:`https://www.tgprb.in/SI_PC_2026/Press Note dated 17-09-2026.pdf`},{date:`10 Sep 2026`,title:`Police Recruitment — Press Release`,href:`https://www.tgprb.in/SI_PC_2026/Press Note Second Supplementary Notification 2026 dated 10 Sep 2026.pdf`},{date:`08 Sep 2026`,title:`Po",
+        "[index-C1RGemmW.js] ess Release`,href:`https://www.tgprb.in/SI_PC_2026/Press Note Second Supplementary Notification 2026 dated 10 Sep 2026.pdf`},{date:`08 Sep 2026`,title:`Police Recruitment — Press Release`,href:`https://www.tgprb.in/SI_PC_2026/Press Note dated 08-09-2026.pdf`}],Gn=[{id:`t1`,label:`SCT PC Civil / etc`,count:`7,112`,rows:[{code:`21",
+        "[index-C1RGemmW.js] `div`,{className:`carousel-caption caption-right`,children:(0,j.jsxs)(`h1`,{className:`bannertext`,children:[`Welcome to `,(0,j.jsx)(`br`,{}),`Telangana Police Recruitment Board`]})})]})})]})})})}),(0,j.jsxs)(`div`,{className:`recruit-marquee-bar`,role:`region`,\"aria-label\":`Latest announcement`,children:[(0,j.jsxs)(`div`,{classN",
+        "[index-C1RGemmW.js] uit-marquee-content`,children:[(0,j.jsx)(`span`,{className:`mq-icon`,\"aria-hidden\":`true`,children:`📢`}),(0,j.jsx)(`span`,{className:`mq-tag`,children:`Police Recruitment\\xA02026`}),`Tentative dates of Preliminary Written Tests:`,(0,j.jsx)(`strong`,{children:`29th November`}),` for SI Level Posts`,(0,j.jsx)(`span`,{className:`mq",
+        "[index-C1RGemmW.js] \"aria-hidden\":`true`,children:[(0,j.jsx)(`span`,{className:`mq-icon`,\"aria-hidden\":`true`,children:`📢`}),(0,j.jsx)(`span`,{className:`mq-tag`,children:`Police Recruitment\\xA02026`}),`Tentative dates of Preliminary Written Tests:`,(0,j.jsx)(`strong`,{children:`29th November`}),` for SI Level Posts`,(0,j.jsx)(`span`,{className:`mq",
+        "[index-C1RGemmW.js] ock`,children:[(0,j.jsxs)(`div`,{className:`section-header gold`,children:[(0,j.jsx)(`div`,{children:(0,j.jsx)(`h2`,{className:`section-title`,children:`Police Recruitment — 2026`})}),(0,j.jsxs)(`div`,{className:`section-total`,children:[(0,j.jsx)(`span`,{className:`num tabular`,children:`7,437`}),(0,j.jsx)(`span`,{className:`lbl",
+        "[index-C1RGemmW.js] -block`,children:[(0,j.jsx)(`div`,{className:`section-header teal`,children:(0,j.jsx)(`div`,{children:(0,j.jsx)(`h2`,{className:`section-title`,children:`Other Recruitment — 2025`})})}),(0,j.jsxs)(`div`,{className:`card-grid teal-accent`,children:[(0,j.jsxs)(`div`,{className:`rec-card`,children:[(0,j.jsx)(`h3`,{children:`APP Recr",
+        "[index-C1RGemmW.js] ment — 2025`})})}),(0,j.jsxs)(`div`,{className:`card-grid teal-accent`,children:[(0,j.jsxs)(`div`,{className:`rec-card`,children:[(0,j.jsx)(`h3`,{children:`APP Recruitment 2025`}),(0,j.jsxs)(`ul`,{className:`link-list`,children:[(0,j.jsx)(`li`,{children:(0,j.jsx)(`a`,{href:`https://www.tgprb.in/APP_PDF/APP_Notification_2025_dtd_1",
+        "[index-C1RGemmW.js] j.jsx)(`span`,{className:`tag-new`,children:`New`})]})})]})]}),(0,j.jsxs)(`div`,{className:`rec-card`,children:[(0,j.jsx)(`h3`,{children:`FSL (Technical Posts) Recruitment 2025`}),(0,j.jsxs)(`ul`,{className:`link-list`,children:[(0,j.jsx)(`li`,{children:(0,j.jsx)(`a`,{href:`https://www.tgprb.in/FSL_PDF/FSL Notification.pdf`,targe",
+        "[index-C1RGemmW.js] t:`_blank`,rel:`noreferrer`,children:`Selection Cut-Offs`})})]})]}),(0,j.jsxs)(`div`,{className:`rec-card`,children:[(0,j.jsx)(`h3`,{children:`Driver & Shramik Recruitment 2025 in TGSRTC`}),(0,j.jsxs)(`ul`,{className:`link-list`,children:[(0,j.jsx)(`li`,{children:(0,j.jsx)(`a`,{href:`https://www.tgprb.in/DRVR_PDF/Driver_Shramik_N",
+        "[index-C1RGemmW.js] :`noreferrer`,children:`Shramiks — Selection Cut-Offs`})})]})]}),(0,j.jsxs)(`div`,{className:`rec-card`,children:[(0,j.jsx)(`h3`,{children:`Supervisor Trainees Recruitment 2025 in TGSRTC`}),(0,j.jsxs)(`ul`,{className:`link-list`,children:[(0,j.jsx)(`li`,{children:(0,j.jsx)(`a`,{href:`https://www.tgprb.in/STRTC_PDF/TST & MST Noti",
+        "[index-C1RGemmW.js] j.jsx)(`tr`,{children:(0,j.jsx)(`td`,{colSpan:2,align:`center`,className:`tablehead`,style:{fontWeight:`bold`},children:`Selection Procedure / Scheme - (Police Recruitment — 2026) (For detailed information please go through Notifications)`})}),(0,j.jsxs)(`tr`,{className:`tablesubheader`,children:[(0,j.jsx)(`td`,{width:`10%`,align",
+        "[index-C1RGemmW.js] b using forged / fake documents, communications, e-mails and websites to authenticate their claim.`}),(0,j.jsx)(`p`,{children:`Please note that, the process of recruitment is carried out only through institutions which have reputation of carrying out similar exams in a fair and orderly manner and not by any other agencies.`}),(0,",
+        "[index-C1RGemmW.js] cial-line`,children:`Candidates are advised to visit only the official website: www.tgprb.in for any information`})]})]})]})})]})})})]})}var qn={police:`Police Recruitment`,driver:`Driver & Shramik`,supervisor:`Supervisor Trainees`,fsl:`FSL`,app:`APP`},Jn=[`police`,`driver`,`supervisor`,`fsl`,`app`],Yn=[{href:`https://www.tgprb.i",
+        "[index-C1RGemmW.js] ear`,onClick:()=>r(``),\"aria-label\":`Clear search`,children:`×`})]}),(0,j.jsxs)(`div`,{className:`pr-chips`,role:`group`,\"aria-label\":`Filter press releases by recruitment stream`,children:[(0,j.jsxs)(`button`,{type:`button`,className:`pr-chip`,\"aria-pressed\":e===`all`,onClick:()=>t(`all`),children:[`All`,(0,j.jsx)(`span`,{classN",
+        "[index-C1RGemmW.js] ge`,children:[(0,j.jsx)(`h2`,{children:`About Us`}),(0,j.jsx)(`p`,{children:`After formation of Telangana State, the existing Andhra Pradesh State Level Police Recruitment Board was renamed as Telangana State Level Police Recruitment Board vide GO Ms No. 39, Home (Legal) Department, dated 04-06-2015, headed by an IPS Officer in t",
+        "[index-C1RGemmW.js] `p`,{children:`After formation of Telangana State, the existing Andhra Pradesh State Level Police Recruitment Board was renamed as Telangana State Level Police Recruitment Board vide GO Ms No. 39, Home (Legal) Department, dated 04-06-2015, headed by an IPS Officer in the rank of Inspector General of Police / Addl. Director Genera",
+        "[index-C1RGemmW.js] 15, headed by an IPS Officer in the rank of Inspector General of Police / Addl. Director General of Police designated as Chairman, Telangana State Level Police Recruitment Board. The Board conducts the direct recruitment to the Posts of Police Constables / Sub Inspectors in Police Department along with the similar direct recruitm",
+        "[index-C1RGemmW.js] ctor General of Police / Addl. Director General of Police designated as Chairman, Telangana State Level Police Recruitment Board. The Board conducts the direct recruitment to the Posts of Police Constables / Sub Inspectors in Police Department along with the similar direct recruitment Posts in Special Protection Force, Fire Servi",
+        "[index-C1RGemmW.js] ruitment Board. The Board conducts the direct recruitment to the Posts of Police Constables / Sub Inspectors in Police Department along with the similar direct recruitment Posts in Special Protection Force, Fire Services and Prisons Department as well as Constables in Transport Department and Prohibition & Excise Department. The ",
+        "[index-C1RGemmW.js] rce, Fire Services and Prisons Department as well as Constables in Transport Department and Prohibition & Excise Department. The Board also conducts the direct recruitment to the Posts of Assistant Public Prosecutors in Prosecutions Department, Technical Posts in Forensic Science Laboratory and other Posts whenever the Government",
+        "[index-C1RGemmW.js] Posts whenever the Government accords the permission to fill up the Posts.`}),(0,j.jsx)(`p`,{children:`The Board is functioning to plan and implement effective recruitment procedure and also for timely recruitment by following the rules / procedure laid down by the Government of Telangana in a fair and transparent manner.`})]})}f",
+        "[index-C1RGemmW.js] permission to fill up the Posts.`}),(0,j.jsx)(`p`,{children:`The Board is functioning to plan and implement effective recruitment procedure and also for timely recruitment by following the rules / procedure laid down by the Government of Telangana in a fair and transparent manner.`})]})}function ar(){return(0,j.jsxs)(`div`,{class"
+      ],
       "textSample": "Telangana Police Recruitment Board"
     },
     {
-      "url": "https://gpsc.goa.gov.in/",
-      "ok": false,
-      "error": "direct: HTTP 403 | alt-ua: HTTP 403 | news-views.in: HTTP 403 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522"
-    },
-    {
-      "url": "https://www.employmentnews.gov.in/",
-      "ok": false,
-      "error": "direct: HTTP 404 | alt-ua: HTTP 404 | news-views.in: HTTP 404 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522"
+      "url": "https://mpsc.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://mpsc.gov.in/",
+      "bytes": 4363,
+      "title": "MPSC",
+      "anchors": 0,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
+        "https://mpsc.gov.in/static/js/main.137462b8.chunk.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://mpsc.gov.in/static/js/2.45d1a81c.chunk.js",
+          "ok": true,
+          "bytes": 1259319,
+          "via": "direct"
+        },
+        {
+          "src": "https://mpsc.gov.in/static/js/main.137462b8.chunk.js",
+          "ok": true,
+          "bytes": 243529,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "http://localhost:8080/web/api/v1/otps",
+        "https://smbmpscweb.com/web/api/v1/otps",
+        "https://mpsc.gov.in/web/api/v1/otps"
+      ],
+      "bases": [
+        "http://localhost:8080/web/api/v1/otps",
+        "https://smbmpscweb.com/web/api/v1/otps",
+        "https://mpsc.gov.in/web/api/v1/otps",
+        "/web/api/v1/otps"
+      ],
+      "grep": [
+        "[2.45d1a81c.chunk.js] ll};const G=(e,t)=>null!=e&&o.a.hasOwnProp(e,t)?e[t]:void 0;const X={transitional:F,adapter:[\"xhr\",\"http\",\"fetch\"],transformRequest:[function(e,t){const n=t.getContentType()||\"\",r=n.indexOf(\"application/json\")>-1,a=o.a.isObject(e);a&&o.a.isHTMLForm(e)&&(e=new FormData(e));if(o.a.isFormData(e))return r?JSON.stringify(K(e)):e;if(o.",
+        "[2.45d1a81c.chunk.js] isStream(e)||o.a.isFile(e)||o.a.isBlob(e)||o.a.isReadableStream(e))return e;if(o.a.isArrayBufferView(e))return e.buffer;if(o.a.isURLSearchParams(e))return t.setContentType(\"application/x-www-form-urlencoded;charset=utf-8\",!1),e.toString();let i;if(a){const t=G(this,\"formSerializer\");if(n.indexOf(\"application/x-www-form-urlencoded",
+        "[2.45d1a81c.chunk.js] ;if((i=o.a.isFileList(e))||n.indexOf(\"multipart/form-data\")>-1){const n=G(this,\"env\"),r=n&&n.FormData;return P(i?{\"files[]\":e}:e,r&&new r,t)}}return a||r?(t.setContentType(\"application/json\",!1),function(e,t,n){if(o.a.isString(e))try{return(t||JSON.parse)(e),o.a.trim(e)}catch(r){if(\"SyntaxError\"!==r.name)throw r}return(n||JSON.st",
+        "[2.45d1a81c.chunk.js] }catch(h){throw x.from(h,x.ERR_BAD_OPTION_VALUE,e)}}if(o.a.isFormData(r)&&(q.hasStandardBrowserEnv||q.hasStandardBrowserWebWorkerEnv||o.a.isReactNative(r)?c.setContentType(void 0):o.a.isFunction(r.getHeaders)&&function(e,t,n){\"content-only\"===n?Object.entries(t||{}).forEach(t=>{let n=Object(i.a)(t,2),r=n[0],o=n[1];ye.includes(r.t",
+        "[2.45d1a81c.chunk.js] .transitional||F;r.timeoutErrorMessage&&(t=r.timeoutErrorMessage),n(new x(t,o.clarifyTimeoutError?x.ETIMEDOUT:x.ECONNABORTED,e,y)),b(),y=null},void 0===a&&s.setContentType(null),\"setRequestHeader\"in y&&o.a.forEach(f(s),function(e,t){y.setRequestHeader(t,e)}),o.a.isUndefined(r.withCredentials)||(y.withCredentials=!!r.withCredentia",
+        "[2.45d1a81c.chunk.js] ));return null==n?O(t):n})(S,l):F,0!==F||p){let e,t=new u(n,{method:\"POST\",body:l,duplex:\"half\"});if(o.a.isFormData(l)&&(e=t.headers.get(\"content-type\"))&&S.setContentType(e),t.body){const e=j&&ae(F,oe(ie(j)))||[],n=Object(i.a)(e,2),r=n[0],o=n[1];l=m(t.body,r,o)}}}else if(p&&!d&&h&&\"get\"!==a&&\"head\"!==a)l=m(l);else if(p&&d&&!b&&\"",
+        "[2.45d1a81c.chunk.js]  fetch implementation\",x.ERR_NOT_SUPPORT,e,I);o.a.isString(C)||(C=C?\"include\":\"omit\");const v=d&&\"credentials\"in u.prototype;if(o.a.isFormData(l)){const e=S.getContentType();e&&/^multipart\\/form-data/i.test(e)&&!/boundary=/i.test(e)&&S.delete(\"content-type\")}S.set(\"User-Agent\",\"axios/\"+Ue,!1);const E=Object(B.a)(Object(B.a)({},T)",
+        "[2.45d1a81c.chunk.js] new ee(null,e)}function Je(e){Ze(e),e.headers=g.from(e.headers),e.data=Z.call(e,e.transformRequest),-1!==[\"post\",\"put\",\"patch\"].indexOf(e.method)&&e.headers.setContentType(\"application/x-www-form-urlencoded\",!1);return Qe.getAdapter(e.adapter||Q.adapter,e)(e).then(function(t){Ze(e),e.response=t;try{t.data=Z.call(e,e.transformResp",
+        "[main.137462b8.chunk.js] ndi\":xe&&Yt(URL.createObjectURL(xe));break;default:Yt(null)}},$t=()=>{const e=N.find(e=>e.mid===i);return e?\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"===e.contentType:!(!l||!l.contentType||\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"!==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS",
+        "[main.137462b8.chunk.js] eObjectURL(xe));break;default:Yt(null)}},$t=()=>{const e=N.find(e=>e.mid===i);return e?\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"===e.contentType:!(!l||!l.contentType||\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"!==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS\"===e.contentType:!(!",
+        "[main.137462b8.chunk.js] =>e.mid===i);return e?\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"===e.contentType:!(!l||!l.contentType||\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"!==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS\"===e.contentType:!(!l||!l.contentType||\"PREVIOUS_QUESTION_PAPERS\"!==l.contentType)},t",
+        "[main.137462b8.chunk.js] |!l.contentType||\"TENTATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"!==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS\"===e.contentType:!(!l||!l.contentType||\"PREVIOUS_QUESTION_PAPERS\"!==l.contentType)},ta=()=>{const e=N.find(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"=",
+        "[main.137462b8.chunk.js] TATIVE_SCHEDULE_OF_COMPETITIVE_EXAMINATION\"!==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS\"===e.contentType:!(!l||!l.contentType||\"PREVIOUS_QUESTION_PAPERS\"!==l.contentType)},ta=()=>{const e=N.find(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"===e.contentType:!(!l|",
+        "[main.137462b8.chunk.js] ==l.contentType)},ea=()=>{const e=w.find(e=>e.mid===i);return e?\"PREVIOUS_QUESTION_PAPERS\"===e.contentType:!(!l||!l.contentType||\"PREVIOUS_QUESTION_PAPERS\"!==l.contentType)},ta=()=>{const e=N.find(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"===e.contentType:!(!l||!l.contentType||\"DUTIES_AND_RESPONSIBILITIE",
+        "[main.137462b8.chunk.js] l||!l.contentType||\"PREVIOUS_QUESTION_PAPERS\"!==l.contentType)},ta=()=>{const e=N.find(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"===e.contentType:!(!l||!l.contentType||\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"!==l.contentType)},aa=e=>null===e||void 0===e||\"\"===e,ca=e=>null===e||void 0===e||\"\"===e,sa=",
+        "[main.137462b8.chunk.js] REVIOUS_QUESTION_PAPERS\"!==l.contentType)},ta=()=>{const e=N.find(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"===e.contentType:!(!l||!l.contentType||\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"!==l.contentType)},aa=e=>null===e||void 0===e||\"\"===e,ca=e=>null===e||void 0===e||\"\"===e,sa=function(e,t){let a=a",
+        "[main.137462b8.chunk.js] nd(e=>e.mid===i);return e?\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"===e.contentType:!(!l||!l.contentType||\"DUTIES_AND_RESPONSIBILITIES_OF_VARIOUS_POST\"!==l.contentType)},aa=e=>null===e||void 0===e||\"\"===e,ca=e=>null===e||void 0===e||\"\"===e,sa=function(e,t){let a=arguments.length>2&&void 0!==arguments[2]?arguments[2]:\"english\"",
+        "[main.137462b8.chunk.js] \"hr\",{className:\"dropdown-divider\"}),\"editing\"!==h&&Object(u.jsx)(kt,{tableData:l&&l.pendingApprovalList?l.pendingApprovalList:[],totalDataLength:l&&l.totalNoOfRecords?l.totalNoOfRecords:0,page:q,handleChangePage:(t,a)=>{Q(a),e(0!==B?Lt(B):At(a,B,J))},handleFormState:(t,a)=>{e(Lt(a,R)),O(t)},isPendingTable:!0,getAllPendingAppr",
+        "[main.137462b8.chunk.js] ject(u.jsx)(\"hr\",{className:\"dropdown-divider\"}),\"editing\"!==h&&Object(u.jsx)(kt,{tableData:l&&l.publishedList?l.publishedList:[],totalDataLength:l&&l.totalNoOfRecords?l.totalNoOfRecords:0,page:q,handleChangePage:(t,a)=>{Q(a),e(0!==B?Ht(B,a,J):Rt(a,B,J))},handleFormState:(t,a)=>{e(function(){let e=arguments.length>0&&void 0!==",
+        "[main.137462b8.chunk.js] (u.jsx)(\"i\",{className:\"fa fa-search\"})})]})}),\"editing\"!==n&&Object(u.jsx)(oa,{tableData:t&&t.menuOptionList?t.menuOptionList:[],totalDataLength:t&&t.totalNoOfRecords?t.totalNoOfRecords:0,page:v,handleChangePage:w,handleFormState:y,isPendingTable:!0,getAllMenuList:It,searchValue:p}),\"editing\"===n&&Object(u.jsx)(ja,{actionType",
+        "[main.137462b8.chunk.js] ick:()=>x(\"create\"),children:\"Add Images\"})})]}),Object(u.jsx)(ga,{tableData:j&&j.commercials&&j.commercials?j.commercials:[],totalDataLength:j&&j.totalNumberOfRecords?j.totalNumberOfRecords:0,page:O,handleChangePage:(t,a)=>{p(a),e(ma(a,10))},handleFormState:x,isPendingTable:!0})]}),(\"create\"==c||\"edit\"==c)&&Object(u.jsx)(\"div"
+      ],
+      "textSample": "MPSC You need to enable JavaScript to run this app."
     }
   ]
 }
