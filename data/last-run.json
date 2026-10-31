@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T16:39:59.854Z",
+    "at": "2026-10-31T17:20:27.861Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 69 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 71 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T16:40:09.359Z",
+    "at": "2026-10-31T17:20:36.733Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 7,
+    "scanSeconds": 6,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -105,22 +105,22 @@
       "tslprb": "paused (fails 29)",
       "slprb-ap": "paused (fails 29, geo-blocked)",
       "rbi": "paused (fails 6, geo-blocked)",
-      "dsssb": "5 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
+      "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
       "jpsc": "47 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "7 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T16:40:09.557Z",
+    "at": "2026-10-31T17:20:37.010Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T16:40:29.978Z",
+    "at": "2026-10-31T17:20:37.902Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,8 +164,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 5,
@@ -174,23 +173,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: SP सुकमा बस्तर फाइटर कांस्टेबल भर्ती 2026 – 375 पदों के लिए ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: Dhanlaxmi Bank सूचना प्रणाली ऑडिटर भर्ती 2026 – ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-10-31T16:40:49.313Z",
+    "at": "2026-10-31T17:21:01.161Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
-    "existing": 221,
+    "existing": 223,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 221",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 223",
       "  current affairs for today already exists.",
-      "  + analysis: SP Sukma Bastar Fighter Constable Recruitment 2026 – Apply Offline for 375 Posts",
-      "  + analysis: Dhanlaxmi Bank Announces Recruitment for Information System Auditor Position"
+      "  + analysis: WCDC Munger Recruitment 2026 – Apply Online for 5 Case Worker and Other Positions",
+      "  analysis below quality bar for atma-simdega-block-technology-manager-assistant-2026 (272 words, need 300) — not published."
     ]
   },
   "notify": {
