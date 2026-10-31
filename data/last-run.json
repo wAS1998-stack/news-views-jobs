@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T01:45:40.458Z",
+    "at": "2026-10-31T02:24:37.069Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -15,8 +15,8 @@
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 92 already known",
-      "https://rajsarkariresult.com/feed": "10 items via rss2json; newest 2026-10-30; 8 already known",
-      "https://gulfjobvacancy.in/feed": "10 items via rss2json; newest 2026-10-29; 7 already known",
+      "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
+      "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-30; 18 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-30; 9 already known"
     },
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T01:45:54.335Z",
+    "at": "2026-10-31T02:24:53.877Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 25, geo-blocked)",
       "bssc": "paused (fails 13, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via direct",
+      "nta": "1 links, 0 new via direct",
       "jssc": "paused (fails 25, geo-blocked)",
       "osssc": "paused (fails 13, geo-blocked)",
       "gsssb": "paused (fails 25, geo-blocked)",
       "sssb-punjab": "paused (fails 25, geo-blocked)",
       "hprca": "paused (fails 25, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "kea": "paused (fails 25, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
+      "kea": "paused (fails 25, geo-blocked)",
+      "uppsc": "1 links, 0 new via direct",
       "dsssb2": "paused (fails 25, geo-blocked)",
-      "jkssb": "2 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
       "tnusrb": "paused (fails 25, geo-blocked)",
       "tslprb": "paused (fails 25)",
       "slprb-ap": "paused (fails 25, geo-blocked)",
-      "csbc": "197 links, 0 new via news-views.in",
-      "kvs": "7 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "nta": "1 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "csbc": "197 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T01:45:54.594Z",
+    "at": "2026-10-31T02:24:54.077Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T01:45:55.478Z",
+    "at": "2026-10-31T02:24:54.904Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -173,17 +173,17 @@
     ]
   },
   "news": {
-    "at": "2026-10-31T01:46:17.990Z",
+    "at": "2026-10-31T02:25:14.589Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 189,
+    "existing": 191,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 189",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 191",
       "  current affairs for today already exists.",
-      "  + analysis: Visakhapatnam Port Authority Announces Recruitment for Dy. Chief Vigilance Officer",
-      "  + analysis: Dr. Harisingh Gour Vishwavidyalaya Invites Applications for Curator Position"
+      "  + analysis: Syama Prasad Mookerjee Port Kolkata Invites Applications for Deputy Manager (Marine Engineering) Post",
+      "  + analysis: NAM Multi Purpose Health Worker Recruitment 2026 – Apply Offline"
     ]
   },
   "notify": {
