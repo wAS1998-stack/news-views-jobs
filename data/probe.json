@@ -1,145 +1,58 @@
 {
-  "at": "2026-10-31T09:05:05.944Z",
+  "at": "2026-10-31T09:06:09.589Z",
   "indiaRelay": false,
   "results": [
     {
-      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&key=createdAt&order=DESC&isAttachment=true&language=english",
-      "ok": true,
-      "raw": {
-        "status": 203,
-        "type": "application/json; charset=utf-8",
-        "bytes": 111,
-        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
-      }
-    },
-    {
-      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10",
-      "ok": true,
-      "raw": {
-        "status": 203,
-        "type": "application/json; charset=utf-8",
-        "bytes": 111,
-        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
-      }
-    },
-    {
-      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isPaginationRequired=false&isAttachment=true&language=english",
-      "ok": true,
-      "raw": {
-        "status": 203,
-        "type": "application/json; charset=utf-8",
-        "bytes": 111,
-        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
-      }
-    },
-    {
-      "url": "https://www.aiimsexams.ac.in/landingpage/notice",
+      "url": "https://ssc.gov.in/",
       "ok": true,
       "via": "direct",
-      "final": "https://www.aiimsexams.ac.in/landingpage/notice",
-      "bytes": 35291,
-      "title": "All India Institute of Medical Sciences",
-      "anchors": 34,
+      "final": "https://ssc.gov.in/",
+      "bytes": 80649,
+      "title": "Home | Staff Selection Commission | GoI",
+      "anchors": 0,
       "noticeLinks": 0,
       "sampleNotices": [],
       "feeds": [],
       "scripts": [
-        "https://www.aiimsexams.ac.in/_next/static/chunks/fd9d1056-d26bc9912af903a4.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/2117-8892a5382aef4615.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/13b76428-62a6e4bbed6f1919.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/9400-2a9afe74383de5c2.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/6981-3b34fee79731de7a.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/605-c7a812dd8a936ae8.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/9565-9dbae70f3de7cae6.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/5410-1fa4afc63e854c37.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/1514-62b2a9fe419a37f4.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/7271-be3a42bf1851d211.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/3145-c4ea53740ca5c000.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/9987-e7e806c0e150cbc1.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/337-4da3cf0e973256e4.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/7821-36f2b474e82ee5fc.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/7648-1a4e8c99f9893831.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/7287-b4590b3c2263ac46.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/6602-e325bce02b19441b.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/3505-15d50973955a3d5b.js",
-        "https://www.aiimsexams.ac.in/_next/static/chunks/5429-464b66027533e7f1.js"
+        "https://ssc.gov.in/assets/library/jquery/js/jquery.min.js",
+        "https://ssc.gov.in/assets/library/bootstrap/js/bootstrap.min.js",
+        "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
+        "https://ssc.gov.in/polyfills.0367287dae1c626f.js",
+        "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
+        "https://ssc.gov.in/main.a0c7cc91f09156b9.js"
       ],
       "scriptInfo": [
         {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
+          "src": "https://ssc.gov.in/main.a0c7cc91f09156b9.js",
           "ok": true,
-          "bytes": 471,
+          "bytes": 1636440,
           "via": "direct"
         },
         {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/app/landingpage/notice/page-a73e1df8b5c7f1ea.js",
+          "src": "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
           "ok": true,
-          "bytes": 10735,
+          "bytes": 3644,
           "via": "direct"
         },
         {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/fd9d1056-d26bc9912af903a4.js",
+          "src": "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
           "ok": true,
-          "bytes": 172837,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/2117-8892a5382aef4615.js",
-          "ok": true,
-          "bytes": 124671,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/13b76428-62a6e4bbed6f1919.js",
-          "ok": true,
-          "bytes": 59304,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/9400-2a9afe74383de5c2.js",
-          "ok": true,
-          "bytes": 71986,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/6981-3b34fee79731de7a.js",
-          "ok": true,
-          "bytes": 22495,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/605-c7a812dd8a936ae8.js",
-          "ok": true,
-          "bytes": 34371,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/9565-9dbae70f3de7cae6.js",
-          "ok": true,
-          "bytes": 20736,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/5410-1fa4afc63e854c37.js",
-          "ok": true,
-          "bytes": 7508,
+          "bytes": 80514,
           "via": "direct"
         }
       ],
       "apis": [
-        "/api/auth/signin?",
-        "http://localhost:3000/api/auth"
+        "/api/admin/5.1/sendOtp",
+        "https://ssc.gov.in/api",
+        "/api/attachment/uploads/masterData/Others/debarreds_as_of_6th_April_2026_060426.pdf",
+        "/api/attachment/uploads/masterData/NoticeBoards/Scribe%20Procedure%20Notice251024.pdf"
       ],
-      "bases": [],
-      "grep": [
-        "[2117-8892a5382aef4615.js] PREFETCH_HEADER]||\"0\",p[r.NEXT_ROUTER_STATE_TREE],p[r.NEXT_URL]].join(\",\"));try{var y;let t=new URL(e);t.searchParams.set(r.NEXT_RSC_UNION_QUERY,h);let n=await fetch(t,{credentials:\"same-origin\",headers:p}),l=(0,o.urlToUrlWithoutFlightMarker)(n.url),a=n.redirected?l:void 0,i=n.headers.get(\"content-type\")||\"\",d=!!n.headers.ge",
-        "[2117-8892a5382aef4615.js] 8077),h=n(77831),y=n(50232),_=n(91311),{createFromFetch:v,encodeReply:b}=n(6671);async function g(e,t,n){let l,{actionId:a,actionArgs:i}=n,c=await b(i),s=await fetch(\"\",{method:\"POST\",headers:{Accept:o.RSC_CONTENT_TYPE_HEADER,[o.ACTION]:a,[o.NEXT_ROUTER_STATE_TREE]:(0,_.prepareFlightRouterStateForRequest)(e.tree),...t?{[o.NE",
-        "[605-c7a812dd8a936ae8.js] \"},null!=c&&null!==(p=c.headers)&&void 0!==p&&p.cookie?{cookie:c.headers.cookie}:{})},null!=c&&c.body&&(d.body=JSON.stringify(c.body),d.method=\"POST\"),e.next=7,fetch(l,d);case 7:return v=e.sent,e.next=10,v.json();case 10:if(h=e.sent,v.ok){e.next=13;break}throw h;case 13:return e.abrupt(\"return\",Object.keys(h).length>0?h:null",
-        "[605-c7a812dd8a936ae8.js] xt=6,A();case 6:return e.t2=e.sent,e.t3=o,e.t4={csrfToken:e.t2,callbackUrl:e.t3,json:!0},e.t5=new e.t1(e.t4),a={method:\"post\",headers:e.t0,body:e.t5},e.next=13,fetch(\"\".concat(u,\"/signout\"),a);case 13:return i=e.sent,e.next=16,i.json();case 16:if(s=e.sent,k.post({event:\"session\",data:{trigger:\"signout\"}}),!(null===(r=null==t",
-        "[605-c7a812dd8a936ae8.js] riptor(r,t))})}return e}({level:e,code:n},a)),!navigator.sendBeacon){r.next=8;break}return r.abrupt(\"return\",navigator.sendBeacon(i,l));case 8:return r.next=10,fetch(i,{method:\"POST\",body:l,keepalive:!0});case 10:return r.abrupt(\"return\",r.sent);case 11:case\"end\":return r.stop()}},r)})),function(e,t){return n.apply(this,argu"
+      "bases": [
+        "https://ssc.gov.in/api",
+        "https://ssc.gov.in"
       ],
-      "textSample": "All India Institute of Medical Sciences Skip to main content 🔔 Important Notices: About text_fields record_voice_over menu Home About Academic Courses Recruitments Key Dates Notices Contact Support text_fields translate home event Key Dates notifications Notices call Contact support_agent Support Home About Key Dates Notices Contact Support notifications Important Notices arrow_back Go Back descr"
+      "grep": [],
+      "textSample": "Home | Staff Selection Commission | GoI"
     }
   ]
 }
