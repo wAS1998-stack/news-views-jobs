@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T01:04:48.511Z",
+    "at": "2026-10-31T01:45:40.458Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -15,8 +15,8 @@
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 92 already known",
-      "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
-      "https://gulfjobvacancy.in/feed": "10 items via api.allorigins.win; newest 2026-10-29; 7 already known",
+      "https://rajsarkariresult.com/feed": "10 items via rss2json; newest 2026-10-30; 8 already known",
+      "https://gulfjobvacancy.in/feed": "10 items via rss2json; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-30; 18 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-30; 9 already known"
     },
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T01:04:56.604Z",
+    "at": "2026-10-31T01:45:54.335Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -81,7 +81,7 @@
       "hpsc": "paused (fails 25, geo-blocked)",
       "hppsc": "paused (fails 25, geo-blocked)",
       "ukpsc": "paused (fails 25, geo-blocked)",
-      "nta": "1 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "cgpsc": "paused (fails 25, geo-blocked)",
       "gpsc": "paused (fails 25, geo-blocked)",
       "indiapost-gds": "142 links, 0 new via direct",
@@ -100,23 +100,23 @@
       "gsssb": "paused (fails 25, geo-blocked)",
       "sssb-punjab": "paused (fails 25, geo-blocked)",
       "hprca": "paused (fails 25, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
-      "kea": "paused (fails 25, geo-blocked)",
-      "keralapsc": "6 links, 0 new via direct",
-      "dsssb2": "paused (fails 25, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
-      "uksssc": "28 links, 0 new via direct",
+      "kea": "paused (fails 25, geo-blocked)",
+      "ctet": "4 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 25, geo-blocked)",
+      "jkssb": "2 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "tnusrb": "paused (fails 25, geo-blocked)",
       "tslprb": "paused (fails 25)",
       "slprb-ap": "paused (fails 25, geo-blocked)",
+      "csbc": "197 links, 0 new via news-views.in",
       "kvs": "7 links, 0 new via direct",
-      "jkssb": "2 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uksssc": "28 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in"
+      "nta": "1 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T01:04:56.802Z",
+    "at": "2026-10-31T01:45:54.594Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T01:04:57.572Z",
+    "at": "2026-10-31T01:45:55.478Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -173,17 +173,17 @@
     ]
   },
   "news": {
-    "at": "2026-10-31T01:05:21.637Z",
+    "at": "2026-10-31T01:46:17.990Z",
     "ai": "OpenAI",
-    "published": 0,
+    "published": 2,
     "quizzes": 0,
     "existing": 189,
     "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 189",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for vpa-dy-chief-vigilance-officer-2026 (269 words, need 300) — not published.",
-      "  analysis below quality bar for dhgsv-curator-2026 (292 words, need 300) — not published."
+      "  + analysis: Visakhapatnam Port Authority Announces Recruitment for Dy. Chief Vigilance Officer",
+      "  + analysis: Dr. Harisingh Gour Vishwavidyalaya Invites Applications for Curator Position"
     ]
   }
 }
