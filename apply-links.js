@@ -75,6 +75,9 @@ async function getBuf(url, ms = 20000) {
       return { buf: Buffer.from(await r.arrayBuffer()), type: r.headers.get("content-type") || "", url: target === url ? (r.url || url) : url };
     } catch { /* try the relay */ }
   }
+  if (L.hasIndiaRelay() && L.indiaHost(url)) {   // official sites that only answer Indian addresses
+    try { const r = await L.fetchViaIndia(url, ms + 15000); return { buf: r.buffer, type: r.type, url: r.url }; } catch { /* unreachable */ }
+  }
   return null;
 }
 async function readNotice(url) {

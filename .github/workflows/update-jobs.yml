@@ -34,6 +34,9 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      INDIA_RELAY_URL: ${{ secrets.INDIA_RELAY_URL }}
+      INDIA_RELAY_TOKEN: ${{ secrets.INDIA_RELAY_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:

@@ -128,6 +128,56 @@ const CHAIN_ERR = /UNABLE_TO_VERIFY_LEAF_SIGNATURE|UNABLE_TO_GET_ISSUER_CERT_LOC
    source sites, so every fetch has a fallback chain: direct -> alternate UA
    -> public read-through proxies. The diagnostics in data/last-run.json say
    which route worked. */
+/* The India relay (india-relay/ — an AWS Lambda in Mumbai, set up by the owner, secrets INDIA_RELAY_URL and
+   INDIA_RELAY_TOKEN) reads the official sites that drop every non-Indian address (UPSC, SSC, IBPS, RRB, the forces,
+   most PSCs). It is tried first for Indian hosts whenever it is configured. */
+const INDIA_RELAY = String(process.env.INDIA_RELAY_URL || "").trim().replace(/\/+$/, "");
+const INDIA_KEY = String(process.env.INDIA_RELAY_TOKEN || "").trim();
+// The relay accepts *.in plus the non-.in central domains listed in india-relay/index.mjs (one list, read from there).
+const INDIA_EXTRA = (() => {
+  try {
+    const m = fs.readFileSync(path.join(__dirname, "india-relay", "index.mjs"), "utf8").match(/const EXTRA_HOSTS = \[([\s\S]*?)\];/);
+    return m ? [...m[1].matchAll(/"([a-z0-9.-]+)"/gi)].map((x) => x[1].toLowerCase()) : [];
+  } catch { return []; }
+})();
+const indiaHost = (u) => {
+  try { const h = new URL(u).hostname.toLowerCase(); return /\.in$/.test(h) || INDIA_EXTRA.some((d) => h === d || h.endsWith("." + d)); }
+  catch { return false; }
+};
+const hasIndiaRelay = () => !!(INDIA_RELAY && INDIA_KEY);
+const indiaUrl = (u, range) => `${INDIA_RELAY}/?url=${encodeURIComponent(u)}${range ? "&range=" + range : ""}`;
+async function indiaGet(url, ms, range) {
+  const r = await fetch(indiaUrl(url, range), { headers: { "x-relay-key": INDIA_KEY, accept: "*/*" }, signal: AbortSignal.timeout(ms) });
+  if (!r.ok && r.status !== 206) {
+    const note = (await r.text().catch(() => "")).replace(/\s+/g, " ").slice(0, 90);
+    const e = new Error(`india relay HTTP ${r.status}${note ? " (" + note + ")" : ""}`); e.status = r.status; e.headers = r.headers; throw e;
+  }
+  return r;
+}
+/** Fetch any document (page or PDF) through the India relay. Resolves { buffer, type, url }.
+    One relay response is capped at ~4.2 MB, so bigger files (up to 16 MB) are read in byte ranges. */
+async function fetchViaIndia(url, ms = 30000) {
+  if (!hasIndiaRelay()) throw new Error("india relay not configured");
+  let r;
+  try { r = await indiaGet(url, ms); }
+  catch (e) {
+    const total = e.status === 413 ? Number(e.headers.get("x-relay-length")) : 0;
+    if (!(total > 0 && total <= 16e6 && e.headers.get("x-relay-ranges") === "1")) throw e;
+    const parts = []; const STEP = 4e6;
+    for (let a = 0; a < total; a += STEP) {
+      const p = await indiaGet(url, ms, `${a}-${Math.min(a + STEP, total) - 1}`);
+      if (p.status !== 206) throw new Error("india relay: server ignored the byte range");
+      parts.push(Buffer.from(await p.arrayBuffer()));
+      r = p;
+    }
+    const buffer = Buffer.concat(parts);
+    if (buffer.length !== total) throw new Error(`india relay: got ${buffer.length} of ${total} bytes`);
+    return { buffer, type: r.headers.get("content-type") || "", url: e.headers.get("x-relay-final-url") || url };
+  }
+  const buffer = Buffer.from(await r.arrayBuffer());
+  if (buffer.length < 200) throw new Error("india relay: empty body");
+  return { buffer, type: r.headers.get("content-type") || "", url: r.headers.get("x-relay-final-url") || url };
+}
 const PROXIES = [
   // The site's own relay (functions/api/relay.js on Cloudflare, government hosts only). Tested 29 Oct: it reads 5
   // official sites the runners cannot (certificate-chain errors, a 403, a timeout) but, running in US data centres,
@@ -159,6 +209,14 @@ async function fetchText(url, ms = 20000, { allowProxy = true, skipDirect = fals
       await new Promise((r) => setTimeout(r, 800));
       try { return { ...(await tryFetch(url, { ...HDRS, "user-agent": UA_ALT }, ms)), via: "alt-ua" }; } catch (e) { errors.push("alt-ua: " + e.message); }
     }
+  }
+  if (allowProxy && hasIndiaRelay() && indiaHost(url)) {
+    try {
+      const r = await fetchViaIndia(url, (proxyMs || ms) + 15000);
+      const text = r.buffer.toString("utf8");
+      if (/<title>\s*(Just a moment|Attention Required|Access denied|403 Forbidden)/i.test(text)) throw new Error("bot challenge");
+      return { text, type: r.type, url: r.url, via: "india-relay" };
+    } catch (e) { errors.push("india-relay: " + e.message); }
   }
   if (allowProxy) {
     for (const p of PROXIES) {
@@ -624,5 +682,5 @@ function aiJobFields(obj) {
 /** Today's date in India (the automation runs on UTC machines; between 00:00 and 05:30 IST UTC is still yesterday). */
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
-module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
+module.exports = { fetchViaIndia, hasIndiaRelay, indiaHost, sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
   extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };

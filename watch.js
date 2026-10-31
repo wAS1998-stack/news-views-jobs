@@ -33,7 +33,8 @@ const UPDATES = path.join(ROOT, "data", "updates.json");
 const NEWURLS = path.join(ROOT, "data", "new-urls.txt");
 const SITE_URL = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const MAX_PUBLISH = Number(process.env.WATCH_MAX || L.CONFIG.maxWatchPerRun || 25);
-const CONCURRENCY = 8;
+const CONCURRENCY = 8;   // also keeps the India relay under a new AWS account's 10 concurrent runs
+const SCAN_BUDGET_MS = Number(process.env.WATCH_SCAN_MS || 9 * 60 * 1000);   // sources not reached in time go first next run
 const today = () => L.todayIST();   // Indian date
 
 const KEEP = /recruit|vacanc|advertis|\badvt\b|notification|\bnoti\b|category no|cat\.? ?no|\bposts?\b|engagement|walk[- ]?in|admit card|hall ?ticket|call letter|e-?admit|result|merit list|rank ?list|short ?list|select(ed|ion) list|provisional list|final list|score ?card|marks|cut[- ]?off|answer key|answer sheet|exam(ination)? (date|schedule|notice|calendar|city)|time ?table|interview|document verification|\bdv\b|written (test|exam)|\bcbt\b|online application|apply online|assistant|officer|teacher|lecturer|professor|constable|clerk|engineer|inspector|nurse|technician|driver|steno|typist|peon|guard|accountant|pharmacist|librarian|भर्ती|विज्ञापन|विज्ञप्ति|परिणाम|प्रवेश पत्र|उत्तर कुंजी|परीक्षा|रिक्ति|साक्षात्कार|मेरिट/i;
@@ -60,6 +61,17 @@ async function readDoc(url) {
     return { text: L.stripTags(html).slice(0, 8000), cands: anchors(html, r.url || url).slice(0, 30).map((a) => ({ url: a.url, text: a.text, pdf: /\.pdf(\?|$)/i.test(a.url) })), pdf: false };
   } catch (e) {
     const msg = (e.cause && (e.cause.code || e.cause.message)) || e.message;
+    if (L.hasIndiaRelay() && L.indiaHost(url)) {   // most official sites only answer Indian addresses
+      try {
+        const r = await L.fetchViaIndia(url, 40000);
+        if (/pdf/i.test(r.type) || /\.pdf(\?|$)/i.test(url)) {
+          const d = pdfParse && r.buffer.length <= 15e6 ? await pdfParse(r.buffer, { max: 6 }).catch(() => null) : null;
+          return { text: d ? String(d.text).replace(/\s+/g, " ").slice(0, 9000) : "", cands: [], pdf: true };
+        }
+        const html = r.buffer.toString("utf8");
+        return { text: L.stripTags(html).slice(0, 8000), cands: anchors(html, r.url).slice(0, 30).map((a) => ({ url: a.url, text: a.text, pdf: /\.pdf(\?|$)/i.test(a.url) })), pdf: false };
+      } catch { /* fall through to the other routes */ }
+    }
     if (L.CHAIN_ERR.test(String(msg))) {   // incomplete certificate chain: fetch the issuer and retry, verified
       try {
         const r = await L.fetchWithAIA(url, 25000);
@@ -160,15 +172,28 @@ async function main() {
   // 1) scan every source
   const health = {}, fresh = [];
   const runNo = (state._run = (state._run || 0) + 1);
-  await pool(sources, CONCURRENCY, async (s) => {
+  const relayOn = L.hasIndiaRelay();
+  const t0 = Date.now();
+  // Least recently scanned first, so a run cut short by the time budget is made up by the next one.
+  const order = [...sources].sort((a, b) => ((state[a.id] || {}).lastTry || 0) - ((state[b.id] || {}).lastTry || 0));
+  await pool(order, CONCURRENCY, async (s) => {
     const st = state[s.id] || (state[s.id] = { seen: [], fails: 0 });
+    // Smaller recruiters can ask to be scanned every Nth run ("every" in sources-official.json), spread across runs.
+    const every = Math.max(1, Number(s.every) || 1);
+    if (every > 1 && (runNo + parseInt(hash(s.id).slice(0, 6), 16)) % every) { health[s.id] = `every ${every} runs` + (st.lastOk ? ` (last ok ${st.lastOk})` : ""); return; }
     // Sources failing for a long time are retried every 6th run only, so blocked sites don't slow every run.
-    if ((st.fails || 0) >= 6 && runNo % 6) { health[s.id] = `paused (fails ${st.fails}${st.blocked ? ", geo-blocked" : ""})`; return; }
+    // Once the India relay is configured, a geo-blocked source gets 3 fresh tries through it first.
+    const relayable = relayOn && L.indiaHost(s.url);
+    // A source that has never worked is paused sooner (3 fails), so new unreachable sites don't slow every run.
+    if ((st.fails || 0) >= (st.lastOk ? 6 : 3) && runNo % 6 && !(relayable && (st.relayFails || 0) < 3)) { health[s.id] = `paused (fails ${st.fails}${st.blocked ? ", geo-blocked" : ""})`; return; }
+    if (Date.now() - t0 > SCAN_BUDGET_MS) { health[s.id] = "deferred to next run (time budget)"; return; }
+    st.lastTry = Date.now();
     try {
       const { text, url, via } = await L.fetchText(s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
       const prevVia = st.via; st.via = via;
       const links = noticeLinks(text, url);
-      if (!links.length) { st.fails = (st.fails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails})`; return; }
+      if (!links.length) { st.fails = (st.fails || 0) + 1; if (relayable) st.relayFails = (st.relayFails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails}) via ${via}`; return; }
+      if (relayable) st.relayFails = 0;
       const seen = new Set(st.seen);
       let baseline = !st.seen.length;
       const nu = links.filter((l) => !seen.has(l.key));
@@ -183,10 +208,12 @@ async function main() {
       if (!baseline) for (const l of nu) fresh.push({ src: s, link: l });
     } catch (e) {
       st.fails = (st.fails || 0) + 1;
+      if (relayable) st.relayFails = (st.relayFails || 0) + 1;
       if (/^direct: .*(UND_ERR_CONNECT_TIMEOUT|ETIMEDOUT|ECONNRESET|timeout)/i.test(String(e.message))) st.blocked = true;   // drops non-Indian networks
       health[s.id] = `error: ${String(e.message).slice(0, 120)} (fails ${st.fails})`;
     }
   });
+  const scanSeconds = Math.round((Date.now() - t0) / 1000);
   // links found earlier but not handled then (over the publish cap, or the AI / the notice was unreachable) go first
   const bySrc = Object.fromEntries(sources.map((x) => [x.id, x]));
   const retry = (state._retry || []).filter((r) => bySrc[r.src] && (r.tries || 0) < 3).map((r) => ({ src: bySrc[r.src], link: r.link, tries: r.tries || 0 }));
@@ -275,10 +302,13 @@ async function main() {
   if (added.jobs.length || added.updates.length) {
     fs.appendFileSync(NEWURLS, [...added.jobs.map((j) => `${SITE_URL}/jobs/${j.id}/`), ...added.updates.map((u) => `${SITE_URL}/updates/${u.id}/`)].join("\n") + "\n");
   }
-  const ok = Object.values(health).filter((h) => !/^error|^0 notice|^paused/.test(h)).length;
-  L.logRun("watch", { sources: sources.length, healthy: ok, newLinks: fresh.length, publishedJobs: added.jobs.length, publishedUpdates: added.updates.length,
+  const ok = Object.values(health).filter((h) => !/^error|^0 notice|^paused|^every|^deferred/.test(h)).length;
+  const deferred = Object.values(health).filter((h) => /^deferred/.test(h)).length;
+  const viaIndia = Object.values(health).filter((h) => /via india-relay$/.test(h)).length;
+  L.logRun("watch", { sources: sources.length, healthy: ok, deferred, viaIndiaRelay: viaIndia, indiaRelay: relayOn, scanSeconds,
+    newLinks: fresh.length, publishedJobs: added.jobs.length, publishedUpdates: added.updates.length,
     skipped: skipped.slice(0, 30), sources_health: health, logLines: 40 });
-  console.log(`Watch: ${ok}/${sources.length} sources healthy | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
+  console.log(`Watch: ${ok}/${sources.length} sources healthy (${viaIndia} via India relay, ${deferred} deferred) | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
 }
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
 module.exports = { noticeLinks, anchors };
