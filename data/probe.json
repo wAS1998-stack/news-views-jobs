@@ -1,16 +1,36 @@
 {
-  "at": "2026-10-31T09:02:56.824Z",
+  "at": "2026-10-31T09:05:05.944Z",
   "indiaRelay": false,
   "results": [
     {
       "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&key=createdAt&order=DESC&isAttachment=true&language=english",
-      "ok": false,
-      "error": "direct: empty body | alt-ua: empty body | news-views.in: empty body | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522"
+      "ok": true,
+      "raw": {
+        "status": 203,
+        "type": "application/json; charset=utf-8",
+        "bytes": 111,
+        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
+      }
     },
     {
-      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isAttachment=true&language=english",
-      "ok": false,
-      "error": "direct: empty body | alt-ua: empty body | news-views.in: empty body | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522"
+      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10",
+      "ok": true,
+      "raw": {
+        "status": 203,
+        "type": "application/json; charset=utf-8",
+        "bytes": 111,
+        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
+      }
+    },
+    {
+      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isPaginationRequired=false&isAttachment=true&language=english",
+      "ok": true,
+      "raw": {
+        "status": 203,
+        "type": "application/json; charset=utf-8",
+        "bytes": 111,
+        "body": "{\"statusCode\":\"203\",\"statusMessage\":\"Error Occurred!\",\"error\":\"Invalid attributes in request\",\"attribute\":null}"
+      }
     },
     {
       "url": "https://www.aiimsexams.ac.in/landingpage/notice",
@@ -47,6 +67,18 @@
       ],
       "scriptInfo": [
         {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
+          "ok": true,
+          "bytes": 471,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/app/landingpage/notice/page-a73e1df8b5c7f1ea.js",
+          "ok": true,
+          "bytes": 10735,
+          "via": "direct"
+        },
+        {
           "src": "https://www.aiimsexams.ac.in/_next/static/chunks/fd9d1056-d26bc9912af903a4.js",
           "ok": true,
           "bytes": 172837,
@@ -56,12 +88,6 @@
           "src": "https://www.aiimsexams.ac.in/_next/static/chunks/2117-8892a5382aef4615.js",
           "ok": true,
           "bytes": 124671,
-          "via": "direct"
-        },
-        {
-          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/main-app-5294d1645fe5526e.js",
-          "ok": true,
-          "bytes": 471,
           "via": "direct"
         },
         {
@@ -93,6 +119,12 @@
           "ok": true,
           "bytes": 20736,
           "via": "direct"
+        },
+        {
+          "src": "https://www.aiimsexams.ac.in/_next/static/chunks/5410-1fa4afc63e854c37.js",
+          "ok": true,
+          "bytes": 7508,
+          "via": "direct"
         }
       ],
       "apis": [
@@ -101,39 +133,11 @@
       ],
       "bases": [],
       "grep": [
-        "[page] 0bb71a708.js\" async=\"\"></script><script src=\"/_next/static/chunks/4950-884acaf2d76076f1.js\" async=\"\"></script><script src=\"/_next/static/chunks/app/landingpage/notice/page-a73e1df8b5c7f1ea.js\" async=\"\"></script><script src=\"/_next/static/chunks/1706-0f115dc2b6128340.js\" async=\"\"></script><script src=\"/_next/static/chunks/926",
-        "[page] yle=\"outline:none\"><!--$--><div><div class=\"landingPageNavbar\"><marquee behavior=\"scroll\" direction=\"left\" scrollamount=\"5\" role=\"region\" aria-label=\"Important Notices Ticker\" tabindex=\"0\" class=\"text-danger px-3 py-2 d-flex align-items-center gap-4 d-none d-sm-flex\">🔔 <strong>Important Notices:</strong> </marquee><div clas",
-        "[page] \"region\" aria-label=\"Important Notices Ticker\" tabindex=\"0\" class=\"text-danger px-3 py-2 d-flex align-items-center gap-4 d-none d-sm-flex\">🔔 <strong>Important Notices:</strong> </marquee><div class=\"login-nav shadow-sm\"><div class=\"container-fluid\"><div class=\"d-flex justify-content-between gap-3 py-2 \"><a class=\"flex-shri",
-        "[page] =\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/",
-        "[page] px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/support\"",
-        "[page] l-symbols-rounded \">event</span>Key Dates</a><a class=\"block px-4 py-2 text-white text-decoration-none fs-6 d-flex gap-2 align-items-center\" href=\"/landingpage/notice\"><span class=\"material-symbols-rounded \">notifications</span>Notices</a><a class=\"block px-4 py-2 text-white text-decoration-none fs-6 d-flex gap-2 align-items",
-        "[page] -2 text-white text-decoration-none fs-6 d-flex gap-2 align-items-center\" href=\"/landingpage/notice\"><span class=\"material-symbols-rounded \">notifications</span>Notices</a><a class=\"block px-4 py-2 text-white text-decoration-none fs-6 d-flex gap-2 align-items-center\" href=\"#new-web-footer\"><span class=\"material-symbols-rounde",
-        "[page] =\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/",
-        "[page] px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/key-dates\">Key Dates</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/landingpage/notice\">Notices</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/support\"",
-        "[page] one fs-6\" href=\"#new-web-footer\">Contact</a><a class=\"block px-4 py-2 text-decoration-none fs-6\" href=\"/support\">Support</a></div></div></nav></div><div class=\"notices-card shadow-sm mx-2 mx-md-auto my-4 rounded-3 card\"><div class=\"d-flex justify-content-between align-items-center bg-white border-0 card-header\"><div class=\"",
-        "[page] enter gap-2\"><span class=\"material-symbols-outlined text-primary fs-3 fs-sm-1\">notifications</span><h1 class=\"fw-bold text-primary fs-5 fs-sm-3 mb-0\">Important Notices</h1></div><button type=\"button\" class=\"d-flex align-items-center mb-2 backButton text-nowrap btn btn-secondary\"><span class=\"material-symbols-outlined\">arrow_",
-        "[page] w_back</span><span class=\"d-none d-sm-inline ms-2\">Go Back</span></button></div><div class=\"card-body\"><div class=\"px-3 mb-4\"><div class=\"ant-tabs ant-tabs-top notice-tabs css-1odpy5d\"><div role=\"tablist\" aria-orientation=\"horizontal\" class=\"ant-tabs-nav\"><div class=\"ant-tabs-nav-wrap\"><div class=\"ant-tabs-nav-list\" style=\"t",
-        "[page] ation=\"horizontal\" class=\"ant-tabs-nav\"><div class=\"ant-tabs-nav-wrap\"><div class=\"ant-tabs-nav-list\" style=\"transform:translate(0px, 0px)\"><div data-node-key=\"notice\" class=\"ant-tabs-tab ant-tabs-tab-active\"><div role=\"tab\" aria-selected=\"true\" class=\"ant-tabs-tab-btn\" tabindex=\"0\"><div class=\"d-flex align-items-center gap-",
-        "[page] ant-tabs-tab-btn\" tabindex=\"0\"><div class=\"d-flex align-items-center gap-2 px-2\"><span class=\"material-symbols-outlined fs-5\">description</span><span>Important Notice</span></div></div></div><div data-node-key=\"miscellaneousNotice\" class=\"ant-tabs-tab\"><div role=\"tab\" aria-selected=\"false\" class=\"ant-tabs-tab-btn\" tabindex=\"",
-        "[page] nter gap-2 px-2\"><span class=\"material-symbols-outlined fs-5\">description</span><span>Important Notice</span></div></div></div><div data-node-key=\"miscellaneousNotice\" class=\"ant-tabs-tab\"><div role=\"tab\" aria-selected=\"false\" class=\"ant-tabs-tab-btn\" tabindex=\"-1\"><div class=\"d-flex align-items-center gap-2 px-2\"><span clas",
-        "[page] s-tab-btn\" tabindex=\"-1\"><div class=\"d-flex align-items-center gap-2 px-2\"><span class=\"material-symbols-outlined fs-5\">folder_shared</span><span>Miscellaneous Notice</span></div></div></div><div class=\"ant-tabs-ink-bar ant-tabs-ink-bar-animated\"></div></div></div><div class=\"ant-tabs-nav-operations ant-tabs-nav-operations-h",
-        "[page] 0L2.898.704zM9.259.704h4.985V5.63H9.259z\"></path></g></g></svg></div><div class=\"ant-empty-description\"><div class=\"text-secondary\"><h5 class=\"fw-bold mb-1\">No Notices Found</h5><p class=\"small mb-0\">Try adjusting your filters or search keywords</p></div></div></div></div></div><div class=\"d-flex justify-content-end mt-4\"><u",
-        "[page] /courses/undefined\">Recruitments</a></li><li><a class=\"quick-link\" href=\"/landingpage/key-dates\">Key Dates</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a class=\"quick-link\" href=\"/landingpage/miscellaneous-notice\">Miscellaneous Notice</a></li><li><a class=\"quick-link\" href=\"/support\">Supp",
-        "[page] /undefined\">Recruitments</a></li><li><a class=\"quick-link\" href=\"/landingpage/key-dates\">Key Dates</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a class=\"quick-link\" href=\"/landingpage/miscellaneous-notice\">Miscellaneous Notice</a></li><li><a class=\"quick-link\" href=\"/support\">Support</a><",
-        "[page] ge/key-dates\">Key Dates</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a class=\"quick-link\" href=\"/landingpage/miscellaneous-notice\">Miscellaneous Notice</a></li><li><a class=\"quick-link\" href=\"/support\">Support</a></li></ul></div><div class=\"support-section col-lg-4 col-md-4\"><h6 class=\"se",
-        "[page] s</a></li><li><a class=\"quick-link\" href=\"/landingpage/notice\">Notices</a></li><li><a class=\"quick-link\" href=\"/landingpage/miscellaneous-notice\">Miscellaneous Notice</a></li><li><a class=\"quick-link\" href=\"/support\">Support</a></li></ul></div><div class=\"support-section col-lg-4 col-md-4\"><h6 class=\"section-title\">Contact</",
-        "[page] e370661eb.js\\\",\\\"2867\\\",\\\"static/chunks/2867-0e1cfd40bb71a708.js\\\",\\\"4950\\\",\\\"static/chunks/4950-884acaf2d76076f1.js\\\",\\\"7410\\\",\\\"static/chunks/app/landingpage/notice/page-a73e1df8b5c7f1ea.js\\\"],\\\"default\\\",1]\\nd:I[4707,[],\\\"\\\"]\\ne:I[36423,[],\\\"\\\"]\\nf:I[69447,[\\\"605\\\",\\\"static/chunks/605-c7a812dd8a936ae8.js\\\",\\\"6602\\\",\\\"stat",
-        "[page] )</script><script>self.__next_f.push([1,\"0:[\\\"$\\\",\\\"$L9\\\",null,{\\\"buildId\\\":\\\"5KWM1dEy67VvkxjmYhmPI\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"urlParts\\\":[\\\"\\\",\\\"landingpage\\\",\\\"notice\\\"],\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"landingpage\\\",{\\\"children\\\":[\\\"notice\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]}]}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"in",
-        "[page] WM1dEy67VvkxjmYhmPI\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"urlParts\\\":[\\\"\\\",\\\"landingpage\\\",\\\"notice\\\"],\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"landingpage\\\",{\\\"children\\\":[\\\"notice\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]}]}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"initialSeedData\\\":[\\\"\\\",{\\\"children\\\":[\\\"landingpage\\\",{\\\"children\\\":[\\\"notice\\\",{",
-        "[page] :[\\\"notice\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]}]}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"initialSeedData\\\":[\\\"\\\",{\\\"children\\\":[\\\"landingpage\\\",{\\\"children\\\":[\\\"notice\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{},[[\\\"$La\\\",[\\\"$\\\",\\\"$Lb\\\",null,{\\\"props\\\":{\\\"params\\\":{},\\\"searchParams\\\":{}},\\\"Component\\\":\\\"$c\\\"}],null],null],null]},[null,[",
-        "[page] ponent\\\":\\\"$c\\\"}],null],null],null]},[null,[\\\"$\\\",\\\"$Ld\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"segmentPath\\\":[\\\"children\\\",\\\"landingpage\\\",\\\"children\\\",\\\"notice\\\",\\\"children\\\"],\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$Le\\\",null,{}],\\\"templateStyles\\\"",
-        "[13b76428-62a6e4bbed6f1919.js] )},n_.toISOString=nm,n_.toString=nm,n_.toJSON=nm,n_.locale=tN,n_.localeData=tP,n_.toIsoString=D(\"toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)\",nm),n_.lang=tW,C(\"X\",0,0,\"unix\"),C(\"x\",0,0,\"valueOf\"),el(\"x\",es),el(\"X\",/[+-]?\\d+(\\.\\d{1,3})?/),em(\"X\",function(e,t,n){n._d=new Date(1e3*parseFl",
-        "[605-c7a812dd8a936ae8.js] ener(\"storage\",r)}},post:function(t){if(\"undefined\"!=typeof window)try{localStorage.setItem(e,JSON.stringify(s(s({},t),{},{timestamp:l()})))}catch(e){}}}},t.apiBaseUrl=f,t.fetchData=function(e,t,r){return c.apply(this,arguments)},t.now=l;var o=n(r(35750)),u=n(r(11753)),a=n(r(85024));function i(e,t){var r=Object.keys(e);if(Obj",
-        "[605-c7a812dd8a936ae8.js] abrupt(\"return\",null);case 20:case\"end\":return e.stop()}},e,null,[[2,16]])}))).apply(this,arguments)}function f(e){return\"undefined\"==typeof window?\"\".concat(e.baseUrlServer).concat(e.basePathServer):e.basePath}function l(){return Math.floor(Date.now()/1e3)}},60026:function(e,t,r){\"use strict\";var n=r(9973);Object.definePrope",
-        "[605-c7a812dd8a936ae8.js] Module\"===e||Object.prototype.hasOwnProperty.call(l,e))&&(e in t&&t[e]===w[e]||Object.defineProperty(t,e,{enumerable:!0,get:function(){return w[e]}}))});var j={baseUrl:(0,b.default)(null!==(n=s.env.NEXTAUTH_URL)&&void 0!==n?n:s.env.VERCEL_URL).origin,basePath:(0,b.default)(s.env.NEXTAUTH_URL).path,baseUrlServer:(0,b.default)(",
-        "[605-c7a812dd8a936ae8.js] rn w[e]}}))});var j={baseUrl:(0,b.default)(null!==(n=s.env.NEXTAUTH_URL)&&void 0!==n?n:s.env.VERCEL_URL).origin,basePath:(0,b.default)(s.env.NEXTAUTH_URL).path,baseUrlServer:(0,b.default)(null!==(o=null!==(u=s.env.NEXTAUTH_URL_INTERNAL)&&void 0!==u?u:s.env.NEXTAUTH_URL)&&void 0!==o?o:s.env.VERCEL_URL).origin,basePathServer:(0",
-        "[605-c7a812dd8a936ae8.js] unction(e){for(;;)switch(e.prev=e.next){case 0:return a=void 0===(u=(o=null!=r?r:{}).callbackUrl)?window.location.href:u,s=void 0===(i=o.redirect)||i,c=(0,g.apiBaseUrl)(j),e.next=4,U();case 4:if(f=e.sent){e.next=8;break}return window.location.href=\"\".concat(c,\"/error\"),e.abrupt(\"return\");case 8:if(!(!t||!(t in f))){e.next=11;",
-        "[605-c7a812dd8a936ae8.js] i,s,c,f;return p.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return o=void 0===(n=(null!=t?t:{}).callbackUrl)?window.location.href:n,u=(0,g.apiBaseUrl)(j),e.t0={\"Content-Type\":\"application/x-www-form-urlencoded\"},e.t1=URLSearchParams,e.next=6,A();case 6:return e.t2=e.sent,e.t3=o,e.t4={csrfToken:e.t2,callbackU"
+        "[2117-8892a5382aef4615.js] PREFETCH_HEADER]||\"0\",p[r.NEXT_ROUTER_STATE_TREE],p[r.NEXT_URL]].join(\",\"));try{var y;let t=new URL(e);t.searchParams.set(r.NEXT_RSC_UNION_QUERY,h);let n=await fetch(t,{credentials:\"same-origin\",headers:p}),l=(0,o.urlToUrlWithoutFlightMarker)(n.url),a=n.redirected?l:void 0,i=n.headers.get(\"content-type\")||\"\",d=!!n.headers.ge",
+        "[2117-8892a5382aef4615.js] 8077),h=n(77831),y=n(50232),_=n(91311),{createFromFetch:v,encodeReply:b}=n(6671);async function g(e,t,n){let l,{actionId:a,actionArgs:i}=n,c=await b(i),s=await fetch(\"\",{method:\"POST\",headers:{Accept:o.RSC_CONTENT_TYPE_HEADER,[o.ACTION]:a,[o.NEXT_ROUTER_STATE_TREE]:(0,_.prepareFlightRouterStateForRequest)(e.tree),...t?{[o.NE",
+        "[605-c7a812dd8a936ae8.js] \"},null!=c&&null!==(p=c.headers)&&void 0!==p&&p.cookie?{cookie:c.headers.cookie}:{})},null!=c&&c.body&&(d.body=JSON.stringify(c.body),d.method=\"POST\"),e.next=7,fetch(l,d);case 7:return v=e.sent,e.next=10,v.json();case 10:if(h=e.sent,v.ok){e.next=13;break}throw h;case 13:return e.abrupt(\"return\",Object.keys(h).length>0?h:null",
+        "[605-c7a812dd8a936ae8.js] xt=6,A();case 6:return e.t2=e.sent,e.t3=o,e.t4={csrfToken:e.t2,callbackUrl:e.t3,json:!0},e.t5=new e.t1(e.t4),a={method:\"post\",headers:e.t0,body:e.t5},e.next=13,fetch(\"\".concat(u,\"/signout\"),a);case 13:return i=e.sent,e.next=16,i.json();case 16:if(s=e.sent,k.post({event:\"session\",data:{trigger:\"signout\"}}),!(null===(r=null==t",
+        "[605-c7a812dd8a936ae8.js] riptor(r,t))})}return e}({level:e,code:n},a)),!navigator.sendBeacon){r.next=8;break}return r.abrupt(\"return\",navigator.sendBeacon(i,l));case 8:return r.next=10,fetch(i,{method:\"POST\",body:l,keepalive:!0});case 10:return r.abrupt(\"return\",r.sent);case 11:case\"end\":return r.stop()}},r)})),function(e,t){return n.apply(this,argu"
       ],
       "textSample": "All India Institute of Medical Sciences Skip to main content 🔔 Important Notices: About text_fields record_voice_over menu Home About Academic Courses Recruitments Key Dates Notices Contact Support text_fields translate home event Key Dates notifications Notices call Contact support_agent Support Home About Key Dates Notices Contact Support notifications Important Notices arrow_back Go Back descr"
     }
