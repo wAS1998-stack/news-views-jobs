@@ -13,7 +13,7 @@ pages (facts, eligibility, how to apply, FAQ, official links in Custom Tabs), sa
 offline cache, news-views.in links open in the app.
 
 Build: GitHub Actions `.github/workflows/android.yml` (needs no local SDK). Every push to `android/` builds the debug
-APK (published to the `app-latest` release), a signed `.aab` when signing secrets exist, and emulator screenshots in
+APK `sarkari-radar.apk` + debug APK (published to the `app-latest` release: https://github.com/wAS1998-stack/news-views-jobs/releases/tag/app-latest), a signed `.aab` when signing secrets exist, and emulator screenshots in
 `android/ci/screens/`. Package: `in.newsviews.app` (debug: `in.newsviews.app.debug`).
 
 Secrets (repo Settings → Secrets and variables → Actions):

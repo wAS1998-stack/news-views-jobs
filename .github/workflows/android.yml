@@ -1,7 +1,8 @@
 name: Android app
 # Builds the News-Views Android app (android/) on every change to it:
-#  - debug APK always (published to the "app-latest" release so it can be installed and tried),
-#  - signed release bundle (.aab for Play) and APK when the signing secrets exist,
+#  - release APK (sarkari-radar.apk, the app as users get it) and debug APK, published to the "app-latest" release so they
+#    can be installed and tried; signed with the upload key once the signing secrets exist, else with a cached test key,
+#  - signed release bundle (.aab for Play) when the signing secrets exist,
 #  - then runs the app on an emulator and saves screenshots to android/ci/screens/.
 # Results (OK / the compiler errors) are written to android/ci/last-build.txt because build logs can't be read from
 # Claude's sandbox. Optional secrets: GOOGLE_SERVICES_JSON (Firebase alerts), ANDROID_KEYSTORE_B64,
@@ -27,6 +28,9 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "17" }
       - uses: gradle/actions/setup-gradle@v4
+      # one test key for every build (Gradle's debug key, kept in the cache), so a newer test APK installs over the old one
+      - uses: actions/cache@v4
+        with: { path: ~/.android/debug.keystore, key: android-debug-keystore-v1 }
       - name: Firebase config (optional)
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
@@ -62,12 +66,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p out
-          cp android/app/build/outputs/apk/debug/app-debug.apk out/news-views-debug.apk
-          if [ "$signed" = true ] && [ -f android/app/build/outputs/apk/release/app-release.apk ]; then cp android/app/build/outputs/apk/release/app-release.apk out/news-views.apk; fi
-          [ -f android/app/build/outputs/bundle/release/app-release.aab ] && cp android/app/build/outputs/bundle/release/app-release.aab out/news-views.aab || true
-          notes="Sarkari Radar — build ${{ github.run_number }} from ${GITHUB_SHA::7} ($(date -u +%F' '%H:%M) UTC). news-views-debug.apk is the test build (uninstall it before installing the Play version)."
+          # sarkari-radar.apk: the release build (small and fast, what users will get); sarkari-radar-debug.apk: developer build
+          cp android/app/build/outputs/apk/release/app-release.apk out/sarkari-radar.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk out/sarkari-radar-debug.apk
+          [ -f android/app/build/outputs/bundle/release/app-release.aab ] && cp android/app/build/outputs/bundle/release/app-release.aab out/sarkari-radar.aab || true
+          if [ "$signed" = true ]; then key="signed with your upload key; sarkari-radar.aab is the file to upload to Google Play"; else key="test-signed (no signing key in GitHub yet), for trying the app; uninstall it before installing the Play version"; fi
+          notes="Sarkari Radar — build ${{ github.run_number }} from ${GITHUB_SHA::7} ($(date -u +%F' '%H:%M) UTC). Install sarkari-radar.apk on an Android phone to try the app: ${key}. sarkari-radar-debug.apk is a slower developer build that shows Google's test ads where real ads will go."
           gh release view app-latest >/dev/null 2>&1 || gh release create app-latest --title "Sarkari Radar Android app (latest build)" --notes "$notes" --prerelease
-          gh release edit app-latest --notes "$notes"
+          gh release edit app-latest --title "Sarkari Radar Android app (latest build)" --notes "$notes"
+          for old in news-views-debug.apk news-views.apk news-views.aab; do gh release delete-asset app-latest "$old" -y 2>/dev/null || true; done
           gh release upload app-latest out/* --clobber
       - name: Write the build result back to the repo
         if: always()
