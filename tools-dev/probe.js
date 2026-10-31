@@ -36,7 +36,23 @@ async function get(url, ms = 20000) {
   catch (e) { return { ok: false, error: String(e.message).slice(0, 300) }; }
 }
 
+// The raw answer (status, type, first 1.5 KB) — shows why an API says "empty body" or refuses.
+async function raw(url) {
+  try {
+    const o = new URL(url).origin;
+    const r = await fetch(url, { headers: { ...L.HDRS, accept: "application/json, text/plain, */*", origin: o, referer: o + "/" }, signal: AbortSignal.timeout(20000) });
+    const t = await r.text();
+    return { status: r.status, type: r.headers.get("content-type"), bytes: t.length, body: t.slice(0, 1500) };
+  } catch (e) { return { error: String((e.cause && (e.cause.code || e.cause.message)) || e.message).slice(0, 160) }; }
+}
+
 async function probe(url) {
+  if (/\/api\//i.test(url)) {
+    const r = await raw(url);
+    let shape;
+    try { const j = JSON.parse(r.body || ""); shape = Object.keys(j); } catch {}
+    if (r.status && (r.bytes < 4000 || !shape)) return { url, ok: true, raw: r };
+  }
   const page = await get(url);
   if (!page.ok) return { url, ok: false, error: page.error };
   const html = page.text || "";
@@ -54,7 +70,8 @@ async function probe(url) {
   const feeds = [...html.matchAll(/<link[^>]+type=["']application\/(?:rss|atom)\+xml["'][^>]*>/gi)].map((m) => (m[0].match(/href=["']([^"']+)/i) || [])[1]).filter(Boolean);
   const scripts = [...html.matchAll(/<script[^>]+src=["']([^"']+)["']/gi)].map((m) => { try { return new URL(L.decodeEntities(m[1]), page.url || url).href; } catch { return null; } }).filter(Boolean);
   const origin = new URL(page.url || url).origin;
-  const own = scripts.filter((s) => s.startsWith(origin) && !/jquery|bootstrap|analytics|gtag|recaptcha|polyfill/i.test(s)).slice(0, 8);
+  const own = scripts.filter((s) => s.startsWith(origin) && !/jquery|bootstrap|analytics|gtag|recaptcha|polyfill/i.test(s))
+    .sort((a, b) => (/\/page-|\/main/.test(b) ? 1 : 0) - (/\/page-|\/main/.test(a) ? 1 : 0)).slice(0, 10);
   const apis = new Set(), bases = new Set(), grep = [];
   const scan = (txt, where) => {
     for (const m of txt.matchAll(API_RE)) apis.add(m[1]);
@@ -79,7 +96,7 @@ async function probe(url) {
 async function main() {
   const list = urls.length ? urls : defaults();
   const out = { at: new Date().toISOString(), indiaRelay: L.hasIndiaRelay(), results: [] };
-  for (const u of list) { const r = await probe(u); out.results.push(r); console.log(`probe: ${u} → ${!r.ok ? "ERROR " + r.error.slice(0, 120) : r.json ? `${r.via}, JSON keys ${r.keys.join(",")}` : `${r.via}, ${r.anchors} links, ${r.noticeLinks} notices, ${r.apis.length} api strings`}`); }
+  for (const u of list) { const r = await probe(u); out.results.push(r); console.log(`probe: ${u} → ${!r.ok ? "ERROR " + r.error.slice(0, 120) : r.raw ? `raw ${r.raw.status || r.raw.error} ${r.raw.bytes || 0} bytes` : r.json ? `${r.via}, JSON keys ${r.keys.join(",")}` : `${r.via}, ${r.anchors} links, ${r.noticeLinks} notices, ${r.apis.length} api strings`}`); }
   fs.writeFileSync(path.join(ROOT, "data", "probe.json"), JSON.stringify(out, null, 2) + "\n");
 }
 main().catch((e) => { console.log("probe error: " + e.message); process.exit(0); });
