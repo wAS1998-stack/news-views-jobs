@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T05:30:55.092Z",
+    "at": "2026-10-31T06:13:08.578Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,13 +11,13 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
-    "newUpdates": 0,
+    "newJobs": 8,
+    "newUpdates": 5,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 88 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 74 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 20 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-31; 9 already known"
     },
     "log": [
@@ -41,16 +41,16 @@
       "   = same source page as an existing job, skipped: UPESSC UP Headmaster Online Form 2026 (1172 Posts)",
       "   = same source page as an existing job, skipped: UP Anganwadi Bharti Online Form 2026 (Update)",
       "   = same source page as an existing job, skipped: UPSSSC Inter Level Online Form 2026 (1784 Posts)",
-      "   = same source page as an existing job, skipped: BPSC Auditor Mains Online Form 2026",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
+      "Added 5 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T05:31:03.480Z",
+    "at": "2026-10-31T06:13:20.262Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -84,7 +84,7 @@
       "nta": "1 links, 0 new via direct",
       "cgpsc": "paused (fails 26, geo-blocked)",
       "gpsc": "paused (fails 26, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "ppsc": "paused (fails 26, geo-blocked)",
       "apsc": "paused (fails 26, geo-blocked)",
       "jkpsc": "paused (fails 26, geo-blocked)",
@@ -93,7 +93,7 @@
       "rssb": "paused (fails 26, geo-blocked)",
       "esb-mp": "paused (fails 26, geo-blocked)",
       "bssc": "paused (fails 14, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "jssc": "paused (fails 26, geo-blocked)",
       "osssc": "paused (fails 14, geo-blocked)",
@@ -102,21 +102,21 @@
       "hprca": "paused (fails 26, geo-blocked)",
       "jpsc": "47 links, 0 new via direct",
       "kea": "paused (fails 26, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "dsssb2": "paused (fails 26, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
-      "jkssb": "2 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 26, geo-blocked)",
+      "uppsc": "1 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
       "tnusrb": "paused (fails 26, geo-blocked)",
       "tslprb": "paused (fails 26)",
       "slprb-ap": "paused (fails 26, geo-blocked)",
-      "keralapsc": "6 links, 0 new via direct",
-      "uksssc": "28 links, 0 new via direct",
-      "kvs": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
+      "jkssb": "2 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,18 +124,18 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T05:31:07.730Z",
+    "at": "2026-10-31T06:14:05.407Z",
     "ok": true,
-    "checked": 1,
+    "checked": 4,
     "found": 0,
-    "due": 1,
-    "cands": 0,
+    "due": 4,
+    "cands": 1,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 4, found 0 real application pages (4 due, pdf reader on)",
+      "  candidates seen 1, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "gsc": {
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T05:31:26.544Z",
+    "at": "2026-10-31T06:15:48.174Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,9 +160,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 8,
+    "hindiJobs": 8,
+    "hindiUpdatesPending": 5,
+    "hindiUpdates": 5,
     "searchFaqPages": 0,
     "opportunities": 5,
     "log": [
@@ -170,23 +171,34 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: बिहार लाइब्रेरी पात्रता परीक्षा BLET ऑनलाइन फॉर्म 2026 - अंतिम तिथि",
-      "  ✓ hindi: CSJMU कानपुर शिक्षक पदों के लिए ऑनलाइन फॉर्म 2026 - अंतिम तिथि"
+      "Enrich/hindi: 8 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: UAS Dharwad सहायक प्रोफेसर भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: AFMS SSC मेडिकल ऑफिसर भर्ती 2026: 120 पदों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi: NHM Keralam भर्ती 2026 – 49 DEO, Lab Technician और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IHMCT लोवर डिविजन क्लर्क भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: KNRUHS BHMS आवंटन सूची 2026-27 जारी - प्रबंधन कोटा PDF डाउनलोड करें @ knruhs.telangana.gov.in",
+      "  ✓ hindi: NIT मिजोरम भर्ती 2026 – 3 एसोसिएट प्रोफेसर, सहायक प्रोफेसर पदों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi: MoEF&CC वैज्ञानिक सलाहकार भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: MMRCL भर्ती 2026 – 35 जूनियर इंजीनियर, सहायक इंजीनियर और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: SSB HC (Ministerial) स्किल टेस्ट तिथि 2026 जारी - टाइपिंग टेस्ट शेड्यूल PDF डाउनलोड करें",
+      "  ✓ hindi update: RRB NTPC UG CBT 2 कट ऑफ 2026 जारी - ज़ोन और श्रेणी के अनुसार कटऑफ अंक चेक करें",
+      "  ✓ hindi update: CA इंटर जनवरी 2027 परीक्षा तिथि जारी - ग्रुप 1 & ग्रुप 2 की अनुसूची ऑनलाइन @ icai.org",
+      "  ✓ hindi update: UPSC EPFO 2025 इंटरव्यू शेड्यूल 2026",
+      "  ✓ hindi update: बिहार बोर्ड कक्षा 10 और 12 डमी एडमिट कार्ड 2027 जारी – ऐसे करें चेक"
     ]
   },
   "news": {
-    "at": "2026-10-31T05:31:44.889Z",
+    "at": "2026-10-31T06:16:05.024Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 198,
+    "existing": 199,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 198",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 199",
       "  current affairs for today already exists.",
-      "  + analysis: CSJMU Kanpur Invites Applications for 36 Teaching Positions",
-      "  analysis below quality bar for scert-driver-plumber-more-2026 (275 words, need 300) — not published."
+      "  + analysis: UAS Dharwad Opens Recruitment for Assistant Professor Positions via Walk-in Interview",
+      "  + analysis: AFMS Recruitment 2026: 120 Medical Officer Posts Open for Application"
     ]
   },
   "notify": {
