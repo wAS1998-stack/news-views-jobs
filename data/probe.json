@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T09:06:09.589Z",
+  "at": "2026-10-31T09:06:51.772Z",
   "indiaRelay": false,
   "results": [
     {
@@ -51,7 +51,9 @@
         "https://ssc.gov.in/api",
         "https://ssc.gov.in"
       ],
-      "grep": [],
+      "grep": [
+        "[main.a0c7cc91f09156b9.js] ls[\"Super Admin\"],this.query={page:1,limit:10,contentType:\"browse-exam\",key:\"createdAt\",order:\"DESC\",isPaginationRequired:!1,isAttachment:!0,language:\"english\",attributes:\"id,headline,examId,contentType,startDate,endDate,language,createdAt\"},this.isSubMenuOpen=!1,this.submenu=!1,this.closeMenu=!1,this.closeMenu11=!1,this.closeMenu2=!1,this.parent1Active=!1,this.parent2Active=!1,this.parent3Active="
+      ],
       "textSample": "Home | Staff Selection Commission | GoI"
     }
   ]
