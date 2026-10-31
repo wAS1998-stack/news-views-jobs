@@ -1,3 +1,3 @@
-OK build 24 a802383 2026-10-31T08:12:32Z signed=false
--rw-r--r-- 1 runner runner 48526440 Oct 31 08:06 android/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r-- 1 runner runner 22871566 Oct 31 08:12 android/app/build/outputs/apk/release/app-release.apk
+OK build 25 4faf541 2026-10-31T08:22:15Z signed=false
+-rw-r--r-- 1 runner runner 48526440 Oct 31 08:16 android/app/build/outputs/apk/debug/app-debug.apk
+-rw-r--r-- 1 runner runner 22871566 Oct 31 08:22 android/app/build/outputs/apk/release/app-release.apk
