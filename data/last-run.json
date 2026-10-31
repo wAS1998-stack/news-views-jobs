@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T11:41:27.396Z",
+    "at": "2026-10-31T12:21:51.135Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 8,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 63 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 71 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T11:42:25.301Z",
+    "at": "2026-10-31T12:21:58.874Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 56,
+    "scanSeconds": 6,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,23 +104,23 @@
       "tnusrb": "paused (fails 28, geo-blocked)",
       "tslprb": "paused (fails 28)",
       "slprb-ap": "paused (fails 28, geo-blocked)",
+      "rbi": "0 notice links (fails 2) via news-views.in",
       "dsssb": "5 links, 0 new via direct",
+      "nta": "1 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via direct",
-      "nta": "1 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "rbi": "error: direct: HTTP 418 | alt-ua: HTTP 418 | news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP (fails 1)"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,17 +128,17 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T11:42:46.906Z",
+    "at": "2026-10-31T12:21:59.157Z",
     "ok": true,
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T11:43:59.512Z",
+    "at": "2026-10-31T12:22:00.103Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,8 +164,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 8,
-    "hindiJobs": 8,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 5,
@@ -174,29 +173,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 8 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: RPCAU तकनीकी सेवाओं में सलाहकार भर्ती 2026 - ऑफलाइन आवेदन करें",
-      "  ✓ hindi: ICAR-NBPGR युवा प्रोफेशनल II भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: RPCAU विशेष कार्य अधिकारी की भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: BNU सुपर स्किल्ड असिस्टेंट भर्ती 2026 - ऑफलाइन आवेदन करें",
-      "  ✓ hindi: ILBS फैकल्टी भर्ती 2026 – 8 सहायक प्रोफेसर, सलाहकार पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: ESIC भुवनेश्वर भर्ती 2026 - 75 शिक्षण संकाय और सीनियर रेजिडेंट पदों के लिए वॉक-इन",
-      "  ✓ hindi: OAVS शिक्षक भर्ती 2026 अधिसूचना आउट - 815 प्राचार्य और शिक्षक पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: HBCHRC तकनीशियन भर्ती 2026 – वॉकइन"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-10-31T11:44:19.025Z",
+    "at": "2026-10-31T12:22:22.831Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 212,
+    "existing": 213,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 212",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 213",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for rpcau-consultant-technical-services-2026 (244 words, need 300) — not published.",
-      "  + analysis: ICAR-NBPGR Invites Applications for Young Professional II Recruitment 2026"
+      "  + analysis: Dr. Rajendra Prasad Central Agricultural University Invites Applications for Consultant in Technical Services",
+      "  analysis below quality bar for rpcau-officer-on-special-duty-vice-2026 (237 words, need 300) — not published."
     ]
   },
   "notify": {
