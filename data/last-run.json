@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T11:01:39.328Z",
+    "at": "2026-10-31T11:41:27.396Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -12,15 +12,18 @@
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
     "newJobs": 8,
-    "newUpdates": 1,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 61 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 63 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-31; 9 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: AIIMS Mangalagiri Recruitment 2026 – Apply Online for 28 Senior Resident/Senior Demonstrator Posts",
+      "   - already closed, skipped: UPSC Geo Scientist Marks 2026",
+      "   = same source page as an existing job, skipped: Upcoming Govt Exams 2026-27 – All India Sarkari Naukri Job Vacancies",
       "   = same source page as an existing job, skipped: SBI Specialist Cadre Officer Recruitment 2026 – Apply Online for 10 Posts",
       "   = same source page as an existing job, skipped: Top 5 Government Jobs November 2026",
       "   = duplicate of an existing recruitment, skipped: CWC Manpower Recruitment 2026 - Apply Online for 327 Posts",
@@ -31,8 +34,6 @@
       "   = duplicate of an existing recruitment, skipped: Coal India Limited Office Intern Vacancy 2026 - Apply Online for 50 Posts",
       "   = same source page as an existing job, skipped: TN Post Office Staff Car Driver Recruitment 2026 - Apply for 24 Posts",
       "   = duplicate of an existing recruitment, skipped: Bank of Baroda Finance Department Recruitment 2026 - Apply Online for 11 Posts",
-      "   = same source page as an existing job, skipped: Bank of Baroda IT Department Recruitment 2026 - Apply Online for 04 Posts",
-      "   = same source page as an existing job, skipped: ARI Pune Scientist Recruitment 2026 - Apply Online for 02 Posts",
       "   = same source page as an existing job, skipped: UP Meerut ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UP Kasganj ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UP Kushinagar ECCE Educator Online Form 2026",
@@ -44,19 +45,18 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T11:01:47.755Z",
+    "at": "2026-10-31T11:42:25.301Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 7,
+    "scanSeconds": 56,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,23 +104,23 @@
       "tnusrb": "paused (fails 28, geo-blocked)",
       "tslprb": "paused (fails 28)",
       "slprb-ap": "paused (fails 28, geo-blocked)",
-      "rbi": "19 links, 0 new via direct",
-      "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
-      "uksssc": "28 links, 0 new via direct",
-      "kvs": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "kvs": "7 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via direct",
+      "nta": "1 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in"
+      "wbssc": "13 links, 0 new via direct",
+      "rbi": "error: direct: HTTP 418 | alt-ua: HTTP 418 | news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T11:01:57.618Z",
+    "at": "2026-10-31T11:42:46.906Z",
     "ok": true,
     "checked": 1,
     "found": 0,
@@ -136,10 +136,10 @@
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 1,
+    "careers": 0,
     "log": [
       "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 1"
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "gsc": {
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T11:03:24.873Z",
+    "at": "2026-10-31T11:43:59.512Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -166,8 +166,7 @@
     "contentPending": 0,
     "hindiJobsPending": 8,
     "hindiJobs": 8,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 5,
     "log": [
@@ -176,29 +175,28 @@
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
       "Enrich/hindi: 8 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: VNMKV सहायक प्रोफेसर भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: CG पुलिस नरायणपुर बस्तर फाइटर भर्ती 2026 - 383 कांस्टेबल पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: OSSSC ओफ्थालमिक ऑफिसर भर्ती 2026 – 238 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: VNMKV फील्ड असिस्टेंट/लैब असिस्टेंट भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: VNMKV भर्ती 2026 – 2 वरिष्ठ अनुसंधान फैलो, युवा पेशेवर पदों के लिए वॉक-इन",
-      "  ✓ hindi: University of Calicut सुरक्षा गार्ड भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: JHDC लेतहर भर्ती 2026 – 457 ग्रामीण होमगार्ड, शहरी होमगार्ड पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: PJTAU भर्ती 2026 – 2 प्रोजेक्ट एसोसिएट, फील्ड असिस्टेंट पदों के लिए वॉक-इन",
-      "  ✓ hindi update: LNMU सेमेस्टर 3 एडमिट कार्ड 2025-29 - यूजी हॉल टिकट 2026, परीक्षा तिथियां और डाउनलोड लिंक"
+      "  ✓ hindi: RPCAU तकनीकी सेवाओं में सलाहकार भर्ती 2026 - ऑफलाइन आवेदन करें",
+      "  ✓ hindi: ICAR-NBPGR युवा प्रोफेशनल II भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: RPCAU विशेष कार्य अधिकारी की भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: BNU सुपर स्किल्ड असिस्टेंट भर्ती 2026 - ऑफलाइन आवेदन करें",
+      "  ✓ hindi: ILBS फैकल्टी भर्ती 2026 – 8 सहायक प्रोफेसर, सलाहकार पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ESIC भुवनेश्वर भर्ती 2026 - 75 शिक्षण संकाय और सीनियर रेजिडेंट पदों के लिए वॉक-इन",
+      "  ✓ hindi: OAVS शिक्षक भर्ती 2026 अधिसूचना आउट - 815 प्राचार्य और शिक्षक पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: HBCHRC तकनीशियन भर्ती 2026 – वॉकइन"
     ]
   },
   "news": {
-    "at": "2026-10-31T11:03:45.783Z",
+    "at": "2026-10-31T11:44:19.025Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
-    "existing": 210,
+    "existing": 212,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 210",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 212",
       "  current affairs for today already exists.",
-      "  + analysis: VNMKV Opens Applications for Assistant Professor Posts in Maharashtra",
-      "  + analysis: CG Police Narayanpur Bastar Fighter Recruitment 2026 - Apply Offline for 383 Constable Posts"
+      "  analysis below quality bar for rpcau-consultant-technical-services-2026 (244 words, need 300) — not published.",
+      "  + analysis: ICAR-NBPGR Invites Applications for Young Professional II Recruitment 2026"
     ]
   },
   "notify": {
