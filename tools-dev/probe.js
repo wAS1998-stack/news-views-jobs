@@ -40,6 +40,14 @@ async function probe(url) {
   const page = await get(url);
   if (!page.ok) return { url, ok: false, error: page.error };
   const html = page.text || "";
+  // A JSON API: show its shape (top-level keys, the first array found and its first two items).
+  try {
+    const j = JSON.parse(html);
+    const arrays = [];
+    const walk = (o, p, d) => { if (d > 4 || !o || typeof o !== "object") return; if (Array.isArray(o)) { arrays.push({ path: p, length: o.length, first: o.slice(0, 2) }); return; } for (const k of Object.keys(o)) walk(o[k], p ? p + "." + k : k, d + 1); };
+    walk(j, "", 0);
+    return { url, ok: true, via: page.via, final: page.url, bytes: html.length, json: true, keys: Object.keys(j || {}).slice(0, 30), arrays: arrays.slice(0, 4).map((a) => ({ ...a, first: JSON.stringify(a.first).slice(0, 1500) })) };
+  } catch { /* not JSON */ }
   const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1];
   const anchors = (html.match(/<a\s[^>]*href=/gi) || []).length;
   const notices = noticeLinks(html, page.url || url);
@@ -71,7 +79,7 @@ async function probe(url) {
 async function main() {
   const list = urls.length ? urls : defaults();
   const out = { at: new Date().toISOString(), indiaRelay: L.hasIndiaRelay(), results: [] };
-  for (const u of list) { const r = await probe(u); out.results.push(r); console.log(`probe: ${u} → ${r.ok ? `${r.via}, ${r.anchors} links, ${r.noticeLinks} notices, ${r.apis.length} api strings` : "ERROR " + r.error.slice(0, 120)}`); }
+  for (const u of list) { const r = await probe(u); out.results.push(r); console.log(`probe: ${u} → ${!r.ok ? "ERROR " + r.error.slice(0, 120) : r.json ? `${r.via}, JSON keys ${r.keys.join(",")}` : `${r.via}, ${r.anchors} links, ${r.noticeLinks} notices, ${r.apis.length} api strings`}`); }
   fs.writeFileSync(path.join(ROOT, "data", "probe.json"), JSON.stringify(out, null, 2) + "\n");
 }
 main().catch((e) => { console.log("probe error: " + e.message); process.exit(0); });
