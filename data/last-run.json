@@ -185,5 +185,16 @@
       "  + analysis: Visakhapatnam Port Authority Announces Recruitment for Dy. Chief Vigilance Officer",
       "  + analysis: Dr. Harisingh Gour Vishwavidyalaya Invites Applications for Curator Position"
     ]
+  },
+  "notify": {
+    "at": "2026-10-31T01:49:09.899Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
   }
 }
