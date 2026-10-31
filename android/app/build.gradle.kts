@@ -61,6 +61,12 @@ android {
     }
 
     signingConfigs {
+        // test builds (debug, and release before the upload key exists) are signed with this fixed test key from the repo,
+        // so each new test APK installs over the previous one; it is not secret and never used for Google Play
+        getByName("debug") {
+            val testKey = rootProject.file("test-signing.jks")
+            if (testKey.exists()) { storeFile = testKey; storePassword = "android"; keyAlias = "androiddebugkey"; keyPassword = "android" }
+        }
         if (ksPath != null && ksPass != null && file(ksPath).exists()) {
             create("release") {
                 storeFile = file(ksPath)
