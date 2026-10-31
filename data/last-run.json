@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T12:21:51.135Z",
+    "at": "2026-10-31T13:02:41.739Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,16 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
-    "newUpdates": 0,
+    "newJobs": 10,
+    "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 71 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 59 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-31; 9 already known"
     },
     "log": [
-      "   = same source page as an existing job, skipped: AIIMS Mangalagiri Recruitment 2026 – Apply Online for 28 Senior Resident/Senior Demonstrator Posts",
       "   - already closed, skipped: UPSC Geo Scientist Marks 2026",
       "   = same source page as an existing job, skipped: Upcoming Govt Exams 2026-27 – All India Sarkari Naukri Job Vacancies",
       "   = same source page as an existing job, skipped: SBI Specialist Cadre Officer Recruitment 2026 – Apply Online for 10 Posts",
@@ -45,18 +44,19 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
+      "Added 2 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T12:21:58.874Z",
+    "at": "2026-10-31T13:02:57.242Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 6,
+    "scanSeconds": 14,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,23 +104,23 @@
       "tnusrb": "paused (fails 28, geo-blocked)",
       "tslprb": "paused (fails 28)",
       "slprb-ap": "paused (fails 28, geo-blocked)",
-      "rbi": "0 notice links (fails 2) via news-views.in",
+      "rbi": "0 notice links (fails 3) via news-views.in",
       "dsssb": "5 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "keralapsc": "6 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
       "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
       "bpssc": "208 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in"
+      "jpsc": "47 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T12:21:59.157Z",
+    "at": "2026-10-31T13:02:57.437Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T12:22:00.103Z",
+    "at": "2026-10-31T13:04:50.649Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,8 +164,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 10,
+    "hindiJobs": 10,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 5,
     "log": [
@@ -173,21 +175,33 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 10 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: जिला न्यायालय आलप्पुझा भर्ती 2026 – 4 कंप्यूटर सहायक, गुप्त सहायक और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: MGUG फैकल्टी भर्ती 2026 – प्रोफेसर, एसोसिएट प्रोफेसर और सहायक प्रोफेसर पदों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi: MGUG X-Ray Technician भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: MAMC सीनियर रिसेडेंट भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: ASBB भर्ती 2026 – 7 प्रोजेक्ट एसोसिएट, सलाहकार और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: VNMKV भर्ती 2026 – 3 फील्ड असिस्टेंट, कंप्यूटर ऑपरेटर पदों के लिए वॉक-इन",
+      "  ✓ hindi: HBCH&RC प्रोजेक्ट रिसर्च साइंटिस्ट-II भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: CMHO कोंडागांव भर्ती 2026 – स्टाफ नर्स, फार्मासिस्ट और अन्य पदों के लिए वॉक-इन",
+      "  ✓ hindi: VNMKV भर्ती 2026 - 3 सीनियर रिसर्च फेलो, फील्ड सहायक पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: KAU Skilled Assistant भर्ती 2026 – 4 पदों के लिए वॉक-इन",
+      "  ✓ hindi update: HPRCA सहायक स्टाफ नर्स परिणाम 2026 जारी - 780 पदों के लिए मेरिट लिस्ट PDF डाउनलोड करें",
+      "  ✓ hindi update: HPRCA JE फाइनल रिजल्ट 2026 जारी – ऐसे करें डाउनलोड"
     ]
   },
   "news": {
-    "at": "2026-10-31T12:22:22.831Z",
+    "at": "2026-10-31T13:05:11.808Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 0,
     "quizzes": 0,
-    "existing": 213,
+    "existing": 214,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 213",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 214",
       "  current affairs for today already exists.",
-      "  + analysis: Dr. Rajendra Prasad Central Agricultural University Invites Applications for Consultant in Technical Services",
-      "  analysis below quality bar for rpcau-officer-on-special-duty-vice-2026 (237 words, need 300) — not published."
+      "  analysis below quality bar for district-court-alappuzha-computer-assistant-2026 (283 words, need 300) — not published.",
+      "  analysis below quality bar for mgug-x-ray-technician-2026 (263 words, need 300) — not published."
     ]
   },
   "notify": {
