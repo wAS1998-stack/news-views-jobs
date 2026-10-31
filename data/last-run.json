@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "runs": {},
   "fetch": {
-    "at": "2026-10-31T03:29:56.951Z",
+    "at": "2026-10-31T04:10:26.369Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,17 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 92 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-10-31; 91 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-30; 18 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-10-31; 8 already known"
     },
     "log": [
-      "   = same source page as an existing job, skipped: ARCI Various Posts Recruitment 2026 - Apply Online for 29 Assistant, Scientist, Technician, Driver Posts",
+      "   = same source page as an existing job, skipped: ARI Pune Scientist Recruitment 2026 - Apply Online for 02 Posts",
       "   = same source page as an existing job, skipped: UP Meerut ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UP Kasganj ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UP Kushinagar ECCE Educator Online Form 2026",
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-10-31T03:30:12.519Z",
+    "at": "2026-10-31T04:10:43.147Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -84,7 +84,7 @@
       "nta": "1 links, 0 new via direct",
       "cgpsc": "paused (fails 26, geo-blocked)",
       "gpsc": "paused (fails 26, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 26, geo-blocked)",
       "apsc": "paused (fails 26, geo-blocked)",
       "jkpsc": "paused (fails 26, geo-blocked)",
@@ -93,8 +93,8 @@
       "rssb": "paused (fails 26, geo-blocked)",
       "esb-mp": "paused (fails 26, geo-blocked)",
       "bssc": "paused (fails 14, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via direct",
       "jssc": "paused (fails 26, geo-blocked)",
       "osssc": "paused (fails 14, geo-blocked)",
       "gsssb": "paused (fails 26, geo-blocked)",
@@ -104,19 +104,19 @@
       "kea": "paused (fails 26, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 26, geo-blocked)",
-      "keralapsc": "6 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 26, geo-blocked)",
       "tslprb": "paused (fails 26)",
       "slprb-ap": "paused (fails 26, geo-blocked)",
-      "kvs": "7 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "jkssb": "2 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
       "bpssc": "208 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in"
+      "dsssb": "6 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,18 +124,19 @@
     ]
   },
   "apply": {
-    "at": "2026-10-31T03:30:12.778Z",
+    "at": "2026-10-31T04:10:47.980Z",
     "ok": true,
-    "checked": 0,
-    "found": 0,
-    "due": 0,
-    "cands": 0,
-    "passed": 0,
-    "jobsWithCands": 0,
-    "careers": 0,
+    "checked": 1,
+    "found": 1,
+    "due": 1,
+    "cands": 3,
+    "passed": 1,
+    "jobsWithCands": 1,
+    "careers": 1,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 1, found 1 real application pages (1 due, pdf reader on)",
+      "  rcf-ltd-assistant-officer-compliance-2026: https://www.rcfltd.com/hrrecruitment/recruitment-1 (site, score site)",
+      "  candidates seen 3, passed the rules 1 (in 1 jobs); recruitment pages found: 1"
     ]
   },
   "gsc": {
@@ -152,7 +153,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-10-31T03:30:13.652Z",
+    "at": "2026-10-31T04:10:57.303Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,7 +161,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 5,
@@ -169,21 +171,22 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: RCF लिमिटेड सहायक अधिकारी अनुपालन भर्ती 2026 – ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-10-31T03:30:32.616Z",
+    "at": "2026-10-31T04:11:19.433Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 193,
+    "existing": 194,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 193",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 194",
       "  current affairs for today already exists.",
-      "  + analysis: University of Lucknow Field Investigator Recruitment 2026 – Apply Online",
-      "  analysis below quality bar for mmdsl-icu-technician-regional-coordinator-more-2026 (288 words, need 300) — not published."
+      "  + analysis: RCF Ltd Announces Recruitment for Assistant Officer Compliance Position in 2026",
+      "  + analysis: MMDSL Recruitment 2026 – Apply Online for 6 ICU Technician, Regional Coordinator and More Posts"
     ]
   },
   "notify": {
