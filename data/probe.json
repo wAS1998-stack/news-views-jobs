@@ -1,60 +1,36 @@
 {
-  "at": "2026-10-31T09:06:51.772Z",
+  "at": "2026-10-31T09:08:13.124Z",
   "indiaRelay": false,
   "results": [
     {
-      "url": "https://ssc.gov.in/",
+      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id%2Cheadline%2CcontentType%2CstartDate%2CendDate%2Clanguage%2CcreatedAt",
       "ok": true,
-      "via": "direct",
-      "final": "https://ssc.gov.in/",
-      "bytes": 80649,
-      "title": "Home | Staff Selection Commission | GoI",
-      "anchors": 0,
-      "noticeLinks": 0,
-      "sampleNotices": [],
-      "feeds": [],
-      "scripts": [
-        "https://ssc.gov.in/assets/library/jquery/js/jquery.min.js",
-        "https://ssc.gov.in/assets/library/bootstrap/js/bootstrap.min.js",
-        "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
-        "https://ssc.gov.in/polyfills.0367287dae1c626f.js",
-        "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
-        "https://ssc.gov.in/main.a0c7cc91f09156b9.js"
-      ],
-      "scriptInfo": [
-        {
-          "src": "https://ssc.gov.in/main.a0c7cc91f09156b9.js",
-          "ok": true,
-          "bytes": 1636440,
-          "via": "direct"
-        },
-        {
-          "src": "https://ssc.gov.in/runtime.bd3d4733e7e8cefc.js",
-          "ok": true,
-          "bytes": 3644,
-          "via": "direct"
-        },
-        {
-          "src": "https://ssc.gov.in/scripts.5e76a86e5a5c00e2.js",
-          "ok": true,
-          "bytes": 80514,
-          "via": "direct"
-        }
-      ],
-      "apis": [
-        "/api/admin/5.1/sendOtp",
-        "https://ssc.gov.in/api",
-        "/api/attachment/uploads/masterData/Others/debarreds_as_of_6th_April_2026_060426.pdf",
-        "/api/attachment/uploads/masterData/NoticeBoards/Scribe%20Procedure%20Notice251024.pdf"
-      ],
-      "bases": [
-        "https://ssc.gov.in/api",
-        "https://ssc.gov.in"
-      ],
-      "grep": [
-        "[main.a0c7cc91f09156b9.js] ls[\"Super Admin\"],this.query={page:1,limit:10,contentType:\"browse-exam\",key:\"createdAt\",order:\"DESC\",isPaginationRequired:!1,isAttachment:!0,language:\"english\",attributes:\"id,headline,examId,contentType,startDate,endDate,language,createdAt\"},this.isSubMenuOpen=!1,this.submenu=!1,this.closeMenu=!1,this.closeMenu11=!1,this.closeMenu2=!1,this.parent1Active=!1,this.parent2Active=!1,this.parent3Active="
-      ],
-      "textSample": "Home | Staff Selection Commission | GoI"
+      "raw": {
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "bytes": 6411,
+        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"5ufxf0ts6671mcxh451qs\",\"headline\":\"Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2025:  Declaration of result of PET/PST to shortlist candidates for appearing in Paper-II.\",\"examId\":\"j2k7sgab6eu9sh6c\",\"contentType\":\"notice-boards\",\"redirectUrl\":\"\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-29T09:24:58.805Z\",\"attachments\":[{\"id\":\"3icnq7l5bdidb4ju6p60u\",\"attIdtyfrId\":\"5ufxf0ts6671mcxh451qs\",\"fileName\":\"writeup_29102026.pdf\",\"type\":\"application/pdf\",\"size\":715406,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\writeup_29102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"5jfpb0tey9le4bsgd207x\",\"headline\":\"Important Notice - Revised dates for Junior Engineer Examination, 2026 and Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2026. \",\"examId\":\"\",\"contentType\":\"notice-boards\",\"redirectUrl\":\"\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-26T13:07:31.342Z\",\"attachments\":[{\"id\":\"4m897h3gk79kdn4byq6f1\",\"attIdtyfrId\":\"5jfpb0tey9le4bsgd207x\",\"fileName\":\"Important notice_revised_dated_26_10_2026.pdf\",\"type\":\"application/pdf\",\"size\":376378,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\Important notice_revised_dated_26_10_2026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\nca"
+      }
+    },
+    {
+      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isPaginationRequired=false&isAttachment=true&language=english&attributes=id%2Cheadline%2CcontentType%2CstartDate%2CendDate%2Clanguage%2CcreatedAt",
+      "ok": true,
+      "raw": {
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "bytes": 410794,
+        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"5ufxf0ts6671mcxh451qs\",\"headline\":\"Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2025:  Declaration of result of PET/PST to shortlist candidates for appearing in Paper-II.\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-29T09:24:58.805Z\",\"attachments\":[{\"id\":\"3icnq7l5bdidb4ju6p60u\",\"attIdtyfrId\":\"5ufxf0ts6671mcxh451qs\",\"fileName\":\"writeup_29102026.pdf\",\"type\":\"application/pdf\",\"size\":715406,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\writeup_29102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"5jfpb0tey9le4bsgd207x\",\"headline\":\"Important Notice - Revised dates for Junior Engineer Examination, 2026 and Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2026. \",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-26T13:07:31.342Z\",\"attachments\":[{\"id\":\"4m897h3gk79kdn4byq6f1\",\"attIdtyfrId\":\"5jfpb0tey9le4bsgd207x\",\"fileName\":\"Important notice_revised_dated_26_10_2026.pdf\",\"type\":\"application/pdf\",\"size\":376378,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\Important notice_revised_dated_26_10_2026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\ncandidates of Junior Engineer Examination, 2026 (Computer Based Examination)"
+      }
+    },
+    {
+      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id%2Cheadline%2CcreatedAt",
+      "ok": true,
+      "raw": {
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "bytes": 427551,
+        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\ncandidates of Junior Engineer Examination, 2026 (Computer Based Examination) Paper-I\",\"examId\":\"bxtirqg6pmwje26\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-23T16:59:45.637Z\",\"attachments\":[{\"id\":\"5rog4yru7gbwjf9m188zy\",\"attIdtyfrId\":\"p6htr8jumvefqk0l4h2dg\",\"fileName\":\"JE_2026_City_Live_Notice_23102026.pdf\",\"type\":\"application/pdf\",\"size\":261403,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\JE_2026_City_Live_Notice_23102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"c96uok9wtnz6h5z0kfopt\",\"headline\":\"Tentative Vacancy of Grade 'C' Stenographers Limited Departmental Competitive Examination, 2025\",\"examId\":\"q5zvwlkwna3s17u\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-23T11:02:28.718Z\",\"attachments\":[{\"id\":\"i8d2aocx2wu8ylv26we2u\",\"attIdtyfrId\":\"c96uok9wtnz6h5z0kfopt\",\"fileName\":\"tentative_vacancies_24102026.pdf\",\"type\":\"application/pdf\",\"size\":263042,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\tentative_vacancies_24102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"hv72inihlv3c3rp1ni034\",\"headline\":\"Constable (GD) in Central Armed Police Forces (CAPFs) and SSF, and Rifleman (GD) in Assam Rifles Examination, 2026– Information regarding status of categori"
+      }
     }
   ]
 }
