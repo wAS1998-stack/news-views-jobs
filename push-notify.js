@@ -44,7 +44,8 @@ function jobTopics(q) {
 function jobConditions(job, lang) {
   const states = (job.s || []).filter(Boolean);
   let stateClauses;
-  if (states.includes("all-india") || !states.length) stateClauses = [null];
+  // central / all-India jobs go to phones with "Central Government" on (s-central, on by default in the app)
+  if (states.includes("all-india") || !states.length) stateClauses = ["'s-central' in topics"];
   else if (states[0] === "gulf") stateClauses = ["'s-gulf' in topics"];
   else stateClauses = states.filter((st) => st !== "gulf").slice(0, 3).map((st, i) => (i === 0 ? `('s-${st}' in topics || 's-any' in topics)` : `'s-${st}' in topics`));
   const out = [];

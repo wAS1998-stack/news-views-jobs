@@ -1237,10 +1237,11 @@ function buildStatesIndex(stateCounts) {
 </main>` + foot();
 }
 function stateSection(stateCounts) {
-  // top states by live count, then a link to the full states index
-  const ranked = STATES.filter((s) => (stateCounts.get(s.slug) || 0) > 0)
+  // central government (all-India) jobs first, then the states with the most live jobs, then a link to every state
+  const ranked = STATES.filter((s) => s.slug !== "all-india" && (stateCounts.get(s.slug) || 0) > 0)
     .sort((a, b) => (stateCounts.get(b.slug) || 0) - (stateCounts.get(a.slug) || 0));
-  const show = ranked.slice(0, 11);
+  const central = (stateCounts.get("all-india") || 0) > 0 ? [{ ...STATES.find((s) => s.slug === "all-india"), name: "Central Government" }] : [];
+  const show = [...central, ...ranked].slice(0, 11);
   if (!show.length) return "";
   return `<section class="state-browse">
     <div class="hu-head"><h2 class="section-h">Jobs by state</h2><a class="backlink" href="/state/">All states &rarr;</a></div>

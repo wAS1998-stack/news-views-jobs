@@ -134,9 +134,12 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
         }
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item {
-                val st = (idx?.states ?: Builtin.states).firstOrNull { it.slug == f.state }
-                Dropdown(if (st == null) s.allStates else if (hindi) STATE_HI[st.slug] ?: st.name else st.name, st != null, idx?.states ?: Builtin.states,
-                    { vm.setFilters(f.copy(state = it)) }, s.allStates, STATE_HI, hindi)
+                // central government (all-India) jobs first under "All states", then each state
+                val opts = (idx?.states ?: Builtin.states).let { l -> l.filter { it.slug == "all-india" }.map { it.copy(name = s.central) } + l.filter { it.slug != "all-india" } }
+                val names = STATE_HI + ("all-india" to s.central)
+                val st = opts.firstOrNull { it.slug == f.state }
+                Dropdown(if (st == null) s.allStates else if (hindi) names[st.slug] ?: st.name else st.name, st != null, opts,
+                    { vm.setFilters(f.copy(state = it)) }, s.allStates, names, hindi)
             }
             item {
                 val q = (idx?.quals ?: Builtin.quals).firstOrNull { it.slug == f.qual }

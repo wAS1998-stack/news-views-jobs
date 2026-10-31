@@ -87,10 +87,12 @@ private fun Group(content: @Composable () -> Unit) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun StatePicker(vm: MainViewModel, hindi: Boolean, selected: Set<String>, allLabel: String) {
+fun StatePicker(vm: MainViewModel, hindi: Boolean, selected: Set<String>, allLabel: String, central: Boolean, centralLabel: String) {
     val idx by vm.index.collectAsStateWithLifecycle()
     val states = (idx?.states ?: com.newsviews.app.data.Builtin.states).filter { it.slug != "all-india" }
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        // central government jobs first (on by default), then the person's own state(s) — or every state
+        ChoiceChip(centralLabel, central) { vm.setCentral(!central) }
         ChoiceChip(allLabel, selected.isEmpty()) { vm.clearStates() }
         states.forEach { st -> ChoiceChip(if (hindi) STATE_HI[st.slug] ?: st.name else st.name, st.slug in selected) { vm.toggleState(st.slug) } }
     }
@@ -156,7 +158,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         Group {
             Text(s.myStates, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             Text(s.myStatesHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 8.dp))
-            StatePicker(vm, st.hindi, st.states, s.allStates)
+            StatePicker(vm, st.hindi, st.states, s.allStates, st.central, s.central)
             Spacer(Modifier.height(8.dp))
         }
         Group {
@@ -255,8 +257,9 @@ fun Onboarding(vm: MainViewModel, s: Strings) {
             ChoiceChip("English", !st.hindi) { vm.setHindi(false) }
             ChoiceChip("हिंदी", st.hindi) { vm.setHindi(true) }
         }
-        Text(s.chooseState, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 18.dp, bottom = 8.dp))
-        StatePicker(vm, st.hindi, st.states, s.allStates)
+        Text(s.chooseState, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 18.dp))
+        Text(s.statesHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp, bottom = 8.dp))
+        StatePicker(vm, st.hindi, st.states, s.allStates, st.central, s.central)
         Text(s.myQual, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 18.dp))
         QualPicker(vm, st.hindi, st.qual)
         Button(onClick = {

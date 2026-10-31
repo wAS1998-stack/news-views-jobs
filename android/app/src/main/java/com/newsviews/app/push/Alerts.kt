@@ -26,7 +26,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * Job alerts are Firebase topics; the server (push-notify.js on the site) sends each new job to
- * (its state or s-any) AND (its lowest qualification level) AND the language. This keeps the phone's topic list
+ * (s-central for central/all-India jobs, else its state or s-any) AND (its lowest qualification level) AND the language. This keeps the phone's topic list
  * in step with the person's choices.
  */
 object Alerts {
@@ -37,6 +37,7 @@ object Alerts {
     fun topicsFor(s: Settings): Set<String> {
         val t = mutableSetOf<String>()
         if (s.alerts) {
+            if (s.central) t += "s-central"
             if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
             s.qual.levels.forEach { t += "q-$it" }
         }

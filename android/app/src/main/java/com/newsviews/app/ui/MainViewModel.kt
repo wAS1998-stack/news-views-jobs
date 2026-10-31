@@ -149,6 +149,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         Alerts.sync(getApplication(), prefs)
     }
     fun clearStates() = viewModelScope.launch { prefs.setStates(emptySet()); Alerts.sync(getApplication(), prefs) }
+    fun setCentral(on: Boolean) = viewModelScope.launch { prefs.setCentral(on); Alerts.sync(getApplication(), prefs) }
     fun toggleFollow(org: String) = viewModelScope.launch { if (org.isNotBlank()) { prefs.toggleFollow(org); Alerts.sync(getApplication(), prefs) } }
     fun setDob(iso: String) = viewModelScope.launch { prefs.setDob(iso) }
     fun setCategory(c: String) = viewModelScope.launch { prefs.setCategory(c) }
