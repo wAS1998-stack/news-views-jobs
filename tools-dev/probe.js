@@ -23,8 +23,12 @@ function defaults() {
     return src.filter((s) => /^0 notice links/.test(health[s.id] || "")).map((s) => s.url).slice(0, 12);
   } catch { return []; }
 }
-const urls = String(process.env.PROBE_URLS || "").split(/[\s,]+/).filter((u) => /^https?:\/\//i.test(u));
+const args = String(process.env.PROBE_URLS || "").split(/[\s,]+/).filter(Boolean);
+const urls = args.filter((u) => /^https?:\/\//i.test(u));
+const grepArg = (args.find((t) => /^grep=/i.test(t)) || "").slice(5);   // "grep=REGEX" in the urls box
 const API_RE = /["'`]((?:https?:\/\/[^"'`\s<>]{3,120})?\/(?:api|apis|rest|services?|backend|ws|webapi|portal|graphql|json|cms|wp-json)\b[^"'`\s<>]{0,140})["'`]/gi;
+// PROBE_GREP (optional regex): also keep ±160 characters around each match in the page and its scripts.
+const GREP = (process.env.PROBE_GREP || grepArg) ? new RegExp(process.env.PROBE_GREP || grepArg, "gi") : null;
 const BASE_RE = /\b(?:baseURL|baseUrl|BASE_URL|apiUrl|API_URL|apiBase|API_BASE|serverUrl|SERVER_URL|endpoint)\s*[:=]\s*["'`]([^"'`]{4,160})["'`]/g;
 
 async function get(url, ms = 20000) {
@@ -43,22 +47,23 @@ async function probe(url) {
   const scripts = [...html.matchAll(/<script[^>]+src=["']([^"']+)["']/gi)].map((m) => { try { return new URL(L.decodeEntities(m[1]), page.url || url).href; } catch { return null; } }).filter(Boolean);
   const origin = new URL(page.url || url).origin;
   const own = scripts.filter((s) => s.startsWith(origin) && !/jquery|bootstrap|analytics|gtag|recaptcha|polyfill/i.test(s)).slice(0, 8);
-  const apis = new Set(), bases = new Set();
-  const scan = (txt) => {
+  const apis = new Set(), bases = new Set(), grep = [];
+  const scan = (txt, where) => {
     for (const m of txt.matchAll(API_RE)) apis.add(m[1]);
     for (const m of txt.matchAll(BASE_RE)) bases.add(m[1]);
+    if (GREP) for (const m of txt.matchAll(GREP)) { if (grep.length >= 60) break; grep.push(`[${where}] ` + txt.slice(Math.max(0, m.index - 160), m.index + m[0].length + 160).replace(/\s+/g, " ")); }
   };
-  scan(html);
+  scan(html, "page");
   const scriptInfo = [];
   for (const s of own) {
     const r = await get(s, 25000);
     scriptInfo.push({ src: s, ok: r.ok, bytes: r.ok ? r.text.length : 0, via: r.via, error: r.ok ? undefined : r.error.slice(0, 120) });
-    if (r.ok) scan(r.text.slice(0, 6e6));
+    if (r.ok) scan(r.text.slice(0, 6e6), s.split("/").pop().slice(0, 40));
   }
   return {
     url, ok: true, via: page.via, final: page.url, bytes: html.length, title: title ? L.stripTags(title).trim().slice(0, 120) : undefined,
     anchors, noticeLinks: notices.length, sampleNotices: notices.slice(0, 6).map((n) => ({ text: n.text.slice(0, 100), url: n.url })),
-    feeds, scripts: scripts.slice(0, 20), scriptInfo, apis: [...apis].slice(0, 80), bases: [...bases].slice(0, 20),
+    feeds, scripts: scripts.slice(0, 20), scriptInfo, apis: [...apis].slice(0, 80), bases: [...bases].slice(0, 20), grep,
     textSample: L.stripTags(html).replace(/\s+/g, " ").slice(0, 400),
   };
 }
