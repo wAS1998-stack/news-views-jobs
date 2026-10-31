@@ -1,20 +1,15 @@
 {
- "date": "2026-10-30",
+ "date": "2026-10-31",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-01",
-  "2026-10-28"
+  "2026-10-02",
+  "2026-10-29"
  ],
  "totals": {
-  "clicks": 19,
-  "impressions": 588
+  "clicks": 24,
+  "impressions": 609
  },
  "daily": [
-  {
-   "date": "2026-10-01",
-   "clicks": 0,
-   "impressions": 0
-  },
   {
    "date": "2026-10-02",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-10-28",
    "clicks": 1,
    "impressions": 15
+  },
+  {
+   "date": "2026-10-29",
+   "clicks": 5,
+   "impressions": 20
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-07-31",
-   "2026-10-28"
+   "2026-08-01",
+   "2026-10-29"
   ],
   "rows": []
  },
@@ -172,6 +172,13 @@
    "impressions": 16,
    "ctr": 25,
    "position": 7.8
+  },
+  {
+   "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 4,
+   "impressions": 11,
+   "ctr": 36.36,
+   "position": 2
   },
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -188,11 +195,11 @@
    "position": 5.5
   },
   {
-   "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
    "clicks": 2,
-   "impressions": 6,
-   "ctr": 33.33,
-   "position": 2
+   "impressions": 10,
+   "ctr": 20,
+   "position": 2.8
   },
   {
    "page": "/guides/",
@@ -216,11 +223,18 @@
    "position": 3.7
   },
   {
-   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
+   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 8,
-   "ctr": 12.5,
-   "position": 2.8
+   "impressions": 2,
+   "ctr": 50,
+   "position": 2
+  },
+  {
+   "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 7,
+   "ctr": 14.29,
+   "position": 3
   },
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
@@ -454,6 +468,13 @@
    "position": 9
   },
   {
+   "page": "/jobs/cws-iift-consultant-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 9
+  },
+  {
    "page": "/jobs/dcpu-tiruppur-support-persons-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 2,
@@ -466,20 +487,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 3
   },
   {
    "page": "/jobs/gbu-project-scientist-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -508,16 +515,16 @@
    "impressions": 1,
    "ctr": 0,
    "position": 33
-  },
-  {
-   "page": "/jobs/gpt-guntakal-2026/",
-   "clicks": 0,
-   "impressions": 4,
-   "ctr": 0,
-   "position": 13.5
   }
  ],
  "topQueries": [
+  {
+   "query": "railway job vacancy 2026",
+   "clicks": 2,
+   "impressions": 2,
+   "ctr": 100,
+   "position": 2
+  },
   {
    "query": "bank recruitment",
    "clicks": 1,
@@ -575,11 +582,18 @@
    "position": 2
   },
   {
-   "query": "railway job vacancy 2026",
+   "query": "metro jobs",
    "clicks": 1,
    "impressions": 1,
    "ctr": 100,
    "position": 2
+  },
+  {
+   "query": "tirupur government job vacancy",
+   "clicks": 1,
+   "impressions": 3,
+   "ctr": 33.33,
+   "position": 3
   },
   {
    "query": "university of delhi jobs",
@@ -685,6 +699,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "contract basis jobs in delhi ministry",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "query": "delhi job vacancy 2026 government",
@@ -1044,6 +1065,13 @@
    "position": 96.7
   },
   {
+   "query": "staff selection commission jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "query": "state pcs job",
    "clicks": 0,
    "impressions": 1,
@@ -1056,6 +1084,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 5
+  },
+  {
+   "query": "tiruppur govt jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "tiruppur job vacancy 2026",
@@ -1098,6 +1133,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 5
+  },
+  {
+   "query": "सरकारी रिक्ति 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 6
   },
   {
    "query": "सुप्रीम कोर्ट वैकेंसी 2026",
