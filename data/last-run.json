@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T14:24:24.215Z",
+    "at": "2026-11-01T15:03:30.907Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,16 +11,17 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-01; 71 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-01; 10 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-01; 8 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: Bihar Library Eligibility Test BLET Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: NTA UGC NET JRF December Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
@@ -32,7 +33,6 @@
       "   = duplicate of an existing recruitment, skipped: Bihar BCECE Sr. Resident/ Tutor Phase 3 Online Form 2026",
       "   = same source page as an existing job, skipped: Armed Forces AFMS SSC Medical Officer Online Form 2026",
       "   - already closed, skipped: UPSC Geo Scientist Marks 2026",
-      "   = same source page as an existing job, skipped: Upcoming Govt Exams 2026-27 – All India Sarkari Naukri Job Vacancies",
       "   = same source page as an existing job, skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = same source page as an existing job, skipped: UP Meerut ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UP Kasganj ECCE Educator Online Form 2026",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T14:24:40.861Z",
+    "at": "2026-11-01T15:03:42.672Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 15,
+    "scanSeconds": 10,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -105,22 +105,22 @@
       "tslprb": "paused (fails 35)",
       "slprb-ap": "paused (fails 35, geo-blocked)",
       "rbi": "paused (fails 12, geo-blocked)",
+      "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "hssc": "9 links, 0 new via direct",
-      "kvs": "7 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
+      "kvs": "7 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "bpssc": "208 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in"
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T14:24:41.093Z",
+    "at": "2026-11-01T15:03:42.880Z",
     "ok": true,
     "checked": 0,
     "found": 0,
