@@ -1,20 +1,15 @@
 {
- "date": "2026-10-31",
+ "date": "2026-11-01",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-02",
-  "2026-10-29"
+  "2026-10-03",
+  "2026-10-30"
  ],
  "totals": {
-  "clicks": 24,
-  "impressions": 609
+  "clicks": 29,
+  "impressions": 635
  },
  "daily": [
-  {
-   "date": "2026-10-02",
-   "clicks": 0,
-   "impressions": 2
-  },
   {
    "date": "2026-10-03",
    "clicks": 1,
@@ -149,6 +144,11 @@
    "date": "2026-10-29",
    "clicks": 5,
    "impressions": 20
+  },
+  {
+   "date": "2026-10-30",
+   "clicks": 5,
+   "impressions": 28
   }
  ],
  "home": {
@@ -160,25 +160,25 @@
  },
  "brand": {
   "range": [
-   "2026-08-01",
-   "2026-10-29"
+   "2026-08-02",
+   "2026-10-30"
   ],
   "rows": []
  },
  "topPages": [
+  {
+   "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 8,
+   "impressions": 22,
+   "ctr": 36.36,
+   "position": 2
+  },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
    "clicks": 4,
    "impressions": 16,
    "ctr": 25,
    "position": 7.8
-  },
-  {
-   "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 4,
-   "impressions": 11,
-   "ctr": 36.36,
-   "position": 2
   },
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -190,8 +190,8 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 37,
-   "ctr": 5.41,
+   "impressions": 35,
+   "ctr": 5.71,
    "position": 5.5
   },
   {
@@ -200,6 +200,13 @@
    "impressions": 10,
    "ctr": 20,
    "position": 2.8
+  },
+  {
+   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 2,
+   "impressions": 4,
+   "ctr": 50,
+   "position": 2
   },
   {
    "page": "/guides/",
@@ -223,17 +230,10 @@
    "position": 3.7
   },
   {
-   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
-   "position": 2
-  },
-  {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 7,
-   "ctr": 14.29,
+   "impressions": 9,
+   "ctr": 11.11,
    "position": 3
   },
   {
@@ -358,9 +358,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 10,
+   "impressions": 11,
    "ctr": 0,
-   "position": 69.5
+   "position": 69.4
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -461,6 +461,13 @@
    "position": 20
   },
   {
+   "page": "/jobs/bpsc-auditor-mains-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 9
+  },
+  {
    "page": "/jobs/cochin-shipyard-apprentice-technician-graduate-apprentices-2/",
    "clicks": 0,
    "impressions": 1,
@@ -508,25 +515,25 @@
    "impressions": 4,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "page": "/jobs/govt-insurance-company-open-now-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 33
   }
  ],
  "topQueries": [
   {
    "query": "railway job vacancy 2026",
    "clicks": 2,
-   "impressions": 2,
-   "ctr": 100,
+   "impressions": 3,
+   "ctr": 66.67,
    "position": 2
   },
   {
    "query": "bank recruitment",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "chennai metro rail limited job vacancy",
    "clicks": 1,
    "impressions": 1,
    "ctr": 100,
@@ -565,6 +572,13 @@
    "clicks": 1,
    "impressions": 1,
    "ctr": 100,
+   "position": 2
+  },
+  {
+   "query": "job",
+   "clicks": 1,
+   "impressions": 2,
+   "ctr": 50,
    "position": 2
   },
   {
@@ -682,9 +696,9 @@
   {
    "query": "brahmaputra valley fertilizer corporation limited recruitment",
    "clicks": 0,
-   "impressions": 9,
+   "impressions": 7,
    "ctr": 0,
-   "position": 5
+   "position": 4.9
   },
   {
    "query": "careers burjeelholdings com",
@@ -701,11 +715,25 @@
    "position": 2
   },
   {
+   "query": "company secretary vacancy in government sector",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "query": "contract basis jobs in delhi ministry",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "query": "contractual government jobs in delhi",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "delhi job vacancy 2026 government",
@@ -967,6 +995,13 @@
    "position": 2
   },
   {
+   "query": "metro ticket counter job vacancy in chennai",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "ministry vacancy 2026",
    "clicks": 0,
    "impressions": 1,
@@ -1153,14 +1188,14 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 37,
-   "ctr": 5.41,
+   "impressions": 35,
+   "ctr": 5.71,
    "position": 5.5,
    "queries": [
     {
      "q": "brahmaputra valley fertilizer corporation limited recruitment",
-     "impressions": 9,
-     "position": 5
+     "impressions": 7,
+     "position": 4.9
     },
     {
      "q": "brahmaputra fertilizer recruitment",
@@ -1208,6 +1243,30 @@
    "ctr": 0,
    "position": 4.9,
    "queries": []
+  },
+  {
+   "page": "/jobs/supreme-court-sci-court-assistant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 11,
+   "ctr": 0,
+   "position": 5.3,
+   "queries": [
+    {
+     "q": "भारत जॉब सरकारी",
+     "impressions": 1,
+     "position": 5
+    },
+    {
+     "q": "सरकारी रिक्ति 2026",
+     "impressions": 1,
+     "position": 6
+    },
+    {
+     "q": "सुप्रीम कोर्ट वैकेंसी 2026",
+     "impressions": 1,
+     "position": 4
+    }
+   ]
   },
   {
    "page": "/jobs/wcd-chittoor-2026/",

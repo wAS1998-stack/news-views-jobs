@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-01",
+    "date": "2026-11-01",
+    "digest_id": "current-affairs-2026-11-01",
+    "title": "Current Affairs Quiz 1 November 2026",
+    "questions": [
+      {
+        "q": "What did the Prime Minister emphasize during the National Unity Day speech?",
+        "options": [
+          "Importance of unity and integrity",
+          "Religious significance",
+          "Political participation of youth",
+          "Financial policies of the government"
+        ],
+        "answer": 0,
+        "why": "The Prime Minister emphasized the importance of promoting unity and integrity."
+      },
+      {
+        "q": "Where did the President participate in the flag hoisting ceremony?",
+        "options": [
+          "Nashik",
+          "Delhi",
+          "Mumbai",
+          "Kolkata"
+        ],
+        "answer": 0,
+        "why": "The President participated in the ceremony held in Nashik."
+      },
+      {
+        "q": "What financial measure was taken by the central government for states?",
+        "options": [
+          "Tax transfer of 1,09,019 crore rupees",
+          "Loan support for infrastructure",
+          "Educational grants",
+          "Subsidies for agriculture"
+        ],
+        "answer": 0,
+        "why": "The central government released 1,09,019 crore rupees as tax transfer to states."
+      },
+      {
+        "q": "How many states and union territories participated in the 'Developed India Youth Dialogue' campaign?",
+        "options": [
+          "10",
+          "15",
+          "16",
+          "20"
+        ],
+        "answer": 2,
+        "why": "The campaign was held in 16 states and union territories."
+      },
+      {
+        "q": "What was the focus of the national CSR conference held for school education?",
+        "options": [
+          "Encouraging investment in education",
+          "Promoting health education",
+          "Discussing technological advancements",
+          "Increasing sports participation in schools"
+        ],
+        "answer": 0,
+        "why": "The conference focused on inspiring investment in the field of education."
+      },
+      {
+        "q": "In which program did the Vice President pay tribute to Sardar Vallabhbhai Patel?",
+        "options": [
+          "National Integration Day",
+          "Sardar Katha",
+          "Youth Engagement Program",
+          "National Education Summit"
+        ],
+        "answer": 1,
+        "why": "The Vice President participated in the 'Sardar Katha' program on National Unity Day."
+      },
+      {
+        "q": "What was the theme of 'Special Campaign 6.0' concluded by the Parliamentary Affairs Ministry?",
+        "options": [
+          "Socio-economic development",
+          "Cleanliness and digital governance",
+          "Youth engagement",
+          "Cultural preservation"
+        ],
+        "answer": 1,
+        "why": "The campaign focused on cleanliness, record management, and digital governance."
+      },
+      {
+        "q": "What is the extended deadline for applications under the National Means-Cum-Merit Scholarship Scheme?",
+        "options": [
+          "1st November 2026",
+          "15th November 2026",
+          "30th November 2026",
+          "31st December 2026"
+        ],
+        "answer": 1,
+        "why": "The deadline was extended to 15th November 2026 for the scholarship scheme."
+      },
+      {
+        "q": "Who among the following participated in the Singhast Mahakumbh?",
+        "options": [
+          "The Prime Minister",
+          "The President",
+          "The Vice President",
+          "The Chief Minister"
+        ],
+        "answer": 1,
+        "why": "The President participated in the Singhast Mahakumbh event."
+      },
+      {
+        "q": "What is one potential examination topic highlighted by the government’s financial assistance to states?",
+        "options": [
+          "Agricultural reforms",
+          "Taxation policies",
+          "Financial policies for state development",
+          "Foreign investments"
+        ],
+        "answer": 2,
+        "why": "The decision to transfer funds to states is significant for understanding financial policies."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-10-31",
     "date": "2026-10-31",
     "digest_id": "current-affairs-2026-10-31",
