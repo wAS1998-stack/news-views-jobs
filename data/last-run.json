@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T18:24:10.191Z",
+    "at": "2026-11-01T19:04:37.868Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T18:25:07.584Z",
+    "at": "2026-11-01T19:05:19.404Z",
     "sources": 59,
     "healthy": 15,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 55,
+    "scanSeconds": 39,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -110,17 +110,17 @@
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in",
       "kvs": "7 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "error: direct: fetch failed (UND_ERR_CONNECT_TIMEOUT) | news-views.in: HTTP 530 | api.allorigins.win: The operation was aborted (fails 1)"
+      "jkssb": "1 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via api.allorigins.win",
+      "bpssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T18:25:07.814Z",
+    "at": "2026-11-01T19:05:19.679Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-01T18:25:08.696Z",
+    "at": "2026-11-01T19:05:20.561Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,17 +177,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-01T18:25:26.978Z",
+    "at": "2026-11-01T19:05:38.122Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 270,
+    "existing": 272,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 270",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 272",
       "  current affairs for today already exists.",
-      "  + analysis: Dr. Rammanohar Lohia Avadh University Announces Field Assistant Recruitment via Walk-In Interview",
-      "  + analysis: Army Public School Kamptee Announces Principal Recruitment for 2026"
+      "  + analysis: Jamia Hamdard Announces Recruitment for Registrar Position",
+      "  + analysis: KVS Special Educator Recruitment 2026 – Walk-in Interview Announced"
     ]
   },
   "notify": {
