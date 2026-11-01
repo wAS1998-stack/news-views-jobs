@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T16:22:37.853Z",
+    "at": "2026-11-01T17:04:51.820Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,7 +11,7 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-01; 71 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T16:22:48.603Z",
+    "at": "2026-11-01T17:05:00.649Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 9,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -106,21 +106,21 @@
       "slprb-ap": "paused (fails 35, geo-blocked)",
       "rbi": "paused (fails 12, geo-blocked)",
       "dsssb": "5 links, 0 new via direct",
+      "nta": "1 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T16:22:48.870Z",
+    "at": "2026-11-01T17:05:00.936Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-01T16:22:49.763Z",
+    "at": "2026-11-01T17:05:13.025Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,7 +164,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -173,21 +174,22 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: Dantewada पुलिस बस्तर फाइटर कांस्टेबल भर्ती 2026 – 128 पदों के लिए ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-01T16:23:12.611Z",
+    "at": "2026-11-01T17:05:36.327Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 266,
+    "existing": 267,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 266",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 267",
       "  current affairs for today already exists.",
-      "  + analysis: KVS TGT Hindi Recruitment 2026 – Walk-in Interview at Jagdalpur",
-      "  analysis below quality bar for aiims-nagpur-project-technical-support-ii-2026 (282 words, need 300) — not published."
+      "  analysis below quality bar for dantewada-police-bastar-fighter-constable-2026 (246 words, need 300) — not published.",
+      "  + analysis: AIIMS Nagpur Invites Applications for Project Technical Support-II (Accountant)"
     ]
   },
   "notify": {
