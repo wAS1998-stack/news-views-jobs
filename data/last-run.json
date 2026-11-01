@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T12:23:30.652Z",
+    "at": "2026-11-01T13:03:29.221Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T12:23:38.778Z",
+    "at": "2026-11-01T13:03:37.199Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
@@ -105,22 +105,22 @@
       "tslprb": "paused (fails 34)",
       "slprb-ap": "paused (fails 34, geo-blocked)",
       "rbi": "paused (fails 11, geo-blocked)",
-      "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
       "uppsc": "1 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via direct",
       "kvs": "7 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T12:23:39.046Z",
+    "at": "2026-11-01T13:03:37.477Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-01T12:23:39.938Z",
+    "at": "2026-11-01T13:03:38.353Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,17 +177,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-01T12:24:01.029Z",
+    "at": "2026-11-01T13:04:01.932Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
-    "existing": 257,
+    "existing": 259,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 257",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 259",
       "  current affairs for today already exists.",
-      "  + analysis: OAVS Teacher Recruitment 2026 Notification Released for 815 Posts",
-      "  + analysis: ODISHA SUB-ORDINATE STAFF SELECTION COMMISSION ANNOUNCES RECRUITMENT FOR 238 OPHTHALMIC OFFICERS"
+      "  analysis below quality bar for vnmkv-field-assistant-lab-assistant-walkin-2026 (289 words, need 300) — not published.",
+      "  + analysis: VNMKV Recruitment 2026: Walk-in Interviews for Senior Research Fellow and Young Professional Positions"
     ]
   },
   "notify": {
