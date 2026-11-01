@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T03:34:28.156Z",
+    "at": "2026-11-01T04:14:29.035Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T03:34:36.448Z",
+    "at": "2026-11-01T04:14:36.936Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
@@ -106,16 +106,16 @@
       "slprb-ap": "paused (fails 32, geo-blocked)",
       "rbi": "paused (fails 9, geo-blocked)",
       "dsssb": "5 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
-      "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via direct",
-      "uppsc": "1 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
-      "hssc": "9 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via direct",
+      "tgpsc": "3 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "kvs": "7 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T03:34:36.728Z",
+    "at": "2026-11-01T04:14:37.209Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-01T03:34:37.621Z",
+    "at": "2026-11-01T04:14:38.096Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,17 +177,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-01T03:34:57.301Z",
+    "at": "2026-11-01T04:14:58.657Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 239,
+    "existing": 240,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 239",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 240",
       "  current affairs for today already exists.",
-      "  + analysis: Bharathiar University Announces Dean Recruitment for College Development Council",
-      "  analysis below quality bar for bharathiar-university-public-relations-officer-2026 (257 words, need 300) — not published."
+      "  + analysis: Bharathiar University Announces Recruitment for Public Relations Officer in 2026",
+      "  + analysis: Bharathiar University Invites Applications for Programme Co-ordinator, NSS Position"
     ]
   },
   "notify": {
