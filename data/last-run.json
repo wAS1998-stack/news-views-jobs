@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "runs": {},
   "fetch": {
-    "at": "2026-11-01T05:35:26.625Z",
+    "at": "2026-11-01T06:14:54.065Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-01; 70 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-01; 69 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-10-31; 19 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-01T05:35:36.005Z",
+    "at": "2026-11-01T06:15:02.251Z",
     "sources": 59,
     "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 8,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -108,19 +108,19 @@
       "dsssb": "5 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via direct",
-      "kvs": "7 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "uksssc": "28 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "csbc": "197 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "kvs": "7 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "uksssc": "28 links, 0 new via alt-ua",
+      "keralapsc": "6 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-01T05:35:36.229Z",
+    "at": "2026-11-01T06:15:02.443Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-01T05:35:37.157Z",
+    "at": "2026-11-01T06:15:12.691Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,7 +164,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -173,21 +174,22 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: IIIT भागलपुर भर्ती 2026 – 2 कार्यकारी इंजीनियर, सहायक इंजीनियर पदों के लिए ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-01T05:35:56.314Z",
+    "at": "2026-11-01T06:15:29.104Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 243,
+    "existing": 245,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 243",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 245",
       "  current affairs for today already exists.",
-      "  + analysis: KAU Skilled Assistant Recruitment 2026 – Walkin for 4 Posts",
-      "  + analysis: RPCAU Announces Recruitment for Officer on Special Duty to the Vice Chancellor for 2026"
+      "  + analysis: IIIT Bhagalpur Recruitment 2026: Apply Offline for Executive Engineer and Assistant Engineer Posts",
+      "  + analysis: Bengaluru North University Invites Applications for Super Skilled Assistants: 2026 Recruitment Notification"
     ]
   },
   "notify": {
