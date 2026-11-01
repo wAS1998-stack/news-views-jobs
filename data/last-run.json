@@ -189,5 +189,16 @@
       "  analysis below quality bar for cmho-kondagaon-walkin-staff-nurse-pharmacist-2026 (263 words, need 300) — not published.",
       "  + analysis: VNMKV Recruitment 2026 – Apply Offline for 3 Senior Research Fellow, Field Assistant Posts"
     ]
+  },
+  "notify": {
+    "at": "2026-11-01T01:30:06.479Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
   }
 }
