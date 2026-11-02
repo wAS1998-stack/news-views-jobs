@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T15:59:28.037Z",
+    "at": "2026-11-02T16:37:50.015Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,16 +11,18 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 7,
-    "newUpdates": 1,
+    "newJobs": 0,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 63 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 70 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 14 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 11 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: BRIC CDFD Scientist Recruitment 2026 - Apply Online for 06 Posts",
+      "   = same source page as an existing job, skipped: South Eastern Railway Sports Quota Recruitment 2026-27 – Apply Online for 54 Posts",
       "   = duplicate of an existing recruitment, skipped: DSSSB Advertisement No. 04/2026 - Apply Online for 641 Assistant, Peon & Process Server Posts",
       "   = duplicate of an existing recruitment, skipped: RBI Pharmacist Recruitment 2026 (22 Posts): Notification, Application Form",
       "   = same source page as an existing job, skipped: AIESL Security Officer Recruitment 2026 - Apply for 11 Posts",
@@ -29,7 +31,6 @@
       "   = same source page as an existing job, skipped: ILBS Faculty Posts Recruitment 2026 - Apply for 08 Posts",
       "   = same source page as an existing job, skipped: IIT Indore JRF Recruitment 2026 - Apply for 05 Posts",
       "   = duplicate of an existing recruitment, skipped: BEL Management Industrial Trainee Finance Recruitment 2026: Notification, Application Form",
-      "   = duplicate of an existing recruitment, skipped: AFMS Medical Officer Recruitment 2026 – Apply Online for 120 Vacancies",
       "   = same source page as an existing job, skipped: BSSC Field Assistant Mains Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
@@ -44,19 +45,18 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T16:00:30.917Z",
+    "at": "2026-11-02T16:37:58.637Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 60,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -108,19 +108,19 @@
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "kvs": "6 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
+      "kvs": "6 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
-      "bssc": "783 links, 0 new via direct+aia",
-      "jkssb": "1 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
-      "bpssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 1)",
-      "csbc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "jkssb": "1 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "bssc": "783 links, 0 new via direct+aia",
+      "bpssc": "208 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,22 +128,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T16:00:43.806Z",
+    "at": "2026-11-02T16:37:58.841Z",
     "ok": true,
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-02T16:02:58.486Z",
+    "at": "2026-11-02T16:37:59.696Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,10 +151,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 7,
-    "hindiJobs": 7,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -162,29 +160,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 7 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: IIT धारवाड़ परियोजना सहयोगी I भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT दिल्ली मुख्य परियोजना वैज्ञानिक (सिविल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IITM M.Sc/M.Tech परियोजना भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NITJ TBI मुख्य कार्यकारी अधिकारी भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: BBAU रिटायर्ड प्रोफेसर भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NIPER-आहदाबाद जूनियर रिसर्च फेलो भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT खड़गपुर रिसर्च एसोसिएट (मेडिकल साइंस और टेक्नोलॉजी) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi update: UPSC CDS-I फाइनल रिजल्ट 2026 जारी – ऐसे करें चेक"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-02T16:03:36.011Z",
+    "at": "2026-11-02T16:38:38.262Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 313,
+    "existing": 314,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 313",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 314",
       "  current affairs for today already exists.",
-      "  + analysis: IIT Dharwad Invites Applications for 5 Project Associate I Positions",
-      "  analysis below quality bar for iit-delhi-principal-project-scientist-civil-2026 (280 words, need 300) — not published."
+      "  + analysis: IIT Delhi Announces Recruitment for Principal Project Scientist in Civil Engineering",
+      "  analysis below quality bar for iitm-m-sc-m-tech-project-2026 (253 words, need 300) — not published."
     ]
   },
   "gsc": {
