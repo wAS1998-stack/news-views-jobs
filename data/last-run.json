@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T14:36:24.708Z",
+    "at": "2026-11-02T15:19:22.916Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,24 +11,25 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
-    "newUpdates": 1,
+    "newJobs": 9,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 63 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 55 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 15 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 15 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 12 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: AIESL Security Officer Recruitment 2026 - Apply for 11 Posts",
+      "   = same source page as an existing job, skipped: PFI Executive Trainee Vacancy 2026 - Apply Online for 04 Posts",
+      "   = duplicate of an existing recruitment, skipped: Indian Coast Guard Foreman of Stores Vacancy 2026 – Apply for 04 Posts",
       "   = same source page as an existing job, skipped: ILBS Faculty Posts Recruitment 2026 - Apply for 08 Posts",
       "   = same source page as an existing job, skipped: IIT Indore JRF Recruitment 2026 - Apply for 05 Posts",
       "   = duplicate of an existing recruitment, skipped: BEL Management Industrial Trainee Finance Recruitment 2026: Notification, Application Form",
       "   = duplicate of an existing recruitment, skipped: AFMS Medical Officer Recruitment 2026 – Apply Online for 120 Vacancies",
       "   = duplicate of an existing recruitment, skipped: BEL Probationary Engineer Recruitment 2026 - Apply Online 350 Posts",
       "   = duplicate of an existing recruitment, skipped: Oil India Limited Executive Recruitment 2026 - Apply Online for 32 Posts",
-      "   = same source page as an existing job, skipped: Sainik School Nagrota Recruitment 2026 – TGT Computer Science, Art Master & Nursing Sister Posts",
-      "   = same source page as an existing job, skipped: IIG Recruitment 2026 - Apply Online for 08 Teaching & Non Teaching Posts",
       "   = same source page as an existing job, skipped: BSSC Field Assistant Mains Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
@@ -44,19 +45,18 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T14:37:12.000Z",
+    "at": "2026-11-02T15:19:33.270Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 45,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -109,18 +109,18 @@
       "dsssb": "5 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
-      "kvs": "6 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "6 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
-      "csbc": "197 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "csbc": "197 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "bpssc": "208 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,22 +128,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T14:37:12.294Z",
+    "at": "2026-11-02T15:20:07.966Z",
     "ok": true,
-    "checked": 0,
+    "checked": 1,
     "found": 0,
-    "due": 0,
+    "due": 1,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
+      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-02T14:37:23.769Z",
+    "at": "2026-11-02T15:22:41.716Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,9 +151,9 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 9,
+    "hindiJobs": 9,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -161,22 +161,30 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi update: NTRUHS PG अस्थाई मेरिट लिस्ट 2026-27 जारी – ऑनलाइन चेक करें @ drntr.uhsap.in/index"
+      "Enrich/hindi: 9 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: HPRCA भर्ती 2026 – 2423 शिक्षक, अंग्रेजी शिक्षक और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NCW जूनियर टेक्निकल एक्सपर्ट्स भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: KV Kimin भर्ती 2026 – 3 PGT फिजिक्स, खेल कोच और अन्य पदों के लिए वॉकइन",
+      "  ✓ hindi: CESTAT भर्ती 2026 – 9 सदस्य, सदस्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: कोलकाता विश्वविद्यालय भर्ती 2026 – 3 कार्यालय सहायक, सहायक कोर्स समन्वयक और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: KV पट्टम प्राथमिक शिक्षक भर्ती 2026 – वाक-इन",
+      "  ✓ hindi: SPIESR भर्ती 2026 – 3 रिसर्च असिस्टेंट, फील्ड इन्वेस्टिगेटर्स पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: LIFE Mission इंजीनियरिंग इंटर्न भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIT सिलचर जूनियर रिसर्च फेलो (JRF) (सिविल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-02T14:37:56.648Z",
+    "at": "2026-11-02T15:23:15.916Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 310,
+    "existing": 311,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 310",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 311",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for nabcons-associate-consultant-hr-associate-consultant-2026 (292 words, need 300) — not published.",
-      "  + analysis: ANH Senior Resident Recruitment 2026 – Walk-in Interview Announced"
+      "  + analysis: HPRCA Recruitment 2026 – Apply Online for 2423 Teacher, English Teacher and More Posts",
+      "  + analysis: NCW Junior Technical Experts Recruitment 2026 – Apply Online"
     ]
   },
   "gsc": {
