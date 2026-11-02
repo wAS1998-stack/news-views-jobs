@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T02:29:04.386Z",
+    "at": "2026-11-02T03:09:14.262Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T02:29:38.192Z",
+    "at": "2026-11-02T03:09:22.661Z",
     "sources": 59,
-    "healthy": 15,
+    "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 32,
+    "scanSeconds": 6,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -105,22 +105,22 @@
       "tslprb": "paused (fails 38)",
       "slprb-ap": "paused (fails 38, geo-blocked)",
       "rbi": "paused (fails 15, geo-blocked)",
+      "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "kvs": "7 links, 0 new via direct",
-      "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
+      "kvs": "7 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T02:29:38.464Z",
+    "at": "2026-11-02T03:09:22.928Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +143,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T01:52:52.330Z",
+    "at": "2026-11-02T03:09:23.818Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,16 +164,16 @@
     ]
   },
   "news": {
-    "at": "2026-11-02T01:53:13.464Z",
+    "at": "2026-11-02T03:09:43.401Z",
     "ai": "OpenAI",
-    "published": 0,
+    "published": 1,
     "quizzes": 0,
     "existing": 286,
     "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 286",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for uasd-senior-research-fellow-walkin-2026 (297 words, need 300) — not published.",
+      "  + analysis: University of Agricultural Sciences, Dharwad Invites Applications for Senior Research Fellow Positions",
       "  analysis below quality bar for rites-assistant-manager-manager-more-2026 (272 words, need 300) — not published."
     ]
   },
