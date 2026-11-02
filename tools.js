@@ -386,12 +386,68 @@ ${SALARY_JS}
 </script>`,
     article: [
       ["Where the 8th Pay Commission stands", "The government announced the 8th CPC on 16 January 2025 and constituted it on 3 November 2025, with Justice Ranjana Prakash Desai as Chairperson and an 18-month mandate. The report is therefore expected around mid-2027. The pay revision is widely expected to take effect from 1 January 2026, with arrears — but that is decided only when the Cabinet accepts the report."],
-      ["What the fitment factor means", "The fitment factor multiplies your current basic pay to give the new basic. The 7th CPC used 2.57. For the 8th CPC, figures around 1.83–2.86 are being discussed by analysts and staff unions; 1.92 is the most commonly quoted projection. None of these is official. Because DA is merged into the new basic and restarts from zero, a factor below about 1.60 would barely change take-home pay at today's DA of 60%."],
+      ["What the fitment factor means", `The fitment factor multiplies your current basic pay to give the new basic. The 7th CPC used 2.57. For the 8th CPC, figures around 1.83–2.86 are being discussed by analysts and staff unions; 1.92 is the most commonly quoted projection. None of these is official. Because DA is merged into the new basic and restarts from zero, a factor below about 1.60 would barely change take-home pay at today's DA of ${DA}%.`],
     ],
     faq: [
       { q: "Has the 8th Pay Commission fitment factor been announced?", a: "No. The commission has not submitted its report; any fitment factor you see is a projection or a union demand." },
       { q: "From when will the 8th Pay Commission be applicable?", a: "It is expected to be effective from 1 January 2026, but the date is confirmed only when the government accepts the report, likely in 2027." },
       { q: "Will DA become zero after the 8th Pay Commission?", a: "Yes. At each pay revision the existing DA is merged into the new basic pay and DA restarts from 0%." },
+    ],
+  });
+
+  // DA / DR hike & arrears — every rate comes from config.json payRates (daPercent, daPrevious, daEffective).
+  const DA_PREV = Number(rates.daPrevious || 0);
+  if (DA_PREV && DA_PREV < DA) defs.push({
+    slug: "da-arrears-calculator", cat: "Salary & Tax",
+    h1: `DA Hike & Arrears Calculator (${DA_PREV}% → ${DA}%)`,
+    title: `DA Arrears Calculator – ${DA}% DA from ${rates.daEffective}`,
+    desc: `Calculate your Dearness Allowance increase and arrears after the hike from ${DA_PREV}% to ${DA}% (effective ${rates.daEffective}) for central government employees, and Dearness Relief for pensioners.`,
+    intro: `The Union Cabinet raised Dearness Allowance and Dearness Relief from ${DA_PREV}% to ${DA}% with effect from ${rates.daEffective}. Enter your basic pay (or basic pension) to see the extra amount per month and the arrears for the months already paid at the old rate.`,
+    body: `
+<div class="tool" id="dah">
+  <div class="tool-grid">
+    <label>I am<select id="da-who"><option value="emp">Employee (7th CPC pay)</option><option value="pen">Pensioner (basic pension)</option></select></label>
+    <label><span id="da-blabel">Basic pay (₹ / month)</span><input id="da-basic" type="number" min="0" step="100" value="35400"></label>
+    <label class="da-emp">Pay level<select id="da-level">${Array.from({ length: 18 }, (_, i) => `<option value="${i + 1}"${i + 1 === 6 ? " selected" : ""}>Level ${i + 1}</option>`).join("")}</select></label>
+    <label class="da-emp">Transport allowance city<select id="da-tpta"><option value="0">Other cities</option><option value="1">Higher TA city (TPTA list)</option></select></label>
+    <label>Old rate (%)<input id="da-old" type="number" step="1" value="${DA_PREV}"></label>
+    <label>New rate (%)<input id="da-new" type="number" step="1" value="${DA}"></label>
+    <label>Months of arrears<input id="da-m" type="number" min="0" max="12" value="4"></label>
+  </div>
+  <div class="result" id="da-res"></div>
+  <p class="tool-note">Arrears = monthly increase × months already paid at the old rate (count the months from ${rates.daEffective} until the month the new rate is first paid). Employees: includes the DA on transport allowance; HRA does not change with this hike. Figures are before tax and NPS/GPF deductions.</p>
+</div>
+<script>
+${SALARY_JS}
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function run(){
+    var pen=$("da-who").value==="pen", b=+$("da-basic").value||0, o=+$("da-old").value||0, n=+$("da-new").value||0, m=Math.max(0,+$("da-m").value||0);
+    document.querySelectorAll(".da-emp").forEach(function(e){e.style.display=pen?"none":""});
+    $("da-blabel").textContent=pen?"Basic pension (₹ / month)":"Basic pay (₹ / month)";
+    var lv=$("da-level").value, tp=$("da-tpta").value==="1";
+    var oldDa=Math.round(b*o/100), newDa=Math.round(b*n/100), oldTa=0, newTa=0;
+    if(!pen){ oldTa=nvSalary(b,lv,"Z",tp,o,false).ta; newTa=nvSalary(b,lv,"Z",tp,n,false).ta; }
+    var inc=(newDa-oldDa)+(newTa-oldTa), label=pen?"Dearness Relief":"DA";
+    $("da-res").innerHTML='<div class="cmp"><div><h3>At '+o+'%</h3><p class="big">'+nvInr(oldDa)+'</p><p>'+label+' / month</p></div>'+
+      '<div class="win"><h3>At '+n+'%</h3><p class="big">'+nvInr(newDa)+'</p><p>'+label+' / month</p></div></div>'+
+      (pen?'':'<p>Transport allowance with DA: '+nvInr(oldTa)+' → <b>'+nvInr(newTa)+'</b></p>')+
+      '<p class="ok">Increase: <b>'+nvInr(inc)+'</b> a month &middot; <b>'+nvInr(inc*12)+'</b> a year</p>'+
+      '<p class="ok">Arrears for '+m+' month'+(m===1?'':'s')+': <b>'+nvInr(inc*m)+'</b></p>';
+  }
+  document.querySelectorAll("#dah input,#dah select").forEach(function(e){e.addEventListener("input",run)}); run();
+})();
+</script>`,
+    article: [
+      ["What changed", `Dearness Allowance (DA) for central government employees and Dearness Relief (DR) for central government pensioners went up from ${DA_PREV}% to ${DA}% of basic pay / basic pension with effect from ${rates.daEffective}, as approved by the Union Cabinet. DA is revised twice a year (1 January and 1 July) on the basis of the All-India Consumer Price Index for Industrial Workers. ${rates.daNextExpected || ""}`],
+      ["How DA and arrears are calculated", `DA is a percentage of basic pay only — it does not include HRA or other allowances. For a basic pay of ₹35,400 (Level 6, first cell), DA rises from ${inr(35400 * DA_PREV / 100)} to ${inr(35400 * DA / 100)} a month. Transport allowance is paid with DA on it, so it rises too. Because the new rate applies from ${rates.daEffective} but is usually paid some months later, the difference for the months already paid at the old rate is paid as arrears. Enter that number of months above.`],
+      ["State government employees", "State governments announce their own DA rates and dates, often following the Centre after some weeks or months. Check your state finance department's order before using a new rate for state pay; you can type any old and new rate into the calculator."],
+    ],
+    faq: [
+      { q: "What is the current DA rate for central government employees?", a: `${DA}% of basic pay with effect from ${rates.daEffective} (previously ${DA_PREV}%). Pensioners get Dearness Relief at the same rate on their basic pension.` },
+      { q: "Is DA paid on HRA?", a: "No. DA is calculated on basic pay only. HRA is a separate percentage of basic pay and does not change with a DA hike (HRA rates are revised only when DA crosses set thresholds)." },
+      { q: "How many months of arrears will I get?", a: `Arrears cover the months from ${rates.daEffective} until the month in which salary or pension is first paid at the new rate. The exact payment month is set by the Department of Expenditure's order and your pay office.` },
+      { q: "Is DA arrears taxable?", a: "Yes. DA and its arrears are fully taxable as salary in the year they are received; relief under section 89 may be available for arrears relating to an earlier year." },
     ],
   });
 

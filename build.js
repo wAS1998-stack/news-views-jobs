@@ -1917,7 +1917,7 @@ function buildIndexQueue({ jobs, updates }) {
     .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
   // New evergreen pages go first for their first ten days, so the daily requests reach them once (the task skips
   // anything it requested in the last 14 days).
-  const NEW_PAGES = [["", "2026-10-31"], ["about/", "2026-10-31"],   // homepage + About: brand-first title and Organization data
+  const NEW_PAGES = [["tools/da-arrears-calculator/", "2026-11-02"], ["", "2026-10-31"], ["about/", "2026-10-31"],   // homepage + About: brand-first title and Organization data
     ["vacancy-tracker/", "2026-10-30"], ["tools/kruti-dev-to-unicode/", "2026-10-30"], ["tools/unicode-to-kruti-dev/", "2026-10-30"], ["tools/hindi-typing-test/", "2026-10-30"], ["tools/english-typing-test/", "2026-10-30"],
     ["walk-in-interview/", "2026-10-30"], ["jobs-without-exam/", "2026-10-30"], ["apprentice/", "2026-10-30"]];
   const out = NEW_PAGES.filter(([, d]) => Date.parse(IST_DATE) - Date.parse(d) <= 10 * 86400000).map(([p]) => `${SITE.url}/${p}`);

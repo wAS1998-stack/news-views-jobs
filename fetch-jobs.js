@@ -405,7 +405,10 @@ async function main() {
               " Check the official website for the direct link and full details." };
           const src = await readSource(it.link, it);
           const ai = await aiUpdate(it, kind, src);
-          updates.unshift(finishUpdate(base, ai, src));
+          const upd = finishUpdate(base, ai, src);
+          // The AI names the real body ("Symbiosis International (Deemed University)"): re-check it, and the exam.
+          if (L.isNonGovt(upd) || L.OFF_TOPIC.test(`${upd.exam_name || ""} | ${upd.organization || ""}`)) { console.log(`   - not a government recruitment update, skipped: ${it.title}`); continue; }
+          updates.unshift(upd);
           newUpdateIds.push(uid);
           updatesAdded++;
           console.log(`   * update: ${it.title}`);

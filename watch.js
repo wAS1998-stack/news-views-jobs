@@ -103,6 +103,28 @@ function anchors(html, base) {
   return out;
 }
 
+/* JavaScript-only sites (SSC) list their notices through a JSON API. A source may name it:
+   "api": { "url": "...", "items": "data", "text": "headline", "link": "https://host/{attachments.0.path}" }
+   The answer is turned into plain <a> links so the normal notice filter applies. In a {placeholder},
+   backslashes become "/" and each path segment is URL-encoded. Items whose placeholder is empty are skipped. */
+function apiToHtml(raw, spec) {
+  let j; try { j = JSON.parse(raw); } catch { return ""; }
+  const get = (o, p) => String(p).split(".").reduce((x, k) => (x == null ? x : x[k]), o);
+  const items = get(j, spec.items || "data");
+  if (!Array.isArray(items)) return "";
+  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+  return items.map((it) => {
+    const text = String(get(it, spec.text || "headline") || "").replace(/\s+/g, " ").trim();
+    let empty = false;
+    const href = String(spec.link).replace(/\{([^}]+)\}/g, (_, p) => {
+      const v = get(it, p);
+      if (v == null || v === "") { empty = true; return ""; }
+      return String(v).replace(/\\/g, "/").split("/").map((seg) => encodeURIComponent(seg)).join("/");
+    });
+    return text && !empty ? `<a href="${esc(href)}">${esc(text)}</a>` : "";
+  }).join("\n");
+}
+
 /* A notice link points at ONE document: a file, or text that names something specific
    (a number, a year, an advertisement no., or a descriptive phrase). Section pages such as
    "Notifications", "Interviews", "Answer Keys" are navigation, never publish them. */
@@ -189,9 +211,9 @@ async function main() {
     if (Date.now() - t0 > SCAN_BUDGET_MS) { health[s.id] = "deferred to next run (time budget)"; return; }
     st.lastTry = Date.now();
     try {
-      const { text, url, via } = await L.fetchText(s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
+      const { text, url, via } = await L.fetchText(s.api ? s.api.url : s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
       const prevVia = st.via; st.via = via;
-      const links = noticeLinks(text, url);
+      const links = noticeLinks(s.api ? apiToHtml(text, s.api) : text, url);
       if (!links.length) { st.fails = (st.fails || 0) + 1; if (relayable) st.relayFails = (st.relayFails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails}) via ${via}`; return; }
       if (relayable) st.relayFails = 0;
       const seen = new Set(st.seen);
@@ -202,7 +224,7 @@ async function main() {
       const reason = !baseline && (nu.length > 10 || (prevVia && prevVia !== via && nu.length > 2) || (st.seen.length && nu.length > Math.max(4, st.seen.length * 0.6)))
         ? `re-baselined (${nu.length} new after ${prevVia && prevVia !== via ? "route change " + prevVia + "→" + via : "page change"})` : "";
       if (reason) baseline = true;
-      st.seen = [...links.map((l) => l.key), ...st.seen.filter((k) => !links.some((l) => l.key === k))].slice(0, 600);
+      st.seen = [...links.map((l) => l.key), ...st.seen.filter((k) => !links.some((l) => l.key === k))].slice(0, Math.max(600, links.length + 200));   // long notice boards (BSSC ~800 links) must fit whole
       st.fails = 0; st.lastOk = today();
       health[s.id] = (reason || (baseline ? `baseline ${links.length} links` : `${links.length} links, ${nu.length} new`)) + ` via ${via}`;
       if (!baseline) for (const l of nu) fresh.push({ src: s, link: l });
@@ -311,4 +333,4 @@ async function main() {
   console.log(`Watch: ${ok}/${sources.length} sources healthy (${viaIndia} via India relay, ${deferred} deferred) | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
 }
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { noticeLinks, anchors };
+module.exports = { noticeLinks, anchors, apiToHtml };

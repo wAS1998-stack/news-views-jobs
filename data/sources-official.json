@@ -11,7 +11,13 @@
    "id": "ssc",
    "name": "Staff Selection Commission",
    "state": "Central",
-   "url": "https://ssc.gov.in/"
+   "url": "https://ssc.gov.in/",
+   "api": {
+    "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=20&contentType=notice-boards&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id%2Cheadline%2CcontentType%2CstartDate%2CendDate%2Clanguage%2CcreatedAt",
+    "items": "data",
+    "text": "headline",
+    "link": "https://ssc.gov.in/api/attachment/{attachments.0.path}"
+   }
   },
   {
    "id": "ibps",
@@ -251,7 +257,7 @@
    "id": "bssc",
    "name": "BSSC",
    "state": "Bihar",
-   "url": "https://bssc.bihar.gov.in/"
+   "url": "https://bssc.bihar.gov.in/NoticeBoard.htm"
   },
   {
    "id": "hssc",
