@@ -194,5 +194,16 @@
     "log": [
       "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
+  },
+  "notify": {
+    "at": "2026-11-02T00:34:43.740Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
   }
 }
