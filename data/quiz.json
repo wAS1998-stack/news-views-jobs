@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-02",
+    "date": "2026-11-02",
+    "digest_id": "current-affairs-2026-11-02",
+    "title": "Current Affairs Quiz 2 November 2026",
+    "questions": [
+      {
+        "q": "What event did Union Home and Cooperation Minister Amit Shah address?",
+        "options": [
+          "National Zoo's Anniversary",
+          "Akhil Vishva Gayatri Parivar Celebration",
+          "National Organ Donation Games",
+          "Chandigarh Projects Inauguration"
+        ],
+        "answer": 1,
+        "why": "Amit Shah addressed the 'Shatabdi Samaroh 2026' organized by Akhil Vishva Gayatri Parivar."
+      },
+      {
+        "q": "What amount was invested in various projects inaugurated by Amit Shah in Chandigarh?",
+        "options": [
+          "₹100 crore",
+          "₹258 crore",
+          "₹500 crore",
+          "₹350 crore"
+        ],
+        "answer": 1,
+        "why": "Amit Shah inaugurated and laid the foundation for projects worth ₹258 crore in Chandigarh."
+      },
+      {
+        "q": "Which train was flagged off to enhance rail connectivity?",
+        "options": [
+          "Shatabdi Express",
+          "Vande Bharat Sleeper Express",
+          "Rajdhani Express",
+          "Duronto Express"
+        ],
+        "answer": 1,
+        "why": "The Union Rail Minister flagged off the Bengaluru-Mumbai Vande Bharat Sleeper Express train."
+      },
+      {
+        "q": "What anniversary did the National Zoo celebrate?",
+        "options": [
+          "50th",
+          "60th",
+          "67th",
+          "70th"
+        ],
+        "answer": 2,
+        "why": "The National Zoo celebrated its 67th anniversary."
+      },
+      {
+        "q": "Who took over as the Air Officer Commanding-in-Chief of the Eastern Air Command?",
+        "options": [
+          "Amit Shah",
+          "Mehtaab Singh Deswal",
+          "The President of India",
+          "Vice President"
+        ],
+        "answer": 1,
+        "why": "Air Marshal Mehtaab Singh Deswal took over as the Air Officer Commanding-in-Chief of the Eastern Air Command."
+      },
+      {
+        "q": "What milestone did Coal India celebrate?",
+        "options": [
+          "25 years",
+          "50 years",
+          "51 years",
+          "60 years"
+        ],
+        "answer": 2,
+        "why": "Coal India celebrated its 51 years with record-breaking performance."
+      },
+      {
+        "q": "Who attended the centenary ceremony honoring Swami Shraddhanand Ji?",
+        "options": [
+          "Amit Shah",
+          "The Vice President",
+          "The President of India",
+          "Air Marshal Deswal"
+        ],
+        "answer": 2,
+        "why": "The President of India attended the centenary ceremony honoring Swami Shraddhanand Ji."
+      },
+      {
+        "q": "What was promoted during the National Organ Donation Games 2026?",
+        "options": [
+          "Organ donation as a 'Mahadaan'",
+          "Cultural awareness",
+          "Wildlife conservation",
+          "Health awareness"
+        ],
+        "answer": 0,
+        "why": "The Vice President inaugurated the games promoting organ donation as a 'Mahadaan'."
+      },
+      {
+        "q": "What is a key focus of the leadership of Air Marshal Mehtaab Singh Deswal?",
+        "options": [
+          "Wildlife conservation",
+          "Energy security",
+          "Operational readiness of the Air Force",
+          "Healthcare ethics"
+        ],
+        "answer": 2,
+        "why": "His leadership is expected to focus on enhancing the operational readiness of the Air Force."
+      },
+      {
+        "q": "The government's initiatives in transportation emphasize what aspect?",
+        "options": [
+          "Historical events",
+          "Cultural heritage",
+          "Travel efficiency and comfort",
+          "Urban planning"
+        ],
+        "answer": 2,
+        "why": "The introduction of modern trains is key to enhancing travel efficiency and comfort."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-01",
     "date": "2026-11-01",
     "digest_id": "current-affairs-2026-11-01",
