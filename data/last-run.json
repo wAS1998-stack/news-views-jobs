@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T09:56:36.919Z",
+    "at": "2026-11-02T10:39:15.056Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,16 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 4,
-    "newUpdates": 0,
+    "newJobs": 1,
+    "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 50 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 54 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 15 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 13 already known"
     },
     "log": [
-      "   = same source page as an existing job, skipped: TIFR Clerk Trainee Recruitment 2026 Apply Online",
       "   = same source page as an existing job, skipped: BSSC Field Assistant Mains Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
@@ -45,18 +44,19 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
+      "Added 2 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T09:56:47.662Z",
+    "at": "2026-11-02T10:39:23.742Z",
     "sources": 59,
     "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 8,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -110,17 +110,17 @@
       "tgpsc": "3 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "6 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "6 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
-      "csbc": "197 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in"
+      "bpssc": "208 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T09:56:47.886Z",
+    "at": "2026-11-02T10:39:23.923Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +143,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T09:26:03.209Z",
+    "at": "2026-11-02T10:40:42.273Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,47 +151,39 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 15,
-    "hindiJobs": 15,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 5,
+    "hindiJobs": 5,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
-      "Enrich/links: 2 job(s) still link to the source blog | doing up to 25",
-      "  - no official link found on source: UAS Dharwad Project Assistant Recruitment 2026 – Walkin",
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 15 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: CSKHPKV सीनियर रिसर्च फेलो भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: NIT दुर्गापुर इंटर्नशिप (मैकेनिकल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AFCAT 01/2027 अधिसूचना जारी - 12 नवंबर से ऑनलाइन आवेदन करें",
-      "  ✓ hindi: जिला एवं सत्र न्यायाधीश, चंडीगढ़ भर्ती 2026 - 32 पार्किंग अटेंडेंट, गेटकीपर और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: Periyar University प्रोजेक्ट असिस्टेंट (माइक्रोबायोलॉजी) भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: IIT Indore (Former छात्रों और कॉर्पोरेट संबंध) भर्ती 2026 – 2 सहायक सामान्य प्रबंधक, वरिष्ठ प्रबंधक पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT रोपर पोस्टडॉक्टोरल फेलो (भौतिकी) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: UAS धारवाड़ परियोजना सहायक भर्ती 2026 - वॉकइन",
-      "  ✓ hindi: KVK Haveri सीनियर रिसर्च फेलो भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: DUK भर्ती 2026 – 3 Lead Auditor, Cybersecurity Solutions Architect और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NIT Mizoram भर्ती 2026: 5 स्टेनोग्राफर ग्रुप, तकनीकी सहायक और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: गिर सोमनाथ जिला अतिरिक्त लोक अभियोजक भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: IIM नागपुर लाइब्रेरी ट्रेनी भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS Gorakhpur भर्ती 2026 – 2 रिसर्च साइंटिस्ट, तकनीकी सहायता पदों के लिए वाक-इन इंटरव्यू",
-      "  ✓ hindi: UGC भर्ती 2026 – 6 डोमेन प्रोफेशनल, हिंदी अनुवादक और अन्य पदों के लिए ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 5 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: BRIC CDFD वैज्ञानिक भर्ती 2026 - 06 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CSIR निदेशक, CSIR-राष्ट्रीय रासायनिक प्रयोगशाला, पुणे भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: SDAU JRF भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: गुजरात रोड सेफ्टी अथॉरिटी लीगल असिस्टेंट भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: असम मुख्यमंत्री के फेलो भर्ती 2026 - 256 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: SSC CGL उत्तर कुंजी 2026 – जल्द ही",
+      "  ✓ hindi update: UPSSSC PET उत्तर कुंजी 2026 - जल्द ही"
     ]
   },
   "news": {
-    "at": "2026-11-02T09:26:28.626Z",
+    "at": "2026-11-02T10:41:08.353Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 0,
     "quizzes": 0,
-    "existing": 300,
+    "existing": 302,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 300",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 302",
       "  current affairs for today already exists.",
-      "  + analysis: CSKHPKV Announces Recruitment for Senior Research Fellow Position in Agricultural Biotechnology",
-      "  + analysis: NIT Durgapur Announces Internship Opportunities for Mechanical Engineering Students"
+      "  analysis below quality bar for bric-cdfd-scientist-2026 (279 words, need 300) — not published.",
+      "  analysis below quality bar for csir-director-csir-national-chemical-laboratory-2026 (253 words, need 300) — not published."
     ]
   },
   "gsc": {
