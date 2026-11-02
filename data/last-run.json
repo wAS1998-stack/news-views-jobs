@@ -1,28 +1,8 @@
 {
   "date": "2026-11-03",
   "runs": {},
-  "notify": {
-    "at": "2026-11-02T19:27:08.574Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
-  "indexing-api": {
-    "at": "2026-11-02T19:27:10.247Z",
-    "ok": true,
-    "submitted": 7,
-    "failed": 0,
-    "source": "new-urls.txt",
-    "log": []
-  },
   "fetch": {
-    "at": "2026-11-02T19:57:10.570Z",
+    "at": "2026-11-02T20:36:37.752Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -31,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 7,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 72 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 79 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 14 already known",
@@ -68,14 +48,15 @@
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
+  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T19:58:01.768Z",
+    "at": "2026-11-02T20:36:46.600Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 48,
+    "scanSeconds": 7,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -127,19 +108,19 @@
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "bssc": "783 links, 0 new via direct+aia",
-      "uppbpb": "7 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "bssc": "783 links, 0 new via direct+aia",
       "wbssc": "13 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
-      "csbc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "csbc": "197 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -147,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T19:58:02.052Z",
+    "at": "2026-11-02T20:36:46.832Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -162,7 +143,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T19:59:19.769Z",
+    "at": "2026-11-02T20:36:47.731Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -170,8 +151,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 7,
-    "hindiJobs": 7,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -180,28 +160,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 7 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: CSIR-NBRI भर्ती 2026 – 35 युवा पेशेवर, अनुसंधान सहयोगी और अन्य पदों के लिए वॉक-इन",
-      "  ✓ hindi: ICAR-IIMR भर्ती 2026 – 4 युवा पेशेवर II, युवा पेशेवर I पदों के लिए वाक-इन",
-      "  ✓ hindi: DEI रिसर्च स्टाफ भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: कन्नूर विश्वविद्यालय भर्ती 2026 – 2 पर्यवेक्षक, इलेक्ट्रिकल हेल्पर पदों के लिए वाक-इन इंटरव्यू",
-      "  ✓ hindi: GMC Hingoli विजिटिंग फैकल्टी भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: SBI जोखिम विशेषज्ञ भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: SBI भर्ती 2026: 7 मुख्य प्रबंधक, प्रबंधक पदों के लिए ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-02T19:59:37.143Z",
+    "at": "2026-11-02T20:37:14.748Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
-    "existing": 321,
+    "existing": 323,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 321",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 323",
       "  current affairs for today already exists.",
-      "  + analysis: CSIR-NBRI Recruitment 2026: Walk-in Interviews for 35 Various Research Positions",
-      "  + analysis: ICAR-IIMR Announces Walk-in Interviews for Young Professional Positions in Hyderabad"
+      "  analysis below quality bar for dei-research-staff-2026 (271 words, need 300) — not published.",
+      "  + analysis: Kannur University Recruitment 2026: Walk-in Interviews for Overseer and Electrical Helper Positions"
     ]
   }
 }
