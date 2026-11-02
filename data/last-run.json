@@ -208,7 +208,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-02T05:19:55.374Z",
+    "at": "2026-11-02T07:23:14.894Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -219,9 +219,9 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-02T05:19:56.018Z",
+    "at": "2026-11-02T07:23:17.114Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 9,
     "failed": 0,
     "source": "new-urls.txt",
     "log": []
