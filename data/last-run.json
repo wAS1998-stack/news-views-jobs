@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T17:57:13.312Z",
+    "at": "2026-11-02T18:36:12.606Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 74 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 76 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 14 already known",
@@ -50,17 +50,19 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T17:57:23.190Z",
+    "at": "2026-11-02T18:37:18.680Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 16,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 8,
-    "newLinks": 0,
+    "scanSeconds": 55,
+    "newLinks": 1,
     "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [],
+    "skipped": [
+      "old update: TGPSC Assistant Executive Engineer (Civil) Exam Hall Ticket 2026 Released"
+    ],
     "sources_health": {
       "upsc": "paused (fails 42, geo-blocked)",
       "ibps": "paused (fails 41, geo-blocked)",
@@ -107,28 +109,28 @@
       "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "tgpsc": "2 links, 1 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
       "bssc": "783 links, 0 new via direct+aia",
       "uppbpb": "7 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "jpsc": "error: news-views.in: terminated | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)",
+      "ctet": "error: news-views.in: terminated | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "csbc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 0 new official notice link(s) (0 retried)."
+      "Watch: 1 new official notice link(s) (0 retried)."
     ]
   },
   "apply": {
-    "at": "2026-11-02T17:57:23.478Z",
+    "at": "2026-11-02T18:37:18.973Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +145,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T17:57:49.726Z",
+    "at": "2026-11-02T18:37:19.886Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,8 +153,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -161,23 +162,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: GBPUAT सीनियर रिसर्च फेलो भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: SPPU निदेशक भर्ती 2026 - ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-02T17:58:13.469Z",
+    "at": "2026-11-02T18:37:40.940Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 317,
+    "existing": 318,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 317",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 318",
       "  current affairs for today already exists.",
-      "  + analysis: GBPUAT Invites Applications for Senior Research Fellow Position",
-      "  analysis below quality bar for sppu-director-2026 (238 words, need 300) — not published."
+      "  analysis below quality bar for sppu-director-2026 (253 words, need 300) — not published.",
+      "  + analysis: MJPRU Recruitment 2026 – Apply Online for 2 Data Entry Operators, Research Investigator Posts"
     ]
   },
   "gsc": {
