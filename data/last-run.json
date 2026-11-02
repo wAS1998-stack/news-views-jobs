@@ -2,7 +2,7 @@
   "date": "2026-11-03",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T23:15:35.386Z",
+    "at": "2026-11-02T23:56:06.089Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T23:15:44.267Z",
+    "at": "2026-11-02T23:56:20.596Z",
     "sources": 59,
     "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 7,
+    "scanSeconds": 12,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -111,15 +111,15 @@
       "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "bssc": "783 links, 0 new via direct+aia",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T23:15:44.572Z",
+    "at": "2026-11-02T23:56:20.829Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +143,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T23:15:45.525Z",
+    "at": "2026-11-02T23:56:21.723Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,17 +164,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-02T23:16:05.896Z",
+    "at": "2026-11-02T23:56:46.032Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 327,
+    "existing": 328,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 327",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 328",
       "  current affairs for today already exists.",
-      "  + analysis: SBI Announces Recruitment for Risk Specialist Position: Apply by November 2026",
-      "  analysis below quality bar for sbi-chief-manager-manager-2026 (258 words, need 300) — not published."
+      "  + analysis: SBI Recruitment 2026 – Apply Online for 7 Chief Manager, Manager Posts",
+      "  + analysis: ECHS Invites Applications for Officer-In-Charge Position in Chhatrapati Sambhajinagar"
     ]
   }
 }
