@@ -1,36 +1,440 @@
 {
-  "at": "2026-10-31T09:08:13.124Z",
+  "at": "2026-11-02T03:22:07.182Z",
   "indiaRelay": false,
   "results": [
     {
-      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id%2Cheadline%2CcontentType%2CstartDate%2CendDate%2Clanguage%2CcreatedAt",
+      "url": "https://www.opsc.gov.in/",
       "ok": true,
-      "raw": {
-        "status": 200,
-        "type": "application/json; charset=utf-8",
-        "bytes": 6411,
-        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"5ufxf0ts6671mcxh451qs\",\"headline\":\"Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2025:  Declaration of result of PET/PST to shortlist candidates for appearing in Paper-II.\",\"examId\":\"j2k7sgab6eu9sh6c\",\"contentType\":\"notice-boards\",\"redirectUrl\":\"\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-29T09:24:58.805Z\",\"attachments\":[{\"id\":\"3icnq7l5bdidb4ju6p60u\",\"attIdtyfrId\":\"5ufxf0ts6671mcxh451qs\",\"fileName\":\"writeup_29102026.pdf\",\"type\":\"application/pdf\",\"size\":715406,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\writeup_29102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"5jfpb0tey9le4bsgd207x\",\"headline\":\"Important Notice - Revised dates for Junior Engineer Examination, 2026 and Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2026. \",\"examId\":\"\",\"contentType\":\"notice-boards\",\"redirectUrl\":\"\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-26T13:07:31.342Z\",\"attachments\":[{\"id\":\"4m897h3gk79kdn4byq6f1\",\"attIdtyfrId\":\"5jfpb0tey9le4bsgd207x\",\"fileName\":\"Important notice_revised_dated_26_10_2026.pdf\",\"type\":\"application/pdf\",\"size\":376378,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\Important notice_revised_dated_26_10_2026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\nca"
-      }
+      "via": "direct",
+      "final": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
+      "bytes": 44028,
+      "title": "Odisha Public Service Commission|OPSC",
+      "anchors": 53,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://www.opsc.gov.in/js/responsive-modernizr.js",
+        "https://www.opsc.gov.in/js/jquery-latest.min.js",
+        "https://www.opsc.gov.in/js/jquery-ui.min.js",
+        "https://www.opsc.gov.in/js/jquery.cookie.js",
+        "https://www.opsc.gov.in/js/SHA1.js",
+        "https://www.opsc.gov.in/js/myeffects.js",
+        "https://www.opsc.gov.in/datatable/jquery.dataTables.min.js",
+        "https://www.opsc.gov.in/datatable/dataTables.buttons.min.js",
+        "https://www.opsc.gov.in/datatable/buttons.flash.min.js",
+        "https://www.opsc.gov.in/datatable/jszip.min.js",
+        "https://www.opsc.gov.in/datatable/pdfmake.min.js",
+        "https://www.opsc.gov.in/datatable/vfs_fonts.js",
+        "https://www.opsc.gov.in/datatable/buttons.html5.min.js",
+        "https://www.opsc.gov.in/datatable/buttons.print.min.js",
+        "https://www.opsc.gov.in/WebResource.axd?d=lQhZWOTWje9t-_Tl8XXKkYg8GosyiElJHzU3pTxUEWU8Z79YpYN2Ej9lemdrtOo4QK3AD0d9L43_elhHwOJlCU3Cap-WJzicACi4vNBtN6o1&t=637034319561480679",
+        "https://www.opsc.gov.in/ScriptResource.axd?d=rLgnPXezTi46sFt2Tjw4vtjbXuttjr2SOiVQIbncBxdHcdvEiP-d0uq4PQfYUtliK8EVvr9GLahBOJ1sqEB1cL6RJM1S90CjtER3qX540UaI2UAO0kYDGf7ZfGqcHSiIr0CDLch9smthJwODPtES53trKXgIu8wd1fLQKa0msWg1&t=ffffffffa580202a",
+        "https://www.opsc.gov.in/ScriptResource.axd?d=z-1tTxT4IzLq3RudwVIPKc1hHy6QFa6UMz0aKVTSU8ReSIFsuSLAVwl2eKhorHoBjvlwhlfdYH3I5dmZkcej08pMxPbPcYxwgxEIzZYBRAR1TFOL2O6q_TgrlRdqfxtBZI4n2UFk_t_ddMTaKYfug_L0PIvS1eLTKX5kKqrgd0EUbpsvyAe-IPMI8zzzN1bL0&t=ffffffffa580202a",
+        "https://www.opsc.gov.in/js/jquery.bxslider.min.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://www.opsc.gov.in/js/responsive-modernizr.js",
+          "ok": true,
+          "bytes": 14448,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/js/SHA1.js",
+          "ok": true,
+          "bytes": 2581,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/js/myeffects.js",
+          "ok": true,
+          "bytes": 1606,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/dataTables.buttons.min.js",
+          "ok": true,
+          "bytes": 16436,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/buttons.flash.min.js",
+          "ok": true,
+          "bytes": 25456,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/jszip.min.js",
+          "ok": true,
+          "bytes": 101555,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/pdfmake.min.js",
+          "ok": true,
+          "bytes": 832816,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/vfs_fonts.js",
+          "ok": true,
+          "bytes": 955603,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/buttons.html5.min.js",
+          "ok": true,
+          "bytes": 23408,
+          "via": "direct"
+        },
+        {
+          "src": "https://www.opsc.gov.in/datatable/buttons.print.min.js",
+          "ok": true,
+          "bytes": 1950,
+          "via": "direct"
+        }
+      ],
+      "apis": [],
+      "bases": [],
+      "grep": [],
+      "textSample": "Odisha Public Service Commission|OPSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Public Service Commission (OPSC) --> Login Apply Online Chairman's Message Brigadier Laxmi Charan Patnaik (Retd.), Hon'ble Chairman Vision & Mission Role and Functions Organization History Commission & Incumbency Chart OPSC Manuals Ann"
     },
     {
-      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=10&contentType=notice-boards&key=createdAt&order=DESC&isPaginationRequired=false&isAttachment=true&language=english&attributes=id%2Cheadline%2CcontentType%2CstartDate%2CendDate%2Clanguage%2CcreatedAt",
+      "url": "https://www.osssc.gov.in/",
       "ok": true,
-      "raw": {
-        "status": 200,
-        "type": "application/json; charset=utf-8",
-        "bytes": 410794,
-        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"5ufxf0ts6671mcxh451qs\",\"headline\":\"Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2025:  Declaration of result of PET/PST to shortlist candidates for appearing in Paper-II.\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-29T09:24:58.805Z\",\"attachments\":[{\"id\":\"3icnq7l5bdidb4ju6p60u\",\"attIdtyfrId\":\"5ufxf0ts6671mcxh451qs\",\"fileName\":\"writeup_29102026.pdf\",\"type\":\"application/pdf\",\"size\":715406,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\writeup_29102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"5jfpb0tey9le4bsgd207x\",\"headline\":\"Important Notice - Revised dates for Junior Engineer Examination, 2026 and Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2026. \",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-26T13:07:31.342Z\",\"attachments\":[{\"id\":\"4m897h3gk79kdn4byq6f1\",\"attIdtyfrId\":\"5jfpb0tey9le4bsgd207x\",\"fileName\":\"Important notice_revised_dated_26_10_2026.pdf\",\"type\":\"application/pdf\",\"size\":376378,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\Important notice_revised_dated_26_10_2026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\ncandidates of Junior Engineer Examination, 2026 (Computer Based Examination)"
-      }
+      "via": "direct+aia",
+      "final": "https://www.osssc.gov.in/Public/OSSSC/Default.aspx",
+      "bytes": 67147,
+      "title": "Odisha Sub-ordinate Staff Selection Commission|OSSSC",
+      "anchors": 59,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://www.osssc.gov.in/js/responsive-modernizr.js",
+        "https://www.osssc.gov.in/js/jquery-latest.min.js",
+        "https://www.osssc.gov.in/js/jquery-ui.min.js",
+        "https://www.osssc.gov.in/js/jquery.cookie.js",
+        "https://www.osssc.gov.in/js/SHA1.js",
+        "https://www.osssc.gov.in/js/myeffects.js",
+        "https://www.osssc.gov.in/WebResource.axd?d=oy-fndfGWMBdeY3hXxepbIxf61tRzUJJpCE9IxbLhlVNSVdrUJVwb7zMXIibErkmf_WRhMZH42tFoai7yceUH_3TcPA1&t=638901734248157332",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=1BBlqNkBs3BhNV_e-PdzB45JzX9UA2pLhNSwU0CA9OXUJVTWDwYubSCF224ZEGP1zHqN2w0R_a8JlciOM9MbEXG82Oga7evSbCo7SG3eCilPB6efybNWQrmsdTF1g9ZnzcEl0B9YtwCzc2_8FyHRCygyl5oId2WM84Vs91h7WI0l5POM0&t=5c0e0825",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=oi3F8DjQo_Ga9l-ZKrkGi9xJh5JPvirTY65jAe0ahjA4fj4-J616C8v2vMKvlXOUtNuzLEyOOWb_M_3cAZthW9SUF80kNQrK3xk4U7b-ubyL6beVMC5igsaxMmqQRoUYO7liX5557smEgLVVikMomYTS4seKkhSi769Ja-8oLhmVAgEO0&t=5c0e0825",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=wSGOV7a21GkHwx_5TXfGCsG3rM_TELWHFBttkblOUAg9exut2a8_SJnQpLNdYUqPjZUc-I9IHSgJNMD2mVEQmchphQhUI1Oszst515SO7jIS1UVCUrE_GV5GttO3UVlYVH_qdg2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=JpTXng1FM_4sSD1Lodycu0CdPb8K2h-lsFXOTVW1NEXVesgARmexhRBxeH4TCeITV1eECchpEDPlgC7phYfIjs44sgmKv0FWNFAQHtehvQU15AXR0&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=DlvbW4eAFK5_HLfXPC3JoT_qjxE7uO2KXSWZe5E1IY8IEnydIqD3w3praHC5TMHFvNNjqLc-IAGbfbwM_IslyyBttqZoMBxTAJMGAGV_aOeP-zLsvPbWbnDDehIcXRDXcNnP9Q2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=_zyTeIPnYo2IT41UzrEZCdOX1acwrKURUNyhOWIAvfTaxfSYQivs5Z-AAB1tyKNccuNb4MU9h0ib2BVCcxEkHcumreCVER8RMtSdbWgXoZou_7ks1GtwEUJCUl5uxbcxmh0f2w2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=DI6v63kIyoRxAwQqjd-iR9LbrpGwrbdtICbFdyq_zR58U5KRYfENcPsrkxsmi49x0G_2Rh9By7PbLZr4hMRvjCoq8qcAEA8nuDewCxBIZQpfp-Q4WrXwgWf7V95QZ9OrC2jwIA2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=2CJMM1Xe90l6uDQEeVNU9TzE4NrBPv_km34bdI5WhccyoDBohetl2HGLM-0igUUi-b510AzuP5-q_x90rFpuKxblA7uOFZKOb7xbWfXo-_E-7hPGDFE1w08C66-x_wHXu5CmsQ2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=4DfrwKW2iJBjq5Ssc_PMBtVhyJitrVQX4y0QQ1r4Mm6YrGQaOf3IpHhpzJhYbaHhbIprL_LAT-wrgNGHFkBmXhVErBy-8_X86UB4gBTBkIGIEqmbB4FKoFnAMM2SCadc9W2nbw2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=armORe7hOUZSFO8Cv8P00mnPeBXCP1Hl8s8di_ScucH1lb-4UoBvZ3_rPCwBChP8A-W0jU94dZ9MY829C4XTt5CIsbHxviHR6Ngf1tvap3prOkkO1n34vgPia5a-onDiZ2vCLQ2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=L-94-voIg4D34kjQjjhVCbUqyV6csUOBN4HMKRccz5nZSLG5pZrOqJlvaNhtA64QSxTu7dW4SYbRC3-q4Z-B54RDDF1f30i5pCbVp5QJfhhOwSY74APNN7o611nJoHcWH8a6vw2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=WN9xx0OsiwKFAHhvOkpYvOhup9QfEq9kHHq-HdIL_tH4f1e9K0RSs8URyu2WbsNfq19vPdN6I6SCI30xNCkbYJd72LDGYqEaUVhpZFZSgIkT9RavTbhdEkUczVjDjBbRllEgWg2&t=ffffffffb56adc1f",
+        "https://www.osssc.gov.in/ScriptResource.axd?d=pU90YwOBrwNDJXNFexSt3PMRxIEnAEfklcRTGDN8MdW5Ry9AC_3MKnhyRPdkbOyuEwbXgw6W1_1cyGi2UxAaQAQAZ0I0C0GkKF53tPnmbiiSPfiF0&t=ffffffffb56adc1f"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://www.osssc.gov.in/js/responsive-modernizr.js",
+          "ok": true,
+          "bytes": 14448,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/js/SHA1.js",
+          "ok": true,
+          "bytes": 2581,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/js/myeffects.js",
+          "ok": true,
+          "bytes": 1606,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/WebResource.axd?d=oy-fndfGWMBdeY3hXxepbIxf61tRzUJJpCE9IxbLhlVNSVdrUJVwb7zMXIibErkmf_WRhMZH42tFoai7yceUH_3TcPA1&t=638901734248157332",
+          "ok": true,
+          "bytes": 23063,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=1BBlqNkBs3BhNV_e-PdzB45JzX9UA2pLhNSwU0CA9OXUJVTWDwYubSCF224ZEGP1zHqN2w0R_a8JlciOM9MbEXG82Oga7evSbCo7SG3eCilPB6efybNWQrmsdTF1g9ZnzcEl0B9YtwCzc2_8FyHRCygyl5oId2WM84Vs91h7WI0l5POM0&t=5c0e0825",
+          "ok": true,
+          "bytes": 319864,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=oi3F8DjQo_Ga9l-ZKrkGi9xJh5JPvirTY65jAe0ahjA4fj4-J616C8v2vMKvlXOUtNuzLEyOOWb_M_3cAZthW9SUF80kNQrK3xk4U7b-ubyL6beVMC5igsaxMmqQRoUYO7liX5557smEgLVVikMomYTS4seKkhSi769Ja-8oLhmVAgEO0&t=5c0e0825",
+          "ok": true,
+          "bytes": 101387,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=wSGOV7a21GkHwx_5TXfGCsG3rM_TELWHFBttkblOUAg9exut2a8_SJnQpLNdYUqPjZUc-I9IHSgJNMD2mVEQmchphQhUI1Oszst515SO7jIS1UVCUrE_GV5GttO3UVlYVH_qdg2&t=ffffffffb56adc1f",
+          "ok": true,
+          "bytes": 13333,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=JpTXng1FM_4sSD1Lodycu0CdPb8K2h-lsFXOTVW1NEXVesgARmexhRBxeH4TCeITV1eECchpEDPlgC7phYfIjs44sgmKv0FWNFAQHtehvQU15AXR0&t=ffffffffb56adc1f",
+          "ok": true,
+          "bytes": 53579,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=DlvbW4eAFK5_HLfXPC3JoT_qjxE7uO2KXSWZe5E1IY8IEnydIqD3w3praHC5TMHFvNNjqLc-IAGbfbwM_IslyyBttqZoMBxTAJMGAGV_aOeP-zLsvPbWbnDDehIcXRDXcNnP9Q2&t=ffffffffb56adc1f",
+          "ok": true,
+          "bytes": 2790,
+          "via": "direct+aia"
+        },
+        {
+          "src": "https://www.osssc.gov.in/ScriptResource.axd?d=_zyTeIPnYo2IT41UzrEZCdOX1acwrKURUNyhOWIAvfTaxfSYQivs5Z-AAB1tyKNccuNb4MU9h0ib2BVCcxEkHcumreCVER8RMtSdbWgXoZou_7ks1GtwEUJCUl5uxbcxmh0f2w2&t=ffffffffb56adc1f",
+          "ok": true,
+          "bytes": 2294,
+          "via": "direct+aia"
+        }
+      ],
+      "apis": [],
+      "bases": [],
+      "grep": [],
+      "textSample": "Odisha Sub-ordinate Staff Selection Commission|OSSSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Sub-ordinate Staff Selection Commission (OSSSC) , Govt. of Odisha Login Apply Online ABOUT US OSSSC Mission Organization Functionaries in Position Job Assignment COMMISSION Formation Chairman Members Functions Incumbency"
     },
     {
-      "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=10&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id%2Cheadline%2CcreatedAt",
+      "url": "https://bssc.bihar.gov.in/",
       "ok": true,
-      "raw": {
-        "status": 200,
-        "type": "application/json; charset=utf-8",
-        "bytes": 427551,
-        "body": "{\"statusCode\":\"200\",\"statusMessage\":\"Document Found!\",\"isCache\":true,\"data\":[{\"id\":\"p6htr8jumvefqk0l4h2dg\",\"headline\":\"Information regarding the city of examination and Admission Certificate for the \\r\\ncandidates of Junior Engineer Examination, 2026 (Computer Based Examination) Paper-I\",\"examId\":\"bxtirqg6pmwje26\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-23T16:59:45.637Z\",\"attachments\":[{\"id\":\"5rog4yru7gbwjf9m188zy\",\"attIdtyfrId\":\"p6htr8jumvefqk0l4h2dg\",\"fileName\":\"JE_2026_City_Live_Notice_23102026.pdf\",\"type\":\"application/pdf\",\"size\":261403,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\JE_2026_City_Live_Notice_23102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"c96uok9wtnz6h5z0kfopt\",\"headline\":\"Tentative Vacancy of Grade 'C' Stenographers Limited Departmental Competitive Examination, 2025\",\"examId\":\"q5zvwlkwna3s17u\",\"contentType\":\"notice-boards\",\"startDate\":null,\"endDate\":null,\"language\":\"english\",\"createdAt\":\"2026-10-23T11:02:28.718Z\",\"attachments\":[{\"id\":\"i8d2aocx2wu8ylv26we2u\",\"attIdtyfrId\":\"c96uok9wtnz6h5z0kfopt\",\"fileName\":\"tentative_vacancies_24102026.pdf\",\"type\":\"application/pdf\",\"size\":263042,\"path\":\"uploads\\\\masterData\\\\NoticeBoards\\\\tentative_vacancies_24102026.pdf\",\"documentType\":null,\"comment\":null}]},{\"id\":\"hv72inihlv3c3rp1ni034\",\"headline\":\"Constable (GD) in Central Armed Police Forces (CAPFs) and SSF, and Rifleman (GD) in Assam Rifles Examination, 2026– Information regarding status of categori"
-      }
+      "via": "direct+aia",
+      "final": "https://bssc.bihar.gov.in/",
+      "bytes": 10920,
+      "title": "Bihar Staff Selection Commission",
+      "anchors": 8,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://kendo.cdn.telerik.com/2014.2.716/js/jquery.min.js",
+        "https://kendo.cdn.telerik.com/2014.2.716/js/kendo.ui.core.min.js"
+      ],
+      "scriptInfo": [],
+      "apis": [],
+      "bases": [],
+      "grep": [],
+      "textSample": "Bihar Staff Selection Commission Bihar Staff Selection Commission VETERINARY COLLEGE CAMPUS, PATNA - 800014 होम पेज आयोग के कार्य विभागीय पत्र/आदेश सूचना पट्ट निविदाएँ बिहार सूचना आयोग Advertisements View List Gallery Help Line : (0612)- 2227728 श्रीमती शोभा ओहटकर, भा0 पु0 से0 (से0 नि0) अध्यक्ष संपर्क --> दूरभाष : (0612)- 2227727. फैक्स : (0612)- 2225736. श्री संजय कुमार निराला, बि० प्र० से०, सचिव"
+    },
+    {
+      "url": "https://www.ncs.gov.in/",
+      "ok": true,
+      "via": "direct",
+      "final": "https://ncs.gov.in/",
+      "bytes": 278173,
+      "title": "NcsNewWebsite",
+      "anchors": 123,
+      "noticeLinks": 0,
+      "sampleNotices": [],
+      "feeds": [],
+      "scripts": [
+        "https://ncs.gov.in/assets/js/tracking-init.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-154MM856DY",
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+        "https://ncs.gov.in/polyfills-FFHMD2TL.js",
+        "https://ncs.gov.in/scripts-CWJO5AXB.js",
+        "https://ncs.gov.in/main-ENWR5Y2A.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://ncs.gov.in/main-ENWR5Y2A.js",
+          "ok": true,
+          "bytes": 638337,
+          "via": "direct"
+        },
+        {
+          "src": "https://ncs.gov.in/assets/js/tracking-init.js",
+          "ok": true,
+          "bytes": 472,
+          "via": "direct"
+        },
+        {
+          "src": "https://ncs.gov.in/scripts-CWJO5AXB.js",
+          "ok": true,
+          "bytes": 129948,
+          "via": "direct"
+        }
+      ],
+      "apis": [
+        "https://api.ncs.gov.in/api/location/state",
+        "https://api.ncs.gov.in/api/locations",
+        "https://api.ncs.gov.in/api/jobseeker/profiles/career-timeline/get-skills?keyword=Technical%20support",
+        "/api/news/classifieds?page=${this.pageNumber}&size=${this.pageSize}&search=${e}",
+        "/api/grievance/tickets/list",
+        "/api/grievance/tickets/view?userId=${this.userId}&ticketNumber=${e.ticketNumber}",
+        "/api/grievance/tickets/user-response",
+        "/api/grievance/tickets/reopen",
+        "/api/grievance/tickets/case-types",
+        "/api/grievance/tickets/case-categories",
+        "/api/grievance/tickets/case-sub-categories?caseCategoryId=${e.id}",
+        "/api/grievance/tickets/create",
+        "https://jsdm.jharkhand.gov.in/jsdm/cms/en/",
+        "/api/yp/",
+        "/api/jobseeker/profiles/upload-image",
+        "/api/jobseeker/profiles/get-image",
+        "/api/jobseeker/profiles/upload-resume",
+        "/api/jobseeker/profiles/download-resume",
+        "/api/jobseeker/profiles/upload-cover-letter",
+        "/api/jobseeker/profiles/cover-letters/download",
+        "/api/jobseeker/profiles/cover-letters/delete",
+        "/api/jobseeker/profiles/resumes/names",
+        "/api/jobseeker/profiles/cover-letters/names",
+        "/api/jobseeker/profiles/delete-resume",
+        "/api/digilocker-sso/authorize",
+        "/api/digilocker-sso/callback",
+        "/api/digilocker-sso/complete-registration",
+        "/api/digilocker-sso/revoke-token",
+        "/api/digilocker-sso/fetch-documents",
+        "/api/digilocker-sso/pull-document",
+        "/api/digilocker-sso/get/documents",
+        "/api/digilocker-sso/refresh-token",
+        "/api/emigrate-jobs/countries",
+        "/api/grievance/tickets/view",
+        "/api/grievance/tickets/case-sub-categories",
+        "/api/location/state",
+        "/api/location/districts",
+        "/api/location/sub-districts",
+        "/api/location/cities",
+        "/api/pincode",
+        "/api/pincode/upload",
+        "/api/education/qualifications",
+        "/api/education/qualifications/degrees",
+        "/api/education/qualifications/degrees/specializations",
+        "/api/jobseeker/profiles/career-timeline/qualifications",
+        "/api/jobseeker/profiles/career-timeline/qualifications/degrees",
+        "/api/jobseeker/profiles/career-timeline/degrees/specializations",
+        "/api/jobseeker/profiles/career-timeline/get-industries",
+        "/api/jobseeker/profiles/career-timeline/get-skills",
+        "/api/jobseeker/profiles/career-timeline/delete",
+        "/api/jobseeker/profiles/career-timeline/get",
+        "/api/jobseeker/profiles/career-timeline/delete-education",
+        "/api/jobseeker/profiles/career-timeline/experience-type",
+        "/api/jobseeker/profiles/career-timeline/location-type",
+        "/api/jobseeker/profiles/career-timeline/get-location",
+        "/api/events/getEvents",
+        "/api/job-titles/suggest",
+        "/api/locations/suggest",
+        "/api/news/newsletter/upload",
+        "/api/jobseeker/documents/upload",
+        "/api/pmis/sso/login",
+        "/api/integration/redirect/pmis",
+        "/api/v1/ncs/mybharat/exchange-code",
+        "/api/integration/redirect/mentortogether",
+        "/api/v1/ncs/sidh/exchange-code",
+        "/api/v1/ncs/sidh/course/search",
+        "/api/v1/ncs/sidh/course/master",
+        "/api/sidh/register",
+        "https://api.ncs.gov.in/zobique/api/course-recommendations/recommend",
+        "/api/v1/nats/apprenticeships/search",
+        "/api/integration/redirect/NATS",
+        "/api/v1/international-job-posts/get",
+        "/api/integration/redirect/bluedot",
+        "/api/v1/employer-image/upload-image"
+      ],
+      "bases": [],
+      "grep": [],
+      "textSample": "NcsNewWebsite --> Government of India Toll Free Helpline - 1514 Jobseekers Employers Counsellors Career Centers Jobseekers Employers Counsellors Career Centers Resources Classified Jobs ☰ ✖ Jobseekers Get Started Login Register Registration Flowchart Search for Jobs Find Domestic Jobs Find International Jobs E-migrate Advisories for International Jobseeker Jobs in Health Sector Jobs in Government "
+    },
+    {
+      "url": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
+      "ok": true,
+      "via": "direct",
+      "final": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
+      "bytes": 111782,
+      "title": "Reserve Bank of India",
+      "anchors": 448,
+      "noticeLinks": 19,
+      "sampleNotices": [
+        {
+          "text": "Revised process of recruitment of Officers in Grade-‘B’- (DR)",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=3061"
+        },
+        {
+          "text": "Extension of last date for submission of Application - Engagement of Part-time Bank’s Medical Consul",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5194"
+        },
+        {
+          "text": "Engagement of Part- Time Bank’s Medical Consultants (BMC) on Contract Basis with Fixed Hourly Remune",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5192"
+        },
+        {
+          "text": "Engagement of Pharmacist in the Bank on contract basis with fixed hourly remuneration, Mumbai",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5189"
+        },
+        {
+          "text": "Extension of last date for submission of Application - Engagement of Medical Consultant (MC) in the ",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5188"
+        },
+        {
+          "text": "Extension of last date for submission of Application - Engagement of Medical Consultant (MC) in the ",
+          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5184"
+        }
+      ],
+      "feeds": [],
+      "scripts": [
+        "https://opportunities.rbi.org.in/js/rbi_recruitment_site_scripts.js",
+        "https://opportunities.rbi.org.in/js/libs/modernizr-2.5.3.min.js",
+        "https://opportunities.rbi.org.in/js/libs/jquery-1.7.2.min.js",
+        "https://opportunities.rbi.org.in/js/ImgSaveDisable.js",
+        "https://opportunities.rbi.org.in/js/plugins.js",
+        "https://opportunities.rbi.org.in/js/script.js",
+        "https://opportunities.rbi.org.in/js/URLchange.js",
+        "https://opportunities.rbi.org.in/js/ReplaceURL.js?v=1",
+        "https://opportunities.rbi.org.in/js/jquery.cookie.js"
+      ],
+      "scriptInfo": [
+        {
+          "src": "https://opportunities.rbi.org.in/js/rbi_recruitment_site_scripts.js",
+          "ok": true,
+          "bytes": 1154,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/libs/modernizr-2.5.3.min.js",
+          "ok": true,
+          "bytes": 17384,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/ImgSaveDisable.js",
+          "ok": true,
+          "bytes": 226,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/plugins.js",
+          "ok": true,
+          "bytes": 10769,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/script.js",
+          "ok": true,
+          "bytes": 8521,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/URLchange.js",
+          "ok": true,
+          "bytes": 823,
+          "via": "direct"
+        },
+        {
+          "src": "https://opportunities.rbi.org.in/js/ReplaceURL.js?v=1",
+          "ok": true,
+          "bytes": 5399,
+          "via": "direct"
+        }
+      ],
+      "apis": [],
+      "bases": [],
+      "grep": [],
+      "textSample": "Reserve Bank of India --> Home Current Vacancies Vacancies Call Letters Results Recruitment Calendar Sample paper --> Summer Placements Research Internship Scholarships Post based Rosters Rosters at CO Recruitment Promotion Rosters at ROs --> Career with Central Bank Professional and Personal Development --> Benefits of Working with the RBI How do You Apply? Revised process of recruitment of Offic"
     }
   ]
 }
