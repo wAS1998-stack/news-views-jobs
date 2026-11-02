@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T03:49:38.554Z",
+    "at": "2026-11-02T04:30:14.179Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -12,7 +12,7 @@
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
     "newJobs": 0,
-    "newUpdates": 1,
+    "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-01; 72 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
@@ -21,6 +21,7 @@
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-01; 10 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: Bihar Library Eligibility Test BLET Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: NTA UGC NET JRF December Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
@@ -44,23 +45,24 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T03:50:14.286Z",
+    "at": "2026-11-02T04:30:36.372Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 34,
-    "newLinks": 0,
+    "scanSeconds": 10,
+    "newLinks": 1,
     "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [],
+    "skipped": [
+      "duplicate: RBI Part-Time Medical Consultant Recruitment 2026 – 2 Posts"
+    ],
     "sources_health": {
       "upsc": "paused (fails 38, geo-blocked)",
       "ibps": "paused (fails 37, geo-blocked)",
@@ -101,34 +103,34 @@
       "tnusrb": "paused (fails 38, geo-blocked)",
       "tslprb": "paused (fails 38)",
       "slprb-ap": "paused (fails 38, geo-blocked)",
-      "ssc": "baseline 9 links via direct",
-      "rbi": "19 links, 0 new via direct",
+      "ssc": "9 links, 0 new via direct",
+      "rbi": "20 links, 1 new via direct",
       "nta": "1 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "uppsc": "1 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "7 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
-      "bssc": "baseline 783 links via direct+aia",
+      "kvs": "7 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "bssc": "783 links, 0 new via direct+aia",
       "uppbpb": "7 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "osssc": "0 notice links (fails 1) via direct+aia",
       "jkssb": "1 links, 0 new via news-views.in",
+      "osssc": "0 notice links (fails 2) via direct+aia",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bpssc": "208 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 0 new official notice link(s) (0 retried)."
+      "Watch: 1 new official notice link(s) (0 retried)."
     ]
   },
   "apply": {
-    "at": "2026-11-02T03:50:14.510Z",
+    "at": "2026-11-02T04:30:36.647Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +145,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T03:50:22.211Z",
+    "at": "2026-11-02T04:30:37.545Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -152,8 +154,7 @@
     "contentWritten": 0,
     "contentPending": 0,
     "hindiJobsPending": 0,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -161,22 +162,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi update: RRB NTPC UG CBT 2 रिजल्ट 2026 जारी - क्षेत्र अनुसार मेरिट लिस्ट, स्कोरकार्ड और कटऑफ PDF डाउनलोड करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-02T03:50:47.982Z",
+    "at": "2026-11-02T04:30:54.456Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 287,
+    "existing": 289,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 287",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 289",
       "  current affairs for today already exists.",
-      "  + analysis: RITES Recruitment 2026 – Apply Online for 10 Assistant Manager, Manager and More Posts",
-      "  + analysis: Atal Awasiya Vidyalaya Seeks Guest Faculty Computer Teacher on Contractual Basis"
+      "  + analysis: AIIMS Mangalagiri Recruitment 2026 – Apply Online for 28 Senior Resident/Senior Demonstrator Posts",
+      "  + analysis: USRLM Recruitment 2026: Apply Offline for 8 Key Positions in Uttarakhand"
     ]
   },
   "gsc": {
