@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-02T03:22:07.182Z",
+  "at": "2026-11-02T03:24:57.889Z",
   "indiaRelay": false,
   "results": [
     {
@@ -197,7 +197,11 @@
       ],
       "apis": [],
       "bases": [],
-      "grep": [],
+      "grep": [
+        "[page] <a href=\"#\"> <span id=\"lbl_menu3\">RECRUITMENT</span></a> <ul> <li><a href=\"../Pages/Recruitment_calender.aspx\"> <span id=\"lbl_menu_recruit_calender\">Recruitment Calender</span></a></li> <li><a href=\".",
+        "[page] f=\"../Pages/Login.aspx\"> <span id=\"lbl_menu3_submenu2\">Requisition</span></a></li> <li><a href=\"../Pages/Advertisements.aspx\"> <span id=\"lbl_menu3_submenu4\">Advertisements</span></a></li> <li><a href=\"../Pages/Notif",
+        "[page] es/Notification.aspx\"> <span id=\"lbl_menu3_submenu5\">Notifications</span></a></li> <li><a href=\"../Pages/RESULT.aspx\"> <span id=\"lbl_menu3_submenu_6\">Results</span></a></li> </ul> </li> "
+      ],
       "textSample": "Odisha Sub-ordinate Staff Selection Commission|OSSSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Sub-ordinate Staff Selection Commission (OSSSC) , Govt. of Odisha Login Apply Online ABOUT US OSSSC Mission Organization Functionaries in Position Job Assignment COMMISSION Formation Chairman Members Functions Incumbency"
     },
     {
@@ -218,223 +222,10 @@
       "scriptInfo": [],
       "apis": [],
       "bases": [],
-      "grep": [],
+      "grep": [
+        "[page]  <li> <a href=\"Lettters.htm\">विभागीय पत्र/आदेश</a> </li> <li> <a href=\"NoticeBoard.htm\">सूचना पट्ट</a> </li> <li> <a href=\"#\">निविदाएँ</a> </li> "
+      ],
       "textSample": "Bihar Staff Selection Commission Bihar Staff Selection Commission VETERINARY COLLEGE CAMPUS, PATNA - 800014 होम पेज आयोग के कार्य विभागीय पत्र/आदेश सूचना पट्ट निविदाएँ बिहार सूचना आयोग Advertisements View List Gallery Help Line : (0612)- 2227728 श्रीमती शोभा ओहटकर, भा0 पु0 से0 (से0 नि0) अध्यक्ष संपर्क --> दूरभाष : (0612)- 2227727. फैक्स : (0612)- 2225736. श्री संजय कुमार निराला, बि० प्र० से०, सचिव"
-    },
-    {
-      "url": "https://www.ncs.gov.in/",
-      "ok": true,
-      "via": "direct",
-      "final": "https://ncs.gov.in/",
-      "bytes": 278173,
-      "title": "NcsNewWebsite",
-      "anchors": 123,
-      "noticeLinks": 0,
-      "sampleNotices": [],
-      "feeds": [],
-      "scripts": [
-        "https://ncs.gov.in/assets/js/tracking-init.js",
-        "https://www.googletagmanager.com/gtag/js?id=G-154MM856DY",
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
-        "https://ncs.gov.in/polyfills-FFHMD2TL.js",
-        "https://ncs.gov.in/scripts-CWJO5AXB.js",
-        "https://ncs.gov.in/main-ENWR5Y2A.js"
-      ],
-      "scriptInfo": [
-        {
-          "src": "https://ncs.gov.in/main-ENWR5Y2A.js",
-          "ok": true,
-          "bytes": 638337,
-          "via": "direct"
-        },
-        {
-          "src": "https://ncs.gov.in/assets/js/tracking-init.js",
-          "ok": true,
-          "bytes": 472,
-          "via": "direct"
-        },
-        {
-          "src": "https://ncs.gov.in/scripts-CWJO5AXB.js",
-          "ok": true,
-          "bytes": 129948,
-          "via": "direct"
-        }
-      ],
-      "apis": [
-        "https://api.ncs.gov.in/api/location/state",
-        "https://api.ncs.gov.in/api/locations",
-        "https://api.ncs.gov.in/api/jobseeker/profiles/career-timeline/get-skills?keyword=Technical%20support",
-        "/api/news/classifieds?page=${this.pageNumber}&size=${this.pageSize}&search=${e}",
-        "/api/grievance/tickets/list",
-        "/api/grievance/tickets/view?userId=${this.userId}&ticketNumber=${e.ticketNumber}",
-        "/api/grievance/tickets/user-response",
-        "/api/grievance/tickets/reopen",
-        "/api/grievance/tickets/case-types",
-        "/api/grievance/tickets/case-categories",
-        "/api/grievance/tickets/case-sub-categories?caseCategoryId=${e.id}",
-        "/api/grievance/tickets/create",
-        "https://jsdm.jharkhand.gov.in/jsdm/cms/en/",
-        "/api/yp/",
-        "/api/jobseeker/profiles/upload-image",
-        "/api/jobseeker/profiles/get-image",
-        "/api/jobseeker/profiles/upload-resume",
-        "/api/jobseeker/profiles/download-resume",
-        "/api/jobseeker/profiles/upload-cover-letter",
-        "/api/jobseeker/profiles/cover-letters/download",
-        "/api/jobseeker/profiles/cover-letters/delete",
-        "/api/jobseeker/profiles/resumes/names",
-        "/api/jobseeker/profiles/cover-letters/names",
-        "/api/jobseeker/profiles/delete-resume",
-        "/api/digilocker-sso/authorize",
-        "/api/digilocker-sso/callback",
-        "/api/digilocker-sso/complete-registration",
-        "/api/digilocker-sso/revoke-token",
-        "/api/digilocker-sso/fetch-documents",
-        "/api/digilocker-sso/pull-document",
-        "/api/digilocker-sso/get/documents",
-        "/api/digilocker-sso/refresh-token",
-        "/api/emigrate-jobs/countries",
-        "/api/grievance/tickets/view",
-        "/api/grievance/tickets/case-sub-categories",
-        "/api/location/state",
-        "/api/location/districts",
-        "/api/location/sub-districts",
-        "/api/location/cities",
-        "/api/pincode",
-        "/api/pincode/upload",
-        "/api/education/qualifications",
-        "/api/education/qualifications/degrees",
-        "/api/education/qualifications/degrees/specializations",
-        "/api/jobseeker/profiles/career-timeline/qualifications",
-        "/api/jobseeker/profiles/career-timeline/qualifications/degrees",
-        "/api/jobseeker/profiles/career-timeline/degrees/specializations",
-        "/api/jobseeker/profiles/career-timeline/get-industries",
-        "/api/jobseeker/profiles/career-timeline/get-skills",
-        "/api/jobseeker/profiles/career-timeline/delete",
-        "/api/jobseeker/profiles/career-timeline/get",
-        "/api/jobseeker/profiles/career-timeline/delete-education",
-        "/api/jobseeker/profiles/career-timeline/experience-type",
-        "/api/jobseeker/profiles/career-timeline/location-type",
-        "/api/jobseeker/profiles/career-timeline/get-location",
-        "/api/events/getEvents",
-        "/api/job-titles/suggest",
-        "/api/locations/suggest",
-        "/api/news/newsletter/upload",
-        "/api/jobseeker/documents/upload",
-        "/api/pmis/sso/login",
-        "/api/integration/redirect/pmis",
-        "/api/v1/ncs/mybharat/exchange-code",
-        "/api/integration/redirect/mentortogether",
-        "/api/v1/ncs/sidh/exchange-code",
-        "/api/v1/ncs/sidh/course/search",
-        "/api/v1/ncs/sidh/course/master",
-        "/api/sidh/register",
-        "https://api.ncs.gov.in/zobique/api/course-recommendations/recommend",
-        "/api/v1/nats/apprenticeships/search",
-        "/api/integration/redirect/NATS",
-        "/api/v1/international-job-posts/get",
-        "/api/integration/redirect/bluedot",
-        "/api/v1/employer-image/upload-image"
-      ],
-      "bases": [],
-      "grep": [],
-      "textSample": "NcsNewWebsite --> Government of India Toll Free Helpline - 1514 Jobseekers Employers Counsellors Career Centers Jobseekers Employers Counsellors Career Centers Resources Classified Jobs ☰ ✖ Jobseekers Get Started Login Register Registration Flowchart Search for Jobs Find Domestic Jobs Find International Jobs E-migrate Advisories for International Jobseeker Jobs in Health Sector Jobs in Government "
-    },
-    {
-      "url": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
-      "ok": true,
-      "via": "direct",
-      "final": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
-      "bytes": 111782,
-      "title": "Reserve Bank of India",
-      "anchors": 448,
-      "noticeLinks": 19,
-      "sampleNotices": [
-        {
-          "text": "Revised process of recruitment of Officers in Grade-‘B’- (DR)",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=3061"
-        },
-        {
-          "text": "Extension of last date for submission of Application - Engagement of Part-time Bank’s Medical Consul",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5194"
-        },
-        {
-          "text": "Engagement of Part- Time Bank’s Medical Consultants (BMC) on Contract Basis with Fixed Hourly Remune",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5192"
-        },
-        {
-          "text": "Engagement of Pharmacist in the Bank on contract basis with fixed hourly remuneration, Mumbai",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5189"
-        },
-        {
-          "text": "Extension of last date for submission of Application - Engagement of Medical Consultant (MC) in the ",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5188"
-        },
-        {
-          "text": "Extension of last date for submission of Application - Engagement of Medical Consultant (MC) in the ",
-          "url": "https://opportunities.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5184"
-        }
-      ],
-      "feeds": [],
-      "scripts": [
-        "https://opportunities.rbi.org.in/js/rbi_recruitment_site_scripts.js",
-        "https://opportunities.rbi.org.in/js/libs/modernizr-2.5.3.min.js",
-        "https://opportunities.rbi.org.in/js/libs/jquery-1.7.2.min.js",
-        "https://opportunities.rbi.org.in/js/ImgSaveDisable.js",
-        "https://opportunities.rbi.org.in/js/plugins.js",
-        "https://opportunities.rbi.org.in/js/script.js",
-        "https://opportunities.rbi.org.in/js/URLchange.js",
-        "https://opportunities.rbi.org.in/js/ReplaceURL.js?v=1",
-        "https://opportunities.rbi.org.in/js/jquery.cookie.js"
-      ],
-      "scriptInfo": [
-        {
-          "src": "https://opportunities.rbi.org.in/js/rbi_recruitment_site_scripts.js",
-          "ok": true,
-          "bytes": 1154,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/libs/modernizr-2.5.3.min.js",
-          "ok": true,
-          "bytes": 17384,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/ImgSaveDisable.js",
-          "ok": true,
-          "bytes": 226,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/plugins.js",
-          "ok": true,
-          "bytes": 10769,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/script.js",
-          "ok": true,
-          "bytes": 8521,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/URLchange.js",
-          "ok": true,
-          "bytes": 823,
-          "via": "direct"
-        },
-        {
-          "src": "https://opportunities.rbi.org.in/js/ReplaceURL.js?v=1",
-          "ok": true,
-          "bytes": 5399,
-          "via": "direct"
-        }
-      ],
-      "apis": [],
-      "bases": [],
-      "grep": [],
-      "textSample": "Reserve Bank of India --> Home Current Vacancies Vacancies Call Letters Results Recruitment Calendar Sample paper --> Summer Placements Research Internship Scholarships Post based Rosters Rosters at CO Recruitment Promotion Rosters at ROs --> Career with Central Bank Professional and Personal Development --> Benefits of Working with the RBI How do You Apply? Revised process of recruitment of Offic"
     }
   ]
 }
