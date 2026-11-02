@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T14:01:26.068Z",
+    "at": "2026-11-02T14:36:24.708Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 11,
-    "newUpdates": 2,
+    "newJobs": 0,
+    "newUpdates": 1,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 52 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 63 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 15 already known",
@@ -45,18 +45,18 @@
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 2 update(s) (results/admit cards/answer keys)."
+      "Added 1 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T14:02:25.867Z",
+    "at": "2026-11-02T14:37:12.000Z",
     "sources": 59,
     "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 58,
+    "scanSeconds": 45,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -105,22 +105,22 @@
       "ssc": "8 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
-      "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "5 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "bssc": "783 links, 0 new via direct+aia",
-      "uppbpb": "7 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "bssc": "783 links, 0 new via direct+aia",
+      "csbc": "197 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "csbc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,22 +128,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T14:03:05.705Z",
+    "at": "2026-11-02T14:37:12.294Z",
     "ok": true,
-    "checked": 3,
+    "checked": 0,
     "found": 0,
-    "due": 3,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 3, found 0 real application pages (3 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-02T14:06:53.574Z",
+    "at": "2026-11-02T14:37:23.769Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,10 +151,9 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 11,
-    "hindiJobs": 11,
-    "hindiUpdatesPending": 2,
-    "hindiUpdates": 2,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 1,
+    "hindiUpdates": 1,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -162,34 +161,22 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 11 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: ANH भर्ती 2026 – 4 सीनियर रेजिडेंट पदों के लिए वॉक-इन",
-      "  ✓ hindi: NABCONS एसोसिएट कंसल्टेंट-एचआर और एसोसिएट कंसल्टेंट भर्ती 2026 – 2 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: ANH सीनियर रेजिडेंट भर्ती 2026 - वॉक-इन",
-      "  ✓ hindi: RITES सीनियर टेक्निकल असिस्टेंट भर्ती 2026 – 31 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CUPB प्रोजेक्ट असिस्टेंट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: SUK S.R.P.D. समन्वयक भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: दक्षिण बस्तर दंतेवाड़ा सामुदायिक स्वास्थ्य अधिकारी भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: DEO जंगांव बाहरी पार्ट-टाइम गेस्ट फैकल्टी भर्ती 2026 – ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: Dredging Corporation of India भर्ती 2026 – 11 प्रोजेक्ट मैनेजर, हाइड्रोग्राफिक सर्वेयर पदों के लिए वॉक-इन",
-      "  ✓ hindi: डॉ. पीडीकेवी युवा कर्मचारी भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: RCFL सलाहकार भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi update: UGC NET दिसंबर 2026 सुधार विंडो खुली - आवेदन फॉर्म करें संपादित, ये क्षेत्र हैं अनुमति",
-      "  ✓ hindi update: GPSC मेडिकल ऑफिसर इंटरव्यू कॉल लेटर 2026 जारी - डाउनलोड करें फेज 11 पार्ट 2 PDF"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi update: NTRUHS PG अस्थाई मेरिट लिस्ट 2026-27 जारी – ऑनलाइन चेक करें @ drntr.uhsap.in/index"
     ]
   },
   "news": {
-    "at": "2026-11-02T14:07:29.123Z",
+    "at": "2026-11-02T14:37:56.648Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 309,
+    "existing": 310,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 309",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 310",
       "  current affairs for today already exists.",
-      "  + analysis: Ambedkar Nagar Hospital Announces Walk-in Interviews for Senior Resident Posts",
-      "  analysis below quality bar for nabcons-associate-consultant-hr-associate-consultant-2026 (255 words, need 300) — not published."
+      "  analysis below quality bar for nabcons-associate-consultant-hr-associate-consultant-2026 (292 words, need 300) — not published.",
+      "  + analysis: ANH Senior Resident Recruitment 2026 – Walk-in Interview Announced"
     ]
   },
   "gsc": {
