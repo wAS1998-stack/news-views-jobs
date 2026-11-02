@@ -1,7 +1,55 @@
 {
-  "at": "2026-11-02T03:24:57.889Z",
+  "at": "2026-11-02T03:28:12.191Z",
   "indiaRelay": false,
   "results": [
+    {
+      "url": "https://www.osssc.gov.in/Pages/Advertisements.aspx",
+      "ok": false,
+      "error": "direct: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE) | alt-ua: fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE) | news-views.in: HTTP 404 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522"
+    },
+    {
+      "url": "https://bssc.bihar.gov.in/NoticeBoard.htm",
+      "ok": true,
+      "via": "direct+aia",
+      "final": "https://bssc.bihar.gov.in/NoticeBoard.htm",
+      "bytes": 433907,
+      "title": "Notice Board",
+      "anchors": 1058,
+      "noticeLinks": 783,
+      "sampleNotices": [
+        {
+          "text": "Click Here to Edit Online Application for Adv. No.- 07/25, Post- Stenographer/Steno Typist Grade - I",
+          "url": "https://bsscsteno.cbrt.co.in/login"
+        },
+        {
+          "text": "Click Here to Select Sports Discipline for Adv. No.- 08/25, Post- Sports Trainer",
+          "url": "https://bsscsports.cbrt.co.in/login"
+        },
+        {
+          "text": "Click Here to Apply for Adv. No.- 03/25, Post- Field Assistant (Mains Exam)",
+          "url": "https://bsscfield.cbrt.co.in/login"
+        },
+        {
+          "text": "Praptra-1",
+          "url": "https://bssc.bihar.gov.in/Advertisement/6060114_p_1.pdf"
+        },
+        {
+          "text": "Important Notice Regarding Edit Option for Advt. No.- 07/25, Post- Stenographer/Steno Typist Grade -",
+          "url": "https://bssc.bihar.gov.in/Advertisement/4613_notice.pdf"
+        },
+        {
+          "text": "Important Notice Regarding Advt. No.- 08/25, Post- Sports Trainer to Select Sports Discipline",
+          "url": "https://bssc.bihar.gov.in/Advertisement/4596_notice.pdf"
+        }
+      ],
+      "feeds": [],
+      "scripts": [],
+      "scriptInfo": [],
+      "apis": [],
+      "bases": [],
+      "grep": [],
+      "textSample": "Notice Board Notice Board इस पृष्ठ पर आप इस विभाग से जुड़ी नवीनतन सूचनाओं को प्राप्त कर सकते हैं । ये सूचनाएं नीचे दिये गये लिंकों पर क्लिक करके देखी जा सकती हैं । दिनांक विज्ञापन विषय 27-10-2026 06060114 Notice Regarding Scrutiny of Documents (Counselling) for Adv. No.- 06060114, Post- 1st Inter Level Combined Competitive Exam-2014 (In the Light of Order Passed in CWJC No.- 2548/2022) 25-10-2026 "
+    },
     {
       "url": "https://www.opsc.gov.in/",
       "ok": true,
@@ -97,7 +145,46 @@
       ],
       "apis": [],
       "bases": [],
-      "grep": [],
+      "grep": [
+        "[page] cript> <meta http-equiv=\"CACHE-CONTROL\" content=\"NO-CACHE\" /><meta http-equiv=\"EXPIRES\" content=\"0\" /> <noscript><meta http-equiv=\"REFRESH\" content=\"5; url=NoJavascript.aspx\" /></noscript> <script> function pageLoad() { $(':input[type=password]').each(function () { $(this).wrap(\"<div class='passwordbox",
+        "[page] ); } </script> </head> <body ondrag=\"false\" onkeydown=\"return stopKey(event)\" class=\"\"> <div class=\"loader\"></div> <form method=\"post\" action=\"./Default.aspx\" id=\"form1\" autocomplete=\"off\"> <div class=\"aspNetHidden\"> <input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" /> <input type=\"hidden\" nam",
+        "[page] div class=\"aligner\"> <div class=\"main_content\"><a href=\"#data\" style=\"display:inline-block;\">Skip to Main Content</a> | <a href=\"../Pages/screen-reader-access.aspx\" style=\"display:inline-block;\">Screen Reader</a></div> <div class=\"option_panel\"> <div class=\"languages\"> <span id=\"lang\"><span id=\"",
+        "[page] iv> </div> </div> <div class=\"myheader internal_header\"> <div class=\"aligner\"> <div class=\"logo_holder\"> <div class=\"logo_icon\"><a href=\"../../Default.aspx\"><img id=\"img_logo\" alt=\"logo\" src=\"../../images/govtlogo-trans_opsc.PNG\" alt=\"logo\" /></a></div> <div class=\"organization_name\"> <h",
+        "[page] v> --> <div class=\"header_nav\"> <div class=\"user_option\"> <ul> <li style=\"display:none;\"><a href=\"../Pages/Login.aspx\" onclick=\"On_Sametab()\"><i class=\"fa fa-lock\"></i> <span id=\"lbl_login\">Login</span></a></li> <li><a href=\"https://op",
+        "[page] ay:none\"> <h2><span id=\"lbl_chairman_msg\">Chairman&#39;s Message</span> </h2> <div style=\"text-align:center;padding:15px 0;\"><a href=\"../Pages/View_Content.aspx?id=hxNBmXlWSxyOo+elxg/fdQ==\"><img id=\"img_chairman\" alt=\"Thumbnail of OPSC Chairman Brigadier Laxmi Charan Patnaik (Retd.)\" src=\"Media/images/chairman.jpg\" alt",
+        "[page] </span></span> </div> </div> <div id=\"div_l_menu\" class=\"left_menuholder themenuholder\"> <ul><li><a href=\"../Pages/View_Content.aspx?id=2UwI/bnoe0Bk6sAjqEVqwQ==\" target=\"_self\"><span></span><span>Vision & Mission</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=zqgWslpNeByhDG0TU53nH",
+        "[page]  <ul><li><a href=\"../Pages/View_Content.aspx?id=2UwI/bnoe0Bk6sAjqEVqwQ==\" target=\"_self\"><span></span><span>Vision & Mission</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=zqgWslpNeByhDG0TU53nHw==\" target=\"_self\"><span></span><span>Role and Functions</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=iX15FIimS2kdSaubf20",
+        "[page] ></a></li><li><a href=\"../Pages/View_Content.aspx?id=zqgWslpNeByhDG0TU53nHw==\" target=\"_self\"><span></span><span>Role and Functions</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=iX15FIimS2kdSaubf20GkA==\" target=\"_self\"><span></span><span>Organization </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=I0jx/qnIfpDzp3A4zF0pIA==",
+        "[page] /span></a></li><li><a href=\"../Pages/View_Content.aspx?id=iX15FIimS2kdSaubf20GkA==\" target=\"_self\"><span></span><span>Organization </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=I0jx/qnIfpDzp3A4zF0pIA==\" target=\"_self\"><span></span><span>History </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=ZJj9IBSdU7Y1yw0WvPyFPw==\" tar",
+        "[page] ion </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=I0jx/qnIfpDzp3A4zF0pIA==\" target=\"_self\"><span></span><span>History </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=ZJj9IBSdU7Y1yw0WvPyFPw==\" target=\"_self\"><span></span><span>Commission & Incumbency Chart</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=QGSYOhVy",
+        "[page] li><a href=\"../Pages/View_Content.aspx?id=ZJj9IBSdU7Y1yw0WvPyFPw==\" target=\"_self\"><span></span><span>Commission & Incumbency Chart</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=QGSYOhVycdG8MB9e3LwfNw==\" target=\"_self\"><span></span><span>OPSC Manuals</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=DsC2EFZDHOOapk1zszxW4g==\"",
+        "[page] </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=QGSYOhVycdG8MB9e3LwfNw==\" target=\"_self\"><span></span><span>OPSC Manuals</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=DsC2EFZDHOOapk1zszxW4g==\" target=\"_self\"><span></span><span>Annual Reports</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=RiFLvYbyp07MVRoKL3JIZQ=",
+        "[page] span></a></li><li><a href=\"../Pages/View_Content.aspx?id=DsC2EFZDHOOapk1zszxW4g==\" target=\"_self\"><span></span><span>Annual Reports</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=RiFLvYbyp07MVRoKL3JIZQ==\" target=\"_self\"><span></span><span>Reforms </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=76rzs1T2iPxQRYQOERbtOw==\" tar",
+        "[page] orts</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=RiFLvYbyp07MVRoKL3JIZQ==\" target=\"_self\"><span></span><span>Reforms </span></a></li><li><a href=\"../Pages/View_Content.aspx?id=76rzs1T2iPxQRYQOERbtOw==\" target=\"_self\"><span></span><span>Tender & Quotations</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=C9b2YKMBT/uqqeRzU3",
+        "[page] </a></li><li><a href=\"../Pages/View_Content.aspx?id=76rzs1T2iPxQRYQOERbtOw==\" target=\"_self\"><span></span><span>Tender & Quotations</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=C9b2YKMBT/uqqeRzU3B22A==\" target=\"_self\"><span></span><span>RTI Orders</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=nkxtdUj0BOe7IxfrqxC4zg==\" t",
+        "[page] ns</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=C9b2YKMBT/uqqeRzU3B22A==\" target=\"_self\"><span></span><span>RTI Orders</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=nkxtdUj0BOe7IxfrqxC4zg==\" target=\"_self\"><span></span><span>Disclosure under RTI</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=cQWKEqBEZS/tGyyfG",
+        "[page] /a></li><li><a href=\"../Pages/View_Content.aspx?id=nkxtdUj0BOe7IxfrqxC4zg==\" target=\"_self\"><span></span><span>Disclosure under RTI</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=cQWKEqBEZS/tGyyfGEmUmQ==\" target=\"_self\"><span></span><span>Gallery</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=ceZ+Ypzg+98CELADuFd1+A==\" targ",
+        "[page] r RTI</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=cQWKEqBEZS/tGyyfGEmUmQ==\" target=\"_self\"><span></span><span>Gallery</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=ceZ+Ypzg+98CELADuFd1+A==\" target=\"_blank\"><span></span><span>Promotion & Disciplinary Concurrence</span></a></li></ul></div> </div> <div class=\"th",
+        "[page] t_menuholder themenuholder\"> <h2><span id=\"lbl_can_corner\">CANDIDATE&#39;S CORNER</span></h2> <div id=\"div_r_menu\"><ul><li><a href=\"../Pages/View_Content.aspx?id=Flf28ea9ughQKmx9C02/sw==\" target=\"_self\"><span><i class=\"fa fa-home\" aria-hidden=\"true\"></i></span><span>Home</span></a></li><li><a href=\"../Pages/View_Cont",
+        "[page] /View_Content.aspx?id=Flf28ea9ughQKmx9C02/sw==\" target=\"_self\"><span><i class=\"fa fa-home\" aria-hidden=\"true\"></i></span><span>Home</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=MeNGKau42B9VX4Nn6oZfXA==\" target=\"_self\"><span><i class=\"fa fa-newspaper-o\" aria-hidden=\"true\"></i></span><span>Advertisements</span></a></li><li><a href=\".",
+        "[page] x?id=MeNGKau42B9VX4Nn6oZfXA==\" target=\"_self\"><span><i class=\"fa fa-newspaper-o\" aria-hidden=\"true\"></i></span><span>Advertisements</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=iQvy8ONZ1XeCyxFZaY2SfA==\" target=\"_self\"><span><i class=\"fa fa-bell\" aria-hidden=\"true\"></i></span><span>Notifications</span></a></li><li><a href=\"../Pages/",
+        "[page] tent.aspx?id=iQvy8ONZ1XeCyxFZaY2SfA==\" target=\"_self\"><span><i class=\"fa fa-bell\" aria-hidden=\"true\"></i></span><span>Notifications</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=8zxSBRLoU4YlFzqaEDuEzw==\" target=\"_self\"><span><i class=\"fa fa-user-times\" aria-hidden=\"true\"></i></span><span>Rejection Notice</span></a></li><li Class=\"fl",
+        "[page] aEDuEzw==\" target=\"_self\"><span><i class=\"fa fa-user-times\" aria-hidden=\"true\"></i></span><span>Rejection Notice</span></a></li><li Class=\"flash_menu\"><a href=\"../Pages/View_Content.aspx?id=VO/uz97buK3DBoFIVkTEOw==\" target=\"_self\"><span><i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i></span><span>Download Admission Certificate</span></a></li",
+        "[page] 3DBoFIVkTEOw==\" target=\"_self\"><span><i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i></span><span>Download Admission Certificate</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=8ucZZ0qxTEidPUFJsbJ1Eg==\" target=\"_self\"><span><i class=\"fa fa-id-card\" aria-hidden=\"true\"></i></span><span>Results</span></a></li><li><a href=\"../Pages/Vie",
+        "[page] Content.aspx?id=8ucZZ0qxTEidPUFJsbJ1Eg==\" target=\"_self\"><span><i class=\"fa fa-id-card\" aria-hidden=\"true\"></i></span><span>Results</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=jWDzPJrrf4pbXjUrVhA7Hg==\" target=\"_self\"><span><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span><span>Transparency & Objectivity</span></a></li><li><a hre",
+        "[page] =jWDzPJrrf4pbXjUrVhA7Hg==\" target=\"_self\"><span><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span><span>Transparency & Objectivity</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=YKexCPR49yZO+vEFwWPfqw==\" target=\"_self\"><span><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span><span>Important Orders</span></a></li><li><a href=\"../Page",
+        "[page] nt.aspx?id=YKexCPR49yZO+vEFwWPfqw==\" target=\"_self\"><span><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span><span>Important Orders</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=N5n/48rKoj1sNGZtqat51w==\" target=\"_self\"><span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span><span>Recruitment Calendar</span></a></li><li><a href",
+        "[page] d=N5n/48rKoj1sNGZtqat51w==\" target=\"_self\"><span><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></span><span>Recruitment Calendar</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=5b9HSNplj2JDUafP+k7rrg==\" target=\"_self\"><span><i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i></span><span>Examination Syllabus</span></a></li><li><a hr",
+        "[page] 5b9HSNplj2JDUafP+k7rrg==\" target=\"_self\"><span><i class=\"fa fa-file-pdf-o\" aria-hidden=\"true\"></i></span><span>Examination Syllabus</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=p/5qRxj7CZtpXYhZHF7BXQ==\" target=\"_self\"><span><i class=\"fa fa-file-text-o\" aria-hidden=\"true\"></i></span><span>Previous Question Papers</span></a></li><li>",
+        "[page] xj7CZtpXYhZHF7BXQ==\" target=\"_self\"><span><i class=\"fa fa-file-text-o\" aria-hidden=\"true\"></i></span><span>Previous Question Papers</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=M4ZLp2jMx/L7RLr5Gfi2Eg==\" target=\"_self\"><span><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></span><span>Attestation & Bio Data Form</span></a></",
+        "[page] RLr5Gfi2Eg==\" target=\"_self\"><span><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></span><span>Attestation & Bio Data Form</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=i9KklT7VC9I9ILDYRGFMIw==\" target=\"_blank\"><span><i class=\"fa fa-question\"></i></span><span>Query Management</span></a></li><li><a href=\"../Pages/View_Conten",
+        "[page] es/View_Content.aspx?id=i9KklT7VC9I9ILDYRGFMIw==\" target=\"_blank\"><span><i class=\"fa fa-question\"></i></span><span>Query Management</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=QNq9RPdGiV4tuXUju8+X2g==\" target=\"_self\"><span><i class=\"fa fa-question-circle-o\" aria-hidden=\"true\"></i></span><span>FAQ</span></a></li><li><a href=\"../Pag",
+        "[page] t.aspx?id=QNq9RPdGiV4tuXUju8+X2g==\" target=\"_self\"><span><i class=\"fa fa-question-circle-o\" aria-hidden=\"true\"></i></span><span>FAQ</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=0N53d1i7tfJf7KwRwKDmrQ==\" target=\"_self\"><span><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i></span><span>Guidelines</span></a></li><li><a href=\"../Pa",
+        "[page] .aspx?id=0N53d1i7tfJf7KwRwKDmrQ==\" target=\"_self\"><span><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i></span><span>Guidelines</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=pTtU/G7hEmVXGcUkAiuZ7w==\" target=\"_self\"><span><i class=\"fa fa-gavel\" aria-hidden=\"true\"></i></span><span>Compendium of Rules</span></a></li><li><a href=\"..",
+        "[page] px?id=pTtU/G7hEmVXGcUkAiuZ7w==\" target=\"_self\"><span><i class=\"fa fa-gavel\" aria-hidden=\"true\"></i></span><span>Compendium of Rules</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=KzBCsCQK20H291Qnco6XQQ==\" target=\"_self\"><span><i class=\"fa fa-lock\" aria-hidden=\"true\"></i></span><span>Admin Login</span></a></li></ul></div> ",
+        "[page]  </div> <div class=\"footermenu\"> <h2><span id=\"lbl_inform\">Information</span></h2> <div id=\"div_lower_menu\"><ul><li><a href=\"../Pages/View_Content.aspx?id=Hl1zF3imowonTNo3ETp2cA==\" target=\"_self\"><span></span><span>Privacy Policy</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=wmpmoV8VNcfB9LTvZnxjTQ=",
+        "[page] wer_menu\"><ul><li><a href=\"../Pages/View_Content.aspx?id=Hl1zF3imowonTNo3ETp2cA==\" target=\"_self\"><span></span><span>Privacy Policy</span></a></li><li><a href=\"../Pages/View_Content.aspx?id=wmpmoV8VNcfB9LTvZnxjTQ==\" target=\"_self\"><span></span><span>Usage Terms & Conditions</span></a></li></ul></div> </div> <div class=\"suppo"
+      ],
       "textSample": "Odisha Public Service Commission|OPSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Public Service Commission (OPSC) --> Login Apply Online Chairman's Message Brigadier Laxmi Charan Patnaik (Retd.), Hon'ble Chairman Vision & Mission Role and Functions Organization History Commission & Incumbency Chart OPSC Manuals Ann"
     },
     {
@@ -198,34 +285,46 @@
       "apis": [],
       "bases": [],
       "grep": [
-        "[page] <a href=\"#\"> <span id=\"lbl_menu3\">RECRUITMENT</span></a> <ul> <li><a href=\"../Pages/Recruitment_calender.aspx\"> <span id=\"lbl_menu_recruit_calender\">Recruitment Calender</span></a></li> <li><a href=\".",
-        "[page] f=\"../Pages/Login.aspx\"> <span id=\"lbl_menu3_submenu2\">Requisition</span></a></li> <li><a href=\"../Pages/Advertisements.aspx\"> <span id=\"lbl_menu3_submenu4\">Advertisements</span></a></li> <li><a href=\"../Pages/Notif",
-        "[page] es/Notification.aspx\"> <span id=\"lbl_menu3_submenu5\">Notifications</span></a></li> <li><a href=\"../Pages/RESULT.aspx\"> <span id=\"lbl_menu3_submenu_6\">Results</span></a></li> </ul> </li> "
+        "[page] a http-equiv=\"CACHE-CONTROL\" content=\"NO-CACHE\" /><meta http-equiv=\"EXPIRES\" content=\"0\" /> <noscript> <meta http-equiv=\"REFRESH\" content=\"5; url=NoJavascript.aspx\" /> </noscript> <script> function pageLoad() { $(':input[type=password]').each(function () { $(this).wrap(\"<",
+        "[page]  </script> </head> <body ondrag=\"false\" onkeydown=\"return stopKey(event)\" class=\"\"> <div class=\"loader\"></div> <form method=\"post\" action=\"./Default.aspx\" id=\"form1\" autocomplete=\"off\"> <div class=\"aspNetHidden\"> <input type=\"hidden\" name=\"__EVENTTARGET\" id=\"__EVENTTARGET\" value=\"\" /> <input type=\"hidden\" nam",
+        "[page]  <div class=\"main_content\"><a href=\"#data\" style=\"display: inline-block;\">Skip to Main Content</a> | <a href=\"../Pages/screen-reader-access.aspx\" style=\"display: inline-block;\">Screen Reader</a></div> <div class=\"option_panel\"> <div class=\"languages\"> ",
+        "[page] \"> <div class=\"aligner\"> <div class=\"logo_holder\"> <div class=\"logo_icon\"> <a href=\"../../Default.aspx\"> <img id=\"img_logo\" alt=\"logo\" src=\"../../images/govtlogo-trans_osssc.PNG\" alt=\"logo\" /></a> </div> ",
+        "[page]  <div class=\"clr\"></div> </div> <div class=\"user_option\"> <ul> <li><a href=\"../Pages/Login.aspx\" onclick=\"On_Sametab()\"><i class=\"fa fa-lock\"></i> <span id=\"lbl_login\">Login</span></a></li> <li><a href",
+        "[page] onclick=\"On_Sametab()\"><i class=\"fa fa-lock\"></i> <span id=\"lbl_login\">Login</span></a></li> <li><a href=\"../Pages/Post_detail_information.aspx\" onclick=\"On_Sametab()\"><i class=\"fa fa-user-plus\"></i> <span id=\"lbl_reg\">Apply Online</span></a></li> </ul>",
+        "[page] iv class=\"aligner\"> <nav class=\"sujit-nav\"> <ul class=\"menu\"> <li><a href=\"../../Default.aspx\"><span style=\"margin: 0 0 0 0;\"> <img src=\"../../images/witte-home-icon.png\" alt=\"Home\" /></span></a></li> ",
+        "[page] href=\"#\"> <span id=\"lbl_menu1\">ABOUT US</span></a> <ul> <li><a href=\"../Pages/About_Osssc.aspx\"> <span id=\"lbl_menu1_submenu1\">OSSSC</span></a></li> <li><a href=\"../Pages/Mission.aspx\"",
+        "[page] Pages/About_Osssc.aspx\"> <span id=\"lbl_menu1_submenu1\">OSSSC</span></a></li> <li><a href=\"../Pages/Mission.aspx\"> <span id=\"lbl_menu1_submenu2\">Mission</span></a></li> <li><a href=\"../Pages/Organizatio",
+        "[page] ./Pages/Mission.aspx\"> <span id=\"lbl_menu1_submenu2\">Mission</span></a></li> <li><a href=\"../Pages/Organization.aspx\"> <span id=\"lbl_menu1_submenu3\">Organization</span></a></li> <li><a href=\"../Pages/Functi",
+        "[page] ganization.aspx\"> <span id=\"lbl_menu1_submenu3\">Organization</span></a></li> <li><a href=\"../Pages/Functionaries_Position.aspx\"> <span id=\"lbl_menu1_submenu4\">Functionaries in Position</span></a></li> <li><a href=\"..",
+        "[page] px\"> <span id=\"lbl_menu1_submenu4\">Functionaries in Position</span></a></li> <li><a href=\"../Pages/Job_Assignment.aspx\"> <span id=\"lbl_menu1_submenu5\">Job Assignment</span></a></li> </ul> ",
+        "[page] ef=\"#\"> <span id=\"lbl_menu2\">COMMISSION</span></a> <ul> <li><a href=\"../Pages/Formation.aspx\"> <span id=\"lbl_menu2_submenu1\">Formation</span></a></li> <li><a href=\"../Pages/Chairman.",
+        "[page] ges/Formation.aspx\"> <span id=\"lbl_menu2_submenu1\">Formation</span></a></li> <li><a href=\"../Pages/Chairman.aspx\"> <span id=\"lbl_menu2_submenu2\">Chairman</span></a></li> <li><a href=\"../Pages/Members.as",
+        "[page] Pages/Chairman.aspx\"> <span id=\"lbl_menu2_submenu2\">Chairman</span></a></li> <li><a href=\"../Pages/Members.aspx\"> <span id=\"lbl_menu2_submenu3\">Members</span></a></li> <li><a href=\"../Pages/Functions.a",
+        "[page] ./Pages/Members.aspx\"> <span id=\"lbl_menu2_submenu3\">Members</span></a></li> <li><a href=\"../Pages/Functions.aspx\"> <span id=\"lbl_menu2_submenu4\">Functions</span></a></li> <li><a href=\"../Pages/Incumbanc",
+        "[page] ges/Functions.aspx\"> <span id=\"lbl_menu2_submenu4\">Functions</span></a></li> <li><a href=\"../Pages/Incumbancy.aspx\"> <span id=\"lbl_menu2_submenu5\">Incumbency</span></a></li> <li><a href=\"../Pages/Boards_C",
+        "[page] s/Incumbancy.aspx\"> <span id=\"lbl_menu2_submenu5\">Incumbency</span></a></li> <li><a href=\"../Pages/Boards_Committees.aspx\"> <span id=\"lbl_menu2_submenu6\">Boards &amp; Committies</span></a></li> </ul> ",
+        "[page] f=\"#\"> <span id=\"lbl_menu3\">RECRUITMENT</span></a> <ul> <li><a href=\"../Pages/Recruitment_calender.aspx\"> <span id=\"lbl_menu_recruit_calender\">Recruitment Calender</span></a></li> <li><a href=\"",
+        "[page] \"> <span id=\"lbl_menu_recruit_calender\">Recruitment Calender</span></a></li> <li><a href=\"../Pages/VIEW_REGISTRATION_COPY.aspx\"> <span id=\"lbl_menu3_submenu6\">View Registration Copy</span></a></li> <li><a href=\"../Pa",
+        "[page] .aspx\"> <span id=\"lbl_menu3_submenu6\">View Registration Copy</span></a></li> <li><a href=\"../Pages/Old_Question_Papers.aspx\">Old Questions</a></li> <li><a href=\"../Pages/Scope.aspx\"> <span id=\"lbl_menu3_submenu1\">",
+        "[page] </a></li> <li><a href=\"../Pages/Old_Question_Papers.aspx\">Old Questions</a></li> <li><a href=\"../Pages/Scope.aspx\"> <span id=\"lbl_menu3_submenu1\">Scope</span></a></li> <li><a href=\"../Pages/Login.aspx\"> ",
+        "[page] f=\"../Pages/Scope.aspx\"> <span id=\"lbl_menu3_submenu1\">Scope</span></a></li> <li><a href=\"../Pages/Login.aspx\"> <span id=\"lbl_menu3_submenu2\">Requisition</span></a></li> <li><a href=\"../Pages/Adverti",
+        "[page] Pages/Login.aspx\"> <span id=\"lbl_menu3_submenu2\">Requisition</span></a></li> <li><a href=\"../Pages/Advertisements.aspx\"> <span id=\"lbl_menu3_submenu4\">Advertisements</span></a></li> <li><a href=\"../Pages/Noti",
+        "[page] isements.aspx\"> <span id=\"lbl_menu3_submenu4\">Advertisements</span></a></li> <li><a href=\"../Pages/Notification.aspx\"> <span id=\"lbl_menu3_submenu5\">Notifications</span></a></li> <li><a href=\"../Pages/RESUL",
+        "[page] ification.aspx\"> <span id=\"lbl_menu3_submenu5\">Notifications</span></a></li> <li><a href=\"../Pages/RESULT.aspx\"> <span id=\"lbl_menu3_submenu_6\">Results</span></a></li> </ul> </li>",
+        "[page] span id=\"lbl_menu3_submenu_6\">Results</span></a></li> </ul> </li> <li><a href=\"../Pages/Tender.aspx\"><span> <span id=\"lbl_menu4\">TENDERS &amp; QUOTATIONS</span></span></a></li> <li><a href=\"#\"> ",
+        "[page] <a href=\"#\"> <span id=\"lbl_menu5\">RULES</span></a> <ul> <li><a href=\"../Pages/Acts.aspx\"> <span id=\"lbl_menu5_submenu1\">Acts</span></a></li> <li><a href=\"../Pages/Rules.aspx\"> ",
+        "[page] ref=\"../Pages/Acts.aspx\"> <span id=\"lbl_menu5_submenu1\">Acts</span></a></li> <li><a href=\"../Pages/Rules.aspx\"> <span id=\"lbl_menu5_submenu2\">Rules</span></a></li> <li><a href=\"../Pages/Regulation.as",
+        "[page] f=\"../Pages/Rules.aspx\"> <span id=\"lbl_menu5_submenu2\">Rules</span></a></li> <li><a href=\"../Pages/Regulation.aspx\"> <span id=\"lbl_menu5_submenu3\">Regulations</span></a></li> </ul> </",
+        "[page] ;\" id=\"btn_Citizen\" href=\"javascript:__doPostBack(&#39;ctl00$btn_Citizen&#39;,&#39;&#39;)\">CITIZEN&#39;S CHARTER</a></li> <li><a href=\"../Pages/Contact_Osssc.aspx\"> <span id=\"lbl_contact\">CONTACT US</span></a> </li> </ul> <div class=\"clr\"></div> ",
+        "[page] Form_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$generic_masterpage1$gv_UR$ctl12$lnk_See_More&quot;, &quot;&quot;, false, &quot;&quot;, &quot;../Pages/Notification.aspx&quot;, false, true))\" style=\"text-align: right;\">See More</a> </td> </tr> </table> </div> <div class=\"clr\"></div> ",
+        "[page]  target=\"_blank\"><img src=\"../../images/indiagovin.gif\" alt=\"Link to India governement Website\"/></a></li> <li class=\"hideondesktop\"><a href=\"../Pages/HelpfulLink.aspx\" target=\"_self\"><img src=\"../../images/irms.png\" alt=\"Link to download IRMS (CAMS)\"/></a></li> </ul> </div> <div class=\"clr\"></div> ",
+        "[page] /span><span style=\"color: red\">*</span></h3> <ul> <li><div class=\"captchaa\"><img id=\"generic_masterpage1_ImgCaptcha\" src=\"../Generate_Captcha.aspx?639292067585871356\" style=\"height:36px;width:120px;\" /></div></li> <li><input type=\"image\" name=\"ctl00$generic_masterpage1$Image1\" id=\"gen",
+        "[page] /div> </div> </section> <footer> <div class=\"footermenu\"> <ul> <li><a href=\"../Pages/Privacy_policy.aspx\"> <span id=\"lbl_privacy\">Privacy Policy</span></a></li> <li><a href=\"../Pages/Usage_Terms.aspx\"> ",
+        "[page]  <li><a href=\"../Pages/Privacy_policy.aspx\"> <span id=\"lbl_privacy\">Privacy Policy</span></a></li> <li><a href=\"../Pages/Usage_Terms.aspx\"> <span id=\"lbl_terms\">Usage Terms & Condition</span></a></li> </ul> </div> <div class=\"clr",
+        "[page]  $create(Sys.Extended.UI.ModalPopupBehavior, {\"backgroundCssClass\":\"modalBackground\",\"cancelControlID\":\"generic_masterpage1_btnClose\",\"dynamicServicePath\":\"/Public/OSSSC/Default.aspx\",\"id\":\"generic_masterpage1_mp1\",\"popupControlID\":\"generic_masterpage1_pnlPopup\"}, null, null, $get(\"generic_masterpage1_btn1\")); }); //]]> </script> </form",
+        "[WebResource.axd?d=oy-fndfGWMBdeY3hXxepbI] action.substr(0, queryIndex); } if (path.indexOf(\"%\") === -1) { // domain may or may not be present (e.g. action of \"foo.aspx\" vs \"http: if (/^https?\\:\\/\\/.*$/gi.test(path)) { var domainPartIndex = path.indexOf(\"\\/\\/\") + 2; va"
       ],
       "textSample": "Odisha Sub-ordinate Staff Selection Commission|OSSSC Skip to Main Content | Screen Reader Select Language : ENGLISH A - A A + Select Color: : Violet Green Gray Reddish Blue Odisha Sub-ordinate Staff Selection Commission (OSSSC) , Govt. of Odisha Login Apply Online ABOUT US OSSSC Mission Organization Functionaries in Position Job Assignment COMMISSION Formation Chairman Members Functions Incumbency"
-    },
-    {
-      "url": "https://bssc.bihar.gov.in/",
-      "ok": true,
-      "via": "direct+aia",
-      "final": "https://bssc.bihar.gov.in/",
-      "bytes": 10920,
-      "title": "Bihar Staff Selection Commission",
-      "anchors": 8,
-      "noticeLinks": 0,
-      "sampleNotices": [],
-      "feeds": [],
-      "scripts": [
-        "https://kendo.cdn.telerik.com/2014.2.716/js/jquery.min.js",
-        "https://kendo.cdn.telerik.com/2014.2.716/js/kendo.ui.core.min.js"
-      ],
-      "scriptInfo": [],
-      "apis": [],
-      "bases": [],
-      "grep": [
-        "[page]  <li> <a href=\"Lettters.htm\">विभागीय पत्र/आदेश</a> </li> <li> <a href=\"NoticeBoard.htm\">सूचना पट्ट</a> </li> <li> <a href=\"#\">निविदाएँ</a> </li> "
-      ],
-      "textSample": "Bihar Staff Selection Commission Bihar Staff Selection Commission VETERINARY COLLEGE CAMPUS, PATNA - 800014 होम पेज आयोग के कार्य विभागीय पत्र/आदेश सूचना पट्ट निविदाएँ बिहार सूचना आयोग Advertisements View List Gallery Help Line : (0612)- 2227728 श्रीमती शोभा ओहटकर, भा0 पु0 से0 (से0 नि0) अध्यक्ष संपर्क --> दूरभाष : (0612)- 2227727. फैक्स : (0612)- 2225736. श्री संजय कुमार निराला, बि० प्र० से०, सचिव"
     }
   ]
 }
