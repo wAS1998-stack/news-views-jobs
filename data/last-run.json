@@ -2,7 +2,7 @@
   "date": "2026-11-02",
   "runs": {},
   "fetch": {
-    "at": "2026-11-02T06:34:07.111Z",
+    "at": "2026-11-02T07:17:21.554Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,18 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 1,
-    "newUpdates": 1,
+    "newJobs": 8,
+    "newUpdates": 7,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 58 already known",
-      "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
-      "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 16 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 8 already known"
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-02; 41 already known",
+      "https://rajsarkariresult.com/feed": "10 items via rss2json; newest 2026-10-30; 8 already known",
+      "https://gulfjobvacancy.in/feed": "10 items via rss2json; newest 2026-10-29; 7 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-02; 15 already known",
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-02; 10 already known"
     },
     "log": [
-      "   * update: NTA UGC NET JRF December Correction / Edit Form 2026",
+      "   = same source page as an existing job, skipped: BSSC Field Assistant Mains Online Form 2026 – Last Date",
+      "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC PRT Assistant Teacher Online Form 2026 (12405 Posts) – Extend",
       "   = duplicate of an existing recruitment, skipped: BPSC School Teacher TRE 4.0 Online Form 2026 (33,320 Posts) – Fee Payment Last Date",
       "   = same source page as an existing job, skipped: UPESSC UP TGT Online Form 2026 (17,735 Posts)",
@@ -40,23 +41,22 @@
       "   = same source page as an existing job, skipped: Indian Army TGC 145 Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UCO Bank Apprentice Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPESSC UP Principal Inter Level Online Form 2026 (1475 Posts)",
-      "   = same source page as an existing job, skipped: UPESSC UP Headmaster Online Form 2026 (1172 Posts)",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "Added 7 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-02T06:35:07.866Z",
+    "at": "2026-11-02T07:18:00.513Z",
     "sources": 59,
     "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 59,
+    "scanSeconds": 37,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -103,24 +103,24 @@
       "slprb-ap": "paused (fails 39, geo-blocked)",
       "ssc": "9 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
-      "dsssb": "5 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
+      "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "tgpsc": "3 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "kvs": "7 links, 0 new via direct",
+      "tgpsc": "3 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "6 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
-      "bpssc": "208 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "osssc": "0 notice links (fails 6) via direct+aia",
+      "csbc": "197 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "osssc": "0 notice links (fails 5) via direct+aia",
-      "ctet": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-02T06:35:08.068Z",
+    "at": "2026-11-02T07:18:00.735Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -143,7 +143,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-02T06:35:27.495Z",
+    "at": "2026-11-02T07:20:29.646Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -151,10 +151,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 1,
-    "hindiJobs": 1,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 8,
+    "hindiJobs": 8,
+    "hindiUpdatesPending": 7,
+    "hindiUpdates": 7,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -162,23 +162,36 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: IIT इंदौर JRF भर्ती 2026 - 05 पदों के लिए आवेदन करें",
-      "  ✓ hindi update: NTA UGC NET JRF दिसंबर सुधार / संपादन फॉर्म 2026"
+      "Enrich/hindi: 8 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: AIIMS जोधपुर प्रोजेक्ट स्टाफ नर्स भर्ती 2026 – वॉकिन",
+      "  ✓ hindi: KEA भर्ती 2026 – 31 सहायक नगर योजनाकार, जूनियर इंजीनियर पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CG Police Bilaspur Bastar Fighter Constable भर्ती 2026: 417 पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: ECHS भर्ती 2026 – 36 क्लर्क, DEO और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: ILBS प्रोजेक्ट रिसर्च वैज्ञानिक III भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: BECIL डेटा एंट्री ऑपरेटर भर्ती 2026 – 23 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: TCIL भर्ती 2026 – 5 सिस्टम एडमिनिस्ट्रेटर, निवासी इंजीनियर और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: केरल हाई कोर्ट रिसर्च असिस्टेंट भर्ती 2026 – 48 पदों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi update: Indian Bank SO फाइनल रिजल्ट 2026 जारी - विशेषज्ञ अधिकारी अस्थायी चयन सूची PDF डाउनलोड करें",
+      "  ✓ hindi update: तेलंगाना GMC DEO अस्थायी मेरिट लिस्ट 2026 जारी - डेटा एंट्री ऑपरेटर मेरिट लिस्ट PDF डाउनलोड करें",
+      "  ✓ hindi update: MRPL सहायक इंजीनियर GD PI शॉर्टलिस्ट 2026 जारी - शॉर्टलिस्टेड कैंडिडेट लिस्ट PDF डाउनलोड करें",
+      "  ✓ hindi update: इलाहाबाद हाई कोर्ट सिविल जज संशोधित परीक्षा तिथि 2026 – नई परीक्षा शेड्यूल PDF चेक करें",
+      "  ✓ hindi update: KEA फार्मेसी ऑफिसर उत्तर कुंजी 2026 जारी - पेपर 2 का अस्थायी उत्तर पत्रक डाउनलोड करें",
+      "  ✓ hindi update: CSIR NAL MTS उत्तर कुंजी 2026 जारी - प्रावधिक उत्तर कुंजी और प्रश्न पत्र PDF डाउनलोड करें",
+      "  ✓ hindi update: CONCOR MT, सहायक अधिकारी परीक्षा तिथि 2026"
     ]
   },
   "news": {
-    "at": "2026-11-02T06:35:51.500Z",
+    "at": "2026-11-02T07:20:51.764Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 0,
     "quizzes": 0,
-    "existing": 295,
+    "existing": 296,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 295",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 296",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for iit-indore-jrf-2026 (287 words, need 300) — not published.",
-      "  + analysis: Odisha Hydro Power Corporation Ltd. Announces Managing Director Recruitment for 2026"
+      "  analysis below quality bar for aiims-jodhpur-project-staff-nurse-walkin-2026 (254 words, need 300) — not published.",
+      "  analysis below quality bar for kea-assistant-town-planner-junior-engineer-2026 (268 words, need 300) — not published."
     ]
   },
   "gsc": {
