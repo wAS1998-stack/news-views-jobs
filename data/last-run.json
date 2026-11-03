@@ -2,7 +2,7 @@
   "date": "2026-11-03",
   "runs": {},
   "fetch": {
-    "at": "2026-11-03T03:57:27.860Z",
+    "at": "2026-11-03T04:38:23.176Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-03T03:58:16.076Z",
+    "at": "2026-11-03T04:39:15.912Z",
     "sources": 59,
     "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 46,
+    "scanSeconds": 51,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -103,24 +103,24 @@
       "slprb-ap": "paused (fails 44, geo-blocked)",
       "osssc": "paused (fails 11)",
       "ssc": "8 links, 0 new via direct",
-      "rbi": "20 links, 0 new via direct",
       "nta": "1 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "rbi": "20 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "kvs": "6 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bssc": "783 links, 0 new via direct+aia",
       "wbssc": "13 links, 0 new via direct",
       "csbc": "197 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "bssc": "783 links, 0 new via direct+aia",
       "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "ctet": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-03T03:58:16.359Z",
+    "at": "2026-11-03T04:39:16.195Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-03T03:58:17.292Z",
+    "at": "2026-11-03T04:39:17.126Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,17 +177,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-03T03:58:41.970Z",
+    "at": "2026-11-03T04:39:39.371Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 334,
+    "existing": 335,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 334",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 335",
       "  current affairs for today already exists.",
-      "  + analysis: RRB NTPC Graduate Recruitment 2026: Applications Open for 3548 Vacancies",
-      "  analysis below quality bar for sppu-director-2026 (273 words, need 300) — not published."
+      "  + analysis: Savitribai Phule Pune University Invites Applications for Director Position",
+      "  analysis below quality bar for sai-technical-officials-2026 (282 words, need 300) — not published."
     ]
   },
   "notify": {
