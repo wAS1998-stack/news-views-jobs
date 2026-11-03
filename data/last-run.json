@@ -189,5 +189,16 @@
       "  analysis below quality bar for zp-nagpur-medical-officer-yoga-expert-2026 (281 words, need 300) — not published.",
       "  + analysis: IRMA Recruitment 2026: Opportunity for Field Investigator / Enumerator Posts"
     ]
+  },
+  "notify": {
+    "at": "2026-11-03T02:00:10.772Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
   }
 }
