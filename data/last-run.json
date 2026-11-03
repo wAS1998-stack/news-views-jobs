@@ -2,7 +2,7 @@
   "date": "2026-11-03",
   "runs": {},
   "fetch": {
-    "at": "2026-11-03T15:33:44.392Z",
+    "at": "2026-11-03T16:13:44.140Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-03T15:34:41.993Z",
+    "at": "2026-11-03T16:13:54.135Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 56,
+    "scanSeconds": 8,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,23 +104,23 @@
       "osssc": "paused (fails 14)",
       "ssc": "8 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
-      "dsssb": "4 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "4 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
+      "uppbpb": "7 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)",
-      "bpssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-03T15:34:42.247Z",
+    "at": "2026-11-03T16:13:54.509Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-03T15:34:43.182Z",
+    "at": "2026-11-03T16:13:55.492Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,17 +177,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-03T15:35:05.499Z",
+    "at": "2026-11-03T16:14:13.797Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 358,
+    "existing": 359,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 358",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 359",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for sikkim-university-senior-research-fellow-2026 (297 words, need 300) — not published.",
-      "  + analysis: Birbhum District Health and Family Welfare Samity Recruitment 2026 – Apply Online for 7 DEO, Ayush Doctor and More Posts"
+      "  + analysis: Sikkim University Announces Recruitment for Senior Research Fellow Positions",
+      "  + analysis: IIT Kanpur Announces Senior Project Scientist Recruitment for 2026"
     ]
   },
   "notify": {
