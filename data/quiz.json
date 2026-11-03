@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-03",
+    "date": "2026-11-03",
+    "digest_id": "current-affairs-2026-11-03",
+    "title": "Current Affairs Quiz 3 November 2026",
+    "questions": [
+      {
+        "q": "What was the purpose of the Traditional Knowledge Communication and Dissemination Conference 2026 hosted by CSIR-NISER?",
+        "options": [
+          "To discuss modern scientific approaches",
+          "To bridge the gap between traditional knowledge and modern scientific approaches",
+          "To enhance skill training",
+          "To promote voter awareness"
+        ],
+        "answer": 1,
+        "why": "The conference aims to bridge the gap between traditional knowledge and modern scientific approaches."
+      },
+      {
+        "q": "Which organization announced the final results for the Combined Defense Services Exam (I), 2026?",
+        "options": [
+          "Ministry of Defense",
+          "UPSC",
+          "CSIR-NISER",
+          "Ministry of Skill Development"
+        ],
+        "answer": 1,
+        "why": "The Union Public Service Commission (UPSC) announced the final results for the exam."
+      },
+      {
+        "q": "How many coal mines received a five-star rating from the Ministry of Coal?",
+        "options": [
+          "50",
+          "60",
+          "19",
+          "11,800"
+        ],
+        "answer": 0,
+        "why": "The Ministry of Coal awarded a five-star rating to 50 coal mines."
+      },
+      {
+        "q": "What campaign engaged over 11,800 youth promoting electoral participation?",
+        "options": [
+          "Skill Excellence Campaign",
+          "Voter Awareness Campaign",
+          "Renewable Energy Summit",
+          "Defense Services Exam Campaign"
+        ],
+        "answer": 1,
+        "why": "The 'My India, Developed India' voter awareness campaign engaged the youth."
+      },
+      {
+        "q": "How many institutions were recognized as Skill Excellence Centers by the Ministry of Skill Development?",
+        "options": [
+          "50",
+          "11,800",
+          "19",
+          "60"
+        ],
+        "answer": 2,
+        "why": "The Ministry of Skill Development and Entrepreneurship recognized 19 institutions as Skill Excellence Centers."
+      },
+      {
+        "q": "What initiative did the Ministry of Heavy Industries complete to address outstanding matters?",
+        "options": [
+          "Star Rating Program",
+          "Special Campaign 6",
+          "Voter Awareness Campaign",
+          "Renewable Energy Summit"
+        ],
+        "answer": 1,
+        "why": "The Ministry of Heavy Industries successfully completed Special Campaign 6."
+      },
+      {
+        "q": "Who inaugurated the India Renewable Energy Summit and Expo 2026?",
+        "options": [
+          "Health Minister",
+          "Prime Minister Narendra Modi",
+          "Minister of Coal",
+          "J.P. Nadda"
+        ],
+        "answer": 1,
+        "why": "Prime Minister Narendra Modi inaugurated the India Renewable Energy Summit and Expo 2026."
+      },
+      {
+        "q": "Which facility was opened by the Union Health Minister at AIIMS Rajkot?",
+        "options": [
+          "Advanced Radiotherapy Facility",
+          "Skill Training Center",
+          "Defense Services Facility",
+          "Coal Mining Facility"
+        ],
+        "answer": 0,
+        "why": "The Union Health Minister inaugurated an advanced radiotherapy facility at AIIMS Rajkot."
+      },
+      {
+        "q": "What is one focus area for various competitive exams highlighted in the article?",
+        "options": [
+          "Healthcare services",
+          "Agricultural policies",
+          "Renewable energy development",
+          "Public sector accountability"
+        ],
+        "answer": 3,
+        "why": "Effective governance and accountability in public sector undertakings are a focus area for various competitive exams."
+      },
+      {
+        "q": "What year does the Star Rating Program recognized by the Ministry of Coal relate to?",
+        "options": [
+          "2026",
+          "2024-25",
+          "2025",
+          "2023"
+        ],
+        "answer": 1,
+        "why": "The Star Rating Program is associated with the Fiscal Year 2024-25."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-02",
     "date": "2026-11-02",
     "digest_id": "current-affairs-2026-11-02",

@@ -1,20 +1,15 @@
 {
- "date": "2026-11-02",
+ "date": "2026-11-03",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-04",
-  "2026-10-31"
+  "2026-10-05",
+  "2026-11-01"
  ],
  "totals": {
   "clicks": 34,
-  "impressions": 650
+  "impressions": 652
  },
  "daily": [
-  {
-   "date": "2026-10-04",
-   "clicks": 0,
-   "impressions": 4
-  },
   {
    "date": "2026-10-05",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-10-31",
    "clicks": 5,
    "impressions": 19
+  },
+  {
+   "date": "2026-11-01",
+   "clicks": 0,
+   "impressions": 6
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-03",
-   "2026-10-31"
+   "2026-08-04",
+   "2026-11-01"
   ],
   "rows": []
  },
@@ -169,9 +169,9 @@
   {
    "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 10,
-   "impressions": 29,
-   "ctr": 34.48,
-   "position": 2
+   "impressions": 30,
+   "ctr": 33.33,
+   "position": 2.2
   },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
@@ -204,9 +204,9 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 32,
-   "ctr": 6.25,
-   "position": 5.6
+   "impressions": 28,
+   "ctr": 7.14,
+   "position": 5.8
   },
   {
    "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
@@ -710,7 +710,7 @@
   {
    "query": "brahmaputra valley fertilizer corporation limited recruitment",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 5,
    "ctr": 0,
    "position": 5
   },
@@ -785,6 +785,13 @@
    "position": 4
   },
   {
+   "query": "delhi srship vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "delhi university vacancy",
    "clicks": 0,
    "impressions": 3,
@@ -793,6 +800,13 @@
   },
   {
    "query": "field investigator jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "food safety officer recruitment gujarat",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -839,6 +853,13 @@
    "impressions": 2,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "government job vacancy 2026 kerala",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "government recruitment 2026",
@@ -1196,40 +1217,19 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "query": "tiruppur recruitment 2026",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 3
-  },
-  {
-   "query": "up govt jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "गल्फ जॉब",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 3.3
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 32,
-   "ctr": 6.25,
-   "position": 5.6,
+   "impressions": 28,
+   "ctr": 7.14,
+   "position": 5.8,
    "queries": [
     {
      "q": "brahmaputra valley fertilizer corporation limited recruitment",
-     "impressions": 6,
+     "impressions": 5,
      "position": 5
     },
     {
