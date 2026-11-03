@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "runs": {},
   "fetch": {
-    "at": "2026-11-03T17:58:57.165Z",
+    "at": "2026-11-03T18:38:23.747Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 1,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-03; 74 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-03; 75 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-03; 19 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-03T17:59:06.069Z",
+    "at": "2026-11-03T18:38:34.609Z",
     "sources": 59,
     "healthy": 19,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 7,
+    "scanSeconds": 9,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,21 +104,21 @@
       "osssc": "paused (fails 15)",
       "ssc": "8 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
-      "dsssb": "4 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
-      "tgpsc": "2 links, 0 new via news-views.in",
+      "dsssb": "4 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
-      "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
       "bpssc": "208 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in"
     },
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-03T17:59:06.391Z",
+    "at": "2026-11-03T18:38:34.929Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-03T17:59:20.108Z",
+    "at": "2026-11-03T18:38:35.905Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,8 +164,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 1,
-    "hindiJobs": 1,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -174,22 +173,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: SBI प्रबंधक, उप-प्रबंधक भर्ती 2026 – 60 पदों के लिए ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-03T17:59:46.306Z",
+    "at": "2026-11-03T18:38:58.860Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
-    "existing": 363,
+    "existing": 365,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 363",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 365",
       "  current affairs for today already exists.",
-      "  + analysis: SBI Announces Recruitment for 60 Manager and Deputy Manager Positions",
-      "  + analysis: Digital India Corporation Announces Recruitment for Product Manager Position"
+      "  + analysis: University of Calicut Announces Recruitment for Women Security Guard Position",
+      "  + analysis: Digital India Corporation Announces Recruitment for QA Tester Position"
     ]
   },
   "notify": {
