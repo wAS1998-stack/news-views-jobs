@@ -1,20 +1,15 @@
 {
- "date": "2026-11-03",
+ "date": "2026-11-04",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-05",
-  "2026-11-01"
+  "2026-10-06",
+  "2026-11-02"
  ],
  "totals": {
   "clicks": 34,
-  "impressions": 652
+  "impressions": 650
  },
  "daily": [
-  {
-   "date": "2026-10-05",
-   "clicks": 0,
-   "impressions": 2
-  },
   {
    "date": "2026-10-06",
    "clicks": 0,
@@ -149,19 +144,24 @@
    "date": "2026-11-01",
    "clicks": 0,
    "impressions": 6
+  },
+  {
+   "date": "2026-11-02",
+   "clicks": 0,
+   "impressions": 9
   }
  ],
  "home": {
   "page": "/",
   "clicks": 0,
-  "impressions": 13,
+  "impressions": 12,
   "ctr": 0,
-  "position": 4.9
+  "position": 5.3
  },
  "brand": {
   "range": [
-   "2026-08-04",
-   "2026-11-01"
+   "2026-08-05",
+   "2026-11-02"
   ],
   "rows": []
  },
@@ -232,8 +232,8 @@
   {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 12,
-   "ctr": 8.33,
+   "impressions": 13,
+   "ctr": 7.69,
    "position": 3
   },
   {
@@ -260,28 +260,28 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 13,
+   "impressions": 12,
    "ctr": 0,
-   "position": 4.9
+   "position": 5.3
   },
   {
    "page": "/about/",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 4,
    "ctr": 0,
-   "position": 3.4
+   "position": 3.3
   },
   {
    "page": "/disclaimer/",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 4,
    "ctr": 0,
-   "position": 5
+   "position": 4.8
   },
   {
    "page": "/guides/",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 4,
    "ctr": 0,
    "position": 1.8
   },
@@ -365,9 +365,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 10,
    "ctr": 0,
-   "position": 69.4
+   "position": 67.9
   },
   {
    "page": "/guides/how-to-revise-effectively-government-exam/",
@@ -426,6 +426,13 @@
    "position": 3.5
   },
   {
+   "page": "/jobs/aiims-gorakhpur-faculty-professor-assistant-professor-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 8
+  },
+  {
    "page": "/jobs/andhra-university-assistant-professor-research-investigator/",
    "clicks": 0,
    "impressions": 1,
@@ -445,6 +452,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 26
+  },
+  {
+   "page": "/jobs/bbau-research-assistant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "page": "/jobs/bhel-artisan-out-2026/",
@@ -501,20 +515,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "page": "/jobs/gbu-project-scientist-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "page": "/jobs/gims-clerical-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 15
   }
  ],
  "topQueries": [
@@ -619,8 +619,8 @@
   {
    "query": "tirupur government job vacancy",
    "clicks": 1,
-   "impressions": 3,
-   "ctr": 33.33,
+   "impressions": 4,
+   "ctr": 25,
    "position": 3
   },
   {
@@ -682,7 +682,7 @@
   {
    "query": "bank recruitment 2026",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
    "position": 2
   },
@@ -876,6 +876,13 @@
    "position": 33
   },
   {
+   "query": "govt jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "govt jobs in karnataka",
    "clicks": 0,
    "impressions": 1,
@@ -906,7 +913,7 @@
   {
    "query": "how to prepare for ssc cgl exam",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 1,
    "ctr": 0,
    "position": 84
   },
@@ -1035,6 +1042,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "kerala govt jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "latest bank jobs notification",
@@ -1203,20 +1217,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
-  },
-  {
-   "query": "tiruppur govt jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
-  },
-  {
-   "query": "tiruppur job vacancy 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
   }
  ],
  "opportunities": [
@@ -1274,9 +1274,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 13,
+   "impressions": 12,
    "ctr": 0,
-   "position": 4.9,
+   "position": 5.3,
    "queries": []
   },
   {
@@ -1314,6 +1314,45 @@
      "q": "10th pass govt jobs for female",
      "impressions": 1,
      "position": 3
+    }
+   ]
+  },
+  {
+   "page": "/jobs/maids-dental-hygienist-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 10,
+   "ctr": 0,
+   "position": 4.1,
+   "queries": [
+    {
+     "q": "company secretary vacancy in government sector",
+     "impressions": 1,
+     "position": 5
+    },
+    {
+     "q": "contractual government jobs in delhi",
+     "impressions": 1,
+     "position": 5
+    },
+    {
+     "q": "delhi job vacancy 2026 government",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "delhi offline vacancy 2026",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "delhi srship vacancy",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "ministry vacancy 2026",
+     "impressions": 1,
+     "position": 4
     }
    ]
   }
