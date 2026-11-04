@@ -37,17 +37,22 @@ class Repository(context: Context) {
         }
     }
 
-    private fun get(path: String): String {
+    /** One download; [body] is null when the server answered 304 (unchanged since [etag]). */
+    private class Resp(val body: String?, val etag: String?)
+
+    private fun get(path: String, etag: String? = null): Resp {
         val conn = URL(BuildConfig.API_BASE + path).openConnection() as HttpURLConnection
         conn.connectTimeout = 15000
         conn.readTimeout = 20000
         conn.setRequestProperty("User-Agent", "SarkariRadar/${BuildConfig.VERSION_NAME} (Android)")
         conn.setRequestProperty("Accept", "application/json")
+        if (etag != null) conn.setRequestProperty("If-None-Match", etag)
         try {
             val code = conn.responseCode
+            if (code == HttpURLConnection.HTTP_NOT_MODIFIED && etag != null) return Resp(null, etag)
             if (code == 404 || code == 410) throw NotInFeed("HTTP $code")
             if (code != 200) throw RuntimeException("HTTP $code")
-            return conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+            return Resp(conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }, conn.getHeaderField("ETag"))
         } finally {
             conn.disconnect()
         }
@@ -71,21 +76,36 @@ class Repository(context: Context) {
         )
     }
 
+    @Volatile private var lastIndex: AppIndex? = null   // the decoded copy of the cache file (a 304 answer reuses it)
+
     /** The last index seen, from the phone (call off the main thread: it is about 1 MB). */
     fun cachedIndex(): AppIndex? = try {
-        cacheFile("index.json").takeIf { it.exists() }?.readText()?.let { decodeIndex(it) }
+        cacheFile("index.json").takeIf { it.exists() }?.readText()?.let { decodeIndex(it) }?.also { lastIndex = it }
     } catch (e: Exception) { null }
 
+    /** Downloads the index — conditionally: with the cached copy's ETag, an unchanged feed costs one small 304 answer
+        instead of the whole ~1.3 MB file (the feed rebuilds a few times an hour; the app refreshes on every return). */
     suspend fun fetchIndex(): AppIndex = withContext(Dispatchers.IO) {
-        val text = get("index.json")
-        val idx = decodeIndex(text)                    // read first: a broken download never replaces a good cache
-        if (idx.jobs.isNotEmpty()) cacheFile("index.json").writeText(text)
-        idx
+        val file = cacheFile("index.json")
+        val etagFile = cacheFile("index.etag")
+        val etag = if (file.exists() && etagFile.exists()) etagFile.readText().trim().ifBlank { null } else null
+        val r = get("index.json", etag)
+        if (r.body == null) {
+            lastIndex ?: decodeIndex(file.readText()).also { lastIndex = it }
+        } else {
+            val idx = decodeIndex(r.body)              // read first: a broken download never replaces a good cache
+            if (idx.jobs.isNotEmpty()) {
+                file.writeText(r.body)
+                if (r.etag.isNullOrBlank()) etagFile.delete() else etagFile.writeText(r.etag)
+                lastIndex = idx
+            }
+            idx
+        }
     }
 
     private suspend fun <T> detail(name: String, ser: KSerializer<T>): T = withContext(Dispatchers.IO) {
         try {
-            val text = get(name)
+            val text = get(name).body!!
             val v = json.decodeFromString(ser, text)
             cacheFile(name).writeText(text)
             v

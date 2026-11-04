@@ -1799,7 +1799,7 @@ const APP_CATS = [
   ["defence", "Defence & forces", "रक्षा व सशस्त्र बल", /\b(army|navy|naval|air force|iaf|agniveer|agnipath|bsf|crpf|cisf|itbp|ssb|assam rifles|coast guard|nda|cds|afcat|echs|military|defence|territorial army)\b/i],
   ["teaching", "Teaching", "शिक्षक", /\b(teachers?|tgt|pgt|prt|lecturers?|professors?|faculty|principal|kvs|nvs|tet|ctet|tre|schools?)\b/i],
   ["medical", "Medical & nursing", "मेडिकल व नर्सिंग", /\b(nurs(e|es|ing)|aiims|esic|jipmer|medical|doctors?|anm|gnm|pharmacists?|hospitals?|health|nhm|cho|residents?|lab technicians?|paramedical)\b/i],
-  ["psu", "PSU", "PSU", /\b(ntpc|bhel|ongc|iocl|indian oil|gail|sail|coal india|bel|hal|power ?grid|nhpc|nlc|npcil|hpcl|bpcl|ecil|becil|cwc|rinl|nmdc|mecon|engineers india|psu)\b/i],
+  ["psu", "PSU", "PSU", /\b(ntpc|bhel|ongc|iocl|indian oil|oil india|gail|sail|coal india|bel|hal|power ?grid|nhpc|nlc|npcil|hpcl|bpcl|ecil|becil|cwc|rinl|nmdc|mecon|engineers india|psu)\b/i],
   ["research", "University & research", "विश्वविद्यालय व रिसर्च", /\b(universit(y|ies)|iit|nit|iiit|iim|iiser|iisc|aiish|isro|drdo|barc|csir|icar|icmr|institute|research|fellow(ship)?|jrf|srf|project (assistant|associate|scientist|fellow))\b/i],
   ["court", "Courts", "कोर्ट", /\b(high court|district court|supreme court|courts?|judicial|judiciary)\b/i],
   ["local", "District & local bodies", "जिला व स्थानीय निकाय", /\b(district|zilla|zila|collector(ate)?|municipal|nagar (nigam|palika)|panchayat|cantonment)\b/i],
@@ -1879,6 +1879,9 @@ function appUpdateDetail(u) {
 // (Play Console → Test and release → App integrity) to config.json "androidCertSha256" after the first upload.
 const ANDROID_CERTS = [
   "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // upload key
+  // android/test-signing.jks: what CI signs every build with until the upload-key secrets exist (keytool -list -v
+  // -keystore android/test-signing.jks -storepass android). Remove once the Play build is out.
+  "A0:8D:AD:83:1B:22:8B:54:CC:31:BE:26:AF:7C:EF:2F:68:1B:73:8F:85:12:6D:33:62:40:DA:4B:CE:0B:8E:D0",
   ...[].concat(SITE.androidCertSha256 || []),
 ];
 function writeAppFeed(jobs, updates) {

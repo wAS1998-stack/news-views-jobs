@@ -73,6 +73,17 @@ fun openUrl(context: Context, url: String) {
     }
 }
 
+const val PLAY_LISTING = "https://play.google.com/store/apps/details?id=in.newsviews.app"
+
+/** The app's Play listing in the Play Store app (rating works there), or on the web when Play isn't installed. */
+fun openPlayListing(context: Context) {
+    try {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName.removeSuffix(".debug")}")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    } catch (e: ActivityNotFoundException) {
+        openUrl(context, PLAY_LISTING)
+    }
+}
+
 fun shareText(context: Context, title: String, url: String) {
     val send = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"

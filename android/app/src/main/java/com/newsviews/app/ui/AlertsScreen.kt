@@ -189,8 +189,8 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         }
         Group {
             Text(s.about, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
-            TextButton(onClick = { openUrl(ctx, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.rate) }
-            TextButton(onClick = { shareText(ctx, s.shareText, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.shareApp) }
+            TextButton(onClick = { openPlayListing(ctx) }) { Text(s.rate) }
+            TextButton(onClick = { shareText(ctx, s.shareText, PLAY_LISTING) }) { Text(s.shareApp) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/privacy-policy/") }) { Text(s.privacy) }
             if (adPrivacy) TextButton(onClick = { ctx.findActivity()?.let { Ads.showPrivacyOptions(it) } }) { Text(s.adPrivacy) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/") }) { Text("news-views.in") }

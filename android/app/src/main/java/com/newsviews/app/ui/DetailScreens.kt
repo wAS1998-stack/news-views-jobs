@@ -188,6 +188,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                 j.salary.takeIf { it.isNotBlank() }?.let { s.salary to it },
                 j.fee.takeIf { it.isNotBlank() && it != "{}" }?.let { s.fee to feeText(it) },
                 j.location.takeIf { it.isNotBlank() }?.let { s.location to it },
+                j.states.takeIf { it.isNotEmpty() && j.location.isBlank() }?.let { s.location to it.joinToString(", ") },
                 j.post_name.takeIf { it.isNotBlank() }?.let { s.postName to it },
             )
             val elig = h?.eligibility_notes?.ifBlank { null } ?: j.eligibility_notes

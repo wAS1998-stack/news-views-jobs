@@ -65,6 +65,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             _loading.value = true
             try {
+                var ok = false
                 for (attempt in 0 until 3) {
                     try {
                         val idx = repo.fetchIndex()
@@ -72,12 +73,13 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                         _error.value = false
                         lastOk = System.currentTimeMillis()
                         runCatching { afterRefresh(idx) }      // a reminder problem must not mark the feed as offline
+                        ok = true
                         break
                     } catch (e: Exception) {
-                        _error.value = true
                         if (attempt < 2) delay(if (attempt == 0) 2000L else 5000L)
                     }
                 }
+                if (!ok) _error.value = true                   // only once every retry failed (no "offline" flash in between)
             } finally {
                 _loading.value = false
             }

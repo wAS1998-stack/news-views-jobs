@@ -162,10 +162,12 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
 
     LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
     val argId = entry?.arguments?.getString("id")
-    val detailTitle = when {
-        route.startsWith("job/") -> idx?.jobs?.firstOrNull { it.id == argId }?.short(settings.hindi)
-        route.startsWith("update/") -> idx?.updates?.firstOrNull { it.id == argId }?.short(settings.hindi)
-        else -> null
+    val detailTitle = remember(route, argId, idx, settings.hindi) {
+        when {
+            route.startsWith("job/") -> idx?.jobs?.firstOrNull { it.id == argId }?.short(settings.hindi)
+            route.startsWith("update/") -> idx?.updates?.firstOrNull { it.id == argId }?.short(settings.hindi)
+            else -> null
+        }
     }
     // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
     LaunchedEffect(route) {
