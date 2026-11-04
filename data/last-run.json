@@ -192,5 +192,24 @@
       "  analysis below quality bar for niftem-research-associate-2026 (238 words, need 300) — not published.",
       "  + analysis: NIFTEM Announces Recruitment for Senior Accountant Position in 2026"
     ]
+  },
+  "notify": {
+    "at": "2026-11-04T01:55:00.903Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-04T01:55:02.126Z",
+    "ok": true,
+    "submitted": 4,
+    "failed": 0,
+    "source": "new-urls.txt",
+    "log": []
   }
 }
