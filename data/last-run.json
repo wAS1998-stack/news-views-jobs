@@ -2,7 +2,7 @@
   "date": "2026-11-04",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T01:10:47.312Z",
+    "at": "2026-11-04T01:51:17.485Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T01:10:58.274Z",
+    "at": "2026-11-04T01:52:06.050Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 9,
+    "scanSeconds": 47,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,23 +104,23 @@
       "osssc": "paused (fails 17)",
       "ssc": "8 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via direct",
       "dsssb": "4 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "kvs": "6 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
       "bssc": "783 links, 0 new via direct+aia",
+      "uppbpb": "7 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
       "bpssc": "208 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in"
+      "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,17 +128,17 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T01:11:13.018Z",
+    "at": "2026-11-04T01:52:06.344Z",
     "ok": true,
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-04T01:11:36.002Z",
+    "at": "2026-11-04T01:52:27.011Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -175,22 +175,22 @@
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
       "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: IISc जूनियर प्रोग्राम मैनेजर भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS राजकोट भर्ती 2026 – 2 फोरेंसिक और मेडिकल जुरिसप्रूडेंस, क्रॉस-सेक्शनल इमेजिंग पदों के लिए ऑनलाइन आवेदन करें"
+      "  ✓ hindi: NIFTEM रिसर्च एसोसिएट भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIFTEM सीनियर अकाउंटेंट भर्ती 2026 – ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-04T01:11:56.895Z",
+    "at": "2026-11-04T01:52:46.270Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
-    "existing": 378,
+    "existing": 380,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 378",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 380",
       "  current affairs for today already exists.",
-      "  + analysis: IISc Announces Recruitment for Junior Program Manager Position in 2026",
-      "  + analysis: AIIMS Rajkot Invites Applications for Two Post-Doctoral Certificate Courses"
+      "  analysis below quality bar for niftem-research-associate-2026 (238 words, need 300) — not published.",
+      "  + analysis: NIFTEM Announces Recruitment for Senior Accountant Position in 2026"
     ]
   }
 }
