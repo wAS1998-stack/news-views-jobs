@@ -2,7 +2,7 @@
   "date": "2026-11-04",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T05:17:52.317Z",
+    "at": "2026-11-04T05:58:22.348Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 3,
-    "newUpdates": 6,
+    "newJobs": 10,
+    "newUpdates": 1,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 66 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 56 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 9 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 19 already known",
@@ -45,18 +45,18 @@
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 6 update(s) (results/admit cards/answer keys)."
+      "Added 1 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T05:18:00.795Z",
+    "at": "2026-11-04T05:59:10.772Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 7,
+    "scanSeconds": 46,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -105,22 +105,22 @@
       "ssc": "8 links, 0 new via direct",
       "rbi": "20 links, 0 new via direct",
       "dsssb": "4 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "kvs": "6 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "bssc": "783 links, 0 new via direct+aia",
-      "jkssb": "1 links, 0 new via news-views.in"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,18 +128,18 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T05:18:01.023Z",
+    "at": "2026-11-04T06:00:23.815Z",
     "ok": true,
-    "checked": 0,
+    "checked": 4,
     "found": 0,
-    "due": 0,
-    "cands": 0,
-    "passed": 0,
-    "jobsWithCands": 0,
-    "careers": 0,
+    "due": 4,
+    "cands": 204,
+    "passed": 1,
+    "jobsWithCands": 1,
+    "careers": 1,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 4, found 0 real application pages (4 due, pdf reader on)",
+      "  candidates seen 204, passed the rules 1 (in 1 jobs); recruitment pages found: 1"
     ]
   },
   "gsc": {
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-04T05:19:18.445Z",
+    "at": "2026-11-04T06:02:52.933Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,10 +164,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 3,
-    "hindiJobs": 3,
-    "hindiUpdatesPending": 6,
-    "hindiUpdates": 6,
+    "hindiJobsPending": 10,
+    "hindiJobs": 10,
+    "hindiUpdatesPending": 1,
+    "hindiUpdates": 1,
     "searchFaqPages": 0,
     "opportunities": 7,
     "log": [
@@ -175,30 +175,32 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 3 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: Bank of Baroda प्रोफेशनल्स भर्ती 2026 – 837 WMS विभाग पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: केंद्रीय रेलवे एक्ट अपprentice 2026 – 2,861 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CAU (Imphal) युवा पेशेवर-II भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi update: GSSSB CCE अंतिम उत्तर कुंजी 2026 जारी - ग्रुप A और B अंतिम रिस्पांस शीट डाउनलोड करें",
-      "  ✓ hindi update: UPSSSC हवलदार इंस्ट्रक्टर मुख्य परीक्षा तिथि 2026 जारी - परीक्षा कार्यक्रम PDF देखें",
-      "  ✓ hindi update: MJPRU एडमिट कार्ड 2026 जारी - ऑनलाइन डाउनलोड करें @ mjpru.ac.in",
-      "  ✓ hindi update: UP LT ग्रेड DV तिथि 2026 जारी - दस्तावेज़ सत्यापन कार्यक्रम PDF चेक करें",
-      "  ✓ hindi update: MSBTE हॉल टिकट 2026 जारी - ऑनलाइन डाउनलोड के लिए सीधा लिंक @ msbte.ac.in",
-      "  ✓ hindi update: RVUNL जूनियर असिस्टेंट परीक्षा तिथि 2026 जारी - परीक्षा शेड्यूल PDF चेक करें"
+      "Enrich/hindi: 10 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: WCD बस्तर सुरक्षा गार्ड / नाइट गार्ड भर्ती 2026 - 2 पदों के लिए वॉक-इन",
+      "  ✓ hindi: PTC इंडिया कार्यकारी उपाध्यक्ष भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IIT हैदराबाद परियोजना तकनीकी समर्थन III भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: Indian Bank Apprentice भर्ती 2026 – 1,500 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIT Calicut जूनियर रिसर्च फेलो (इलेक्ट्रिकल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IISER मोहाली भर्ती 2026 – 2 काउंसलर, जूनियर इंजीनियर पदों के लिए वॉक-इन",
+      "  ✓ hindi: CPCL कार्यकारी भर्ती 2026 – 41 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ECHS भर्ती 2026 – 2 आयुर्वेद डॉक्टर, आयुर्वेद फार्मासिस्ट पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: IIT Ropar BEE प्रमाणित ऊर्जा प्रबंधक भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: Hindustan Copper Limited (HCL) ट्रेड अपरेंटिस भर्ती 2026 – 171 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: TNPSC ग्रुप 2 प्रीलिम्स उत्तर कुंजी 2026 - प्रीलिम्स उत्तर कुंजी चेक करें और PDF डाउनलोड करें"
     ]
   },
   "news": {
-    "at": "2026-11-04T05:19:41.384Z",
+    "at": "2026-11-04T06:03:12.646Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
-    "existing": 385,
+    "existing": 386,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 385",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 386",
       "  current affairs for today already exists.",
-      "  + analysis: Bank of Baroda Announces Recruitment for 837 Wealth Management Services Positions",
-      "  analysis below quality bar for central-railway-act-apprentice-2026 (298 words, need 300) — not published."
+      "  + analysis: WCD Bastar Announces Walk-in Recruitment for Female Security Guards in Chhattisgarh",
+      "  + analysis: PTC India Limited Invites Applications for Executive Vice President Position"
     ]
   },
   "notify": {
