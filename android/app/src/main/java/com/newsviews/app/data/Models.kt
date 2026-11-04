@@ -114,6 +114,7 @@ data class JobHi(
     val location: String = "",
     val salary: String = "",
     val fee: String = "",
+    val preparation_tips: List<String> = emptyList(),
 )
 
 @Serializable
@@ -144,6 +145,7 @@ data class JobDetail(
     val selection_process: List<String> = emptyList(),
     val how_to_apply: List<String> = emptyList(),
     val faq: List<Faq> = emptyList(),
+    val preparation_tips: List<String> = emptyList(),   // bonus content: shown with the pass (or freely when no rewarded ad is set up)
     val official_notification: String = "",
     val apply_link: String = "",
     val official_website: String = "",

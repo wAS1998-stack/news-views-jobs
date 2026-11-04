@@ -4,6 +4,8 @@ import androidx.compose.ui.text.style.TextAlign
 import com.newsviews.app.BuildConfig
 import com.newsviews.app.data.NotInFeed
 import com.newsviews.app.ads.InlineAd
+import com.newsviews.app.ads.Ads
+import com.newsviews.app.ads.findActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -210,6 +212,24 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             if (sel.isNotEmpty()) Section(s.selection) { Bullets(sel) }
             val how = h?.how_to_apply?.ifEmpty { null } ?: j.how_to_apply
             if (how.isNotEmpty()) Section(s.howToApply) { Bullets(how, numbered = true) }
+            // bonus content: preparation tips come with the pass (one rewarded video). Never gated when no rewarded ad is
+            // set up or the person already holds a pass; the notice, apply link and everything above stay free always.
+            val tips = h?.preparation_tips?.ifEmpty { null } ?: j.preparation_tips
+            if (tips.isNotEmpty()) Section(s.prepTips) {
+                val adCfg by Ads.config.collectAsStateWithLifecycle()
+                val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
+                val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
+                val gated = BuildConfig.ADS && adCfg.on && adCfg.rewarded && BuildConfig.AD_REWARDED.isNotBlank() && adFreeUntil <= System.currentTimeMillis()
+                if (!gated) Bullets(tips)
+                else Card(shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(14.dp)) {
+                        Text(s.prepLocked, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                        Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 10.dp)) {
+                            Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
+                        }
+                    }
+                }
+            }
             val faq = h?.faq?.ifEmpty { null } ?: j.faq
             if (faq.isNotEmpty()) Section(s.faq) { FaqList(faq) }
             TextButton(onClick = { openUrl(ctx, j.url) }, modifier = Modifier.padding(top = 16.dp)) { Text(s.openOnSite) }

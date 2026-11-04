@@ -1861,13 +1861,15 @@ function appJobDetail(j) {
     location: j.location ? String(j.location) : "", published: appDay(j.published), verified: j.via === "official",
     summary: j.summary || "", overview: appArr(j.overview), eligibility_notes: j.eligibility_notes ? String(j.eligibility_notes) : "",
     selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
+    preparation_tips: appArr(j.preparation_tips),
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
     cta: ctaOf(j).cta || "", cta_url: ctaOf(j).url || "", apply_mode: LIB.applyMode(j),
     hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
       selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq),
       // the notice's facts in Hindi too (the app used to show these in English on a Hindi page)
       organization: appStr(h.organization), post_name: appStr(h.post_name), qualification: appStr(h.qualification), location: appStr(h.location),
-      salary: appStr(h.salary), fee: h.fee ? (typeof h.fee === "string" ? h.fee : JSON.stringify(h.fee)) : "" } : null,
+      salary: appStr(h.salary), fee: h.fee ? (typeof h.fee === "string" ? h.fee : JSON.stringify(h.fee)) : "",
+      preparation_tips: appArr(h.preparation_tips) } : null,
   });
 }
 function appUpdateDetail(u) {

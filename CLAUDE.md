@@ -66,7 +66,9 @@ hurting users or breaking Google's policies.
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
   incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back". The
-  rewarded video is opt-in only ("watch one short video, no ads for N hours"); never lock content behind it.
+  rewarded video is opt-in only (the "Sarkari Radar Pass": one short video → no ads + preparation tips open for N hours).
+  Only bonus content (preparation tips) may sit behind the pass — never the notice, apply links, eligibility or dates —
+  and it is shown freely whenever no rewarded ad is configured.
 - Don't automate backlinks, spam communities, or post anywhere on the owner's behalf. Don't enter passwords or API
   keys anywhere and don't create accounts — the owner pastes secrets into GitHub himself.
 - The site must state it is **not affiliated with the government** (it does: footer, About, app disclaimer).
