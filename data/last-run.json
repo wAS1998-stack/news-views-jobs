@@ -2,7 +2,7 @@
   "date": "2026-11-04",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T09:59:38.660Z",
+    "at": "2026-11-04T10:08:48.890Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 67 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 69 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 9 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 21 already known",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T09:59:48.226Z",
+    "at": "2026-11-04T10:09:36.758Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 8,
+    "scanSeconds": 46,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -110,17 +110,17 @@
       "uppsc": "1 links, 0 new via direct",
       "hssc": "9 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
       "kvs": "6 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
       "bssc": "783 links, 0 new via direct+aia",
-      "nta": "1 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in"
+      "csbc": "197 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T09:59:48.541Z",
+    "at": "2026-11-04T10:09:37.019Z",
     "ok": true,
     "checked": 0,
     "found": 0,
