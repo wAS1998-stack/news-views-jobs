@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T21:26:44.274Z",
+    "at": "2026-11-04T22:06:30.728Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -15,8 +15,8 @@
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 74 already known",
-      "https://rajsarkariresult.com/feed": "10 items via rss2json; newest 2026-11-04; 10 already known",
-      "https://gulfjobvacancy.in/feed": "10 items via rss2json; newest 2026-10-29; 7 already known",
+      "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
+      "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 22 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-04; 7 already known"
     },
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T21:27:27.341Z",
+    "at": "2026-11-04T22:07:18.326Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -75,16 +75,16 @@
       "tnpsc": "paused (fails 55, geo-blocked)",
       "kpsc": "paused (fails 55, geo-blocked)",
       "appsc": "paused (fails 55, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "dsssb": "4 links, 0 new via direct",
       "wbpsc": "paused (fails 55, geo-blocked)",
       "opsc": "paused (fails 43)",
       "hpsc": "paused (fails 55, geo-blocked)",
       "hppsc": "paused (fails 55, geo-blocked)",
       "ukpsc": "paused (fails 55, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 55, geo-blocked)",
       "gpsc": "paused (fails 55, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "ppsc": "paused (fails 55, geo-blocked)",
       "apsc": "paused (fails 55, geo-blocked)",
       "jkpsc": "paused (fails 55, geo-blocked)",
@@ -93,30 +93,30 @@
       "rssb": "paused (fails 55, geo-blocked)",
       "esb-mp": "paused (fails 55, geo-blocked)",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 55, geo-blocked)",
       "osssc": "paused (fails 22)",
       "gsssb": "paused (fails 55, geo-blocked)",
       "sssb-punjab": "paused (fails 55, geo-blocked)",
       "hprca": "paused (fails 55, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "kea": "paused (fails 55, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "kea": "paused (fails 55, geo-blocked)",
+      "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 55, geo-blocked)",
       "kvs": "5 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "uksssc": "28 links, 0 new via direct",
       "tnusrb": "paused (fails 55, geo-blocked)",
       "tslprb": "paused (fails 55)",
       "slprb-ap": "paused (fails 55, geo-blocked)",
+      "uksssc": "28 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
       "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
       "bssc": "783 links, 0 new via direct+aia",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T21:27:27.608Z",
+    "at": "2026-11-04T22:07:18.595Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -139,7 +139,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-04T21:27:28.578Z",
+    "at": "2026-11-04T22:07:19.565Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,17 +160,17 @@
     ]
   },
   "news": {
-    "at": "2026-11-04T21:27:54.189Z",
+    "at": "2026-11-04T22:07:46.361Z",
     "ai": "OpenAI",
-    "published": 2,
+    "published": 1,
     "quizzes": 0,
     "existing": 400,
     "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: ICAR-IIHR Recruitment 2026: Senior Research Fellow Position Available",
-      "  + analysis: Recruitment Announcement for Temporary Muslim Marriage Registrar in Malda"
+      "  analysis below quality bar for nhidcl-senior-associate-2026 (267 words, need 300) — not published.",
+      "  + analysis: SOTTO Karnataka Announces Recruitment for IT Consultant Position in 2026"
     ]
   }
 }
