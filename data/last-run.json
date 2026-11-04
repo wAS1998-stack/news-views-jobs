@@ -2,7 +2,7 @@
   "date": "2026-11-04",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T01:51:17.485Z",
+    "at": "2026-11-04T02:31:30.820Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,16 +11,17 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 73 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 75 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-10-30; 8 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-03; 19 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-03; 7 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-04; 7 already known"
     },
     "log": [
+      "   = same source page as an existing job, skipped: UPESSC UP TGT Online Form 2026 (17,735 Posts)",
       "   = same source page as an existing job, skipped: UPPSC RO / ARO Online Form 2026",
       "   = same source page as an existing job, skipped: Railway RRB Station Master Online Form 2026 (1265 Posts)",
       "   = same source page as an existing job, skipped: IOCL Western Region Apprentice Recruitment 2026 - Apply Online for 335 Posts",
@@ -35,7 +36,6 @@
       "   = same source page as an existing job, skipped: UGC Various Posts Recruitment 2026 - Apply for 06 Domain Professional, Hindi Translator & System Officer Posts",
       "   = duplicate of an existing recruitment, skipped: AEES Teaching Various Post Online Form 2026",
       "   = same source page as an existing job, skipped: PGIMER Chandigarh Nurse Vacancy 2026 Notification Out",
-      "   = same source page as an existing job, skipped: Central Railway Cultural Quota Recruitment 2026 - Apply Onlinw for 02 Posts",
       "   = same source page as an existing job, skipped: AFCAT 01/2027 Online Form",
       "   = same source page as an existing job, skipped: BSSC Field Assistant Mains Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: CSJMU Kanpur Teaching Post Online Form 2026 – Last Date",
@@ -50,13 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T01:52:06.050Z",
+    "at": "2026-11-04T02:32:06.710Z",
     "sources": 59,
     "healthy": 18,
     "deferred": 0,
     "viaIndiaRelay": 0,
     "indiaRelay": false,
-    "scanSeconds": 47,
+    "scanSeconds": 34,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -107,20 +107,20 @@
       "dsssb": "4 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
       "kvs": "6 links, 0 new via direct",
-      "hssc": "9 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
       "ctet": "4 links, 0 new via news-views.in",
-      "uksssc": "28 links, 0 new via direct",
-      "bssc": "783 links, 0 new via direct+aia",
-      "uppbpb": "7 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "nta": "1 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
+      "hssc": "9 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "uksssc": "28 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "bssc": "783 links, 0 new via direct+aia",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -128,7 +128,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T01:52:06.344Z",
+    "at": "2026-11-04T02:32:07.010Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -156,7 +156,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-04T01:52:27.011Z",
+    "at": "2026-11-04T02:32:07.965Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -164,8 +164,7 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
+    "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 7,
@@ -174,23 +173,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: NIFTEM रिसर्च एसोसिएट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NIFTEM सीनियर अकाउंटेंट भर्ती 2026 – ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-04T01:52:46.270Z",
+    "at": "2026-11-04T02:32:25.399Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
-    "existing": 380,
+    "existing": 381,
     "feeds": {},
     "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 380",
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 381",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for niftem-research-associate-2026 (238 words, need 300) — not published.",
-      "  + analysis: NIFTEM Announces Recruitment for Senior Accountant Position in 2026"
+      "  analysis below quality bar for niftem-research-associate-2026 (293 words, need 300) — not published.",
+      "  + analysis: Digital India Corporation Invites Applications for Full Stack Developer Position"
     ]
   },
   "notify": {
