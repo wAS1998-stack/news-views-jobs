@@ -33,10 +33,31 @@ jobs:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: if [ -n "$GOOGLE_SERVICES_JSON" ]; then printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json; echo "Firebase on"; else echo "Firebase off"; fi
       - name: Signing key (optional)
+        # Checks the upload-key secrets and says in last-build.txt what is missing or wrong (names only, never values),
+        # so the owner can fix them without reading Action logs.
         env:
           KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KS_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
-          if [ -n "$KS_B64" ]; then echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/upload.jks"; echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"; echo "signed=true" >> "$GITHUB_ENV"; else echo "signed=false" >> "$GITHUB_ENV"; fi
+          alias="${KS_ALIAS:-upload}"
+          note="ANDROID_KEYSTORE_B64 $([ -n "$KS_B64" ] && echo present || echo MISSING), ANDROID_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)')"
+          signed=false
+          if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ]; then
+            if printf '%s' "$KS_B64" | tr -d ' \n\r' | base64 -d > "$RUNNER_TEMP/upload.jks" 2>/dev/null && [ -s "$RUNNER_TEMP/upload.jks" ]; then
+              if out=$(keytool -list -keystore "$RUNNER_TEMP/upload.jks" -storepass "$KS_PASS" -alias "$alias" 2>&1); then
+                signed=true; note="$note: keystore OK, build is signed with the upload key"
+                echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
+              else
+                note="$note: keystore REJECTED ($(echo "$out" | grep -v '^Warning' | head -1 | cut -c1-120)) — wrong password, or the alias is not in this keystore"
+              fi
+            else
+              note="$note: ANDROID_KEYSTORE_B64 is not the base64 of a keystore file (make it with: base64 -w0 upload-key.jks)"
+            fi
+          else
+            note="$note: both secrets are needed for a signed build (android/make-upload-key.sh makes them)"
+          fi
+          echo "signed=$signed" >> "$GITHUB_ENV"; echo "signing_note=$note" >> "$GITHUB_ENV"; echo "$note"
       - name: Build
         id: build
         working-directory: android
@@ -79,9 +100,11 @@ jobs:
           mkdir -p android/ci
           if [ "${{ steps.build.outcome }}" = success ]; then
             echo "OK build ${{ github.run_number }} ${GITHUB_SHA::7} $(date -u +%FT%TZ) signed=$signed" > android/ci/last-build.txt
+            echo "signing: $signing_note" >> android/ci/last-build.txt
             ls -l android/app/build/outputs/apk/*/*.apk android/app/build/outputs/bundle/*/*.aab 2>/dev/null >> android/ci/last-build.txt || true
           else
             echo "FAILED build ${{ github.run_number }} ${GITHUB_SHA::7} $(date -u +%FT%TZ)" > android/ci/last-build.txt
+            echo "signing: $signing_note" >> android/ci/last-build.txt
             grep -E "^e: |[Ee]rror:|What went wrong|Could not|FAILURE|> [A-Z]|Unresolved|not found|Exception|Missing class|\[[A-Za-z]+\]$" "$RUNNER_TEMP/build.log" | grep -vE "^\s+at " | head -120 >> android/ci/last-build.txt || true
             # lint's own report names every fatal issue (release builds run "lint vital")
             for f in android/app/build/intermediates/lint_vital_intermediate_text_report/release/*/*.txt android/app/build/reports/lint-results-release.txt; do [ -f "$f" ] && { echo "----- lint: $f -----"; head -80 "$f"; } >> android/ci/last-build.txt; done || true
