@@ -84,6 +84,10 @@ private fun FaqList(faqs: List<Faq>) {
     }
 }
 
+/** A state's name from the feed (English) in the chosen language. */
+private fun stateName(name: String, hindi: Boolean): String =
+    if (!hindi) name else com.newsviews.app.data.Builtin.states.firstOrNull { it.name == name }?.let { STATE_HI[it.slug] } ?: name
+
 /** Fees come as text, or as a JSON object of category → amount ({"General":"₹500","SC/ST":"Nil"}) — only the latter is reformatted. */
 private fun feeText(raw: String): String {
     val t = raw.trim()
@@ -134,7 +138,8 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             }
             Spacer(Modifier.height(4.dp))
             Text(h?.title?.ifBlank { null } ?: j.title, style = MaterialTheme.typography.titleLarge)
-            if (j.organization.isNotBlank() && j.organization != j.org_short) Text(j.organization, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
+            val org = h?.organization?.ifBlank { null } ?: j.organization
+            if (org.isNotBlank() && org != j.org_short) Text(org, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             Spacer(Modifier.height(10.dp))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 StatusPill(item, s)
@@ -183,13 +188,16 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             InlineAd(s.ad)
             val overview = h?.overview?.ifEmpty { null } ?: j.overview
             if (overview.isNotEmpty()) Section(s.details) { Bullets(overview) }
+            // each fact in Hindi when the enrichment translated it, else as the notice gives it
+            fun hiOr(hv: String?, en: String) = hv?.ifBlank { null } ?: en
+            val location = hiOr(h?.location, j.location)
             val facts = listOfNotNull(
-                j.qualification.takeIf { it.isNotBlank() }?.let { s.qualification to it },
-                j.salary.takeIf { it.isNotBlank() }?.let { s.salary to it },
-                j.fee.takeIf { it.isNotBlank() && it != "{}" }?.let { s.fee to feeText(it) },
-                j.location.takeIf { it.isNotBlank() }?.let { s.location to it },
-                j.states.takeIf { it.isNotEmpty() && j.location.isBlank() }?.let { s.location to it.joinToString(", ") },
-                j.post_name.takeIf { it.isNotBlank() }?.let { s.postName to it },
+                hiOr(h?.qualification, j.qualification).takeIf { it.isNotBlank() }?.let { s.qualification to it },
+                hiOr(h?.salary, j.salary).takeIf { it.isNotBlank() }?.let { s.salary to it },
+                hiOr(h?.fee, j.fee).takeIf { it.isNotBlank() && it != "{}" }?.let { s.fee to feeText(it) },
+                location.takeIf { it.isNotBlank() }?.let { s.location to it },
+                j.states.takeIf { it.isNotEmpty() && location.isBlank() }?.let { st -> s.location to st.joinToString(", ") { stateName(it, hindi) } },
+                hiOr(h?.post_name, j.post_name).takeIf { it.isNotBlank() }?.let { s.postName to it },
             )
             val elig = h?.eligibility_notes?.ifBlank { null } ?: j.eligibility_notes
             if (facts.isNotEmpty() || elig.isNotBlank()) Section(s.eligibility) {

@@ -1777,6 +1777,7 @@ function buildNewsSitemap({ updates, news }) {
 const APP_API = 1;
 const appDay = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0] || "";
 const appArr = (x) => (Array.isArray(x) ? x.filter(Boolean).map(String) : x ? [String(x)] : []);
+const appStr = (x) => (x == null || typeof x === "object" ? "" : String(x));
 const appFaq = (x) => (Array.isArray(x) ? x.filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) })) : []);
 function appStates(job) { return isGulf(job) ? ["gulf"] : statesOf(job).map((st) => st.slug); }
 function appJobsInFeed(jobs) {
@@ -1826,6 +1827,7 @@ function buildAppIndex(jobs, updates) {
     a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
     pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
     tc: shortTitle(j.title), thc: shortTitle((j.hi && j.hi.title) || ""), w: /walk[- ]?in/i.test(`${j.title} ${j.post_name || ""}`) ? 1 : 0,
+    ph: appStr(j.hi && j.hi.post_name),
     c: appCats(`${orgKey(j)} ${j.organization || ""} ${j.title} ${j.post_name || ""}`),
   }));
   const U = appUpdatesInFeed(updates).map((u) => ({
@@ -1842,8 +1844,8 @@ function buildAppIndex(jobs, updates) {
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
-      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {});
-      for (const k of ["every", "gap"]) a[k] = Math.max(1, Math.round(Number(a[k]) || (k === "every" ? 4 : 240)));
+      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24 }, SITE.appAds || {});
+      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
   });
@@ -1862,7 +1864,10 @@ function appJobDetail(j) {
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
     cta: ctaOf(j).cta || "", cta_url: ctaOf(j).url || "", apply_mode: LIB.applyMode(j),
     hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
-      selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq) } : null,
+      selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq),
+      // the notice's facts in Hindi too (the app used to show these in English on a Hindi page)
+      organization: appStr(h.organization), post_name: appStr(h.post_name), qualification: appStr(h.qualification), location: appStr(h.location),
+      salary: appStr(h.salary), fee: h.fee ? (typeof h.fee === "string" ? h.fee : JSON.stringify(h.fee)) : "" } : null,
   });
 }
 function appUpdateDetail(u) {

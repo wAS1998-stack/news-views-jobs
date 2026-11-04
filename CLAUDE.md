@@ -65,7 +65,8 @@ hurting users or breaking Google's policies.
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
-  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back".
+  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back". The
+  rewarded video is opt-in only ("watch one short video, no ads for N hours"); never lock content behind it.
 - Don't automate backlinks, spam communities, or post anywhere on the owner's behalf. Don't enter passwords or API
   keys anywhere and don't create accounts — the owner pastes secrets into GitHub himself.
 - The site must state it is **not affiliated with the government** (it does: footer, About, app disclaimer).
@@ -74,10 +75,13 @@ hurting users or breaking Google's policies.
 - **Website (AdSense):** put the publisher ID in `config.json` → `adsenseId` ("ca-pub-…"). The build then adds the
   AdSense script, the verification meta tag and `ads.txt`. Optional `adsenseSlot` (an in-article ad unit ID) turns on
   the manual in-content units in `adSlot()`; otherwise AdSense Auto ads places them.
-- **App (AdMob):** put `admob.appId` ("ca-app-pub-…~…") and `admob.banner`, `admob.inline`, `admob.interstitial`
-  ("ca-app-pub-…/…") in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
+- **App (AdMob):** put `admob.appId` ("ca-app-pub-…~…") and `admob.banner`, `admob.inline`, `admob.interstitial`,
+  `admob.rewarded` ("ca-app-pub-…/…"; the rewarded unit's reward item/amount in AdMob doesn't matter, the app grants the
+  pass itself) in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
   writes `app-ads.txt`. Debug builds always use Google's test IDs. `appAds` switches reach installed apps through the
-  feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large") with no app update.
+  feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large", `rewarded` on/off and
+  `rewardHours` for the ad-free pass) with no app update. Rewarded video pays several times a banner's eCPM, and the
+  pass replaces a day of low-value impressions for people who would otherwise be annoyed away.
 - **More ad networks (bidding):** `admob.mediation` in `config.json` lists the networks whose AdMob mediation adapters are
   built into the app (meta, applovin, inmobi, liftoff, unity, mintegral, ironsource, dtexchange, moloco; also available:
   pangle, pubmatic, bigo, chartboost — versions in `android/app/build.gradle.kts`). The owner switches each on in

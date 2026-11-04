@@ -33,8 +33,10 @@ data class JobItem(
     val thc: String = "",
     val w: Int = 0,                    // walk-in interview
     val c: List<String> = emptyList(), // categories (railway, bank, ssc, …)
+    val ph: String = "",               // post name in Hindi
 ) {
     fun title(hindi: Boolean) = if (hindi && th.isNotBlank()) th else t
+    fun post(hindi: Boolean) = if (hindi && ph.isNotBlank()) ph else p
     fun short(hindi: Boolean) = if (hindi && thc.isNotBlank()) thc else if (hindi && th.isNotBlank()) th else tc.ifBlank { t }
     /** null = the notice gives no upper age limit; otherwise whether [age] fits (with [extra] years of relaxation). */
     fun ageFits(age: Int, extra: Int): Boolean? = if (a1 <= 0.0) null else (a0 <= 0.0 || age >= a0) && age <= a1 + extra
@@ -90,6 +92,8 @@ data class AdsConfig(
     val interstitial: Boolean = true,  // full-screen ad when going back from a page, capped below
     val every: Int = 4,                // at most once per this many pages opened
     val gap: Int = 240,                // and at least this many seconds apart
+    val rewarded: Boolean = true,      // the opt-in offer: watch one rewarded video, no ads for rewardHours hours
+    val rewardHours: Int = 24,
 )
 
 @Serializable
@@ -104,6 +108,12 @@ data class JobHi(
     val selection_process: List<String> = emptyList(),
     val how_to_apply: List<String> = emptyList(),
     val faq: List<Faq> = emptyList(),
+    val organization: String = "",
+    val post_name: String = "",
+    val qualification: String = "",
+    val location: String = "",
+    val salary: String = "",
+    val fee: String = "",
 )
 
 @Serializable

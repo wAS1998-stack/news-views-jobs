@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -42,6 +43,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.ui.platform.LocalContext
+import com.newsviews.app.BuildConfig
+import com.newsviews.app.ads.Ads
+import com.newsviews.app.ads.findActivity
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
 import com.newsviews.app.data.Status
@@ -106,6 +111,12 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val list = remember(idx, f, settings) { idx?.let { vm.visibleJobs(it, f, settings) } ?: emptyList() }
     val listState = rememberLazyListState()
     var dobDialog by remember { mutableStateOf(false) }
+    // the opt-in "no ads for N hours" offer, once a rewarded video is loaded and no pass is running
+    val adCfg by Ads.config.collectAsStateWithLifecycle()
+    val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
+    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
+    val offer = BuildConfig.ADS && adCfg.on && adCfg.rewarded && rewardedReady && adFreeUntil <= System.currentTimeMillis()
+    val activity = LocalContext.current.findActivity()
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
     // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
@@ -160,8 +171,11 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                 list.isEmpty() -> Centered(s.noMatch)
                 else -> LazyColumn(state = listState, contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
-                    items(list, key = { it.id }) { j ->
-                        JobCard(j, hindi, s, j.id in settings.saved, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) })
+                    itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours) { activity?.let { Ads.showRewarded(it) } }
+                            JobCard(j, hindi, s, j.id in settings.saved, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) })
+                        }
                     }
                 }
             }
