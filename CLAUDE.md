@@ -65,7 +65,10 @@ hurting users or breaking Google's policies.
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
-  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back".
+  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back". The
+  rewarded video is opt-in only (the "Sarkari Radar Pass": one short video → no ads + preparation tips open for N hours).
+  Only bonus content (preparation tips) may sit behind the pass — never the notice, apply links, eligibility or dates —
+  and it is shown freely whenever no rewarded ad is configured.
 - Don't automate backlinks, spam communities, or post anywhere on the owner's behalf. Don't enter passwords or API
   keys anywhere and don't create accounts — the owner pastes secrets into GitHub himself.
 - The site must state it is **not affiliated with the government** (it does: footer, About, app disclaimer).
@@ -74,10 +77,13 @@ hurting users or breaking Google's policies.
 - **Website (AdSense):** put the publisher ID in `config.json` → `adsenseId` ("ca-pub-…"). The build then adds the
   AdSense script, the verification meta tag and `ads.txt`. Optional `adsenseSlot` (an in-article ad unit ID) turns on
   the manual in-content units in `adSlot()`; otherwise AdSense Auto ads places them.
-- **App (AdMob):** put `admob.appId` ("ca-app-pub-…~…") and `admob.banner`, `admob.inline`, `admob.interstitial`
-  ("ca-app-pub-…/…") in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
+- **App (AdMob):** put `admob.appId` ("ca-app-pub-…~…") and `admob.banner`, `admob.inline`, `admob.interstitial`,
+  `admob.rewarded` ("ca-app-pub-…/…"; the rewarded unit's reward item/amount in AdMob doesn't matter, the app grants the
+  pass itself) in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
   writes `app-ads.txt`. Debug builds always use Google's test IDs. `appAds` switches reach installed apps through the
-  feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large") with no app update.
+  feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large", `rewarded` on/off and
+  `rewardHours` for the ad-free pass) with no app update. Rewarded video pays several times a banner's eCPM, and the
+  pass replaces a day of low-value impressions for people who would otherwise be annoyed away.
 - **More ad networks (bidding):** `admob.mediation` in `config.json` lists the networks whose AdMob mediation adapters are
   built into the app (meta, applovin, inmobi, liftoff, unity, mintegral, ironsource, dtexchange, moloco; also available:
   pangle, pubmatic, bigo, chartboost — versions in `android/app/build.gradle.kts`). The owner switches each on in
@@ -104,7 +110,8 @@ hurting users or breaking Google's policies.
 - Brand search: the homepage is indexed (URL Inspection, Oct 30) but didn't rank for "news-views.in"; brand signals
   were added Oct 31. `data/gsc.json` → `brand` (searches for the site's own name, 90 days) and `home` track progress;
   run inspect.yml with mode `gsc` to refresh it on demand.
-- App: built and verified in CI; waiting for the owner's Play Console upload (12 testers × 14 days for new personal
+- App: built and verified in CI; test-signed until the owner adds the upload-key secrets (`android/make-upload-key.sh`
+  makes the key and prints them; the workflow then also produces the Play `.aab`). Waiting for the owner's Play Console upload (12 testers × 14 days for new personal
   accounts), Firebase secrets (instant alerts) and AdMob IDs. After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card

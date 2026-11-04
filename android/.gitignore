@@ -7,3 +7,4 @@ app/google-services.json
 *.keystore
 .idea/
 captures/
+*.b64

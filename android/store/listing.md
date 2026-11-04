@@ -41,7 +41,7 @@ advertising · Target audience → 18+ · Data safety → as below · Content ra
 
 **Category:** Education (or Business) · **Tags:** Jobs, Education
 **Contact email:** the site's contact email · **Privacy policy URL:** https://news-views.in/privacy-policy/
-**Ads:** Yes (Google AdMob) · **Advertising ID:** Yes, used for advertising · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
+**Ads:** Yes (Google AdMob; includes an optional rewarded video that gives an ad-free day — no content is locked) · **Advertising ID:** Yes, used for advertising · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
 
 **Data safety (what the app actually does):** no account; saved jobs and settings stay on the phone. Data is encrypted in transit (HTTPS/TLS). Declare:
 - **Device or other IDs** — collected and shared: Firebase alert token (app functionality) and, through the Google Mobile Ads SDK, the advertising ID / app set ID (advertising, analytics, fraud prevention).

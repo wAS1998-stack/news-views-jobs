@@ -54,6 +54,11 @@ data class Settings(
 }
 
 class Prefs(private val context: Context) {
+    companion object {
+        /** First run on a phone whose language is Hindi: Hindi UI and Hindi alerts until the person switches. */
+        val DEFAULT_HINDI: Boolean = java.util.Locale.getDefault().language == "hi"
+    }
+
     private object K {
         val hindi = booleanPreferencesKey("hindi")
         val onboarded = booleanPreferencesKey("onboarded")
@@ -72,7 +77,7 @@ class Prefs(private val context: Context) {
 
     val flow: Flow<Settings> = context.store.data.catch { e -> if (e is IOException) emit(emptyPreferences()) else throw e }.map { p ->
         Settings(
-            hindi = p[K.hindi] ?: false,
+            hindi = p[K.hindi] ?: DEFAULT_HINDI,
             onboarded = p[K.onboarded] ?: false,
             alerts = p[K.alerts] ?: true,
             results = p[K.results] ?: true,

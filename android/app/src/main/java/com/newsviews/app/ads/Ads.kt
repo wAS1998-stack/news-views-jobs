@@ -38,6 +38,8 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
@@ -57,6 +59,9 @@ import java.util.concurrent.atomic.AtomicBoolean
  * full-screen ad only when going back from a page, at most once per [AdsConfig.every] pages and [AdsConfig.gap]
  * seconds (never in the first minute). Consent is asked through Google's UMP form where the law requires it (EEA/UK);
  * nothing loads until the SDK says ads may be requested. Release builds without real IDs never start the SDK.
+ *
+ * Rewarded video (the "ad-free pass"): entirely opt-in — an offer card says "watch one short video, no ads for N hours";
+ * nothing in the app is locked behind it. While the pass runs, no banner, in-page or full-screen ad is shown.
  */
 object Ads {
     const val TAG = "NVAds"
@@ -68,17 +73,35 @@ object Ads {
     private val _privacyRequired = MutableStateFlow(false)
     val privacyRequired: StateFlow<Boolean> = _privacyRequired.asStateFlow()
 
+    private var app: Context? = null
     private var interstitial: InterstitialAd? = null
     private var loading = false
+    private var rewarded: RewardedAd? = null
+    private var rewardedLoading = false
+    private val _rewardedReady = MutableStateFlow(false)
+    /** A rewarded video is loaded, so the ad-free offer can be shown (the tap then always plays). */
+    val rewardedReady: StateFlow<Boolean> = _rewardedReady.asStateFlow()
+    private val _adFreeUntil = MutableStateFlow(0L)
+    /** Epoch millis until which no ads are shown — earned by watching a rewarded video; 0 = no pass. */
+    val adFreeUntil: StateFlow<Long> = _adFreeUntil.asStateFlow()
+    private const val PREFS = "ads"
+
+    fun adFree(): Boolean = System.currentTimeMillis() < _adFreeUntil.value
+
+    /** Call from Application.onCreate: restores a running ad-free pass. */
+    fun restore(ctx: Context) {
+        app = ctx.applicationContext
+        _adFreeUntil.value = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getLong("adFreeUntil", 0L)
+    }
     private var pagesSince = 0
     private var lastShown = 0L
     private val appStart = SystemClock.elapsedRealtime()
     /** Debug-only: show the next full-screen ad regardless of the caps (used by the CI screenshots). */
     var forceNext = false
 
-    fun setConfig(c: AdsConfig) { _config.value = c }
+    fun setConfig(c: AdsConfig) { _config.value = c; app?.let { preloadRewarded(it) } }
 
-    private fun on(): Boolean = BuildConfig.ADS && _config.value.on
+    private fun on(): Boolean = BuildConfig.ADS && _config.value.on && !adFree()
 
     /** Call from the activity's onCreate: refreshes consent (shows the form only where required), then starts the SDK. */
     fun start(activity: Activity) {
@@ -105,6 +128,7 @@ object Ads {
 
     private fun init(app: Context) {
         if (started.getAndSet(true)) return
+        this.app = app
         // a jobs app for adults: keep ads to general/teen content
         MobileAds.setRequestConfiguration(
             RequestConfiguration.Builder().setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_T).build()
@@ -114,6 +138,7 @@ object Ads {
             withContext(Dispatchers.Main) {
                 _ready.value = true
                 preload(app)
+                preloadRewarded(app)
             }
         }
     }
@@ -130,6 +155,39 @@ object Ads {
             override fun onAdLoaded(ad: InterstitialAd) { interstitial = ad; loading = false; Log.i(TAG, "interstitial loaded") }
             override fun onAdFailedToLoad(error: LoadAdError) { interstitial = null; loading = false; Log.i(TAG, "interstitial: ${error.message}") }
         })
+    }
+
+    /** Loads the next rewarded video. It plays only when the person taps the ad-free offer. */
+    fun preloadRewarded(ctx: Context) {
+        val c = _config.value
+        if (!_ready.value || !BuildConfig.ADS || !c.on || !c.rewarded || BuildConfig.AD_REWARDED.isBlank() || rewarded != null || rewardedLoading) return
+        rewardedLoading = true
+        RewardedAd.load(ctx.applicationContext, BuildConfig.AD_REWARDED, AdRequest.Builder().build(), object : RewardedAdLoadCallback() {
+            override fun onAdLoaded(ad: RewardedAd) { rewarded = ad; rewardedLoading = false; _rewardedReady.value = true; Log.i(TAG, "rewarded loaded") }
+            override fun onAdFailedToLoad(error: LoadAdError) { rewarded = null; rewardedLoading = false; _rewardedReady.value = false; Log.i(TAG, "rewarded: ${error.message}") }
+        })
+    }
+
+    /** Plays the rewarded video the person asked for. The pass starts when the SDK reports the reward as earned. */
+    fun showRewarded(activity: Activity): Boolean {
+        val ad = rewarded ?: return false
+        if (activity.isFinishing || activity.isDestroyed) return false
+        rewarded = null
+        _rewardedReady.value = false
+        ad.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() { preloadRewarded(activity) }
+            override fun onAdFailedToShowFullScreenContent(error: AdError) { Log.w(TAG, "rewarded show: ${error.message}"); preloadRewarded(activity) }
+        }
+        ad.show(activity) { grantAdFree(activity) }
+        return true
+    }
+
+    private fun grantAdFree(ctx: Context) {
+        val hours = _config.value.rewardHours.coerceIn(1, 24 * 7)
+        val until = maxOf(System.currentTimeMillis(), _adFreeUntil.value) + hours * 3_600_000L
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("adFreeUntil", until).apply()
+        _adFreeUntil.value = until
+        Log.i(TAG, "ad-free pass until $until")
     }
 
     /** A job or result page was opened. */
@@ -169,7 +227,8 @@ fun Context.findActivity(): Activity? {
 fun BottomBanner(adLabel: String) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
-    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank()) return
+    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
+    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank() || adFreeUntil > System.currentTimeMillis()) return
     val width = LocalConfiguration.current.screenWidthDp
     val large = cfg.bannerSize == "large"
     // labelled and kept off the tab bar (a 6 dp gap), so it can't be mistaken for app content or tapped by accident
@@ -186,7 +245,8 @@ private fun standardAnchored(ctx: Context, width: Int): AdSize = AdSize.getCurre
 fun InlineAd(label: String) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
-    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.inline || BuildConfig.AD_INLINE.isBlank()) return
+    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
+    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.inline || BuildConfig.AD_INLINE.isBlank() || adFreeUntil > System.currentTimeMillis()) return
     AdBox(BuildConfig.AD_INLINE, { AdSize.MEDIUM_RECTANGLE }, label = label, modifier = Modifier.padding(top = 18.dp))
 }
 

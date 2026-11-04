@@ -129,6 +129,9 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         else openNotificationSettings()
     }
     val adPrivacy by Ads.privacyRequired.collectAsStateWithLifecycle()
+    val adCfg by Ads.config.collectAsStateWithLifecycle()
+    val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
+    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         if (!granted) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
@@ -187,10 +190,22 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
                 ChoiceChip("हिंदी", st.hindi) { vm.setHindi(true) }
             }
         }
+        if (BuildConfig.ADS && adCfg.on && adCfg.rewarded) Group {
+            // the ad-free pass: opt-in, clearly described, nothing in the app depends on it
+            Text(s.adFreeTitle(adCfg.rewardHours), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
+            if (adFreeUntil > System.currentTimeMillis()) {
+                Text(s.adFreeUntil(untilText(adFreeUntil, st.hindi)), style = MaterialTheme.typography.bodyMedium, color = Brand.Green, modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
+            } else {
+                Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) {
+                    Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
+                }
+            }
+        }
         Group {
             Text(s.about, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
-            TextButton(onClick = { openUrl(ctx, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.rate) }
-            TextButton(onClick = { shareText(ctx, s.shareText, "https://play.google.com/store/apps/details?id=in.newsviews.app") }) { Text(s.shareApp) }
+            TextButton(onClick = { openPlayListing(ctx) }) { Text(s.rate) }
+            TextButton(onClick = { shareText(ctx, s.shareText, PLAY_LISTING) }) { Text(s.shareApp) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/privacy-policy/") }) { Text(s.privacy) }
             if (adPrivacy) TextButton(onClick = { ctx.findActivity()?.let { Ads.showPrivacyOptions(it) } }) { Text(s.adPrivacy) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/") }) { Text("news-views.in") }
@@ -202,6 +217,11 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         }
     }
 }
+
+/** "5 Nov, 10:30 am" in the phone's time zone, in the chosen language. */
+private fun untilText(ms: Long, hindi: Boolean): String =
+    Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault())
+        .format(java.time.format.DateTimeFormatter.ofPattern("d MMM, h:mm a", if (hindi) java.util.Locale.forLanguageTag("hi") else java.util.Locale.ENGLISH))
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

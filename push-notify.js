@@ -9,7 +9,8 @@
  *   l-en or l-hi                language of the notification
  *   o-<department>              departments the person follows (e.g. o-ssc, o-rrb): every new job, admit card, result…
  * A job is sent once per language to: (its state or s-any) AND (its lowest qualification level) AND language.
- * At most 6 jobs (largest first) and 3 results per build; data/pushed.json remembers what was sent.
+ * At most 6 jobs (largest first) and 3 results per build, and 15 jobs / 6 results per day (a build runs every ~40 min:
+ * without the daily cap a phone set to "All states" could get a hundred alerts a day); data/pushed.json remembers what was sent.
  * Needs the FIREBASE_SERVICE_ACCOUNT_JSON secret (Firebase console → Project settings → Service accounts →
  * Generate new private key). Without it the script exits quietly. Never fails the workflow.
  */
@@ -21,7 +22,7 @@ const L = require("./lib.js");
 const ROOT = __dirname;
 const SITE = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const PUSHED = path.join(ROOT, "data", "pushed.json");
-const MAX_JOBS = 6, MAX_UPDATES = 3, MAX_FOLLOW = 20;
+const MAX_JOBS = 6, MAX_UPDATES = 3, MAX_FOLLOW = 20, MAX_JOBS_DAY = 15, MAX_UPDATES_DAY = 6;
 // same rule as the app (Alerts.orgTopic) and build.js slug()
 const orgTopic = (o) => "o-" + String(o || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 // lowest level first; engineering/diploma is its own track
@@ -73,8 +74,13 @@ async function main() {
   const updIds = new Set(urls.map((u) => idOf(u, "updates")).filter(Boolean));
   const today = L.todayIST();
   const open = (j) => !(j.en && j.en < today);            // never alert about a job whose last date has passed
-  const jobs = index.jobs.filter((j) => jobIds.has(j.id) && open(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, MAX_JOBS);
-  const updates = index.updates.filter((u) => updIds.has(u.id) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`]).slice(0, MAX_UPDATES);
+  // the day's budget: what earlier builds today already sent (pushed.json stores the UTC day of each send)
+  const day = new Date().toISOString().slice(0, 10);
+  const sentToday = (prefix) => Object.keys(pushed).filter((k) => k.startsWith(prefix) && pushed[k] === day).length;
+  const jobBudget = Math.max(0, Math.min(MAX_JOBS, MAX_JOBS_DAY - sentToday("j:")));
+  const updBudget = Math.max(0, Math.min(MAX_UPDATES, MAX_UPDATES_DAY - sentToday("u:")));
+  const jobs = index.jobs.filter((j) => jobIds.has(j.id) && open(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, jobBudget);
+  const updates = index.updates.filter((u) => updIds.has(u.id) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`]).slice(0, updBudget);
   // followers of a department get everything new from it (same notification tag, so a phone that also matched the
   // state/qualification alert sees it once)
   const follow = [

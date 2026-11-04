@@ -1777,6 +1777,7 @@ function buildNewsSitemap({ updates, news }) {
 const APP_API = 1;
 const appDay = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0] || "";
 const appArr = (x) => (Array.isArray(x) ? x.filter(Boolean).map(String) : x ? [String(x)] : []);
+const appStr = (x) => (x == null || typeof x === "object" ? "" : String(x));
 const appFaq = (x) => (Array.isArray(x) ? x.filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) })) : []);
 function appStates(job) { return isGulf(job) ? ["gulf"] : statesOf(job).map((st) => st.slug); }
 function appJobsInFeed(jobs) {
@@ -1799,7 +1800,7 @@ const APP_CATS = [
   ["defence", "Defence & forces", "रक्षा व सशस्त्र बल", /\b(army|navy|naval|air force|iaf|agniveer|agnipath|bsf|crpf|cisf|itbp|ssb|assam rifles|coast guard|nda|cds|afcat|echs|military|defence|territorial army)\b/i],
   ["teaching", "Teaching", "शिक्षक", /\b(teachers?|tgt|pgt|prt|lecturers?|professors?|faculty|principal|kvs|nvs|tet|ctet|tre|schools?)\b/i],
   ["medical", "Medical & nursing", "मेडिकल व नर्सिंग", /\b(nurs(e|es|ing)|aiims|esic|jipmer|medical|doctors?|anm|gnm|pharmacists?|hospitals?|health|nhm|cho|residents?|lab technicians?|paramedical)\b/i],
-  ["psu", "PSU", "PSU", /\b(ntpc|bhel|ongc|iocl|indian oil|gail|sail|coal india|bel|hal|power ?grid|nhpc|nlc|npcil|hpcl|bpcl|ecil|becil|cwc|rinl|nmdc|mecon|engineers india|psu)\b/i],
+  ["psu", "PSU", "PSU", /\b(ntpc|bhel|ongc|iocl|indian oil|oil india|gail|sail|coal india|bel|hal|power ?grid|nhpc|nlc|npcil|hpcl|bpcl|ecil|becil|cwc|rinl|nmdc|mecon|engineers india|psu)\b/i],
   ["research", "University & research", "विश्वविद्यालय व रिसर्च", /\b(universit(y|ies)|iit|nit|iiit|iim|iiser|iisc|aiish|isro|drdo|barc|csir|icar|icmr|institute|research|fellow(ship)?|jrf|srf|project (assistant|associate|scientist|fellow))\b/i],
   ["court", "Courts", "कोर्ट", /\b(high court|district court|supreme court|courts?|judicial|judiciary)\b/i],
   ["local", "District & local bodies", "जिला व स्थानीय निकाय", /\b(district|zilla|zila|collector(ate)?|municipal|nagar (nigam|palika)|panchayat|cantonment)\b/i],
@@ -1826,6 +1827,7 @@ function buildAppIndex(jobs, updates) {
     a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
     pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
     tc: shortTitle(j.title), thc: shortTitle((j.hi && j.hi.title) || ""), w: /walk[- ]?in/i.test(`${j.title} ${j.post_name || ""}`) ? 1 : 0,
+    ph: appStr(j.hi && j.hi.post_name),
     c: appCats(`${orgKey(j)} ${j.organization || ""} ${j.title} ${j.post_name || ""}`),
   }));
   const U = appUpdatesInFeed(updates).map((u) => ({
@@ -1842,8 +1844,8 @@ function buildAppIndex(jobs, updates) {
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
-      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240 }, SITE.appAds || {});
-      for (const k of ["every", "gap"]) a[k] = Math.max(1, Math.round(Number(a[k]) || (k === "every" ? 4 : 240)));
+      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24 }, SITE.appAds || {});
+      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
   });
@@ -1859,10 +1861,15 @@ function appJobDetail(j) {
     location: j.location ? String(j.location) : "", published: appDay(j.published), verified: j.via === "official",
     summary: j.summary || "", overview: appArr(j.overview), eligibility_notes: j.eligibility_notes ? String(j.eligibility_notes) : "",
     selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
+    preparation_tips: appArr(j.preparation_tips),
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
     cta: ctaOf(j).cta || "", cta_url: ctaOf(j).url || "", apply_mode: LIB.applyMode(j),
     hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
-      selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq) } : null,
+      selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq),
+      // the notice's facts in Hindi too (the app used to show these in English on a Hindi page)
+      organization: appStr(h.organization), post_name: appStr(h.post_name), qualification: appStr(h.qualification), location: appStr(h.location),
+      salary: appStr(h.salary), fee: h.fee ? (typeof h.fee === "string" ? h.fee : JSON.stringify(h.fee)) : "",
+      preparation_tips: appArr(h.preparation_tips) } : null,
   });
 }
 function appUpdateDetail(u) {
@@ -1879,6 +1886,9 @@ function appUpdateDetail(u) {
 // (Play Console → Test and release → App integrity) to config.json "androidCertSha256" after the first upload.
 const ANDROID_CERTS = [
   "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // upload key
+  // android/test-signing.jks: what CI signs every build with until the upload-key secrets exist (keytool -list -v
+  // -keystore android/test-signing.jks -storepass android). Remove once the Play build is out.
+  "A0:8D:AD:83:1B:22:8B:54:CC:31:BE:26:AF:7C:EF:2F:68:1B:73:8F:85:12:6D:33:62:40:DA:4B:CE:0B:8E:D0",
   ...[].concat(SITE.androidCertSha256 || []),
 ];
 function writeAppFeed(jobs, updates) {

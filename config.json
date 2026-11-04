@@ -6,12 +6,13 @@
   "adsenseSlot": "",
   "adsTxtExtra": [],
   "webAdsHead": "",
-  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes.",
+  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial/rewarded ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes (rewarded = the opt-in 'watch a video, no ads for rewardHours hours' offer).",
   "admob": {
     "appId": "",
     "banner": "",
     "inline": "",
     "interstitial": "",
+    "rewarded": "",
     "mediation": [
       "meta",
       "applovin",
@@ -33,7 +34,9 @@
     "inline": true,
     "interstitial": true,
     "every": 4,
-    "gap": 240
+    "gap": 240,
+    "rewarded": true,
+    "rewardHours": 24
   },
   "feeds": [
     "https://www.freejobalert.com/feed/",

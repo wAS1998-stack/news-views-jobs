@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -70,6 +71,17 @@ fun openUrl(context: Context, url: String) {
         try {
             context.startActivity(Intent(Intent.ACTION_VIEW, uri).apply { if (browser != null) setPackage(browser) }.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         } catch (_: Exception) {}
+    }
+}
+
+const val PLAY_LISTING = "https://play.google.com/store/apps/details?id=in.newsviews.app"
+
+/** The app's Play listing in the Play Store app (rating works there), or on the web when Play isn't installed. */
+fun openPlayListing(context: Context) {
+    try {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName.removeSuffix(".debug")}")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    } catch (e: ActivityNotFoundException) {
+        openUrl(context, PLAY_LISTING)
     }
 }
 
@@ -129,8 +141,9 @@ fun JobCard(job: JobItem, hindi: Boolean, s: Strings, saved: Boolean, onSave: ()
             }
             Text(job.short(hindi), style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(end = 12.dp))
             // the posts, when the short title doesn't already name them
-            if (job.p.isNotBlank() && !job.short(hindi).contains(job.p, ignoreCase = true))
-                Text(job.p, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1,
+            val post = job.post(hindi)
+            if (post.isNotBlank() && !job.short(hindi).contains(post, ignoreCase = true))
+                Text(post, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1,
                     overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 2.dp, end = 12.dp))
             Spacer(Modifier.padding(top = 8.dp))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(end = 12.dp)) {
@@ -218,6 +231,21 @@ fun FollowChip(org: String, following: Boolean, s: Strings, onClick: () -> Unit)
         label = { Text(if (following) s.followingOrg else s.follow(org), maxLines = 1, overflow = TextOverflow.Ellipsis) },
         leadingIcon = { Icon(if (following) Icons.Filled.Check else Icons.Filled.Add, null) },
     )
+}
+
+/** The opt-in rewarded-video offer. It says plainly that a video ad will play and what the reward is; nothing is locked. */
+@Composable
+fun AdFreeCard(s: Strings, hours: Int, onWatch: () -> Unit) {
+    Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
+        Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(s.adFreeTitle(hours), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.padding(top = 2.dp))
+            }
+            Spacer(Modifier.width(12.dp))
+            Button(onClick = onWatch) { Text(s.adFreeButton) }
+        }
+    }
 }
 
 @Composable
