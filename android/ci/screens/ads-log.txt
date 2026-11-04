@@ -1,23 +1,23 @@
 --------- beginning of main
-11-04 05:37:37.868  4622  4622 I NVAds   : banner request 411x64.0.dp
-11-04 05:37:54.683  4622  4622 I NVAds   : interstitial loaded
-11-04 05:37:54.848  4622  4622 I NVAds   : banner loaded 411x64.0.dp
-11-04 05:38:04.782  4622  4622 I NVAds   : rewarded loaded
-11-04 05:38:17.558  4622  4622 I NVAds   : banner request 411x64.0.dp
-11-04 05:38:21.424  4622  4622 I NVAds   : banner request 300x249.90475.dp
-11-04 05:38:21.744  4622  4622 I NVAds   : banner loaded 411x64.0.dp
-11-04 05:38:23.351  4622  4622 I NVAds   : banner loaded 300x249.90475.dp
-11-04 05:38:35.363  4622  4622 I NVAds   : banner request 300x249.90475.dp
-11-04 05:38:36.609  4622  4622 I NVAds   : banner loaded 300x249.90475.dp
-11-04 05:38:44.235  4622  4622 I NVAds   : banner request 300x249.90475.dp
-11-04 05:38:45.739  4622  4622 I NVAds   : banner loaded 300x249.90475.dp
-11-04 05:38:52.473  4622  4622 I NVAds   : banner request 300x249.90475.dp
-11-04 05:38:53.716  4622  4622 I NVAds   : banner loaded 300x249.90475.dp
-11-04 05:39:01.014  4622  4622 I NVAds   : banner request 411x64.0.dp
-11-04 05:39:01.136  4622  4622 I NVAds   : back from page: due=false loaded=true pages=3
-11-04 05:39:02.595  4622  4622 I NVAds   : banner loaded 411x64.0.dp
-11-04 05:39:14.476  4622  4622 I NVAds   : banner request 300x249.90475.dp
-11-04 05:39:16.284  4622  4622 I NVAds   : banner loaded 300x249.90475.dp
-11-04 05:39:21.627  4622  4622 I NVAds   : banner request 411x64.0.dp
-11-04 05:39:21.696  4622  4622 I NVAds   : back from page: due=true loaded=true pages=4
-11-04 05:39:25.099  4622  4622 I NVAds   : banner loaded 411x64.0.dp
+11-04 05:51:20.490  4872  4872 I NVAds   : banner request 411x64.0.dp
+11-04 05:51:27.192  4872  4872 I NVAds   : interstitial loaded
+11-04 05:51:27.443  4872  4872 I NVAds   : banner loaded 411x64.0.dp
+11-04 05:51:29.859  4872  4872 I NVAds   : rewarded loaded
+11-04 05:51:59.457  4872  4872 I NVAds   : banner request 411x64.0.dp
+11-04 05:52:01.465  4872  4872 I NVAds   : banner loaded 411x64.0.dp
+11-04 05:52:02.474  4872  4872 I NVAds   : banner request 300x249.90475.dp
+11-04 05:52:03.858  4872  4872 I NVAds   : banner loaded 300x249.90475.dp
+11-04 05:52:16.318  4872  4872 I NVAds   : banner request 300x249.90475.dp
+11-04 05:52:17.384  4872  4872 I NVAds   : banner loaded 300x249.90475.dp
+11-04 05:52:24.488  4872  4872 I NVAds   : banner request 300x249.90475.dp
+11-04 05:52:25.663  4872  4872 I NVAds   : banner loaded 300x249.90475.dp
+11-04 05:52:32.689  4872  4872 I NVAds   : banner request 300x249.90475.dp
+11-04 05:52:34.304  4872  4872 I NVAds   : banner loaded 300x249.90475.dp
+11-04 05:52:40.760  4872  4872 I NVAds   : banner request 411x64.0.dp
+11-04 05:52:40.838  4872  4872 I NVAds   : back from page: due=false loaded=true pages=3
+11-04 05:52:42.069  4872  4872 I NVAds   : banner loaded 411x64.0.dp
+11-04 05:52:53.239  4872  4872 I NVAds   : banner request 300x249.90475.dp
+11-04 05:52:54.309  4872  4872 I NVAds   : banner loaded 300x249.90475.dp
+11-04 05:53:01.051  4872  4872 I NVAds   : banner request 411x64.0.dp
+11-04 05:53:01.089  4872  4872 I NVAds   : back from page: due=true loaded=true pages=4
+11-04 05:53:03.192  4872  4872 I NVAds   : banner loaded 411x64.0.dp
