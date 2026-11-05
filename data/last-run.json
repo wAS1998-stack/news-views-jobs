@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T20:30:42.927Z",
+    "at": "2026-11-05T21:11:58.698Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 88 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 87 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-05; 20 already known",
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T20:31:02.307Z",
+    "at": "2026-11-05T21:12:08.241Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 61, geo-blocked)",
       "bssc": "paused (fails 10)",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 61, geo-blocked)",
       "osssc": "paused (fails 28)",
       "gsssb": "paused (fails 61, geo-blocked)",
       "sssb-punjab": "paused (fails 61, geo-blocked)",
       "hprca": "paused (fails 61, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "kea": "paused (fails 61, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 61, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "4 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "tnusrb": "paused (fails 61, geo-blocked)",
       "tslprb": "paused (fails 61)",
       "slprb-ap": "paused (fails 61, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "nta": "1 links, 0 new via news-views.in",
-      "bpssc": "209 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via news-views.in"
+      "jkssb": "1 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "csbc": "197 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,24 +124,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T20:33:55.639Z",
+    "at": "2026-11-05T21:12:46.537Z",
     "ok": true,
-    "checked": 20,
+    "checked": 1,
     "found": 0,
-    "due": 20,
-    "cands": 22,
+    "due": 1,
+    "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 21",
-      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
-      "  candidates seen 22, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-05T20:33:56.720Z",
+    "at": "2026-11-05T21:13:04.589Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -149,7 +147,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -158,21 +157,22 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: जिला स्वास्थ्य एवं परिवार कल्याण समिति, बीरभूम भर्ती 2026 – NUHM/15th FC और अन्य पदों के लिए 47 स्टाफ नर्स के लिए ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-05T20:34:27.344Z",
+    "at": "2026-11-05T21:13:21.966Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
     "existing": 400,
     "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: UERC Invites Applications for 3 Assistant Director Positions in Dehradun",
-      "  analysis below quality bar for district-child-protection-unit-case-worker-2026 (273 words, need 300) — not published."
+      "  + analysis: Birbhum District Health Department Recruitment 2026: 47 Staff Nurse and Other Positions Available",
+      "  + analysis: Erode District Child Protection Unit Announces Recruitment for Case Worker Position"
     ]
   }
 }
