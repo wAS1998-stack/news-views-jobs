@@ -206,7 +206,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
                     Text(s.adFreeUntil(untilText(adFreeUntil, st.hindi)), style = MaterialTheme.typography.bodyMedium, color = Brand.Green, modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
                 adCfg.rewarded -> {
                     Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) {
+                    Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it, "alerts") } }, enabled = rewardedReady, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) {
                         Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
                     }
                 }
@@ -214,7 +214,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             // Pro: shown only when Play has answered with a price (the product exists and Play is on this phone)
             if (adCfg.pro && !isPro && proPrice.isNotBlank()) {
                 Text(s.proHint(proPrice), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Button(onClick = { ctx.findActivity()?.let { Billing.buy(it) } }, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) { Text(s.proButton) }
+                Button(onClick = { ctx.findActivity()?.let { Billing.buy(it, "alerts") } }, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) { Text(s.proButton) }
             }
         }
         Group {

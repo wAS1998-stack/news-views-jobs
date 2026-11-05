@@ -252,15 +252,19 @@ fun FollowChip(org: String, following: Boolean, s: Strings, onClick: () -> Unit)
 /** The opt-in rewarded-video offer. It says plainly that a video ad will play and what the reward is. Only bonus
     preparation tips sit behind it; notices, dates, eligibility and apply links never do. */
 @Composable
-fun AdFreeCard(s: Strings, hours: Int, onWatch: () -> Unit) {
+fun AdFreeCard(s: Strings, hours: Int, proPrice: String = "", onPro: () -> Unit = {}, onWatch: () -> Unit) {
+    com.newsviews.app.LogOnce("pass_offer_view", "list")
     Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
-        Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Text(s.adFreeTitle(hours), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
-                Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.padding(top = 2.dp))
+        Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(s.adFreeTitle(hours), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                    Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.padding(top = 2.dp))
+                }
+                Spacer(Modifier.width(12.dp))
+                Button(onClick = onWatch) { Text(s.adFreeButton) }
             }
-            Spacer(Modifier.width(12.dp))
-            Button(onClick = onWatch) { Text(s.adFreeButton) }
+            if (proPrice.isNotBlank()) TextButton(onClick = onPro, modifier = Modifier.padding(top = 2.dp)) { Text(s.orPro(proPrice)) }
         }
     }
 }

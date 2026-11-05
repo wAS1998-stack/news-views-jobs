@@ -88,7 +88,13 @@ object Billing {
                 if (r.responseCode != BillingClient.BillingResponseCode.OK) Log.w(TAG, "acknowledge: ${r.responseCode} ${r.debugMessage}")
             }
         }
-        if (owned) { setPro(true); if (!authoritative) app?.let { Stats.event(it, "pro_purchased") } }
+        if (owned) {
+            setPro(true)
+            if (!authoritative) app?.let { ctx ->
+                val o = details?.oneTimePurchaseOfferDetails
+                Stats.purchase(ctx, product, (o?.priceAmountMicros ?: 0L) / 1_000_000.0, o?.priceCurrencyCode ?: "INR")
+            }
+        }
         else if (authoritative) setPro(false)
     }
 
@@ -98,13 +104,13 @@ object Billing {
     }
 
     /** Opens Play's purchase sheet. False when Play or the product isn't available. */
-    fun buy(activity: Activity): Boolean {
+    fun buy(activity: Activity, from: String = "other"): Boolean {
         val c = client ?: return false
         val d = details ?: return false
         val params = BillingFlowParams.newBuilder().setProductDetailsParamsList(listOf(
             BillingFlowParams.ProductDetailsParams.newBuilder().setProductDetails(d).build(),
         )).build()
-        Stats.event(activity, "pro_open")
+        Stats.event(activity, "pro_open", "from" to from)
         return c.launchBillingFlow(activity, params).responseCode == BillingClient.BillingResponseCode.OK
     }
 }

@@ -42,7 +42,7 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
   for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
-    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl"]) {
+    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl", "adsenseSlots"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -341,7 +341,7 @@ function head(o) {
   const ldBlocks = (o.ld || [])
     .map((x) => `<script type="application/ld+json">${ldJson(x)}</script>`)
     .join("");
-  const adsense = SITE.adsenseId
+  const adsense = SITE.adsenseId && !o.noAds
     ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsenseId}" crossorigin="anonymous"></script>`
     : "";
   // App bar for Android visitors: rendered in every page but hidden unless a tiny inline script (run before the first
@@ -1523,12 +1523,17 @@ function prepTips(job) {
    clean (and policy-safe) until AdSense is approved. In-article placements
    earn far more than relying on Auto Ads alone. */
 function adSlot(label) {
-  // A manual unit needs its ad-unit ID (config.json "adsenseSlot"); until then Auto ads (switched on in AdSense) place the ads.
-  if (!SITE.adsenseId || !SITE.adsenseSlot) return "";
+  // A manual unit needs its ad-unit ID: config.json "adsenseSlots" per placement ({"job-mid": "123…", "update-mid": …},
+  // so AdSense reports each placement), else the one "adsenseSlot". Without either, Auto ads (switched on in AdSense) place them.
+  const unit = (SITE.adsenseSlots || {})[String(label || "").replace(/^hi-/, "")] || SITE.adsenseSlot;
+  if (!SITE.adsenseId || !unit) return "";
+  const hi = /^hi-/.test(label || "");
+  const promo = `<b>${hi ? "सरकारी नौकरी का अलर्ट सबसे पहले" : "Get new govt job alerts first"}</b><span>${hi ? "सरकारी रडार ऐप — आपके राज्य और योग्यता की भर्तियाँ" : "Sarkari Radar app — jobs for your state and qualification"}</span><a href="/app/">${hi ? "ऐप लें" : "Get the app"}</a>`;
   return `<aside class="ad-slot" aria-label="Advertisement" data-slot="${esc(label || "")}">
     <span class="ad-label">Advertisement</span>
-    <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="${esc(SITE.adsenseId)}" data-ad-slot="${esc(SITE.adsenseSlot)}" data-ad-format="fluid" data-ad-layout="in-article"></ins>
+    <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="${esc(SITE.adsenseId)}" data-ad-slot="${esc(unit)}" data-ad-format="fluid" data-ad-layout="in-article"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="ad-fallback">${promo}</div>
   </aside>`;
 }
 /* The ad networks that may serve ads in the Android app through AdMob mediation (config.json "admob.mediation"). */
@@ -1721,7 +1726,7 @@ function buildJob(job, all) {
 /* ---- 404 -------------------------------------------------------- */
 function build404() {
   return head({ title: "Page not found | " + SITE.name, desc: "The page you were looking for doesn't exist.",
-    canonical: SITE.url + "/404", ld: [] }) + `
+    canonical: SITE.url + "/404", ld: [], noAds: true }) + `
 <main class="wrap" id="main">
   <section class="hero">
     <p class="eyebrow">404</p>
@@ -2465,6 +2470,12 @@ function main() {
     const src = path.join(ROOT, "src", f);
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, f));
   }
+  if (SITE.playUrl) try {          // the Play app, not the website, is what Android's install prompt should offer
+    const man = JSON.parse(fs.readFileSync(path.join(DIST, "site.webmanifest"), "utf8"));
+    man.related_applications = [{ platform: "play", id: "in.newsviews.app", url: SITE.playUrl }];
+    man.prefer_related_applications = true;
+    fs.writeFileSync(path.join(DIST, "site.webmanifest"), JSON.stringify(man, null, 2) + "\n");
+  } catch (e) { console.log("manifest: " + e.message); }
 
   // Split: `jobs` = ALL (each gets its own page — SEO preserved, no 404s).
   // `activeJobs` = not stale (drives homepage, category listings, counts, sitemap priority).
@@ -2731,14 +2742,14 @@ function main() {
     }
     if (lines.length) { write("_redirects", lines.join("\n") + "\n"); console.log(`Redirects: ${lines.length} retired URL(s) -> 301.`); }
   } catch { /* no redirects file */ }
-  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
+  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/", noAds: true }) + `
 <main class="wrap" id="main"><section class="cat-head">
   <p class="eyebrow">Offline</p><h1>You're offline right now</h1>
   <p class="lede">This page isn't cached yet. Reconnect to the internet and try again — previously visited pages remain available offline.</p>
   <p class="cta-row"><a class="btn btn-primary" href="/">Go to homepage</a></p>
 </section></main>` + foot());
 
-  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/" }) + `
+  write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/", noAds: true }) + `
 <main class="wrap" id="main">
   <section class="cat-head">
     <p class="eyebrow">Offline</p>
@@ -2752,7 +2763,7 @@ function main() {
   // pages (2 impressions in a month) are kept out of its crawl until the English pages are indexed; visitors still
   // get them and the Hindi hub pages stay crawlable. Set config.json "crawlHindiDetail": true to open them again.
   const hiBlock = SITE.crawlHindiDetail ? "" : "Disallow: /hi/jobs/\nDisallow: /hi/updates/\n";
-  write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /api/\n${hiBlock}Sitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
+  write("robots.txt", `User-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: *\nAllow: /\nDisallow: /api/\n${hiBlock}Sitemap: ${SITE.url}/sitemap.xml\nSitemap: ${SITE.url}/sitemap-latest.xml\nSitemap: ${SITE.url}/news-sitemap.xml\n`);
   // Only /api/* runs as a Cloudflare Pages Function (functions/); every page and file stays a free static asset.
   write("_routes.json", JSON.stringify({ version: 1, include: ["/api/*"], exclude: [] }) + "\n");
   if (SITE.adsenseId) {

@@ -86,7 +86,7 @@ if ("serviceWorker" in navigator) {
   var deferred = null;
   window.addEventListener("beforeinstallprompt", function (e) {
     e.preventDefault(); deferred = e;
-    if (document.querySelector(".install-btn")) return;
+    if (document.querySelector(".install-btn") || document.querySelector(".app-bar")) return;   // Android: the app strip offers the real app
     var b = document.createElement("button");
     b.className = "install-btn"; b.type = "button";
     b.innerHTML = "&#128241; Install app";
@@ -122,24 +122,30 @@ if ("serviceWorker" in navigator) {
   });
 })();
 
-/* Freshness self-check: phones restore old tabs from memory and caches can hold an old copy.
-   Whenever the page is shown or brought back to the screen, ask the server (bypassing every cache)
-   which build is live; if it is newer than this page, reload once. */
+/* Freshness check: phones restore old tabs from memory and caches can hold an old copy. When the page is shown or
+   brought back to the screen, ask the server (bypassing caches) which build is live; if it is newer, offer a refresh.
+   The page never reloads by itself: AdSense does not allow pages with ads to refresh without the reader's action,
+   and a reload would also wipe what someone typed into a tool. */
 (function () {
   var meta = document.querySelector('meta[name="nv-build"]');
   if (!meta || !window.fetch) return;
-  var mine = meta.getAttribute("content"), last = 0;
+  var mine = meta.getAttribute("content"), last = 0, shown = false;
+  var hi = document.documentElement.lang === "hi";
+  function offer() {
+    if (shown) return; shown = true;
+    var t = document.createElement("button");
+    t.type = "button"; t.className = "fresh-toast";
+    t.textContent = hi ? "नई भर्तियाँ जुड़ीं — रीफ़्रेश करें" : "New jobs added — tap to refresh";
+    t.addEventListener("click", function () { location.reload(); });
+    document.body.appendChild(t);
+  }
   function check() {
     var now = Date.now();
-    if (now - last < 60000 || document.visibilityState === "hidden") return;
+    if (shown || now - last < 60000 || document.visibilityState === "hidden") return;
     last = now;
     fetch("/version.json?t=" + now, { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (v) {
-        if (!v || !v.build || v.build === mine) return;
-        try { if (sessionStorage.getItem("nv-reloaded") === v.build) return; sessionStorage.setItem("nv-reloaded", v.build); } catch (e) { /* private mode */ }
-        location.reload();
-      })
+      .then(function (v) { if (v && v.build && v.build !== mine) offer(); })
       .catch(function () { /* offline: keep showing what we have */ });
   }
   window.addEventListener("pageshow", check);

@@ -172,6 +172,8 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     var linkVisit by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(idx) { idx?.let { Ads.setConfig(it.ads) } }
+    val isPro by Ads.pro.collectAsStateWithLifecycle()
+    LaunchedEffect(settings.hindi, settings.qual, settings.alerts, isPro) { Stats.userProps(context, settings.hindi, settings.qual.key, settings.alerts, isPro) }
     val argId = entry?.arguments?.getString("id")
     val detailTitle = remember(route, argId, idx, settings.hindi) {
         when {

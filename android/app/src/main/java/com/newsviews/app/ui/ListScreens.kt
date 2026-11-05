@@ -122,6 +122,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val activity = LocalContext.current.findActivity()
     RefreshNative("jobs")
     val reminderPrompt = rememberReminderPrompt(s)
+    val proPrice by com.newsviews.app.play.Billing.price.collectAsStateWithLifecycle()
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
     // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
@@ -182,7 +183,8 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
                     itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                            if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours) { activity?.let { Ads.showRewarded(it) } }
+                            if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours, proPrice = if (adCfg.pro) proPrice else "",
+                                onPro = { activity?.let { com.newsviews.app.play.Billing.buy(it, "list") } }) { activity?.let { Ads.showRewarded(it, "list") } }
                             val every = adCfg.nativeEvery.coerceAtLeast(5)
                             if (i >= 9 && (i - 9) % every == 0 && (i - 9) / every < 5) {
                                 val k = (i - 9) / every

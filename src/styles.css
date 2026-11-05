@@ -712,7 +712,14 @@ html { scroll-behavior: smooth; }
 
 /* ===========================  v17: in-content ad slots  =========================== */
 .ad-slot { margin: 26px 0; padding: 0; min-height: 280px; }   /* space kept for the ad, so the page doesn't jump */
-.ad-slot:has(ins[data-ad-status="unfilled"]) { display: none; }
+.ad-slot .ad-fallback { display: none; }
+/* no ad came: the same space shows a house promo (app / Telegram) instead of collapsing and shifting the page */
+.ad-slot:has(ins[data-ad-status="unfilled"]) ins, .ad-slot:has(ins[data-ad-status="unfilled"]) .ad-label { display: none; }
+.ad-slot:has(ins[data-ad-status="unfilled"]) .ad-fallback { display: flex; }
+.ad-fallback { min-height: 250px; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  background: var(--card, #fff); border: 1px dashed #E3E0D8; border-radius: 14px; padding: 18px; color: var(--ink); }
+.ad-fallback b { font-size: 17px; }
+.ad-fallback a { background: #1F5FAE; color: #fff; border-radius: 999px; padding: 8px 16px; font-weight: 600; text-decoration: none; }
 .ad-label {
   display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 6px; font-family: "Spline Sans Mono", monospace;
@@ -925,3 +932,7 @@ h1, h2, h3, .lede { overflow-wrap: break-word; }
 .app-bar-go { background: #1F5FAE; color: #fff; border-radius: 999px; padding: 7px 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
 .app-bar-go:hover { background: #174A88; color: #fff; }
 .app-bar-x { background: none; border: 0; font-size: 22px; line-height: 1; color: #5A2A0B; cursor: pointer; padding: 4px 6px; }
+
+/* "New jobs added — tap to refresh" (never an automatic reload) */
+.fresh-toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 88px; z-index: 70; background: #14213D; color: #fff;
+  border: 0; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.25); cursor: pointer; }

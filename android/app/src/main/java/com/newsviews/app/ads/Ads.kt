@@ -179,7 +179,7 @@ object Ads {
     /** Call from the activity's onCreate (every time: after Android killed the process, the restored activity must start
         the SDK again). Refreshes consent (the form shows only where required), then starts the SDK. */
     fun start(activity: Activity) {
-        if (!BuildConfig.ADS) return
+        if (!BuildConfig.ADS || _pro.value) return      // Pro: no ads, so no consent form and no ad SDK at all
         val info = UserMessagingPlatform.getConsentInformation(activity)
         val params = ConsentRequestParameters.Builder().build()
         info.requestConsentInfoUpdate(activity, params, {
@@ -335,20 +335,23 @@ object Ads {
     }
 
     /** Plays the rewarded video the person asked for. The pass starts when the SDK reports the reward as earned. */
-    fun showRewarded(activity: Activity): Boolean {
+    fun showRewarded(activity: Activity, from: String = "other"): Boolean {
         val ad = rewarded?.takeIf { now() - rewardedAt < MAX_AGE } ?: run { preloadRewarded(activity); return false }
         if (activity.isFinishing || activity.isDestroyed) return false
         rewarded = null
         _rewardedReady.value = false
         ad.fullScreenContentCallback = fullScreenCallback("rewarded", activity.applicationContext) { preloadRewarded(it) }
-        Stats.event(activity, "pass_watch")
+        passFrom = from
+        Stats.event(activity, "pass_watch", "from" to from)
         _fullScreen.value = true
         ad.show(activity) { grantAdFree(activity) }
         return true
     }
 
+    private var passFrom = "other"
+
     private fun grantAdFree(ctx: Context) {
-        Stats.event(ctx, "pass_granted")
+        Stats.event(ctx, "pass_granted", "from" to passFrom)
         val hours = _config.value.rewardHours.coerceIn(1, 24 * 7)
         val until = maxOf(System.currentTimeMillis(), _adFreeUntil.value) + hours * 3_600_000L
         ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("adFreeUntil", until).apply()

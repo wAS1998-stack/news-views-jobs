@@ -4,9 +4,10 @@
   "email": "contact@news-views.in",
   "adsenseId": "",
   "adsenseSlot": "",
+  "adsenseSlots": {},
   "adsTxtExtra": [],
   "webAdsHead": "",
-  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial/rewarded/native ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes (rewarded = the opt-in 'watch a video, no ads for rewardHours hours' offer; native = one ad card in each list; pro = offer the one-time Pro purchase, product id proProduct, once it exists in Play Console). playUrl = the Play Store listing URL once live (the /app/ page and share links point there).",
+  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…). Set adsenseSlot (an in-article ad unit ID) in the same change — without it only Auto ads run and the site's placement rules (no ad next to Apply/Download) don't apply; adsenseSlots = optional per-placement units {job-mid, job-end, update-mid, quiz-end} for per-placement reports. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial/rewarded/native ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes (rewarded = the opt-in 'watch a video, no ads for rewardHours hours' offer; native = one ad card in each list; pro = offer the one-time Pro purchase, product id proProduct, once it exists in Play Console). playUrl = the Play Store listing URL once live (the /app/ page and share links point there).",
   "admob": {
     "appId": "",
     "banner": "",

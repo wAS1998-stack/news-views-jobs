@@ -229,9 +229,12 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
                 else Card(shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(14.dp)) {
                         Text(s.prepLocked(adCfg.rewardHours.coerceIn(1, 24 * 7)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
-                        Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 10.dp)) {
+                        com.newsviews.app.LogOnce("tips_gate_view", "tips")
+                        Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it, "tips") } }, enabled = rewardedReady, modifier = Modifier.padding(top = 10.dp)) {
                             Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
                         }
+                        val proPrice by com.newsviews.app.play.Billing.price.collectAsStateWithLifecycle()
+                        if (adCfg.pro && proPrice.isNotBlank()) TextButton(onClick = { ctx.findActivity()?.let { com.newsviews.app.play.Billing.buy(it, "tips") } }) { Text(s.orPro(proPrice)) }
                     }
                 }
             }
