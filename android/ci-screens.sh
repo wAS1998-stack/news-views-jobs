@@ -62,6 +62,16 @@ adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
 # the ad SDK's own messages about failed requests (why a format didn't fill)
 adb logcat -d -s Ads:* | grep -iE "native|fail|error|could not|unable" | tail -60 > "$OUT/gma-log.txt"
 
+# 8b. Play Store listing screenshots: no ads (debug-only store_mode), English and Hindi -> android/ci/screens/store-*.png
+adb shell am force-stop $PKG; sleep 2
+adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez hindi false --es tab jobs; shot store-1-jobs 12
+if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-2-job 8; fi
+adb shell am start -n $PKG/$ACT --es tab updates; shot store-3-results 6
+if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-4-quiz 8; fi
+adb shell am start -n $PKG/$ACT --es tab alerts; shot store-5-alerts 5
+adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot store-6-hindi 6
+adb shell am start -n $PKG/$ACT --ez hindi false --ez store_mode false --es tab jobs; sleep 2
+
 # 9. the release build (shrunk with R8, no debug hooks): install, open, and look for a crash
 if [ -n "$REL" ] && [ -f "$REL" ]; then
   adb logcat -d -s AndroidRuntime:E | tail -60 > "$OUT/crash-debug.txt"; [ -s "$OUT/crash-debug.txt" ] || rm -f "$OUT/crash-debug.txt"

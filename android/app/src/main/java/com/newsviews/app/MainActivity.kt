@@ -110,6 +110,7 @@ class MainActivity : ComponentActivity() {
         // test hooks for the automated screenshots (debug builds only)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("skip_onboarding", false)) vm.finishOnboarding()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("ad_test", false)) Ads.forceNext = true
+        if (BuildConfig.DEBUG && intent.hasExtra("store_mode")) Ads.storeMode = intent.getBooleanExtra("store_mode", false)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("app_open_test", false)) Ads.forceAppOpen = true
         if (BuildConfig.DEBUG && intent.getBooleanExtra("demo_profile", false)) vm.demoProfile()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("upcoming", false)) vm.setFilters(vm.filters.value.copy(upcoming = true, updateType = ""))

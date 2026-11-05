@@ -132,10 +132,13 @@ object Ads {
     fun adsOff(): Boolean {
         val until by adFreeUntil.collectAsStateWithLifecycle()
         val isPro by pro.collectAsStateWithLifecycle()
-        return isPro || until > System.currentTimeMillis()
+        return storeMode || isPro || until > System.currentTimeMillis()
     }
 
-    private fun on(): Boolean = BuildConfig.ADS && _config.value.on && !adFree()
+    /** Debug-only (CI): no ads at all, for the Play Store listing screenshots. Set before the first screen is drawn. */
+    var storeMode = false
+
+    private fun on(): Boolean = BuildConfig.ADS && _config.value.on && !adFree() && !storeMode
 
     /** Call from Application.onCreate: restores a running pass, the Pro flag and the last feed config. */
     fun restore(ctx: Context) {
