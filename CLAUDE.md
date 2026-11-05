@@ -102,8 +102,9 @@ hurting users or breaking Google's policies.
 
 ## Secrets (names only; the owner sets them in GitHub → Settings → Secrets → Actions)
 `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_SERVICE_ACCOUNT_JSON`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID`,
-`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `JOBS_FEEDS`, app: `ANDROID_KEYSTORE_B64`, `ANDROID_KEYSTORE_PASSWORD`,
-`ANDROID_KEY_ALIAS`, `GOOGLE_SERVICES_JSON`, `FIREBASE_SERVICE_ACCOUNT_JSON`.
+`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `JOBS_FEEDS`, app: `SARKARI_KEYSTORE_BASE64`, `SARKARI_KEYSTORE_PASSWORD`,
+`SARKARI_KEY_ALIAS`, `SARKARI_KEY_PASSWORD` (upload key; `ANDROID_*` names are a fallback), `GOOGLE_SERVICES_JSON`,
+`FIREBASE_SERVICE_ACCOUNT_JSON`. `android/ci/last-build.txt` line 2 says which signing secrets were seen.
 
 ## Where things stand / what's next
 - Google Jobs already sends clicks; manual "Request indexing" in Search Console is done daily by a scheduled task.
