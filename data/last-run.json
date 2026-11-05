@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T01:43:49.611Z",
+    "at": "2026-11-05T02:23:42.731Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T01:44:38.265Z",
+    "at": "2026-11-05T02:24:18.709Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 56, geo-blocked)",
       "rrb-portal": "paused (fails 52, geo-blocked)",
       "ncs": "paused (fails 44)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "bpsc": "paused (fails 54, geo-blocked)",
       "rpsc": "paused (fails 44, geo-blocked)",
       "mppsc": "paused (fails 56, geo-blocked)",
@@ -75,16 +75,16 @@
       "tnpsc": "paused (fails 56, geo-blocked)",
       "kpsc": "paused (fails 56, geo-blocked)",
       "appsc": "paused (fails 56, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "rbi": "20 links, 0 new via direct",
       "wbpsc": "paused (fails 56, geo-blocked)",
       "opsc": "paused (fails 44)",
       "hpsc": "paused (fails 56, geo-blocked)",
       "hppsc": "paused (fails 56, geo-blocked)",
       "ukpsc": "paused (fails 56, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 56, geo-blocked)",
       "gpsc": "paused (fails 56, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "4 links, 0 new via direct",
       "ppsc": "paused (fails 56, geo-blocked)",
       "apsc": "paused (fails 56, geo-blocked)",
       "jkpsc": "paused (fails 56, geo-blocked)",
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 56, geo-blocked)",
       "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
+      "jpsc": "47 links, 0 new via news-views.in",
       "jssc": "paused (fails 56, geo-blocked)",
       "osssc": "paused (fails 23)",
       "gsssb": "paused (fails 56, geo-blocked)",
       "sssb-punjab": "paused (fails 56, geo-blocked)",
       "hprca": "paused (fails 56, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "5 links, 0 new via direct",
       "kea": "paused (fails 56, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 56, geo-blocked)",
-      "kvs": "5 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "28 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 56, geo-blocked)",
       "tslprb": "paused (fails 56)",
       "slprb-ap": "paused (fails 56, geo-blocked)",
       "csbc": "197 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in",
       "nta": "1 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "bssc": "error: direct: fetch failed (CERT_HAS_EXPIRED) | alt-ua: fetch failed (CERT_HAS_EXPIRED) | news-views.in: HTTP 526 | api.allori (fails 3)"
+      "bpssc": "208 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "bssc": "error: direct: fetch failed (CERT_HAS_EXPIRED) | alt-ua: fetch failed (CERT_HAS_EXPIRED) | news-views.in: HTTP 526 | api.allori (fails 4)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T01:44:38.544Z",
+    "at": "2026-11-05T02:24:19.036Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T01:44:39.544Z",
+    "at": "2026-11-05T02:24:20.136Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -173,7 +173,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-05T01:45:02.451Z",
+    "at": "2026-11-05T02:24:43.552Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
@@ -182,8 +182,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (240 words, need 300) — not published.",
-      "  + analysis: KEA Female Supervisor Recruitment 2026 – Apply Online for 141 Posts"
+      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (294 words, need 300) — not published.",
+      "  + analysis: MANUU Recruitment 2026: Walk-in Interviews for Senior and Junior Consultant Posts"
     ]
   },
   "notify": {
