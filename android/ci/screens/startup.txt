@@ -1,4 +1,4 @@
-TotalTime: 4955 WaitTime: 4974 
-TotalTime: 4611 WaitTime: 4659 
-release TotalTime: 891
-release TotalTime: 996
+TotalTime: 6375 WaitTime: 6418 
+TotalTime: 2823 WaitTime: 2828 
+release TotalTime: 605
+release TotalTime: 758
