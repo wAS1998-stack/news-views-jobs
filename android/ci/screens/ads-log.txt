@@ -1,24 +1,70 @@
 --------- beginning of main
-11-05 17:38:56.031  5057  5057 I NVAds   : banner request 411x64.0.dp
-11-05 17:39:04.643  5057  5057 I NVAds   : banner loaded 411x64.0.dp
-11-05 17:39:05.368  5057  5057 I NVAds   : rewarded loaded
-11-05 17:39:05.376  5057  5057 I NVAds   : interstitial loaded
-11-05 17:39:11.846  5057  5057 I NVAds   : native (updates): Internal error.
-11-05 17:39:36.214  5057  5057 I NVAds   : banner request 411x64.0.dp
-11-05 17:39:38.068  5057  5057 I NVAds   : banner loaded 411x64.0.dp
-11-05 17:39:39.482  5057  5057 I NVAds   : banner request 300x249.90475.dp
-11-05 17:39:40.948  5057  5057 I NVAds   : banner loaded 300x249.90475.dp
-11-05 17:39:53.566  5057  5057 I NVAds   : banner request 300x249.90475.dp
-11-05 17:39:54.729  5057  5057 I NVAds   : banner loaded 300x249.90475.dp
-11-05 17:40:02.154  5057  5057 I NVAds   : banner request 300x249.90475.dp
-11-05 17:40:03.430  5057  5057 I NVAds   : banner loaded 300x249.90475.dp
-11-05 17:40:10.420  5057  5057 I NVAds   : banner request 300x249.90475.dp
-11-05 17:40:11.499  5057  5057 I NVAds   : banner loaded 300x249.90475.dp
-11-05 17:40:18.459  5057  5057 I NVAds   : banner request 411x64.0.dp
-11-05 17:40:18.537  5057  5057 I NVAds   : back from page: due=false loaded=true pages=3
-11-05 17:40:19.744  5057  5057 I NVAds   : banner loaded 411x64.0.dp
-11-05 17:40:31.169  5057  5057 I NVAds   : banner request 300x249.90475.dp
-11-05 17:40:32.038  5057  5057 I NVAds   : banner loaded 300x249.90475.dp
-11-05 17:40:38.851  5057  5057 I NVAds   : banner request 411x64.0.dp
-11-05 17:40:38.948  5057  5057 I NVAds   : back from page: due=true loaded=true pages=4
-11-05 17:40:41.733  5057  5057 I NVAds   : banner loaded 411x64.0.dp
+11-05 19:22:01.116  4830  4830 I NVAds   : banner request
+11-05 19:22:15.592  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:16.245  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:16.679  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:17.313  4830  4830 I NVAds   : interstitial loaded
+11-05 19:22:17.387  4830  4830 I NVAds   : banner loaded
+11-05 19:22:19.486  4830  4830 I NVAds   : app-open loaded
+11-05 19:22:20.883  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:20.921  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:20.931  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:21.215  4830  4830 I NVAds   : rewarded loaded
+11-05 19:22:25.878  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:25.886  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:25.910  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:31.844  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:32.285  4830  4830 I NVAds   : adapter com.google.android.gms.ads.MobileAds: READY 5963 ms
+11-05 19:22:32.286  4830  4830 I NVAds   : adapter com.google.ads.mediation.vungle.VungleMediationAdapter: NOT_READY 0 ms
+11-05 19:22:32.286  4830  4830 I NVAds   : adapter com.google.ads.mediation.applovin.AppLovinMediationAdapter: NOT_READY 9 ms
+11-05 19:22:32.286  4830  4830 I NVAds   : adapter com.google.ads.mediation.adcolony.AdColonyMediationAdapter: NOT_READY 4 ms
+11-05 19:22:32.571  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:32.980  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:42.486  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:42.653  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:42.654  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:42.959  4830  4830 I NVAds   : inline request 300x249.90475.dp
+11-05 19:22:44.794  4830  4830 I NVAds   : inline loaded 300x249.90475.dp
+11-05 19:22:56.691  4830  4830 I NVAds   : inline request 300x249.90475.dp
+11-05 19:22:58.601  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:22:58.614  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:22:58.735  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:22:58.892  4830  4830 I NVAds   : inline loaded 300x249.90475.dp
+11-05 19:23:02.850  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:03.359  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:03.599  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:06.276  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:06.307  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:06.363  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:08.738  4830  4830 I NVAds   : inline request 300x249.90475.dp
+11-05 19:23:10.637  4830  4830 I NVAds   : inline loaded 300x249.90475.dp
+11-05 19:23:13.873  4830  4830 I NVAds   : inline request 300x249.90475.dp
+11-05 19:23:15.247  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:15.250  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:15.274  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:15.431  4830  4830 I NVAds   : inline loaded 300x249.90475.dp
+11-05 19:23:21.992  4830  4830 I NVAds   : back from page: due=false loaded=true pages=3
+11-05 19:23:23.335  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:23.348  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:23.356  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:29.089  4830  4830 I NVAds   : banner loaded
+11-05 19:23:30.128  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:30.129  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:30.446  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:32.587  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:32.594  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:32.610  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:34.926  4830  4830 I NVAds   : inline request 300x249.90475.dp
+11-05 19:23:35.497  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:23:36.005  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:23:36.018  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:23:36.136  4830  4830 I NVAds   : inline loaded 300x249.90475.dp
+11-05 19:23:42.514  4830  4830 I NVAds   : back from page: due=true loaded=true pages=4
+11-05 19:23:45.679  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:24:03.819  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:24:04.051  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:24:04.280  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:24:17.275  4830  4830 I NVAds   : native (jobs): Internal error.
+11-05 19:24:17.281  4830  4830 I NVAds   : native (updates): Internal error.
+11-05 19:24:17.321  4830  4830 I NVAds   : native (detail): Internal error.
+11-05 19:24:17.431  4830  4830 I NVAds   : interstitial loaded
