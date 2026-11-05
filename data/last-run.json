@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T13:12:30.451Z",
+    "at": "2026-11-05T13:48:58.956Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,18 +11,19 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 18,
-    "newUpdates": 3,
+    "newJobs": 1,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 59 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 78 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-05; 20 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 11 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 9 already known"
     },
     "log": [
-      "   = same source page as an existing job, skipped: Metro Rail Jobs 2026 - Latest Recruitment Notifications List",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 - Apply for 73 Engineer & Supervisor Posts",
+      "   = same source page as an existing job, skipped: DSSSB Delhi District Court Various Post Online Form 2026 – Last Date",
+      "   - already closed, skipped: IOCL Apprentice Online Form 2026 – Last Date",
+      "   = same source page as an existing job, skipped: JSSC Para Teacher JTAACCE Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: UPPSC Various Post Online Form 2026",
       "   = duplicate of an existing recruitment, skipped: Railway RRC CR Apprentice Online Form 2026",
       "   = same source page as an existing job, skipped: Oil India Geologist Recruitment 2026 – Walk-in Interview for 3 Contractual Geologist Posts",
@@ -44,15 +45,14 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 3 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T13:12:42.875Z",
+    "at": "2026-11-05T13:49:37.786Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 59, geo-blocked)",
       "rrb-portal": "paused (fails 55, geo-blocked)",
       "ncs": "paused (fails 47)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "rbi": "20 links, 0 new via direct",
       "bpsc": "paused (fails 57, geo-blocked)",
       "rpsc": "paused (fails 47, geo-blocked)",
       "mppsc": "paused (fails 59, geo-blocked)",
@@ -75,7 +75,7 @@
       "tnpsc": "paused (fails 59, geo-blocked)",
       "kpsc": "paused (fails 59, geo-blocked)",
       "appsc": "paused (fails 59, geo-blocked)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 59, geo-blocked)",
       "opsc": "paused (fails 47)",
       "hpsc": "paused (fails 59, geo-blocked)",
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 59, geo-blocked)",
       "bssc": "paused (fails 8)",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 59, geo-blocked)",
       "osssc": "paused (fails 26)",
       "gsssb": "paused (fails 59, geo-blocked)",
       "sssb-punjab": "paused (fails 59, geo-blocked)",
       "hprca": "paused (fails 59, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "kea": "paused (fails 59, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "dsssb2": "paused (fails 59, geo-blocked)",
+      "kea": "paused (fails 59, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 59, geo-blocked)",
       "kvs": "4 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 59, geo-blocked)",
       "tslprb": "paused (fails 59)",
       "slprb-ap": "paused (fails 59, geo-blocked)",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "bpssc": "209 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in"
+      "bpssc": "209 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T13:12:43.160Z",
+    "at": "2026-11-05T13:49:38.139Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T13:18:10.286Z",
+    "at": "2026-11-05T13:49:48.916Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,42 +160,22 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 18,
-    "hindiJobs": 18,
-    "hindiUpdatesPending": 3,
-    "hindiUpdates": 3,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 18 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: INMS रिसर्च एसोसिएट I भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS Patna भर्ती 2026 – 11 अधीक्षण अभियंता, वरिष्ठ विश्लेषक और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: CCS HAU युवा पेशेवर भर्ती 2026 – ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: AIIMS पटना भर्ती 2026 - मैनिफोल्ड तकनीशियन, सीनियर प्लंबर पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: TSU सीनियर कंसल्टेंट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: DFCCIL टॉवर वैगन ड्राइवर भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: IIT भिलाई परियोजना सहायक/क्षेत्र सहायक भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: AIIMS पटना भर्ती 2026 – पुस्तकालयाध्यक्ष, लॉन्ड्री मैनेजर और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: CCS HAU YP II भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DHS रामगढ़ भर्ती 2026 – 32 स्टाफ नर्स, फार्मासिस्ट और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS जोधपुर फील्ड इन्वेस्टिगेटर भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: मणिपुर कृषि विभाग भर्ती 2026 – 2 ब्लॉक टेक्नोलॉजी मैनेजर और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NFSU अनुसंधान सहयोगी भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: GBPNIHE भर्ती 2026 – 3 रिसर्च ऑफिसर, फील्ड असिस्टेंट पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT भिलाई JRF भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: IRMA कंसल्टेंट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: MPKV युवा प्रोफेशनल I ( कीट विज्ञान ) भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: श्री तुलसीदास उदयराज संस्कृत महाविद्यालय भर्ती 2026 – शिक्षक, सहायक प्रोफेसर पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi update: Super TET परीक्षा तिथि 2026 जारी - उत्तर प्रदेश सहायक शिक्षक परीक्षा कार्यक्रम PDF",
-      "  ✓ hindi update: KEA परीक्षा कार्यक्रम 2026 जारी - संशोधित नवंबर परीक्षा कार्यक्रम PDF चेक करें",
-      "  ✓ hindi update: WBCS प्रीलीम्स रिजल्ट 2026 जारी - मेरिट लिस्ट और कट ऑफ PDF डाउनलोड करें"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: MRPL अग्नि अधिकारी भर्ती 2026 - 05 पदों के लिए ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-05T13:18:47.605Z",
+    "at": "2026-11-05T13:50:21.705Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
@@ -204,8 +184,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for inms-research-associate-i-2026 (286 words, need 300) — not published.",
-      "  + analysis: AIIMS Patna Recruitment 2026 – Apply Offline for 11 Superintending Engineer, Senior Analyst and More Posts"
+      "  analysis below quality bar for mrpl-fire-officer-2026 (267 words, need 300) — not published.",
+      "  + analysis: Institute of Nano Medical Sciences Invites Applications for Research Associate I Position"
     ]
   },
   "notify": {
