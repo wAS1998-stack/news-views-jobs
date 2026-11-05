@@ -1,5 +1,841 @@
 [
   {
+    "id": "rites-limited-apprentice-2026",
+    "title": "RITES Limited Apprentice Recruitment 2026 - Apply Online for 281 Posts",
+    "organization": "RITES Limited",
+    "summary": "RITES Limited is recruiting for 281 Apprentice positions across various disciplines including Graduate, Diploma, and ITI Apprentices for the financial year 2026-27. The application window opens on November 5, 2026, and closes on November 25, 2026. Eligible candidates will be selected based on their academic merit without an examination.",
+    "apply_link": "https://apprentice.rites.com/ApprenticeForm/",
+    "official_notification": "https://www.apprenticeshipindia.gov.in/",
+    "source": "https://www.indgovtjobs.in/2026/11/rites-limited-apprentice-recruitment.html",
+    "published": "2026-11-05",
+    "org_short": "RITES",
+    "post_name": "Graduate, Diploma and Trade Apprentice",
+    "total_vacancies": 281,
+    "qualification": "Degree / Diploma / ITI",
+    "age_min": 18,
+    "application_start": "2026-11-05",
+    "application_end": "2026-11-25",
+    "salary": "₹10,560 – ₹15,650 per month",
+    "location": "Anywhere in India",
+    "official_website": "https://nats.education.gov.in/",
+    "summary_hindi": "RITES लिमिटेड विभिन्न शैक्षणिक क्षेत्रों में 281 अपरेंटिस पदों की भर्ती कर रहा है, जिसमें ग्रेजुएट, डिप्लोमा और आईटीआई अपरेंटिस शामिल हैं। आवेदन की प्रक्रिया 05 नवंबर 2026 को शुरू होकर 25 नवंबर 2026 को समाप्त होगी। योग्य उम्मीदवारों का चयन परीक्षा के बिना उनके शैक्षणिक मेरिट के आधार पर किया जाएगा।",
+    "selection_process": [
+      "Merit List (Academic Marks)",
+      "Document Verification"
+    ],
+    "how_to_apply": [
+      "Step 1: Register on the NATS/NAPS portal based on your qualification.",
+      "Step 2: Log in and apply for apprenticeship opportunities with RITES Limited.",
+      "Step 3: After applying through the portal, submit the RITES application form with required documents.",
+      "Step 4: Ensure all documents are combined into a single PDF not exceeding 10 MB.",
+      "Step 5: Indicate your preferred posting location, keeping in mind that it is subject to company requirements."
+    ],
+    "overview": [
+      "RITES Limited is inviting applications for apprenticeship positions that provide practical training in various engineering fields. This opportunity is suited for individuals seeking to enhance their skills and gain experience in a professional environment. While the apprenticeship period lasts for one year, applicants should be aware that there is no guarantee of employment thereafter.",
+      "Candidates with qualifications including BE/B.Tech, diploma, or ITI can apply, making the opportunities accessible to a wide range of applicants. The selection process is based solely on the academic merit, making it essential for candidates to have good marks. It's important for applicants to ensure they meet the educational and age criteria before applying to avoid disqualification.",
+      "RITES Limited is a Navratna Company under the Ministry of Railways, involved in providing consultancy and project management in transport infrastructure. The apprenticeship does not just provide financial support through stipends but also enhances the employability of the candidates by training them in real-world projects."
+    ],
+    "about_organization": "RITES Limited is a Schedule 'A' Central Public Sector Enterprise under the Ministry of Railways, recognized for its engineering consultancy and project management in infrastructural projects. The organization plays a crucial role in the development of transport and infrastructure in India.",
+    "eligibility_notes": "Candidates must be at least 18 years old, and there is no upper age limit specified. Graduates who completed their qualifications before November 5, 2021, and those with prior apprenticeship training or work experience are not eligible to apply.",
+    "preparation_tips": [
+      "Focus on academic subjects related to your specific field of engineering or diploma to maintain a strong merit score.",
+      "Review and prepare necessary documents before applying to ensure a smooth application process.",
+      "Understand the apprenticeship terms and conditions, including the absence of employment guarantees after completion.",
+      "Keep track of application deadlines to ensure all stages of the application are completed on time."
+    ],
+    "faq": [
+      {
+        "q": "How many vacancies are available in RITES Apprentice Recruitment 2026?",
+        "a": "Total 281 vacancies are available for Graduate, Diploma, and ITI Apprentices."
+      },
+      {
+        "q": "What is the last date to apply for RITES Apprentice 2026?",
+        "a": "The last date for applying is November 25, 2026."
+      },
+      {
+        "q": "What is the stipend for RITES Apprentices?",
+        "a": "Graduate Apprentices will receive ₹15,650 per month, Diploma Apprentices ₹13,450 per month, and ITI Trade Apprentices ₹10,560 per month."
+      },
+      {
+        "q": "What is the selection process for RITES Apprentice?",
+        "a": "Selection will be based on the merit list prepared from marks obtained in the essential qualification, with no written test or interview."
+      },
+      {
+        "q": "Is there any guarantee of employment after completing the apprenticeship?",
+        "a": "No, RITES Limited is not obligated to offer employment during or after the apprenticeship training."
+      }
+    ],
+    "hi": {
+      "title": "RITES लिमिटेड अप्रेंटिस भर्ती 2026 - 281 पदों के लिए ऑनलाइन आवेदन करें",
+      "organization": "RITES लिमिटेड",
+      "post_name": "ग्रेजुएट, डिप्लोमा और ट्रेड अप्रेंटिस",
+      "qualification": "डिग्री / डिप्लोमा / ITI",
+      "salary": "₹10,560 – ₹15,650 प्रति माह",
+      "location": "भारत में कहीं भी",
+      "summary": "RITES लिमिटेड वित्तीय वर्ष 2026-27 के लिए ग्रेजुएट, डिप्लोमा, और ITI अप्रेंटिस के लिए 281 पदों की भर्ती कर रहा है। आवेदन की प्रक्रिया 5 नवंबर, 2026 को शुरू होगी और 25 नवंबर, 2026 को समाप्त होगी। योग्य उम्मीदवारों का चयन उनके शैक्षणिक मेरिट के आधार पर होगा, बिना परीक्षा के।",
+      "overview": [
+        "RITES लिमिटेड विभिन्न इंजीनियरिंग क्षेत्रों में व्यावहारिक प्रशिक्षण प्रदान करने के लिए अप्रेंटिसशिप पदों के लिए आवेदन आमंत्रित कर रहा है। यह अवसर उन व्यक्तियों के लिए है जो अपनी क्षमताओं को बढ़ाना और पेशेवर वातावरण में अनुभव प्राप्त करना चाहते हैं। जबकि अप्रेंटिसशिप की अवधि एक वर्ष है, आवेदकों को यह जानना आवश्यक है कि बाद में रोजगार की कोई गारंटी नहीं है।",
+        "BE/B.Tech, डिप्लोमा, या ITI की योग्यताओं वाले उम्मीदवार आवेदन कर सकते हैं, जिससे विभिन्न आवेदकों के लिए अवसरों की उपलब्धता बढ़ती है। चयन प्रक्रिया केवल शैक्षणिक मेरिट के आधार पर होती है, इसलिए उम्मीदवारों के लिए अच्छे अंक होना आवश्यक है। आवेदकों को आवेदन करने से पहले शैक्षणिक और आयु मानदंडों को पूरा करने की सुनिश्चितता करनी चाहिए, ताकि अयोग्यता से बचा जा सके।",
+        "RITES लिमिटेड रेल मंत्रालय के अंतर्गत एक नवरत्न कंपनी है, जो परिवहन ढांचे में परामर्श और परियोजना प्रबंधन में संलग्न है। अप्रेंटिसशिप ना केवल स्टाइपेंड के माध्यम से वित्तीय सहायता प्रदान करती है, बल्कि उम्मीदवारों की रोजगार क्षमता को भी वास्तविक परियोजनाओं में प्रशिक्षण देकर बढ़ाती है।"
+      ],
+      "eligibility_notes": "उम्मीदवारों की आयु कम से कम 18 वर्ष होनी चाहिए, और कोई ऊपरी आयु सीमा निर्दिष्ट नहीं है। जो ग्रेजुएट 5 नवंबर, 2021 से पहले अपनी योग्यता पूरी कर चुके हैं और जिनके पास पूर्व अप्रेंटिसशिप प्रशिक्षण या कार्य अनुभव है, वे आवेदन करने के लिए अयोग्य हैं।",
+      "about_organization": "RITES लिमिटेड रेल मंत्रालय के अंतर्गत एक अनुसूची 'A' केंद्रीय सार्वजनिक क्षेत्र का उद्यम है, जो संरचनात्मक परियोजनाओं में इंजीनियरिंग परामर्श और परियोजना प्रबंधन के लिए जाना जाता है। संगठन भारत में परिवहन और बुनियादी ढांचे के विकास में महत्वपूर्ण भूमिका निभाता है।",
+      "how_to_apply": [
+        "चरण 1: अपनी योग्यता के अनुसार NATS/NAPS पोर्टल पर रजिस्टर करें।",
+        "चरण 2: लॉगिन करें और RITES लिमिटेड के साथ अप्रेंटिसशिप अवसरों के लिए आवेदन करें।",
+        "चरण 3: पोर्टल के माध्यम से आवेदन करने के बाद, आवश्यक दस्तावेजों के साथ RITES आवेदन पत्र जमा करें।",
+        "चरण 4: सभी दस्तावेजों को एक ही PDF में मिलाकर 10 MB से अधिक नहीं होने की सुनिश्चितता करें।",
+        "चरण 5: अपने पसंदीदा स्थान को इंगित करें, ध्यान में रखते हुए कि यह कंपनी की आवश्यकताओं के अधीन है।"
+      ],
+      "selection_process": [
+        "मेरिट लिस्ट (शैक्षणिक अंक)",
+        "दस्तावेज़ सत्यापन"
+      ],
+      "preparation_tips": [
+        "आपके विशेष इंजीनियरिंग या डिप्लोमा से संबंधित शैक्षणिक विषयों पर ध्यान केंद्रित करें ताकि मेरिट स्कोर मजबूत बने।",
+        "आवेदन करने से पहले आवश्यक दस्तावेजों की समीक्षा और तैयारी करें ताकि आवेदन प्रक्रिया सुगम हो सके।",
+        "अप्रेंटिसशिप की शर्तें और विकल्पों को समझें, जिसमें पूर्ण होने के बाद रोजगार की कोई गारंटी नहीं है।",
+        "आवेदन की समय सीमा का ध्यान रखें ताकि आवेदन के सभी चरण समय पर पूर्ण हो सकें।"
+      ],
+      "faq": [
+        {
+          "q": "RITES अप्रेंटिस भर्ती 2026 में कितनी रिक्तियाँ हैं?",
+          "a": "कुल 281 रिक्तियाँ ग्रेजुएट, डिप्लोमा, और ITI अप्रेंटिस के लिए उपलब्ध हैं।"
+        },
+        {
+          "q": "RITES अप्रेंटिस 2026 के लिए आवेदन करने की आखिरी तिथि क्या है?",
+          "a": "आवेदन करने की आखिरी तिथि 25 नवंबर, 2026 है।"
+        },
+        {
+          "q": "RITES अप्रेंटिस के लिए स्टाइपेंड क्या है?",
+          "a": "ग्रेजुएट अप्रेंटिस को ₹15,650 प्रति माह, डिप्लोमा अप्रेंटिस को ₹13,450 प्रति माह, और ITI ट्रेड अप्रेंटिस को ₹10,560 प्रति माह मिलेंगे।"
+        },
+        {
+          "q": "RITES अप्रेंटिस के लिए चयन प्रक्रिया क्या है?",
+          "a": "चयन आवश्यक योग्यता में प्राप्त अंकों से तैयार मेरिट सूची पर आधारित होगा, जिसमें कोई लिखित परीक्षा या साक्षात्कार नहीं होगा।"
+        },
+        {
+          "q": "क्या अप्रेंटिसशिप पूरी करने के बाद रोजगार की कोई गारंटी है?",
+          "a": "नहीं, RITES लिमिटेड अप्रेंटिसशिप प्रशिक्षण के दौरान या बाद में रोजगार की पेशकश करने के लिए बाध्य नहीं है।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "vnit-project-associate-i-2026",
+    "title": "VNIT Project Associate I Recruitment 2026 – Apply Online",
+    "organization": "Visvesvaraya National Institute of Technology",
+    "summary": "VNIT is recruiting a temporary Project Associate-I for a project funded by the Anusandhan National Research Foundation. The selected candidate will work on intelligent detection and mitigation of cyber-attacks. Qualifications include a B.E/B.Tech or M.E/M.Tech in Computer Science/IT with minimum 60% or equivalent CGPA.",
+    "apply_link": "https://www.vnit.ac.in",
+    "source": "https://www.freejobalert.com/articles/vnit-project-associate-i-pa-i-recruitment-2026-3079069",
+    "published": "2026-11-05",
+    "org_short": "VNIT",
+    "post_name": "Project Associate-I",
+    "total_vacancies": 1,
+    "qualification": "B.Tech/B.E, M.E/M.Tech",
+    "application_end": "2026-11-10",
+    "salary": "₹30,000 - ₹37,000 /month",
+    "location": "Nagpur, Maharashtra",
+    "official_website": "https://vnit.ac.in/",
+    "summary_hindi": "VNIT ने अनुसंधान अनुदान फंडेड प्रोजेक्ट के लिए अस्थायी परियोजना सहायक- I की भर्ती के लिए आवेदन आमंत्रित किए हैं। चयनित उम्मीदवार साइबर हमलों का बुद्धिमान पता लगाने और रोकने पर काम करेंगे। योग्यता में कंप्यूटर विज्ञान/आईटी में बी.ई./बी.टेक या एम.ई./एम.टेक शामिल हैं जिसमें न्यूनतम 60% या समकक्ष CGPA होना चाहिए।",
+    "how_to_apply": [
+      "Take the prescribed application format available on the VNIT website.",
+      "Fill in the application form with personal details, educational background, and additional required data.",
+      "Attach necessary documents including CV, degree certificates, GATE scorecard, and others.",
+      "Combine the filled application and documents into a single PDF file.",
+      "Email the PDF to nidhilal@cse.vnit.ac.in with the subject 'Application for the Post of PA-I in the CSE Department' by the deadline."
+    ],
+    "overview": [
+      "The VNIT Project Associate-I role involves participating in a significant research project aimed at combating cyber threats. This position offers an excellent opportunity for candidates interested in the intersection of technology and security, particularly in developing advanced systems for cyber defense.",
+      "Ideal candidates should hold a B.Tech/B.E or M.E/M.Tech degree in Computer Science or Information Technology, exhibiting strong analytical skills and proficiency in programming, especially in Python. The role is well-suited for individuals looking to enhance their research skills and contribute to impactful projects.",
+      "Moreover, the temporary nature of the position allows for flexibility and the potential for extension based on performance, making it an attractive option for fresh graduates or early-career professionals looking to gain valuable experience in a research environment."
+    ],
+    "about_organization": "Visvesvaraya National Institute of Technology is located in Nagpur, Maharashtra, and is dedicated to providing high-quality education in engineering and technology. The institute engages in various research activities, contributing to advances in fields like information technology and computer science.",
+    "eligibility_notes": "Candidates must possess a first-class B.E/B.Tech or M.E/M.Tech in Computer Science or a related field. The application does not specify an upper age limit, and there are no particular relaxations mentioned for specific categories.",
+    "preparation_tips": [
+      "Familiarize yourself with the fundamentals of computer science and cybersecurity, focusing on areas relevant to the project.",
+      "Review advanced programming concepts, particularly in Python, as coding skills are essential for this position.",
+      "Study relevant literature on cyber-attack detection techniques and AI applications in cybersecurity for better insight into the project's objectives."
+    ],
+    "faq": [
+      {
+        "q": "What is the duration of the appointment?",
+        "a": "The initial appointment is for one year and can be extended based on satisfactory performance."
+      },
+      {
+        "q": "What is the salary range for this position?",
+        "a": "The monthly salary ranges from ₹30,000 to ₹37,000, depending on qualifications."
+      },
+      {
+        "q": "What qualifications are required?",
+        "a": "Candidates must hold a B.E/B.Tech or M.E/M.Tech in Computer Science or Information Technology with at least 60% or equivalent CGPA."
+      },
+      {
+        "q": "How can I apply for the position?",
+        "a": "You can apply by completing the application format and emailing it along with required documents to nidhilal@cse.vnit.ac.in."
+      },
+      {
+        "q": "Is there an application fee?",
+        "a": "The official notification does not specify any application fee."
+      }
+    ],
+    "careers_link": "https://vnit.ac.in/recruitment/",
+    "apply_checked": "2026-11-05",
+    "apply_tries": 1,
+    "hi": {
+      "title": "VNIT प्रोजेक्ट एसोसिएट I भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "organization": "विश्वेश्वरैया राष्ट्रीय प्रौद्योगिकी संस्थान",
+      "post_name": "प्रोजेक्ट एसोसिएट-I",
+      "qualification": "B.Tech/B.E, M.E/M.Tech",
+      "salary": "₹30,000 - ₹37,000 /माह",
+      "location": "नागपुर, महाराष्ट्र",
+      "summary": "VNIT अनुसंधान राष्ट्रीय फाउंडेशन द्वारा वित्त पोषित एक प्रोजेक्ट के लिए एक अस्थायी प्रोजेक्ट एसोसिएट-I की भर्ती कर रहा है। चयनित उम्मीदवार साइबर हमलों की बुद्धिमान पहचान और रोकथाम पर काम करेगा। योग्यताएं B.E/B.Tech या M.E/M.Tech कंप्यूटर साइंस/IT में होंगी, जिसमें न्यूनतम 60% या समकक्ष CGPA होना आवश्यक है।",
+      "overview": [
+        "VNIT प्रोजेक्ट एसोसिएट-I की भूमिका एक महत्वपूर्ण शोध परियोजना में भाग लेना है जिसका उद्देश्य साइबर खतरों का मुकाबला करना है। यह स्थिति उन उम्मीदवारों के लिए एक उत्कृष्ट अवसर प्रदान करती है जो प्रौद्योगिकी और सुरक्षा के चौराहे में रुचि रखते हैं, विशेष रूप से साइबर रक्षा के लिए उन्नत प्रणालियों के विकास में।",
+        "आदर्श उम्मीदवारों को कंप्यूटर विज्ञान या सूचना प्रौद्योगिकी में B.Tech/B.E या M.E/M.Tech की डिग्री होनी चाहिए, जिसमें मजबूत विश्लेषणात्मक कौशल और प्रोग्रामिंग, विशेष रूप से Python में दक्षता होनी चाहिए। यह भूमिका उन व्यक्तियों के लिए उपयुक्त है जो अपने शोध कौशल को बढ़ाना चाहते हैं और प्रभावशाली परियोजनाओं में योगदान देना चाहते हैं।",
+        "इसके अलावा, इस अस्थायी पद की प्रकृति लचीलेपन की अनुमति देती है और प्रदर्शन के आधार पर विस्तारण की संभावना होती है, जिससे यह नए स्नातकों या प्रारंभिक करियर के पेशेवरों के लिए आकर्षक विकल्प बनता है जो शोध वातावरण में मूल्यवान अनुभव प्राप्त करना चाहते हैं।"
+      ],
+      "eligibility_notes": "उम्मीदवारों के पास कंप्यूटर विज्ञान या संबंधित क्षेत्र में पहली श्रेणी की B.E/B.Tech या M.E/M.Tech होनी चाहिए। आवेदन में कोई ऊपरी आयु सीमा निर्दिष्ट नहीं की गई है और विशेष श्रेणियों के लिए कोई विशेष छूट का उल्लेख नहीं किया गया है।",
+      "about_organization": "विश्वेश्वरैया राष्ट्रीय प्रौद्योगिकी संस्थान नागपुर, महाराष्ट्र में स्थित है और इंजीनियरिंग और प्रौद्योगिकी में उच्च गुणवत्ता की शिक्षा प्रदान करने के लिए समर्पित है। संस्थान विभिन्न अनुसंधान गतिविधियों में संलग्न है, जो सूचना प्रौद्योगिकी और कंप्यूटर विज्ञान जैसे क्षेत्रों में उन्नति में योगदान देता है।",
+      "how_to_apply": [
+        "VNIT वेबसाइट पर उपलब्ध निर्धारित आवेदन प्रारूप लें।",
+        "आवेदन पत्र में व्यक्तिगत विवरण, शैक्षणिक पृष्ठभूमि और अतिरिक्त आवश्यक डेटा भरें।",
+        "CV, डिग्री प्रमाण पत्र, GATE स्कोरकार्ड और अन्य आवश्यक दस्तावेज संलग्न करें।",
+        "भरी हुई आवेदन और दस्तावेजों को एक ही PDF फाइल में मिलाएं।",
+        "अवधि तक nidhilal@cse.vnit.ac.in पर 'CSE विभाग में PA-I के पद के लिए आवेदन' विषय के साथ PDF ईमेल करें।"
+      ],
+      "preparation_tips": [
+        "कंप्यूटर विज्ञान और साइबर सुरक्षा के मूल सिद्धांतों के साथ परिचित हों, परियोजना से संबंधित क्षेत्रों पर ध्यान देते हुए।",
+        "विशेष रूप से Python में कोडिंग कौशल आवश्यक होने के कारण उन्नत प्रोग्रामिंग अवधारणाओं का पुनरावलोकन करें।",
+        "साइबर हमले की पहचान तकनीकों और साइबर सुरक्षा में AI अनुप्रयोगों पर संबंधित साहित्य का अध्ययन करें ताकि परियोजना के उद्देश्यों के प्रति बेहतर समझ प्राप्त हो सके।"
+      ],
+      "faq": [
+        {
+          "q": "नियुक्ति की अवधि क्या है?",
+          "a": "प्रारंभिक नियुक्ति एक वर्ष के लिए है और संतोषजनक प्रदर्शन के आधार पर बढ़ाई जा सकती है।"
+        },
+        {
+          "q": "इस पद के लिए वेतन सीमा क्या है?",
+          "a": "मासिक वेतन ₹30,000 से ₹37,000 के बीच है, जो योग्यताओं के अनुसार है।"
+        },
+        {
+          "q": "क्या योग्यताएं आवश्यक हैं?",
+          "a": "उम्मीदवारों के पास कंप्यूटर विज्ञान या सूचना प्रौद्योगिकी में कम से कम 60% या समकक्ष CGPA के साथ B.E/B.Tech या M.E/M.Tech होना चाहिए।"
+        },
+        {
+          "q": "मैं इस पद के लिए कैसे आवेदन कर सकता हूँ?",
+          "a": "आप आवेदन प्रारूप को भरकर और आवश्यक दस्तावेजों के साथ nidhilal@cse.vnit.ac.in पर ईमेल करके आवेदन कर सकते हैं।"
+        },
+        {
+          "q": "क्या आवेदन शुल्क है?",
+          "a": "आधिकारिक अधिसूचना में किसी भी आवेदन शुल्क का उल्लेख नहीं है।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "imu-kochi-faculty-2026",
+    "title": "IMU Kochi Faculty Recruitment 2026 – Apply Offline",
+    "organization": "Indian Maritime University (A Central University, Govt. of India), Kochi Campus",
+    "summary": "Indian Maritime University (IMU) Kochi Campus is recruiting for 2 faculty positions in Logistics and Supply Chain Management. The recruitment is for contract-based roles, initially for six months, and applicants must submit their applications by December 5, 2026. Selection will be made through an interview process.",
+    "apply_link": "https://www.imu.edu.in/imunew///uploads/files/recruitments/2026/Adv_website-Recruitment_Faculty_SMM_04112026.pdf",
+    "official_notification": "https://www.imu.edu.in/imunew///uploads/files/recruitments/2026/Adv_website-Recruitment_Faculty_SMM_04112026.pdf",
+    "source": "https://www.freejobalert.com/articles/imu-kochi-faculty-logistics-and-supply-chain-recruitment-2026-3079067",
+    "published": "2026-11-05",
+    "org_short": "IMU",
+    "post_name": "Faculty (Logistics and Supply Chain Management)",
+    "total_vacancies": 2,
+    "qualification": "MBA/PGDM, Post Graduate, M.Com, M.Phil/Ph.D, Graduate",
+    "age_max": 60,
+    "application_end": "2026-12-05",
+    "salary": "Commensurate with qualifications and experience",
+    "location": "Kochi, Kerala",
+    "official_website": "https://imu.edu.in/",
+    "summary_hindi": "भारतीय समुद्री विश्वविद्यालय (आईएमयू) कोच्चि परिसर लॉजिस्टिक्स और सप्लाई चेन प्रबंधन में 2 फैकल्टी पदों के लिए भर्ती कर रहा है। यह भर्ती अनुबंध आधारित भूमिकाओं के लिए है, जो प्रारंभ में छह महीने के लिए होगी, और आवेदकों को 5 दिसंबर 2026 तक अपनी आवेदन पत्र प्रस्तुत करने होंगे। चयन एक साक्षात्कार प्रक्रिया के माध्यम से किया जाएगा।",
+    "selection_process": [
+      "Interview"
+    ],
+    "how_to_apply": [
+      "Fill in the attached application format; applications not in the prescribed format will be summarily rejected.",
+      "Enclose photocopies of all supporting documents, certificates and testimonials.",
+      "Send the hard copy by Registered/Speed post by December 5, 2026, to the Deputy Registrar at IMU Kochi.",
+      "Email the soft copy of the application to the provided email address.",
+      "Ensure that both hard and soft copies are submitted for consideration."
+    ],
+    "overview": [
+      "The recruitment at IMU Kochi is focused on bringing in talent for teaching in the Logistics and Supply Chain Management department. The faculty will be involved in instructing BBA and MBA students, guiding projects, and managing examination-related responsibilities. This position is ideal for individuals passionate about education and looking to contribute to the development of future professionals in this critical field.",
+      "This role suits candidates with relevant academic qualifications along with teaching experience, making it an excellent opportunity for those looking to advance their career in academia. With the initial contract lasting six months, there is potential for extension based on performance, which provides a flexible yet stable working environment.",
+      "Applicants should ensure they meet the eligibility criteria and possess the required qualifications before applying. They should also be prepared for the interview process, as it will be the basis for selection. This recruitment not only highlights the need for skilled educators in logistics but also underscores the importance of quality education in strengthening the supply chain sector."
+    ],
+    "about_organization": "Indian Maritime University is a Central University under the Government of India that focuses on maritime education and training. It aims to provide quality education and research opportunities in various disciplines related to maritime studies.",
+    "eligibility_notes": "To apply, candidates should have a graduation degree along with an MBA or equivalent qualifications and relevant teaching experience. There's a two-year age relaxation for deserving candidates, ensuring opportunities for a broader pool of applicants.",
+    "preparation_tips": [
+      "Brush up on teaching methodologies and course content related to Logistics and Supply Chain Management.",
+      "Familiarize yourself with recent trends in the logistics industry and relevant case studies.",
+      "Prepare for potential questions regarding teaching experience and how you would approach classroom management.",
+      "Practice interview techniques to present your qualifications and teaching philosophy effectively."
+    ],
+    "faq": [
+      {
+        "q": "What is the last date to apply for the faculty position?",
+        "a": "The last date to submit your application is December 5, 2026."
+      },
+      {
+        "q": "What qualifications are required for the faculty position?",
+        "a": "Candidates must possess an MBA or M.Com along with relevant teaching experience."
+      },
+      {
+        "q": "How will the selection process be conducted?",
+        "a": "The selection process will be conducted through an interview. Only shortlisted candidates will be notified."
+      },
+      {
+        "q": "Is there any application fee for this recruitment?",
+        "a": "The official notification does not specify any application fee."
+      },
+      {
+        "q": "What is the contract period for the faculty position?",
+        "a": "The initial contract period is six months, with potential for extensions based on necessity and performance."
+      }
+    ],
+    "hi": {
+      "title": "IMU Kochi फैक्ल्टी भर्ती 2026 - ऑफलाइन आवेदन करें",
+      "organization": "भारतीय समुद्री विश्वविद्यालय (एक केंद्रीय विश्वविद्यालय, भारत सरकार), कोच्चि कैंपस",
+      "post_name": "फैक्ल्टी (लॉजिस्टिक्स और सप्लाई चेन प्रबंधन)",
+      "qualification": "MBA/PGDM, पोस्ट ग्रेजुएट, M.Com, M.Phil/Ph.D, ग्रेजुएट",
+      "salary": "योग्यता और अनुभव के अनुसार",
+      "location": "कोच्चि, केरल",
+      "summary": "भारतीय समुद्री विश्वविद्यालय (IMU) कोच्चि कैंपस लॉजिस्टिक्स और सप्लाई चेन प्रबंधन में 2 फैक्ल्टी पदों की भर्ती कर रहा है। यह भर्ती अनुबंध आधारित भूमिकाओं के लिए है, जो प्रारंभ में छह महीने के लिए है, और आवेदक को 5 दिसंबर, 2026 तक अपने आवेदन जमा करने होंगे। चयन प्रक्रिया एक साक्षात्कार के माध्यम से की जाएगी।",
+      "overview": [
+        "IMU कोच्चि में भर्ती का उद्देश्य लॉजिस्टिक्स और सप्लाई चेन प्रबंधन विभाग में पढ़ाने के लिए प्रतिभा को लाना है। फैकल्टी BBA और MBA छात्रों को पढ़ाने, प्रोजेक्ट मार्गदर्शन करने, और परीक्षा संबंधित जिम्मेदारियों का प्रबंधन करने में शामिल होंगी। यह पद शिक्षा के प्रति उत्साही व्यक्तियों के लिए आदर्श है जो इस महत्वपूर्ण क्षेत्र में भविष्य के पेशेवरों के विकास में योगदान देना चाहते हैं।",
+        "यह भूमिका उन उम्मीदवारों के लिए उपयुक्त है जिनके पास संबंधित शैक्षणिक योग्यता के साथ-साथ शिक्षण अनुभव है, जिससे यह शैक्षणिक क्षेत्र में अपने करियर को आगे बढ़ाने की तलाश में लोगों के लिए एक शानदार अवसर बनता है। प्रारंभिक अनुबंध छह महीने तक रहेगा, प्रदर्शन के आधार पर विस्तार की संभावना है, जिससे एक लचीला लेकिन स्थिर कार्य वातावरण का निर्माण होता है।",
+        "आवेदकों को आवेदन करने से पहले यह सुनिश्चित करना चाहिए कि वे पात्रता मानदंड पूरा करते हैं और आवश्यक योग्यता रखते हैं। उन्हें चयन के आधार पर साक्षात्कार प्रक्रिया के लिए भी तैयार रहना चाहिए। यह भर्ती केवल लॉजिस्टिक्स में कुशल शिक्षकों की आवश्यकता को उजागर नहीं करती बल्कि इस क्षेत्र में गुणवत्तापूर्ण शिक्षा के महत्व को भी रेखांकित करती है।"
+      ],
+      "eligibility_notes": "आवेदन करने के लिए उम्मीदवारों के पास स्नातक की डिग्री के साथ MBA या समकक्ष योग्यता और संबंधित शिक्षण अनुभव होना चाहिए। योग्य उम्मीदवारों के लिए दो साल की आयु छूट है, जो आवेदकों के एक व्यापक पूल के लिए अवसर सुनिश्चित करती है。",
+      "about_organization": "भारतीय समुद्री विश्वविद्यालय एक केंद्रीय विश्वविद्यालय है जो भारत सरकार के अधीन है और समुद्री शिक्षा और प्रशिक्षण पर केंद्रित है। इसका उद्देश्य समुद्री अध्ययन से संबंधित विभिन्न विषयों में गुणवत्तापूर्ण शिक्षा और शोध के अवसर प्रदान करना है।",
+      "how_to_apply": [
+        "संलग्न आवेदन प्रारूप भरें; निर्धारित प्रारूप में नहीं होने वाले आवेदन तुरंत अस्वीकृत कर दिए जाएंगे।",
+        "सभी सहायक दस्तावेजों, प्रमाण पत्रों और प्रशंसापत्रों की फोटोकॉपियाँ संलग्न करें।",
+        "5 दिसंबर, 2026 तक IMU कोच्चि के उप रजिस्ट्रार को रजिस्टर्ड/स्पीड पोस्ट से हार्ड कॉपी भेजें।",
+        "आवेदन की सॉफ्ट कॉपी प्रदान किए गए ईमेल पते पर भेजें।",
+        "समीक्षा के लिए सुनिश्चित करें कि हार्ड और सॉफ्ट कॉपी दोनों जमा की गई हों।"
+      ],
+      "selection_process": [
+        "साक्षात्कार"
+      ],
+      "preparation_tips": [
+        "लॉजिस्टिक्स और सप्लाई चेन प्रबंधन से संबंधित शिक्षण विधियों और पाठ्यक्रम सामग्री को रिवीज़ करें।",
+        "लॉजिस्टिक्स उद्योग में हालिया प्रवृत्तियों और संबंधित केस स्टडीज़ से परिचित हों।",
+        "शिक्षण अनुभव के बारे में संभावित सवालों के लिए तैयार रहें और कक्षा प्रबंधन को कैसे संभालेंगे, इस पर चर्चा करें।",
+        "अपनी योग्यता और शिक्षण दर्शन को प्रभावी रूप से प्रस्तुत करने के लिए साक्षात्कार तकनीकों का अभ्यास करें।"
+      ],
+      "faq": [
+        {
+          "q": "फैक्ल्टी पद के लिए आवेदन करने की अंतिम तिथि क्या है?",
+          "a": "आपके आवेदन जमा करने की अंतिम तिथि 5 दिसंबर, 2026 है।"
+        },
+        {
+          "q": "फैक्ल्टी पद के लिए कौन सी योग्यताएँ आवश्यक हैं?",
+          "a": "उम्मीदवारों के पास MBA या M.Com के साथ-साथ संबंधित शिक्षण अनुभव होना चाहिए।"
+        },
+        {
+          "q": "चयन प्रक्रिया कैसे आयोजित की जाएगी?",
+          "a": "चयन प्रक्रिया एक साक्षात्कार के माध्यम से आयोजित की जाएगी। केवल चयनित उम्मीदवारों को सूचित किया जाएगा।"
+        },
+        {
+          "q": "क्या इस भर्ती के लिए कोई आवेदन शुल्क है?",
+          "a": "आधिकारिक अधिसूचना में कोई आवेदन शुल्क निर्दिष्ट नहीं है।"
+        },
+        {
+          "q": "फैक्ल्टी पद का अनुबंध अवधि क्या है?",
+          "a": "प्रारंभिक अनुबंध अवधि छह महीने है, आवश्यकता और प्रदर्शन के आधार पर विस्तार की संभावनाएँ हैं।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "ghb-lower-division-clerk-group-ldc-2026",
+    "title": "GHB Recruitment 2026 – Apply Offline for 2 Lower Division Clerk Group, LDC Posts",
+    "organization": "Goa Housing Board",
+    "summary": "The Goa Housing Board has announced 2 vacancies for Lower Division Clerk and Multi Tasking Staff positions, specifically for the EWS category. Eligible candidates must submit their offline applications by 26 November 2026. Required qualifications include knowledge of Konkani and relevant educational qualifications for each post.",
+    "apply_link": "https://www.goa.gov.in/wp-content/uploads/2026/11/Goa-HousingBoard-advertisment-Form.pdf",
+    "official_notification": "https://www.goa.gov.in/wp-content/uploads/2026/11/Goa-HousingBoard-advertisment-Form.pdf",
+    "source": "https://www.freejobalert.com/articles/ghb-recruitment-2026-lower-division-clerk-group-3079065",
+    "published": "2026-11-05",
+    "org_short": "GHB",
+    "post_name": "Lower Division Clerk, Multi Tasking Staff",
+    "total_vacancies": 2,
+    "qualification": "10TH, 12TH, Diploma, ITI",
+    "age_max": 45,
+    "application_end": "2026-11-26",
+    "location": "Porvorim, Goa",
+    "official_website": "https://ghb.goa.gov.in/",
+    "summary_hindi": "गोवा हाउसिंग बोर्ड ने ईडब्ल्यूएस श्रेणी के तहत लोवर डिवीजन क्लर्क और मल्टी टास्किंग स्टाफ के लिए 2 रिक्तियों की घोषणा की है। योग्य उम्मीदवारों को 26 नवंबर 2026 तक अपना ऑफलाइन आवेदन भेजना होगा। प्रत्येक पद के लिए आवश्यक शिक्षण योग्यताओं के साथ ही कॉंकणी का ज्ञान अनिवार्य है।",
+    "how_to_apply": [
+      "Obtain the application form from the official notification.",
+      "Fill the application form completely and accurately in block letters.",
+      "Attach all required documents as specified in the notification.",
+      "Submit your application to the Managing Director, Goa Housing Board, Porvorim.",
+      "Make sure your application reaches before the deadline on 26 November 2026."
+    ],
+    "overview": [
+      "The Goa Housing Board is seeking applications for two positions: a Lower Division Clerk (Group C) and a Multi Tasking Staff (Group C) to aid in administrative functions and support services. This recruitment offers an excellent opportunity for individuals looking to work in a government role with job stability.",
+      "These positions are ideal for candidates who have completed their secondary or higher secondary education. Knowledge of Konkani is essential for both posts, making it suitable for local candidates who are familiar with the language requirements.",
+      "Working for the Goa Housing Board contributes to the management and development of housing projects across the state. Applicants should ensure they meet the eligibility criteria before applying to avoid any issues with their applications."
+    ],
+    "about_organization": "The Goa Housing Board is a government body responsible for planning and facilitating housing construction and development in the state of Goa. It plays a crucial role in addressing housing needs and providing infrastructure support.",
+    "eligibility_notes": "Candidates must be within the age limit of 45 years, with relaxations available for government employees and reserved category applicants. No specific minimum age is mentioned, but educational qualifications are necessary as outlined for each post.",
+    "preparation_tips": [
+      "Familiarize yourself with the job responsibilities and skills required for the Lower Division Clerk and Multi Tasking Staff roles.",
+      "Brush up on Konkani language proficiency, as it's essential for communication and interactions in the workplace.",
+      "Review any relevant educational materials or courses that align with the qualifications mentioned for each post."
+    ],
+    "faq": [
+      {
+        "q": "What is the last date to apply for the GHB recruitment?",
+        "a": "The last date to submit your offline application is 26 November 2026."
+      },
+      {
+        "q": "Is there an application fee for this recruitment?",
+        "a": "The official notification does not mention any application fee."
+      },
+      {
+        "q": "What qualifications are required for the Lower Division Clerk position?",
+        "a": "Candidates must possess a Higher Secondary School Certificate or an AICTE-approved diploma and have knowledge of computer applications and Konkani."
+      },
+      {
+        "q": "Can I apply if I am already working in a government job?",
+        "a": "Yes, you can apply, but you must submit your application through the proper channel."
+      },
+      {
+        "q": "How will I know if my application is accepted?",
+        "a": "The notification does not specify this, but candidates will typically be contacted if they are shortlisted for further stages."
+      }
+    ],
+    "hi": {
+      "title": "GHB भर्ती 2026 – 2 लोअर डिविजन क्लर्क ग्रुप, LDC पदों के लिए ऑफलाइन आवेदन करें",
+      "organization": "गोवा हाउसिंग बोर्ड",
+      "post_name": "लोअर डिविजन क्लर्क, मल्टी टास्किंग स्टाफ",
+      "qualification": "10TH, 12TH, डिप्लोमा, ITI",
+      "location": "पोरवोरिम, गोवा",
+      "summary": "गोवा हाउसिंग बोर्ड ने EWS श्रेणी के लिए लोअर डिविजन क्लर्क और मल्टी टास्किंग स्टाफ पदों के लिए 2 रिक्तियों की घोषणा की है। योग्य उम्मीदवारों को 26 नवंबर 2026 तक अपने ऑफलाइन आवेदन जमा करने होंगे। आवश्यक योग्यताओं में कोकणी की जानकारी और प्रत्येक पद के लिए प्रासंगिक शैक्षिक योग्यताएँ शामिल हैं।",
+      "overview": [
+        "गोवा हाउसिंग बोर्ड दो पदों के लिए आवेदन मांग रहा है: एक लोअर डिविजन क्लर्क (ग्रुप C) और एक मल्टी टास्किंग स्टाफ (ग्रुप C) जो प्रशासनिक कार्यों और समर्थन सेवाओं में सहायता करेंगे। यह भर्ती सरकारी नौकरी की स्थिरता के साथ काम करने की तलाश करने वालों के लिए एक शानदार अवसर है।",
+        "ये पद उन उम्मीदवारों के लिए आदर्श हैं जिन्होंने अपनी माध्यमिक या उच्चतर माध्यमिक शिक्षा पूरी की है। दोनों पदों के लिए कोकणी की जानकारी अनिवार्य है, जिससे यह उन स्थानीय उम्मीदवारों के लिए उपयुक्त है जो भाषा की आवश्यकताओं से परिचित हैं।",
+        "गोवा हाउसिंग बोर्ड के लिए काम करना राज्यभर में आवास परियोजनाओं के प्रबंधन और विकास में योगदान करता है। आवेदन करने से पहले आवेदकों को सुनिश्चित करना चाहिए कि वे पात्रता मानदंडों को पूरा करते हैं, ताकि उनके आवेदन में कोई समस्या न हो।"
+      ],
+      "eligibility_notes": "उम्मीदवारों की आयु सीमा 45 वर्ष होनी चाहिए, जिसमें सरकारी कर्मचारियों और आरक्षित श्रेणी के आवेदकों के लिए छूट उपलब्ध है। कोई विशेष न्यूनतम आयु नहीं बताई गई है, लेकिन शैक्षिक योग्यताएँ आवश्यक हैं जो प्रत्येक पद के लिए उल्लेखित हैं।",
+      "about_organization": "गोवा हाउसिंग बोर्ड एक सरकारी संस्था है जो राज्य गोवा में आवास निर्माण और विकास की योजना बनाने और उसे सुविधाजनक बनाने के लिए जिम्मेदार है। यह आवास की जरूरतों को पूरा करने और आधारभूत ढांचे का समर्थन प्रदान करने में महत्वपूर्ण भूमिका निभाता है।",
+      "how_to_apply": [
+        "आधिकारिक अधिसूचना से आवेदन पत्र प्राप्त करें।",
+        "आवेदन पत्र को पूर्ण और सही तरीके से ब्लॉक अक्षरों में भरें।",
+        "अधिसूचना में निर्दिष्ट सभी आवश्यक दस्तावेज़ संलग्न करें।",
+        "अपने आवेदन को प्रबंध निदेशक, गोवा हाउसिंग बोर्ड, पोरवोरिम को प्रस्तुत करें।",
+        "सुनिश्चित करें कि आपका आवेदन 26 नवंबर 2026 से पहले पहुँच जाए।"
+      ],
+      "preparation_tips": [
+        "लोअर डिविजन क्लर्क और मल्टी टास्किंग स्टाफ पदों के लिए आवश्यक कार्य जिम्मेदारियों और कौशल से परिचित हों।",
+        "कार्यस्थल में संचार और बातचीत के लिए कोकणी भाषा में proficiency को बढ़ाएं, क्योंकि यह आवश्यक है।",
+        "प्रत्येक पद के लिए उल्लेखित योग्यताओं के साथ मेल खाने वाले किसी भी प्रासंगिक शैक्षणिक सामग्री या पाठ्यक्रम की समीक्षा करें।"
+      ],
+      "faq": [
+        {
+          "q": "GHB भर्ती के लिए आवेदन करने की अंतिम तिथि क्या है?",
+          "a": "ऑफलाइन आवेदन जमा करने की अंतिम तिथि 26 नवंबर 2026 है।"
+        },
+        {
+          "q": "क्या इस भर्ती के लिए कोई आवेदन शुल्क है?",
+          "a": "आधिकारिक अधिसूचना में कोई आवेदन शुल्क का उल्लेख नहीं किया गया है।"
+        },
+        {
+          "q": "लोअर डिविजन क्लर्क पद के लिए क्या योग्यताएँ आवश्यक हैं?",
+          "a": "उम्मीदवारों के पास उच्चतर माध्यमिक विद्यालय का प्रमाणपत्र या AICTE-स्वीकृत डिप्लोमा होना चाहिए और कंप्यूटर अनुप्रयोगों और कोकणी की जानकारी होनी चाहिए।"
+        },
+        {
+          "q": "क्या मैं आवेदन कर सकता हूँ यदि मैं पहले से ही सरकारी नौकरी में काम कर रहा हूँ?",
+          "a": "हाँ, आप आवेदन कर सकते हैं, लेकिन आपको उचित चैनल के माध्यम से अपना आवेदन जमा करना होगा।"
+        },
+        {
+          "q": "मुझे कैसे पता चलेगा कि मेरा आवेदन स्वीकार हुआ है?",
+          "a": "अधिसूचना में इसका उल्लेख नहीं है, लेकिन आमतौर पर यदि उम्मीदवारों को अगले चरण के लिए शॉर्टलिस्ट किया जाता है तो उनसे संपर्क किया जाएगा।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "aiims-bhubaneswar-project-research-scientist-ii-2026",
+    "title": "AIIMS Bhubaneswar Project Research Scientist II Recruitment 2026 – Walkin",
+    "organization": "All India Institute of Medical Sciences, Bhubaneswar",
+    "summary": "AIIMS Bhubaneswar is conducting a walk-in interview for the position of Project Research Scientist-II (Non-Medical). Candidates with a Post Graduate Degree and relevant experience or a Ph.D. are eligible to apply. The interview is scheduled for 12 November 2026 at AIIMS Bhubaneswar.",
+    "apply_link": "https://aiimsbhubaneswar.nic.in/wp-content/uploads/2026/11/CMFM-1.pdf",
+    "official_notification": "https://aiimsbhubaneswar.nic.in/wp-content/uploads/2026/11/CMFM-1.pdf",
+    "source": "https://www.freejobalert.com/articles/aiims-bhubaneswar-project-research-scientist-ii-recruitment-2026-3079063",
+    "published": "2026-11-05",
+    "org_short": "AIIMS Bhubaneswar",
+    "post_name": "Project Research Scientist-II (Non-Medical)",
+    "total_vacancies": 1,
+    "qualification": "Post Graduate Degree in Public Health/Epidemiology/Health Management with three years post-qualification experience, or PhD.",
+    "age_max": 40,
+    "exam_date": "2026-11-12",
+    "salary": "₹80,400/month",
+    "location": "AIIMS, Bhubaneswar, Odisha",
+    "official_website": "https://aiimsbhubaneswar.nic.in/",
+    "summary_hindi": "AIIMS भुवनेश्वर प्रोजेक्ट रिसर्च साइंटिस्ट- II (गैर-चिकित्सकीय) के पद के लिए वॉक-इन इंटरव्यू आयोजित कर रहा है। पोस्ट ग्रेजुएट डिग्री और प्रासंगिक अनुभव या पीएच.डी. वाले उम्मीदवार इसके लिए योग्य हैं। साक्षात्कार 12 नवंबर 2026 को AIIMS भुवनेश्वर में आयोजित किया जाएगा।",
+    "selection_process": [
+      "Walk-in Interview"
+    ],
+    "how_to_apply": [
+      "Download the application form from the official notification.",
+      "Fill in the application form completely.",
+      "Attend the walk-in interview on 12 November 2026.",
+      "Report to Room No-317, 3rd Floor, CM&FM Department at 10:00 AM.",
+      "Bring the filled form along with original documents and self-attested photocopies."
+    ],
+    "overview": [
+      "The AIIMS Bhubaneswar is inviting applications for the post of Project Research Scientist-II (Non-Medical). This role involves conducting research in public health, epidemiology, and health management. Applicants will engage in various district-level operations, contributing to significant health projects.",
+      "This position is ideal for candidates with advanced degrees in relevant fields and experience in research. It is suited for professionals keen on impacting public health through research and project implementation. The post promises valuable experience in a recognized institution dedicated to healthcare excellence.",
+      "The walk-in interview process allows candidates to present their qualifications directly to the selection committee. It is crucial for applicants to validate their eligibility based on age and experience criteria before attending the interview. The role is temporary with a contract duration of five months, renewable based on performance."
+    ],
+    "about_organization": "The All India Institute of Medical Sciences (AIIMS) Bhubaneswar is a premier institution dedicated to promoting higher education in the medical field. It focuses on medical research, education, and the provision of quality healthcare services. AIIMS is known for its commitment to excellence in healthcare and medical training.",
+    "eligibility_notes": "Candidates must have a Post Graduate Degree in Public Health or related fields along with three years of post-qualification experience, or hold a Ph.D. Age relaxation is applicable as per government rules for SC/ST/OBC/PWD candidates.",
+    "preparation_tips": [
+      "Review the essential qualifications and refine your understanding of public health and epidemiology.",
+      "Familiarize yourself with research methodologies and data analysis relevant to health projects.",
+      "Prepare relevant documents to present during the walk-in interview, ensuring you have originals and photocopies organized.",
+      "Practice common interview questions related to your educational background and research experience."
+    ],
+    "faq": [
+      {
+        "q": "What is the salary for this position?",
+        "a": "The salary for the Project Research Scientist-II (Non-Medical) is ₹80,400 per month."
+      },
+      {
+        "q": "Is there an application fee?",
+        "a": "No application fee is mentioned in the notification."
+      },
+      {
+        "q": "What are the eligibility requirements?",
+        "a": "Candidates must have a Post Graduate Degree with three years of experience in a relevant field or hold a Ph.D."
+      },
+      {
+        "q": "Where will the interview take place?",
+        "a": "The interview will be held at Room No-317, 3rd Floor, CM&FM Department, Academic Building, AIIMS Bhubaneswar."
+      },
+      {
+        "q": "How long is the contract for this position?",
+        "a": "The position is on a temporary contract for five months, renewable based on performance."
+      }
+    ],
+    "hi": {
+      "title": "AIIMS भुवनेश्वर परियोजना शोध वैज्ञानिक II भर्ती 2026 – वॉक-इन",
+      "organization": "ऑल इंडिया इंस्टिट्यूट ऑफ मेडिकल सायंसेज, भुवनेश्वर",
+      "post_name": "परियोजना शोध वैज्ञानिक-II (गैर-चिकित्सकीय)",
+      "qualification": "जन स्वास्थ्य/महामारी/स्वास्थ्य प्रबंधन में स्नातकोत्तर डिग्री और तीन साल का अनुभव, या पीएचडी।",
+      "salary": "₹80,400/महिना",
+      "location": "AIIMS, भुवनेश्वर, ओडिशा",
+      "summary": "AIIMS भुवनेश्वर परियोजना शोध वैज्ञानिक-II (गैर-चिकित्सकीय) के पद के लिए वॉक-इन इंटरव्यू आयोजित कर रहा है। स्नातकोत्तर डिग्री और संबंधित अनुभव या पीएचडी वाले उम्मीदवार आवेदन करने के लिए पात्र हैं। इंटरव्यू 12 नवंबर 2026 को AIIMS भुवनेश्वर में होगा।",
+      "overview": [
+        "AIIMS भुवनेश्वर परियोजना शोध वैज्ञानिक-II (गैर-चिकित्सकीय) के पद के लिए आवेदन आमंत्रित कर रहा है। यह भूमिका जन स्वास्थ्य, महामारी और स्वास्थ्य प्रबंधन में शोध करने से संबंधित है। आवेदक विभिन्न जिला-स्तरीय संचालन में शामिल होंगे, महत्वपूर्ण स्वास्थ्य परियोजनाओं में योगदान देंगे।",
+        "यह पद उन उम्मीदवारों के लिए आदर्श है जिनके पास संबंधित क्षेत्रों में उन्नत डिग्री और शोध का अनुभव है। यह उन पेशेवरों के लिए उपयुक्त है जो शोध और परियोजना कार्यान्वयन के माध्यम से जन स्वास्थ्य पर प्रभाव डालने के लिए इच्छुक हैं। यह पद एक मान्यता प्राप्त संस्थान में स्वास्थ्य देखभाल की उत्कृष्टता के लिए मूल्यवान अनुभव का वादा करता है।",
+        "वॉक-इन इंटरव्यू प्रक्रिया उम्मीदवारों को चयन समिति के सामने अपनी योग्यताएं सीधे पेश करने की अनुमति देती है। इंटरव्यू में भाग लेने से पहले उम्मीदवारों के लिए उम्र और अनुभव के मानदंड के अनुसार अपनी पात्रता का सत्यापन करना महत्वपूर्ण है। यह भूमिका अस्थायी है और इसका संविदा कार्यकाल पांच महीनों का है, जिसे प्रदर्शन के आधार पर नवीनीकरण किया जा सकता है।"
+      ],
+      "eligibility_notes": "उम्मीदवारों के पास जन स्वास्थ्य या संबंधित क्षेत्रों में स्नातकोत्तर डिग्री होनी चाहिए, साथ ही तीन साल का अनुभव या पीएचडी होनी चाहिए। सरकारी नियमों के अनुसार SC/ST/OBC/PwD उम्मीदवारों के लिए आयु में छूट लागू है।",
+      "about_organization": "ऑल इंडिया इंस्टिट्यूट ऑफ मेडिकल सायंसेज (AIIMS) भुवनेश्वर एक प्रमुख संस्थान है जो चिकित्सा क्षेत्र में उच्च शिक्षा को बढ़ावा देने के लिए समर्पित है। यह चिकित्सा शोध, शिक्षा और गुणवत्ता स्वास्थ्य सेवाओं के प्रावधान पर ध्यान केंद्रित करता है। AIIMS स्वास्थ्य देखभाल और चिकित्सा प्रशिक्षण में उत्कृष्टता के प्रति अपने समर्पण के लिए जाना जाता है।",
+      "how_to_apply": [
+        "आधिकारिक अधिसूचना से आवेदन पत्र डाउनलोड करें।",
+        "आवेदन पत्र को पूरा भरें।",
+        "12 नवंबर 2026 को वॉक-इन इंटरव्यू में भाग लें।",
+        "10:00 AM पर CM&FM विभाग के 3rd फ्लोर, कमरा नंबर-317 में रिपोर्ट करें।",
+        "भरे हुए फॉर्म के साथ मूल दस्तावेज और आत्म-प्रमाणित फोटोकॉपियां लाएं।"
+      ],
+      "selection_process": [
+        "वॉक-इन इंटरव्यू"
+      ],
+      "preparation_tips": [
+        "आवश्यक योग्यताओं की समीक्षा करें और जन स्वास्थ्य और महामारी के बारे में अपनी समझ को सुधारें।",
+        "स्वास्थ्य परियोजनाओं से संबंधित शोध पद्धतियों और डेटा विश्लेषण से परिचित हो जाएं।",
+        "वॉक-इन इंटरव्यू के दौरान पेश करने के लिए संबंधित दस्तावेज तैयार करें, सुनिश्चित करें कि आपके पास मूल और व्यवस्थित फोटोकॉपियां हैं।",
+        "अपने शैक्षिक पृष्ठभूमि और शोध अनुभव से संबंधित सामान्य इंटरव्यू प्रश्नों का अभ्यास करें।"
+      ],
+      "faq": [
+        {
+          "q": "इस पद के लिए वेतन क्या है?",
+          "a": "परियोजना शोध वैज्ञानिक-II (गैर-चिकित्सकीय) का वेतन ₹80,400 प्रति माह है।"
+        },
+        {
+          "q": "क्या आवेदन शुल्क है?",
+          "a": "अधिसूचना में कोई आवेदन शुल्क नहीं बताया गया है।"
+        },
+        {
+          "q": "पात्रता की आवश्यकताएं क्या हैं?",
+          "a": "उम्मीदवारों के पास स्नातकोत्तर डिग्री के साथ संबंधित क्षेत्र में तीन साल का अनुभव होना चाहिए या उन्हें पीएचडी होनी चाहिए।"
+        },
+        {
+          "q": "इंटरव्यू कहाँ होगा?",
+          "a": "इंटरव्यू AIIMS भुवनेश्वर के शैक्षणिक भवन में CM&FM विभाग के 3rd फ्लोर, कमरा नंबर-317 में होगा।"
+        },
+        {
+          "q": "इस पद के लिए संविदा कितनी लंबी है?",
+          "a": "यह पद पांच महीने के लिए अस्थायी संविदा पर है, जिसे प्रदर्शन के आधार पर नवीनीकरण किया जा सकता है।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "rites-individual-consultant-site-engineer-2026",
+    "title": "RITES Recruitment 2026 – Apply Online for 5 Individual Consultant and Site Engineer Posts",
+    "organization": "RITES Limited",
+    "summary": "RITES Limited is hiring for 5 Individual Consultant positions for a project in Ahmedabad. The maximum age limit for applicants is 64 years. Applications are open from November 5 to November 29, 2026, with no application fee required.",
+    "apply_link": "http://www.rites.com",
+    "official_notification": "https://rites.com/Upload/Career/Final_Advertiesment_pdf-2026-Nov-05-18-1-39.pdf",
+    "source": "https://www.freejobalert.com/articles/rites-recruitment-2026-individual-consultant-and-site-engineer-3079061",
+    "published": "2026-11-05",
+    "org_short": "RITES",
+    "post_name": "Individual Consultant",
+    "total_vacancies": 5,
+    "qualification": "B.Tech/B.E",
+    "age_max": 64,
+    "application_start": "2026-11-05",
+    "application_end": "2026-11-29",
+    "fee": "NIL",
+    "salary": "₹85,000 - ₹2,00,000 /month",
+    "location": "Ahmedabad",
+    "official_website": "https://rites.com/",
+    "summary_hindi": "RITES लिमिटेड अहमदाबाद में 5 व्यक्तिगत सलाहकार पदों के लिए भर्ती कर रहा है। आवेदकों के लिए अधिकतम आयु सीमा 64 वर्ष है। आवेदन 5 नवंबर से 29 नवंबर 2026 तक खुले हैं, और आवेदन शुल्क आवश्यक नहीं है।",
+    "how_to_apply": [
+      "Visit the RITES official website.",
+      "Navigate to the 'Career Section'.",
+      "Fill out the online application form with the required details.",
+      "Upload your CV and necessary documents.",
+      "Submit the application before the deadline."
+    ],
+    "overview": [
+      "RITES Limited is conducting a recruitment drive for five Individual Consultant posts, specifically for roles related to Metro and Railway projects in Ahmedabad. The positions focus on engineering disciplines that require extensive experience within the sector. Candidates interested in engineering consultancy roles, particularly in transport infrastructure, will find these positions suitable.",
+      "These positions offer a competitive salary ranging from ₹85,000 to ₹2,00,000 per month, depending on the role. Successful candidates will assist in key engineering tasks that are critical to infrastructure development. It's important for applicants to review their qualifications and relevant experience against the specified requirements in the notification to ensure they meet the criteria.",
+      "The roles call for engineering graduates with specific experience levels in their respective fields, making it essential for applicants to showcase pertinent skills and experience. The recruitment process does not involve an application fee, thus encouraging a diverse range of candidates to apply. Interested candidates should familiarize themselves with the roles and responsibilities to effectively highlight their experience."
+    ],
+    "about_organization": "RITES Limited is a multi-disciplinary engineering and consultancy organization that specializes in services related to transport infrastructure and various allied technologies. Established by the government, RITES plays a crucial role in enhancing transportation by offering tailored engineering solutions.",
+    "eligibility_notes": "Candidates must hold a B.Tech/B.E degree specific to the roles applied for and possess relevant experience in the Metro or Railway sector. There is no age relaxation mentioned in the recruitment advertisement, and only individuals not exceeding 64 years of age are eligible to apply.",
+    "preparation_tips": [
+      "Review the core subject areas related to your engineering discipline thoroughly.",
+      "Gain a strong understanding of Metro and Railway systems and their operational processes.",
+      "Practice past technical interview questions that focus on signaling, electrical systems, and commissioning.",
+      "Stay updated with the latest developments and technologies in transport engineering."
+    ],
+    "faq": [
+      {
+        "q": "What types of positions are available in this recruitment?",
+        "a": "There are five Individual Consultant positions including Site Engineer - Rolling Stock Testing & Commissioning, Section Engineer – Signalling, and Rolling Stock Expert – Electrical System."
+      },
+      {
+        "q": "What is the application process?",
+        "a": "You can apply online through the RITES website by navigating to the Career Section and submitting the required documents."
+      },
+      {
+        "q": "Is there an application fee?",
+        "a": "No, there is no application fee required for any candidates."
+      },
+      {
+        "q": "What is the salary range for these positions?",
+        "a": "The salary for these positions ranges from ₹85,000 to ₹2,00,000 per month, depending on the specific role."
+      },
+      {
+        "q": "What are the age requirements for applicants?",
+        "a": "Applicants must not exceed 64 years of age as of the application deadline."
+      }
+    ],
+    "apply_checked": "2026-11-05",
+    "apply_tries": 1,
+    "hi": {
+      "title": "RITES भर्ती 2026 – 5 व्यक्तिगत सलाहकार और साइट इंजीनियर पदों के लिए ऑनलाइन आवेदन करें",
+      "organization": "RITES लिमिटेड",
+      "post_name": "व्यक्तिगत सलाहकार",
+      "qualification": "B.Tech/B.E",
+      "fee": "NIL",
+      "salary": "₹85,000 - ₹2,00,000 /माह",
+      "location": "अहमदाबाद",
+      "summary": "RITES लिमिटेड अहमदाबाद में एक प्रोजेक्ट के लिए 5 व्यक्तिगत सलाहकार पदों की भर्ती कर रहा है। आवेदनकर्ताओं के लिए अधिकतम आयु सीमा 64 वर्ष है। आवेदन 5 नवंबर से 29 नवंबर 2026 तक स्वीकार किए जाएंगे, जिसमें कोई आवेदन शुल्क नहीं है।",
+      "overview": [
+        "RITES लिमिटेड अहमदाबाद में मेट्रो और रेलवे प्रोजेक्ट से संबंधित पांच व्यक्तिगत सलाहकार पदों के लिए भर्ती अभियान चला रहा है। ये पद इंजीनियरिंग क्षेत्रों पर ध्यान केंद्रित करते हैं, जिनमें क्षेत्र में व्यापक अनुभव की आवश्यकता होती है। परिवहन अवसंरचना में इंजीनियरिंग परामर्श की भूमिकाओं में रुचि रखने वाले उम्मीदवारों के लिए ये पद उपयुक्त हैं।",
+        "इन पदों के लिए वेतन ₹85,000 से लेकर ₹2,00,000 प्रति माह तक हो सकता है, जो भूमिका पर निर्भर करता है। सफल उम्मीदवार अवसंरचना विकास के लिए महत्वपूर्ण इंजीनियरिंग कार्यों में सहायता करेंगे। यह महत्वपूर्ण है कि आवेदक अपनी योग्यताओं और संबंधित अनुभव की समीक्षा करें ताकि यह सुनिश्चित हो सके कि वे अधिसूचना में निर्दिष्ट आवश्यकताओं को पूरा करते हैं।",
+        "पदों के लिए आवश्यक अनुभव स्तर के साथ इंजीनियरिंग स्नातकों की आवश्यकता है, जिससे आवेदकों के लिए संबंधित कौशल और अनुभव को उजागर करना आवश्यक है। भर्ती प्रक्रिया में कोई आवेदन शुल्क नहीं है, जिससे विभिन्न प्रकार के उम्मीदवारों को आवेदन करने के लिए प्रोत्साहित किया जाता है। इच्छुक उम्मीदवारों को भूमिकाओं और जिम्मेदारियों के साथ परिचित होना चाहिए ताकि वे प्रभावी ढंग से अपने अनुभव को उजागर कर सकें।"
+      ],
+      "eligibility_notes": "उम्मीदवारों के पास वे भूमिकाएँ के लिए विशेष B.Tech/B.E डिग्री होनी चाहिए और मेट्रो या रेलवे क्षेत्र में संबंधित अनुभव होना चाहिए। भर्ती विज्ञापन में कोई उम्र में छूट नहीं दी गई है, और केवल 64 वर्ष से अधिक उम्र के व्यक्तियों को आवेदन करने के लिए योग्य माना जाएगा।",
+      "about_organization": "RITES लिमिटेड एक बहु-विषयक इंजीनियरिंग और परामर्श संगठन है जो परिवहन अवसंरचना और विभिन्न सहायक तकनीकों से संबंधित सेवाओं में विशेषज्ञता प्राप्त करता है। सरकार द्वारा स्थापित, RITES परिवहन में सुधार के लिए कस्टम इंजीनियरिंग समाधान प्रदान करने में महत्वपूर्ण भूमिका निभाता है।",
+      "how_to_apply": [
+        "RITES की आधिकारिक वेबसाइट पर जाएं।",
+        "‘करियर सेक्शन’ में जाएं।",
+        "आवश्यक विवरण के साथ ऑनलाइन आवेदन पत्र भरें।",
+        "अपने सीवी और आवश्यक दस्तावेज़ अपलोड करें।",
+        "अवधि से पहले आवेदन जमा करें।"
+      ],
+      "preparation_tips": [
+        "अपने इंजीनियरिंग क्षेत्र से संबंधित मुख्य विषय क्षेत्रों की अच्छी तरह से समीक्षा करें।",
+        "मेट्रो और रेलवे सिस्टम और उनके संचालन प्रक्रियाओं की मजबूत समझ प्राप्त करें।",
+        "संकेत, इलेक्ट्रिकल सिस्टम, और कमीशनिंग के बारे में तकनीकी इंटरव्यू के पिछले प्रश्नों का अभ्यास करें।",
+        "परिवहन इंजीनियरिंग में नवीनतम विकास और प्रौद्योगिकियों से अपडेट रहें।"
+      ],
+      "faq": [
+        {
+          "q": "इस भर्ती में कौन-कौन से पद उपलब्ध हैं?",
+          "a": "इसमें पांच व्यक्तिगत सलाहकार पद शामिल हैं जिनमें साइट इंजीनियर - रोलिंग स्टॉक परीक्षण और कमीशनिंग, सेक्शन इंजीनियर - संकेत, और रोलिंग स्टॉक विशेषज्ञ - इलेक्ट्रिकल सिस्टम शामिल हैं।"
+        },
+        {
+          "q": "आवेदन प्रक्रिया क्या है?",
+          "a": "आप RITES की वेबसाइट के माध्यम से ऑनलाइन आवेदन कर सकते हैं, करियर सेक्शन पर जाकर और आवश्यक दस्तावेज जमा करके।"
+        },
+        {
+          "q": "क्या कोई आवेदन शुल्क है?",
+          "a": "नहीं, किसी भी उम्मीदवार के लिए कोई आवेदन शुल्क नहीं है।"
+        },
+        {
+          "q": "इन पदों का वेतन क्या है?",
+          "a": "इन पदों के लिए वेतन ₹85,000 से ₹2,00,000 प्रति माह तक है, जो विशेष भूमिका पर निर्भर करता है।"
+        },
+        {
+          "q": "आवेदकों के लिए क्या उम्र की आवश्यकता है?",
+          "a": "आवेदकों की उम्र आवेदन की अंतिम तिथि पर 64 वर्ष से अधिक नहीं होनी चाहिए।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
+    "id": "opsc-assistant-section-officer-2026",
+    "title": "OPSC Assistant Section Officer Recruitment 2026 – Apply Online for 340 Posts",
+    "organization": "Odisha Public Service Commission",
+    "summary": "OPSC has released a recruitment notification for 340 Assistant Section Officer (Group-B) posts. Eligible candidates must have a Bachelor's degree and proficiency in Odia. The application period is from 9 November 2026 to 30 November 2026.",
+    "apply_link": "https://www.opsc.gov.in",
+    "official_notification": "https://www.opsc.gov.in/Public/Pages/View_Content.aspx?id=MeNGKau42B9VX4Nn6oZfXA==",
+    "source": "https://www.freejobalert.com/articles/opsc-assistant-section-officer-group-b-recruitment-2026-3079059",
+    "published": "2026-11-05",
+    "org_short": "OPSC",
+    "post_name": "Assistant Section Officer (Group-B)",
+    "total_vacancies": 340,
+    "qualification": "Bachelor's Degree in any discipline from a recognized University or equivalent, with adequate knowledge in Computer Application and the ability to speak, read and write Odia.",
+    "age_min": 21,
+    "age_max": 42,
+    "application_start": "2026-11-09",
+    "application_end": "2026-11-30",
+    "exam_date": "2027-01-17",
+    "fee": "700",
+    "salary": "₹35,400 /month",
+    "location": "Odisha Secretariat Service Cadre under Home Department, Government of Odisha",
+    "official_website": "https://opsc.gov.in/",
+    "summary_hindi": "ओपीएससी ने 340 सहायक अनुभाग अधिकारी (ग्रुप-बी) पदों के लिए भर्ती अधिसूचना जारी की है। पात्र उम्मीदवारों के पास स्नातक की डिग्री और ओड़िया में दक्षता होनी चाहिए। आवेदन की अवधि 9 नवंबर 2026 से 30 नवंबर 2026 तक है।",
+    "selection_process": [
+      "Written Examination (Objective, MCQ)",
+      "Skill Test in Computer"
+    ],
+    "how_to_apply": [
+      "Visit the official OPSC website.",
+      "Click on the recruitment notification for Assistant Section Officer.",
+      "Fill out the online application form carefully.",
+      "Upload the necessary documents.",
+      "Pay the application fee if applicable.",
+      "Submit the application form before the deadline."
+    ],
+    "overview": [
+      "The OPSC Assistant Section Officer recruitment offers a significant opportunity for graduates looking to join the government sector in Odisha. This position involves administrative tasks within the Odisha Secretariat Service and requires proficiency in local language and computer applications.",
+      "This role is particularly well-suited for candidates who possess a strong educational background, are tech-savvy, and have good communication skills in Odia. It is a vital position that supports governmental operations, offering stability and the chance to serve the public.",
+      "Candidates should ensure that they meet all eligibility criteria, including age limits and educational qualifications, before applying. The selection process includes a written exam followed by a practical skill test, making it essential for applicants to prepare thoroughly."
+    ],
+    "about_organization": "The Odisha Public Service Commission (OPSC) is a premier recruitment agency in the state of Odisha, responsible for conducting examinations and interviews to select candidates for various government posts. It plays a crucial role in streamlining the recruitment process for state services.",
+    "eligibility_notes": "Candidates must hold a Bachelor's degree and demonstrate proficiency in the Odia language. There are age relaxations for different categories, including 5 years for SEBC, SC, and ST candidates, and up to 15 years for PwD candidates based on specific conditions.",
+    "preparation_tips": [
+      "Focus on General Knowledge and current affairs for the written examination.",
+      "Revise the syllabus outlined in the notification, ensuring coverage of all relevant subjects.",
+      "Practice computer skills, especially in applications relevant to administrative tasks.",
+      "Stay updated on the latest examination patterns and previous year question papers."
+    ],
+    "faq": [
+      {
+        "q": "What is the application fee for this recruitment?",
+        "a": "The application fee is ₹700 for candidates other than SC, ST, and PWD. The latter categories are exempted from the fee."
+      },
+      {
+        "q": "How can candidates prepare for the skill test in the computer?",
+        "a": "Candidates should practice basic computer skills and applications commonly used in administrative work, focusing on typing and software proficiency."
+      },
+      {
+        "q": "What should I do if I have difficulties completing the online application?",
+        "a": "If you face issues, check the FAQs on the OPSC website or contact their support for assistance."
+      },
+      {
+        "q": "Are there any relaxations in age criteria for this recruitment?",
+        "a": "Yes, there are age relaxations applicable based on categories such as SEBC, SC, ST, Women, and PwD."
+      },
+      {
+        "q": "When will the written examination be held?",
+        "a": "The written examination is tentatively scheduled for 17 January 2027."
+      }
+    ],
+    "apply_checked": "2026-11-05",
+    "apply_tries": 1,
+    "hi": {
+      "title": "OPSC सहायक अनुभाग अधिकारी भर्ती 2026 – 340 पदों के लिए ऑनलाइन आवेदन करें",
+      "organization": "ओडिशा लोक सेवा आयोग",
+      "post_name": "सहायक अनुभाग अधिकारी (गृह- बी)",
+      "qualification": "मान्यता प्राप्त विश्वविद्यालय से किसी भी विषय में Bachelor's डिग्री, कंप्यूटर अनुप्रयोग में उचित ज्ञान और ओडिया भाषा बोलने, पढ़ने और लिखने की क्षमता के साथ।",
+      "fee": "700",
+      "salary": "₹35,400 /माह",
+      "location": "ओडिशा सरकार के गृह विभाग के तहत ओडिशा सचिवालय सेवा में",
+      "summary": "OPSC ने 340 सहायक अनुभाग अधिकारी (गृह- बी) पदों के लिए भर्ती अधिसूचना जारी की है। योग्य उम्मीदवारों के पास Bachelor's डिग्री और ओडिया भाषा में दक्षता होनी चाहिए। आवेदन करने की अवधि 9 नवंबर 2026 से 30 नवंबर 2026 तक है।",
+      "overview": [
+        "OPSC सहायक अनुभाग अधिकारी भर्ती ओडिशा में सरकारी क्षेत्र में शामिल होने के लिए ग्रेजुएट्स के लिए एक महत्वपूर्ण अवसर प्रदान करती है। यह पद ओडिशा सचिवालय सेवा के भीतर प्रशासनिक कार्यों को शामिल करता है और स्थानीय भाषा और कंप्यूटर अनुप्रयोगों में दक्षता की आवश्यकता है।",
+        "यह भूमिका उन उम्मीदवारों के लिए विशेष रूप से उपयुक्त है जिनके पास मजबूत शैक्षणिक पृष्ठभूमि है, तकनीकी ज्ञान है और ओडिया में अच्छी संवाद क्षमता है। यह एक महत्वपूर्ण पद है जो सरकारी संचालन का समर्थन करता है, स्थिरता प्रदान करता है और जनता की सेवा का अवसर देता है।",
+        "उम्मीदवारों को आवेदन करने से पहले सभी योग्यता मानदंडों, जिनमें आयु सीमाएँ और शैक्षणिक योग्यताएँ शामिल हैं, को पूरा करना सुनिश्चित करना चाहिए। चयन प्रक्रिया में एक लिखित परीक्षा और उसके बाद एक व्यावहारिक कौशल परीक्षण शामिल है, इसलिए आवेदकों को अच्छी तरह से तैयारी करना आवश्यक है।"
+      ],
+      "eligibility_notes": "उम्मीदवारों के पास Bachelor's डिग्री होनी चाहिए और ओडिया भाषा में दक्षता दिखानी चाहिए। SEBC, SC और ST उम्मीदवारों के लिए 5 वर्ष की आयु में छूट है, और विशेष शर्तों के आधार पर PwD उम्मीदवारों के लिए 15 वर्ष तक की छूट है।",
+      "about_organization": "ओडिशा लोक सेवा आयोग (OPSC) ओडिशा राज्य में प्रमुख भर्ती एजेंसी है, जो विभिन्न सरकारी पदों के लिए उम्मीदवारों का चयन करने के लिए परीक्षा और साक्षात्कार आयोजित करने के लिए जिम्मेदार है। यह राज्य सेवाओं के लिए भर्ती प्रक्रिया को सुचारू बनाने में महत्वपूर्ण भूमिका निभाता है।",
+      "how_to_apply": [
+        "अधिकारिक OPSC वेबसाइट पर जाएँ।",
+        "सहायक अनुभाग अधिकारी के लिए भर्ती अधिसूचना पर क्लिक करें।",
+        "ऑनलाइन आवेदन पत्र को ध्यान से भरें।",
+        "आवश्यक दस्तावेज़ अपलोड करें।",
+        "यदि आवश्यक हो, तो आवेदन शुल्क का भुगतान करें।",
+        "समय सीमा से पहले आवेदन पत्र जमा करें।"
+      ],
+      "selection_process": [
+        "लिखित परीक्षा (वस्तुनिष्ठ, MCQ)",
+        "कंप्यूटर में कौशल परीक्षण"
+      ],
+      "preparation_tips": [
+        "लिखित परीक्षा के लिए सामान्य ज्ञान और वर्तमान घटनाओं पर ध्यान केंद्रित करें।",
+        "अधिसूचना में उल्लिखित पाठ्यक्रम का पुनervisit करें, यह सुनिश्चित करते हुए कि सभी संबंधित विषयों को शामिल किया गया है।",
+        "विशेष रूप से प्रशासनिक कार्यों से संबंधित अनुप्रयोगों में कंप्यूटर कौशल का अभ्यास करें।",
+        "सबसे हाल के परीक्षा पैटर्न और पिछले वर्ष के प्रश्न पत्रों पर अद्यतित रहें।"
+      ],
+      "faq": [
+        {
+          "q": "इस भर्ती के लिए आवेदन शुल्क क्या है?",
+          "a": "आवेदन शुल्क SC, ST और PWD उम्मीदवारों के अलावा अन्य उम्मीदवारों के लिए ₹700 है। बाद की श्रेणियाँ शुल्क से मुक्त हैं।"
+        },
+        {
+          "q": "उम्मीदवार कंप्यूटर में कौशल परीक्षण के लिए कैसे तैयारी कर सकते हैं?",
+          "a": "उम्मीदवारों को प्रशासनिक कार्यों में सामान्यत: उपयोग किए जाने वाले बुनियादी कंप्यूटर कौशल और अनुप्रयोगों का अभ्यास करना चाहिए, टाइपिंग और सॉफ्टवेयर दक्षता पर ध्यान केंद्रित करना चाहिए।"
+        },
+        {
+          "q": "यदि मुझे ऑनलाइन आवेदन पूरा करने में कठिनाई होती है, तो क्या करूँ?",
+          "a": "यदि आपको समस्याएँ हैं, तो OPSC वेबसाइट पर FAQ देखें या सहायता के लिए उनके सपोर्ट से संपर्क करें।"
+        },
+        {
+          "q": "क्या इस भर्ती के लिए आयु मानदंड में कोई छूट है?",
+          "a": "हाँ, SEBC, SC, ST, महिलाओं और PwD जैसे श्रेणियों के आधार पर आयु में छूट लागू है।"
+        },
+        {
+          "q": "लिखित परीक्षा कब आयोजित होगी?",
+          "a": "लिखित परीक्षा अस्थायी रूप से 17 जनवरी 2027 को आयोजित की जाएगी।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
+  },
+  {
     "id": "angrau-lspm-part-time-teacher-on-2026",
     "title": "ANGRAU LSPM Part time teacher on hourly basis Recruitment 2026 – Walkin",
     "organization": "Acharya N G Ranga Agricultural University",
