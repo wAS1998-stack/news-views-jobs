@@ -220,11 +220,12 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                 val adCfg by Ads.config.collectAsStateWithLifecycle()
                 val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
                 val adsOff = Ads.adsOff()
-                val gated = BuildConfig.ADS && adCfg.on && adCfg.rewarded && BuildConfig.AD_REWARDED.isNotBlank() && !adsOff
+                // locked only while a video is actually loaded: with no video to offer, the tips are simply shown
+                val gated = BuildConfig.ADS && adCfg.on && adCfg.rewarded && BuildConfig.AD_REWARDED.isNotBlank() && !adsOff && rewardedReady
                 if (!gated) Bullets(tips)
                 else Card(shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(14.dp)) {
-                        Text(s.prepLocked, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                        Text(s.prepLocked(adCfg.rewardHours.coerceIn(1, 24 * 7)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
                         Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 10.dp)) {
                             Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
                         }

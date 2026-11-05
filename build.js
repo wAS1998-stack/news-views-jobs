@@ -2175,7 +2175,7 @@ We usually respond within 2–3 working days. If you are reporting an error in a
   out["privacy-policy"] = pageShell({
     slug: "privacy-policy", title: "Privacy Policy", desc: `How ${SITE.brand} handles data, cookies and advertising.`,
     body: md(
-`_Last updated: ${updated}_
+`*Last updated: ${updated}*
 
 This Privacy Policy explains how ${SITE.brand} ("we", "us") handles information when you visit our website.
 
@@ -2192,11 +2192,25 @@ We may use third-party advertising companies, including Google, to serve ads whe
 We may use analytics tools to measure traffic and usage patterns in aggregate. This data is not used to personally identify you.
 
 ## Android app
-Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsviews.app), has no accounts and collects no personal information. Saved jobs, your language and your alert choices (states and qualifications) are stored only on your phone. To send job alerts, the app registers with Google's Firebase Cloud Messaging, which gives your phone an anonymous token and subscribes it to the alert topics you choose; we never receive your name, phone number or contacts. You can turn alerts off in the app or uninstall it at any time.
+Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsviews.app), has no accounts: it never asks for your name, phone number, email address, contacts or documents. Your saved jobs, language, alert choices (states, qualification, followed departments) and the optional date of birth and category you enter for the age check are stored only on your phone and are never sent to us.
 
-The app is free and is supported by ads from Google AdMob. To show and measure ads and to prevent fraud, Google's ad software may collect your device's advertising ID, your IP address (which gives an approximate location), diagnostic information and how you interact with ads. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. Anywhere, you can reset or delete your advertising ID in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads). Learn more in [Google's privacy policy](https://policies.google.com/technologies/partner-sites).${mediationPolicy()}
+### What is collected, by whom and why
+- **Job alerts (Google Firebase Cloud Messaging):** an app-instance token and the alert topics you choose, so alerts can be delivered.
+- **Ads (Google AdMob and its partner networks):** your device's advertising ID (or app set ID), your IP address and the approximate location derived from it, device and app information, how you interact with ads, and diagnostics — to show and measure ads, cap how often they appear and prevent fraud. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. ${mediationPolicy().trim()}
+- **Usage statistics (Google Firebase Analytics):** an app-instance identifier, device model, Android and app version, approximate location (region and city, from the IP address), and which screens are opened and which buttons are used (for example how many people open an official notice) — to understand, in aggregate, what is useful and to measure ad revenue.
+- **Crash reports (Google Firebase Crashlytics):** crash traces, device state and an app-instance identifier, so crashes can be fixed.
+- **Purchases (Google Play Billing):** the optional "Pro" purchase is handled entirely by Google Play. We receive only confirmation that it was bought — never your payment details.
 
-The app also uses Google Firebase Analytics to count, in aggregate, which screens are used and which buttons are tapped (for example how many people open an official notice), and Firebase Crashlytics to report crashes so they can be fixed. Both receive an app-instance identifier and device and app details, never your name, contacts or location. The optional "Pro" purchase is handled entirely by Google Play Billing; we never see your payment details.
+This information may count as personal data in some countries. It is not linked to your name or used to identify you, it is not sold, and it is shared only with the Google services and ad partners named above, which process it under their own privacy policies (for Google: [policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites)).
+
+### Security
+All data is sent over encrypted connections (HTTPS/TLS).
+
+### How long it is kept, and how to delete it
+- Everything the app stores on your phone is deleted when you clear the app's data or uninstall it.
+- Firebase Analytics keeps event data for no more than 14 months; Crashlytics keeps crash reports for 90 days; Google keeps advertising data under its own retention policies.
+- You can reset or delete your advertising ID at any time in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads); after that, ads can no longer be linked to your earlier activity.
+- To ask us to delete analytics data linked to your phone, email ${SITE.email}; we will use Google's deletion tools to remove it.
 
 ## Your choices
 You can disable cookies in your browser settings at any time. Doing so may affect how some parts of the site function.
@@ -2213,7 +2227,7 @@ Questions about this policy? Email ${SITE.email}.`)
   out["disclaimer"] = pageShell({
     slug: "disclaimer", title: "Disclaimer", desc: `Important disclaimer about the information on ${SITE.brand}.`,
     body: md(
-`_Last updated: ${updated}_
+`*Last updated: ${updated}*
 
 ${SITE.brand} is an independent information website. We are **not** a government body and have no affiliation with any government department, recruitment board or official organisation.
 
@@ -2244,7 +2258,7 @@ Sarkari Radar is an independent app by ${SITE.brand}. It is not affiliated with 
   out["terms"] = pageShell({
     slug: "terms", title: "Terms of Use", desc: `Terms of use for ${SITE.brand}.`,
     body: md(
-`_Last updated: ${updated}_
+`*Last updated: ${updated}*
 
 By using ${SITE.brand} you agree to these terms.
 

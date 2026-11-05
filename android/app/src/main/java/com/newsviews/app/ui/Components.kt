@@ -235,7 +235,8 @@ fun FollowChip(org: String, following: Boolean, s: Strings, onClick: () -> Unit)
     )
 }
 
-/** The opt-in rewarded-video offer. It says plainly that a video ad will play and what the reward is; nothing is locked. */
+/** The opt-in rewarded-video offer. It says plainly that a video ad will play and what the reward is. Only bonus
+    preparation tips sit behind it; notices, dates, eligibility and apply links never do. */
 @Composable
 fun AdFreeCard(s: Strings, hours: Int, onWatch: () -> Unit) {
     Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {

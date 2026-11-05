@@ -54,6 +54,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.BottomBanner
+import com.newsviews.app.ads.rememberAnchoredBanner
+import androidx.compose.material3.HorizontalDivider
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.play.PlayPrompts
 import androidx.activity.result.contract.ActivityResultContracts
@@ -82,10 +84,10 @@ class MainActivity : ComponentActivity() {
         // only on a fresh start: after rotation / dark-mode switch the same intent would reopen the page the user left
         if (savedInstanceState == null) handle(intent)
         setContent { NewsViewsTheme { Root(vm, pending) } }
-        if (savedInstanceState == null) {
-            Ads.start(this)
-            PlayPrompts.checkForUpdate(this, updateLauncher)
-        }
+        // the ad SDK must start in every new process: after Android killed the app in the background, the activity comes
+        // back with a saved state, and skipping start() then meant a whole session without ads
+        if (savedInstanceState == null || !Ads.isStarted) Ads.start(this)
+        if (savedInstanceState == null) PlayPrompts.checkForUpdate(this, updateLauncher)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -96,7 +98,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        Ads.maybeShowAppOpen(this)
+        Ads.onResume(this)
         vm.syncAlerts()
         vm.refreshIfStale()
     }
@@ -162,6 +164,9 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val context = LocalContext.current
     val activity = context.findActivity()
     var prevRoute by rememberSaveable { mutableStateOf<String?>(null) }
+    var prevEntry by rememberSaveable { mutableStateOf<String?>(null) }
+    val banner = rememberAnchoredBanner()          // one AdView for the whole session (paused while a page is open)
+    val fullScreen by Ads.fullScreen.collectAsStateWithLifecycle()
     // arrived through a link or a notification before finishing the welcome screen: show what they came for first;
     // the welcome screen comes on the next start (it used to flash the job and jump back to the welcome screen)
     var linkVisit by rememberSaveable { mutableStateOf(false) }
@@ -176,8 +181,11 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         }
     }
     // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
-    LaunchedEffect(route) {
-        if (prevRoute == route) return@LaunchedEffect          // recreated screen (rotation): not a new page view
+    // keyed on the back-stack entry, not the route pattern: job → job (a notification while a job is open) counts too
+    LaunchedEffect(entry?.id) {
+        val entryId = entry?.id ?: return@LaunchedEffect
+        if (prevEntry == entryId) return@LaunchedEffect        // recreated screen (rotation): not a new page view
+        prevEntry = entryId
         Stats.screen(context, route)
         val isPage = route.startsWith("job/") || route.startsWith("update/")
         val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
@@ -204,8 +212,9 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         topBar = {
             TopAppBar(
                 title = {
-                    if (!top) detailTitle?.let { Text(it, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis) }
-                    if (top) Row(verticalAlignment = Alignment.CenterVertically) {
+                    // nothing tappable up here while a full-screen ad is open (its close button sits right below)
+                    if (!top && !fullScreen) detailTitle?.let { Text(it, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis) }
+                    if (top && !fullScreen) Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(painterResource(R.drawable.ic_brand), null, modifier = Modifier.size(28.dp))
                         Spacer(Modifier.width(8.dp))
                         Text("Sarkari", fontWeight = FontWeight.ExtraBold)
@@ -216,14 +225,15 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
                         }
                     }
                 },
-                navigationIcon = { if (!top) IconButton(onClick = { if (!nav.popBackStack()) nav.navigate("jobs") }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, if (settings.hindi) "वापस" else "Back") } },
-                actions = { if (route == "jobs" || route == "updates") IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, if (settings.hindi) "रीफ़्रेश" else "Refresh") } },
+                navigationIcon = { if (!top && !fullScreen) IconButton(onClick = { if (!nav.popBackStack()) nav.navigate("jobs") }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, if (settings.hindi) "वापस" else "Back") } },
+                actions = { if (!fullScreen && (route == "jobs" || route == "updates")) IconButton(onClick = { vm.refresh() }) { Icon(Icons.Filled.Refresh, if (settings.hindi) "रीफ़्रेश" else "Refresh") } },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
             )
         },
         bottomBar = {
             if (top) Column {
-                if (route != "alerts") BottomBanner(s.ad)
+                if (route != "alerts") BottomBanner(banner, s.ad)
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                     TABS.forEach { t ->
                         NavigationBarItem(

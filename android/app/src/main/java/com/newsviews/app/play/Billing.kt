@@ -21,9 +21,9 @@ import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * "Sarkari Radar Pro": one one-time purchase through Google Play Billing (product id from the feed, appAds.proProduct)
- * that removes ads for good and keeps the preparation tips open. Dormant until appAds.pro is true in the feed and the
- * product exists in Play Console; without Play (or before the product exists) the price stays blank and nothing is
- * shown. Purchases are restored from Play on every start, so nothing is stored but a cached flag.
+ * that removes ads for good and keeps the preparation tips open. The Buy button shows only while appAds.pro is true in the
+ * feed and Play answers with a price; purchases are restored from Play on every start and every return to the app
+ * WHATEVER that switch says (someone who paid keeps Pro even if sales are paused), so nothing is stored but a cached flag.
  */
 object Billing {
     private const val TAG = "NVBilling"
@@ -46,25 +46,34 @@ object Billing {
                 else Log.i(TAG, "purchase: ${result.responseCode} ${result.debugMessage}")
             }
             .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
+            .enableAutoServiceReconnection()        // Billing 8: reconnects by itself after Play drops the connection
             .build()
         client = c
         c.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(result: BillingResult) {
                 if (result.responseCode != BillingClient.BillingResponseCode.OK) { Log.i(TAG, "setup: ${result.debugMessage}"); return }
-                c.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()) { r, list ->
-                    if (r.responseCode == BillingClient.BillingResponseCode.OK) handle(list, authoritative = true)
-                }
+                recheck()
                 val q = QueryProductDetailsParams.newBuilder().setProductList(listOf(
                     QueryProductDetailsParams.Product.newBuilder().setProductId(productId).setProductType(BillingClient.ProductType.INAPP).build(),
                 )).build()
-                c.queryProductDetailsAsync(q) { r, list ->
-                    details = list.firstOrNull()
+                c.queryProductDetailsAsync(q) { r, res ->
+                    details = res.productDetailsList.firstOrNull()
                     _price.value = details?.oneTimePurchaseOfferDetails?.formattedPrice ?: ""
                     Log.i(TAG, "product: ${r.responseCode} price='${_price.value}'")
                 }
             }
             override fun onBillingServiceDisconnected() { Log.i(TAG, "disconnected") }
         })
+    }
+
+    /** Asks Play again which purchases this account owns (on start and whenever the app comes back): restores Pro after
+        a reinstall or a new phone, switches it off after a refund, and acknowledges anything not yet acknowledged. */
+    fun recheck() {
+        val c = client ?: return
+        if (!c.isReady) return
+        c.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()) { r, list ->
+            if (r.responseCode == BillingClient.BillingResponseCode.OK) handle(list, authoritative = true)
+        }
     }
 
     /** [authoritative]: the full list from Play (a refund or missing purchase switches Pro off again). */
@@ -74,7 +83,10 @@ object Billing {
         for (p in purchases) {
             if (product !in p.products || p.purchaseState != Purchase.PurchaseState.PURCHASED) continue
             owned = true
-            if (!p.isAcknowledged) c.acknowledgePurchase(AcknowledgePurchaseParams.newBuilder().setPurchaseToken(p.purchaseToken).build()) { }
+            // unacknowledged purchases are refunded by Play after 3 days; a failed attempt is retried on the next recheck()
+            if (!p.isAcknowledged) c.acknowledgePurchase(AcknowledgePurchaseParams.newBuilder().setPurchaseToken(p.purchaseToken).build()) { r ->
+                if (r.responseCode != BillingClient.BillingResponseCode.OK) Log.w(TAG, "acknowledge: ${r.responseCode} ${r.debugMessage}")
+            }
         }
         if (owned) { setPro(true); if (!authoritative) app?.let { Stats.event(it, "pro_purchased") } }
         else if (authoritative) setPro(false)

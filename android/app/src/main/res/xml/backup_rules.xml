@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and older. The ad / pass / Pro state stays on this phone: Pro is restored from Google Play on a new phone. -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="ads.xml" />
+</full-backup-content>

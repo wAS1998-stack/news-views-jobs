@@ -47,6 +47,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.newsviews.app.BuildConfig
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.NativeAdCard
+import com.newsviews.app.ads.RefreshNative
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
@@ -118,6 +119,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val adsOff = Ads.adsOff()
     val offer = BuildConfig.ADS && adCfg.on && adCfg.rewarded && rewardedReady && !adsOff
     val activity = LocalContext.current.findActivity()
+    RefreshNative("jobs")
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
     // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
@@ -218,6 +220,7 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
     val list = remember(idx, f.updateType, f.updateFollowing, settings.follows) {
         idx?.updates?.filter { (f.updateType.isEmpty() || it.ty == f.updateType) && (!f.updateFollowing || settings.follows(it.o)) } ?: emptyList()
     }
+    RefreshNative("updates")
     val typeName = { slug: String -> if (hindi) TYPE_HI[slug] ?: slug else idx?.types?.firstOrNull { it.slug == slug }?.name?.removeSuffix("s") ?: slug }
 
     Column(Modifier.fillMaxSize()) {

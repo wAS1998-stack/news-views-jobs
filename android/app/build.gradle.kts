@@ -151,7 +151,8 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")      // screen views, link opens, pass/pro events (no personal data)
     implementation("com.google.firebase:firebase-crashlytics")    // crash reports (readable stack traces via the plugin's mapping upload)
-    implementation("com.android.billingclient:billing-ktx:7.1.1") // "Pro" one-time purchase (dormant until appAds.pro is on)
+    // "Pro" one-time purchase. Play requires a supported Billing Library major version for every upload (v7 ended 1 Nov 2026).
+    implementation("com.android.billingclient:billing-ktx:8.0.0")
     implementation("com.google.android.gms:play-services-ads:25.5.0")
     implementation("com.google.android.ump:user-messaging-platform:4.0.0")
     implementation("com.google.android.play:review:2.0.2")        // Play's in-app rating sheet
