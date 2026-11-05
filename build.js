@@ -2266,6 +2266,7 @@ ${play ? `## [Get it on Google Play](${play})` : `## Coming soon on Google Play\
 - Clear job pages: posts, last date, age limit, qualification, fee, salary, selection process, how to apply — with the official notification and website linked on every job
 - Results, admit cards, answer keys and upcoming exam dates
 - "Fits my age" check with OBC / SC / ST relaxation, saved jobs with last-date reminders
+- A daily current-affairs quiz (10 questions with explanations) and an evening summary of the day's biggest new jobs
 - Hindi and English, works offline, small and fast
 
 Sarkari Radar is an independent app by ${SITE.brand}. It is not affiliated with any government body; always confirm details on the official website before applying. [Privacy policy](/privacy-policy/).`)
