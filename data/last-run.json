@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T01:00:42.781Z",
+    "at": "2026-11-05T01:43:49.611Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T01:00:54.182Z",
+    "at": "2026-11-05T01:44:38.265Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -81,10 +81,10 @@
       "hpsc": "paused (fails 56, geo-blocked)",
       "hppsc": "paused (fails 56, geo-blocked)",
       "ukpsc": "paused (fails 56, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "4 links, 0 new via direct",
       "cgpsc": "paused (fails 56, geo-blocked)",
       "gpsc": "paused (fails 56, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 56, geo-blocked)",
       "apsc": "paused (fails 56, geo-blocked)",
       "jkpsc": "paused (fails 56, geo-blocked)",
@@ -92,31 +92,31 @@
       "upsssc": "paused (fails 56, geo-blocked)",
       "rssb": "paused (fails 56, geo-blocked)",
       "esb-mp": "paused (fails 56, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
       "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "jssc": "paused (fails 56, geo-blocked)",
       "osssc": "paused (fails 23)",
       "gsssb": "paused (fails 56, geo-blocked)",
       "sssb-punjab": "paused (fails 56, geo-blocked)",
       "hprca": "paused (fails 56, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
-      "kea": "paused (fails 56, geo-blocked)",
-      "kvs": "5 links, 0 new via direct",
-      "dsssb2": "paused (fails 56, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
+      "kea": "paused (fails 56, geo-blocked)",
+      "hssc": "9 links, 0 new via direct",
+      "dsssb2": "paused (fails 56, geo-blocked)",
+      "kvs": "5 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
       "tnusrb": "paused (fails 56, geo-blocked)",
       "tslprb": "paused (fails 56)",
       "slprb-ap": "paused (fails 56, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "bpssc": "208 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
       "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "bssc": "0 notice links (fails 2)"
+      "jkssb": "1 links, 0 new via news-views.in",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "bssc": "error: direct: fetch failed (CERT_HAS_EXPIRED) | alt-ua: fetch failed (CERT_HAS_EXPIRED) | news-views.in: HTTP 526 | api.allori (fails 3)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T01:00:54.510Z",
+    "at": "2026-11-05T01:44:38.544Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T01:00:55.520Z",
+    "at": "2026-11-05T01:44:39.544Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -173,7 +173,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-05T01:01:21.332Z",
+    "at": "2026-11-05T01:45:02.451Z",
     "ai": "OpenAI",
     "published": 1,
     "quizzes": 0,
@@ -182,8 +182,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (248 words, need 300) — not published.",
-      "  + analysis: CRCSRE Guwahati Announces Recruitment for Guest Faculty and Lecturer Positions"
+      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (240 words, need 300) — not published.",
+      "  + analysis: KEA Female Supervisor Recruitment 2026 – Apply Online for 141 Posts"
     ]
   },
   "notify": {
