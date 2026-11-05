@@ -50,7 +50,9 @@ adb shell am start -n $PKG/$ACT --ez hindi false; sleep 3
 # 8. Google test ads: the full-screen ad on the way back from a page (caps bypassed by the debug-only ad_test hook)
 adb shell am start -n $PKG/$ACT --es tab jobs; sleep 3
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez ad_test true --es kind job --es id "$JOB"; sleep 8
-  adb shell input keyevent 4; shot 08-interstitial 7; adb shell input keyevent 4; shot 09-jobs-after-ad 8; fi
+  adb shell input keyevent 4; shot 08-interstitial 7
+  # test interstitials ignore Back: tap their close button (top right on the 1080x2400 pixel_6 screen)
+  adb shell input tap 1019 192; shot 09-jobs-after-ad 6; fi
 # 9b. app-open ad on coming back (caps bypassed by the debug-only app_open_test hook): arm it, go home, come back
 adb shell am start -n $PKG/$ACT --ez app_open_test true --es tab jobs; sleep 8
 adb shell input keyevent 3; sleep 3
