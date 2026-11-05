@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T09:16:44.962Z",
+    "at": "2026-11-05T09:56:07.035Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,13 +11,13 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 16,
-    "newUpdates": 0,
+    "newJobs": 5,
+    "newUpdates": 1,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 52 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 65 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 22 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-05; 20 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 10 already known"
     },
     "log": [
@@ -40,17 +40,17 @@
       "   = same source page as an existing job, skipped: Railway RRB Station Master Online Form 2026 (1265 Posts)",
       "   = same source page as an existing job, skipped: UPSSSC Junior Engineer JE Mechanical Online Form 2026",
       "   = duplicate of an existing recruitment, skipped: PGCIL Engineer Trainee Online Form 2026",
-      "   = duplicate of an existing recruitment, skipped: AEES Teaching Various Post Online Form 2026",
       "   = same source page as an existing job, skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
+      "Added 1 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T09:16:53.722Z",
+    "at": "2026-11-05T09:56:17.615Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 58, geo-blocked)",
       "rrb-portal": "paused (fails 54, geo-blocked)",
       "ncs": "paused (fails 46)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "bpsc": "paused (fails 56, geo-blocked)",
       "rpsc": "paused (fails 46, geo-blocked)",
       "mppsc": "paused (fails 58, geo-blocked)",
@@ -75,13 +75,13 @@
       "tnpsc": "paused (fails 58, geo-blocked)",
       "kpsc": "paused (fails 58, geo-blocked)",
       "appsc": "paused (fails 58, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "rbi": "20 links, 0 new via direct",
       "wbpsc": "paused (fails 58, geo-blocked)",
       "opsc": "paused (fails 46)",
       "hpsc": "paused (fails 58, geo-blocked)",
       "hppsc": "paused (fails 58, geo-blocked)",
       "ukpsc": "paused (fails 58, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "dsssb": "4 links, 0 new via direct",
       "cgpsc": "paused (fails 58, geo-blocked)",
       "gpsc": "paused (fails 58, geo-blocked)",
       "indiapost-gds": "142 links, 0 new via direct",
@@ -93,30 +93,30 @@
       "rssb": "paused (fails 58, geo-blocked)",
       "esb-mp": "paused (fails 58, geo-blocked)",
       "bssc": "paused (fails 7)",
-      "dsssb": "4 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 58, geo-blocked)",
       "osssc": "paused (fails 25)",
       "gsssb": "paused (fails 58, geo-blocked)",
       "sssb-punjab": "paused (fails 58, geo-blocked)",
       "hprca": "paused (fails 58, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "kea": "paused (fails 58, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 58, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
       "tnusrb": "paused (fails 58, geo-blocked)",
       "tslprb": "paused (fails 58)",
       "slprb-ap": "paused (fails 58, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "kvs": "4 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct"
+      "jkssb": "1 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,18 +124,19 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T09:18:02.263Z",
+    "at": "2026-11-05T09:56:25.015Z",
     "ok": true,
-    "checked": 7,
+    "checked": 2,
     "found": 0,
-    "due": 7,
-    "cands": 2,
+    "due": 2,
+    "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 3,
+    "careers": 1,
     "log": [
-      "apply-links: checked 7, found 0 real application pages (7 due, pdf reader on)",
-      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 3"
+      "Warning: TT: undefined function: 21",
+      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 1"
     ]
   },
   "gsc": {
@@ -152,7 +153,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T09:20:55.651Z",
+    "at": "2026-11-05T09:57:31.044Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,9 +161,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 16,
-    "hindiJobs": 16,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 5,
+    "hindiJobs": 5,
+    "hindiUpdatesPending": 1,
+    "hindiUpdates": 1,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -170,27 +172,17 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 16 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: DB गर्ल्स कॉलेज रायपुर अतिथि व्याख्याता भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: KV BSF किट्टंपलयम प्राइमरी टीचर भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: CMOH पुरुलिया भर्ती 2026 – 8 लोवर डिविजन क्लर्क आयुष, DEO और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CGPDTM भर्ती 2026 – 5 युवा पेशेवर, सलाहकार और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: RGU भर्ती 2026 – 2 आंतरिक ऑडिट अधिकारी, कार्यकारी अभियंता पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS भोपाल भर्ती 2026 – 4 प्रोजेक्ट रिसर्च साइंटिस्ट, प्रोजेक्ट टेक्निकल सपोर्ट पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NIFTEM-Kundli सीनियर रिसर्च फेलो भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: उप-खंड अधिकारी, धुले राजस्व सेवक भर्ती 2026 – 24 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NITT भर्ती 2026 – प्रोजेक्ट असिस्टेंट / प्रोजेक्ट एसोसिएट-II पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: गवर्नर सचिवालय एचपी वाइस-चांसलर भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: भट्टदेव विश्वविद्यालय फैकल्टी भर्ती 2026 – 16 प्रोफ़ेसर, सहयोगी एवं सहायक प्रोफ़ेसर पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: ICAR-CIRCOT भर्ती 2026 – 16 सीनियर रिसर्च फेलो, युवा पेशेवर पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT कानपुर प्रोजेक्ट एक्जीक्यूटिव ऑफिसर (अनुसंधान और विकास) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: GPSC भर्ती 2026 – 16 कार्यकारी अभियंता, डिप्टी कार्यकारी अभियंता और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: SDO Shirpur महासुल सेवक भर्ती 2026 – 34 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: जिला महिला और बाल विकास विभाग, नारायणपुर भर्ती 2026 – 2 कार्यालय सहायक और अन्य पदों के लिए ऑफलाइन आवेदन करें"
+      "Enrich/hindi: 5 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: GIPE भर्ती 2026 – 2 रिसर्च असिस्टेंट – I, रिसर्च असिस्टेंट – II के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IIEST Shibpur जूनियर रिसर्च फेलो (रसायन विज्ञान) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: YCM इस्लामपुर भर्ती 2026: 17 सहायक प्रोफेसर पदों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi: SMPA सीनियर डिप्टी मैनेजर भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ICSI सहायक युवा पेशेवर भर्ती 2026 – 8 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: UPESSC PRT सहायक शिक्षक सुधार फॉर्म 2026 जारी – ऐसे करें चेक"
     ]
   },
   "news": {
-    "at": "2026-11-05T09:21:21.495Z",
+    "at": "2026-11-05T09:57:55.331Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
@@ -199,8 +191,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: DB Girls College Raipur Invites Applications for Guest Lecturer in Music",
-      "  + analysis: Kendriya Vidyalaya BSF Kittampalayam Announces Walk-in Interview for Primary Teacher Recruitment"
+      "  + analysis: GIPE Recruitment 2026 – Apply Online for Research Assistant Positions",
+      "  + analysis: IIEST Shibpur Announces Recruitment for Junior Research Fellow in Chemistry"
     ]
   },
   "notify": {
