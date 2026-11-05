@@ -62,7 +62,9 @@ hurting users or breaking Google's policies.
   dates). Closed jobs never show an Apply button, are never pushed or posted to Telegram.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
-  logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits.
+  logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits. Cloudflare
+  reads only the LAST commit of a push: if a push carries site changes, its last commit must not have the skip flag
+  (a skip-flagged last commit silently leaves the earlier site changes undeployed until the next unflagged push).
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
