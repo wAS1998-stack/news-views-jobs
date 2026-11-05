@@ -1,4 +1,3 @@
-OK build 32 d0e4706 2026-11-04T09:55:46Z signed=false
-signing: ANDROID_KEYSTORE_B64 MISSING, ANDROID_KEYSTORE_PASSWORD MISSING, key alias 'upload' (default): both secrets are needed for a signed build (android/make-upload-key.sh makes them)
--rw-r--r-- 1 runner runner 48542824 Nov  4 09:49 android/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r-- 1 runner runner 22871570 Nov  4 09:55 android/app/build/outputs/apk/release/app-release.apk
+FAILED build 33 7ea3d4c 2026-11-05T11:57:28Z
+signing: 
+----- tail -----
