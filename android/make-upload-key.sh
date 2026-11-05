@@ -13,9 +13,9 @@ keytool -genkeypair -v -keystore upload-key.jks -alias upload -keyalg RSA -keysi
 if base64 --help 2>&1 | grep -q -- '-w'; then base64 -w0 upload-key.jks > upload-key.b64; else base64 upload-key.jks | tr -d '\n' > upload-key.b64; fi
 echo
 echo "Add these two secrets in GitHub (Settings -> Secrets and variables -> Actions):"
-echo "  ANDROID_KEYSTORE_PASSWORD  =  $PASS"
-echo "  ANDROID_KEYSTORE_B64       =  the whole content of $(pwd)/upload-key.b64 (one long line)"
-echo "(the key alias is 'upload', the workflow's default, so ANDROID_KEY_ALIAS is not needed)"
+echo "  SARKARI_KEYSTORE_PASSWORD  =  $PASS"
+echo "  SARKARI_KEYSTORE_BASE64    =  the whole content of $(pwd)/upload-key.b64 (one long line)"
+echo "(the key alias is 'upload', the workflow's default, so SARKARI_KEY_ALIAS is not needed)"
 echo
 echo "Upload-key certificate (for Play Console -> App integrity, if asked):"
 keytool -list -v -keystore upload-key.jks -storepass "$PASS" | grep -E "SHA1|SHA256" | sed 's/^\s*/  /'

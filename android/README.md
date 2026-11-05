@@ -19,7 +19,8 @@ APK `sarkari-radar.apk` + debug APK (published to the `app-latest` release: http
 Secrets (repo Settings → Secrets and variables → Actions):
 - `GOOGLE_SERVICES_JSON` — contents of google-services.json from Firebase (Android app `in.newsviews.app`)
 - `FIREBASE_SERVICE_ACCOUNT_JSON` — Firebase service-account key (Project settings → Service accounts), used by push-notify.js
-- `ANDROID_KEYSTORE_B64`, `ANDROID_KEYSTORE_PASSWORD` (and optional `ANDROID_KEY_ALIAS`, default `upload`) — upload key.
+- `SARKARI_KEYSTORE_BASE64`, `SARKARI_KEYSTORE_PASSWORD` (and optional `SARKARI_KEY_ALIAS`, default `upload`,
+  `SARKARI_KEY_PASSWORD`, default = keystore password) — upload key. The older `ANDROID_*` names also work.
   Don't have one yet? Run `android/make-upload-key.sh` once on your computer (needs Java): it creates `upload-key.jks`
   and prints the two secrets to paste. Until they exist, every build is signed with the public test key
   `android/test-signing.jks` (fine for trying the app, never accepted as a Play upload key), and no `.aab` is made.

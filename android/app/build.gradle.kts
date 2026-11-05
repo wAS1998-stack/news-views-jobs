@@ -11,7 +11,7 @@ if (hasFirebase) apply(plugin = "com.google.gms.google-services")
 // Release signing from environment variables (CI secrets); without them only the debug build is made.
 val ksPath: String? = System.getenv("ANDROID_KEYSTORE_PATH")
 val ksPass: String? = System.getenv("ANDROID_KEYSTORE_PASSWORD")
-val ksAlias: String = System.getenv("ANDROID_KEY_ALIAS") ?: "upload"
+val ksAlias: String = System.getenv("ANDROID_KEY_ALIAS")?.takeIf { it.isNotBlank() } ?: "upload"
 val versionCodeEnv = (System.getenv("APP_VERSION_CODE") ?: "1").toInt()
 
 // Ads (Google AdMob). The real IDs live in the repo-root config.json under "admob" (one place for the site and the app;
@@ -72,7 +72,7 @@ android {
                 storeFile = file(ksPath)
                 storePassword = ksPass
                 keyAlias = ksAlias
-                keyPassword = System.getenv("ANDROID_KEY_PASSWORD") ?: ksPass
+                keyPassword = System.getenv("ANDROID_KEY_PASSWORD")?.takeIf { it.isNotBlank() } ?: ksPass
             }
         }
     }

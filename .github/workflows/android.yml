@@ -5,8 +5,9 @@ name: Android app
 #  - signed release bundle (.aab for Play) when the signing secrets exist,
 #  - then runs the app on an emulator and saves screenshots to android/ci/screens/.
 # Results (OK / the compiler errors) are written to android/ci/last-build.txt because build logs can't be read from
-# Claude's sandbox. Optional secrets: GOOGLE_SERVICES_JSON (Firebase alerts), ANDROID_KEYSTORE_B64,
-# ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS (default "upload").
+# Claude's sandbox. Optional secrets: GOOGLE_SERVICES_JSON (Firebase alerts) and the upload key:
+# SARKARI_KEYSTORE_BASE64, SARKARI_KEYSTORE_PASSWORD, SARKARI_KEY_ALIAS (default "upload"), SARKARI_KEY_PASSWORD
+# (default: the keystore password). The older ANDROID_* names still work as a fallback.
 on:
   push:
     branches: [main]
@@ -36,12 +37,12 @@ jobs:
         # Checks the upload-key secrets and says in last-build.txt what is missing or wrong (names only, never values),
         # so the owner can fix them without reading Action logs.
         env:
-          KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
-          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          KS_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KS_B64: ${{ secrets.SARKARI_KEYSTORE_BASE64 || secrets.ANDROID_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.SARKARI_KEYSTORE_PASSWORD || secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KS_ALIAS: ${{ secrets.SARKARI_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
         run: |
           alias="${KS_ALIAS:-upload}"
-          note="ANDROID_KEYSTORE_B64 $([ -n "$KS_B64" ] && echo present || echo MISSING), ANDROID_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)')"
+          note="SARKARI_KEYSTORE_BASE64 $([ -n "$KS_B64" ] && echo present || echo MISSING), SARKARI_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)')"
           signed=false
           if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ]; then
             if printf '%s' "$KS_B64" | tr -d ' \n\r' | base64 -d > "$RUNNER_TEMP/upload.jks" 2>/dev/null && [ -s "$RUNNER_TEMP/upload.jks" ]; then
@@ -52,7 +53,7 @@ jobs:
                 note="$note: keystore REJECTED ($(echo "$out" | grep -v '^Warning' | head -1 | cut -c1-120)) — wrong password, or the alias is not in this keystore"
               fi
             else
-              note="$note: ANDROID_KEYSTORE_B64 is not the base64 of a keystore file (make it with: base64 -w0 upload-key.jks)"
+              note="$note: SARKARI_KEYSTORE_BASE64 is not the base64 of a keystore file (make it with: base64 -w0 upload-key.jks)"
             fi
           else
             note="$note: both secrets are needed for a signed build (android/make-upload-key.sh makes them)"
@@ -63,8 +64,9 @@ jobs:
         working-directory: android
         env:
           APP_VERSION_CODE: ${{ github.run_number }}
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.SARKARI_KEYSTORE_PASSWORD || secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.SARKARI_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.SARKARI_KEY_PASSWORD || secrets.ANDROID_KEY_PASSWORD }}
         run: |
           set -o pipefail
           tasks="assembleDebug assembleRelease"
