@@ -40,6 +40,9 @@ if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$J
 if [ -n "$UPD" ]; then adb shell am start -n $PKG/$ACT --es kind update --es id "$UPD"; shot 04-update 8; fi
 # 5. the same job in Hindi
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez hindi true --es kind job --es id "$JOB"; shot 05-job-hindi 8; fi
+# 5b. the daily quiz (debug-only hook opens it directly)
+QUIZ=$(curl -s https://news-views.in/app/v1/index.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print((d.get("quizzes") or [{}])[0].get("id",""))' 2>/dev/null)
+if [ -n "$QUIZ" ]; then adb shell am start -n $PKG/$ACT --ez hindi false --es quiz "$QUIZ"; shot 05b-quiz 8; fi
 # 6. a news-views.in link opened in the app
 if [ -n "$JOB" ]; then adb shell am start -a android.intent.action.VIEW -d "https://news-views.in/jobs/$JOB/" $PKG; shot 06-link 8; fi
 adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot 07-jobs-hindi 6

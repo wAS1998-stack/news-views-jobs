@@ -1839,6 +1839,11 @@ function shortTitle(t) {
     .replace(/\s+(आज\s+)?(जारी|घोषित|सूचना|अधिसूचना)(\s+हुआ|\s+हुई|\s+किया गया)?$/, "").trim();
   return head.length >= 12 ? head : t;
 }
+function appQuizzes() {
+  return readQuiz().filter((z) => z && z.id && z.date && Array.isArray(z.questions) && z.questions.length &&
+    z.questions.every((q) => q && q.q && Array.isArray(q.options) && q.options.length >= 2 && Number(q.answer) >= 0 && Number(q.answer) < q.options.length))
+    .sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 14);
+}
 function buildAppIndex(jobs, updates) {
   const J = appJobsInFeed(jobs).map((j) => ({
     id: j.id, t: j.title, th: (j.hi && j.hi.title) || "", o: orgKey(j) || "", p: j.post_name || "",
@@ -1861,10 +1866,11 @@ function buildAppIndex(jobs, updates) {
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
+    quizzes: appQuizzes().map((z) => ({ id: z.id, date: appDay(z.date), title: z.title, n: z.questions.length })),
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
       const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 6,
-        native: true, nativeEvery: 8, pro: false, proProduct: "pro_lifetime", appOpen: true, appOpenGap: 14400, appOpenAway: 900 }, SITE.appAds || {});
+        native: true, nativeEvery: 8, bannerOnPages: true, pro: false, proProduct: "pro_lifetime", appOpen: true, appOpenGap: 14400, appOpenAway: 900 }, SITE.appAds || {});
       for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 6], ["nativeEvery", 8], ["appOpenGap", 14400], ["appOpenAway", 900]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
@@ -1919,7 +1925,11 @@ function writeAppFeed(jobs, updates) {
   const J = appJobsInFeed(jobs), U = appUpdatesInFeed(updates);
   for (const j of J) write(`app/v1/j/${j.id}.json`, appJobDetail(j));
   for (const u of U) write(`app/v1/u/${u.id}.json`, appUpdateDetail(u));
-  console.log(`App feed: ${J.length} jobs, ${U.length} updates -> app/v1/`);
+  // the daily current-affairs quiz (the same one as /quiz/ on the site): the last 14 days, newest first
+  const Q = appQuizzes();
+  for (const z of Q) write(`app/v1/q/${z.id}.json`, JSON.stringify({ id: z.id, date: z.date, title: z.title,
+    questions: z.questions.map((q) => ({ q: String(q.q), options: q.options.map(String), answer: Number(q.answer) || 0, why: q.why ? String(q.why) : "" })) }));
+  console.log(`App feed: ${J.length} jobs, ${U.length} updates, ${Q.length} quizzes -> app/v1/`);
 }
 function buildSearchIndex(jobs, updates) {
   const J = [...jobs].filter((j) => !isStale(j)).sort(liveFirst).map((j) => {

@@ -104,7 +104,7 @@ fun StatusLine(idx: AppIndex?, error: Boolean, s: Strings, hindi: Boolean, count
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
+fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onOpen: (String) -> Unit) {
     val idx by vm.index.collectAsStateWithLifecycle()
     val loading by vm.loading.collectAsStateWithLifecycle()
     val error by vm.error.collectAsStateWithLifecycle()
@@ -181,6 +181,12 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                 list.isEmpty() -> Centered(s.noMatch)
                 else -> LazyColumn(state = listState, contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
+                    // the newest quiz (today's, or yesterday's until today's is published), until one is played today
+                    val today = Dates.today().toString()
+                    val quiz = idx?.quizzes?.firstOrNull()?.takeIf { it.date >= Dates.today().minusDays(1).toString() }
+                    if (quiz != null && today !in settings.quizDays) item(key = "quiz-${quiz.id}") {
+                        QuizCard(quiz, settings.quizStreak(), s) { onQuiz(quiz.id) }
+                    }
                     itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                             if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours, proPrice = if (adCfg.pro) proPrice else "",

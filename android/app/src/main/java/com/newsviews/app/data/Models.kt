@@ -80,6 +80,7 @@ data class AppIndex(
     val jobs: List<JobItem> = emptyList(),
     val updates: List<UpdateItem> = emptyList(),
     val cats: List<Cat> = emptyList(),
+    val quizzes: List<QuizRef> = emptyList(),
     val ads: AdsConfig = AdsConfig(),
 )
 
@@ -96,6 +97,7 @@ data class AdsConfig(
     val rewarded: Boolean = true,      // the opt-in offer: watch one rewarded video, no ads for rewardHours hours
     val rewardHours: Int = 6,
     @SerialName("native") val nativeAds: Boolean = true,   // one native ad card inside the job and result lists
+    val bannerOnPages: Boolean = true, // the anchored banner also under job / result / quiz pages
     val nativeEvery: Int = 8,          // (reserved) spacing for more native cards
     val pro: Boolean = false,          // "Pro" one-time purchase offered (needs the product in Play Console)
     val proProduct: String = "pro_lifetime",
@@ -103,6 +105,16 @@ data class AdsConfig(
     val appOpenGap: Int = 14400,       // at most once per this many seconds
     val appOpenAway: Int = 900,        // only after the app was in the background at least this long
 )
+
+/** The daily current-affairs quiz (the site's /quiz/), newest first in the index; questions in q/<id>.json. */
+@Serializable
+data class QuizRef(val id: String = "", val date: String = "", val title: String = "", val n: Int = 0)
+
+@Serializable
+data class QuizQ(val q: String = "", val options: List<String> = emptyList(), val answer: Int = 0, val why: String = "")
+
+@Serializable
+data class Quiz(val id: String = "", val date: String = "", val title: String = "", val questions: List<QuizQ> = emptyList())
 
 @Serializable
 data class Faq(val q: String = "", val a: String = "")

@@ -101,7 +101,7 @@ private fun feeText(raw: String): String {
 }
 
 @Composable
-private fun <T> Loader(key: String, load: suspend () -> T, s: Strings, web: String, content: @Composable (T) -> Unit) {
+internal fun <T> Loader(key: String, load: suspend () -> T, s: Strings, web: String, content: @Composable (T) -> Unit) {
     val ctx = LocalContext.current
     var data by remember(key) { mutableStateOf<T?>(null) }
     var failed by remember(key) { mutableStateOf(false) }

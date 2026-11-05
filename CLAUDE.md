@@ -11,7 +11,8 @@ hurting users or breaking Google's policies.
 - **Android app** (`android/`) — native Kotlin + Jetpack Compose. Package `in.newsviews.app`. Its "backend" is the
   same build: `build.js` writes a static JSON feed to `/app/v1/` (index.json, j/<id>.json, u/<id>.json).
   The index carries short list titles (`tc`/`thc`, from `shortTitle()`), categories (`c`, from `APP_CATS`, sent as
-  `cats` so chips can change without an app update), walk-in flag `w`, and the `ads` switches. Fields are additive:
+  `cats` so chips can change without an app update), walk-in flag `w`, Hindi post names `ph`, the last 14 daily quizzes
+  (`quizzes`; questions in `/app/v1/q/<id>.json`, from data/quiz.json) and the `ads` switches. Fields are additive:
   never rename or remove one (old app versions read it); bump `APP_API` only for a breaking change.
 - **Automation** — GitHub Actions fetch new notifications, enrich them with AI, rebuild and notify search engines,
   Telegram and app users, around the clock.

@@ -73,6 +73,7 @@ class Repository(context: Context) {
             jobs = list("jobs", JobItem.serializer()).filter { it.id.isNotBlank() && it.t.isNotBlank() },
             updates = list("updates", UpdateItem.serializer()).filter { it.id.isNotBlank() && it.t.isNotBlank() },
             cats = list("cats", Cat.serializer()), ads = ads,
+            quizzes = list("quizzes", QuizRef.serializer()).filter { it.id.isNotBlank() && it.n > 0 },
         )
     }
 
@@ -119,6 +120,7 @@ class Repository(context: Context) {
 
     suspend fun job(id: String): JobDetail = detail("j/$id.json", JobDetail.serializer())
     suspend fun update(id: String): UpdateDetail = detail("u/$id.json", UpdateDetail.serializer())
+    suspend fun quiz(id: String): Quiz = detail("q/$id.json", Quiz.serializer())
 
     /** Saved jobs keep their list entry even after the job leaves the feed. */
     fun saveSnapshot(item: JobItem) { try { File(savedDir, "saved_${item.id}.json").writeText(json.encodeToString(JobItem.serializer(), item)) } catch (_: Exception) {} }

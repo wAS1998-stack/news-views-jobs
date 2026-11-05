@@ -173,6 +173,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setCentral(on: Boolean) = viewModelScope.launch { prefs.setCentral(on); Alerts.sync(getApplication(), prefs) }
     fun toggleFollow(org: String) = viewModelScope.launch { if (org.isNotBlank()) { prefs.toggleFollow(org); Alerts.sync(getApplication(), prefs) } }
     fun setDob(iso: String) = viewModelScope.launch { prefs.setDob(iso) }
+    fun quizDone(date: String) = viewModelScope.launch { prefs.quizDone(date) }
     fun setCategory(c: String) = viewModelScope.launch { prefs.setCategory(c) }
     /** Debug builds only (CI screenshots): a sample date of birth and two followed departments. */
     fun demoProfile() = viewModelScope.launch {

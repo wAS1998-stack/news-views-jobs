@@ -38,6 +38,7 @@
     "rewarded": true,
     "rewardHours": 6,
     "native": true,
+    "bannerOnPages": true,
     "appOpen": true,
     "appOpenGap": 14400,
     "appOpenAway": 900,

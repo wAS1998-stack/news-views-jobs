@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
@@ -112,6 +114,7 @@ class MainActivity : ComponentActivity() {
         if (BuildConfig.DEBUG && intent.getBooleanExtra("demo_profile", false)) vm.demoProfile()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("upcoming", false)) vm.setFilters(vm.filters.value.copy(upcoming = true, updateType = ""))
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
+        if (BuildConfig.DEBUG && intent.hasExtra("quiz")) { pending.value = "quiz" to (intent.getStringExtra("quiz") ?: ""); return }
         if (BuildConfig.DEBUG && intent.hasExtra("tab")) { pending.value = "tab" to (intent.getStringExtra("tab") ?: "jobs"); return }
         // ids come from notifications and links any app can send: accept only the feed's own id format
         val ok = { id: String? -> id != null && ID_RE.matches(id) }
@@ -167,6 +170,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     var prevEntry by rememberSaveable { mutableStateOf<String?>(null) }
     val banner = rememberAnchoredBanner()          // one AdView for the whole session (paused while a page is open)
     val fullScreen by Ads.fullScreen.collectAsStateWithLifecycle()
+    val adCfg by Ads.config.collectAsStateWithLifecycle()
     // arrived through a link or a notification before finishing the welcome screen: show what they came for first;
     // the welcome screen comes on the next start (it used to flash the job and jump back to the welcome screen)
     var linkVisit by rememberSaveable { mutableStateOf(false) }
@@ -179,6 +183,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         when {
             route.startsWith("job/") -> idx?.jobs?.firstOrNull { it.id == argId }?.short(settings.hindi)
             route.startsWith("update/") -> idx?.updates?.firstOrNull { it.id == argId }?.short(settings.hindi)
+            route.startsWith("quiz/") -> s.quizTitle
             else -> null
         }
     }
@@ -189,8 +194,8 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         if (prevEntry == entryId) return@LaunchedEffect        // recreated screen (rotation): not a new page view
         prevEntry = entryId
         Stats.screen(context, route)
-        val isPage = route.startsWith("job/") || route.startsWith("update/")
-        val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
+        val isPage = route.startsWith("job/") || route.startsWith("update/") || route.startsWith("quiz/")
+        val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") || it.startsWith("quiz/") } == true
         if (isPage) { Ads.pageOpened(); activity?.let { PlayPrompts.pageOpened(it) } }
         else if (wasPage && activity != null && !Ads.backFromPage(activity)) PlayPrompts.maybeAskReview(activity)
         prevRoute = route
@@ -201,6 +206,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         // debug hook: a plain jump to the tab, clearing open pages (go() would restore the tab's saved stack)
         if (p.first != "tab") linkVisit = true
         if (p.first == "tab") nav.navigate(p.second) { popUpTo("jobs"); launchSingleTop = true }
+        else if (p.first == "quiz") nav.navigate("quiz/${p.second}") { launchSingleTop = true }
         else nav.navigate(if (p.first == "update") "update/${p.second}" else "job/${p.second}") { launchSingleTop = true }
         pending.value = null
     }
@@ -247,11 +253,20 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
                     }
                 }
             }
+            // pages: the same banner, kept alive from the list (no new request), well below the Apply buttons at the top
+            else if (adCfg.bannerOnPages) Column(Modifier.navigationBarsPadding()) {
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                Spacer(Modifier.height(6.dp))
+                BottomBanner(banner, s.ad)
+            }
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { pad ->
         NavHost(nav, startDestination = "jobs", modifier = Modifier.padding(pad)) {
-            composable("jobs") { JobsScreen(vm, s) { nav.navigate("job/$it") } }
+            composable("jobs") { JobsScreen(vm, s, onQuiz = { nav.navigate("quiz/$it") }) { nav.navigate("job/$it") } }
+            composable("quiz/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
+                com.newsviews.app.ui.QuizScreen(vm, s, it.arguments?.getString("id") ?: "")
+            }
             composable("updates") { UpdatesScreen(vm, s, onOpen = { nav.navigate("update/$it") }, onOpenJob = { nav.navigate("job/$it") }) }
             composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
             composable("alerts") { AlertsScreen(vm, s) }

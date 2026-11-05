@@ -45,7 +45,15 @@ data class Settings(
     val follows: Set<String> = emptySet(),   // departments followed (as shown, e.g. "SSC")
     val dob: String = "",                     // date of birth, yyyy-mm-dd — kept only on the phone
     val category: String = "gen",             // gen | obc | scst — for upper-age relaxation
+    val quizDays: Set<String> = emptySet(),   // yyyy-mm-dd of each daily quiz finished (only the last 60 are kept)
 ) {
+    /** Days in a row with a finished quiz, ending today (or yesterday, so the streak survives until tonight). */
+    fun quizStreak(today: java.time.LocalDate = Dates.today()): Int {
+        var d = if (today.toString() in quizDays) today else today.minusDays(1)
+        var n = 0
+        while (d.toString() in quizDays) { n++; d = d.minusDays(1) }
+        return n
+    }
     /** Age in whole years on [on] (notices count age on a cut-off date; the job's last date is the usual one). */
     fun age(on: java.time.LocalDate = Dates.today()): Int? = Dates.parse(dob)?.let { java.time.Period.between(it, on).years }
     fun ageFor(job: JobItem): Int? = age(Dates.parse(job.en) ?: Dates.today())
@@ -75,6 +83,7 @@ class Prefs(private val context: Context) {
         val saved = stringSetPreferencesKey("saved")
         val subscribed = stringSetPreferencesKey("subscribed")
         val follows = stringSetPreferencesKey("follows")
+        val quizDays = stringSetPreferencesKey("quizDays")
         val dob = stringPreferencesKey("dob")
         val category = stringPreferencesKey("category")
     }
@@ -93,6 +102,7 @@ class Prefs(private val context: Context) {
             saved = p[K.saved] ?: emptySet(),
             subscribed = p[K.subscribed] ?: emptySet(),
             follows = p[K.follows] ?: emptySet(),
+            quizDays = p[K.quizDays] ?: emptySet(),
             dob = p[K.dob] ?: "",
             category = p[K.category] ?: "gen",
         )
@@ -112,6 +122,9 @@ class Prefs(private val context: Context) {
     suspend fun setSubscribed(v: Set<String>) = context.store.edit { it[K.subscribed] = v }
     suspend fun setDob(v: String) = context.store.edit { it[K.dob] = v }
     suspend fun setCategory(v: String) = context.store.edit { it[K.category] = v }
+    suspend fun quizDone(date: String) = context.store.edit {
+        it[K.quizDays] = ((it[K.quizDays] ?: emptySet()) + date).sortedDescending().take(60).toSet()
+    }
     suspend fun toggleFollow(org: String) = context.store.edit {
         val cur = it[K.follows] ?: emptySet()
         val match = cur.firstOrNull { f -> orgSlug(f) == orgSlug(org) }
