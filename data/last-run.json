@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T04:31:58.574Z",
+    "at": "2026-11-05T05:13:39.430Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,16 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 1,
-    "newUpdates": 0,
+    "newJobs": 4,
+    "newUpdates": 6,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-04; 75 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 67 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 22 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 9 already known"
     },
     "log": [
-      "   = same source page as an existing job, skipped: IIT Bhilai Project Engineer (Electrical Engineering) Recruitment 2026 – Apply Online",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 - Apply for 73 Engineer & Supervisor Posts",
       "   = same source page as an existing job, skipped: UPPSC Various Post Online Form 2026",
       "   = duplicate of an existing recruitment, skipped: Railway RRC CR Apprentice Online Form 2026",
@@ -45,14 +44,15 @@
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
+      "Added 6 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T04:32:48.135Z",
+    "at": "2026-11-05T05:13:48.634Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 57, geo-blocked)",
       "rrb-portal": "paused (fails 53, geo-blocked)",
       "ncs": "paused (fails 45)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "bpsc": "paused (fails 55, geo-blocked)",
       "rpsc": "paused (fails 45, geo-blocked)",
       "mppsc": "paused (fails 57, geo-blocked)",
@@ -75,7 +75,7 @@
       "tnpsc": "paused (fails 57, geo-blocked)",
       "kpsc": "paused (fails 57, geo-blocked)",
       "appsc": "paused (fails 57, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "rbi": "20 links, 0 new via direct",
       "wbpsc": "paused (fails 57, geo-blocked)",
       "opsc": "paused (fails 45)",
       "hpsc": "paused (fails 57, geo-blocked)",
@@ -105,18 +105,18 @@
       "ctet": "4 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 57, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
-      "kvs": "4 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "tnusrb": "paused (fails 57, geo-blocked)",
       "tslprb": "paused (fails 57)",
       "slprb-ap": "paused (fails 57, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "7 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
       "nta": "1 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "jkssb": "1 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T04:32:48.467Z",
+    "at": "2026-11-05T05:13:48.965Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T04:33:11.372Z",
+    "at": "2026-11-05T05:15:10.949Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,9 +160,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 4,
+    "hindiJobs": 4,
+    "hindiUpdatesPending": 6,
+    "hindiUpdates": 6,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -170,13 +171,21 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: Sainik School Rewari भर्ती 2026 - 05 विभिन्न पदों के लिए आवेदन करें",
-      "  ✓ hindi: ACTREC ब्रोंकोस्कोपी तकनीशियन भर्ती 2026 – ऑनलाइन आवेदन करें"
+      "Enrich/hindi: 4 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: TNPSC समूह 4 भर्ती 2026 (सं. 11/2026) – PDF, 6,574 रिक्तियों के लिए ऑनलाइन आवेदन",
+      "  ✓ hindi: SAMEER भर्ती 2026 – 140 प्रोजेक्ट फेलो, प्रोजेक्ट इंजीनियर और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NMPA सीनियर मैनेजर भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: NIT उत्तराखंड गैर-शिक्षण भर्ती 2026 - 21 तकनीशियन, जूनियर सहायक और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: PFRDA ग्रेड A असिस्टेंट मैनेजर रिजल्ट 2026 जारी - डाउनलोड करें फेज 1 रिजल्ट PDF",
+      "  ✓ hindi update: RGUHS रिजल्ट 2026 जारी - परिणाम चेक करने के लिए डायरेक्ट लिंक @ rguhs.ac.in",
+      "  ✓ hindi update: राजस्थान महिला सुपरवाइजर रिजल्ट 2026 आउट - डाउनलोड करें TSP, Non-TSP मेरिट लिस्ट और कट ऑफ PDF",
+      "  ✓ hindi update: IGNOU हॉल टिकट दिसंबर 2026 जारी - ऑनलाइन डाउनलोड करें @ ignou.ac.in",
+      "  ✓ hindi update: NIOS हॉल टिकट 2026 जारी - कक्षा 10 और 12 का एडमिट कार्ड sdmis.nios.ac.in से डाउनलोड करें",
+      "  ✓ hindi update: Punjab PCS मेन रिजल्ट 2026 जारी - PPSC रिजल्ट PDF डाउनलोड करें"
     ]
   },
   "news": {
-    "at": "2026-11-05T04:33:34.651Z",
+    "at": "2026-11-05T05:15:30.909Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
@@ -185,8 +194,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: Sainik School Rewari Announces Recruitment for Five Key Positions",
-      "  + analysis: ACTREC Announces Recruitment for Bronchoscopy Technician Position"
+      "  + analysis: TNPSC Group 4 Notification 2026 Released for 6,574 Vacancies",
+      "  + analysis: SAMEER Recruitment 2026: Apply Online for 140 Project Fellow and Engineer Positions"
     ]
   },
   "notify": {
