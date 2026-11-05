@@ -103,7 +103,9 @@ android {
             buildConfigField("String", "AD_INLINE", "\"ca-app-pub-3940256099942544/6300978111\"")
             buildConfigField("String", "AD_INTERSTITIAL", "\"ca-app-pub-3940256099942544/1033173712\"")
             buildConfigField("String", "AD_REWARDED", "\"ca-app-pub-3940256099942544/5224354917\"")
-            buildConfigField("String", "AD_NATIVE", "\"ca-app-pub-3940256099942544/2247696110\"")
+            // Google's "native advanced video" test unit: the plain native test campaign currently returns a malformed
+            // creative ("Click actions were not properly specified", CI gma-log.txt, Nov 2026)
+            buildConfigField("String", "AD_NATIVE", "\"ca-app-pub-3940256099942544/1044960115\"")
             buildConfigField("String", "AD_APP_OPEN", "\"ca-app-pub-3940256099942544/9257395921\"")
         }
     }
