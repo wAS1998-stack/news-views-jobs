@@ -10,3 +10,7 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 -keep,includedescriptorclasses class com.newsviews.app.data.**$$serializer { *; }
+
+# Moloco's SDK reads ironSource LevelPlay impression data only when that SDK is present (optional reference);
+# without the ironSource adapter in the build those classes are absent, which is fine at run time.
+-dontwarn com.unity3d.mediation.**
