@@ -111,9 +111,9 @@ hurting users or breaking Google's policies.
 - Brand search: the homepage is indexed (URL Inspection, Oct 30) but didn't rank for "news-views.in"; brand signals
   were added Oct 31. `data/gsc.json` → `brand` (searches for the site's own name, 90 days) and `home` track progress;
   run inspect.yml with mode `gsc` to refresh it on demand.
-- App: built and verified in CI; test-signed until the owner adds the upload-key secrets (`android/make-upload-key.sh`
-  makes the key and prints them; the workflow then also produces the Play `.aab`). Waiting for the owner's Play Console upload (12 testers × 14 days for new personal
-  accounts), Firebase secrets (instant alerts) and AdMob IDs. After the first Play upload, add the Play app-signing
+- App: built, verified and **signed with the owner's upload key** since build 36 (Nov 5); `sarkari-radar.aab` on the
+  `app-latest` release is the Play upload. Firebase secrets are in (instant alerts on). Waiting for the owner's Play
+  Console upload (12 testers × 14 days for new personal accounts) and the AdMob IDs (no ads in release until then). After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.
