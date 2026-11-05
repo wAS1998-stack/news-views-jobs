@@ -59,6 +59,11 @@ jobs:
             fi
             if echo " $keys " | grep -qi " $alias "; then
               kp="${KEY_PASS:-$KS_PASS}"
+              # a PKCS12 keystore (keytool's default since Java 9) has one password for the store and every key: keytool
+              # silently ignores -keypass for it, but Gradle does not, so the key password must be the store password
+              if echo "$list" | grep -qi 'Keystore type: PKCS12'; then
+                [ "$kp" != "$KS_PASS" ] && note="$note (PKCS12 keystore: the key password is the keystore password, SARKARI_KEY_PASSWORD is ignored)"; kp="$KS_PASS"
+              fi
               if keytool -certreq -alias "$alias" -keystore "$ks" -storepass "$KS_PASS" -keypass "$kp" -file "$RUNNER_TEMP/csr.txt" >/dev/null 2>&1; then :
               elif keytool -certreq -alias "$alias" -keystore "$ks" -storepass "$KS_PASS" -keypass "$KS_PASS" -file "$RUNNER_TEMP/csr.txt" >/dev/null 2>&1; then
                 kp="$KS_PASS"; note="$note (SARKARI_KEY_PASSWORD is wrong — this key uses the keystore password, used that)"
