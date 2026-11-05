@@ -10,8 +10,11 @@
  *   o-<department>              departments the person follows (e.g. o-ssc, o-rrb): every new job, admit card, result…
  *   digest                      one evening summary a day (first build after 7 pm IST) of the day's biggest new jobs
  * A job is sent once per language to: (its state or s-any) AND (its lowest qualification level) AND language.
- * At most 6 jobs (largest first) and 3 results per build, and 15 jobs / 6 results per day (a build runs every ~40 min:
- * without the daily cap a phone set to "All states" could get a hundred alerts a day); data/pushed.json remembers what was sent.
+ * Budgets are per audience, not national: per build at most 2 jobs per state (and 2 central ones), per Indian day at
+ * most 4 per state and 5 central, largest first — so a Bihar phone gets Bihar's jobs instead of whatever was biggest in
+ * India. Results: 3 per build, 6 a day. Followers: results and admit cards before jobs, at most 5 a day per department.
+ * Quiet hours 10 pm – 7 am IST: nothing is sent; anything not sent yet (caps, quiet hours) stays eligible for a day
+ * (published since yesterday), so the morning builds catch up. data/pushed.json remembers what was sent (IST dates).
  * Needs the FIREBASE_SERVICE_ACCOUNT_JSON secret (Firebase console → Project settings → Service accounts →
  * Generate new private key). Without it the script exits quietly. Never fails the workflow.
  */
@@ -23,7 +26,12 @@ const L = require("./lib.js");
 const ROOT = __dirname;
 const SITE = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const PUSHED = path.join(ROOT, "data", "pushed.json");
-const MAX_JOBS = 6, MAX_UPDATES = 3, MAX_FOLLOW = 20, MAX_JOBS_DAY = 15, MAX_UPDATES_DAY = 6;
+const MAX_SEG_BUILD = 2, MAX_SEG_DAY = 4, MAX_CENTRAL_DAY = 5, MAX_UPDATES = 3, MAX_UPDATES_DAY = 6, MAX_FOLLOW = 30, MAX_ORG_DAY = 5;
+const QUIET_FROM = 22, QUIET_TO = 7;   // IST hours
+/* The audience a job's budget is counted against: its first state, or "central" for all-India / central jobs
+   (the same split jobConditions uses for its topics). */
+const segOf = (j) => { const st = (j.s || []).filter(Boolean); return !st.length || st.includes("all-india") ? "central" : st[0]; };
+const dayBefore = (iso) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0, 10); };
 // same rule as the app (Alerts.orgTopic) and build.js slug()
 const orgTopic = (o) => "o-" + String(o || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 // lowest level first; engineering/diploma is its own track
@@ -75,25 +83,62 @@ async function main() {
   const updIds = new Set(urls.map((u) => idOf(u, "updates")).filter(Boolean));
   const today = L.todayIST();
   const open = (j) => !(j.en && j.en < today);            // never alert about a job whose last date has passed
-  // the day's budget: what earlier builds today already sent (pushed.json stores the UTC day of each send)
-  const day = new Date().toISOString().slice(0, 10);
-  const sentToday = (prefix) => Object.keys(pushed).filter((k) => k.startsWith(prefix) && pushed[k] === day).length;
-  const jobBudget = Math.max(0, Math.min(MAX_JOBS, MAX_JOBS_DAY - sentToday("j:")));
-  const updBudget = Math.max(0, Math.min(MAX_UPDATES, MAX_UPDATES_DAY - sentToday("u:")));
-  const jobs = index.jobs.filter((j) => jobIds.has(j.id) && open(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v).slice(0, jobBudget);
-  const updates = index.updates.filter((u) => updIds.has(u.id) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`]).slice(0, updBudget);
-  // followers of a department get everything new from it (same notification tag, so a phone that also matched the
-  // state/qualification alert sees it once)
-  const follow = [
-    ...index.jobs.filter((j) => jobIds.has(j.id) && j.o && open(j) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
-    ...index.updates.filter((u) => updIds.has(u.id) && u.o && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
-  ].slice(0, MAX_FOLLOW);
-  // the daily summary: once a day, from the first build after 7 pm IST, when at least 3 open jobs were published today
   const istHour = Number(new Date().toLocaleString("en-US", { hour: "numeric", hourCycle: "h23", timeZone: "Asia/Kolkata" }));
+  const quiet = istHour >= QUIET_FROM || istHour < QUIET_TO;
+  const since = dayBefore(today);
+  const recent = (d) => !!d && d >= since;                  // published since yesterday (IST)
+  const sentToday = (k) => pushed[k] === today;
+  const bump = (m, k) => { m[k] = (m[k] || 0) + 1; };
+
+  let jobs = [], updates = [], follow = [];
+  if (!quiet) {
+    // jobs: per-audience budgets (see the header)
+    const dayCount = {}, buildCount = {};
+    for (const j of index.jobs) if (sentToday(`j:${j.id}`)) bump(dayCount, segOf(j));
+    const cands = index.jobs.filter((j) => (jobIds.has(j.id) || recent(j.pub)) && open(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v);
+    for (const j of cands) {
+      const seg = segOf(j);
+      if ((dayCount[seg] || 0) >= (seg === "central" ? MAX_CENTRAL_DAY : MAX_SEG_DAY) || (buildCount[seg] || 0) >= MAX_SEG_BUILD) continue;
+      bump(dayCount, seg); bump(buildCount, seg); jobs.push(j);
+    }
+    // results / admit cards of major exams
+    const updSent = Object.keys(pushed).filter((k) => k.startsWith("u:") && pushed[k] === today).length;
+    updates = index.updates.filter((u) => (updIds.has(u.id) || recent(u.d)) && u.big && u.ty !== "exam-date" && !pushed[`u:${u.id}`])
+      .slice(0, Math.max(0, Math.min(MAX_UPDATES, MAX_UPDATES_DAY - updSent)));
+    // followers get everything new from their departments (same notification tag, so a phone that also matched the
+    // state/qualification alert sees it once): results and admit cards first, then jobs, a few per department a day
+    const orgCount = {};
+    for (const j of index.jobs) if (j.o && sentToday(`fj:${j.id}`)) bump(orgCount, orgTopic(j.o));
+    for (const u of index.updates) if (u.o && sentToday(`fu:${u.id}`)) bump(orgCount, orgTopic(u.o));
+    const fc = [
+      ...index.updates.filter((u) => u.o && (updIds.has(u.id) || recent(u.d)) && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
+      ...index.jobs.filter((j) => j.o && (jobIds.has(j.id) || recent(j.pub)) && open(j) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
+    ];
+    for (const f of fc) {
+      const t = orgTopic(f.x.o);
+      if (t === "o-" || (orgCount[t] || 0) >= MAX_ORG_DAY) continue;
+      bump(orgCount, t); follow.push(f);
+      if (follow.length >= MAX_FOLLOW) break;
+    }
+  }
+  // the daily summary: once a day, from the first build after 7 pm IST (before quiet hours), when at least 3 open jobs
+  // were published today — one per state (its own jobs first, then central ones) and one for "All states" phones
   const digestKey = `digest:${today}`;
   const todays = index.jobs.filter((j) => j.pub === today && open(j));
-  const digest = istHour >= 19 && !pushed[digestKey] && todays.length >= 3 ? [...todays].sort((a, b) => b.v - a.v).slice(0, 3) : [];
-  if (!jobs.length && !updates.length && !follow.length && !digest.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }
+  const digest = [];
+  if (istHour >= 19 && !quiet && !pushed[digestKey] && todays.length >= 3) {
+    const byV = (a, b) => b.v - a.v;
+    digest.push({ topic: "s-any", total: todays.length, top: [...todays].sort(byV).slice(0, 3) });
+    const central = todays.filter((j) => segOf(j) === "central").sort(byV);
+    for (const st of (index.states || []).map((x) => x.slug).filter((x) => x && x !== "all-india" && x !== "gulf")) {
+      const mine = todays.filter((j) => (j.s || []).includes(st)).sort(byV);
+      if (!mine.length && !central.length) continue;
+      digest.push({ topic: `s-${st}`, total: mine.length + central.length, top: [...mine, ...central].slice(0, 3) });
+    }
+  }
+  if (!jobs.length && !updates.length && !follow.length && !digest.length) {
+    console.log(`push-notify: nothing new to send${quiet ? " (quiet hours)" : ""}.`); L.logRun("push", { ok: true, sent: 0, quiet }); return;
+  }
 
   const token = await G.getToken("https://www.googleapis.com/auth/firebase.messaging", key);
   const send = async (message) => {
@@ -119,7 +164,7 @@ async function main() {
         log.push(`job ${j.id} ${lang} [${condition}]: ${res}`); if (res === "ok") sent++;
       }
     }
-    pushed[`j:${j.id}`] = new Date().toISOString().slice(0, 10);
+    pushed[`j:${j.id}`] = today;
   }
   const typeName = { result: ["Result", "परिणाम"], "admit-card": ["Admit card", "प्रवेश पत्र"], "answer-key": ["Answer key", "उत्तर कुंजी"] };
   for (const u of updates) {
@@ -132,7 +177,7 @@ async function main() {
       });
       log.push(`update ${u.id} ${lang}: ${res}`); if (res === "ok") sent++;
     }
-    pushed[`u:${u.id}`] = new Date().toISOString().slice(0, 10);
+    pushed[`u:${u.id}`] = today;
   }
   for (const { kind, x } of follow) {
     const topic = orgTopic(x.o);
@@ -150,26 +195,30 @@ async function main() {
       });
       log.push(`follow ${topic} ${x.id} ${lang}: ${res}`); if (res === "ok") sent++;
     }
-    pushed[`${kind === "job" ? "fj" : "fu"}:${x.id}`] = new Date().toISOString().slice(0, 10);
+    pushed[`${kind === "job" ? "fj" : "fu"}:${x.id}`] = today;
   }
   if (digest.length) {
-    for (const lang of ["en", "hi"]) {
-      const hi = lang === "hi";
-      const title = hi ? `आज ${todays.length} नई सरकारी नौकरियाँ` : `${todays.length} new govt jobs today`;
-      const lines = digest.map((j) => {
-        const name = cut((hi && (j.thc || j.th)) || j.tc || j.t, 60);
-        return j.v ? `${name}: ${j.v.toLocaleString("en-IN")} ${hi ? "पद" : j.v === 1 ? "post" : "posts"}` : name;
-      });
-      const body = cut(`${lines.join(" · ")} — ${hi ? "सभी देखने के लिए टैप करें" : "tap to see them all"}`, 230);
-      const res = await send({
-        condition: `'digest' in topics && 'l-${lang}' in topics`,
-        notification: { title, body },
-        data: { kind: "tab", id: "jobs", url: `${SITE}/latest/` },
-        android: { priority: "NORMAL", notification: { channel_id: "jobs", tag: "digest", click_action: CLICK } },
-      });
-      log.push(`digest ${lang} (${todays.length} jobs): ${res}`); if (res === "ok") sent++;
+    for (const d of digest) {
+      for (const lang of ["en", "hi"]) {
+        const hi = lang === "hi";
+        const title = hi ? `आज ${d.total} नई सरकारी नौकरियाँ` : `${d.total} new govt job${d.total === 1 ? "" : "s"} today`;
+        const lines = d.top.map((j) => {
+          const name = cut((hi && (j.thc || j.th)) || j.tc || j.t, 60);
+          return j.v ? `${name}: ${j.v.toLocaleString("en-IN")} ${hi ? "पद" : j.v === 1 ? "post" : "posts"}` : name;
+        });
+        const body = cut(`${lines.join(" · ")} — ${hi ? "सभी देखने के लिए टैप करें" : "tap to see them all"}`, 230);
+        const res = await send({
+          condition: `'digest' in topics && '${d.topic}' in topics && 'l-${lang}' in topics`,
+          notification: { title, body },
+          data: { kind: "tab", id: "jobs", url: `${SITE}/latest/` },
+          android: { priority: "NORMAL", notification: { channel_id: "jobs", tag: "digest", click_action: CLICK } },
+        });
+        if (res !== "ok" || d.topic === "s-any") log.push(`digest ${d.topic} ${lang} (${d.total}): ${res}`);
+        if (res === "ok") sent++;
+      }
     }
-    pushed[digestKey] = new Date().toISOString().slice(0, 10);
+    log.push(`digest: ${digest.length} audiences`);
+    pushed[digestKey] = today;
   }
   // keep 60 days of history
   const keep = new Date(Date.now() - 60 * 86400000).toISOString().slice(0, 10);

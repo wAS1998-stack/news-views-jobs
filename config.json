@@ -16,17 +16,14 @@
     "native": "",
     "appOpen": "",
     "mediation": [
-      "meta",
       "applovin",
+      "meta",
       "inmobi",
       "liftoff",
       "unity",
-      "mintegral",
-      "ironsource",
-      "dtexchange",
       "moloco"
     ],
-    "_mediationNote": "Ad networks built into the app for AdMob mediation/bidding. Also available: pangle, pubmatic, bigo, chartboost. Remove any you don't sign up for (each adds app size). Turn each on in AdMob > Mediation.",
+    "_mediationNote": "Ad networks built into the app for AdMob mediation/bidding (all bidding, strong Indian demand). Also available: mintegral, ironsource, dtexchange, pangle, pubmatic, bigo, chartboost — add one only when AdMob's mediation report shows the current ones leaving fill on the table. Remove any you don't sign up for (each adds app size). Turn each on in AdMob > Mediation.",
     "appAdsTxt": []
   },
   "appAds": {
@@ -38,7 +35,7 @@
     "every": 4,
     "gap": 240,
     "rewarded": true,
-    "rewardHours": 24,
+    "rewardHours": 6,
     "native": true,
     "appOpen": true,
     "appOpenGap": 14400,

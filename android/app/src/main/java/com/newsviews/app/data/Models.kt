@@ -94,7 +94,7 @@ data class AdsConfig(
     val every: Int = 4,                // at most once per this many pages opened
     val gap: Int = 240,                // and at least this many seconds apart
     val rewarded: Boolean = true,      // the opt-in offer: watch one rewarded video, no ads for rewardHours hours
-    val rewardHours: Int = 24,
+    val rewardHours: Int = 6,
     @SerialName("native") val nativeAds: Boolean = true,   // one native ad card inside the job and result lists
     val nativeEvery: Int = 8,          // (reserved) spacing for more native cards
     val pro: Boolean = false,          // "Pro" one-time purchase offered (needs the product in Play Console)

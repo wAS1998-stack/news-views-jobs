@@ -41,7 +41,7 @@ advertising · Target audience → 18+ · Data safety → as below · Content ra
 
 **Category:** Education (or Business) · **Tags:** Jobs, Education
 **Contact email:** the site's contact email · **Privacy policy URL:** https://news-views.in/privacy-policy/
-**Ads:** Yes (Google AdMob, with AdMob mediation partners). Includes an optional rewarded video (the "Sarkari Radar Pass": no ads and bonus preparation tips for 24 hours) and an occasional app-open ad when returning after a break. Notices, dates, eligibility and apply links are never behind an ad. · **Advertising ID:** Yes, used for advertising · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
+**Ads:** Yes (Google AdMob, with AdMob mediation partners). Includes an optional rewarded video (the "Sarkari Radar Pass": no ads and bonus preparation tips for a few hours) and an occasional app-open ad when returning after a break. Notices, dates, eligibility and apply links are never behind an ad. · **Advertising ID:** Yes, used for advertising · **Target audience:** 18 and over · **Content rating:** answer the questionnaire as a reference/news app with no violence, no user content, no gambling.
 
 **Data safety (what the app actually does):** no account; saved jobs and settings stay on the phone. Data is encrypted in transit (HTTPS/TLS). Declare:
 - **Device or other IDs** — collected and shared: Firebase alert token (app functionality) and, through the Google Mobile Ads SDK, the advertising ID / app set ID (advertising, analytics, fraud prevention).

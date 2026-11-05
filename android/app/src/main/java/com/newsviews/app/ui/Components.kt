@@ -1,6 +1,20 @@
 package com.newsviews.app.ui
 
+import android.Manifest
 import android.content.ActivityNotFoundException
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import com.newsviews.app.push.Alerts
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -247,6 +261,52 @@ fun AdFreeCard(s: Strings, hours: Int, onWatch: () -> Unit) {
             }
             Spacer(Modifier.width(12.dp))
             Button(onClick = onWatch) { Text(s.adFreeButton) }
+        }
+    }
+}
+
+/** Call the returned function right after a job is saved: if notifications are blocked, it offers to allow them —
+    otherwise the last-date reminder the person just asked for could never reach them. */
+@Composable
+fun rememberReminderPrompt(s: Strings): () -> Unit {
+    val ctx = LocalContext.current
+    var show by remember { mutableStateOf(false) }
+    val ask = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { }
+    if (show) AlertDialog(
+        onDismissRequest = { show = false },
+        title = { Text(s.allowReminders) },
+        text = { Text(s.allowRemindersHint) },
+        confirmButton = {
+            TextButton(onClick = {
+                show = false
+                if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
+                    ask.launch(Manifest.permission.POST_NOTIFICATIONS)
+                else try {
+                    ctx.startActivity(Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, ctx.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                } catch (_: Exception) { }
+            }) { Text(s.allow) }
+        },
+        dismissButton = { TextButton(onClick = { show = false }) { Text(s.later) } },
+    )
+    return { if (!Alerts.canNotify(ctx)) show = true }
+}
+
+/** Related jobs at the end of a page ("More from SSC", "Similar jobs for you"): compact rows, built from the cached index. */
+@Composable
+fun RelatedJobs(title: String, items: List<JobItem>, hindi: Boolean, s: Strings, onOpen: (String) -> Unit) {
+    if (items.isEmpty()) return
+    Section(title) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            items.forEach { j ->
+                Card(onClick = { onOpen(j.id) }, shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+                        Text(j.short(hindi), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                        val meta = listOfNotNull(j.o.ifBlank { null }, if (j.v > 0) s.posts(j.v) else null, j.en.takeIf { it.isNotBlank() }?.let { "${s.lastDate} ${Dates.short(it)}" })
+                        if (meta.isNotEmpty()) Text(meta.joinToString(" · "), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    }
+                }
+            }
         }
     }
 }

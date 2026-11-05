@@ -52,6 +52,8 @@ data class Settings(
     /** Upper-age relaxation under central government rules (state rules can differ; the app says so). */
     fun relaxation(): Int = when (category) { "obc" -> 3; "scst" -> 5; else -> 0 }
     fun follows(o: String): Boolean = o.isNotBlank() && follows.any { orgSlug(it) == orgSlug(o) }
+    /** Picked their own states, qualification or turned central jobs off — "For you" then means something. */
+    fun hasProfile(): Boolean = states.isNotEmpty() || qual != Qual.ANY || !central
 }
 
 class Prefs(private val context: Context) {

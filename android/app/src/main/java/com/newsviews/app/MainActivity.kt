@@ -254,10 +254,10 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
             composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
             composable("alerts") { AlertsScreen(vm, s) }
             composable("job/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                JobDetailScreen(vm, s, it.arguments?.getString("id") ?: "")
+                JobDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
             }
             composable("update/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                UpdateDetailScreen(vm, s, it.arguments?.getString("id") ?: "")
+                UpdateDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
             }
         }
     }

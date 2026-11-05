@@ -798,9 +798,9 @@ function buildUpdatePage(u, all) {
       ${row("Official website", officialHost ? `<a href="${esc(official)}" rel="nofollow noopener" target="_blank">${esc(officialHost)}</a>` : "")}
     </dl></div>
     <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">${{ pdf: "Download the PDF from", home: "Go to the official website,", none: "Go to" }[LIB.linkKind(official, u)] || "Download / check on"} ${esc(officialHost)} &rarr;</a>` : ""}${u.official_website && u.official_link && hostOf(u.official_website) !== officialHost ? ` <a class="btn btn-ghost" href="${esc(u.official_website)}" rel="nofollow noopener" target="_blank">Official website</a>` : ""}</p>
-    ${adSlot("update-mid")}
     <h2 class="section-h">How to download the ${esc(u.org_short || u.organization)} ${esc(typeLabel.toLowerCase())}</h2>
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
+    ${adSlot("update-mid")}
     ${details.length ? `<div class="prose"><h2 class="section-h">What candidates should know</h2>${details.map((d) => `<p>${esc(d)}</p>`).join("")}</div>` : ""}
     ${(() => { const ex = require("./exams.js").examOf(u.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates &rarr;</a></p>` : ""; })()}
     ${tgCta("results and admit cards")}
@@ -1858,9 +1858,9 @@ function buildAppIndex(jobs, updates) {
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
-      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24,
+      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 6,
         native: true, nativeEvery: 8, pro: false, proProduct: "pro_lifetime", appOpen: true, appOpenGap: 14400, appOpenAway: 900 }, SITE.appAds || {});
-      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24], ["nativeEvery", 8], ["appOpenGap", 14400], ["appOpenAway", 900]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
+      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 6], ["nativeEvery", 8], ["appOpenGap", 14400], ["appOpenAway", 900]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
   });

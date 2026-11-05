@@ -77,6 +77,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonObject
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
@@ -149,8 +151,22 @@ object Ads {
         if (configKnown && _config.value.proProduct.isNotBlank()) Billing.start(ctx, _config.value.proProduct)
     }
 
+    private var feedConfig: AdsConfig? = null
+    private var remote: JsonObject? = null
+
+    /** Firebase Remote Config "app_ads" (a JSON object, e.g. {"every":3,"gap":180}) overrides single feed values for
+        the users in an A/B-test group, so caps and the pass length can be tested instead of guessed. Blank = off. */
+    fun setRemoteOverride(text: String) {
+        remote = text.takeIf { it.isNotBlank() }?.let { try { json.parseToJsonElement(it).jsonObject } catch (e: Exception) { null } }
+        feedConfig?.let { setConfig(it) }
+    }
+
     /** The feed's ad switches (config.json appAds). Saved, so the next cold start honours them before the feed loads. */
-    fun setConfig(c: AdsConfig) {
+    fun setConfig(feed: AdsConfig) {
+        feedConfig = feed
+        val c = remote?.let { r ->
+            try { json.decodeFromJsonElement(AdsConfig.serializer(), JsonObject(json.encodeToJsonElement(AdsConfig.serializer(), feed).jsonObject + r)) } catch (e: Exception) { feed }
+        } ?: feed
         val changed = !configKnown || c != _config.value
         _config.value = c
         configKnown = true
@@ -224,6 +240,7 @@ object Ads {
         preloadAppOpen(ctx)
         preloadNative(ctx, "jobs")
         preloadNative(ctx, "updates")
+        preloadNative(ctx, "detail")
     }
 
     /* ---- no-fill retries: 15 s, 30 s, 1 min … up to 10 min, one pending retry per format ---- */
@@ -539,13 +556,17 @@ fun InlineAd(label: String) {
 /** One native ad inside a list, styled like the cards around it but labelled, with Google's AdChoices mark. Shown only
     once an ad is loaded (it is preloaded when the app starts, long before the reader scrolls to it). */
 @Composable
-fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier) {
+fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier, preloadNext: String? = null) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
     val off = Ads.adsOff()
     val version by Ads.nativeVersion.collectAsStateWithLifecycle()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.nativeAds || BuildConfig.AD_NATIVE.isBlank() || off) return
     val ad = remember(version, slot) { Ads.nativeAd(slot) } ?: return
+    if (preloadNext != null) {
+        val ctx = LocalContext.current
+        LaunchedEffect(preloadNext) { Ads.preloadNative(ctx, preloadNext) }   // the next card down the list
+    }
     val fg = MaterialTheme.colorScheme.onSurface.toArgb()
     val muted = MaterialTheme.colorScheme.onSurfaceVariant.toArgb()
     Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),

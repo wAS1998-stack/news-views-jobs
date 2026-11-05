@@ -4,6 +4,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.newsviews.app.BuildConfig
 import com.newsviews.app.data.NotInFeed
 import com.newsviews.app.ads.InlineAd
+import com.newsviews.app.ads.NativeAdCard
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.Stats
@@ -59,6 +60,7 @@ import com.newsviews.app.data.Faq
 import com.newsviews.app.data.JobDetail
 import com.newsviews.app.data.JobItem
 import com.newsviews.app.data.UpdateDetail
+import com.newsviews.app.data.status
 
 @Composable
 private fun Fact(label: String, value: String, modifier: Modifier = Modifier) {
@@ -124,11 +126,12 @@ private fun <T> Loader(key: String, load: suspend () -> T, s: Strings, web: Stri
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
+fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (String) -> Unit = {}) {
     val ctx = LocalContext.current
     val settings by vm.settings.collectAsStateWithLifecycle()
     val idx by vm.index.collectAsStateWithLifecycle()
     val hindi = settings.hindi
+    val reminderPrompt = rememberReminderPrompt(s)
     Loader(id, { vm.repo.job(id) }, s, web = "${BuildConfig.SITE}/jobs/$id/") { j: JobDetail ->
         val h = if (hindi) j.hi else null
         val item = idx?.jobs?.firstOrNull { it.id == id } ?: JobItem(id = j.id, t = j.title, th = j.hi?.title ?: "", o = j.org_short, v = j.total_vacancies, en = j.application_end, pub = j.published)
@@ -183,7 +186,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                 if (j.official_notification.isNotBlank() && j.official_notification.trimEnd('/') != ctaUrl.trimEnd('/')) OutlinedButton(onClick = { openUrl(ctx, j.official_notification) }, modifier = Modifier.weight(1f)) {
                     Icon(Icons.Filled.Description, null); Spacer(Modifier.width(6.dp)); Text(s.notification, maxLines = 1)
                 }
-                OutlinedButton(onClick = { vm.toggleSaved(item) }) { Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save) }
+                OutlinedButton(onClick = { vm.toggleSaved(item); if (!saved && settings.reminders && item.en.isNotBlank()) reminderPrompt() }) { Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save) }
                 OutlinedButton(onClick = { Stats.event(ctx, "share", "kind" to "job"); shareText(ctx, j.title, j.url, s.shareFooter) }) { Icon(Icons.Filled.Share, s.share) }
             }
             val summary = h?.summary?.ifBlank { null } ?: j.summary
@@ -234,6 +237,13 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             }
             val faq = h?.faq?.ifEmpty { null } ?: j.faq
             if (faq.isNotEmpty()) Section(s.faq) { FaqList(faq) }
+            // the end of the page: one native ad (far from the Apply and Notification buttons), then where to go next
+            NativeAdCard("detail", s.ad, Modifier.padding(top = 22.dp))
+            idx?.let { ix ->
+                val (sameOrg, similar) = remember(ix, id, settings.states, settings.qual, settings.central) { vm.relatedJobs(ix, item, settings) }
+                RelatedJobs(s.moreFrom(item.o.ifBlank { j.org_short }), sameOrg, hindi, s, onOpenJob)
+                RelatedJobs(s.similarJobs, similar, hindi, s, onOpenJob)
+            }
             TextButton(onClick = { openUrl(ctx, j.url) }, modifier = Modifier.padding(top = 16.dp)) { Text(s.openOnSite) }
             Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             Spacer(Modifier.height(24.dp))
@@ -242,7 +252,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
 }
 
 @Composable
-fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
+fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (String) -> Unit = {}) {
     val ctx = LocalContext.current
     val settings by vm.settings.collectAsStateWithLifecycle()
     val hindi = settings.hindi
@@ -277,6 +287,12 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             if (details.isNotEmpty()) Section(s.details) { Bullets(details) }
             val faq = h?.faq?.ifEmpty { null } ?: u.faq
             if (faq.isNotEmpty()) Section(s.faq) { FaqList(faq) }
+            NativeAdCard("detail", s.ad, Modifier.padding(top = 22.dp))
+            // open jobs of the same department (a result page is often read by people waiting for the next recruitment)
+            val idxU by vm.index.collectAsStateWithLifecycle()
+            val org = u.org_short
+            val sameOrg = remember(idxU, org) { if (org.isBlank()) emptyList() else idxU?.jobs?.filter { it.o == org && it.status() != com.newsviews.app.data.Status.CLOSED }?.take(3) ?: emptyList() }
+            RelatedJobs(s.moreFrom(org), sameOrg, hindi, s, onOpenJob)
             TextButton(onClick = { openUrl(ctx, u.url) }, modifier = Modifier.padding(top = 16.dp)) { Text(s.openOnSite) }
             Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             Spacer(Modifier.height(24.dp))

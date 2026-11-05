@@ -162,8 +162,8 @@ function buildHindi(ctx) {
     <h1>${esc(h.title)}</h1>
     <div class="prose"><p class="lede">${esc(h.summary)}</p></div>
     <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">ऑफिशियल वेबसाइट पर देखें &rarr;</a>` : ""} <a class="btn btn-ghost" href="${enPath}" lang="en">English</a></p>
-    ${adSlot("hi-update-mid")}
     ${(h.steps || []).length ? `<h2 class="section-h">${T.label} कैसे डाउनलोड/चेक करें</h2><ol class="steps">${h.steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}
+    ${adSlot("hi-update-mid")}
     ${(h.details || []).length ? `<div class="prose"><h2 class="section-h">उम्मीदवारों के लिए ज़रूरी बातें</h2>${h.details.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
     ${faqHtml(h.faq)}
     ${examLink(u.title)}

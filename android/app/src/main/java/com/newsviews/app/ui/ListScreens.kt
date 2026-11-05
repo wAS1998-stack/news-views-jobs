@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.DropdownMenu
@@ -120,6 +121,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val offer = BuildConfig.ADS && adCfg.on && adCfg.rewarded && rewardedReady && !adsOff
     val activity = LocalContext.current.findActivity()
     RefreshNative("jobs")
+    val reminderPrompt = rememberReminderPrompt(s)
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
     // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
@@ -147,6 +149,10 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
             }
         }
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (settings.hasProfile()) item {
+                FilterChip(selected = f.forYou, onClick = { vm.setFilters(f.copy(forYou = !f.forYou)) }, label = { Text(s.forYou) },
+                    leadingIcon = { Icon(Icons.Filled.Person, null) })
+            }
             item {
                 // central government (all-India) jobs first under "All states", then each state
                 val opts = (idx?.states ?: Builtin.states).let { l -> l.filter { it.slug == "all-india" }.map { it.copy(name = s.central) } + l.filter { it.slug != "all-india" } }
@@ -177,8 +183,16 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                     itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                             if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours) { activity?.let { Ads.showRewarded(it) } }
-                            if (i == 9) NativeAdCard("jobs", s.ad)
-                            JobCard(j, hindi, s, j.id in settings.saved, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) })
+                            val every = adCfg.nativeEvery.coerceAtLeast(5)
+                            if (i >= 9 && (i - 9) % every == 0 && (i - 9) / every < 5) {
+                                val k = (i - 9) / every
+                                NativeAdCard(if (k == 0) "jobs" else "jobs-$k", s.ad, preloadNext = if (k < 4) "jobs-${k + 1}" else null)
+                            }
+                            JobCard(j, hindi, s, j.id in settings.saved, onSave = {
+                                val wasSaved = j.id in settings.saved
+                                vm.toggleSaved(j)
+                                if (!wasSaved && settings.reminders && j.en.isNotBlank()) reminderPrompt()
+                            }, onClick = { onOpen(j.id) })
                         }
                     }
                 }

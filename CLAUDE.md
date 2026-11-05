@@ -23,7 +23,7 @@ hurting users or breaking Google's policies.
 | `build.js` | The whole site generator: pages, sitemaps, schema (JobPosting, NewsArticle), redirects, robots, app feed, ads.txt / app-ads.txt |
 | `fetch-jobs.js`, `watch.js`, `lib.js` | Pull job/result notices from feeds and official sites; `classify()` sorts jobs vs results; `isDuplicate()` merges twins |
 | `enrich-jobs.js`, `due.js`, `hindi.js` | AI enrichment (summaries, eligibility, Hindi) within daily cost caps |
-| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-central` for central/all-India jobs — the app's "Central Government" choice, on by default — `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`, `o-<department>` for followers — same slug rule in the app's `orgSlug` — and `digest`, one evening summary a day of the biggest new jobs; daily caps 15 jobs / 6 results) |
+| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-central` for central/all-India jobs — the app's "Central Government" choice, on by default — `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`, `o-<department>` for followers — same slug rule in the app's `orgSlug` — and `digest`, one evening summary per state a day. Budgets are per audience: ≤2 jobs per state per build, ≤4 per state and ≤5 central per IST day, results 3/6, followers results-first ≤5 per department a day; quiet hours 22:00–07:00 IST, unsent items stay eligible for a day) |
 | `notify-search.js`, `indexnow.js`, `gsc.js`, `google.js` | IndexNow, Search Console data, Google APIs |
 | `tools.js`, `krutidev.js`, `typingtest.js` | Tool pages (salary calculators, Kruti Dev converter, typing tests) |
 | `functions/api/relay.js` | The only server code: a Pages Function that fetches .gov.in/.nic.in pages for the fetchers |
@@ -65,8 +65,10 @@ hurting users or breaking Google's policies.
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
-  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back". The
-  rewarded video is opt-in only (the "Sarkari Radar Pass": one short video → no ads + preparation tips open for N hours).
+  incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back"; the
+  app-open ad only on returning after ≥15 min away (`appOpenAway`), ≤1 per 4 h (`appOpenGap`), never on a cold start, the
+  first day, or a notification/link open, and only if already loaded. Keep the banner ≥12 dp off the tab bar and the
+  in-page unit's height reserved (no layout jumps). The rewarded video is opt-in only (the "Sarkari Radar Pass": one short video → no ads + preparation tips open for N hours).
   Only bonus content (preparation tips) may sit behind the pass — never the notice, apply links, eligibility or dates —
   and it is shown freely whenever no rewarded ad is configured.
 - Don't automate backlinks, spam communities, or post anywhere on the owner's behalf. Don't enter passwords or API
@@ -86,7 +88,11 @@ hurting users or breaking Google's policies.
   purchase through Play Billing — create the product in Play Console first, then set `pro` true) with no app update.
   `admob.native` is the native ad unit. `playUrl` (config.json) makes /app/ and the app's share links point to Play.
   Firebase Analytics (screen views, link opens, pass/pro events) and Crashlytics are built in when
-  GOOGLE_SERVICES_JSON exists; the privacy policy and store listing mention them. Rewarded video pays several times a banner's eCPM, and the
+  GOOGLE_SERVICES_JSON exists; the privacy policy and store listing mention them. Link AdMob to Firebase (AdMob ›
+  App settings › Link to Firebase) so ad revenue per user (`ad_impression`) is logged automatically — don't add manual
+  ad-revenue events on top (double counting). Firebase Remote Config key `app_ads` (JSON, e.g. `{"every":3}`) overrides
+  single `appAds` values per A/B-test group. `admob.appOpen` is the app-open unit. The pass defaults to 6 hours
+  (`rewardHours`; 24 h gave away more ad revenue than one rewarded view earns). Rewarded video pays several times a banner's eCPM, and the
   pass replaces a day of low-value impressions for people who would otherwise be annoyed away.
 - **More ad networks (bidding):** `admob.mediation` in `config.json` lists the networks whose AdMob mediation adapters are
   built into the app (meta, applovin, inmobi, liftoff, unity, mintegral, ironsource, dtexchange, moloco; also available:

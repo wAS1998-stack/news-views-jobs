@@ -30,6 +30,7 @@ data class Filters(
     val ageFits: Boolean = false,
     val updateFollowing: Boolean = false,
     val upcoming: Boolean = false,      // Results tab: upcoming exam / admit card / result dates, soonest first
+    val forYou: Boolean = true,         // Jobs tab: only the states (+ central) and qualification chosen in Alerts
 ) { companion object { const val FOLLOWING = "_following" } }
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
@@ -104,14 +105,31 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun visibleJobs(idx: AppIndex, f: Filters, s: Settings): List<JobItem> {
         val words = f.query.lowercase().split(' ').filter { it.isNotBlank() }
         val age = s.age()
+        val mine = f.forYou && s.hasProfile()
+        val myStates = s.states + (if (s.central) setOf("all-india") else emptySet())
+        val myLevels = s.qual.levels.toSet()
         return idx.jobs.filter { j ->
+            (!mine || ((s.states.isEmpty() && (s.central || "all-india" !in j.s)) || j.s.any { it in myStates }) && (j.q.isEmpty() || j.q.any { it in myLevels })) &&
             (f.state.isEmpty() || f.state in j.s) &&
                 (f.qual.isEmpty() || f.qual in j.q) &&
                 (!f.closingSoon || j.status() == Status.SOON) &&
                 (f.cat.isEmpty() || (if (f.cat == Filters.FOLLOWING) s.follows(j.o) else f.cat in j.c)) &&
                 (!f.ageFits || (age != null && s.ageFor(j)?.let { a -> j.ageFits(a, s.relaxation()) } == true)) &&
                 (words.isEmpty() || words.all { w -> "${j.t} ${j.th} ${j.o} ${j.p}".lowercase().contains(w) })
-        }
+        }.sortedBy { it.status() == Status.CLOSED }     // open jobs first (stable: keeps the feed's order otherwise)
+    }
+
+    /** Up to [n] open jobs related to [job]: same department first, then same category or qualification in the
+        person's states. Built from the cached index, no network. */
+    fun relatedJobs(idx: AppIndex, job: JobItem, s: Settings, n: Int = 5): Pair<List<JobItem>, List<JobItem>> {
+        val open = idx.jobs.filter { it.id != job.id && it.status() != Status.CLOSED }
+        val sameOrg = if (job.o.isBlank()) emptyList() else open.filter { it.o == job.o }.take(3)
+        val myStates = s.states + (if (s.central || s.states.isEmpty()) setOf("all-india") else emptySet())
+        val similar = open.asSequence().filter { it !in sameOrg }
+            .filter { o -> (job.c.isNotEmpty() && o.c.any { it in job.c }) || (job.q.isNotEmpty() && o.q.any { it in job.q }) }
+            .filter { o -> s.states.isEmpty() || o.s.any { it in myStates } || o.s.any { it in job.s } }
+            .take(n - sameOrg.size.coerceAtMost(n)).toList()
+        return sameOrg to similar
     }
 
     fun toggleSaved(item: JobItem) {

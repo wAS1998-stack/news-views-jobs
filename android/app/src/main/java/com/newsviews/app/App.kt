@@ -13,6 +13,11 @@ class App : Application() {
         super.onCreate()
         Alerts.createChannels(this)
         Ads.restore(this)
+        if (BuildConfig.HAS_FIREBASE) try {
+            val rc = com.google.firebase.remoteconfig.FirebaseRemoteConfig.getInstance()
+            rc.setConfigSettingsAsync(com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(3600).build())
+            rc.fetchAndActivate().addOnCompleteListener { Ads.setRemoteOverride(rc.getString("app_ads")) }
+        } catch (_: Exception) { }
         // a downloaded Play update installs when the whole app goes to the background — not on rotation, a Custom Tab
         // (the application form) or the share sheet, which also stop the activity
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
