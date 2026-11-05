@@ -35,28 +35,40 @@ jobs:
         run: if [ -n "$GOOGLE_SERVICES_JSON" ]; then printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json; echo "Firebase on"; else echo "Firebase off"; fi
       - name: Signing key (optional)
         # Checks the upload-key secrets and says in last-build.txt what is missing or wrong (names only, never values),
-        # so the owner can fix them without reading Action logs.
+        # so the owner can fix them without reading Action logs. A wrong alias is replaced by the keystore's only key,
+        # and a wrong key password by the keystore password when that is what the key uses.
         env:
           KS_B64: ${{ secrets.SARKARI_KEYSTORE_BASE64 || secrets.ANDROID_KEYSTORE_B64 }}
           KS_PASS: ${{ secrets.SARKARI_KEYSTORE_PASSWORD || secrets.ANDROID_KEYSTORE_PASSWORD }}
           KS_ALIAS: ${{ secrets.SARKARI_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.SARKARI_KEY_PASSWORD || secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          alias="${KS_ALIAS:-upload}"
-          note="SARKARI_KEYSTORE_BASE64 $([ -n "$KS_B64" ] && echo present || echo MISSING), SARKARI_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)' || true)"
-          signed=false
-          if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ]; then
-            if printf '%s' "$KS_B64" | tr -d ' \n\r' | base64 -d > "$RUNNER_TEMP/upload.jks" 2>/dev/null && [ -s "$RUNNER_TEMP/upload.jks" ]; then
-              if out=$(keytool -list -keystore "$RUNNER_TEMP/upload.jks" -storepass "$KS_PASS" -alias "$alias" 2>&1); then
-                signed=true; note="$note: keystore OK, build is signed with the upload key"
-                echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
-              else
-                note="$note: keystore REJECTED ($(echo "$out" | grep -v '^Warning' | head -1 | cut -c1-120)) — wrong password, or the alias is not in this keystore"
-              fi
-            else
-              note="$note: SARKARI_KEYSTORE_BASE64 is not the base64 of a keystore file (make it with: base64 -w0 upload-key.jks)"
-            fi
-          else
+          ks="$RUNNER_TEMP/upload.jks"; alias="${KS_ALIAS:-upload}"; signed=false
+          note="SARKARI_KEYSTORE_BASE64 $([ -n "$KS_B64" ] && echo present || echo MISSING), SARKARI_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'"
+          if [ -z "$KS_B64" ] || [ -z "$KS_PASS" ]; then
             note="$note: both secrets are needed for a signed build (android/make-upload-key.sh makes them)"
+          elif ! { printf '%s' "$KS_B64" | tr -d ' \n\r' | base64 -d > "$ks" 2>/dev/null && [ -s "$ks" ]; }; then
+            note="$note: SARKARI_KEYSTORE_BASE64 is not the base64 of a keystore file (make it with: base64 -w0 upload-key.jks)"
+          elif ! list=$(keytool -list -keystore "$ks" -storepass "$KS_PASS" 2>&1); then
+            note="$note: keystore REJECTED ($(echo "$list" | grep -v '^Warning' | head -1 | cut -c1-100)) — the keystore password is wrong"
+          else
+            keys=$(echo "$list" | grep -i 'PrivateKeyEntry' | cut -d, -f1 | tr '\n' ' ' | xargs || true)
+            if ! echo " $keys " | grep -qi " $alias "; then
+              if [ "$(echo "$keys" | wc -w)" = 1 ]; then note="$note (not in the keystore — using its only key '$keys' instead)"; alias="$keys"
+              else note="$note: keystore REJECTED — alias not found; this keystore's keys are: $keys"; fi
+            fi
+            if echo " $keys " | grep -qi " $alias "; then
+              kp="${KEY_PASS:-$KS_PASS}"
+              if keytool -certreq -alias "$alias" -keystore "$ks" -storepass "$KS_PASS" -keypass "$kp" -file "$RUNNER_TEMP/csr.txt" >/dev/null 2>&1; then :
+              elif keytool -certreq -alias "$alias" -keystore "$ks" -storepass "$KS_PASS" -keypass "$KS_PASS" -file "$RUNNER_TEMP/csr.txt" >/dev/null 2>&1; then
+                kp="$KS_PASS"; note="$note (SARKARI_KEY_PASSWORD is wrong — this key uses the keystore password, used that)"
+              else kp=""; note="$note: keystore REJECTED — the key password is wrong (SARKARI_KEY_PASSWORD)"; fi
+              if [ -n "$kp" ]; then
+                signed=true; note="$note: keystore OK, build is signed with the upload key"
+                echo "::add-mask::$kp"
+                { echo "ANDROID_KEYSTORE_PATH=$ks"; echo "ANDROID_KEY_ALIAS=$alias"; echo "ANDROID_KEY_PASSWORD=$kp"; } >> "$GITHUB_ENV"
+              fi
+            fi
           fi
           echo "signed=$signed" >> "$GITHUB_ENV"; echo "signing_note=$note" >> "$GITHUB_ENV"; echo "$note"
       - name: Build
@@ -65,8 +77,7 @@ jobs:
         env:
           APP_VERSION_CODE: ${{ github.run_number }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.SARKARI_KEYSTORE_PASSWORD || secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ secrets.SARKARI_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.SARKARI_KEY_PASSWORD || secrets.ANDROID_KEY_PASSWORD }}
+          # ANDROID_KEY_ALIAS / ANDROID_KEY_PASSWORD come from the signing step above (already checked against the keystore)
         run: |
           set -o pipefail
           tasks="assembleDebug assembleRelease"
