@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-04T23:43:03.403Z",
+    "at": "2026-11-05T00:20:38.427Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-04T23:43:12.788Z",
+    "at": "2026-11-05T00:20:50.498Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 56, geo-blocked)",
       "rrb-portal": "paused (fails 52, geo-blocked)",
       "ncs": "paused (fails 44)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "bpsc": "paused (fails 54, geo-blocked)",
       "rpsc": "paused (fails 44, geo-blocked)",
       "mppsc": "paused (fails 56, geo-blocked)",
@@ -75,16 +75,16 @@
       "tnpsc": "paused (fails 56, geo-blocked)",
       "kpsc": "paused (fails 56, geo-blocked)",
       "appsc": "paused (fails 56, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "rbi": "20 links, 0 new via direct",
       "wbpsc": "paused (fails 56, geo-blocked)",
       "opsc": "paused (fails 44)",
       "hpsc": "paused (fails 56, geo-blocked)",
       "hppsc": "paused (fails 56, geo-blocked)",
       "ukpsc": "paused (fails 56, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 56, geo-blocked)",
       "gpsc": "paused (fails 56, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "4 links, 0 new via direct",
       "ppsc": "paused (fails 56, geo-blocked)",
       "apsc": "paused (fails 56, geo-blocked)",
       "jkpsc": "paused (fails 56, geo-blocked)",
@@ -92,31 +92,31 @@
       "upsssc": "paused (fails 56, geo-blocked)",
       "rssb": "paused (fails 56, geo-blocked)",
       "esb-mp": "paused (fails 56, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "jssc": "paused (fails 56, geo-blocked)",
       "osssc": "paused (fails 23)",
       "gsssb": "paused (fails 56, geo-blocked)",
       "sssb-punjab": "paused (fails 56, geo-blocked)",
       "hprca": "paused (fails 56, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "kea": "paused (fails 56, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "dsssb2": "paused (fails 56, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "dsssb2": "paused (fails 56, geo-blocked)",
       "kvs": "5 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "uksssc": "28 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 56, geo-blocked)",
       "tslprb": "paused (fails 56)",
       "slprb-ap": "paused (fails 56, geo-blocked)",
-      "uksssc": "28 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "208 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "bssc": "783 links, 0 new via direct+aia"
+      "csbc": "197 links, 0 new via news-views.in",
+      "bpssc": "208 links, 0 new via news-views.in",
+      "bssc": "0 notice links (fails 1)",
+      "keralapsc": "6 links, 0 new via api.allorigins.win"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-04T23:43:13.035Z",
+    "at": "2026-11-05T00:20:50.808Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -136,6 +136,59 @@
     "log": [
       "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+    ]
+  },
+  "gsc": {
+    "at": "2026-11-05T00:20:51.776Z",
+    "ok": true,
+    "property": "https://news-views.in/",
+    "clicks28d": 35,
+    "impressions28d": 668,
+    "pages": 171,
+    "opportunities": 6,
+    "sitemap": 204,
+    "log": [
+      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
+    ]
+  },
+  "enrich": {
+    "at": "2026-11-05T00:20:52.774Z",
+    "ai": "OpenAI (gpt-4o-mini)",
+    "linksFixed": 0,
+    "linksPending": 0,
+    "updatesEnriched": 0,
+    "updatesPending": 0,
+    "contentWritten": 0,
+    "contentPending": 0,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 0,
+    "searchFaqPages": 0,
+    "opportunities": 6,
+    "log": [
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
+      "Enrich/content: 0 job(s) on template content | doing up to 5",
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+    ]
+  },
+  "news": {
+    "at": "2026-11-05T00:21:35.705Z",
+    "ai": "OpenAI",
+    "published": 1,
+    "quizzes": 1,
+    "existing": 400,
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    },
+    "log": [
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
+      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
+      "  20 source headlines for today's digest",
+      "  + digest: Current Affairs 5 November 2026: Key Government Updates for Exam Aspirants (315 words)",
+      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (241 words, need 300) — not published.",
+      "  analysis below quality bar for crcsre-guest-faculty-lecturer-audiology-2026 (293 words, need 300) — not published.",
+      "  + quiz: Current Affairs Quiz 5 November 2026 (10 Qs)"
     ]
   }
 }

@@ -1,20 +1,15 @@
 {
- "date": "2026-11-04",
+ "date": "2026-11-05",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-06",
-  "2026-11-02"
+  "2026-10-07",
+  "2026-11-03"
  ],
  "totals": {
-  "clicks": 34,
-  "impressions": 650
+  "clicks": 35,
+  "impressions": 668
  },
  "daily": [
-  {
-   "date": "2026-10-06",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-10-07",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-02",
    "clicks": 0,
    "impressions": 9
+  },
+  {
+   "date": "2026-11-03",
+   "clicks": 1,
+   "impressions": 18
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-05",
-   "2026-11-02"
+   "2026-08-06",
+   "2026-11-03"
   ],
   "rows": []
  },
@@ -181,6 +181,13 @@
    "position": 7.8
   },
   {
+   "page": "/jobs/kochi-metro-recruit-apprentice/",
+   "clicks": 4,
+   "impressions": 10,
+   "ctr": 40,
+   "position": 3.9
+  },
+  {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 4,
    "impressions": 31,
@@ -193,13 +200,6 @@
    "impressions": 6,
    "ctr": 50,
    "position": 2
-  },
-  {
-   "page": "/jobs/kochi-metro-recruit-apprentice/",
-   "clicks": 3,
-   "impressions": 6,
-   "ctr": 50,
-   "position": 3
   },
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
@@ -426,6 +426,13 @@
    "position": 3.5
   },
   {
+   "page": "/jobs/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 24
+  },
+  {
    "page": "/jobs/aiims-gorakhpur-faculty-professor-assistant-professor-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 1,
@@ -452,6 +459,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 26
+  },
+  {
+   "page": "/jobs/aud-project-research-scientist-project-technical-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "page": "/jobs/bbau-research-assistant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -501,20 +515,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 9
-  },
-  {
-   "page": "/jobs/dcpu-tiruppur-support-persons-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
   }
  ],
  "topQueries": [
@@ -799,6 +799,13 @@
    "position": 3
   },
   {
+   "query": "dentist vacancy near me",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "field investigator jobs",
    "clicks": 0,
    "impressions": 1,
@@ -807,6 +814,13 @@
   },
   {
    "query": "food safety officer recruitment gujarat",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "query": "food safety officer vacancy in gujarat",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -906,9 +920,16 @@
   {
    "query": "gulf jobs 2025",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 1,
    "ctr": 0,
    "position": 7
+  },
+  {
+   "query": "hindustan copper limited recruitment 2026 for freshers",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "query": "how to prepare for ssc cgl exam",
@@ -988,6 +1009,13 @@
    "position": 2
   },
   {
+   "query": "jobs near me",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "karnataka government jobs 2026",
    "clicks": 0,
    "impressions": 2,
@@ -1051,6 +1079,20 @@
    "position": 3
   },
   {
+   "query": "kerala university job vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "kochi metro internship",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 8
+  },
+  {
    "query": "latest bank jobs notification",
    "clicks": 0,
    "impressions": 1,
@@ -1070,6 +1112,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "medical specialists jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "metro jobs in chennai",
@@ -1156,67 +1205,18 @@
    "position": 64.5
   },
   {
+   "query": "research associate jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "shutdown project in gulf",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 9
-  },
-  {
-   "query": "shutdown work in gulf",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
-   "query": "specialist officer in bank",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "specialist officer recruitment",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "ssc cgl preparation plan",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 96.7
-  },
-  {
-   "query": "staff selection commission jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
-   "query": "state pcs job",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
-   "query": "sub inspector job",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
-   "query": "tiruppur government jobs 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
   }
  ],
  "opportunities": [
@@ -1250,7 +1250,7 @@
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
-   "impressions": 15,
+   "impressions": 14,
    "ctr": 0,
    "position": 7.1,
    "queries": [
@@ -1266,7 +1266,7 @@
     },
     {
      "q": "gulf jobs 2025",
-     "impressions": 2,
+     "impressions": 1,
      "position": 7
     }
    ]
@@ -1314,45 +1314,6 @@
      "q": "10th pass govt jobs for female",
      "impressions": 1,
      "position": 3
-    }
-   ]
-  },
-  {
-   "page": "/jobs/maids-dental-hygienist-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 10,
-   "ctr": 0,
-   "position": 4.1,
-   "queries": [
-    {
-     "q": "company secretary vacancy in government sector",
-     "impressions": 1,
-     "position": 5
-    },
-    {
-     "q": "contractual government jobs in delhi",
-     "impressions": 1,
-     "position": 5
-    },
-    {
-     "q": "delhi job vacancy 2026 government",
-     "impressions": 1,
-     "position": 4
-    },
-    {
-     "q": "delhi offline vacancy 2026",
-     "impressions": 1,
-     "position": 4
-    },
-    {
-     "q": "delhi srship vacancy",
-     "impressions": 1,
-     "position": 4
-    },
-    {
-     "q": "ministry vacancy 2026",
-     "impressions": 1,
-     "position": 4
     }
    ]
   }

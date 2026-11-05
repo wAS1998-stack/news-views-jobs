@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-05",
+    "date": "2026-11-05",
+    "digest_id": "current-affairs-2026-11-05",
+    "title": "Current Affairs Quiz 5 November 2026",
+    "questions": [
+      {
+        "q": "What is the main aim of the Kashi Tamil Sangamam?",
+        "options": [
+          "Showcase Kashi's heritage",
+          "Strengthen cultural ties",
+          "Focus on economic measures",
+          "Review healthcare initiatives"
+        ],
+        "answer": 1,
+        "why": "The Kashi Tamil Sangamam aims to strengthen cultural ties and showcase the cultural heritage of Kashi and Tamil Nadu."
+      },
+      {
+        "q": "Who launched the Vayo Samman National Campaign?",
+        "options": [
+          "The Prime Minister",
+          "Dr. Virendra Kumar",
+          "The Defence Minister",
+          "The Minister of Health"
+        ],
+        "answer": 1,
+        "why": "Union Minister Dr. Virendra Kumar launched the 'Vayo Samman National Campaign' to strengthen inter-generational relationships."
+      },
+      {
+        "q": "How many patients received healthcare at the mega camp in Rayagada?",
+        "options": [
+          "3,000",
+          "2,000",
+          "4,000",
+          "5,000"
+        ],
+        "answer": 2,
+        "why": "The Armed Forces Medical Services provided healthcare to over 4,000 patients at the mega multi-specialty medical camp in Rayagada."
+      },
+      {
+        "q": "What transactions did Cotak Mahindra Bank have approved?",
+        "options": [
+          "Acquisition from Bank of America",
+          "Acquisition from Deutsche Bank AG",
+          "Subscription of securities by Sapphire US",
+          "Loan agreements with national banks"
+        ],
+        "answer": 1,
+        "why": "The Competition Commission of India sanctioned transactions related to Kotak Mahindra Bank’s acquisition of some businesses from Deutsche Bank AG."
+      },
+      {
+        "q": "What was the focus of the Special Campaign 6 by the Department of Food and Public Distribution?",
+        "options": [
+          "Cultural awareness",
+          "Streamlining processes",
+          "Healthcare delivery",
+          "Economic reforms"
+        ],
+        "answer": 1,
+        "why": "The Special Campaign 6 focused on streamlining processes and improving service delivery."
+      },
+      {
+        "q": "Where was the Shilp Samagam Mela 2026 held?",
+        "options": [
+          "Banaras Hindu University",
+          "Rayagada",
+          "Dilli Haat",
+          "Delhi University"
+        ],
+        "answer": 2,
+        "why": "The Shilp Samagam Mela 2026 was held at Dilli Haat, captivating visitors with vibrant cultural presentations."
+      },
+      {
+        "q": "What topic did Defence Minister Rajnath Singh discuss during the Indo-Pacific Regional Dialogue-2026?",
+        "options": [
+          "Maritime security",
+          "Trade regulations",
+          "Cultural ties",
+          "Public health"
+        ],
+        "answer": 0,
+        "why": "Defence Minister Rajnath Singh emphasized the importance of diversifying supply chains and enhancing regional cooperation regarding maritime security."
+      },
+      {
+        "q": "Which organization signed an agreement for road freight decarbonization?",
+        "options": [
+          "GIZ India",
+          "NITI Aayog",
+          "Ministry of Railways",
+          "Department of Transport"
+        ],
+        "answer": 1,
+        "why": "The NITI Aayog and GIZ India signed an implementation agreement under the Nationally Determined Contributions-Transport Initiative for Asia Phase II."
+      },
+      {
+        "q": "How many sight-restoring surgeries were conducted at the mega camp?",
+        "options": [
+          "100",
+          "200",
+          "365",
+          "500"
+        ],
+        "answer": 2,
+        "why": "The Armed Forces Medical Services conducted 365 sight-restoring surgeries at the mega medical camp."
+      },
+      {
+        "q": "What is emphasized as vital for community development in the Vayo Samman initiative?",
+        "options": [
+          "Youth programs",
+          "Inter-generational relationships",
+          "Cultural events",
+          "Healthcare access"
+        ],
+        "answer": 1,
+        "why": "The Vayo Samman National Campaign is vital for fostering respect and understanding between older and younger generations."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-04",
     "date": "2026-11-04",
     "digest_id": "current-affairs-2026-11-04",
