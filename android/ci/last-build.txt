@@ -1,5 +1,200 @@
-OK build 37 3a159d8 2026-11-05T17:35:49Z signed=true
+FAILED build 38 2f71178 2026-11-05T19:09:16Z
 signing: SARKARI_KEYSTORE_BASE64 present, SARKARI_KEYSTORE_PASSWORD present, key alias 'repuvi' (PKCS12 keystore: the key password is the keystore password, SARKARI_KEY_PASSWORD is ignored): keystore OK, build is signed with the upload key
--rw-r--r-- 1 runner runner 49352853 Nov  5 17:29 android/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r-- 1 runner runner 23423416 Nov  5 17:35 android/app/build/outputs/apk/release/app-release.apk
--rw-r--r-- 1 runner runner 31819430 Nov  5 17:35 android/app/build/outputs/bundle/release/app-release.aab
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugResValues
+> Task :app:checkDebugAarMetadata
+> Task :app:injectCrashlyticsMappingFileIdDebug
+> Task :app:processDebugGoogleServices
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:javaPreCompileDebug
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:compressDebugAssets
+> Task :app:mergeDebugJniLibFolders
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugNativeLibs
+> Task :app:processDebugManifestForPackage
+> Task :app:mergeLibDexDebug
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:stripDebugDebugSymbols
+> Task :app:mergeReleaseNativeLibs
+> Task :app:buildKotlinToolingMetadata
+> Task :app:stripReleaseDebugSymbols
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:generateReleaseBuildConfig
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:generateReleaseResValues
+> Task :app:injectCrashlyticsMappingFileIdRelease
+> Task :app:checkReleaseAarMetadata
+> Task :app:processReleaseGoogleServices
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:processDebugResources
+> Task :app:mergeReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:parseReleaseLocalResources
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:javaPreCompileRelease
+> Task :app:mergeReleaseArtProfile
+> Task :app:processReleaseResources
+> Task :app:extractProguardFiles
+> Task :app:mergeReleaseStartupProfile
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:mergeExtDexDebug
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:compressReleaseAssets
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:configureReleaseDependencies
+> Task :app:parseReleaseIntegrityConfig
+> Task :app:compileDebugKotlin
+> Task :app:compileReleaseKotlin
+> Task :app:compileDebugJavaWithJavac
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:processDebugJavaRes
+> Task :app:mergeProjectDexDebug
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:mergeReleaseGeneratedProguardFiles
+> Task :app:processReleaseJavaRes
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:expandReleaseArtProfileWildcards
+> Task :app:mergeDebugJavaResource
+> Task :app:mergeReleaseJavaResource
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:minifyReleaseWithR8
+ERROR: Missing classes detected while running R8. Please add the missing classes or apply additional keep rules that are generated in /home/runner/work/news-views-jobs/news-views-jobs/android/app/build/outputs/mapping/release/missing_rules.txt.
+ERROR: R8: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)
+> Task :app:minifyReleaseWithR8 FAILED
+FAILURE: Build failed with an exception.
+* What went wrong:
+> A failure occurred while executing com.android.build.gradle.internal.tasks.R8Task$R8Runnable
+   > Compilation failed to complete
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:minifyReleaseWithR8'.
+Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing com.android.build.gradle.internal.tasks.R8Task$R8Runnable
+Caused by: com.android.tools.r8.CompilationFailedException: Compilation failed to complete
+Caused by: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)
+	Suppressed: java.lang.RuntimeException: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)
+	Caused by: [CIRCULAR REFERENCE: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)]
+----- tail -----
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
+	... 2 more
+Caused by: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)
+	at com.android.tools.r8.internal.yg0.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:21)
+	at com.android.tools.r8.internal.yg0.error(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:1)
+	at com.android.tools.r8.shaking.O.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:6742)
+	at com.android.tools.r8.shaking.O.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:1659)
+	at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:1579)
+	at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:197)
+	at com.android.tools.r8.R8.c(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:8)
+	at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:5)
+	at com.android.tools.r8.internal.xv.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:28)
+	... 32 more
+	Suppressed: java.lang.RuntimeException: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)
+		at com.android.tools.r8.internal.yg0.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:27)
+		at com.android.tools.r8.shaking.O.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:6744)
+		at com.android.tools.r8.shaking.O.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:1659)
+		at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:1579)
+		at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:197)
+		at com.android.tools.r8.R8.c(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:8)
+		at com.android.tools.r8.R8.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:5)
+		at com.android.tools.r8.internal.xv.a(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:28)
+		at com.android.tools.r8.R8.run(R8_8.11.18_94248c9a6fd57686ded562f231d18f14e8923ad1fe977e99b974a9bf901c8a48:8)
+		at com.android.builder.dexing.R8Tool.runR8(r8Tool.kt:322)
+		at com.android.build.gradle.internal.tasks.R8Task$Companion.shrink(R8Task.kt:868)
+		at com.android.build.gradle.internal.tasks.R8Task$R8Runnable.execute(R8Task.kt:971)
+		at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+		at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+		at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+		at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+		at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+		at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+		at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+		at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+		at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+		at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+		at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:194)
+		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:127)
+		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
+		at org.gradle.internal.Factories$1.create(Factories.java:31)
+		at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+		at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+		at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
+		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
+		at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+		at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+	Caused by: [CIRCULAR REFERENCE: com.android.tools.r8.internal.g: Missing class com.unity3d.mediation.LevelPlay (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e())
+Missing class com.unity3d.mediation.impression.LevelPlayImpressionDataListener (referenced from: java.lang.Object com.moloco.sdk.internal.ilrd.provider.b.e() and 1 other context)]
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 2m 14s
+85 actionable tasks: 85 executed
