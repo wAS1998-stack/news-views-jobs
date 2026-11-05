@@ -118,7 +118,7 @@ data class Strings(
             quizTitle = "डेली क्विज़", quizCard = { "आज का करंट अफेयर्स क्विज़ · $it प्रश्न" }, quizStart = "शुरू करें", streak = { "लगातार $it दिन" },
             quizScore = { a, b -> "आपका स्कोर $a / $b" }, quizShare = "स्कोर शेयर करें",
             quizShareText = { a, b -> "सरकारी रडार पर आज के करंट अफेयर्स क्विज़ में मेरा स्कोर $a/$b है। क्या आप इसे हरा सकते हैं?" },
-            quizDoneToday = "आज का क्विज़ पूरा — लगातार दिन बनाए रखने के लिए कल फिर आएँ।", quizHindiNote = "प्रश्न हिंदी में हैं।",
+            quizDoneToday = "आज का क्विज़ पूरा — लगातार दिन बनाए रखने के लिए कल फिर आएँ।", quizHindiNote = "प्रश्न हिंदी में हैं।",   // shown only to English users of a Hindi quiz
             forYou = "आपके लिए", moreFrom = { "$it की और भर्तियाँ" }, similarJobs = "आपके लिए मिलती-जुलती नौकरियाँ",
             allowReminders = "अंतिम तिथि का रिमाइंडर चाहिए?", allowRemindersHint = "सेव हो गया। नोटिफ़िकेशन की अनुमति दें — अंतिम तिथि से 2 दिन पहले और अंतिम दिन याद दिलाएँगे।", later = "अभी नहीं",
             digest = "रोज़ का सारांश", digestHint = "हर शाम एक सूचना — दिन की सबसे बड़ी नई भर्तियाँ।",

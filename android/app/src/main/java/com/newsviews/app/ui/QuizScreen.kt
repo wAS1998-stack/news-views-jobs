@@ -84,7 +84,9 @@ fun QuizScreen(vm: MainViewModel, s: Strings, id: String) {
         }
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 12.dp)) {
             Text(z.title, style = MaterialTheme.typography.titleLarge)
-            if (!settings.hindi) Text(s.quizHindiNote, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
+            // the quiz's own language (some days Hindi, some English): a note only when it differs from the app's
+            val inHindi = remember(z.id) { z.questions.any { q -> q.q.any { it in '\u0900'..'\u097F' } } }
+            if (inHindi && !settings.hindi) Text(s.quizHindiNote, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
             z.questions.forEachIndexed { i, q ->
                 Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.fillMaxWidth().padding(top = 14.dp)) {
