@@ -42,7 +42,7 @@ jobs:
           KS_ALIAS: ${{ secrets.SARKARI_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
         run: |
           alias="${KS_ALIAS:-upload}"
-          note="SARKARI_KEYSTORE_BASE64 $([ -n "$KS_B64" ] && echo present || echo MISSING), SARKARI_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)')"
+          note="SARKARI_KEYSTORE_BASE64 $([ -n "$KS_B64" ] && echo present || echo MISSING), SARKARI_KEYSTORE_PASSWORD $([ -n "$KS_PASS" ] && echo present || echo MISSING), key alias '$alias'$([ -z "$KS_ALIAS" ] && echo ' (default)' || true)"
           signed=false
           if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ]; then
             if printf '%s' "$KS_B64" | tr -d ' \n\r' | base64 -d > "$RUNNER_TEMP/upload.jks" 2>/dev/null && [ -s "$RUNNER_TEMP/upload.jks" ]; then
