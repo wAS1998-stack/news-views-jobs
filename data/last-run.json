@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T08:34:16.404Z",
+    "at": "2026-11-05T09:16:44.962Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 16,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 61 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 52 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 22 already known",
@@ -50,15 +50,13 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T08:34:39.912Z",
+    "at": "2026-11-05T09:16:53.722Z",
     "sources": 59,
     "healthy": 18,
-    "newLinks": 1,
+    "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
-    "skipped": [
-      "not a specific recruitment: Ref.:Advt. No.-05/2025: Important Notice Regarding"
-    ],
+    "skipped": [],
     "sources_health": {
       "upsc": "paused (fails 58, geo-blocked)",
       "ibps": "paused (fails 57, geo-blocked)",
@@ -77,16 +75,16 @@
       "tnpsc": "paused (fails 58, geo-blocked)",
       "kpsc": "paused (fails 58, geo-blocked)",
       "appsc": "paused (fails 58, geo-blocked)",
-      "ssc": "25 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 58, geo-blocked)",
       "opsc": "paused (fails 46)",
       "hpsc": "paused (fails 58, geo-blocked)",
       "hppsc": "paused (fails 58, geo-blocked)",
       "ukpsc": "paused (fails 58, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 58, geo-blocked)",
       "gpsc": "paused (fails 58, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 58, geo-blocked)",
       "apsc": "paused (fails 58, geo-blocked)",
       "jkpsc": "paused (fails 58, geo-blocked)",
@@ -95,8 +93,8 @@
       "rssb": "paused (fails 58, geo-blocked)",
       "esb-mp": "paused (fails 58, geo-blocked)",
       "bssc": "paused (fails 7)",
+      "dsssb": "4 links, 0 new via direct",
       "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 58, geo-blocked)",
       "osssc": "paused (fails 25)",
       "gsssb": "paused (fails 58, geo-blocked)",
@@ -106,39 +104,38 @@
       "kea": "paused (fails 58, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 58, geo-blocked)",
+      "uppsc": "1 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
-      "kvs": "4 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "uksssc": "28 links, 0 new via direct",
       "tnusrb": "paused (fails 58, geo-blocked)",
       "tslprb": "paused (fails 58)",
       "slprb-ap": "paused (fails 58, geo-blocked)",
-      "uksssc": "28 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "209 links, 1 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "kvs": "4 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in"
+      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 1 new official notice link(s) (0 retried).",
-      "Warning: TT: undefined function: 32"
+      "Watch: 0 new official notice link(s) (0 retried)."
     ]
   },
   "apply": {
-    "at": "2026-11-05T08:34:40.191Z",
+    "at": "2026-11-05T09:18:02.263Z",
     "ok": true,
-    "checked": 0,
+    "checked": 7,
     "found": 0,
-    "due": 0,
-    "cands": 0,
+    "due": 7,
+    "cands": 2,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 0,
+    "careers": 3,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 7, found 0 real application pages (7 due, pdf reader on)",
+      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 3"
     ]
   },
   "gsc": {
@@ -155,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T08:34:41.159Z",
+    "at": "2026-11-05T09:20:55.651Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -163,7 +160,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 16,
+    "hindiJobs": 16,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -172,11 +170,27 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 16 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: DB गर्ल्स कॉलेज रायपुर अतिथि व्याख्याता भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: KV BSF किट्टंपलयम प्राइमरी टीचर भर्ती 2026 – वॉकइन",
+      "  ✓ hindi: CMOH पुरुलिया भर्ती 2026 – 8 लोवर डिविजन क्लर्क आयुष, DEO और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CGPDTM भर्ती 2026 – 5 युवा पेशेवर, सलाहकार और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: RGU भर्ती 2026 – 2 आंतरिक ऑडिट अधिकारी, कार्यकारी अभियंता पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: AIIMS भोपाल भर्ती 2026 – 4 प्रोजेक्ट रिसर्च साइंटिस्ट, प्रोजेक्ट टेक्निकल सपोर्ट पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIFTEM-Kundli सीनियर रिसर्च फेलो भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: उप-खंड अधिकारी, धुले राजस्व सेवक भर्ती 2026 – 24 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NITT भर्ती 2026 – प्रोजेक्ट असिस्टेंट / प्रोजेक्ट एसोसिएट-II पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: गवर्नर सचिवालय एचपी वाइस-चांसलर भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: भट्टदेव विश्वविद्यालय फैकल्टी भर्ती 2026 – 16 प्रोफ़ेसर, सहयोगी एवं सहायक प्रोफ़ेसर पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ICAR-CIRCOT भर्ती 2026 – 16 सीनियर रिसर्च फेलो, युवा पेशेवर पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IIT कानपुर प्रोजेक्ट एक्जीक्यूटिव ऑफिसर (अनुसंधान और विकास) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: GPSC भर्ती 2026 – 16 कार्यकारी अभियंता, डिप्टी कार्यकारी अभियंता और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: SDO Shirpur महासुल सेवक भर्ती 2026 – 34 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: जिला महिला और बाल विकास विभाग, नारायणपुर भर्ती 2026 – 2 कार्यालय सहायक और अन्य पदों के लिए ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-05T08:35:03.047Z",
+    "at": "2026-11-05T09:21:21.495Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
@@ -185,8 +199,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: Walk-in Interviews for 8 Senior Resident Positions at PMMMH, New Delhi",
-      "  + analysis: SKIMS Recruitment 2026: 4 Vacancies for Research and Technical Positions in Srinagar"
+      "  + analysis: DB Girls College Raipur Invites Applications for Guest Lecturer in Music",
+      "  + analysis: Kendriya Vidyalaya BSF Kittampalayam Announces Walk-in Interview for Primary Teacher Recruitment"
     ]
   },
   "notify": {
