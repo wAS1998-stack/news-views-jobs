@@ -154,7 +154,8 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val top = TABS.any { it.route == route }
     val open by pending.collectAsStateWithLifecycle()
     val idx by vm.index.collectAsStateWithLifecycle()
-    val activity = LocalContext.current.findActivity()
+    val context = LocalContext.current
+    val activity = context.findActivity()
     var prevRoute by rememberSaveable { mutableStateOf<String?>(null) }
     // arrived through a link or a notification before finishing the welcome screen: show what they came for first;
     // the welcome screen comes on the next start (it used to flash the job and jump back to the welcome screen)
@@ -172,6 +173,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     // ads: count pages opened; a full-screen ad may only appear on the way back from a page to a list
     LaunchedEffect(route) {
         if (prevRoute == route) return@LaunchedEffect          // recreated screen (rotation): not a new page view
+        Stats.screen(context, route)
         val isPage = route.startsWith("job/") || route.startsWith("update/")
         val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") } == true
         if (isPage) { Ads.pageOpened(); activity?.let { PlayPrompts.pageOpened(it) } }

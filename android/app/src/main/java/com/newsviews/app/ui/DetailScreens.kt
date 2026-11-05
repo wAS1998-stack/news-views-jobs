@@ -6,6 +6,7 @@ import com.newsviews.app.data.NotInFeed
 import com.newsviews.app.ads.InlineAd
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.findActivity
+import com.newsviews.app.Stats
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -172,7 +173,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             // the main button says what it really opens (the feed decides: apply page, offline form, walk-in notice, notice or homepage)
             val ctaUrl = j.cta_url.ifBlank { j.apply_link.ifBlank { j.official_website } }
             val ctaLabel = when (j.cta) { "apply" -> s.ctaApply; "page" -> s.ctaPage; "form" -> s.ctaForm; "walkin" -> s.ctaWalkin; "email" -> s.ctaEmail; "careers" -> s.ctaCareers; "notice" -> s.ctaNotice; "website" -> s.ctaWebsite; else -> s.apply }
-            if (ctaUrl.isNotBlank()) Button(onClick = { openUrl(ctx, ctaUrl) }, modifier = Modifier.fillMaxWidth()) {
+            if (ctaUrl.isNotBlank()) Button(onClick = { Stats.event(ctx, "open_link", "kind" to j.cta.ifBlank { "apply" }); openUrl(ctx, ctaUrl) }, modifier = Modifier.fillMaxWidth()) {
                 Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(ctaLabel)
             }
             when (j.cta) { "page" -> s.hintPage; "form" -> s.hintForm; "walkin" -> s.hintWalkin; "email" -> s.hintEmail; "careers" -> s.hintCareers; "website" -> s.hintWebsite; else -> null }?.let {
@@ -183,7 +184,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
                     Icon(Icons.Filled.Description, null); Spacer(Modifier.width(6.dp)); Text(s.notification, maxLines = 1)
                 }
                 OutlinedButton(onClick = { vm.toggleSaved(item) }) { Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save) }
-                OutlinedButton(onClick = { shareText(ctx, j.title, j.url) }) { Icon(Icons.Filled.Share, s.share) }
+                OutlinedButton(onClick = { Stats.event(ctx, "share", "kind" to "job"); shareText(ctx, j.title, j.url, s.shareFooter) }) { Icon(Icons.Filled.Share, s.share) }
             }
             val summary = h?.summary?.ifBlank { null } ?: j.summary
             if (summary.isNotBlank()) Section(s.summary) { Text(summary, style = MaterialTheme.typography.bodyLarge) }
@@ -218,8 +219,8 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             if (tips.isNotEmpty()) Section(s.prepTips) {
                 val adCfg by Ads.config.collectAsStateWithLifecycle()
                 val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
-                val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
-                val gated = BuildConfig.ADS && adCfg.on && adCfg.rewarded && BuildConfig.AD_REWARDED.isNotBlank() && adFreeUntil <= System.currentTimeMillis()
+                val adsOff = Ads.adsOff()
+                val gated = BuildConfig.ADS && adCfg.on && adCfg.rewarded && BuildConfig.AD_REWARDED.isNotBlank() && !adsOff
                 if (!gated) Bullets(tips)
                 else Card(shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(14.dp)) {
@@ -263,7 +264,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String) {
             if (link.isNotBlank()) Button(onClick = { openUrl(ctx, link) }, modifier = Modifier.fillMaxWidth()) {
                 Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(s.website)
             }
-            OutlinedButton(onClick = { shareText(ctx, u.title, u.url) }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+            OutlinedButton(onClick = { Stats.event(ctx, "share", "kind" to "update"); shareText(ctx, u.title, u.url, s.shareFooter) }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
                 Icon(Icons.Filled.Share, null); Spacer(Modifier.width(8.dp)); Text(s.share)
             }
             val summary = h?.summary?.ifBlank { null } ?: u.summary

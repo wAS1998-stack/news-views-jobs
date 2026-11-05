@@ -1,3 +1,7 @@
+# Crashlytics: readable stack traces
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
+
 # kotlinx.serialization
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.**

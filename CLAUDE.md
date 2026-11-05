@@ -82,7 +82,11 @@ hurting users or breaking Google's policies.
   pass itself) in `config.json`. Pushing that rebuilds the app (android.yml watches config.json) and the site
   writes `app-ads.txt`. Debug builds always use Google's test IDs. `appAds` switches reach installed apps through the
   feed within minutes (turn placements off, change caps, `bannerSize` "standard"/"large", `rewarded` on/off and
-  `rewardHours` for the ad-free pass) with no app update. Rewarded video pays several times a banner's eCPM, and the
+  `rewardHours` for the ad-free pass, `native` for the ad card in the lists, `pro`/`proProduct` for the one-time "Pro"
+  purchase through Play Billing — create the product in Play Console first, then set `pro` true) with no app update.
+  `admob.native` is the native ad unit. `playUrl` (config.json) makes /app/ and the app's share links point to Play.
+  Firebase Analytics (screen views, link opens, pass/pro events) and Crashlytics are built in when
+  GOOGLE_SERVICES_JSON exists; the privacy policy and store listing mention them. Rewarded video pays several times a banner's eCPM, and the
   pass replaces a day of low-value impressions for people who would otherwise be annoyed away.
 - **More ad networks (bidding):** `admob.mediation` in `config.json` lists the networks whose AdMob mediation adapters are
   built into the app (meta, applovin, inmobi, liftoff, unity, mintegral, ironsource, dtexchange, moloco; also available:

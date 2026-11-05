@@ -6,13 +6,14 @@
   "adsenseSlot": "",
   "adsTxtExtra": [],
   "webAdsHead": "",
-  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial/rewarded ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes (rewarded = the opt-in 'watch a video, no ads for rewardHours hours' offer).",
+  "_adsNote": "Ads: adsenseId = your AdSense publisher ID (ca-pub-…), adsenseSlot = optional in-article ad unit ID. admob = the Android app's AdMob IDs (appId ca-app-pub-…~…, banner/inline/interstitial/rewarded/native ca-app-pub-…/…); a change here rebuilds the app. appAds = app ad switches, applied to installed apps within minutes (rewarded = the opt-in 'watch a video, no ads for rewardHours hours' offer; native = one ad card in each list; pro = offer the one-time Pro purchase, product id proProduct, once it exists in Play Console). playUrl = the Play Store listing URL once live (the /app/ page and share links point there).",
   "admob": {
     "appId": "",
     "banner": "",
     "inline": "",
     "interstitial": "",
     "rewarded": "",
+    "native": "",
     "mediation": [
       "meta",
       "applovin",
@@ -36,8 +37,12 @@
     "every": 4,
     "gap": 240,
     "rewarded": true,
-    "rewardHours": 24
+    "rewardHours": 24,
+    "native": true,
+    "pro": false,
+    "proProduct": "pro_lifetime"
   },
+  "playUrl": "",
   "feeds": [
     "https://www.freejobalert.com/feed/",
     "https://rajsarkariresult.com/feed",

@@ -6,7 +6,7 @@ plugins {
 }
 // Firebase (job alerts) is switched on only when google-services.json is present (CI writes it from a secret).
 val hasFirebase = file("google-services.json").exists()
-if (hasFirebase) apply(plugin = "com.google.gms.google-services")
+if (hasFirebase) { apply(plugin = "com.google.gms.google-services"); apply(plugin = "com.google.firebase.crashlytics") }
 
 // Release signing from environment variables (CI secrets); without them only the debug build is made.
 val ksPath: String? = System.getenv("ANDROID_KEYSTORE_PATH")
@@ -91,6 +91,7 @@ android {
             buildConfigField("String", "AD_INLINE", "\"${adId("inline").ifEmpty { adId("banner") }}\"")
             buildConfigField("String", "AD_INTERSTITIAL", "\"${adId("interstitial")}\"")
             buildConfigField("String", "AD_REWARDED", "\"${adId("rewarded")}\"")
+            buildConfigField("String", "AD_NATIVE", "\"${adId("native")}\"")
         }
         debug {
             // same package as release: Firebase (google-services.json) is registered for in.newsviews.app only
@@ -101,6 +102,7 @@ android {
             buildConfigField("String", "AD_INLINE", "\"ca-app-pub-3940256099942544/6300978111\"")
             buildConfigField("String", "AD_INTERSTITIAL", "\"ca-app-pub-3940256099942544/1033173712\"")
             buildConfigField("String", "AD_REWARDED", "\"ca-app-pub-3940256099942544/5224354917\"")
+            buildConfigField("String", "AD_NATIVE", "\"ca-app-pub-3940256099942544/2247696110\"")
         }
     }
     compileOptions {
@@ -145,6 +147,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
     implementation(platform("com.google.firebase:firebase-bom:34.0.0"))
     implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")      // screen views, link opens, pass/pro events (no personal data)
+    implementation("com.google.firebase:firebase-crashlytics")    // crash reports (readable stack traces via the plugin's mapping upload)
+    implementation("com.android.billingclient:billing-ktx:7.1.1") // "Pro" one-time purchase (dormant until appAds.pro is on)
     implementation("com.google.android.gms:play-services-ads:25.5.0")
     implementation("com.google.android.ump:user-messaging-platform:4.0.0")
     implementation("com.google.android.play:review:2.0.2")        // Play's in-app rating sheet

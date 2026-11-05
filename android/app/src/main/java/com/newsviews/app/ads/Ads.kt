@@ -3,8 +3,28 @@ package com.newsviews.app.ads
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import android.graphics.Typeface
 import android.os.SystemClock
+import android.text.TextUtils
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.ui.graphics.toArgb
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.nativead.MediaView
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.nativead.NativeAdView
+import com.newsviews.app.Stats
+import com.newsviews.app.play.Billing
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -84,14 +104,28 @@ object Ads {
     private val _adFreeUntil = MutableStateFlow(0L)
     /** Epoch millis until which no ads are shown — earned by watching a rewarded video; 0 = no pass. */
     val adFreeUntil: StateFlow<Long> = _adFreeUntil.asStateFlow()
-    private const val PREFS = "ads"
+    private val _pro = MutableStateFlow(false)
+    /** "Pro" bought through Play Billing: no ads, ever (see play/Billing.kt). */
+    val pro: StateFlow<Boolean> = _pro.asStateFlow()
+    const val PREFS = "ads"
 
-    fun adFree(): Boolean = System.currentTimeMillis() < _adFreeUntil.value
+    fun adFree(): Boolean = _pro.value || System.currentTimeMillis() < _adFreeUntil.value
+    fun setPro(v: Boolean) { _pro.value = v }
 
-    /** Call from Application.onCreate: restores a running ad-free pass. */
+    /** No ads right now (a pass is running or Pro is owned). Call it first thing in a composable: it collects state. */
+    @Composable
+    fun adsOff(): Boolean {
+        val until by adFreeUntil.collectAsStateWithLifecycle()
+        val isPro by pro.collectAsStateWithLifecycle()
+        return isPro || until > System.currentTimeMillis()
+    }
+
+    /** Call from Application.onCreate: restores a running ad-free pass and the Pro flag. */
     fun restore(ctx: Context) {
         app = ctx.applicationContext
-        _adFreeUntil.value = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getLong("adFreeUntil", 0L)
+        val p = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        _adFreeUntil.value = p.getLong("adFreeUntil", 0L)
+        _pro.value = p.getBoolean("pro", false)
     }
     private var pagesSince = 0
     private var lastShown = 0L
@@ -99,7 +133,10 @@ object Ads {
     /** Debug-only: show the next full-screen ad regardless of the caps (used by the CI screenshots). */
     var forceNext = false
 
-    fun setConfig(c: AdsConfig) { _config.value = c; app?.let { preloadRewarded(it) } }
+    fun setConfig(c: AdsConfig) {
+        _config.value = c
+        app?.let { preloadRewarded(it); if (c.pro) Billing.start(it, c.proProduct) }
+    }
 
     private fun on(): Boolean = BuildConfig.ADS && _config.value.on && !adFree()
 
@@ -178,11 +215,46 @@ object Ads {
             override fun onAdDismissedFullScreenContent() { preloadRewarded(activity) }
             override fun onAdFailedToShowFullScreenContent(error: AdError) { Log.w(TAG, "rewarded show: ${error.message}"); preloadRewarded(activity) }
         }
+        Stats.event(activity, "pass_watch")
         ad.show(activity) { grantAdFree(activity) }
         return true
     }
 
+    /* ---- native ads: one per list, kept for an hour, so scrolling past it never re-requests ---- */
+    private val natives = mutableMapOf<String, NativeAd>()
+    private val nativeAt = mutableMapOf<String, Long>()
+    private val nativeLoading = mutableSetOf<String>()
+    private val _nativeVersion = MutableStateFlow(0)
+    /** Bumps whenever a native ad arrives, so the list card recomposes. */
+    val nativeVersion: StateFlow<Int> = _nativeVersion.asStateFlow()
+
+    /** The native ad for [slot] ("jobs", "updates"), loading it (or a fresh one after an hour) when needed. */
+    fun nativeAd(slot: String, ctx: Context): NativeAd? {
+        val c = _config.value
+        if (!_ready.value || !BuildConfig.ADS || !c.on || !c.nativeAds || BuildConfig.AD_NATIVE.isBlank() || adFree()) return null
+        val have = natives[slot]
+        val stale = have == null || SystemClock.elapsedRealtime() - (nativeAt[slot] ?: 0L) > 3_600_000L
+        if (stale && slot !in nativeLoading) {
+            nativeLoading += slot
+            AdLoader.Builder(ctx.applicationContext, BuildConfig.AD_NATIVE)
+                .forNativeAd { ad ->
+                    natives.remove(slot)?.destroy()
+                    natives[slot] = ad; nativeAt[slot] = SystemClock.elapsedRealtime(); nativeLoading -= slot
+                    _nativeVersion.value = _nativeVersion.value + 1
+                    Log.i(TAG, "native loaded ($slot)")
+                }
+                .withAdListener(object : AdListener() {
+                    override fun onAdFailedToLoad(error: LoadAdError) { nativeLoading -= slot; Log.i(TAG, "native ($slot): ${error.message}") }
+                })
+                .withNativeAdOptions(NativeAdOptions.Builder().setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT).build())
+                .build()
+                .loadAd(AdRequest.Builder().build())
+        }
+        return have
+    }
+
     private fun grantAdFree(ctx: Context) {
+        Stats.event(ctx, "pass_granted")
         val hours = _config.value.rewardHours.coerceIn(1, 24 * 7)
         val until = maxOf(System.currentTimeMillis(), _adFreeUntil.value) + hours * 3_600_000L
         ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("adFreeUntil", until).apply()
@@ -227,8 +299,8 @@ fun Context.findActivity(): Activity? {
 fun BottomBanner(adLabel: String) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
-    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
-    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank() || adFreeUntil > System.currentTimeMillis()) return
+    val off = Ads.adsOff()
+    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.banner || BuildConfig.AD_BANNER.isBlank() || off) return
     val width = LocalConfiguration.current.screenWidthDp
     val large = cfg.bannerSize == "large"
     // labelled and kept off the tab bar (a 6 dp gap), so it can't be mistaken for app content or tapped by accident
@@ -245,9 +317,62 @@ private fun standardAnchored(ctx: Context, width: Int): AdSize = AdSize.getCurre
 fun InlineAd(label: String) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
-    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
-    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.inline || BuildConfig.AD_INLINE.isBlank() || adFreeUntil > System.currentTimeMillis()) return
+    val off = Ads.adsOff()
+    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.inline || BuildConfig.AD_INLINE.isBlank() || off) return
     AdBox(BuildConfig.AD_INLINE, { AdSize.MEDIUM_RECTANGLE }, label = label, modifier = Modifier.padding(top = 18.dp))
+}
+
+/** One native ad inside a list, styled like the cards around it but labelled, with Google's AdChoices mark. */
+@Composable
+fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier) {
+    val ready by Ads.ready.collectAsStateWithLifecycle()
+    val cfg by Ads.config.collectAsStateWithLifecycle()
+    val off = Ads.adsOff()
+    val version by Ads.nativeVersion.collectAsStateWithLifecycle()
+    if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.nativeAds || BuildConfig.AD_NATIVE.isBlank() || off) return
+    val ctx = LocalContext.current
+    val ad = remember(version, slot) { Ads.nativeAd(slot, ctx) } ?: return
+    val fg = MaterialTheme.colorScheme.onSurface.toArgb()
+    val muted = MaterialTheme.colorScheme.onSurfaceVariant.toArgb()
+    Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = modifier.fillMaxWidth()) {
+        Column(Modifier.fillMaxWidth()) {
+            Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 16.dp, top = 8.dp))
+            AndroidView(factory = { c -> NativeAdView(c).also { buildNativeViews(it) } }, update = { v -> bindNative(v, ad, fg, muted) }, modifier = Modifier.fillMaxWidth())
+        }
+    }
+}
+
+/** The classic views (icon, headline, advertiser, body, media, button) a NativeAdView needs, built in code. */
+private fun buildNativeViews(v: NativeAdView) {
+    val c = v.context
+    val d = c.resources.displayMetrics.density
+    fun dp(x: Int) = (x * d).toInt()
+    val root = LinearLayout(c).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(6), dp(16), dp(14)) }
+    val top = LinearLayout(c).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
+    val icon = ImageView(c).apply { layoutParams = LinearLayout.LayoutParams(dp(40), dp(40)).apply { marginEnd = dp(10) } }
+    val titles = LinearLayout(c).apply { orientation = LinearLayout.VERTICAL; layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f) }
+    val headline = TextView(c).apply { textSize = 16f; setTypeface(null, Typeface.BOLD); maxLines = 2; ellipsize = TextUtils.TruncateAt.END }
+    val advertiser = TextView(c).apply { textSize = 12f; maxLines = 1; ellipsize = TextUtils.TruncateAt.END }
+    titles.addView(headline); titles.addView(advertiser)
+    top.addView(icon); top.addView(titles)
+    val body = TextView(c).apply { textSize = 14f; maxLines = 3; ellipsize = TextUtils.TruncateAt.END; setPadding(0, dp(6), 0, dp(8)) }
+    val media = MediaView(c).apply { layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(150)); setImageScaleType(ImageView.ScaleType.CENTER_CROP) }
+    val cta = Button(c).apply { isAllCaps = false; layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(6) } }
+    root.addView(top); root.addView(body); root.addView(media); root.addView(cta)
+    v.addView(root)
+    v.iconView = icon; v.headlineView = headline; v.advertiserView = advertiser; v.bodyView = body; v.mediaView = media; v.callToActionView = cta
+}
+
+private fun bindNative(v: NativeAdView, ad: NativeAd, fg: Int, muted: Int) {
+    (v.headlineView as TextView).apply { text = ad.headline ?: ""; setTextColor(fg) }
+    (v.advertiserView as TextView).apply { text = ad.advertiser ?: ad.store ?: ""; setTextColor(muted); visibility = if (text.isNullOrBlank()) View.GONE else View.VISIBLE }
+    (v.bodyView as TextView).apply { text = ad.body ?: ""; setTextColor(fg); visibility = if (text.isNullOrBlank()) View.GONE else View.VISIBLE }
+    (v.iconView as ImageView).apply { val ic = ad.icon?.drawable; setImageDrawable(ic); visibility = if (ic == null) View.GONE else View.VISIBLE }
+    (v.callToActionView as Button).apply { text = ad.callToAction ?: ""; visibility = if (text.isNullOrBlank()) View.GONE else View.VISIBLE }
+    val media = ad.mediaContent
+    v.mediaView?.apply { if (media != null) setMediaContent(media); visibility = if (media == null) View.GONE else View.VISIBLE }
+    v.setNativeAd(ad)
 }
 
 @Composable

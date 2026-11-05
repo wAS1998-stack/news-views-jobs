@@ -1,5 +1,6 @@
 package com.newsviews.app.data
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.time.LocalDate
 import java.time.ZoneId
@@ -94,6 +95,10 @@ data class AdsConfig(
     val gap: Int = 240,                // and at least this many seconds apart
     val rewarded: Boolean = true,      // the opt-in offer: watch one rewarded video, no ads for rewardHours hours
     val rewardHours: Int = 24,
+    @SerialName("native") val nativeAds: Boolean = true,   // one native ad card inside the job and result lists
+    val nativeEvery: Int = 8,          // (reserved) spacing for more native cards
+    val pro: Boolean = false,          // "Pro" one-time purchase offered (needs the product in Play Console)
+    val proProduct: String = "pro_lifetime",
 )
 
 @Serializable

@@ -48,6 +48,9 @@ advertising · Target audience → 18+ · Data safety → as below · Content ra
 - **Location › Approximate location** — collected and shared by the ads SDK from the IP address (advertising, fraud prevention).
 - **App activity › App interactions** — collected and shared by the ads SDK: taps, ad views (advertising, analytics).
 - **App info and performance › Diagnostics** — collected and shared by the ads SDK (analytics, fraud prevention).
+- **App info and performance › Crash logs** — collected by Firebase Crashlytics (app functionality / analytics).
+- **App activity › App interactions** — also collected by Firebase Analytics (screen views, button taps; analytics). Not shared beyond Google.
+- **In-app purchases:** yes — "Sarkari Radar Pro" (one-time, removes ads); Google Play Billing handles payment, we see no payment data.
 - Not collected: name, email, phone, contacts, photos, files, precise location. Users can't request deletion through us because we hold none of it; they can reset or delete the advertising ID in phone settings.
 (Source: Google's own disclosure for the Mobile Ads SDK — developers.google.com/admob/android/privacy/play-data-disclosure.)
 - **Mediation networks** (config.json "admob.mediation": Meta Audience Network, AppLovin, InMobi, Liftoff, Unity Ads, Mintegral, ironSource, DT Exchange, Moloco): their SDKs are inside the app, so check each network's own Play data-safety guide and add anything it collects beyond the four types above (they are usually the same types: device IDs, approximate location, app interactions, diagnostics).

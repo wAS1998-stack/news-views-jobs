@@ -46,6 +46,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.platform.LocalContext
 import com.newsviews.app.BuildConfig
 import com.newsviews.app.ads.Ads
+import com.newsviews.app.ads.NativeAdCard
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
@@ -114,8 +115,8 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     // the opt-in "no ads for N hours" offer, once a rewarded video is loaded and no pass is running
     val adCfg by Ads.config.collectAsStateWithLifecycle()
     val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
-    val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
-    val offer = BuildConfig.ADS && adCfg.on && adCfg.rewarded && rewardedReady && adFreeUntil <= System.currentTimeMillis()
+    val adsOff = Ads.adsOff()
+    val offer = BuildConfig.ADS && adCfg.on && adCfg.rewarded && rewardedReady && !adsOff
     val activity = LocalContext.current.findActivity()
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
@@ -174,6 +175,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
                     itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                             if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours) { activity?.let { Ads.showRewarded(it) } }
+                            if (i == 9) NativeAdCard("jobs", s.ad)
                             JobCard(j, hindi, s, j.id in settings.saved, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) })
                         }
                     }
@@ -252,7 +254,12 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
                 }
                 else -> LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
-                    items(list, key = { it.id }) { u -> UpdateRow(u, hindi, typeName(u.ty)) { onOpen(u.id) } }
+                    itemsIndexed(list, key = { _, u -> u.id }) { i, u ->
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            if (i == 6) NativeAdCard("updates", s.ad)
+                            UpdateRow(u, hindi, typeName(u.ty)) { onOpen(u.id) }
+                        }
+                    }
                 }
             }
         }

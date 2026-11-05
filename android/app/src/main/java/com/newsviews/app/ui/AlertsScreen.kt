@@ -64,6 +64,7 @@ import java.time.Instant
 import java.time.ZoneOffset
 import com.newsviews.app.ads.Ads
 import com.newsviews.app.ads.findActivity
+import com.newsviews.app.play.Billing
 import com.newsviews.app.push.Alerts
 
 @Composable
@@ -132,6 +133,8 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
     val adCfg by Ads.config.collectAsStateWithLifecycle()
     val rewardedReady by Ads.rewardedReady.collectAsStateWithLifecycle()
     val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
+    val isPro by Ads.pro.collectAsStateWithLifecycle()
+    val proPrice by Billing.price.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         if (!granted) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
@@ -190,22 +193,30 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
                 ChoiceChip("हिंदी", st.hindi) { vm.setHindi(true) }
             }
         }
-        if (BuildConfig.ADS && adCfg.on && adCfg.rewarded) Group {
-            // the ad-free pass: opt-in, clearly described, nothing in the app depends on it
-            Text(s.adFreeTitle(adCfg.rewardHours), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
-            if (adFreeUntil > System.currentTimeMillis()) {
-                Text(s.adFreeUntil(untilText(adFreeUntil, st.hindi)), style = MaterialTheme.typography.bodyMedium, color = Brand.Green, modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
-            } else {
-                Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) {
-                    Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
+        if (BuildConfig.ADS && adCfg.on && (adCfg.rewarded || adCfg.pro)) Group {
+            // the ad-free pass and Pro: opt-in, clearly described, nothing a candidate needs depends on them
+            Text(if (isPro || (!adCfg.rewarded && adCfg.pro)) s.proTitle else s.adFreeTitle(adCfg.rewardHours), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
+            when {
+                isPro -> Text(s.proActive, style = MaterialTheme.typography.bodyMedium, color = Brand.Green, modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
+                adFreeUntil > System.currentTimeMillis() ->
+                    Text(s.adFreeUntil(untilText(adFreeUntil, st.hindi)), style = MaterialTheme.typography.bodyMedium, color = Brand.Green, modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
+                adCfg.rewarded -> {
+                    Text(s.adFreeHint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Button(onClick = { ctx.findActivity()?.let { Ads.showRewarded(it) } }, enabled = rewardedReady, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) {
+                        Text(if (rewardedReady) s.adFreeButton else s.adFreeLoading)
+                    }
                 }
+            }
+            // Pro: shown only when Play has answered with a price (the product exists and Play is on this phone)
+            if (adCfg.pro && !isPro && proPrice.isNotBlank()) {
+                Text(s.proHint(proPrice), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Button(onClick = { ctx.findActivity()?.let { Billing.buy(it) } }, modifier = Modifier.padding(top = 8.dp, bottom = 12.dp)) { Text(s.proButton) }
             }
         }
         Group {
             Text(s.about, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             TextButton(onClick = { openPlayListing(ctx) }) { Text(s.rate) }
-            TextButton(onClick = { shareText(ctx, s.shareText, PLAY_LISTING) }) { Text(s.shareApp) }
+            TextButton(onClick = { shareText(ctx, s.shareText, APP_PAGE) }) { Text(s.shareApp) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/privacy-policy/") }) { Text(s.privacy) }
             if (adPrivacy) TextButton(onClick = { ctx.findActivity()?.let { Ads.showPrivacyOptions(it) } }) { Text(s.adPrivacy) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/") }) { Text("news-views.in") }

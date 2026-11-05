@@ -75,6 +75,8 @@ fun openUrl(context: Context, url: String) {
 }
 
 const val PLAY_LISTING = "https://play.google.com/store/apps/details?id=in.newsviews.app"
+/** The app's page on the site: links to Play once the listing is live, so shared messages never break. */
+const val APP_PAGE = "https://news-views.in/app/"
 
 /** The app's Play listing in the Play Store app (rating works there), or on the web when Play isn't installed. */
 fun openPlayListing(context: Context) {
@@ -85,11 +87,11 @@ fun openPlayListing(context: Context) {
     }
 }
 
-fun shareText(context: Context, title: String, url: String) {
+fun shareText(context: Context, title: String, url: String, footer: String = "") {
     val send = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_SUBJECT, title)
-        putExtra(Intent.EXTRA_TEXT, "$title\n$url")
+        putExtra(Intent.EXTRA_TEXT, if (footer.isBlank()) "$title\n$url" else "$title\n$url\n\n$footer")
     }
     context.startActivity(Intent.createChooser(send, null).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 }

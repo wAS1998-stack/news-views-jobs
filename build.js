@@ -42,7 +42,7 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
   for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
-    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax"]) {
+    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -457,6 +457,7 @@ function foot() {
     <a href="/editorial-policy/">How we verify</a>
     <a href="/contact/">Contact</a>
     <a href="/privacy-policy/">Privacy</a>
+    <a href="/app/">Android app</a>
     <a href="/disclaimer/">Disclaimer</a>
     <a href="/terms/">Terms</a>
     <a href="/gulf/">Gulf jobs</a>
@@ -1844,8 +1845,9 @@ function buildAppIndex(jobs, updates) {
     cats: APP_CATS.map(([slug, name, hi]) => ({ slug, name, hi })),
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
-      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24 }, SITE.appAds || {});
-      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
+      const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24,
+        native: true, nativeEvery: 8, pro: false, proProduct: "pro_lifetime" }, SITE.appAds || {});
+      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24], ["nativeEvery", 8]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
   });
@@ -2181,6 +2183,8 @@ Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsv
 
 The app is free and is supported by ads from Google AdMob. To show and measure ads and to prevent fraud, Google's ad software may collect your device's advertising ID, your IP address (which gives an approximate location), diagnostic information and how you interact with ads. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. Anywhere, you can reset or delete your advertising ID in your phone's settings (Settings › Privacy › Ads, or Settings › Google › Ads). Learn more in [Google's privacy policy](https://policies.google.com/technologies/partner-sites).${mediationPolicy()}
 
+The app also uses Google Firebase Analytics to count, in aggregate, which screens are used and which buttons are tapped (for example how many people open an official notice), and Firebase Crashlytics to report crashes so they can be fixed. Both receive an app-instance identifier and device and app details, never your name, contacts or location. The optional "Pro" purchase is handled entirely by Google Play Billing; we never see your payment details.
+
 ## Your choices
 You can disable cookies in your browser settings at any time. Doing so may affect how some parts of the site function.
 
@@ -2203,6 +2207,26 @@ ${SITE.brand} is an independent information website. We are **not** a government
 All job information is compiled from publicly available notifications and is provided for general guidance only. While we make every effort to keep it accurate and current, we do not guarantee completeness or accuracy. Dates, vacancies, fees and eligibility can change.
 
 **Before applying to any job, you must verify all details on the official website** linked on each page. We are not responsible for any loss, inconvenience or damage caused by reliance on information published here. We never charge candidates any fee and we do not guarantee employment.`)
+  });
+  const play = SITE.playUrl || "";
+  const APK = "https://github.com/wAS1998-stack/news-views-jobs/releases/download/app-latest/sarkari-radar.apk";
+  out["app"] = pageShell({
+    slug: "app", title: "Sarkari Radar — Android app", h1: "Sarkari Radar: government job alerts on your phone",
+    desc: `Free Android app by ${SITE.brand}: new government jobs for your state and qualification, results and admit cards, reminders, in English and Hindi.`,
+    body: md(
+`**Sarkari Radar** is the free Android app of ${SITE.brand}. Pick your state and highest qualification once, and every matching government job notification reaches your phone — with the number of posts, the last date and the official notice. सरकारी रडार — आपके राज्य और योग्यता की सरकारी नौकरियों के अलर्ट, हिंदी और English में।
+
+${play ? `## [Get it on Google Play](${play})` : `## Coming soon on Google Play\n\nEarly access: [download the app (APK)](${APK}) — signed by ${SITE.brand}. Android will ask you to allow installs from this source. When the Play Store version is out, uninstall this copy first and install from Play.`}
+
+## What you get
+- New government jobs from central departments, every state, PSUs, universities and courts — updated around the clock
+- Alerts only for jobs that fit your state and qualification; follow a department (SSC, RRB, UPSC, your state PSC…) for everything it announces
+- Clear job pages: posts, last date, age limit, qualification, fee, salary, selection process, how to apply — with the official notification and website linked on every job
+- Results, admit cards, answer keys and upcoming exam dates
+- "Fits my age" check with OBC / SC / ST relaxation, saved jobs with last-date reminders
+- Hindi and English, works offline, small and fast
+
+Sarkari Radar is an independent app by ${SITE.brand}. It is not affiliated with any government body; always confirm details on the official website before applying. [Privacy policy](/privacy-policy/).`)
   });
   out["terms"] = pageShell({
     slug: "terms", title: "Terms of Use", desc: `Terms of use for ${SITE.brand}.`,
