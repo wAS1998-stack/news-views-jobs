@@ -1,37 +1,8 @@
 {
   "date": "2026-11-06",
   "runs": {},
-  "notify": {
-    "at": "2026-11-05T22:39:09.628Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
-  "indexing-api": {
-    "at": "2026-11-05T22:39:11.853Z",
-    "ok": true,
-    "submitted": 8,
-    "failed": 0,
-    "source": "new-urls.txt",
-    "log": []
-  },
-  "push": {
-    "at": "2026-11-05T22:39:45.142Z",
-    "ok": true,
-    "sent": 0,
-    "quiet": true,
-    "log": [
-      "push-notify: nothing new to send (quiet hours)."
-    ]
-  },
   "fetch": {
-    "at": "2026-11-05T23:12:26.946Z",
+    "at": "2026-11-05T23:52:19.678Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -77,10 +48,11 @@
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
+  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T23:12:37.627Z",
+    "at": "2026-11-05T23:53:06.511Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -95,7 +67,7 @@
       "iaf-agniveer": "paused (fails 62, geo-blocked)",
       "rrb-portal": "paused (fails 58, geo-blocked)",
       "ncs": "paused (fails 50)",
-      "rbi": "20 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "bpsc": "paused (fails 60, geo-blocked)",
       "rpsc": "paused (fails 50, geo-blocked)",
       "mppsc": "paused (fails 62, geo-blocked)",
@@ -103,7 +75,7 @@
       "tnpsc": "paused (fails 62, geo-blocked)",
       "kpsc": "paused (fails 62, geo-blocked)",
       "appsc": "paused (fails 62, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "rbi": "20 links, 0 new via direct",
       "wbpsc": "paused (fails 62, geo-blocked)",
       "opsc": "paused (fails 50)",
       "hpsc": "paused (fails 62, geo-blocked)",
@@ -112,7 +84,7 @@
       "dsssb": "4 links, 0 new via direct",
       "cgpsc": "paused (fails 62, geo-blocked)",
       "gpsc": "paused (fails 62, geo-blocked)",
-      "tgpsc": "2 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 62, geo-blocked)",
       "apsc": "paused (fails 62, geo-blocked)",
       "jkpsc": "paused (fails 62, geo-blocked)",
@@ -121,30 +93,30 @@
       "rssb": "paused (fails 62, geo-blocked)",
       "esb-mp": "paused (fails 62, geo-blocked)",
       "bssc": "paused (fails 11)",
-      "ssc": "7 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "tgpsc": "2 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 62, geo-blocked)",
       "osssc": "paused (fails 29)",
       "gsssb": "paused (fails 62, geo-blocked)",
       "sssb-punjab": "paused (fails 62, geo-blocked)",
       "hprca": "paused (fails 62, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 62, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 62, geo-blocked)",
       "kvs": "4 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
       "ctet": "4 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 62, geo-blocked)",
       "tslprb": "paused (fails 62)",
       "slprb-ap": "paused (fails 62, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
+      "uksssc": "27 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in"
+      "csbc": "197 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -152,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T23:12:37.923Z",
+    "at": "2026-11-05T23:53:06.853Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -167,7 +139,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T23:12:38.957Z",
+    "at": "2026-11-05T23:53:07.887Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -188,7 +160,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-05T23:13:10.572Z",
+    "at": "2026-11-05T23:53:35.989Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
@@ -197,8 +169,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: NTPC Invites Applications for Associate Position for Retired Executives",
-      "  + analysis: BKNMU Invites Applications for Project Assistant Position in Junagadh: Walk-in Interview Scheduled"
+      "  + analysis: Presidency University Announces Project Fellow Recruitment for 2026",
+      "  + analysis: NIT Jamshedpur Seeks Applications for Project Research Scientist – I Role"
     ]
   }
 }
