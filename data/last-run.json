@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T03:52:35.087Z",
+    "at": "2026-11-05T04:31:58.574Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -18,7 +18,7 @@
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-04; 22 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 8 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-05; 9 already known"
     },
     "log": [
       "   = same source page as an existing job, skipped: IIT Bhilai Project Engineer (Electrical Engineering) Recruitment 2026 – Apply Online",
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T03:53:21.856Z",
+    "at": "2026-11-05T04:32:48.135Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -75,7 +75,7 @@
       "tnpsc": "paused (fails 57, geo-blocked)",
       "kpsc": "paused (fails 57, geo-blocked)",
       "appsc": "paused (fails 57, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "ssc": "25 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 57, geo-blocked)",
       "opsc": "paused (fails 45)",
       "hpsc": "paused (fails 57, geo-blocked)",
@@ -84,7 +84,7 @@
       "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 57, geo-blocked)",
       "gpsc": "paused (fails 57, geo-blocked)",
-      "tgpsc": "2 links, 0 new via news-views.in",
+      "dsssb": "4 links, 0 new via direct",
       "ppsc": "paused (fails 57, geo-blocked)",
       "apsc": "paused (fails 57, geo-blocked)",
       "jkpsc": "paused (fails 57, geo-blocked)",
@@ -93,30 +93,30 @@
       "rssb": "paused (fails 57, geo-blocked)",
       "esb-mp": "paused (fails 57, geo-blocked)",
       "bssc": "paused (fails 6)",
+      "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "ssc": "25 links, 0 new via news-views.in",
       "jssc": "paused (fails 57, geo-blocked)",
       "osssc": "paused (fails 24)",
       "gsssb": "paused (fails 57, geo-blocked)",
       "sssb-punjab": "paused (fails 57, geo-blocked)",
       "hprca": "paused (fails 57, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "kea": "paused (fails 57, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 57, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "kvs": "5 links, 0 new via direct",
+      "kea": "paused (fails 57, geo-blocked)",
+      "ctet": "4 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 57, geo-blocked)",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "4 links, 0 new via direct",
       "uksssc": "28 links, 0 new via direct",
       "tnusrb": "paused (fails 57, geo-blocked)",
       "tslprb": "paused (fails 57)",
       "slprb-ap": "paused (fails 57, geo-blocked)",
-      "uppbpb": "7 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
       "bpssc": "208 links, 0 new via news-views.in",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T03:53:22.193Z",
+    "at": "2026-11-05T04:32:48.467Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T03:45:40.147Z",
+    "at": "2026-11-05T04:33:11.372Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,8 +160,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 1,
-    "hindiJobs": 1,
+    "hindiJobsPending": 2,
+    "hindiJobs": 2,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -170,22 +170,23 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: TMC-ACTREC ICU/OT Technician भर्ती 2026 – वॉक-इन"
+      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: Sainik School Rewari भर्ती 2026 - 05 विभिन्न पदों के लिए आवेदन करें",
+      "  ✓ hindi: ACTREC ब्रोंकोस्कोपी तकनीशियन भर्ती 2026 – ऑनलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-05T03:46:02.094Z",
+    "at": "2026-11-05T04:33:34.651Z",
     "ai": "OpenAI",
-    "published": 1,
+    "published": 2,
     "quizzes": 0,
     "existing": 400,
     "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: TMC-ACTREC Invites Applications for ICU/OT Technician via Walk-in Interview",
-      "  analysis below quality bar for dsvckv-young-professional-ii-2026 (298 words, need 300) — not published."
+      "  + analysis: Sainik School Rewari Announces Recruitment for Five Key Positions",
+      "  + analysis: ACTREC Announces Recruitment for Bronchoscopy Technician Position"
     ]
   },
   "notify": {

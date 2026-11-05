@@ -65,7 +65,64 @@
         "q": "Is there an annual renewal of the contract for these posts?",
         "a": "Yes, the engagement is initially for one year and is extendable annually based on performance."
       }
-    ]
+    ],
+    "hi": {
+      "title": "Sainik School Rewari भर्ती 2026 - 05 विभिन्न पदों के लिए आवेदन करें",
+      "organization": "Sainik School Rewari",
+      "post_name": "Medical Officer, PEM/PTI cum Matron, Nursing Assistant, Counsellor, PGT (Physical Education)",
+      "qualification": "MBBS / मैट्रिक / नर्सिंग डिप्लोमा / ग्रेजुएट / M.P.Ed.",
+      "fee": "500",
+      "salary": "₹40,800 – ₹84,960/- प्रति माह",
+      "location": "रेवाड़ी, हरियाणा",
+      "summary": "Sainik School Rewari 05 संविदा पदों के लिए भर्ती कर रहा है, जिसमें Medical Officer, Nursing Assistant, और PGT (Physical Education) शामिल हैं। आवेदन की अंतिम तिथि 6 नवंबर, 2026 है। चयनित उम्मीदवारों को पद के आधार पर ₹40,800 से लेकर ₹84,960 तक का मासिक वेतन मिलेगा।",
+      "overview": [
+        "Sainik School Rewari विभिन्न पदों के लिए संविदा आधारित नियुक्ति करने जा रहा है। इनमें Medical Officer, PEM/PTI cum Matron, Nursing Assistant, Counsellor, और PGT (Physical Education) जैसे पद शामिल हैं, जो संस्थान में छात्रों के विकास और शिक्षा में महत्वपूर्ण भूमिका निभाते हैं।",
+        "यह भर्ती उन व्यक्तियों के लिए है जिनकी योग्यता मैट्रिक से लेकर चिकित्सा और शारीरिक शिक्षा के क्षेत्र में विशेष डिग्रियों तक है। इन पदों के लिए न केवल शैक्षणिक दक्षता की आवश्यकता होती है, बल्कि आवासीय स्कूल के वातावरण में काम करने के लिए अनुभव और जुनून भी आवश्यक है।",
+        "संभावित आवेदकों को आवश्यक योग्यता और आयु आवश्यकताओं को पूरा करने की सुनिश्चितता करनी चाहिए और आवेदन प्रक्रिया का भी ध्यान रखना चाहिए ताकि वे इस प्रतिष्ठित संस्थान में गुणवत्ता शिक्षा और समग्र विकास प्रदान कर सकें।"
+      ],
+      "eligibility_notes": "उम्मीदवारों को प्रत्येक पद के लिए निर्धारित विशेष शैक्षणिक योग्यता प्राप्त करनी होगी, जिसमें SC/ST और OBC उम्मीदवारों के लिए आयु छूट भी लागू है। आवेदन करने से पहले प्रत्येक पद की आवश्यकताओं की समीक्षा करना महत्वपूर्ण है।",
+      "about_organization": "Sainik School Rewari भारत में Sainik Schools की श्रृंखला का हिस्सा है जिसका उद्देश्य छात्रों को राष्ट्रीय रक्षा अकादमी में प्रवेश के लिए तैयार करना है। संस्थान एक समग्र शिक्षा, सैन्य प्रशिक्षण, अनुशासन और चरित्र विकास को महत्व देता है।",
+      "how_to_apply": [
+        "आधिकारिक साइट से आवेदन पत्र डाउनलोड करें।",
+        "आवश्यक दस्तावेजों और तस्वीरों की सत्यापित प्रतियां संलग्न करें।",
+        "₹500/- का क्रॉस्ड बैंक ड्राफ़्ट संलग्न करें।",
+        "पूर्ण आवेदन भारतीय डाक द्वारा भेजें या व्यक्तिगत रूप से दें।",
+        "लिफाफे पर आवेदन किए गए पद का उल्लेख करें।"
+      ],
+      "selection_process": [
+        "शॉर्टलिस्टिंग",
+        "लिखित परीक्षा / साक्षात्कार",
+        "दस्तावेज़ सत्यापन"
+      ],
+      "preparation_tips": [
+        "अपने पद से संबंधित विशेष विषय क्षेत्रों पर ध्यान दें, जैसे Medical Officer के लिए चिकित्सा ज्ञान या PGT के लिए शारीरिक शिक्षा के सिद्धांत।",
+        "पिछले प्रश्न पत्रों का अभ्यास करें या तैयारी के सामग्रियों को प्राप्त करें जो लिखित परीक्षा के प्रारूप और पाठ्यक्रम को दर्शाते हैं।",
+        "प्रभावी संचार कौशल विकसित करें, क्योंकि साक्षात्कार आपकी छात्रों और स्टाफ के साथ बातचीत करने की क्षमता पर केंद्रित हो सकते हैं।"
+      ],
+      "faq": [
+        {
+          "q": "इन पदों के लिए आवेदन करने की अंतिम तिथि क्या है?",
+          "a": "आवेदन प्रस्तुत करने की अंतिम तिथि 6 नवंबर, 2026, शाम 5 बजे तक है।"
+        },
+        {
+          "q": "क्या कुछ उम्मीदवारों के लिए आवेदन शुल्क में छूट है?",
+          "a": "हाँ, SC/ST उम्मीदवारों को आवेदन शुल्क से छूट है।"
+        },
+        {
+          "q": "आवेदन प्रस्तुत करने के लिए कौन से दस्तावेज़ आवश्यक हैं?",
+          "a": "आवेदकों को मार्कशीट, डिग्री प्रमाणपत्र, अनुभव प्रमाणपत्र और हालिया पासपोर्ट साइज फोटो की सत्यापित प्रतियां प्रस्तुत करनी चाहिए।"
+        },
+        {
+          "q": "क्या चयन प्रक्रिया के दौरान यात्रा का कोई मुआवजा दिया जाएगा?",
+          "a": "नहीं, चयन प्रक्रिया में भाग ले रहे उम्मीदवारों के लिए TA/DA प्रदान नहीं किया जाएगा।"
+        },
+        {
+          "q": "क्या इन पदों के लिए वार्षिक अनुबंध नवीनीकरण होता है?",
+          "a": "हाँ, नियुक्ति प्रारंभ में एक वर्ष के लिए होती है और प्रदर्शन के आधार पर प्रत्येक वर्ष बढ़ाई जा सकती है।"
+        }
+      ],
+      "at": "2026-11-05"
+    }
   },
   {
     "id": "icar-iihr-ches-senior-research-fellow-2026",
@@ -438,6 +495,125 @@
         }
       ],
       "at": "2026-11-04"
+    }
+  },
+  {
+    "id": "actrec-bronchoscopy-technician-2026",
+    "title": "ACTREC Bronchoscopy Technician Recruitment 2026 – Apply Online",
+    "organization": "Advanced Centre for Treatment, Research and Education in Cancer",
+    "summary": "ACTREC is hiring for one position of Bronchoscopy Technician (Pulmonary Medicine). Candidates should possess a diploma or degree in a relevant medical field and have experience in assisting bronchoscopy procedures. The application must be submitted via email by November 12, 2026.",
+    "apply_link": "https://actrec.gov.in/",
+    "official_notification": "https://actrec.gov.in/sites/default/files/2026-11/Walk%20in%20Bronchoscopy%20technician%2017.11.2026.pdf",
+    "source": "https://www.freejobalert.com/articles/actrec-bronchoscopy-technician-pulmonary-medicine-recruitment-2026-3078661",
+    "published": "2026-11-04",
+    "org_short": "ACTREC",
+    "post_name": "Bronchoscopy Technician (Pulmonary Medicine)",
+    "total_vacancies": 1,
+    "qualification": "Graduate, Diploma",
+    "age_min": 25,
+    "age_max": 35,
+    "application_end": "2026-11-12",
+    "salary": "₹26,630 - ₹35,000 /month",
+    "location": "Tata Memorial Centre-ACTREC, Kharghar, Navi Mumbai",
+    "official_website": "https://actrec.gov.in/",
+    "summary_hindi": "एसीटीआरईसी ने ब्रोंकोस्कोपी तकनीशियन (फेफड़ों की चिकित्सा) के एक पद के लिए नियुक्ति की है। उम्मीदवारों के पास किसी प्रासंगिक चिकित्सा क्षेत्र में डिप्लोमा या डिग्री होनी चाहिए और ब्रोंकोस्कोपी प्रक्रियाओं में सहायता का अनुभव होना चाहिए। आवेदन 12 नवंबर 2026 तक ईमेल द्वारा जमा किया जाना चाहिए।",
+    "selection_process": [
+      "Interview"
+    ],
+    "how_to_apply": [
+      "Email your CV to outsource@actrec.gov.in.",
+      "Attach your qualification mark sheets and certificates.",
+      "Include experience certificates and a soft copy of your Aadhaar Card.",
+      "Ensure your email is sent by 5:30 PM on or before November 12, 2026."
+    ],
+    "overview": [
+      "The Bronchoscopy Technician position at ACTREC involves assisting in bronchoscopy procedures and working within the pulmonary medicine department. The role is essential for supporting doctors and ensuring effective patient care during diagnostic and therapeutic procedures.",
+      "This position is well-suited for candidates with a background in healthcare, particularly those who have qualifications or experience in paramedical technology. It offers a great opportunity for professional development in a prestigious cancer research institute.",
+      "Candidates should carefully review the eligibility criteria and ensure they meet the age and educational requirements. The contract nature of the position suggests flexibility and an engaging role in a key health service area."
+    ],
+    "about_organization": "The Advanced Centre for Treatment, Research and Education in Cancer (ACTREC) is a leading institution dedicated to cancer treatment, research, and education. It plays a pivotal role in advancing the field of oncology and improving patient outcomes through innovative practices and research.",
+    "eligibility_notes": "Candidates must have a diploma or degree in a relevant medical field, with some positions requiring experience in assisting bronchoscopy. Age relaxations may apply based on the candidate's experience, emphasizing the importance of relevant medical background.",
+    "preparation_tips": [
+      "Review the basics of pulmonary medicine and bronchoscopic procedures.",
+      "Familiarize yourself with the role and responsibilities of a Bronchoscopy Technician.",
+      "Prepare for potential interview questions regarding previous experience and technical skills related to bronchoscopy.",
+      "Stay updated on the latest advancements in bronchoscopic techniques and patient care protocols."
+    ],
+    "faq": [
+      {
+        "q": "What is the last date to apply for the ACTREC Bronchoscopy Technician post?",
+        "a": "The email application must be sent by 5:30 PM on or before November 12, 2026."
+      },
+      {
+        "q": "What is the qualification for Bronchoscopy Technician (Pulmonary Medicine)?",
+        "a": "Candidates should have a diploma in a relevant field or a graduate degree with one year of experience assisting bronchoscopy."
+      },
+      {
+        "q": "What is the age limit?",
+        "a": "The age limit is 25 to 35 years, which may be relaxed based on experience."
+      },
+      {
+        "q": "What is the salary for this post?",
+        "a": "The consolidated salary ranges from ₹26,630 to ₹35,000 per month, depending on experience."
+      },
+      {
+        "q": "How will candidates be selected?",
+        "a": "Selection will be based on an interview, with details provided to shortlisted candidates via email."
+      }
+    ],
+    "hi": {
+      "title": "ACTREC ब्रोंकोस्कोपी तकनीशियन भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "organization": "कैंसर में उपचार, शोध और शिक्षा के लिए उन्नत केंद्र",
+      "post_name": "ब्रोंकोस्कोपी तकनीशियन (फेफड़ों की चिकित्सा)",
+      "qualification": "स्नातक, डिप्लोमा",
+      "salary": "₹26,630 - ₹35,000 /महीना",
+      "location": "टाटा मेमोरियल सेंटर-ACTREC, खारघर, नवी मुंबई",
+      "summary": "ACTREC ब्रोंकोस्कोपी तकनीशियन (फेफड़ों की चिकित्सा) के लिए एक पद पर भर्ती कर रहा है। उम्मीदवारों के पास एक संबंधित चिकित्सा क्षेत्र में डिप्लोमा या डिग्री होनी चाहिए और ब्रोंकोस्कोपी प्रक्रियाओं में सहायता करने का अनुभव होना चाहिए। आवेदन 12 नवंबर, 2026 तक ईमेल के माध्यम से सबमिट करना होगा।",
+      "overview": [
+        "ACTREC में ब्रोंकोस्कोपी तकनीशियन का पद ब्रोंकोस्कोपी प्रक्रियाओं में सहायता करने और फेफड़ों की चिकित्सा विभाग में कार्य करने से संबंधित है। यह भूमिका डॉक्टरों को सहयोग देने और निदान और उपचार प्रक्रियाओं के दौरान मरीजों की देखभाल सुनिश्चित करने के लिए आवश्यक है।",
+        "यह पद स्वास्थ्य सेवा में पृष्ठभूमि रखने वाले उम्मीदवारों के लिए उपयुक्त है, विशेषकर उन लोगों के लिए जिनके पास पैरामेडिकल तकनीक में योग्यता या अनुभव है। यह एक प्रतिष्ठित कैंसर अनुसंधान संस्थान में पेशेवर विकास के लिए एक बेहतरीन अवसर प्रदान करता है।",
+        "उम्मीदवारों को पात्रता मानदंडों की सावधानीपूर्वक समीक्षा करनी चाहिए और यह सुनिश्चित करना चाहिए कि वे आयु और शैक्षणिक आवश्यकताओं को पूरा करते हैं। पद का संविदात्मक स्वभाव लचीलापन और एक महत्वपूर्ण स्वास्थ्य सेवा क्षेत्र में एक आकर्षक भूमिका का संकेत देता है।"
+      ],
+      "eligibility_notes": "उम्मीदवारों के पास एक संबंधित चिकित्सा क्षेत्र में डिप्लोमा या डिग्री होनी चाहिए, जिसमें कुछ पदों के लिए ब्रोंकोस्कोपी में सहायता करने का अनुभव आवश्यक हो सकता है। आयु संबंधी छूट उम्मीदवार के अनुभव के आधार पर लागू हो सकती है, जो महत्वपूर्ण चिकित्सा पृष्ठभूमि पर जोर देती है।",
+      "about_organization": "कैंसर में उपचार, शोध और शिक्षा के लिए उन्नत केंद्र (ACTREC) एक प्रमुख संस्थान है जो कैंसर उपचार, शोध और शिक्षा के लिए समर्पित है। यह ऑनकोलॉजी के क्षेत्र में प्रगति करने और नवोन्मेषी प्रथाओं और शोध के माध्यम से मरीजों के परिणामों में सुधार करने में एक प्रमुख भूमिका निभाता है।",
+      "how_to_apply": [
+        "अपना सीवी outsource@actrec.gov.in पर ईमेल करें।",
+        "अपनी योग्यता के मार्कशीट और प्रमाण पत्र संलग्न करें।",
+        "अनुभव प्रमाण पत्र और आपके आधार कार्ड की सॉफ्ट कॉपी शामिल करें।",
+        "सुनिश्चित करें कि आपका ईमेल 12 नवंबर, 2026 को या उससे पहले शाम 5:30 बजे तक भेजा गया है।"
+      ],
+      "selection_process": [
+        "साक्षात्कार"
+      ],
+      "preparation_tips": [
+        "फेफड़ों की चिकित्सा और ब्रोंकोस्कोपिक प्रक्रियाओं की बुनियादी जानकारी की समीक्षा करें।",
+        "ब्रोंकोस्कोपी तकनीशियन की भूमिका और जिम्मेदारियों से परिचित हों।",
+        "ब्रोंकोस्कोपी से संबंधित पिछले अनुभव और तकनीकी कौशल के बारे में संभावित साक्षात्कार प्रश्नों के लिए तैयारी करें।",
+        "ब्रोंकोस्कोपी तकनीकों और मरीजों की देखभाल प्रोटोकॉल में नवीनतम प्रगति पर अद्यतित रहें।"
+      ],
+      "faq": [
+        {
+          "q": "ACTREC ब्रोंकोस्कोपी तकनीशियन पद के लिए आवेदन करने की अंतिम तिथि कब है?",
+          "a": "ईमेल आवेदन 12 नवंबर, 2026 को या उससे पहले शाम 5:30 बजे तक भेजा जाना चाहिए।"
+        },
+        {
+          "q": "ब्रोंकोस्कोपी तकनीशियन (फेफड़ों की चिकित्सा) के लिए योग्यता क्या है?",
+          "a": "उम्मीदवारों के पास एक संबंधित क्षेत्र में डिप्लोमा होना चाहिए या एक स्नातक डिग्री होनी चाहिए जिसमें ब्रोंकोस्कोपी में सहायता करने का एक वर्ष का अनुभव हो।"
+        },
+        {
+          "q": "आयु सीमा क्या है?",
+          "a": "आयु सीमा 25 से 35 वर्ष है, जिसे अनुभव के आधार पर छूट दी जा सकती है।"
+        },
+        {
+          "q": "इस पद के लिए वेतन क्या है?",
+          "a": "संयुक्त वेतन ₹26,630 से ₹35,000 प्रति माह है, जो अनुभव के आधार पर भिन्न हो सकता है।"
+        },
+        {
+          "q": "उम्मीदवारों का चयन कैसे किया जाएगा?",
+          "a": "चयन साक्षात्कार के आधार पर किया जाएगा, जिसके विवरण ईमेल द्वारा शॉर्टलिस्ट किए गए उम्मीदवारों को प्रदान किए जाएंगे।"
+        }
+      ],
+      "at": "2026-11-05"
     }
   },
   {
