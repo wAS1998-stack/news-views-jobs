@@ -54,6 +54,8 @@ adb shell input keyevent 3; sleep 3
 adb shell am start -n $PKG/$ACT; shot 09b-app-open 6
 adb shell input keyevent 4; sleep 2
 adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
+# the ad SDK's own messages about failed requests (why a format didn't fill)
+adb logcat -d -s Ads:* | grep -iE "native|fail|error|could not|unable" | tail -60 > "$OUT/gma-log.txt"
 
 # 9. the release build (shrunk with R8, no debug hooks): install, open, and look for a crash
 if [ -n "$REL" ] && [ -f "$REL" ]; then

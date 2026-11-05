@@ -243,18 +243,23 @@ object Ads {
         preloadNative(ctx, "detail")
     }
 
-    /* ---- no-fill retries: 15 s, 30 s, 1 min … up to 10 min, one pending retry per format ---- */
+    /* ---- no-fill retries: 15 s, 30 s, 1 min … up to 10 min, one pending retry per format. Until that time no other
+       trigger (returning to the app, opening a list) may request the format again, so a no-fill never turns into a
+       burst of requests (which lowers the match rate). ---- */
     private val retryDelay = mutableMapOf<String, Long>()
     private val retryPending = mutableSetOf<String>()
+    private val notBefore = mutableMapOf<String, Long>()
     private fun retryLater(key: String, ctx: Context, load: (Context) -> Unit) {
         if (key in retryPending) return
         val d = retryDelay[key] ?: 15_000L
         retryDelay[key] = (d * 2).coerceAtMost(600_000L)
+        notBefore[key] = now() + d
         retryPending += key
         val appCtx = ctx.applicationContext
-        main.postDelayed({ retryPending -= key; load(appCtx) }, d)
+        main.postDelayed({ retryPending -= key; notBefore.remove(key); load(appCtx) }, d)
     }
-    private fun loadedOk(key: String) { retryDelay.remove(key) }
+    private fun backingOff(key: String) = now() < (notBefore[key] ?: 0L)
+    private fun loadedOk(key: String) { retryDelay.remove(key); notBefore.remove(key) }
 
     private fun now() = SystemClock.elapsedRealtime()
     private const val MAX_AGE = 55 * 60_000L          // interstitial, rewarded and native ads expire after an hour
@@ -275,7 +280,7 @@ object Ads {
     var forceNext = false
 
     private fun preload(ctx: Context) {
-        if (!_ready.value || !configKnown || !on() || !_config.value.interstitial || loading || BuildConfig.AD_INTERSTITIAL.isBlank()) return
+        if (!_ready.value || !configKnown || !on() || !_config.value.interstitial || loading || BuildConfig.AD_INTERSTITIAL.isBlank() || backingOff("interstitial")) return
         if (interstitial != null && now() - interstitialAt < MAX_AGE) return
         interstitial = null
         loading = true
@@ -318,7 +323,7 @@ object Ads {
 
     private fun preloadRewarded(ctx: Context) {
         val c = _config.value
-        if (!_ready.value || !configKnown || !BuildConfig.ADS || !c.on || !c.rewarded || BuildConfig.AD_REWARDED.isBlank() || rewardedLoading) return
+        if (!_ready.value || !configKnown || !BuildConfig.ADS || !c.on || !c.rewarded || BuildConfig.AD_REWARDED.isBlank() || rewardedLoading || backingOff("rewarded")) return
         if (adFree()) return                        // a pass or Pro is running: the offer isn't shown, load again when it ends
         if (rewarded != null && now() - rewardedAt < MAX_AGE) return
         rewarded = null
@@ -385,7 +390,7 @@ object Ads {
 
     private fun preloadAppOpen(ctx: Context) {
         val c = _config.value
-        if (!_ready.value || !configKnown || !on() || !c.appOpen || BuildConfig.AD_APP_OPEN.isBlank() || appOpenLoading) return
+        if (!_ready.value || !configKnown || !on() || !c.appOpen || BuildConfig.AD_APP_OPEN.isBlank() || appOpenLoading || backingOff("app-open")) return
         if (appOpenAd != null && now() - appOpenAt < 4 * 3_600_000L) return   // app-open ads expire after 4 h
         appOpenAd = null
         appOpenLoading = true
@@ -414,6 +419,7 @@ object Ads {
         p.edit().putLong("appOpenShown", wall).apply()
         lastShown = now            // counts towards the interstitial's gap too: never two full-screen ads close together
         Stats.event(activity, "app_open_ad")
+        Log.i(TAG, "app-open shown")
         _fullScreen.value = true
         ad.show(activity)
     }
@@ -433,7 +439,7 @@ object Ads {
         val s = nativeSlots.getOrPut(slot) { NativeSlot() }
         val now = now()
         val needed = s.ad == null || now - s.at > MAX_AGE || (s.seen > 0 && now - s.seen > 120_000L)
-        if (!needed || s.loading) return
+        if (!needed || s.loading || backingOff("native-$slot")) return
         s.loading = true
         AdLoader.Builder(ctx.applicationContext, BuildConfig.AD_NATIVE)
             .forNativeAd { ad ->
@@ -444,7 +450,11 @@ object Ads {
                 Log.i(TAG, "native loaded ($slot)")
             }
             .withAdListener(object : AdListener() {
-                override fun onAdFailedToLoad(error: LoadAdError) { s.loading = false; Log.i(TAG, "native ($slot): ${error.message}"); retryLater("native-$slot", ctx) { preloadNative(it, slot) } }
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    s.loading = false
+                    Log.i(TAG, "native ($slot): ${error.code} ${error.message}" + if (BuildConfig.DEBUG) " | $error" else "")
+                    retryLater("native-$slot", ctx) { preloadNative(it, slot) }
+                }
                 override fun onAdImpression() { s.seen = now() }
             })
             .withNativeAdOptions(NativeAdOptions.Builder().setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT).build())
