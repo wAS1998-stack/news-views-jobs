@@ -96,6 +96,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        Ads.maybeShowAppOpen(this)
         vm.syncAlerts()
         vm.refreshIfStale()
     }
@@ -105,6 +106,7 @@ class MainActivity : ComponentActivity() {
         // test hooks for the automated screenshots (debug builds only)
         if (BuildConfig.DEBUG && intent.getBooleanExtra("skip_onboarding", false)) vm.finishOnboarding()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("ad_test", false)) Ads.forceNext = true
+        if (BuildConfig.DEBUG && intent.getBooleanExtra("app_open_test", false)) Ads.forceAppOpen = true
         if (BuildConfig.DEBUG && intent.getBooleanExtra("demo_profile", false)) vm.demoProfile()
         if (BuildConfig.DEBUG && intent.getBooleanExtra("upcoming", false)) vm.setFilters(vm.filters.value.copy(upcoming = true, updateType = ""))
         if (BuildConfig.DEBUG && intent.hasExtra("hindi")) vm.setHindi(intent.getBooleanExtra("hindi", false))
@@ -113,8 +115,9 @@ class MainActivity : ComponentActivity() {
         val ok = { id: String? -> id != null && ID_RE.matches(id) }
         val kind = intent.getStringExtra("kind")
         val id = intent.getStringExtra("id")
-        if ((kind == "job" || kind == "update") && ok(id)) { pending.value = kind!! to id!!; return }
+        if ((kind == "job" || kind == "update") && ok(id)) { Ads.suppressAppOpen(); pending.value = kind!! to id!!; return }
         val uri = intent.data ?: return
+        Ads.suppressAppOpen()             // opened from a news-views.in link: no app-open ad in front of it
         val seg = uri.pathSegments
         when {
             seg.size >= 2 && seg[0] == "jobs" && ok(seg[1]) -> pending.value = "job" to seg[1]

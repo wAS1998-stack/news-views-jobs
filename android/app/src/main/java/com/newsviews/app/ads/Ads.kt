@@ -56,6 +56,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
+import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -126,6 +127,69 @@ object Ads {
         val p = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         _adFreeUntil.value = p.getLong("adFreeUntil", 0L)
         _pro.value = p.getBoolean("pro", false)
+        installedAt = try { ctx.packageManager.getPackageInfo(ctx.packageName, 0).firstInstallTime } catch (e: Exception) { System.currentTimeMillis() }
+    }
+
+    /* ---- app-open ad: only when someone comes back to the app after a real break (AdMob's "app open" format) ----
+       Never on a cold start (the person would already be reading when it loaded), never on the first day after
+       install, never when they arrive from a notification or a link (they came for that page), at most once per
+       appAds.appOpenGap seconds, and never within a minute of another full-screen ad. Shown only if already loaded. */
+    private var installedAt = 0L
+    private var appOpenAd: AppOpenAd? = null
+    private var appOpenAt = 0L
+    private var appOpenLoading = false
+    private var backgroundSince = 0L
+    private var foregroundPending = false
+    /** Debug-only (CI screenshots): show the next app-open ad regardless of the caps. */
+    var forceAppOpen = false
+
+    /** The whole app went to the background (ProcessLifecycleOwner ON_STOP). */
+    fun onProcessBackground() { backgroundSince = SystemClock.elapsedRealtime(); foregroundPending = false }
+
+    /** The app came back (ON_START): an app-open ad becomes possible if the break was long enough. */
+    fun onProcessForeground() {
+        foregroundPending = backgroundSince > 0 &&
+            SystemClock.elapsedRealtime() - backgroundSince >= _config.value.appOpenAway.coerceAtLeast(60) * 1000L
+    }
+
+    /** Arrived through a notification or a link: show what they came for, no app-open ad this time. */
+    fun suppressAppOpen() { foregroundPending = false }
+
+    private fun preloadAppOpen(ctx: Context) {
+        val c = _config.value
+        if (!on() || !c.appOpen || BuildConfig.AD_APP_OPEN.isBlank() || appOpenLoading) return
+        if (appOpenAd != null && SystemClock.elapsedRealtime() - appOpenAt < 4 * 3_600_000L) return   // app-open ads expire after 4 h
+        appOpenLoading = true
+        AppOpenAd.load(ctx.applicationContext, BuildConfig.AD_APP_OPEN, AdRequest.Builder().build(), object : AppOpenAd.AppOpenAdLoadCallback() {
+            override fun onAdLoaded(ad: AppOpenAd) { appOpenAd = ad; appOpenAt = SystemClock.elapsedRealtime(); appOpenLoading = false; Log.i(TAG, "app-open loaded") }
+            override fun onAdFailedToLoad(error: LoadAdError) { appOpenAd = null; appOpenLoading = false; Log.i(TAG, "app-open: ${error.message}") }
+        })
+    }
+
+    /** Call from the activity's onResume (after onNewIntent, so a notification tap has already suppressed it). */
+    fun maybeShowAppOpen(activity: Activity) {
+        if (!_ready.value) return
+        val pending = foregroundPending || forceAppOpen
+        foregroundPending = false
+        val ad = appOpenAd
+        val now = SystemClock.elapsedRealtime()
+        val wall = System.currentTimeMillis()
+        val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val c = _config.value
+        val allowed = forceAppOpen || (on() && c.appOpen && wall - installedAt >= 24 * 3_600_000L &&
+            wall - p.getLong("appOpenShown", 0L) >= c.appOpenGap.coerceAtLeast(3600) * 1000L && now - lastShown >= 60_000L)
+        val fresh = ad != null && now - appOpenAt < 4 * 3_600_000L
+        if (!pending || !allowed || !fresh || activity.isFinishing || activity.isDestroyed) { preloadAppOpen(activity); return }
+        forceAppOpen = false
+        appOpenAd = null
+        ad!!.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() { preloadAppOpen(activity) }
+            override fun onAdFailedToShowFullScreenContent(error: AdError) { Log.w(TAG, "app-open show: ${error.message}"); preloadAppOpen(activity) }
+        }
+        p.edit().putLong("appOpenShown", wall).apply()
+        lastShown = now            // counts towards the interstitial's gap too: never two full-screen ads close together
+        Stats.event(activity, "app_open_ad")
+        ad.show(activity)
     }
     private var pagesSince = 0
     private var lastShown = 0L
@@ -176,6 +240,7 @@ object Ads {
                 _ready.value = true
                 preload(app)
                 preloadRewarded(app)
+                preloadAppOpen(app)
             }
         }
     }

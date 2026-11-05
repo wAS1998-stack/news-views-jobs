@@ -16,7 +16,8 @@ class App : Application() {
         // a downloaded Play update installs when the whole app goes to the background — not on rotation, a Custom Tab
         // (the application form) or the share sheet, which also stop the activity
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onStop(owner: LifecycleOwner) { PlayPrompts.installIfDownloaded() }
+            override fun onStop(owner: LifecycleOwner) { PlayPrompts.installIfDownloaded(); Ads.onProcessBackground() }
+            override fun onStart(owner: LifecycleOwner) { Ads.onProcessForeground() }
         })
     }
 }

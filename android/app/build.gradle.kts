@@ -92,6 +92,7 @@ android {
             buildConfigField("String", "AD_INTERSTITIAL", "\"${adId("interstitial")}\"")
             buildConfigField("String", "AD_REWARDED", "\"${adId("rewarded")}\"")
             buildConfigField("String", "AD_NATIVE", "\"${adId("native")}\"")
+            buildConfigField("String", "AD_APP_OPEN", "\"${adId("appOpen")}\"")
         }
         debug {
             // same package as release: Firebase (google-services.json) is registered for in.newsviews.app only
@@ -103,6 +104,7 @@ android {
             buildConfigField("String", "AD_INTERSTITIAL", "\"ca-app-pub-3940256099942544/1033173712\"")
             buildConfigField("String", "AD_REWARDED", "\"ca-app-pub-3940256099942544/5224354917\"")
             buildConfigField("String", "AD_NATIVE", "\"ca-app-pub-3940256099942544/2247696110\"")
+            buildConfigField("String", "AD_APP_OPEN", "\"ca-app-pub-3940256099942544/9257395921\"")
         }
     }
     compileOptions {

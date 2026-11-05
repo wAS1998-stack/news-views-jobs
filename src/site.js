@@ -146,3 +146,13 @@ if ("serviceWorker" in navigator) {
   document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check(); });
   setInterval(check, 10 * 60000);
 })();
+
+// "Get the app" strip (Android only, shown by the inline script in <head>): closing it hides it for 14 days.
+(function () {
+  var x = document.querySelector(".app-bar-x");
+  if (!x) return;
+  x.addEventListener("click", function () {
+    try { localStorage.setItem("nv_appbar_x", String(Date.now() + 14 * 86400000)); } catch (e) {}
+    document.documentElement.classList.remove("show-app");
+  });
+})();

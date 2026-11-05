@@ -99,6 +99,9 @@ data class AdsConfig(
     val nativeEvery: Int = 8,          // (reserved) spacing for more native cards
     val pro: Boolean = false,          // "Pro" one-time purchase offered (needs the product in Play Console)
     val proProduct: String = "pro_lifetime",
+    val appOpen: Boolean = true,       // app-open ad when coming back after a break (see Ads.maybeShowAppOpen)
+    val appOpenGap: Int = 14400,       // at most once per this many seconds
+    val appOpenAway: Int = 900,        // only after the app was in the background at least this long
 )
 
 @Serializable

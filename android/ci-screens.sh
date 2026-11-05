@@ -48,6 +48,11 @@ adb shell am start -n $PKG/$ACT --ez hindi false; sleep 3
 adb shell am start -n $PKG/$ACT --es tab jobs; sleep 3
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez ad_test true --es kind job --es id "$JOB"; sleep 8
   adb shell input keyevent 4; shot 08-interstitial 7; adb shell input keyevent 4; shot 09-jobs-after-ad 8; fi
+# 9b. app-open ad on coming back (caps bypassed by the debug-only app_open_test hook): arm it, go home, come back
+adb shell am start -n $PKG/$ACT --ez app_open_test true --es tab jobs; sleep 8
+adb shell input keyevent 3; sleep 3
+adb shell am start -n $PKG/$ACT; shot 09b-app-open 6
+adb shell input keyevent 4; sleep 2
 adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
 
 # 9. the release build (shrunk with R8, no debug hooks): install, open, and look for a crash

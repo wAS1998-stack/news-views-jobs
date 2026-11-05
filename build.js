@@ -344,6 +344,9 @@ function head(o) {
   const adsense = SITE.adsenseId
     ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsenseId}" crossorigin="anonymous"></script>`
     : "";
+  // App bar for Android visitors: rendered in every page but hidden unless a tiny inline script (run before the first
+  // paint, so nothing shifts) sees an Android browser that hasn't closed it in the last 14 days. Not on /app/ itself.
+  const appBar = String(o.canonical || "").endsWith("/app/") ? "" : appBarHtml(o.lang === "hi");
   return `<!doctype html>
 <html lang="${o.lang || "en"}">
 <head>
@@ -380,6 +383,7 @@ ${o.modified || o.published ? `<meta property="article:modified_time" content="$
 <link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${FONTS}"></noscript>
 ${o.lang === "hi" ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" media="print" onload="this.media='all'">` : ""}
 <link rel="stylesheet" href="/styles.css?v=${ASSET_V["styles.css"]}">
+${appBar ? `<script>try{var u=navigator.userAgent;if(/Android/i.test(u)&&u.indexOf("; wv)")<0&&!(+localStorage.getItem("nv_appbar_x")>Date.now()))document.documentElement.classList.add("show-app")}catch(e){}</script>` : ""}
 ${adsense}
 ${SITE.webAdsHead || ""}
 ${ldBlocks}
@@ -409,7 +413,16 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
     <a href="/state/">States</a>`}
     <a class="lang-switch" href="${esc(o.langSwitch || (o.lang === "hi" ? "/" : "/hi/"))}" lang="${o.lang === "hi" ? "en" : "hi"}">${o.lang === "hi" ? "English" : "हिंदी"}</a>
   </nav>
-</div></header>`;
+</div></header>${appBar}`;
+}
+
+/* "Get the app" strip for Android visitors (see head()). Goes to the Play listing once config.json playUrl is set — with
+   an install referrer, so Play Console shows how many installs the site brings — and to /app/ until then. */
+function appBarHtml(hindi) {
+  const play = SITE.playUrl || "";
+  const href = play ? `${play}${play.includes("?") ? "&" : "?"}referrer=${encodeURIComponent("utm_source=news-views.in&utm_medium=app_bar")}` : "/app/";
+  const text = hindi ? `<b>सरकारी रडार ऐप</b> — आपके राज्य और योग्यता की नई सरकारी नौकरी का अलर्ट, मुफ़्त` : `<b>Sarkari Radar app</b> — free alerts for new govt jobs in your state &amp; qualification`;
+  return `\n<div class="app-bar" role="region" aria-label="${hindi ? "एंड्रॉइड ऐप" : "Android app"}"><div class="wrap"><span class="app-bar-text">${text}</span><a class="app-bar-go" href="${esc(href)}"${play ? ` rel="noopener"` : ""}>${hindi ? "ऐप लें" : "Get app"}</a><button class="app-bar-x" type="button" aria-label="${hindi ? "बंद करें" : "Close"}">&times;</button></div></div>`;
 }
 
 /* Share images (og.js): rendered only in the Cloudflare Pages build (CF_PAGES) or with OG=1, never in GitHub Actions.
@@ -1846,8 +1859,8 @@ function buildAppIndex(jobs, updates) {
     jobs: J, updates: U,
     ads: (() => { // whole numbers only: the app reads every/gap as integers
       const a = Object.assign({ on: true, banner: true, bannerSize: "standard", inline: true, interstitial: true, every: 4, gap: 240, rewarded: true, rewardHours: 24,
-        native: true, nativeEvery: 8, pro: false, proProduct: "pro_lifetime" }, SITE.appAds || {});
-      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24], ["nativeEvery", 8]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
+        native: true, nativeEvery: 8, pro: false, proProduct: "pro_lifetime", appOpen: true, appOpenGap: 14400, appOpenAway: 900 }, SITE.appAds || {});
+      for (const [k, d] of [["every", 4], ["gap", 240], ["rewardHours", 24], ["nativeEvery", 8], ["appOpenGap", 14400], ["appOpenAway", 900]]) a[k] = Math.max(1, Math.round(Number(a[k]) || d));
       return a;
     })(),
   });
