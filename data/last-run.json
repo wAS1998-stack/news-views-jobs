@@ -190,7 +190,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-05T02:27:30.982Z",
+    "at": "2026-11-05T04:36:40.972Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -199,5 +199,13 @@
     "log": [
       "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
     ]
+  },
+  "indexing-api": {
+    "at": "2026-11-05T04:36:42.099Z",
+    "ok": true,
+    "submitted": 3,
+    "failed": 0,
+    "source": "new-urls.txt",
+    "log": []
   }
 }
