@@ -1824,7 +1824,7 @@ const appCats = (text) => APP_CATS.filter(([, , , re]) => re.test(text)).map(([s
    ("Notification Out – Apply Online for 78 Posts"). The full title stays on the job page. */
 function shortTitle(t) {
   t = String(t || "").trim();
-  const m = t.match(/(recruitment|vacancy|admit card|hall ticket|result|answer key|exam date|exam city|cut ?off|merit list|syllabus|typing test|skill test|interview schedule|भर्ती|रिजल्ट|परिणाम|प्रवेश पत्र|एडमिट कार्ड|उत्तर कुंजी|आंसर की|टेस्ट|लिस्ट|तारीख|तिथि|कट ऑफ)(\s+20\d\d)?/i);
+  const m = t.match(/(recruitment|vacancy|notification(?=\s+20\d\d)|admit card|hall ticket|result|answer key|exam date|exam city|cut ?off|merit list|syllabus|typing test|skill test|interview schedule|भर्ती|रिजल्ट|परिणाम|प्रवेश पत्र|एडमिट कार्ड|उत्तर कुंजी|आंसर की|टेस्ट|लिस्ट|तारीख|तिथि|कट ऑफ)(\s+20\d\d)?/i);
   if (!m) return t;
   const end = m.index + m[0].length;
   const rest = t.slice(end);

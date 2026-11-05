@@ -36,6 +36,7 @@ data class Settings(
     val alerts: Boolean = true,
     val results: Boolean = true,
     val reminders: Boolean = true,
+    val digest: Boolean = true,               // one evening summary of the day's biggest new jobs (topic "digest")
     val central: Boolean = true,              // central government (all-India) jobs: SSC, Railway, Bank, Defence, PSU
     val states: Set<String> = emptySet(),
     val qual: Qual = Qual.ANY,
@@ -65,6 +66,7 @@ class Prefs(private val context: Context) {
         val alerts = booleanPreferencesKey("alerts")
         val results = booleanPreferencesKey("results")
         val reminders = booleanPreferencesKey("reminders")
+        val digest = booleanPreferencesKey("digest")
         val central = booleanPreferencesKey("central")
         val states = stringSetPreferencesKey("states")
         val qual = stringPreferencesKey("qual")
@@ -82,6 +84,7 @@ class Prefs(private val context: Context) {
             alerts = p[K.alerts] ?: true,
             results = p[K.results] ?: true,
             reminders = p[K.reminders] ?: true,
+            digest = p[K.digest] ?: true,
             central = p[K.central] ?: true,
             states = p[K.states] ?: emptySet(),
             qual = Qual.of(p[K.qual]),
@@ -100,6 +103,7 @@ class Prefs(private val context: Context) {
     suspend fun setAlerts(v: Boolean) = context.store.edit { it[K.alerts] = v }
     suspend fun setResults(v: Boolean) = context.store.edit { it[K.results] = v }
     suspend fun setReminders(v: Boolean) = context.store.edit { it[K.reminders] = v }
+    suspend fun setDigest(v: Boolean) = context.store.edit { it[K.digest] = v }
     suspend fun setCentral(v: Boolean) = context.store.edit { it[K.central] = v }
     suspend fun setStates(v: Set<String>) = context.store.edit { it[K.states] = v }
     suspend fun setQual(q: Qual) = context.store.edit { it[K.qual] = q.key }

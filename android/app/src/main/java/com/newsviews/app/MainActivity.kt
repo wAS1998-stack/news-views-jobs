@@ -116,6 +116,8 @@ class MainActivity : ComponentActivity() {
         val kind = intent.getStringExtra("kind")
         val id = intent.getStringExtra("id")
         if ((kind == "job" || kind == "update") && ok(id)) { Ads.suppressAppOpen(); pending.value = kind!! to id!!; return }
+        // the daily summary opens a tab (jobs / results)
+        if (kind == "tab" && (id == "jobs" || id == "updates")) { Ads.suppressAppOpen(); pending.value = "tab" to id; return }
         val uri = intent.data ?: return
         Ads.suppressAppOpen()             // opened from a news-views.in link: no app-open ad in front of it
         val seg = uri.pathSegments

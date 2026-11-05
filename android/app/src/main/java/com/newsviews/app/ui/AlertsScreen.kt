@@ -153,6 +153,10 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
             ToggleRow(s.resultsAlerts, s.resultsHint, st.results) { vm.setResults(it) }
             HorizontalDivider()
             ToggleRow(s.reminders, s.remindersHint, st.reminders) { vm.setReminders(it) }
+            if (st.alerts) {
+                HorizontalDivider()
+                ToggleRow(s.digest, s.digestHint, st.digest) { vm.setDigest(it) }
+            }
         }
         Group {
             Text(s.following, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))

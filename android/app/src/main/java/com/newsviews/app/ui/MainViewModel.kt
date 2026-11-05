@@ -138,6 +138,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setHindi(v: Boolean) = viewModelScope.launch { prefs.setHindi(v); Alerts.sync(getApplication(), prefs) }
     fun setAlerts(v: Boolean) = viewModelScope.launch { prefs.setAlerts(v); Alerts.sync(getApplication(), prefs) }
     fun setResults(v: Boolean) = viewModelScope.launch { prefs.setResults(v); Alerts.sync(getApplication(), prefs) }
+    fun setDigest(v: Boolean) = viewModelScope.launch { prefs.setDigest(v); Alerts.sync(getApplication(), prefs) }
     fun setReminders(v: Boolean) = viewModelScope.launch {
         prefs.setReminders(v)
         val s = prefs.current()

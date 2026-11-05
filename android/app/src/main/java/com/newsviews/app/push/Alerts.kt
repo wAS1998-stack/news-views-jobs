@@ -40,6 +40,7 @@ object Alerts {
             if (s.central) t += "s-central"
             if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
             s.qual.levels.forEach { t += "q-$it" }
+            if (s.digest) t += "digest"   // the evening summary (push-notify.js), part of job alerts
         }
         if (s.results) t += "results"     // its own switch on the Alerts screen
         // followed departments: everything new from them, even with general job alerts off

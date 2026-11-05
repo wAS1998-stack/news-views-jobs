@@ -8,6 +8,7 @@
  *   results                     results / admit cards / answer keys of major exams
  *   l-en or l-hi                language of the notification
  *   o-<department>              departments the person follows (e.g. o-ssc, o-rrb): every new job, admit card, result…
+ *   digest                      one evening summary a day (first build after 7 pm IST) of the day's biggest new jobs
  * A job is sent once per language to: (its state or s-any) AND (its lowest qualification level) AND language.
  * At most 6 jobs (largest first) and 3 results per build, and 15 jobs / 6 results per day (a build runs every ~40 min:
  * without the daily cap a phone set to "All states" could get a hundred alerts a day); data/pushed.json remembers what was sent.
@@ -87,7 +88,12 @@ async function main() {
     ...index.jobs.filter((j) => jobIds.has(j.id) && j.o && open(j) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
     ...index.updates.filter((u) => updIds.has(u.id) && u.o && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
   ].slice(0, MAX_FOLLOW);
-  if (!jobs.length && !updates.length && !follow.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }
+  // the daily summary: once a day, from the first build after 7 pm IST, when at least 3 open jobs were published today
+  const istHour = Number(new Date().toLocaleString("en-US", { hour: "numeric", hourCycle: "h23", timeZone: "Asia/Kolkata" }));
+  const digestKey = `digest:${today}`;
+  const todays = index.jobs.filter((j) => j.pub === today && open(j));
+  const digest = istHour >= 19 && !pushed[digestKey] && todays.length >= 3 ? [...todays].sort((a, b) => b.v - a.v).slice(0, 3) : [];
+  if (!jobs.length && !updates.length && !follow.length && !digest.length) { console.log("push-notify: nothing new to send."); L.logRun("push", { ok: true, sent: 0 }); return; }
 
   const token = await G.getToken("https://www.googleapis.com/auth/firebase.messaging", key);
   const send = async (message) => {
@@ -145,6 +151,25 @@ async function main() {
       log.push(`follow ${topic} ${x.id} ${lang}: ${res}`); if (res === "ok") sent++;
     }
     pushed[`${kind === "job" ? "fj" : "fu"}:${x.id}`] = new Date().toISOString().slice(0, 10);
+  }
+  if (digest.length) {
+    for (const lang of ["en", "hi"]) {
+      const hi = lang === "hi";
+      const title = hi ? `आज ${todays.length} नई सरकारी नौकरियाँ` : `${todays.length} new govt jobs today`;
+      const lines = digest.map((j) => {
+        const name = cut((hi && (j.thc || j.th)) || j.tc || j.t, 60);
+        return j.v ? `${name}: ${j.v.toLocaleString("en-IN")} ${hi ? "पद" : j.v === 1 ? "post" : "posts"}` : name;
+      });
+      const body = cut(`${lines.join(" · ")} — ${hi ? "सभी देखने के लिए टैप करें" : "tap to see them all"}`, 230);
+      const res = await send({
+        condition: `'digest' in topics && 'l-${lang}' in topics`,
+        notification: { title, body },
+        data: { kind: "tab", id: "jobs", url: `${SITE}/latest/` },
+        android: { priority: "NORMAL", notification: { channel_id: "jobs", tag: "digest", click_action: CLICK } },
+      });
+      log.push(`digest ${lang} (${todays.length} jobs): ${res}`); if (res === "ok") sent++;
+    }
+    pushed[digestKey] = new Date().toISOString().slice(0, 10);
   }
   // keep 60 days of history
   const keep = new Date(Date.now() - 60 * 86400000).toISOString().slice(0, 10);
