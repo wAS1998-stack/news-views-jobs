@@ -196,7 +196,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-05T15:13:53.159Z",
+    "at": "2026-11-05T17:17:38.160Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -207,19 +207,19 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-05T15:14:08.556Z",
+    "at": "2026-11-05T17:17:41.030Z",
     "ok": true,
-    "submitted": 81,
+    "submitted": 12,
     "failed": 0,
     "source": "new-urls.txt",
     "log": []
   },
   "push": {
-    "at": "2026-11-05T15:15:28.459Z",
+    "at": "2026-11-05T17:18:25.360Z",
     "ok": true,
-    "sent": 64,
+    "sent": 38,
     "log": [
-      "push-notify: 64 sent\n  job ap-dsc-detailed-out-teacher-from-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ap-dsc-detailed-out-teacher-from-2026 hi [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics &&"
+      "push-notify: 38 sent\n  job icar-iasri-young-professional-research-associate-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job icar-iasri-young-professional-research-associate-2026 hi [('s-delhi' in topics || 's-any' in topics) && 'q-graduate"
     ]
   }
 }
