@@ -1885,7 +1885,8 @@ function appUpdateDetail(u) {
 // Android App Links: news-views.in/jobs/... and /updates/... open in the app. Add the Play "app signing key" SHA-256
 // (Play Console → Test and release → App integrity) to config.json "androidCertSha256" after the first upload.
 const ANDROID_CERTS = [
-  "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // upload key
+  "6B:C4:D6:A1:F4:10:6B:4B:56:4A:69:C1:BD:18:47:48:DE:DF:30:D0:A5:4A:F2:3F:64:EC:F2:54:9C:10:5D:DE",   // the owner's upload key (SARKARI_KEYSTORE_BASE64; signs the release APK/AAB since build 36)
+  "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // an earlier key
   // android/test-signing.jks: what CI signs every build with until the upload-key secrets exist (keytool -list -v
   // -keystore android/test-signing.jks -storepass android). Remove once the Play build is out.
   "A0:8D:AD:83:1B:22:8B:54:CC:31:BE:26:AF:7C:EF:2F:68:1B:73:8F:85:12:6D:33:62:40:DA:4B:CE:0B:8E:D0",
