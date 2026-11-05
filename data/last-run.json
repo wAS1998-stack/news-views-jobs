@@ -2,7 +2,7 @@
   "date": "2026-11-05",
   "runs": {},
   "fetch": {
-    "at": "2026-11-05T15:46:54.195Z",
+    "at": "2026-11-05T16:26:51.526Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 4,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 82 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-05; 78 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-05; 20 already known",
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-05T15:47:48.694Z",
+    "at": "2026-11-05T16:27:40.777Z",
     "sources": 59,
-    "healthy": 16,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -75,13 +75,13 @@
       "tnpsc": "paused (fails 60, geo-blocked)",
       "kpsc": "paused (fails 60, geo-blocked)",
       "appsc": "paused (fails 60, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 60, geo-blocked)",
       "opsc": "paused (fails 48)",
       "hpsc": "paused (fails 60, geo-blocked)",
       "hppsc": "paused (fails 60, geo-blocked)",
       "ukpsc": "paused (fails 60, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "dsssb": "4 links, 0 new via direct",
       "cgpsc": "paused (fails 60, geo-blocked)",
       "gpsc": "paused (fails 60, geo-blocked)",
       "indiapost-gds": "142 links, 0 new via direct",
@@ -100,9 +100,9 @@
       "gsssb": "paused (fails 60, geo-blocked)",
       "sssb-punjab": "paused (fails 60, geo-blocked)",
       "hprca": "paused (fails 60, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
-      "kea": "paused (fails 60, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "kea": "paused (fails 60, geo-blocked)",
+      "kvs": "4 links, 0 new via direct",
       "dsssb2": "paused (fails 60, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
       "ctet": "4 links, 0 new via news-views.in",
@@ -110,13 +110,13 @@
       "tnusrb": "paused (fails 60, geo-blocked)",
       "tslprb": "paused (fails 60)",
       "slprb-ap": "paused (fails 60, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "csbc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: The operation was aborted due to timeout (fails 1)",
-      "bpssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 2)"
+      "uppbpb": "7 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,18 +124,18 @@
     ]
   },
   "apply": {
-    "at": "2026-11-05T15:47:49.061Z",
+    "at": "2026-11-05T16:27:44.956Z",
     "ok": true,
-    "checked": 0,
+    "checked": 2,
     "found": 0,
-    "due": 0,
-    "cands": 0,
-    "passed": 0,
-    "jobsWithCands": 0,
-    "careers": 0,
+    "due": 2,
+    "cands": 296,
+    "passed": 2,
+    "jobsWithCands": 1,
+    "careers": 1,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
+      "  candidates seen 296, passed the rules 2 (in 1 jobs); recruitment pages found: 1"
     ]
   },
   "gsc": {
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T15:47:50.156Z",
+    "at": "2026-11-05T16:28:42.663Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,7 +160,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 4,
+    "hindiJobs": 4,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -169,11 +170,15 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 4 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: GU Water Supply Workman भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: ICAR-IASRI भर्ती 2026 – 16 युवा पेशेवर, अनुसंधान सहयोगी और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: RVSAC सहायक प्रोफेसर भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: डॉ. वाई.एस.आर.एचयू भर्ती 2026 - वाक-इन"
     ]
   },
   "news": {
-    "at": "2026-11-05T15:48:20.666Z",
+    "at": "2026-11-05T16:29:09.504Z",
     "ai": "OpenAI",
     "published": 2,
     "quizzes": 0,
@@ -182,8 +187,8 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists.",
-      "  + analysis: VNIT Invites Applications for Project Associate-I Position",
-      "  + analysis: IMU Kochi Announces Faculty Recruitment for Logistics and Supply Chain Management"
+      "  + analysis: Gauhati University Announces Walk-in Interview for 3 Water Supply Workman Positions",
+      "  + analysis: ICAR-IASRI Recruitment 2026 – Apply Online for 16 Young Professional, Research Associate and More Posts"
     ]
   },
   "notify": {
