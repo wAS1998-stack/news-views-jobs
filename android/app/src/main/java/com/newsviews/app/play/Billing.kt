@@ -51,7 +51,13 @@ object Billing {
         client = c
         c.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(result: BillingResult) {
-                if (result.responseCode != BillingClient.BillingResponseCode.OK) { Log.i(TAG, "setup: ${result.debugMessage}"); return }
+                if (result.responseCode != BillingClient.BillingResponseCode.OK) {
+                    Log.i(TAG, "setup: ${result.debugMessage}")
+                    // no Play Store / Play too old is normal on some phones; anything else is worth a look
+                    if (result.responseCode != BillingClient.BillingResponseCode.BILLING_UNAVAILABLE)
+                        Stats.nonFatal(IllegalStateException("billing setup ${result.responseCode}: ${result.debugMessage}"), "billing_setup")
+                    return
+                }
                 recheck()
                 val q = QueryProductDetailsParams.newBuilder().setProductList(listOf(
                     QueryProductDetailsParams.Product.newBuilder().setProductId(productId).setProductType(BillingClient.ProductType.INAPP).build(),
@@ -85,7 +91,10 @@ object Billing {
             owned = true
             // unacknowledged purchases are refunded by Play after 3 days; a failed attempt is retried on the next recheck()
             if (!p.isAcknowledged) c.acknowledgePurchase(AcknowledgePurchaseParams.newBuilder().setPurchaseToken(p.purchaseToken).build()) { r ->
-                if (r.responseCode != BillingClient.BillingResponseCode.OK) Log.w(TAG, "acknowledge: ${r.responseCode} ${r.debugMessage}")
+                if (r.responseCode != BillingClient.BillingResponseCode.OK) {
+                    Log.w(TAG, "acknowledge: ${r.responseCode} ${r.debugMessage}")
+                    Stats.nonFatal(IllegalStateException("billing acknowledge ${r.responseCode}: ${r.debugMessage}"), "billing_ack")
+                }
             }
         }
         if (owned) {

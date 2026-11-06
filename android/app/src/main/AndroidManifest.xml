@@ -37,13 +37,21 @@
                 <action android:name="in.newsviews.app.OPEN_ITEM" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <!-- news-views.in job and result pages open in the app (verified through /.well-known/assetlinks.json) -->
+            <!-- news-views.in pages that open in the app (verified through /.well-known/assetlinks.json): job and result
+                 pages (also their Hindi versions), the daily quiz, state and department job lists, closing-soon and latest -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/jobs/" />
                 <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/updates/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/hi/jobs/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/hi/updates/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/quiz/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/state/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/organization/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/closing-soon/" />
+                <data android:scheme="https" android:host="news-views.in" android:pathPrefix="/latest/" />
             </intent-filter>
         </activity>
 

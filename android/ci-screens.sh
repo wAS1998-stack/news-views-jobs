@@ -7,7 +7,7 @@ REL="${2:-}"
 PKG=in.newsviews.app
 ACT=com.newsviews.app.MainActivity
 OUT=android/ci/screens
-mkdir -p "$OUT"; rm -f "$OUT"/*.png "$OUT"/*.txt
+mkdir -p "$OUT"; rm -f "$OUT"/*.png "$OUT"/*.jpg "$OUT"/*.txt
 shot() { sleep "${2:-6}"; adb exec-out screencap -p > "$OUT/$1.png"; echo "shot $1"; }
 
 # the emulator's own launcher sometimes stops responding under load: keep its "isn't responding" dialogs off the shots
@@ -30,10 +30,19 @@ adb shell am start -n $PKG/$ACT --es tab alerts; shot 02c-alerts 5
 adb shell input swipe 540 1900 540 500 400; shot 02d-alerts-follow 3
 adb shell input swipe 540 1900 540 300 400; adb shell input swipe 540 1900 540 300 400; shot 02e-alerts-age 3
 adb shell am start -n $PKG/$ACT --es tab jobs; sleep 2
-# 3. a job page: the first job in the live feed
-JOB=$(curl -s https://news-views.in/app/v1/index.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["jobs"][0]["id"])' 2>/dev/null)
-UPD=$(curl -s https://news-views.in/app/v1/index.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["updates"][0]["id"])' 2>/dev/null)
-echo "job=$JOB update=$UPD" > "$OUT/ids.txt"
+# 3. a job page: the first job in the live feed (the feed is downloaded once)
+FEED=$(mktemp); curl -s https://news-views.in/app/v1/index.json > "$FEED" || true
+JOB=$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["jobs"][0]["id"])' "$FEED" 2>/dev/null)
+UPD=$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["updates"][0]["id"])' "$FEED" 2>/dev/null)
+# the Play listing's job screenshot: the open job with the most posts (a big, recognisable recruitment), not jobs[0]
+BIGJOB=$(python3 -c '
+import json, sys, datetime
+d = json.load(open(sys.argv[1]))
+today = (datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)).date().isoformat()
+live = [j for j in d["jobs"] if (not j.get("en") or j["en"] >= today) and j.get("ns", "") != "cancelled"] or d["jobs"]
+print(max(live, key=lambda j: j.get("v", 0))["id"])' "$FEED" 2>/dev/null)
+[ -n "$BIGJOB" ] || BIGJOB="$JOB"
+echo "job=$JOB update=$UPD store-job=$BIGJOB" > "$OUT/ids.txt"
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot 03-job 8
   adb shell input swipe 540 1900 540 700 400; shot 03b-job-ad 5; fi
 # 4. a result / admit card page
@@ -41,7 +50,7 @@ if [ -n "$UPD" ]; then adb shell am start -n $PKG/$ACT --es kind update --es id 
 # 5. the same job in Hindi
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --ez hindi true --es kind job --es id "$JOB"; shot 05-job-hindi 8; fi
 # 5b. the daily quiz (debug-only hook opens it directly)
-QUIZ=$(curl -s https://news-views.in/app/v1/index.json | python3 -c 'import json,sys; d=json.load(sys.stdin); print((d.get("quizzes") or [{}])[0].get("id",""))' 2>/dev/null)
+QUIZ=$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print((d.get("quizzes") or [{}])[0].get("id",""))' "$FEED" 2>/dev/null)
 if [ -n "$QUIZ" ]; then adb shell am start -n $PKG/$ACT --ez hindi false --es quiz "$QUIZ"; shot 05b-quiz 8; fi
 # 6. a news-views.in link opened in the app
 if [ -n "$JOB" ]; then adb shell am start -a android.intent.action.VIEW -d "https://news-views.in/jobs/$JOB/" $PKG; shot 06-link 8; fi
@@ -62,15 +71,35 @@ adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
 # the ad SDK's own messages about failed requests (why a format didn't fill)
 adb logcat -d -s Ads:* | grep -iE "native|fail|error|could not|unable" | tail -60 > "$OUT/gma-log.txt"
 
-# 8b. Play Store listing screenshots: no ads (debug-only store_mode), English and Hindi -> android/ci/screens/store-*.png
+# 8b. Play Store listing screenshots: no ads (debug-only store_mode), English and Hindi -> android/ci/screens/store-*.jpg (below)
 adb shell am force-stop $PKG; sleep 2
 adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez hindi false --es tab jobs; shot store-1-jobs 12
-if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-2-job 8; fi
+if [ -n "$BIGJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$BIGJOB"; shot store-2-job 8; fi
 adb shell am start -n $PKG/$ACT --es tab updates; shot store-3-results 6
 if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-4-quiz 8; fi
 adb shell am start -n $PKG/$ACT --es tab alerts; shot store-5-alerts 5
 adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot store-6-hindi 6
 adb shell am start -n $PKG/$ACT --ez hindi false --ez store_mode false --es tab jobs; sleep 2
+
+# Play accepts phone screenshots up to a 2:1 aspect ratio and without transparency: the 1080x2400 PNGs become
+# 1080x2160 JPEGs (120 px off the top and the bottom: status bar and gesture bar), alpha removed, quality 92.
+IM=$(command -v magick || command -v convert || true)
+if [ -n "$IM" ]; then
+  for f in "$OUT"/store-*.png; do
+    [ -s "$f" ] || continue
+    read -r W H < <(python3 -c 'import struct,sys; b=open(sys.argv[1],"rb").read(24); print(*struct.unpack(">II", b[16:24]))' "$f" 2>/dev/null || echo "0 0")
+    if [ "${W:-0}" -le 0 ] || [ "${H:-0}" -le 0 ]; then echo "store: cannot read size of $f"; continue; fi
+    CH=$(( H - 240 )); MAXH=$(( W * 2 )); [ "$CH" -gt "$MAXH" ] && CH=$MAXH
+    TOP=$(( (H - CH) / 2 ))
+    if "$IM" "$f" -crop "${W}x${CH}+0+${TOP}" +repage -background white -alpha remove -alpha off -quality 92 "${f%.png}.jpg"; then
+      rm -f "$f"; echo "store: ${f%.png}.jpg ${W}x${CH}"
+    else
+      echo "store: convert failed for $f (PNG kept)"
+    fi
+  done
+else
+  echo "ImageMagick not found: store screenshots stay PNG (not Play-ready)" > "$OUT/store-note.txt"
+fi
 
 # 9. the release build (shrunk with R8, no debug hooks): install, open, and look for a crash
 if [ -n "$REL" ] && [ -f "$REL" ]; then

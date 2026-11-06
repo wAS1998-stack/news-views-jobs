@@ -39,6 +39,7 @@ data class Strings(
     val upcoming: String, val examLabel: String, val today: String, val tomorrow: String, val noUpcoming: String, val values: List<String>,
     val notInApp: String, val clear: String, val remove: String, val openSettings: String,
     val disclaimer: String,
+    val x: MoreStrings,
 ) {
     companion object {
         val EN = Strings(
@@ -93,6 +94,7 @@ data class Strings(
             values = listOf("Alerts only for jobs that fit your state and qualification", "Reminders before the last date of jobs you save", "The official notice and website linked on every job"),
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} years" else if (b > 0) "Up to ${num(b)} years" else "" },
             disclaimer = "Sarkari Radar is an independent app by News-Views (news-views.in). It is not affiliated with, endorsed by or acting for any government body. Information is taken from official notifications and websites, which are linked on every page — always confirm the details on the official website before you apply.",
+            x = MoreStrings.EN,
         )
         val HI = Strings(
             jobs = "नौकरियाँ", results = "रिजल्ट", saved = "सेव", alerts = "अलर्ट",
@@ -146,6 +148,7 @@ data class Strings(
             values = listOf("सिर्फ़ आपके राज्य और योग्यता की नौकरियों के अलर्ट", "सेव की गई नौकरियों की अंतिम तिथि से पहले रिमाइंडर", "हर नौकरी पर ऑफिशियल नोटिस और वेबसाइट का लिंक"),
             ageRange = { a, b -> if (a > 0 && b > 0) "${num(a)}–${num(b)} वर्ष" else if (b > 0) "${num(b)} वर्ष तक" else "" },
             disclaimer = "सरकारी रडार News-Views (news-views.in) का एक स्वतंत्र ऐप है। इसका किसी भी सरकारी संस्था से कोई संबंध नहीं है और यह उसकी ओर से काम नहीं करता। जानकारी आधिकारिक अधिसूचनाओं और वेबसाइटों से ली जाती है, जिनके लिंक हर पेज पर हैं — आवेदन से पहले आधिकारिक वेबसाइट पर विवरण ज़रूर जाँचें।",
+            x = MoreStrings.HI,
         )
     }
 }

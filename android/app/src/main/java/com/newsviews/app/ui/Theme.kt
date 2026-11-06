@@ -7,6 +7,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -58,6 +59,36 @@ private val Type = Typography(
     bodyMedium = TextStyle(fontSize = 14.sp, lineHeight = 20.sp),
     labelMedium = TextStyle(fontWeight = FontWeight.Medium, fontSize = 12.sp, lineHeight = 16.sp),
 )
+
+/** Text + background of a status / type pill. */
+data class PillColors(val fg: Color, val bg: Color)
+
+/**
+ * Pill colours that keep at least 4.5:1 contrast (WCAG AA for small text) in both themes — the brand colours on a light
+ * tint fell to ~2.6:1 for saffron and to ~2.9:1 for red on the dark background. Checked: light 5.8–6.8:1, dark 7.4–7.7:1.
+ */
+object Pills {
+    private val lightGreen = PillColors(Color(0xFF14684A), Color(0xFFE2F2EA))
+    private val lightSaffron = PillColors(Color(0xFF93430B), Color(0xFFFDEBDD))
+    private val lightRed = PillColors(Color(0xFFA12C2C), Color(0xFFFBE4E4))
+    private val lightAzure = PillColors(Color(0xFF1A4F91), Color(0xFFE2EBF8))
+    private val lightMuted = PillColors(Color(0xFF4A515C), Color(0xFFEEEDEA))
+    private val darkGreen = PillColors(Color(0xFF86DDB6), Color(0xFF173A2F))
+    private val darkSaffron = PillColors(Color(0xFFF7B98A), Color(0xFF47290F))
+    private val darkRed = PillColors(Color(0xFFF6AAAA), Color(0xFF4B1E24))
+    private val darkAzure = PillColors(Color(0xFFAECBF4), Color(0xFF1C3356))
+    private val darkMuted = PillColors(Color(0xFFC3CAD6), Color(0xFF2A3348))
+
+    @Composable private fun dark(): Boolean = MaterialTheme.colorScheme.background.luminance() < 0.5f
+    @Composable fun green(): PillColors = if (dark()) darkGreen else lightGreen
+    @Composable fun saffron(): PillColors = if (dark()) darkSaffron else lightSaffron
+    @Composable fun red(): PillColors = if (dark()) darkRed else lightRed
+    @Composable fun azure(): PillColors = if (dark()) darkAzure else lightAzure
+    @Composable fun muted(): PillColors = if (dark()) darkMuted else lightMuted
+
+    /** Results green, admit cards azure, answer keys / exams saffron, the rest muted. */
+    @Composable fun forType(type: String): PillColors = when (type) { "result" -> green(); "admit-card" -> azure(); "answer-key", "exam" -> saffron(); else -> muted() }
+}
 
 @Composable
 fun NewsViewsTheme(content: @Composable () -> Unit) {

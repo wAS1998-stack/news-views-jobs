@@ -161,5 +161,18 @@ jobs:
         run: |
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
           git add android/ci/screens 2>/dev/null || true
-          git commit -q -m "Android screenshots ${{ github.run_number }} [CF-Pages-Skip]" || exit 0
+          git commit -q -m "Android screenshots ${{ github.run_number }} [CF-Pages-Skip]" || true
+          # the build job's last-build.txt (pushed after this run's checkout) gets one more line: did the app crash on the
+          # emulator (crash.txt / crash-debug.txt from ci-screens.sh), so a crash is seen without opening the screenshots
+          for i in 1 2 3; do git pull -q --rebase -X theirs origin "$GITHUB_REF_NAME" && break; git rebase --abort 2>/dev/null; sleep 5; done
+          if [ -f android/ci/last-build.txt ] && head -1 android/ci/last-build.txt | grep -q "build ${{ github.run_number }} "; then
+            sed -i '/^emulator crash:/d' android/ci/last-build.txt
+            crash=""
+            for f in android/ci/screens/crash.txt android/ci/screens/crash-debug.txt; do
+              [ -s "$f" ] && crash="$crash $(basename "$f"): $(grep -m1 -E 'Exception|Error|FATAL' "$f" | sed 's/^.*AndroidRuntime[^:]*: *//' | cut -c1-160)"
+            done
+            if [ -n "$crash" ]; then echo "emulator crash: yes —$crash" >> android/ci/last-build.txt; else echo "emulator crash: no" >> android/ci/last-build.txt; fi
+            git add android/ci/last-build.txt
+            git commit -q -m "Android build ${{ github.run_number }}: emulator result [CF-Pages-Skip]" || true
+          fi
           for i in 1 2 3; do git pull -q --rebase -X theirs origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && break; git rebase --abort 2>/dev/null; sleep 5; done   # -X theirs: this run's result wins over an older run's

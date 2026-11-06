@@ -35,6 +35,8 @@ data class JobItem(
     val w: Int = 0,                    // walk-in interview
     val c: List<String> = emptyList(), // categories (railway, bank, ssc, …)
     val ph: String = "",               // post name in Hindi
+    val m: String = "",                // apply mode: apply | page | form | walkin | email | careers | notice | website (newer feeds)
+    val ns: String = "",               // notice status: "" | cancelled | postponed (newer feeds)
 ) {
     fun title(hindi: Boolean) = if (hindi && th.isNotBlank()) th else t
     fun post(hindi: Boolean) = if (hindi && ph.isNotBlank()) ph else p
@@ -82,6 +84,8 @@ data class AppIndex(
     val cats: List<Cat> = emptyList(),
     val quizzes: List<QuizRef> = emptyList(),
     val ads: AdsConfig = AdsConfig(),
+    val contact: String = "",          // support e-mail for "Report a mistake" (newer feeds; the app falls back to contact@news-views.in)
+    val minVersion: Int = 0,           // versions below this can't read the feed any more: "Update required" (0 = off)
 )
 
 /** Ad switches sent with the feed (config.json "appAds"), so placements can be tuned or turned off without an app update. */
@@ -173,6 +177,11 @@ data class JobDetail(
     val cta: String = "",          // apply | form | walkin | notice | website (what the main button really opens)
     val cta_url: String = "",
     val apply_mode: String = "",
+    val notice_status: String = "",   // "" | cancelled | postponed (newer feeds)
+    val status_note: String = "",     // what the official update says, when notice_status is set
+    val status_link: String = "",     // the official corrigendum / cancellation notice
+    val src_host: String = "",        // host of the official source the details were taken from
+    val upd: String = "",             // last checked / updated, YYYY-MM-DD
 )
 
 @Serializable
@@ -204,6 +213,8 @@ data class UpdateDetail(
     val official_website: String = "",
     val link: String = "",
     val hi: UpdateHi? = null,
+    val src_host: String = "",
+    val upd: String = "",
 )
 
 /* Filter lists built into the app, so the welcome screen works before the first download. */
@@ -226,15 +237,25 @@ object Dates {
     fun today(): LocalDate = LocalDate.now(IST)
     fun parse(iso: String): LocalDate? = try { if (iso.length >= 10) LocalDate.parse(iso.substring(0, 10)) else null } catch (e: Exception) { null }
     fun daysLeft(iso: String): Long? = parse(iso)?.let { ChronoUnit.DAYS.between(today(), it) }
+    val HINDI: Locale = Locale.forLanguageTag("hi-IN")
     private val fmt = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH)
     private val fmtShort = DateTimeFormatter.ofPattern("d MMM", Locale.ENGLISH)
-    fun pretty(iso: String): String = parse(iso)?.format(fmt) ?: ""
-    fun short(iso: String): String = parse(iso)?.format(fmtShort) ?: ""
+    private val fmtHi = DateTimeFormatter.ofPattern("d MMM yyyy", HINDI)
+    private val fmtShortHi = DateTimeFormatter.ofPattern("d MMM", HINDI)
+    /** "5 Nov 2026" (or the Hindi month names with [hindi]). */
+    fun pretty(iso: String, hindi: Boolean = false): String = parse(iso)?.format(if (hindi) fmtHi else fmt) ?: ""
+    fun short(iso: String, hindi: Boolean = false): String = parse(iso)?.format(if (hindi) fmtShortHi else fmtShort) ?: ""
 }
 
-enum class Status { OPEN, SOON, CLOSED }
+/** CANCELLED / POSTPONED come from the feed's notice status (an official corrigendum), the rest from the last date. */
+enum class Status { OPEN, SOON, CLOSED, CANCELLED, POSTPONED }
+
+/** No application possible any more (last date passed, or the recruitment was cancelled). */
+fun Status.isClosed(): Boolean = this == Status.CLOSED || this == Status.CANCELLED
 
 fun JobItem.status(): Status {
+    if (ns == "cancelled") return Status.CANCELLED
+    if (ns == "postponed") return Status.POSTPONED      // the old dates no longer apply
     val d = Dates.daysLeft(en) ?: return Status.OPEN
     return when {
         d < 0 -> Status.CLOSED
@@ -246,5 +267,5 @@ fun JobItem.status(): Status {
 fun JobItem.isNew(): Boolean {
     val p = Dates.parse(pub) ?: return false
     val age = ChronoUnit.DAYS.between(p, Dates.today())
-    return age in 0..2 && status() != Status.CLOSED
+    return age in 0..2 && !status().isClosed()
 }
