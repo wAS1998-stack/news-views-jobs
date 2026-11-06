@@ -1,0 +1,1 @@
+ImageMagick not found: store screenshots stay PNG (not Play-ready)
