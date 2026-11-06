@@ -1,20 +1,15 @@
 {
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-07",
-  "2026-11-03"
+  "2026-10-08",
+  "2026-11-04"
  ],
  "totals": {
   "clicks": 35,
-  "impressions": 668
+  "impressions": 676
  },
  "daily": [
-  {
-   "date": "2026-10-07",
-   "clicks": 0,
-   "impressions": 2
-  },
   {
    "date": "2026-10-08",
    "clicks": 0,
@@ -148,7 +143,12 @@
   {
    "date": "2026-11-03",
    "clicks": 1,
-   "impressions": 18
+   "impressions": 19
+  },
+  {
+   "date": "2026-11-04",
+   "clicks": 0,
+   "impressions": 9
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-06",
-   "2026-11-03"
+   "2026-08-07",
+   "2026-11-04"
   ],
   "rows": []
  },
@@ -204,8 +204,8 @@
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 28,
-   "ctr": 7.14,
+   "impressions": 27,
+   "ctr": 7.41,
    "position": 5.8
   },
   {
@@ -400,9 +400,9 @@
   {
    "page": "/guides/ssc-vs-banking-vs-railway-jobs/",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 3,
    "ctr": 0,
-   "position": 36.5
+   "position": 26.7
   },
   {
    "page": "/guides/state-psc-vs-upsc-differences/",
@@ -431,6 +431,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 24
+  },
+  {
+   "page": "/jobs/aees-teacher-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "page": "/jobs/aiims-gorakhpur-faculty-professor-assistant-professor-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -504,13 +511,6 @@
   },
   {
    "page": "/jobs/cochin-shipyard-apprentice-technician-graduate-apprentices-2/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 9
-  },
-  {
-   "page": "/jobs/cws-iift-consultant-2026/",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -703,9 +703,9 @@
   {
    "query": "brahmaputra fertilizer recruitment",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 1,
    "ctr": 0,
-   "position": 5
+   "position": 4
   },
   {
    "query": "brahmaputra valley fertilizer corporation limited recruitment",
@@ -813,6 +813,13 @@
    "position": 2
   },
   {
+   "query": "food safety officer gujarat vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "food safety officer recruitment gujarat",
    "clicks": 0,
    "impressions": 1,
@@ -867,6 +874,13 @@
    "impressions": 2,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "government it jobs",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "government job vacancy 2026 kerala",
@@ -1002,6 +1016,13 @@
    "position": 2
   },
   {
+   "query": "jobs in jharkhand",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "jobs in karnataka government",
    "clicks": 0,
    "impressions": 1,
@@ -1114,6 +1135,13 @@
    "position": 2
   },
   {
+   "query": "medical officer vacancy in west bengal",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "medical specialists jobs",
    "clicks": 0,
    "impressions": 1,
@@ -1170,6 +1198,13 @@
    "position": 7
   },
   {
+   "query": "ongc 10th pass job",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 1
+  },
+  {
    "query": "post job vacancy",
    "clicks": 0,
    "impressions": 1,
@@ -1182,49 +1217,14 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "query": "project assistant",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 7
-  },
-  {
-   "query": "qewc careers",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
-   "query": "railway ssc banking",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 64.5
-  },
-  {
-   "query": "research associate jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
-  },
-  {
-   "query": "shutdown project in gulf",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 9
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
    "clicks": 2,
-   "impressions": 28,
-   "ctr": 7.14,
+   "impressions": 27,
+   "ctr": 7.41,
    "position": 5.8,
    "queries": [
     {
@@ -1234,8 +1234,8 @@
     },
     {
      "q": "brahmaputra fertilizer recruitment",
-     "impressions": 2,
-     "position": 5
+     "impressions": 1,
+     "position": 4
     }
    ]
   },
