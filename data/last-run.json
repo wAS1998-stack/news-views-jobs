@@ -189,7 +189,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-06T15:26:15.871Z",
+    "at": "2026-11-06T17:29:56.216Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -200,11 +200,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-06T15:27:39.175Z",
+    "at": "2026-11-06T17:30:29.993Z",
     "ok": true,
-    "sent": 128,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 128 sent\n  job hll-chief-manager-operations-manager-more-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job hll-chief-manager-operations-manager-more-2026 en ['s-assam' in topics && 'q-graduate' in topics && 'l-en' in to"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "indexing-api": {
