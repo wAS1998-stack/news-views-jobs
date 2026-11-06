@@ -3,3 +3,4 @@ signing: SARKARI_KEYSTORE_BASE64 present, SARKARI_KEYSTORE_PASSWORD present, key
 -rw-r--r-- 1 runner runner 43993935 Nov  6 01:26 android/app/build/outputs/apk/debug/app-debug.apk
 -rw-r--r-- 1 runner runner 18679514 Nov  6 01:30 android/app/build/outputs/apk/release/app-release.apk
 -rw-r--r-- 1 runner runner 25456899 Nov  6 01:30 android/app/build/outputs/bundle/release/app-release.aab
+emulator crash: no
