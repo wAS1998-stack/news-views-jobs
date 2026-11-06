@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "runs": {},
   "fetch": {
-    "at": "2026-11-06T09:58:30.816Z",
+    "at": "2026-11-06T10:36:47.666Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,16 +11,18 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 6,
-    "newUpdates": 1,
+    "newJobs": 0,
+    "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-06; 73 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-06; 77 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-06; 11 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-06; 15 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-06; 11 already known"
     },
     "log": [
+      "   = rejected after reading on an earlier run, skipped: HURL Manager Level Recruitment 2026 - Apply Online for 11 Posts",
+      "   = same source page as an existing job, skipped: MCTE Mhow Teaching Staff Recruitment 2026 – Apply for 18 Vacancies",
       "   = same source page as an existing job, skipped: MOIL Limited Recruitment 2026 – Apply for 07+ Engineer Vacancies",
       "   = same source page as an existing job, skipped: RRB NTPC Graduate Recruitment 2026 - Apply Online for 3548 Posts",
       "   = rejected after reading on an earlier run, skipped: Northern Western Railway Apprentice Recruitment 2026 - Apply Online for 2008 Posts",
@@ -35,9 +37,7 @@
       "   = rejected after reading on an earlier run, skipped: Indian Bank Apprentice Online Form 2026",
       "   = same source page as an existing job, skipped: Jamia Hamdard Recruitment 2026 – Walk-in for 7 Guest/Visiting Faculty Posts",
       "   = near-duplicate headline, skipped: Bihar Vidhan Sabha Office Attendant Online Form 2026",
-      "   = same source page as an existing job, skipped: Bihar Vidhan Sabha Junior Secretariat Assistant JSA Online Form 2026",
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
-      "   = same source page as an existing job, skipped: UP Fatehpur ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
@@ -45,14 +45,14 @@
       "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "Added 2 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-06T09:59:14.288Z",
+    "at": "2026-11-06T10:36:58.726Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -100,23 +100,23 @@
       "gsssb": "paused (fails 65, geo-blocked)",
       "sssb-punjab": "paused (fails 65, geo-blocked)",
       "hprca": "paused (fails 65, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "kea": "paused (fails 65, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
-      "dsssb2": "paused (fails 65, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "kea": "paused (fails 65, geo-blocked)",
       "kvs": "4 links, 0 new via direct",
+      "dsssb2": "paused (fails 65, geo-blocked)",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "uksssc": "27 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 65, geo-blocked)",
       "tslprb": "paused (fails 65)",
       "slprb-ap": "paused (fails 65, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
+      "uppbpb": "7 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "error: news-views.in: HTTP 403 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bpssc": "209 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,22 +124,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-06T10:00:17.728Z",
+    "at": "2026-11-06T10:36:59.086Z",
     "ok": true,
-    "checked": 2,
+    "checked": 0,
     "found": 0,
-    "due": 2,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-06T10:03:37.862Z",
+    "at": "2026-11-06T10:37:19.809Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -147,10 +147,9 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 6,
-    "hindiJobs": 6,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -158,18 +157,13 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 6 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: NTA CSIR UGC NET दिसंबर ऑनलाइन फॉर्म 2026",
-      "  ✓ hindi: UPSSSC जूनियर इंजीनियर JE इलेक्ट्रिकल ऑनलाइन फॉर्म 2026",
-      "  ✓ hindi: जादवपुर विश्वविद्यालय डोमेन एक्सपर्ट भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: TEXMiN भर्ती 2026 – 3 प्रोजेक्ट एसोसिएट I / प्रोजेक्ट एसोसिएट II पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: DVC भर्ती 2026 – 108 कार्यकारी प्रशिक्षु पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AMCH प्रोजेक्ट तकनीकी समर्थन II भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi update: BPSC 71वां मेन्स रिजल्ट 2026 जारी – ऐसे करें चेक"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi update: दिल्ली हाई कोर्ट SPA टाइपिंग टेस्ट परीक्षा शहर विवरण 2026",
+      "  ✓ hindi update: इलाहाबाद हाई कोर्ट प्राइवेट सेक्रेटरी परीक्षा शहर विवरण 2026"
     ]
   },
   "news": {
-    "at": "2026-11-06T10:03:38.216Z",
+    "at": "2026-11-06T10:37:20.164Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
