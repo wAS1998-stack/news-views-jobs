@@ -2,7 +2,7 @@
   "date": "2026-11-06",
   "runs": {},
   "fetch": {
-    "at": "2026-11-06T00:12:54.213Z",
+    "at": "2026-11-06T00:56:55.099Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-06T00:13:04.001Z",
+    "at": "2026-11-06T00:57:07.625Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -81,10 +81,10 @@
       "hpsc": "paused (fails 62, geo-blocked)",
       "hppsc": "paused (fails 62, geo-blocked)",
       "ukpsc": "paused (fails 62, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "4 links, 0 new via direct",
       "cgpsc": "paused (fails 62, geo-blocked)",
       "gpsc": "paused (fails 62, geo-blocked)",
-      "dsssb": "4 links, 0 new via direct",
+      "tgpsc": "2 links, 0 new via news-views.in",
       "ppsc": "paused (fails 62, geo-blocked)",
       "apsc": "paused (fails 62, geo-blocked)",
       "jkpsc": "paused (fails 62, geo-blocked)",
@@ -93,29 +93,29 @@
       "rssb": "paused (fails 62, geo-blocked)",
       "esb-mp": "paused (fails 62, geo-blocked)",
       "bssc": "paused (fails 11)",
-      "tgpsc": "2 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "jssc": "paused (fails 62, geo-blocked)",
       "osssc": "paused (fails 29)",
       "gsssb": "paused (fails 62, geo-blocked)",
       "sssb-punjab": "paused (fails 62, geo-blocked)",
       "hprca": "paused (fails 62, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 62, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 62, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "27 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "tnusrb": "paused (fails 62, geo-blocked)",
       "tslprb": "paused (fails 62)",
       "slprb-ap": "paused (fails 62, geo-blocked)",
-      "uppbpb": "7 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "197 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "nta": "1 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
+      "csbc": "197 links, 0 new via news-views.in",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-06T00:13:04.369Z",
+    "at": "2026-11-06T00:57:07.949Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -139,7 +139,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-05T23:53:07.887Z",
+    "at": "2026-11-06T00:57:09.016Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,17 +160,22 @@
     ]
   },
   "news": {
-    "at": "2026-11-05T23:53:35.989Z",
+    "at": "2026-11-06T00:57:58.703Z",
     "ai": "OpenAI",
-    "published": 2,
-    "quizzes": 0,
+    "published": 3,
+    "quizzes": 1,
     "existing": 400,
-    "feeds": {},
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    },
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists.",
-      "  + analysis: Presidency University Announces Project Fellow Recruitment for 2026",
-      "  + analysis: NIT Jamshedpur Seeks Applications for Project Research Scientist – I Role"
+      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
+      "  20 source headlines for today's digest",
+      "  + digest: Current Affairs 6 November 2026: Key Government Updates for Exam Aspirants (354 words)",
+      "  + analysis: Walk-In Interviews for Post Graduate Teacher Positions in Diu Announced by Samagra Shiksha",
+      "  + analysis: IIT Tirupati Invites Applications for Junior Library Executive Recruitment 2026",
+      "  + quiz: Current Affairs Quiz 6 November 2026 (9 Qs)"
     ]
   },
   "gsc": {

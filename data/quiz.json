@@ -1,5 +1,112 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-06",
+    "date": "2026-11-06",
+    "digest_id": "current-affairs-2026-11-06",
+    "title": "Current Affairs Quiz 6 November 2026",
+    "questions": [
+      {
+        "q": "What anniversary did the Ministry of Railways celebrate?",
+        "options": [
+          "75th",
+          "100th",
+          "150th",
+          "200th"
+        ],
+        "answer": 2,
+        "why": "The Ministry of Railways celebrated the 150th anniversary of the patriotic song Vande Mataram."
+      },
+      {
+        "q": "How many citizens participated in the 'Nasha Mukt Yuva, Vikasit Bharat' quiz?",
+        "options": [
+          "More than 10,000",
+          "More than 15,000",
+          "More than 16,000",
+          "More than 16,500"
+        ],
+        "answer": 2,
+        "why": "More than 16,517 citizens participated in the quiz aimed at creating awareness about substance abuse."
+      },
+      {
+        "q": "Which exam results were announced for aspirants aiming for defense services?",
+        "options": [
+          "Combined Defence Services",
+          "NDA and NA Exam (I) 2026",
+          "Indian Air Force Exam",
+          "Indian Navy Exam"
+        ],
+        "answer": 1,
+        "why": "The final results for the National Defence Academy (NDA) and Naval Academy (NA) Exam (I) 2026 were announced."
+      },
+      {
+        "q": "Who interacted with the Indian contingent participating in the 2026 Asian Para Games?",
+        "options": [
+          "President",
+          "Union Minister",
+          "Prime Minister",
+          "Sports Secretary"
+        ],
+        "answer": 2,
+        "why": "Prime Minister Narendra Modi interacted with the Indian contingent participating in the 2026 Asian Para Games."
+      },
+      {
+        "q": "What was the outcome of the Postal Department's Special Campaign 6?",
+        "options": [
+          "Exceeded goals",
+          "Failed to meet goals",
+          "Met some goals",
+          "No significant outcomes"
+        ],
+        "answer": 0,
+        "why": "The Postal Department achieved better performance than its goals in cleanliness and service delivery during Special Campaign 6."
+      },
+      {
+        "q": "What missile conducted a successful flight test by DRDO?",
+        "options": [
+          "Agni",
+          "Akash",
+          "Pralay",
+          "BrahMos"
+        ],
+        "answer": 2,
+        "why": "The Defence Research and Development Organization (DRDO) conducted a successful flight test of the semi-ballistic missile 'Pralay'."
+      },
+      {
+        "q": "Which examination results were announced recently for civil services aspirants?",
+        "options": [
+          "Preliminary Exam",
+          "Civil Services (Main) Exam 2026",
+          "Interview Stage",
+          "Final Exam"
+        ],
+        "answer": 1,
+        "why": "The results for the written examination of the Civil Services (Main) Exam 2026 have been announced."
+      },
+      {
+        "q": "What initiative was taken by the Ministry of Culture with Google Arts & Culture?",
+        "options": [
+          "Cultural exchange program",
+          "Digitization of cultural heritage",
+          "Museum renovation project",
+          "Art exhibition"
+        ],
+        "answer": 1,
+        "why": "The Ministry of Culture signed a Memorandum of Understanding with Google Arts & Culture to digitize and share India's cultural heritage."
+      },
+      {
+        "q": "How much financial support was released to state governments ahead of the festive season?",
+        "options": [
+          "₹50,000 crores",
+          "₹75,000 crores",
+          "₹1,09,019 crores",
+          "₹1,25,000 crores"
+        ],
+        "answer": 2,
+        "why": "The central government released ₹1,09,019 crores to state governments to expedite capital expenditure and support welfare programs."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-05",
     "date": "2026-11-05",
     "digest_id": "current-affairs-2026-11-05",
