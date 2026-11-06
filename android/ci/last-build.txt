@@ -1,5 +1,5 @@
-OK build 45 42b4cea 2026-11-05T20:33:47Z signed=true
+OK build 46 7f9535a 2026-11-06T00:05:28Z signed=true
 signing: SARKARI_KEYSTORE_BASE64 present, SARKARI_KEYSTORE_PASSWORD present, key alias 'repuvi' (PKCS12 keystore: the key password is the keystore password, SARKARI_KEY_PASSWORD is ignored): keystore OK, build is signed with the upload key
--rw-r--r-- 1 runner runner 43862703 Nov  5 20:29 android/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r-- 1 runner runner 18646578 Nov  5 20:33 android/app/build/outputs/apk/release/app-release.apk
--rw-r--r-- 1 runner runner 25351329 Nov  5 20:33 android/app/build/outputs/bundle/release/app-release.aab
+-rw-r--r-- 1 runner runner 43862703 Nov  6 00:00 android/app/build/outputs/apk/debug/app-debug.apk
+-rw-r--r-- 1 runner runner 18646578 Nov  6 00:05 android/app/build/outputs/apk/release/app-release.apk
+-rw-r--r-- 1 runner runner 25351307 Nov  6 00:05 android/app/build/outputs/bundle/release/app-release.aab
