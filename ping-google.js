@@ -35,7 +35,7 @@ const PLAN_ONLY = process.argv.includes("--plan");
 const todayIST = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const jobUrl = (id) => `${SITE_URL}/jobs/${id}/`;
-const hashOf = (j) => crypto.createHash("sha1").update(JSON.stringify([j.title || "", j.application_end || "", j.apply_link || "", Number(j.total_vacancies) || 0])).digest("hex").slice(0, 12);
+const hashOf = (j) => crypto.createHash("sha1").update(JSON.stringify([j.title || "", j.application_end || "", j.apply_link || "", Number(j.total_vacancies) || 0, j.notice_status || ""])).digest("hex").slice(0, 12);
 
 /** What to send this run, in order, within the budget left today: { todo: [{ url, type, hash? }], deferred: [urls] }
     (deferred = new / changed URLs that did not fit today, kept for tomorrow). Pure (no network). */
@@ -55,7 +55,8 @@ function plan({ jobs, redirects, state, newUrls, today, budget, drainLeft = DRAI
   // 1. new this build + quota leftovers
   for (const u of [...(state._retry || []), ...newUrls]) { const j = byUrl.get(u); if (live(j) && (!state[u] || state[u].hash !== hashOf(j))) add(u, "URL_UPDATED", true); }
   // 2. changed since sent
-  for (const [u, j] of byUrl) if (state[u] && !state[u].deleted && state[u].hash && state[u].hash !== hashOf(j) && live(j)) add(u, "URL_UPDATED", true);
+  // (a cancelled job is no longer live but must be re-crawled, so Google Jobs drops its open listing)
+  for (const [u, j] of byUrl) if (state[u] && !state[u].deleted && state[u].hash && state[u].hash !== hashOf(j) && (live(j) || j.notice_status)) add(u, "URL_UPDATED", true);
   // 3. never sent, 5+ days left, biggest first (at most drainLeft today)
   let drained = 0;
   for (const [u] of [...byUrl].filter(([u, j]) => !state[u] && live(j) && daysLeft(j) !== null && daysLeft(j) >= 5)

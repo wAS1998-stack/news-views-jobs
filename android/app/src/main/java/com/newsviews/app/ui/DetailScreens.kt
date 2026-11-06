@@ -61,6 +61,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.newsviews.app.data.Dates
+import com.newsviews.app.work.Reminders
 import com.newsviews.app.data.Faq
 import com.newsviews.app.data.JobDetail
 import com.newsviews.app.data.JobItem
@@ -177,7 +178,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
     val reminderPrompt = rememberReminderPrompt(s)
     // ads: this page shows a fresh native ad from one of two slots and loads the other for the next page
     val adSlot = remember(id) { Ads.detailSlot() }
-    LaunchedEffect(adSlot) { Ads.preloadNative(ctx, Ads.otherDetailSlot(adSlot), "${BuildConfig.SITE}/jobs/$id/") }
+    LaunchedEffect(adSlot) { Ads.preloadNative(ctx, Ads.otherDetailSlot(adSlot)) }   // shown on the next page: no content URL
     Loader(id, { vm.repo.job(id) }, s, web = "${BuildConfig.SITE}/jobs/$id/", cached = { vm.repo.cachedJob(id) }) { j: JobDetail ->
         val h = if (hindi) j.hi else null
         val item = idx?.jobs?.firstOrNull { it.id == id }
@@ -239,9 +240,17 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
                 // closed or cancelled: no Apply button — what happened, and the notice for reference only
                 if (status == Status.CANCELLED) ClosedCard(s.x.cancelledTitle, s.x.cancelledHint, j.status_note)
                 else ClosedCard(Dates.pretty(item.en, hindi).let { if (it.isBlank()) s.x.closedNoDate else s.x.closedOn(it) }, s.x.closedHint, "")
-                val ref = j.status_link.takeIf { status == Status.CANCELLED && it.isNotBlank() } ?: j.official_notification.ifBlank { ctaUrl }
+                // never the application page (closed jobs have no Apply button): the cancellation notice, else the official
+                // notice, else the organisation's homepage labelled as such, else nothing
+                val update = j.status_link.takeIf { status == Status.CANCELLED && it.isNotBlank() }
+                val ref = update ?: j.official_notification.ifBlank { j.official_website }
+                val refLabel = when {
+                    update != null -> s.x.officialUpdate
+                    j.official_notification.isNotBlank() -> s.x.noticeRef
+                    else -> s.ctaWebsite
+                }
                 if (ref.isNotBlank()) OutlinedButton(onClick = { Stats.event(ctx, "open_link", "kind" to "closed_notice"); openUrl(ctx, ref) }, modifier = Modifier.fillMaxWidth().padding(top = 10.dp)) {
-                    Icon(Icons.Filled.Description, null); Spacer(Modifier.width(8.dp)); Text(if (status == Status.CANCELLED && j.status_link.isNotBlank()) s.x.officialUpdate else s.x.noticeRef)
+                    Icon(Icons.Filled.Description, null); Spacer(Modifier.width(8.dp)); Text(refLabel)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
                     OutlinedButton(onClick = onSave) { Icon(if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder, if (saved) s.unsave else s.save) }
@@ -257,14 +266,14 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
                 if (status == Status.POSTPONED) PostponedCard(s, j.status_note, j.status_link)
                 // the main button says what it really opens (the feed decides: apply page, offline form, walk-in notice, notice or homepage)
                 val ctaLabel = when (j.cta) { "apply" -> s.ctaApply; "page" -> s.ctaPage; "form" -> s.ctaForm; "walkin" -> s.ctaWalkin; "email" -> s.ctaEmail; "careers" -> s.ctaCareers; "notice" -> s.ctaNotice; "website" -> s.ctaWebsite; else -> s.apply }
-                if (ctaUrl.isNotBlank()) Button(onClick = {
+                if (ctaUrl.isNotBlank() && status != Status.POSTPONED) Button(onClick = {
                     Stats.event(ctx, "open_link", "kind" to j.cta.ifBlank { "apply" })
                     PlayPrompts.applyTapped(ctx)
                     openUrl(ctx, ctaUrl)
                 }, modifier = Modifier.fillMaxWidth()) {
                     Icon(Icons.AutoMirrored.Filled.OpenInNew, null); Spacer(Modifier.width(8.dp)); Text(ctaLabel)
                 }
-                when (j.cta) { "page" -> s.hintPage; "form" -> s.hintForm; "walkin" -> s.hintWalkin; "email" -> s.hintEmail; "careers" -> s.hintCareers; "website" -> s.hintWebsite; else -> null }?.let {
+                if (status != Status.POSTPONED) when (j.cta) { "page" -> s.hintPage; "form" -> s.hintForm; "walkin" -> s.hintWalkin; "email" -> s.hintEmail; "careers" -> s.hintCareers; "website" -> s.hintWebsite; else -> null }?.let {
                     Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
@@ -364,7 +373,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (St
     val idx by vm.index.collectAsStateWithLifecycle()
     val hindi = settings.hindi
     val adSlot = remember(id) { Ads.detailSlot() }
-    LaunchedEffect(adSlot) { Ads.preloadNative(ctx, Ads.otherDetailSlot(adSlot), "${BuildConfig.SITE}/updates/$id/") }
+    LaunchedEffect(adSlot) { Ads.preloadNative(ctx, Ads.otherDetailSlot(adSlot)) }   // shown on the next page: no content URL
     Loader(id, { vm.repo.update(id) }, s, web = "${BuildConfig.SITE}/updates/$id/", cached = { vm.repo.cachedUpdate(id) }) { u: UpdateDetail ->
         val h = if (hindi) u.hi else null
         val item = idx?.updates?.firstOrNull { it.id == id }
@@ -397,7 +406,7 @@ fun UpdateDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (St
                 Text(it, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             }
             // "Remind me": the evening before and the morning of the date in the notice
-            if (ev.length == 10 && ev >= Dates.today().toString()) {
+            if (ev.length == 10 && Reminders.canRemind(ev)) {
                 val key = "u:$id"
                 val tracked = key in settings.tracked
                 OutlinedButton(onClick = { vm.toggleTracked(key, shortTitle, s.x.typeLabel(u.type), ev) }, modifier = Modifier.fillMaxWidth().padding(top = 10.dp)) {

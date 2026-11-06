@@ -86,7 +86,8 @@ const QUAL_LABEL = { "10th-pass": ["10th pass", "10वीं पास"], "12th-
   "post-graduate": ["Post graduate", "स्नातकोत्तर"], "engineering-diploma": ["Engineering / Diploma", "इंजीनियरिंग / डिप्लोमा"] };
 // only modes that say how to apply; "website" / "notice" / "page" are left out of the line (the app's button says it)
 const MODE_LABEL = { apply: ["Apply online", "ऑनलाइन आवेदन"], form: ["Offline form", "ऑफलाइन फ़ॉर्म"], walkin: ["Walk-in", "वॉक-इन"], email: ["Apply by email", "ईमेल से आवेदन"] };
-const RESULT_VERB = { result: ["Result declared — check now", "रिजल्ट जारी — अभी देखें"], "admit-card": ["Admit card out — download now", "प्रवेश पत्र जारी — अभी डाउनलोड करें"],
+// "declared" only when the headline itself says a result is out (resultVerb); otherwise a neutral "update"
+const RESULT_VERB = { result: ["Result update — check now", "रिजल्ट अपडेट — अभी देखें"], "admit-card": ["Admit card out — download now", "प्रवेश पत्र जारी — अभी डाउनलोड करें"],
   "answer-key": ["Answer key out", "उत्तर कुंजी जारी"], "exam-date": ["Exam date out", "परीक्षा तिथि जारी"] };
 const TITLE_MAX = 65;
 
@@ -102,7 +103,9 @@ function jobTitle(j, lang) {
   if (!(j.v > 0)) return cut(name, TITLE_MAX);
   const n = j.v.toLocaleString("en-IN");
   // the title already gives the number ("… for 2,861 Posts"): nothing to add
-  if (name.includes(n) || name.includes(String(j.v))) return cut(name, TITLE_MAX);
+  // (as a whole number: the "2026" in a title must not hide a count of 2, 6, 20 or 26)
+  const whole = new RegExp("(^|[^\\d,])(" + n.replace(/,/g, "\\,") + "|" + j.v + ")(?![\\d,])");
+  if (whole.test(name)) return cut(name, TITLE_MAX);
   let post = String((hi ? j.ph : j.p) || "").replace(/\s*\b(posts?|vacanc(y|ies))\s*$/i, "").replace(/\s*(पद|पदों)\s*$/, "").trim();
   if (post.length > 28 || /\b(various|multiple|other|more)\b|अन्य|विभिन्न/i.test(post) || (post && name.toLowerCase().includes(post.toLowerCase()))) post = "";
   const posts = (p) => hi ? `${n}${p ? " " + p : ""} पद` : `${n}${p ? " " + p : ""} ${j.v === 1 ? "post" : "posts"}`;
@@ -133,7 +136,8 @@ function jobBody(j, lang, stateNames) {
 function updateTitle(u, lang) { return cut(String((lang === "hi" && (u.thc || u.th)) || u.tc || u.t || ""), TITLE_MAX); }
 function updateBody(u, lang) {
   const i = lang === "hi" ? 1 : 0;
-  const verb = (RESULT_VERB[u.ty] || ["New update", "नया अपडेट"])[i];
+  const declared = u.ty === "result" && /\bresults?\b/i.test(u.t || "") && /\b(out|declared|released|announced)\b|जारी|घोषित/i.test(`${u.t} ${u.th || ""}`);
+  const verb = declared ? ["Result declared — check now", "रिजल्ट जारी — अभी देखें"][i] : (RESULT_VERB[u.ty] || ["New update", "नया अपडेट"])[i];
   const title = updateTitle(u, lang).toLowerCase();
   return u.o && !title.includes(String(u.o).toLowerCase()) ? `${verb} · ${u.o}` : verb;
 }

@@ -125,6 +125,19 @@ function cleanSlug(title, { legacy = false } = {}) {
 }
 const stripTags = L.stripTags;
 const today = () => L.todayIST();   // dates are Indian dates (UTC is still "yesterday" until 05:30 IST)
+/* Feed items rejected AFTER the AI read them (duplicates under a new headline, closed, speculative, private): remembered
+   for 14 days by source link, so the same item isn't read and paid for again on every run (~every 40 minutes). */
+const SKIPPED_FILE = path.join(ROOT, "data", "fetch-skipped.json");
+let SKIPPED = {}, SKIPPED_CHANGED = false;
+const skipKey = (link) => String(link || "").replace(/[?#].*$/, "").replace(/\/+$/, "").toLowerCase();
+function loadSkipped() {
+  try { SKIPPED = JSON.parse(fs.readFileSync(SKIPPED_FILE, "utf8")) || {}; } catch { SKIPPED = {}; }
+  const cutoff = new Date(Date.now() - 14 * 86400000).toISOString().slice(0, 10);
+  for (const k of Object.keys(SKIPPED)) if (!(SKIPPED[k] >= cutoff)) { delete SKIPPED[k]; SKIPPED_CHANGED = true; }
+}
+const wasRejected = (link) => { const k = skipKey(link); return !!k && !!SKIPPED[k]; };
+function rejectAfterRead(link) { const k = skipKey(link); if (k) { SKIPPED[k] = today(); SKIPPED_CHANGED = true; } return null; }
+function saveSkipped() { if (SKIPPED_CHANGED) try { fs.writeFileSync(SKIPPED_FILE, JSON.stringify(SKIPPED) + "\n"); } catch (e) { console.log("fetch-skipped: " + e.message); } }
 const istDate = (d) => { const t = new Date(d); return isNaN(t) ? today() : new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(t); };
 
 const decodeEntities = L.decodeEntities;
@@ -316,6 +329,7 @@ async function toJob(item, existingIds, fingerprints) {
     if (!h) { console.log(`   = old-style id ${old} is retired (redirected), skipped: ${item.title}`); return null; }
     if (sameHeadline(h.title, item.title) || fingerprint(h.title) === fp) { console.log(`   = already listed as ${old}, skipped: ${item.title}`); return null; }
   }
+  if (wasRejected(item.link)) { console.log(`   = rejected after reading on an earlier run, skipped: ${item.title}`); return null; }
   const src = await readSource(item.link, item);
   const base = {
     id,
@@ -331,7 +345,7 @@ async function toJob(item, existingIds, fingerprints) {
   const extra = L.aiJobFields(await aiExtract(item, src));
   const merged = { ...base, ...extra, id, title: item.title };
   // government jobs only: the extraction may reveal a private employer the headline didn't name
-  if (L.isNonGovt(merged)) { console.log(`   - not a government employer, skipped: ${item.title}`); return null; }
+  if (L.isNonGovt(merged)) { console.log(`   - not a government employer, skipped: ${item.title}`); return rejectAfterRead(item.link); }
   // a last date before the notice was even published is not real (extraction picked another year / a template
   // "1–31 January"): treat the dates as unknown rather than show a wrong deadline
   const ext = /\b(extend(ed|s)?|extension)\b|last date (extended|revised)/i.test(item.title);
@@ -339,7 +353,7 @@ async function toJob(item, existingIds, fingerprints) {
     // the template "1 – 31 January" on a notice published months later is an extraction error: dates unknown
     const template = /-01-31$/.test(merged.application_end) && (!merged.application_start || /-01-(0\d|10)$/.test(merged.application_start)) && String(merged.published).slice(5, 7) >= "04";
     if (template) { console.log(`   ? template dates dropped (${merged.application_start || "?"}–${merged.application_end}): ${item.title}`); delete merged.application_end; delete merged.application_start; }
-    else { console.log(`   - already closed, skipped: ${item.title}`); return null; }
+    else { console.log(`   - already closed, skipped: ${item.title}`); return rejectAfterRead(item.link); }
   }
   // Links: AI's choice must be a real candidate from the page; otherwise heuristic; never the aggregator.
   const picked = L.validateLinks(extra, src.cands);
@@ -351,7 +365,7 @@ async function toJob(item, existingIds, fingerprints) {
     const th = L.hostFromTitle(item.title);
     merged.official_website = L.officialHomeFor(item.title) || (th ? `https://${th}/` : null);
   }
-  if (L.isSpeculative(merged)) { console.log(`   - speculative headline without an official notice, skipped: ${item.title}`); return null; }
+  if (L.isSpeculative(merged)) { console.log(`   - speculative headline without an official notice, skipped: ${item.title}`); return rejectAfterRead(item.link); }
   if (!merged.apply_link) console.log(`   ! no official link on source (${src.err || (src.cands.length ? "no fit" : "0 candidates")}${src.viaFeed ? ", feed html tried" : ""}): ${item.title}`);
   if (!merged.organization || merged.organization === merged.title) merged.organization = L.orgFromTitle(item.title) || "Government of India";
   // Quality floor: ensure every page has substantial content even if extraction was sparse.
@@ -371,11 +385,11 @@ async function toJob(item, existingIds, fingerprints) {
   }
   for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
   Object.assign(merged, L.sanitizeJob(merged));
-  if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return null; }
+  if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return rejectAfterRead(item.link); }
   if (holder) {
-    if (sameRecruitment(merged, holder)) { console.log(`   = same recruitment as ${id}, skipped: ${merged.title}`); return null; }
+    if (sameRecruitment(merged, holder)) { console.log(`   = same recruitment as ${id}, skipped: ${merged.title}`); return rejectAfterRead(item.link); }
     const nid = distinctId(id, merged, existingIds);
-    if (!nid) { console.log(`   - id ${id} taken by another recruitment and no free variant, skipped: ${merged.title}`); return null; }
+    if (!nid) { console.log(`   - id ${id} taken by another recruitment and no free variant, skipped: ${merged.title}`); return rejectAfterRead(item.link); }
     console.log(`   ~ id ${id} belongs to another recruitment (${holder.title}); saved as ${nid}`);
     merged.id = nid;
   }
@@ -389,6 +403,7 @@ async function main() {
   // Job pages that were retired on purpose (merged duplicates, notices that were not recruitments) stay retired.
   try { for (const [from] of JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8"))) { const m = /^\/jobs\/([^/]+)\/$/.exec(from); if (m) ids.add(m[1]); } } catch {}
   EXISTING_FOR_DUPES = existing;
+  loadSkipped();
   const fps = new Set(existing.map((j) => fingerprint(j.title)));
   const feeds = loadFeeds();
 
@@ -446,15 +461,16 @@ async function main() {
             date: new Date().toISOString().slice(0, 10), link: it.link,
             summary: (String(it.summary || it.title).replace(/<[^>]+>/g, "").trim().slice(0, 300)) +
               " Check the official website for the direct link and full details." };
+          if (wasRejected(it.link)) { console.log(`   = rejected after reading on an earlier run, skipped: ${it.title}`); continue; }
           const src = await readSource(it.link, it);
           const ai = await aiUpdate(it, kind, src);
           const upd = finishUpdate(base, ai, src);
           // The AI names the real body ("Symbiosis International (Deemed University)"): re-check it, and the exam.
-          if (L.isNonGovt(upd) || L.OFF_TOPIC.test(`${upd.exam_name || ""} | ${upd.organization || ""}`)) { console.log(`   - not a government recruitment update, skipped: ${it.title}`); continue; }
+          if (L.isNonGovt(upd) || L.OFF_TOPIC.test(`${upd.exam_name || ""} | ${upd.organization || ""}`)) { console.log(`   - not a government recruitment update, skipped: ${it.title}`); rejectAfterRead(it.link); continue; }
           // "… Expected Soon", "Release Date", "When will …": guesswork, unless an official notice (PDF / deep link) backs it
-          if (L.isSpeculative(upd)) { console.log(`   - speculative headline without an official notice, skipped: ${it.title}`); continue; }
+          if (L.isSpeculative(upd)) { console.log(`   - speculative headline without an official notice, skipped: ${it.title}`); rejectAfterRead(it.link); continue; }
           // the same official notice (PDF / specific page) already has an update page, under another headline
-          if (L.isDupUpdate({ ...upd, date: today() }, updates.concat(archived))) { console.log(`   = same official notice as an existing update, skipped: ${it.title}`); continue; }
+          if (L.isDupUpdate({ ...upd, date: today() }, updates.concat(archived))) { console.log(`   = same official notice as an existing update, skipped: ${it.title}`); rejectAfterRead(it.link); continue; }
           updates.unshift(upd);
           newUpdateIds.push(uid);
           markNoticeStatus({ title: upd.title, date: today(), link: upd.official_link, id: uid });
@@ -477,6 +493,7 @@ async function main() {
     if (r.archived) console.log(`Moved ${r.archived} older update(s) to data/updates-archive.json.`);
     console.log(`Added ${updatesAdded} update(s) (results/admit cards/answer keys).`);
   }
+  saveSkipped();
   const integrations = { ai: L.AI_LABEL, googleIndexing: process.env.HAS_GOOGLE === "true", telegram: process.env.HAS_TELEGRAM === "true", cloudflarePurge: process.env.HAS_CLOUDFLARE === "true" };
   L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus });
   // Record exactly which job URLs are new this run, so the Indexing API pings

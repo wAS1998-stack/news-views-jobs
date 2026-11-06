@@ -431,7 +431,10 @@ const OFF_TOPIC_BASE = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|lo
 // admission) and more university result pages. Each keeps recruitment notices of the same bodies (ICAI, NIOS, Navodaya
 // and universities hire staff too).
 const NOT_RECRUIT = "(?![^–—:]*\\b(recruitment|vacanc\\w*|posts?|jobs?|bharti|non[- ]?teaching|faculty)\\b)";
-const OFF_TOPIC_EXAMS = new RegExp([
+// The whole headline is checked first: any recruitment word anywhere keeps it ("WBSSC Group D Recruitment – Madhyamik
+// Pass", "Agniveer SSR (Class 12)", "Assistant Director Vacancy at NIOS", "Osmania University Assistant Professor Result").
+const RECRUIT_ANY = "^(?![\\s\\S]*\\b(recruitment|vacanc\\w*|posts?|jobs?|bharti|non[- ]?teaching|faculty|slst|agniveer|constables?|teachers?|professors?|lecturers?|clerks?|officers?|engineers?|assistants?|apprentices?|directors?|staff|(madhyamik|matric|10th|12th|class[ -]?\\w+) pass(ed)?)\\b)[\\s\\S]*?";
+const OFF_TOPIC_EXAMS = new RegExp(RECRUIT_ANY + "(?:" + [
   `\\b(icai|icsi|icmai)\\b${NOT_RECRUIT}`,
   `\\b(ca|cma|cs) (foundation|inter(mediate)?|final|executive|professional)\\b${NOT_RECRUIT}`,
   `\\b(nios|msbte)\\b${NOT_RECRUIT}`,
@@ -440,7 +443,7 @@ const OFF_TOPIC_EXAMS = new RegExp([
   `\\b(6th|9th|10th|11th|12th|matric|intermediate|inter|hsc|sslc|hslc|hse|puc|ii puc|plus two|\\+2) (board )?(annual |supplementary |compartment(al)? )?(exam(ination)? )?(results?|admit card|hall ticket|date ?sheet|time ?table|registration|exam form)\\b`,
   `\\bjnvst\\b|\\bnavodaya\\b[^–—:]*\\b(class (6|9|vi|ix)|selection test|admission)\\b`,
   `\\b(mdu|kuk|crsu|cdlu|lnmu|brabu|bnmu|tmbu|vksu|csjmu|dbrau|mgkvp|vbspu|rmlau|mjpru|davv|rdvv|apsu|sppu|du sol|osmania university|kakatiya university|anna university)\\b[^–—:]*\\b(results?|admit card|hall ticket|exam form)\\b`,
-].join("|"), "i");
+].join("|") + ")", "i");
 const OFF_TOPIC = new RegExp(OFF_TOPIC_BASE.source + "|" + OFF_TOPIC_EXAMS.source, "i");
 /** Guesswork headlines ("SSC GD 2027 Notification Expected Soon", "Result Release Date", "When will … come") are not
     announcements: kept only when the record carries an official deep link or PDF (lib.js noticeKey). */
@@ -544,9 +547,16 @@ function isDupUpdate(u, list, days = 7) {
   const a = updateKey(u.title);
   const t = new Date(u.date || Date.now()).getTime();
   // the same official notice (a PDF or a specific page, never a generic "Results" list page) is the same update
+  // Only a PDF counts (one login page serves an exam's admit card, answer key and result), and only for the same kind
+  // of update about the same stage (review: GSSSB answer key vs its admit card were merged).
   const nk = noticeKey(u.official_link);
-  if (nk && list.some((x) => x !== u && x.id !== u.id && noticeKey(x.official_link) === nk &&
-    Math.abs(new Date(x.date || 0).getTime() - t) <= 30 * 86400000)) return true;
+  if (nk && /\.pdf($|\?)/i.test(nk) && list.some((x) => {
+    if (x === u || x.id === u.id || noticeKey(x.official_link) !== nk) return false;
+    if (u.type && x.type && u.type !== x.type) return false;
+    const b = updateKey(x.title);
+    if (a && b && a.ev !== b.ev) return false;
+    return Math.abs(new Date(x.date || 0).getTime() - t) <= 30 * 86400000;
+  })) return true;
   if (!a || a.core.length < 2) return false;
   return list.some((x) => {
     if (x === u || x.id === u.id) return false;
@@ -568,7 +578,10 @@ const sameOrg = (a, b) => orgKeys(a).some((k1) => orgKeys(b).some((k2) => k1 ===
   (Math.min(k1.length, k2.length) >= 12 && (k1.startsWith(k2) || k2.startsWith(k1)))));
 /** Organisation family: "RRB Ahmedabad" and "RRB" (Railway Recruitment Boards), "SSC" and "SSC (Central Region)". */
 const orgFamily = (x) => { const m = String(x.org_short || "").toLowerCase().match(/^[a-z]{3,}/); return m && !/^(the|govt|government|dept|department|office|india|indian|state|district|national)$/.test(m[0]) ? m[0] : ""; };
-const sameFamily = (a, b) => sameOrg(a, b) || (!!orgFamily(a) && orgFamily(a) === orgFamily(b));
+// One side must be the bare family name ("RRB" vs "RRB Ahmedabad"): "AIIMS Patna" and "AIIMS Bhopal" are different
+// institutes with the same first word.
+const bareOrg = (x) => String(x.org_short || "").toLowerCase().replace(/[^a-z]/g, "");
+const sameFamily = (a, b) => sameOrg(a, b) || (!!orgFamily(a) && orgFamily(a) === orgFamily(b) && (bareOrg(a) === orgFamily(a) || bareOrg(b) === orgFamily(b)));
 const normPost = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).map(romanWord).join(" ")
   .replace(/\b(posts?|vacanc(y|ies)|recruitment|and|of|the|for)\b/g, " ").replace(/\s+/g, " ").trim();
 /** "Advt. No. 05/2026" → "05/2026" style key for comparing advertisement numbers. */
@@ -603,7 +616,9 @@ function isDuplicate(job, list, { onExtend } = {}) {
     const an = advtKey(job.advt_no), xn = advtKey(x.advt_no);
     if (an && xn && an !== xn) return false;
     // The same official notice: one PDF (or one specific page on the official site) is one recruitment.
-    if (nk && noticeKey(x.official_notification) === nk) return true;
+    // (A PDF only — OPSC serves several recruitments from one view_content page — of the same body, with overlapping
+    // posts: one combined district PDF can announce unrelated posts.)
+    if (nk && /\.pdf($|\?)/i.test(nk) && noticeKey(x.official_notification) === nk && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name, { any: true })) return true;
     if (!sameOrg(job, x)) {
       // The same organisation family ("RRB" / "RRB Ahmedabad"), the same last date and a real recruitment (20+ posts)
       // published within 45 days: one notice reported by two sources under different names.
@@ -814,8 +829,11 @@ function matchNoticeStatus(notice, jobs) {
   const day = isoDate(notice.date) || todayIST();
   const nw = [...new Set(noticeWords(notice.title))];
   if (nw.length < 2) return null;
+  const yrs = String(notice.title).match(/\b20\d{2}\b/g) || [];
   const hits = (jobs || []).filter((j) => {
     if (!j || !j.title || String(j.published || "") > day) return false;                   // the job came first
+    // "Bihar Police Constable Recruitment 2019 Cancelled" must not cancel the 2026 recruitment
+    if (yrs.length && !yrs.some((y) => `${j.title} ${j.advt_no || ""} ${String(j.published || "").slice(0, 4)}`.includes(y))) return false;
     if ((Date.parse(day) - Date.parse(j.published || day)) > 180 * 86400000) return false;
     const jw = new Set([...noticeWords(`${j.title} ${j.organization || ""} ${j.org_short || ""} ${j.post_name || ""}`), ...initialsOf(j.organization), ...initialsOf(j.org_short)]);
     return nw.every((w) => jw.has(w));

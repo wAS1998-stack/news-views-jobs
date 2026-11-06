@@ -747,7 +747,9 @@ function buildNewsPage(a, all) {
   const self = `${SITE.url}/news/${a.id}/`;
   const related = all.filter((x) => x.id !== a.id).slice(0, 4);
   const job = a.job_id ? (ALL_JOBS || []).find((j) => j.id === a.job_id) : null;
-  const canonical = isAnalysis(a) && job ? `${SITE.url}/jobs/${job.id}/` : self;
+  // analysis twins are noindex with a self canonical: Google advises against noindex + a cross-page canonical, which can
+  // pass the noindex on to the job page itself
+  const canonical = self;
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "News", url: SITE.url + "/news/" }, { name: a.title, url: self }]),
     { "@context": "https://schema.org", "@type": "NewsArticle", headline: a.title, url: self,
@@ -1860,7 +1862,9 @@ function statusBanner(job, lang = "en") {
   const head = hi ? (c ? "यह भर्ती रद्द कर दी गई है।" : "यह भर्ती स्थगित कर दी गई है।") : (c ? "This recruitment has been cancelled." : "This recruitment has been postponed.");
   const date = job.status_date ? (hi ? ` (${hiDateKF(job.status_date)})` : ` (${fmtDate(job.status_date)})`) : "";
   const link = job.status_link ? ` <a href="${esc(job.status_link)}" target="_blank" rel="noopener nofollow">${hi ? "ऑफिशियल नोटिस देखें" : "Read the official notice"} &#8599;</a>` : "";
-  const ours = job.status_update ? ` <a href="${hi ? "/hi" : ""}/updates/${esc(job.status_update)}/">${hi ? "पूरी जानकारी" : "Details"}</a>` : "";
+  const upd = job.status_update ? ALL_UPDATES.find((u) => u.id === job.status_update) : null;
+  const hiPage = hi && upd && upd.hi && upd.hi.title;        // Hindi update pages exist only for updates with a Hindi version
+  const ours = job.status_update ? ` <a href="${hiPage ? "/hi" : ""}/updates/${esc(job.status_update)}/">${hi ? "पूरी जानकारी" : "Details"}</a>` : "";
   return `<div class="status-banner ${c ? "cancelled" : "postponed"}" role="alert"><strong>${head}</strong> ${esc(job.status_note || "")}${date}.${link}${ours} ${hi ? "यह पेज संदर्भ के लिए रखा गया है।" : "This page is kept for reference."}</div>`;
 }
 
@@ -2025,7 +2029,9 @@ function buildAppIndex(jobs, updates) {
    closed and send no "last date" reminders. The detail keeps the notice's own application_end. */
 function appCta(j) {
   if (!j.notice_status) return ctaOf(j);
-  return j.status_link ? { cta: "notice", url: j.status_link } : { cta: "website", url: j.official_website || "" };
+  if (j.status_link) return { cta: "notice", url: j.status_link };
+  if (j.official_notification) return { cta: "notice", url: j.official_notification };
+  return { cta: "page", url: `${SITE.url}/jobs/${j.id}/` };   // our page, which shows the cancellation banner — never the old Apply link
 }
 function appEnd(j) {
   const end = appDay(j.application_end), st = appDay(j.status_date);
@@ -2373,6 +2379,8 @@ Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsv
 - **Usage statistics (Google Firebase Analytics):** an app-instance identifier, device model, Android and app version, approximate location (region and city, from the IP address), and which screens are opened and which buttons are used (for example how many people open an official notice) — to understand, in aggregate, what is useful and to measure ad revenue.
 - **Crash reports (Google Firebase Crashlytics):** crash traces, device state and an app-instance identifier, so crashes can be fixed.
 - **Purchases (Google Play Billing):** the optional "Pro" purchase is handled entirely by Google Play. We receive only confirmation that it was bought — never your payment details.
+- **Install source (Google Play Install Referrer):** once, on first launch, the app reads the campaign details of the link it was installed from (for example "installed from a job page on news-views.in"), so it can open that job; it contains no personal information.
+- **Report a mistake / Send feedback:** opens your own email app with the page link and app version filled in; we receive only the email you choose to send, and use it only to answer you and correct the listing.
 
 This information may count as personal data in some countries. It is not linked to your name or used to identify you, it is not sold, and it is shared only with the Google services and ad partners named above, which process it under their own privacy policies (for Google: [policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites)).
 
@@ -2526,6 +2534,7 @@ let ALL_GUIDES = [];
 let TOOL_DEFS = [];
 let ALL_QUIZ = [];
 let ALL_JOBS = [];
+let ALL_UPDATES = [];   // recent + archived updates (set in main before any page is rendered)
 let ORG_PAGES = new Set();   // org slugs that actually get a page (active jobs only)
 let ORG_UPDATES = new Map(); // org slug -> updates of that body (recent + archived)
 const SITEMAP_CUTOFF = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays || 15) * 86400000).toISOString().slice(0, 10);
@@ -2704,6 +2713,7 @@ function main() {
   const archivedUpdates = readUpdatesArchive(updates);
   const allUpdates = [...updates, ...archivedUpdates].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   ARCHIVED_UPD = new Set(archivedUpdates.map((u) => u.id));
+  ALL_UPDATES = allUpdates;
   if (archivedUpdates.length) console.log(`Updates: ${updates.length} recent + ${archivedUpdates.length} archived (pages kept).`);
   ORG_UPDATES = new Map();   // organisation page slug -> its updates (recent and archived), newest first
   for (const u of allUpdates) { const k = slug(orgKey(u)); if (k) { if (!ORG_UPDATES.has(k)) ORG_UPDATES.set(k, []); ORG_UPDATES.get(k).push(u); } }

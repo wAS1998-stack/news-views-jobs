@@ -8,16 +8,18 @@ import com.newsviews.app.ui.qualName
 /**
  * Search over the feed, in English and Hindi: every job and result gets a list of words (built once per feed, off the
  * main thread — see MainViewModel.search) from its titles, department, posts, states, categories and qualifications.
- * A query matches when every one of its words (after dropping filler such as "jobs", "2026", "भर्ती") is the start of
- * one of those words — or of one of its synonyms ("rly" = railway = RRB = रेलवे, "up" = Uttar Pradesh = उत्तर प्रदेश).
- * Words of one or two letters ("up", "mp", "pg") must match a whole word, so "up" does not find every "update".
+ * A query matches when every typed word (after dropping filler such as "jobs", "2026", "भर्ती") is the start of one of
+ * those words, or one of its synonyms is a whole word or phrase of the item ("rly" = railway = RRB = रेलवे, "up" =
+ * "uttar pradesh"). Synonyms and two-word phrases ("post office", "uttar pradesh", "admit card") match exactly — word
+ * pairs are indexed for that — so "post office" no longer finds every "posts … officer". Words of one or two letters
+ * ("up", "mp", "pg") must match a whole word, so "up" does not find every "update".
  */
 class SearchIndex private constructor(
     val source: AppIndex,
-    private val jobWords: Map<String, List<String>>,
-    private val updateWords: Map<String, List<String>>,
-    private val jobTitleWords: Map<String, List<String>>,
-    private val updateTitleWords: Map<String, List<String>>,
+    private val jobWords: Map<String, Set<String>>,
+    private val updateWords: Map<String, Set<String>>,
+    private val jobTitleWords: Map<String, Set<String>>,
+    private val updateTitleWords: Map<String, Set<String>>,
 ) {
 
     fun jobMatches(job: JobItem, q: Query): Boolean = q.isEmpty || q.matches(jobWords[job.id] ?: jobTokens(job, source))
@@ -27,12 +29,16 @@ class SearchIndex private constructor(
     fun jobRank(job: JobItem, q: Query): Int = if (q.isEmpty || q.matches(jobTitleWords[job.id] ?: jobCoreTokens(job))) 0 else 1
     fun updateRank(u: UpdateItem, q: Query): Int = if (q.isEmpty || q.matches(updateTitleWords[u.id] ?: updateCoreTokens(u))) 0 else 1
 
-    /** A parsed query: each entry is one query word with its alternatives (each alternative = words that must all match). */
-    class Query internal constructor(private val words: List<List<List<String>>>) {
-        val isEmpty: Boolean get() = words.isEmpty()
-        fun matches(tokens: List<String>): Boolean = words.all { alts -> alts.any { alt -> alt.all { w -> hit(w, tokens) } } }
-        private fun hit(w: String, tokens: List<String>): Boolean =
-            if (w.length <= 2) tokens.any { it == w } else tokens.any { it.startsWith(w) }
+    /** One part of a query: the word as typed (matched as a word start; null for a recognised phrase) and the synonyms
+        and phrases that count too (matched exactly, as a whole word or a whole word pair). */
+    class Part internal constructor(val typed: String?, val exact: List<String>)
+
+    /** A parsed query: every part must match. */
+    class Query internal constructor(private val parts: List<Part>) {
+        val isEmpty: Boolean get() = parts.isEmpty()
+        fun matches(tokens: Set<String>): Boolean = parts.all { p -> (p.typed != null && hitTyped(p.typed, tokens)) || p.exact.any { it in tokens } }
+        private fun hitTyped(w: String, tokens: Set<String>): Boolean =
+            if (w.length <= 2) w in tokens else tokens.any { it.startsWith(w) && ' ' !in it }
     }
 
     companion object {
@@ -75,7 +81,7 @@ class SearchIndex private constructor(
             listOf("answer key", "उत्तर कुंजी", "आंसर"),
             listOf("exam date", "exam schedule", "परीक्षा तिथि"),
             listOf("10th", "10", "matric", "matriculation", "दसवीं", "10वीं"),
-            listOf("12th", "12", "inter", "intermediate", "बारहवीं", "12वीं"),
+            listOf("12th", "12", "intermediate", "बारहवीं", "12वीं"),
             listOf("graduate", "graduation", "degree", "स्नातक", "ग्रेजुएट"),
             listOf("post graduate", "pg", "postgraduate", "स्नातकोत्तर"),
             listOf("diploma", "polytechnic", "डिप्लोमा"),
@@ -100,18 +106,43 @@ class SearchIndex private constructor(
             listOf("odisha", "orissa", "ओडिशा"),
             listOf("central", "all india", "केंद्र", "केंद्रीय"),
         )
-        private val SYN_BY_WORD: Map<String, List<List<String>>> = buildMap {
+        /** Each group as normalised strings ("Uttar Pradesh" -> "uttar pradesh"), looked up by a one-word or a two-word member. */
+        private val SYN_BY_WORD: Map<String, List<String>>
+        private val SYN_BY_PHRASE: Map<String, List<String>>
+        init {
+            val one = HashMap<String, List<String>>(); val two = HashMap<String, List<String>>()
             for (g in SYNONYMS) {
-                val alts = g.map { words(it) }.filter { it.isNotEmpty() }
-                for (member in g) { val w = words(member); if (w.size == 1) put(w[0], alts) }
+                val alts = g.map { words(it).joinToString(" ") }.filter { it.isNotEmpty() }.distinct()
+                for (m in alts) { val n = m.count { it == ' ' }; if (n == 0) one[m] = alts else if (n == 1) two[m] = alts }
             }
+            SYN_BY_WORD = one; SYN_BY_PHRASE = two
         }
 
-        /** Parses what was typed: lower case, punctuation removed, filler dropped, each word with its synonyms. */
+        /** Parses what was typed: lower case, punctuation removed, filler dropped; a known two-word phrase ("post office",
+            "uttar pradesh") becomes one part matched exactly; every other word keeps its own synonyms. */
         fun query(text: String): Query {
             val ws = words(text).filter { it !in STOP }
-            return Query(ws.map { w -> SYN_BY_WORD[w]?.let { alts -> (alts + listOf(listOf(w))).distinct() } ?: listOf(listOf(w)) })
+            val parts = ArrayList<Part>()
+            var i = 0
+            while (i < ws.size) {
+                if (i + 1 < ws.size) {
+                    val ph = SYN_BY_PHRASE[ws[i] + " " + ws[i + 1]]
+                    if (ph != null) { parts += Part(null, ph); i += 2; continue }
+                }
+                val w = ws[i]
+                parts += Part(w, SYN_BY_WORD[w].orEmpty().filter { it != w })
+                i++
+            }
+            return Query(parts)
         }
+
+        /** Words and adjacent word pairs of [text] (pairs let phrases such as "uttar pradesh" match exactly). */
+        private fun addText(out: MutableSet<String>, text: String) {
+            val w = words(text)
+            out += w
+            for (k in 0 until w.size - 1) out += w[k] + " " + w[k + 1]
+        }
+        private fun phrase(text: String) = words(text).joinToString(" ")
 
         /** Short forms a state is known by in job titles and searches. */
         private val STATE_ABBR = mapOf(
@@ -122,10 +153,10 @@ class SearchIndex private constructor(
         /** Words for each qualification level (the level a job asks for is what people type). */
         private val QUAL_WORDS = mapOf(
             "10th-pass" to listOf("10th", "10", "matric", "matriculation", "दसवीं", "10वीं"),
-            "12th-pass" to listOf("12th", "12", "inter", "intermediate", "बारहवीं", "12वीं"),
+            "12th-pass" to listOf("12th", "12", "intermediate", "बारहवीं", "12वीं"),
             "graduate" to listOf("graduate", "graduation", "degree", "स्नातक", "ग्रेजुएट"),
             "engineering-diploma" to listOf("diploma", "iti", "polytechnic", "engineering", "डिप्लोमा", "आईटीआई", "इंजीनियरिंग"),
-            "post-graduate" to listOf("pg", "postgraduate", "post", "graduate", "स्नातकोत्तर"),
+            "post-graduate" to listOf("pg", "postgraduate", "post graduate", "स्नातकोत्तर"),
         )
         private val TYPE_WORDS = mapOf(
             "result" to "result results merit list cut off",
@@ -135,53 +166,54 @@ class SearchIndex private constructor(
         )
 
         private fun stateWords(slug: String, idx: AppIndex, out: MutableSet<String>) {
-            (idx.states.firstOrNull { it.slug == slug }?.name ?: Builtin.states.firstOrNull { it.slug == slug }?.name)?.let { out += words(it) }
-            STATE_HI[slug]?.let { out += words(it) }
+            (idx.states.firstOrNull { it.slug == slug }?.name ?: Builtin.states.firstOrNull { it.slug == slug }?.name)?.let { addText(out, it) }
+            STATE_HI[slug]?.let { addText(out, it) }
             STATE_ABBR[slug]?.let { out += it }
-            out += words(slug)
+            addText(out, slug.replace('-', ' '))
         }
 
         private fun catWords(slugs: List<String>, idx: AppIndex, out: MutableSet<String>) {
             for (c in slugs) {
                 out += words(c)
-                idx.cats.firstOrNull { it.slug == c }?.let { out += words(it.name); out += words(it.hi) }
+                idx.cats.firstOrNull { it.slug == c }?.let { addText(out, it.name); addText(out, it.hi) }
             }
         }
 
         /** The words of a job's own titles, department and posts. */
-        internal fun jobCoreTokens(j: JobItem): List<String> {
-            val out = LinkedHashSet<String>()
-            for (t in listOf(j.t, j.th, j.tc, j.thc, j.o, j.p, j.ph)) out += words(t)
-            return out.toList()
+        internal fun jobCoreTokens(j: JobItem): Set<String> {
+            val out = HashSet<String>()
+            for (t in listOf(j.t, j.th, j.tc, j.thc, j.o, j.p, j.ph)) addText(out, t)
+            return out
         }
 
-        internal fun updateCoreTokens(u: UpdateItem): List<String> {
-            val out = LinkedHashSet<String>()
-            for (t in listOf(u.t, u.th, u.tc, u.thc, u.o)) out += words(t)
-            return out.toList()
+        internal fun updateCoreTokens(u: UpdateItem): Set<String> {
+            val out = HashSet<String>()
+            for (t in listOf(u.t, u.th, u.tc, u.thc, u.o)) addText(out, t)
+            return out
         }
 
-        internal fun jobTokens(j: JobItem, idx: AppIndex): List<String> {
-            val out = LinkedHashSet<String>()
-            for (t in listOf(j.t, j.th, j.tc, j.thc, j.o, j.p, j.ph)) out += words(t)
+        internal fun jobTokens(j: JobItem, idx: AppIndex): Set<String> {
+            val out = HashSet<String>()
+            for (t in listOf(j.t, j.th, j.tc, j.thc, j.o, j.p, j.ph)) addText(out, t)
             for (st in j.s) stateWords(st, idx, out)
             catWords(j.c, idx, out)
             for (q in j.q) {
-                out += words(qualName(q)); QUAL_HI[q]?.let { out += words(it) }
+                // the level as a phrase only: "Post Graduate" must not make a PG job match "graduate" or "post"
+                out += phrase(qualName(q)); QUAL_HI[q]?.let { out += phrase(it) }
                 QUAL_WORDS[q]?.let { out += it }
             }
-            if (j.w == 1) out += listOf("walk", "walkin", "interview", "वॉक")
-            return out.toList()
+            if (j.w == 1) out += listOf("walk", "walkin", "walk in", "interview", "वॉक")
+            return out
         }
 
-        internal fun updateTokens(u: UpdateItem, idx: AppIndex): List<String> {
-            val out = LinkedHashSet<String>()
-            for (t in listOf(u.t, u.th, u.tc, u.thc, u.o)) out += words(t)
-            TYPE_WORDS[u.ty]?.let { out += words(it) }
-            TYPE_HI[u.ty]?.let { out += words(it) }
-            idx.types.firstOrNull { it.slug == u.ty }?.let { out += words(it.name) }
+        internal fun updateTokens(u: UpdateItem, idx: AppIndex): Set<String> {
+            val out = HashSet<String>()
+            for (t in listOf(u.t, u.th, u.tc, u.thc, u.o)) addText(out, t)
+            TYPE_WORDS[u.ty]?.let { addText(out, it) }
+            TYPE_HI[u.ty]?.let { addText(out, it) }
+            idx.types.firstOrNull { it.slug == u.ty }?.let { addText(out, it.name) }
             catWords(u.c, idx, out)
-            return out.toList()
+            return out
         }
     }
 }

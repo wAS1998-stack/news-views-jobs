@@ -113,7 +113,7 @@ class Prefs(private val context: Context) {
             quizDays = p[K.quizDays] ?: emptySet(),
             dob = p[K.dob] ?: "",
             category = p[K.category] ?: "gen",
-            quizAlerts = p[K.quizAlerts] ?: true,
+            quizAlerts = p[K.quizAlerts] ?: (p[K.alerts] ?: true),   // never set: follow the job-alert choice
             tracked = p[K.tracked] ?: emptySet(),
             applied = p[K.applied] ?: emptySet(),
             quizScores = (p[K.quizScores] ?: emptySet()).mapNotNull { e -> e.split('=', limit = 2).takeIf { it.size == 2 }?.let { it[0] to it[1] } }.toMap(),

@@ -65,6 +65,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.newsviews.app.data.Dates
+import com.newsviews.app.work.Reminders
 import com.newsviews.app.data.Named
 import java.time.Duration
 import java.time.Instant
@@ -334,7 +335,7 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
                             item(key = "${if (c.isJob) "j" else "u"}-${c.id}") {
                                 val key = if (c.isJob) "x:${c.id}" else "u:${c.id}"
                                 CalRow(c, tracked = key in settings.tracked, remindLabel = s.x.remindMe,
-                                    onRemind = { vm.toggleTracked(key, c.title, s.x.typeLabel(c.type), c.date) }) {
+                                    onRemind = if (Reminders.canRemind(c.date)) ({ vm.toggleTracked(key, c.title, s.x.typeLabel(c.type), c.date) }) else null) {
                                     if (c.isJob) onOpenJob(c.id) else onOpen(c.id)
                                 }
                             }

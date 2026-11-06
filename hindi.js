@@ -116,7 +116,7 @@ function buildHindi(ctx) {
     ${ctx.keyFacts ? ctx.keyFacts(j, "hi", { cta: st.cls !== "closed" }) : ""}
     <p class="lede">${esc(h.summary)}</p>
   </div>
-  ${String(h.summary || "").length >= 60 ? adSlot("hi-job-top") : ""}
+  ${String(h.summary || "").length >= 100 ? adSlot("hi-job-top") : ""}
   ${(h.overview || []).length ? `<div class="prose"><h2 class="section-h">भर्ती की जानकारी</h2>${h.overview.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
   <h2 class="section-h">महत्वपूर्ण विवरण</h2>
   <div class="spec"><dl>

@@ -63,6 +63,13 @@ object Reminders {
 
     /** 7 PM IST the day before [date] and 8 AM on the day. [label]: what the notice is ("Admit card", "Exam"…) in the
         app's language; the reminder says only that its date is tomorrow / today, not what happens on it. */
+    /** Whether an event reminder can still come: 7 PM IST the day before or 8 AM IST on the day is still ahead. */
+    fun canRemind(date: String): Boolean {
+        val day: LocalDate = Dates.parse(date) ?: return false
+        val now = java.time.ZonedDateTime.now(Dates.IST)
+        return java.time.ZonedDateTime.of(day, java.time.LocalTime.of(8, 0), Dates.IST).isAfter(now)
+    }
+
     fun scheduleEvent(context: Context, key: String, title: String, label: String, date: String) {
         val day: LocalDate = Dates.parse(date) ?: return
         val wm = WorkManager.getInstance(context)

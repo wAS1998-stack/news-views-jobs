@@ -255,8 +255,9 @@ fun Status.isClosed(): Boolean = this == Status.CLOSED || this == Status.CANCELL
 
 fun JobItem.status(): Status {
     if (ns == "cancelled") return Status.CANCELLED
-    if (ns == "postponed") return Status.POSTPONED      // the old dates no longer apply
-    val d = Dates.daysLeft(en) ?: return Status.OPEN
+    val left = Dates.daysLeft(en)
+    if (ns == "postponed") return if (left != null && left < 0) Status.CLOSED else Status.POSTPONED   // past its date it is simply closed
+    val d = left ?: return Status.OPEN
     return when {
         d < 0 -> Status.CLOSED
         d <= 7 -> Status.SOON

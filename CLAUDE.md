@@ -61,13 +61,30 @@ hurting users or breaking Google's policies.
 - A last date before publication is either a closed notice (skip it) or the extraction template "1–31 January" (drop the
   dates). Closed jobs never show an Apply button, are never pushed or posted to Telegram.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
+  Retiring a record = add the English AND Hindi redirect AND remove it from jobs.json/updates.json (the build ignores a
+  redirect while the page still exists). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
+  move to `data/updates-archive.json` via `L.saveUpdates` and their pages stay live.
+- **IDs and twins:** ids keep stage numbers (`group-4`, `cbt-2`, roman → arabic; `node fetch-jobs.js --self-test`); an id
+  taken by a different recruitment gets `distinctId`, never a silent drop; `legacySlug` only recognises old listings.
+  Twin rules live in `lib.js` `isDuplicate`/`isDupUpdate` (shared by fetch and watch): a shared notice counts only if it
+  is a PDF, of the same body family (one side bare: "RRB" vs "RRB Ahmedabad", never "AIIMS Patna" vs "AIIMS Bhopal"),
+  with overlapping posts; updates also need the same type and stage. `tools-dev/dedupe.js` merges strict twins (dry run;
+  `--write`). Items rejected after the AI read them are remembered 14 days in `data/fetch-skipped.json` (no repeat AI cost).
+- **Cancelled/postponed recruitments:** a matching cancellation notice (same year, exactly one job) sets `notice_status`,
+  `status_note`, `status_link`; the job stays live as a page with a red banner, loses JobPosting and its Apply button.
+- **Filters:** `OFF_TOPIC` also rejects board/professional exams (ICAI/CA/CS/CMA, NIOS, MSBTE, Madhyamik, class 6–12
+  boards, JNVST) unless the headline has any recruitment word; speculative "expected/soon/release date" updates need an
+  official PDF or deep link. `qualsOf` returns `[]` for unknown (any qualification; push routes it to `q-graduate`).
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
   logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits. Cloudflare
   reads only the LAST commit of a push: if a push carries site changes, its last commit must not have the skip flag
   (a skip-flagged last commit silently leaves the earlier site changes undeployed until the next unflagged push), and a
   push that changes only docs such as CLAUDE.md is not built either — the "Cloudflare Pages" check on the commit shows it.
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
-  pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason.
+  pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason. AI
+  "-explained" analysis twins are off (`maxAnalysisPerRun` 0); existing ones are noindex with a self canonical (never
+  noindex + a cross-page canonical) and out of all sitemaps. Indexing API: `ping-google.js` keeps
+  `data/indexing-state.json` (200/day IST budget, new → changed incl. cancellations → backlog → deleted; `--plan`).
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
   incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back"; the
   app-open ad only on returning after ≥15 min away (`appOpenAway`), ≤1 per 4 h (`appOpenGap`), never on a cold start, the
@@ -105,6 +122,25 @@ hurting users or breaking Google's policies.
   The privacy policy lists the networks automatically. Website: `adsTxtExtra` (ads.txt lines) and `webAdsHead`
   (a partner's script, e.g. a header-bidding / Ad Manager partner) are ready for other web ad partners.
 - Code: `android/app/src/main/java/com/newsviews/app/ads/Ads.kt` (consent via Google UMP, banners, interstitial).
+- Website ad keys (`adsenseSlots`, each falls back to `adsenseSlot`): `job-top`, `job-mid`, `job-end`, `update-mid`,
+  `quiz-end`, `guide-inline`, `news-inline`, `list-inline`, `tool-result`. Rule: always at least one content block
+  between an ad and any Apply/Download/Start/Calculate button. App: page natives alternate `detail-a`/`detail-b`; the
+  interstitial page count and gap persist across restarts; ad requests carry the page URL where known.
+
+## App feed and push (what old and new app versions read)
+- Additive feed fields since Nov 6: index job `m` (apply mode), `ns` (cancelled|postponed); top-level `contact`,
+  `minVersion` (config `appMinVersion`; above 0 shows older apps an "Update required" screen — use only for a breaking
+  bug); detail `src_host`, `upd`, `notice_status`, `status_note`, `status_link`.
+- Push topics added: `quiz` (daily quiz after 8 AM IST, follows the job-alert choice unless set) and `sv-<jobId>` (saved
+  jobs: "New last date" when it moves; `en:<id>` in pushed.json). Every message has a TTL and collapse key; an item is
+  marked sent only after a successful send; "Result declared" only when the headline says so.
+- App strings added since Nov 6 live in `ui/MoreStrings.kt` (`Strings.x`). Search: `data/Search.kt` (typed words by
+  word start; synonyms and two-word phrases exact via indexed word pairs).
+- Store screenshots: `android/ci/screens/store-*.jpg` (1080×2160, no alpha, no ads) from every Android CI run;
+  `last-build.txt` ends with an "emulator crash:" line. Play listing copy (en-IN + hi-IN): `android/store/listing.md`.
+- Content sourcing: `INDIA_RELAY_URL` secret / `indiaRelayUrl` config is tried first by the fetchers;
+  `tools-dev/india-relay.js` is the server for an India-based host (the owner's cost decision). Tests: `npm test`
+  (node:test, `test/*.test.js`, run by `.github/workflows/test.yml`).
 
 ## Working in Claude's cloud sandbox
 - Maven/Google/Gradle repos are blocked, so the **app can only be built in GitHub Actions**: push, then read

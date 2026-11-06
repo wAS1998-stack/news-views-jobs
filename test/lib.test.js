@@ -60,8 +60,8 @@ test("linkKind / applyInfo: a homepage is never an Apply link", () => {
 });
 
 test("isDuplicate: one notice PDF is one recruitment; different advertisement numbers never are", () => {
-  const a = { id: "a", title: "A", organization: "Org One", official_notification: "https://x.gov.in/advt-05-2026.pdf", published: "2026-11-01" };
-  const b = { id: "b", title: "B", organization: "Another Name", official_notification: "https://x.gov.in/advt-05-2026.pdf", published: "2026-11-03" };
+  const a = { id: "a", title: "A", organization: "Staff Selection Commission", org_short: "SSC", official_notification: "https://x.gov.in/advt-05-2026.pdf", published: "2026-11-01" };
+  const b = { id: "b", title: "B", organization: "Staff Selection Commission (SSC)", org_short: "SSC", official_notification: "https://x.gov.in/advt-05-2026.pdf", published: "2026-11-03" };
   assert.strictEqual(L.isDuplicate(b, [a]), a);
   assert.strictEqual(L.isDuplicate({ ...b, advt_no: "06/2026" }, [{ ...a, advt_no: "05/2026" }]), null);
   // a generic careers page is not a notice
@@ -71,6 +71,32 @@ test("isDuplicate: one notice PDF is one recruitment; different advertisement nu
   const e = { id: "e", organization: "Staff Selection Commission", org_short: "SSC", total_vacancies: 120, application_end: "2026-12-01", post_name: "Stenographer Grade C", published: "2026-11-01" };
   const f = { id: "f", organization: "Staff Selection Commission", org_short: "SSC", total_vacancies: 118, application_end: "2026-12-01", post_name: "Stenographer Grade C and D", published: "2026-11-10" };
   assert.strictEqual(L.isDuplicate(f, [e]), e);
+  // review cases: different institutes of one family, and one PDF announcing unrelated posts of different bodies
+  const p = { id: "p", organization: "AIIMS Patna", org_short: "AIIMS Patna", total_vacancies: 40, application_end: "2026-12-01", post_name: "Senior Resident", published: "2026-11-01" };
+  const q = { id: "q", organization: "AIIMS Bhopal", org_short: "AIIMS Bhopal", total_vacancies: 35, application_end: "2026-12-01", post_name: "Senior Resident", published: "2026-11-02" };
+  assert.strictEqual(L.isDuplicate(q, [p]), null);
+});
+
+test("isDupUpdate: one login page serves different updates; the same PDF of the same kind is one update", () => {
+  const ak = { id: "ak", type: "answer-key", title: "GSSSB Lab Assistant Answer Key 2026", official_link: "https://g.tcsion.com/login", date: "2026-11-01" };
+  const ad = { id: "ad", type: "admit-card", title: "GSSSB Lab Assistant Admit Card 2026", official_link: "https://g.tcsion.com/login", date: "2026-11-03" };
+  assert.strictEqual(L.isDupUpdate(ad, [ak]), false);
+  const r1 = { id: "r1", type: "result", title: "BSF HC Result 2026", official_link: "https://bsf.gov.in/res-2026.pdf", date: "2026-11-01" };
+  const r2 = { id: "r2", type: "result", title: "BSF HC Result 2026 Out – Download PDF", official_link: "https://bsf.gov.in/res-2026.pdf", date: "2026-11-02" };
+  assert.strictEqual(L.isDupUpdate(r2, [r1]), true);
+  const ak2 = { ...ad, official_link: "https://bsf.gov.in/res-2026.pdf" };
+  assert.strictEqual(L.isDupUpdate(ak2, [r1]), false);
+});
+
+test("OFF_TOPIC keeps recruitments that mention board exams, rejects the exams themselves", () => {
+  for (const t of ["WBSSC SLST Class 9-10 Result 2026", "WBSSC Group D Recruitment 2026 – Madhyamik Pass", "Indian Navy Agniveer SSR (Class 12) Notification 2026",
+    "Assistant Director Vacancy at NIOS 2026", "Executive Assistant Vacancy in ICAI 2026", "Osmania University Assistant Professor Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), false, t);
+  for (const t of ["CA Inter Results 2026 Out ICAI", "NIOS Hall Ticket 2026 Out - Download Class 10 & 12", "MSBTE Hall Ticket 2026 Out", "JNVST Class 6 Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), true, t);
+});
+
+test("matchNoticeStatus: an old year's cancellation never cancels this year's recruitment", () => {
+  const job = { id: "bp", title: "Bihar Police Constable Recruitment 2026", organization: "Bihar Police", org_short: "CSBC", post_name: "Constable", published: "2026-10-01" };
+  assert.strictEqual(L.matchNoticeStatus({ title: "Bihar Police Constable Recruitment 2019 Cancelled", date: "2026-11-01" }, [job]), null);
 });
 
 test("isDupUpdate: roman numerals equal arabic ones", () => {
