@@ -150,6 +150,9 @@ object Ads {
             try { _config.value = json.decodeFromString(AdsConfig.serializer(), s); configKnown = true } catch (_: Exception) { }
         }
         installedAt = try { ctx.packageManager.getPackageInfo(ctx.packageName, 0).firstInstallTime } catch (e: Exception) { System.currentTimeMillis() }
+        // the full-screen caps survive a restart: pages read since the last one, and when it was shown (wall clock)
+        pagesSince = p.getInt("pagesSince", 0)
+        lastShownWall = p.getLong("lastFullScreen", 0L)
         // purchases are restored from Play whenever a product id is known — whatever the "pro" sales switch says
         if (configKnown && _config.value.proProduct.isNotBlank()) Billing.start(ctx, _config.value.proProduct)
     }
@@ -243,7 +246,9 @@ object Ads {
         preloadAppOpen(ctx)
         preloadNative(ctx, "jobs")
         preloadNative(ctx, "updates")
-        preloadNative(ctx, "detail")
+        // pages: only a first ad for detail-a (detail-b loads when a page opens, see detailSlot). A page's ad is never
+        // replaced from here: returning to the app on a job page (after Apply) must not swap the ad under the reader
+        if (nativeSlots["detail-a"]?.ad == null) preloadNative(ctx, "detail-a")
     }
 
     /* ---- no-fill retries: 15 s, 30 s, 1 min … up to 10 min, one pending retry per format. Until that time no other
@@ -269,7 +274,11 @@ object Ads {
 
     private fun fullScreenCallback(key: String, ctx: Context, reload: (Context) -> Unit) = object : FullScreenContentCallback() {
         override fun onAdDismissedFullScreenContent() { _fullScreen.value = false; reload(ctx) }
-        override fun onAdFailedToShowFullScreenContent(error: AdError) { _fullScreen.value = false; Log.w(TAG, "$key show: ${error.message}"); reload(ctx) }
+        override fun onAdFailedToShowFullScreenContent(error: AdError) {
+            _fullScreen.value = false; Log.w(TAG, "$key show: ${error.message}")
+            Stats.nonFatal(IllegalStateException("$key failed to show: ${error.code} ${error.message}"), "ad_show")
+            reload(ctx)
+        }
     }
 
     /* ---- interstitial: only on the way back from a page to a list ---- */
@@ -277,8 +286,17 @@ object Ads {
     private var interstitialAt = 0L
     private var loading = false
     private var pagesSince = 0
-    private var lastShown = 0L
-    private val appStart = SystemClock.elapsedRealtime()
+    /** When the last full-screen ad was shown (wall clock, saved — the gap holds across restarts). */
+    private var lastShownWall = 0L
+    private val appStart = SystemClock.elapsedRealtime()     // the first-minute rule counts per process start
+
+    /** At least [ms] since the last full-screen ad (a clock set backwards does not block ads for good). */
+    private fun gapPassed(ms: Long): Boolean { val d = System.currentTimeMillis() - lastShownWall; return d < 0 || d >= ms }
+
+    private fun markFullScreen(ctx: Context) {
+        lastShownWall = System.currentTimeMillis()
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("lastFullScreen", lastShownWall).putInt("pagesSince", pagesSince).apply()
+    }
     /** Debug-only: show the next full-screen ad regardless of the caps (used by the CI screenshots). */
     var forceNext = false
 
@@ -294,7 +312,10 @@ object Ads {
     }
 
     /** A job or result page was opened. */
-    fun pageOpened() { pagesSince++ }
+    fun pageOpened() {
+        pagesSince++
+        app?.getSharedPreferences(PREFS, Context.MODE_PRIVATE)?.edit()?.putInt("pagesSince", pagesSince)?.apply()
+    }
 
     /** The user went back from a page to a list: a natural break, the only place a full-screen ad may appear. Returns true if one is shown. */
     fun backFromPage(activity: Activity): Boolean {
@@ -302,7 +323,7 @@ object Ads {
         val c = _config.value
         val now = now()
         val due = forceNext || (c.interstitial && pagesSince >= c.every.coerceAtLeast(1) &&
-            now - lastShown >= c.gap.coerceAtLeast(60) * 1000L && now - appStart >= 60_000L)
+            gapPassed(c.gap.coerceAtLeast(60) * 1000L) && now - appStart >= 60_000L)
         val ad = interstitial?.takeIf { now - interstitialAt < MAX_AGE }
         Log.i(TAG, "back from page: due=$due loaded=${ad != null} pages=$pagesSince")
         if (!due || ad == null || activity.isFinishing || activity.isDestroyed) { preload(activity); return false }
@@ -310,7 +331,7 @@ object Ads {
         interstitial = null
         ad.fullScreenContentCallback = fullScreenCallback("interstitial", activity.applicationContext) { preload(it) }
         pagesSince = 0
-        lastShown = now
+        markFullScreen(activity)
         _fullScreen.value = true
         ad.show(activity)
         return true
@@ -413,14 +434,14 @@ object Ads {
         val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val c = _config.value
         val allowed = forceAppOpen || (on() && c.appOpen && wall - installedAt >= 24 * 3_600_000L &&
-            wall - p.getLong("appOpenShown", 0L) >= c.appOpenGap.coerceAtLeast(3600) * 1000L && now - lastShown >= 60_000L)
+            wall - p.getLong("appOpenShown", 0L) >= c.appOpenGap.coerceAtLeast(3600) * 1000L && gapPassed(60_000L))
         val fresh = ad != null && now - appOpenAt < 4 * 3_600_000L
         if (!pending || !allowed || !fresh || _fullScreen.value || activity.isFinishing || activity.isDestroyed) return
         forceAppOpen = false
         appOpenAd = null
         ad!!.fullScreenContentCallback = fullScreenCallback("app-open", activity.applicationContext) { preloadAppOpen(it) }
         p.edit().putLong("appOpenShown", wall).apply()
-        lastShown = now            // counts towards the interstitial's gap too: never two full-screen ads close together
+        markFullScreen(activity)   // counts towards the interstitial's gap too: never two full-screen ads close together
         Stats.event(activity, "app_open_ad")
         Log.i(TAG, "app-open shown")
         _fullScreen.value = true
@@ -435,13 +456,16 @@ object Ads {
     /** Bumps whenever a native ad arrives, so the list card recomposes. */
     val nativeVersion: StateFlow<Int> = _nativeVersion.asStateFlow()
 
-    /** Loads (or refreshes) the native ad for [slot] ("jobs", "updates") when it is missing, old, or already seen. */
-    fun preloadNative(ctx: Context, slot: String) {
+    /** Loads (or refreshes) the native ad for [slot] ("jobs", "updates", "detail-a"…) when it is missing, old, or already
+        seen. [contentUrl]: the page the reader is on (contextual targeting), when known. */
+    fun preloadNative(ctx: Context, slot: String, contentUrl: String? = null) {
         val c = _config.value
         if (!_ready.value || !configKnown || !on() || !c.nativeAds || BuildConfig.AD_NATIVE.isBlank()) return
         val s = nativeSlots.getOrPut(slot) { NativeSlot() }
         val now = now()
-        val needed = s.ad == null || now - s.at > MAX_AGE || (s.seen > 0 && now - s.seen > 120_000L)
+        // a page's ad is replaced as soon as it has been seen (each page view gets a fresh one); a list's after 2 minutes
+        val minSeen = if (slot.startsWith("detail")) 10_000L else 120_000L
+        val needed = s.ad == null || now - s.at > MAX_AGE || (s.seen > 0 && now - s.seen > minSeen)
         if (!needed || s.loading || backingOff("native-$slot")) return
         s.loading = true
         AdLoader.Builder(ctx.applicationContext, BuildConfig.AD_NATIVE)
@@ -462,8 +486,37 @@ object Ads {
             })
             .withNativeAdOptions(NativeAdOptions.Builder().setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT).build())
             .build()
-            .loadAd(AdRequest.Builder().build())
+            .loadAd(adRequest(contentUrl))
     }
+
+    /** An ad request, with the page's URL for contextual targeting when known (the SDK accepts up to 512 characters). */
+    fun adRequest(contentUrl: String? = null): AdRequest {
+        val b = AdRequest.Builder()
+        val u = contentUrl?.trim().orEmpty()
+        if (u.startsWith("https://") && u.length <= 512) try { b.setContentUrl(u) } catch (_: Exception) { }
+        return b.build()
+    }
+
+    /* ---- the native ad at the end of job / result pages: two slots used in turn, so every page view shows an ad that
+       has not been seen yet while the other one loads for the next page ---- */
+    private var lastDetail = "detail-b"
+
+    private fun freshUnseen(slot: String): Boolean = nativeSlots[slot]?.let { it.ad != null && it.seen == 0L && now() - it.at < MAX_AGE } == true
+
+    /** The slot the page being opened shows: the one holding an unseen ad (preferring the other one than last time). */
+    fun detailSlot(): String {
+        val a = freshUnseen("detail-a")
+        val b = freshUnseen("detail-b")
+        val pick = when {
+            a && !b -> "detail-a"
+            b && !a -> "detail-b"
+            else -> otherDetailSlot(lastDetail)
+        }
+        lastDetail = pick
+        return pick
+    }
+
+    fun otherDetailSlot(slot: String): String = if (slot == "detail-a") "detail-b" else "detail-a"
 
     /** The loaded native ad for [slot], or null (none yet, ads off, or older than an hour — then it is hidden). */
     fun nativeAd(slot: String): NativeAd? {
@@ -561,18 +614,18 @@ private fun standardAnchored(ctx: Context, width: Int): AdSize = AdSize.getCurre
 /** One in-content unit on job and result pages, labelled, with its 250 dp kept from the first frame so the page never
     jumps under the reader's finger when it arrives (the space closes only if no ad fills). */
 @Composable
-fun InlineAd(label: String) {
+fun InlineAd(label: String, contentUrl: String? = null) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
     val off = Ads.adsOff()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.inline || BuildConfig.AD_INLINE.isBlank() || off) return
-    AdBox(BuildConfig.AD_INLINE, { AdSize.MEDIUM_RECTANGLE }, label = label, modifier = Modifier.padding(top = 18.dp))
+    AdBox(BuildConfig.AD_INLINE, { AdSize.MEDIUM_RECTANGLE }, label = label, modifier = Modifier.padding(top = 18.dp), contentUrl = contentUrl)
 }
 
 /** One native ad inside a list, styled like the cards around it but labelled, with Google's AdChoices mark. Shown only
     once an ad is loaded (it is preloaded when the app starts, long before the reader scrolls to it). */
 @Composable
-fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier, preloadNext: String? = null) {
+fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier, preloadNext: String? = null, contentUrl: String? = null) {
     val ready by Ads.ready.collectAsStateWithLifecycle()
     val cfg by Ads.config.collectAsStateWithLifecycle()
     val off = Ads.adsOff()
@@ -581,7 +634,7 @@ fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier, pre
     val ad = remember(version, slot) { Ads.nativeAd(slot) } ?: return
     if (preloadNext != null) {
         val ctx = LocalContext.current
-        LaunchedEffect(preloadNext) { Ads.preloadNative(ctx, preloadNext) }   // the next card down the list
+        LaunchedEffect(preloadNext) { Ads.preloadNative(ctx, preloadNext, contentUrl) }   // the next card down the list
     }
     val fg = MaterialTheme.colorScheme.onSurface.toArgb()
     val muted = MaterialTheme.colorScheme.onSurfaceVariant.toArgb()
@@ -646,7 +699,7 @@ private fun bindNative(v: NativeAdView, ad: NativeAd, fg: Int, muted: Int) {
 }
 
 @Composable
-private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier, key: Any? = null) {
+private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modifier: Modifier = Modifier, key: Any? = null, contentUrl: String? = null) {
     val ctx = LocalContext.current
     val density = LocalDensity.current
     var loaded by remember(unit, key) { mutableStateOf(false) }
@@ -662,7 +715,7 @@ private fun AdBox(unit: String, size: (Context) -> AdSize, label: String?, modif
                 override fun onAdFailedToLoad(error: LoadAdError) { if (!loaded) failed = true; Log.i(Ads.TAG, "inline failed ${error.code}: ${error.message}") }
             }
             Log.i(Ads.TAG, "inline request ${adSize.width}x$heightDp")
-            loadAd(AdRequest.Builder().build())
+            loadAd(Ads.adRequest(contentUrl))
         }
     }
     DisposableEffect(view) { onDispose { view.destroy() } }

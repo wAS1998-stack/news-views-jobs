@@ -13,12 +13,15 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.newsviews.app.BuildConfig
+import com.newsviews.app.Stats
+import com.newsviews.app.ads.Ads
 import java.time.LocalDate
 
 /**
  * Google Play's own rating sheet and update download. Both do nothing in copies not installed from Play (the debug
- * APK). The rating sheet is asked for only after real use — at least 6 job/result pages opened on 3 different days —
- * at most once every 90 days, at a natural break (back to the list), and Google applies its own quota on top.
+ * APK). The rating sheet is asked for only at a good moment — a quiz score of 7 or more, the second saved job with
+ * reminders on, coming back after tapping Apply — and only after real use (3 pages on 2 different days), at most once
+ * every 90 days, never over a full-screen ad; Google applies its own quota on top.
  */
 object PlayPrompts {
     private const val TAG = "NVPlay"
@@ -32,13 +35,30 @@ object PlayPrompts {
         e.apply()
     }
 
-    /** Back on a list after reading pages: maybe show Play's "rate this app" sheet (it appears over the app; no redirect). */
-    fun maybeAskReview(activity: Activity) {
-        if (BuildConfig.DEBUG) return
+    /** The Apply button was tapped (it opens the official site): coming back a little later is a good moment. */
+    fun applyTapped(ctx: Context) {
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("applyAt", System.currentTimeMillis()).apply()
+    }
+
+    /** Activity onResume: back from the official site 20 seconds to 30 minutes after an Apply tap. */
+    fun onResume(activity: Activity) {
+        val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val at = p.getLong("applyAt", 0L)
+        if (at == 0L) return
+        val away = System.currentTimeMillis() - at
+        if (away < 20_000L) return
+        p.edit().remove("applyAt").apply()
+        if (away <= 30 * 60_000L) positiveMoment(activity, "apply_return")
+    }
+
+    /** A positive moment ([reason] for Analytics): maybe show Play's "rate this app" sheet (it appears over the app). */
+    fun positiveMoment(activity: Activity, reason: String) {
+        if (BuildConfig.DEBUG || Ads.fullScreen.value || activity.isFinishing || activity.isDestroyed) return
         val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val now = System.currentTimeMillis()
-        if (p.getInt("pages", 0) < 6 || p.getInt("days", 0) < 3 || now - p.getLong("askedAt", 0) < 90L * 86_400_000) return
+        if (p.getInt("pages", 0) < 3 || p.getInt("days", 0) < 2 || now - p.getLong("askedAt", 0) < 90L * 86_400_000) return
         p.edit().putLong("askedAt", now).apply()
+        Stats.event(activity, "review_prompt", "reason" to reason)
         val manager = ReviewManagerFactory.create(activity)
         manager.requestReviewFlow().addOnCompleteListener(activity) { task ->
             if (task.isSuccessful && !activity.isFinishing && !activity.isDestroyed) manager.launchReviewFlow(activity, task.result)

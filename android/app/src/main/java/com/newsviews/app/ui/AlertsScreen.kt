@@ -135,6 +135,7 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
     val adFreeUntil by Ads.adFreeUntil.collectAsStateWithLifecycle()
     val isPro by Ads.pro.collectAsStateWithLifecycle()
     val proPrice by Billing.price.collectAsStateWithLifecycle()
+    val idx by vm.index.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         if (!granted) {
             Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
@@ -157,6 +158,8 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
                 HorizontalDivider()
                 ToggleRow(s.digest, s.digestHint, st.digest) { vm.setDigest(it) }
             }
+            HorizontalDivider()
+            ToggleRow(s.x.quizAlerts, s.x.quizAlertsHint, st.quizAlerts) { vm.setQuizAlerts(it); if (it && !granted) fixNotifications() }
         }
         Group {
             Text(s.following, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
@@ -220,6 +223,11 @@ fun AlertsScreen(vm: MainViewModel, s: Strings) {
         Group {
             Text(s.about, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 10.dp))
             TextButton(onClick = { openPlayListing(ctx) }) { Text(s.rate) }
+            TextButton(onClick = {
+                com.newsviews.app.Stats.event(ctx, "feedback")
+                val to = supportEmail(idx?.contact)
+                emailDraft(ctx, to, s.x.feedbackSubject, s.x.feedbackBody(BuildConfig.VERSION_NAME, idx?.built?.ifBlank { null } ?: "-"), s.x.noEmailApp(to))
+            }) { Text(s.x.sendFeedback) }
             TextButton(onClick = { shareText(ctx, s.shareText, APP_PAGE) }) { Text(s.shareApp) }
             TextButton(onClick = { openUrl(ctx, BuildConfig.SITE + "/privacy-policy/") }) { Text(s.privacy) }
             if (adPrivacy) TextButton(onClick = { ctx.findActivity()?.let { Ads.showPrivacyOptions(it) } }) { Text(s.adPrivacy) }
@@ -269,12 +277,18 @@ fun DobDialog(s: Strings, current: String, onDismiss: () -> Unit, onPick: (Strin
     }
 }
 
-/** First launch: pick language, states and qualification, then allow notifications. */
+/** First launch: pick language, states and qualification, then allow notifications. Continue and Skip sit in a bar fixed
+    at the bottom, so they are always in reach however long the state list is. */
 @Composable
 fun Onboarding(vm: MainViewModel, s: Strings) {
+    val ctx = LocalContext.current
     val st by vm.settings.collectAsStateWithLifecycle()
     val askPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { vm.finishOnboarding() }
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(20.dp)) {
+    // Android 13+: both buttons ask for the notification permission once (the system shows its dialog at most this time
+    // from here; the answer, yes or no, finishes the welcome screen)
+    val needsPermission = Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+    Column(Modifier.fillMaxSize()) {
+    Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(20.dp)) {
         androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(com.newsviews.app.R.drawable.ic_brand), null,
             modifier = Modifier.padding(top = 8.dp, bottom = 14.dp).size(64.dp))
         Text(s.welcome, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
@@ -297,10 +311,16 @@ fun Onboarding(vm: MainViewModel, s: Strings) {
         StatePicker(vm, st.hindi, st.states, s.allStates, st.central, s.central)
         Text(s.myQual, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 18.dp))
         QualPicker(vm, st.hindi, st.qual)
-        Button(onClick = {
-            if (Build.VERSION.SDK_INT >= 33) askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) else vm.finishOnboarding()
-        }, modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) { Text(s.continueBtn) }
-        TextButton(onClick = { vm.finishOnboarding() }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(s.skip) }
         Text(s.disclaimer, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 12.dp))
+    }
+    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+    Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)) {
+        Button(onClick = {
+            if (needsPermission) askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) else vm.finishOnboarding()
+        }, modifier = Modifier.fillMaxWidth()) { Text(s.continueBtn) }
+        TextButton(onClick = {
+            if (needsPermission) askPermission.launch(Manifest.permission.POST_NOTIFICATIONS) else vm.finishOnboarding()
+        }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(s.skip) }
+    }
     }
 }

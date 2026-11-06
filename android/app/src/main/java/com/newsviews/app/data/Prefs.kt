@@ -46,6 +46,10 @@ data class Settings(
     val dob: String = "",                     // date of birth, yyyy-mm-dd — kept only on the phone
     val category: String = "gen",             // gen | obc | scst — for upper-age relaxation
     val quizDays: Set<String> = emptySet(),   // yyyy-mm-dd of each daily quiz finished (only the last 60 are kept)
+    val quizAlerts: Boolean = true,           // the morning "today's quiz is out" notification (topic "quiz")
+    val tracked: Set<String> = emptySet(),    // "Remind me" on results / exam dates: "u:<updateId>" or "x:<jobId>" (a job's exam date)
+    val applied: Set<String> = emptySet(),    // saved jobs the person marked as applied (no more last-date reminders)
+    val quizScores: Map<String, String> = emptyMap(),   // quiz date (yyyy-mm-dd) -> "7/10", the last 60
 ) {
     /** Days in a row with a finished quiz, ending today (or yesterday, so the streak survives until tonight). */
     fun quizStreak(today: java.time.LocalDate = Dates.today()): Int {
@@ -86,6 +90,10 @@ class Prefs(private val context: Context) {
         val quizDays = stringSetPreferencesKey("quizDays")
         val dob = stringPreferencesKey("dob")
         val category = stringPreferencesKey("category")
+        val quizAlerts = booleanPreferencesKey("quizAlerts")
+        val tracked = stringSetPreferencesKey("tracked")
+        val applied = stringSetPreferencesKey("applied")
+        val quizScores = stringSetPreferencesKey("quizScores")   // "yyyy-mm-dd=7/10"
     }
 
     val flow: Flow<Settings> = context.store.data.catch { e -> if (e is IOException) emit(emptyPreferences()) else throw e }.map { p ->
@@ -105,6 +113,10 @@ class Prefs(private val context: Context) {
             quizDays = p[K.quizDays] ?: emptySet(),
             dob = p[K.dob] ?: "",
             category = p[K.category] ?: "gen",
+            quizAlerts = p[K.quizAlerts] ?: true,
+            tracked = p[K.tracked] ?: emptySet(),
+            applied = p[K.applied] ?: emptySet(),
+            quizScores = (p[K.quizScores] ?: emptySet()).mapNotNull { e -> e.split('=', limit = 2).takeIf { it.size == 2 }?.let { it[0] to it[1] } }.toMap(),
         )
     }
 
@@ -125,6 +137,34 @@ class Prefs(private val context: Context) {
     suspend fun quizDone(date: String) = context.store.edit {
         it[K.quizDays] = ((it[K.quizDays] ?: emptySet()) + date).sortedDescending().take(60).toSet()
     }
+    suspend fun setQuizAlerts(v: Boolean) = context.store.edit { it[K.quizAlerts] = v }
+    /** The score of the quiz of [quizDate] (the first try counts; replaying keeps the first score). */
+    suspend fun quizScore(quizDate: String, score: String) = context.store.edit {
+        val cur = it[K.quizScores] ?: emptySet()
+        if (cur.none { e -> e.startsWith("$quizDate=") }) it[K.quizScores] = (cur + "$quizDate=$score").sortedDescending().take(60).toSet()
+    }
+    /** Adds or removes a "Remind me" key ("u:<id>" / "x:<id>"); returns true when it is now tracked. */
+    suspend fun toggleTracked(key: String): Boolean {
+        var now = false
+        context.store.edit {
+            val cur = it[K.tracked] ?: emptySet()
+            now = key !in cur
+            it[K.tracked] = if (now) cur + key else cur - key
+        }
+        return now
+    }
+    suspend fun setTracked(v: Set<String>) = context.store.edit { it[K.tracked] = v }
+    /** Marks a saved job as applied (or not); returns true when it is now marked. */
+    suspend fun toggleApplied(id: String): Boolean {
+        var now = false
+        context.store.edit {
+            val cur = it[K.applied] ?: emptySet()
+            now = id !in cur
+            it[K.applied] = if (now) cur + id else cur - id
+        }
+        return now
+    }
+    suspend fun dropApplied(id: String) = context.store.edit { it[K.applied] = (it[K.applied] ?: emptySet()) - id }
     suspend fun toggleFollow(org: String) = context.store.edit {
         val cur = it[K.follows] ?: emptySet()
         val match = cur.firstOrNull { f -> orgSlug(f) == orgSlug(org) }

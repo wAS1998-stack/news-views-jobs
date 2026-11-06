@@ -29,6 +29,28 @@ object Stats {
         } catch (_: Exception) { }
     }
 
+    /** A problem worth knowing about that did not crash the app (Crashlytics "non-fatal"), tagged with where it happened. */
+    fun nonFatal(t: Throwable, where: String) {
+        if (!BuildConfig.HAS_FIREBASE) return
+        try {
+            val c = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance()
+            c.setCustomKey("where", where)
+            c.recordException(t)
+        } catch (_: Exception) { }
+    }
+
+    /** Context attached to every later crash report: which feed the app had, its size, the language and Pro. */
+    fun crashKeys(feedBuilt: String, feedJobs: Int, hindi: Boolean, pro: Boolean) {
+        if (!BuildConfig.HAS_FIREBASE) return
+        try {
+            val c = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance()
+            c.setCustomKey("feed_built", feedBuilt)
+            c.setCustomKey("feed_jobs", feedJobs)
+            c.setCustomKey("lang", if (hindi) "hi" else "en")
+            c.setCustomKey("pro", pro)
+        } catch (_: Exception) { }
+    }
+
     /** A purchase with its value, so Pro revenue sits next to ad revenue in Analytics. */
     fun purchase(ctx: Context, item: String, value: Double, currency: String) {
         if (!BuildConfig.HAS_FIREBASE) return

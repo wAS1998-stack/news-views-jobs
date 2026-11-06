@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -22,6 +24,9 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -52,7 +57,8 @@ import com.newsviews.app.ads.RefreshNative
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.data.AppIndex
 import com.newsviews.app.data.Builtin
-import com.newsviews.app.data.Status
+import com.newsviews.app.data.SearchIndex
+import com.newsviews.app.data.isClosed
 import com.newsviews.app.data.status
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -89,6 +95,23 @@ private fun Dropdown(label: String, selected: Boolean, options: List<Named>, onP
     }
 }
 
+/** A search box that owns its text: a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards,
+    so the typed text lives here and is only copied into the filters. [rev] changes only when the app itself sets the
+    query (a news-views.in organisation link): then the box takes the new text. */
+@Composable
+private fun SearchBox(initial: String, rev: Int, placeholder: String, clearLabel: String, onChange: (String) -> Unit) {
+    var query by rememberSaveable(rev) { mutableStateOf(initial) }
+    OutlinedTextField(
+        value = query, onValueChange = { query = it; onChange(it) },
+        placeholder = { Text(placeholder) }, singleLine = true,
+        leadingIcon = { Icon(Icons.Filled.Search, null) },
+        trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = ""; onChange("") }) { Icon(Icons.Filled.Clear, clearLabel) } },
+        shape = RoundedCornerShape(14.dp),
+        colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = MaterialTheme.colorScheme.surface, focusedContainerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+    )
+}
+
 @Composable
 fun StatusLine(idx: AppIndex?, error: Boolean, s: Strings, hindi: Boolean, count: Int?, onRetry: () -> Unit) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -102,16 +125,33 @@ fun StatusLine(idx: AppIndex?, error: Boolean, s: Strings, hindi: Boolean, count
     }
 }
 
+/** "Remove ads for good" — shown in the list whenever Play has a price for Pro, also when no rewarded video is loaded. */
+@Composable
+private fun ProCard(s: Strings, price: String, onBuy: () -> Unit) {
+    com.newsviews.app.LogOnce("pro_offer_view", "list")
+    Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer), modifier = Modifier.fillMaxWidth()) {
+        Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(s.proTitle, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSecondaryContainer)
+                Text(s.proHint(price), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.padding(top = 2.dp))
+            }
+            Spacer(Modifier.width(12.dp))
+            Button(onClick = onBuy) { Text(s.proButton) }
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onOpen: (String) -> Unit) {
+fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onQuizzes: () -> Unit = {}, onOpen: (String) -> Unit) {
     val idx by vm.index.collectAsStateWithLifecycle()
+    val search by vm.search.collectAsStateWithLifecycle()
     val loading by vm.loading.collectAsStateWithLifecycle()
     val error by vm.error.collectAsStateWithLifecycle()
     val f by vm.filters.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
     val hindi = settings.hindi
-    val list = remember(idx, f, settings) { idx?.let { vm.visibleJobs(it, f, settings) } ?: emptyList() }
+    val list = remember(idx, f, settings, search) { idx?.let { vm.visibleJobs(it, f, settings, search) } ?: emptyList() }
     val listState = rememberLazyListState()
     var dobDialog by remember { mutableStateOf(false) }
     // the opt-in "no ads for N hours" offer, once a rewarded video is loaded and no pass is running
@@ -123,20 +163,12 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onO
     RefreshNative("jobs")
     val reminderPrompt = rememberReminderPrompt(s)
     val proPrice by com.newsviews.app.play.Billing.price.collectAsStateWithLifecycle()
+    // Pro whenever Play answers with a price (independent of a rewarded video being loaded)
+    val proOffer = BuildConfig.ADS && adCfg.on && adCfg.pro && proPrice.isNotBlank() && !adsOff
     if (dobDialog) DobDialog(s, settings.dob, onDismiss = { dobDialog = false }) { iso -> vm.setDob(iso); vm.setFilters(f.copy(ageFits = true)); dobDialog = false }
 
-    // the text field owns its text (a StateFlow round-trip lags a frame and drops letters with Hindi / swipe keyboards)
-    var query by rememberSaveable { mutableStateOf(f.query) }
     Column(Modifier.fillMaxSize()) {
-        OutlinedTextField(
-            value = query, onValueChange = { query = it; vm.setFilters(vm.filters.value.copy(query = it)) },
-            placeholder = { Text(s.search) }, singleLine = true,
-            leadingIcon = { Icon(Icons.Filled.Search, null) },
-            trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = ""; vm.setFilters(vm.filters.value.copy(query = "")) }) { Icon(Icons.Filled.Clear, s.clear) } },
-            shape = RoundedCornerShape(14.dp),
-            colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = MaterialTheme.colorScheme.surface, focusedContainerColor = MaterialTheme.colorScheme.surface),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-        )
+        SearchBox(f.query, f.queryRev, s.search, s.clear) { vm.setFilters(vm.filters.value.copy(query = it)) }
         // categories (from the feed) and followed departments
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { FilterChip(selected = f.cat.isEmpty(), onClick = { vm.setFilters(f.copy(cat = "")) }, label = { Text(s.allTypes) }) }
@@ -173,7 +205,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onO
                     onClick = { if (settings.age() == null) dobDialog = true else vm.setFilters(f.copy(ageFits = !f.ageFits)) })
             }
         }
-        StatusLine(idx, error, s, hindi, if (idx != null) list.count { it.status() != Status.CLOSED } else null) { vm.refresh() }
+        StatusLine(idx, error, s, hindi, if (idx != null) list.count { !it.status().isClosed() } else null) { vm.refresh() }
         PullToRefreshBox(isRefreshing = loading, onRefresh = { vm.refresh() }, modifier = Modifier.fillMaxSize()) {
             when {
                 idx == null && loading -> Centered(s.loading)
@@ -181,16 +213,24 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onO
                 list.isEmpty() -> Centered(s.noMatch)
                 else -> LazyColumn(state = listState, contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
-                    // the newest quiz (today's, or yesterday's until today's is published), until one is played today
-                    val today = Dates.today().toString()
-                    val quiz = idx?.quizzes?.firstOrNull()?.takeIf { it.date >= Dates.today().minusDays(1).toString() }
-                    if (quiz != null && today !in settings.quizDays) item(key = "quiz-${quiz.id}") {
-                        QuizCard(quiz, settings.quizStreak(), s) { onQuiz(quiz.id) }
+                    // the daily quiz: today's (or yesterday's until today's is out) until it is played; then a small card
+                    // with the streak, yesterday's quiz if it was missed, and all quizzes
+                    val today = Dates.today()
+                    val yesterday = today.minusDays(1).toString()
+                    val quizzes = idx?.quizzes ?: emptyList()
+                    val newest = quizzes.firstOrNull()
+                    val playedToday = today.toString() in settings.quizDays
+                    if (newest != null && !playedToday && newest.date >= yesterday) item(key = "quiz-${newest.id}") {
+                        QuizCard(newest, settings.quizStreak(), s) { onQuiz(newest.id) }
+                    } else if (newest != null && playedToday) item(key = "quiz-done") {
+                        val missed = quizzes.firstOrNull { it.date == yesterday && it.date !in settings.quizScores }
+                        QuizDoneCard(settings.quizStreak(), s, onYesterday = missed?.let { m -> { onQuiz(m.id) } }, onAll = onQuizzes)
                     }
                     itemsIndexed(list, key = { _, j -> j.id }) { i, j ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                            if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours, proPrice = if (adCfg.pro) proPrice else "",
+                            if (i == 5 && offer) AdFreeCard(s, adCfg.rewardHours, proPrice = if (proOffer) proPrice else "",
                                 onPro = { activity?.let { com.newsviews.app.play.Billing.buy(it, "list") } }) { activity?.let { Ads.showRewarded(it, "list") } }
+                            else if (i == 5 && proOffer) ProCard(s, proPrice) { activity?.let { com.newsviews.app.play.Billing.buy(it, "list") } }
                             val every = adCfg.nativeEvery.coerceAtLeast(5)
                             if (i >= 9 && (i - 9) % every == 0 && (i - 9) / every < 5) {
                                 val k = (i - 9) / every
@@ -199,10 +239,12 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onO
                             JobCard(j, hindi, s, j.id in settings.saved, onSave = {
                                 val wasSaved = j.id in settings.saved
                                 vm.toggleSaved(j)
-                                if (!wasSaved && settings.reminders && j.en.isNotBlank()) reminderPrompt()
+                                if (!wasSaved && settings.reminders && j.en.isNotBlank() && !j.status().isClosed()) reminderPrompt()
                             }, onClick = { onOpen(j.id) })
                         }
                     }
+                    // a short (filtered) list has no ad inside it: one at its end
+                    if (list.size in 4..9) item(key = "native-end") { NativeAdCard("jobs", s.ad) }
                 }
             }
         }
@@ -225,8 +267,8 @@ fun upcomingItems(idx: AppIndex, hindi: Boolean, s: Strings, typeName: (String) 
 private fun DateHeader(iso: String, s: Strings, hindi: Boolean) {
     val d = Dates.parse(iso) ?: return
     val diff = java.time.temporal.ChronoUnit.DAYS.between(Dates.today(), d)
-    val label = when (diff) { 0L -> s.today; 1L -> s.tomorrow; else -> d.format(java.time.format.DateTimeFormatter.ofPattern("EEE, d MMM", if (hindi) java.util.Locale.forLanguageTag("hi") else java.util.Locale.ENGLISH)) }
-    Text(label, style = MaterialTheme.typography.titleSmall, color = if (diff <= 1L) Brand.Saffron else MaterialTheme.colorScheme.primary,
+    val label = when (diff) { 0L -> s.today; 1L -> s.tomorrow; else -> d.format(java.time.format.DateTimeFormatter.ofPattern("EEE, d MMM", if (hindi) Dates.HINDI else java.util.Locale.ENGLISH)) }
+    Text(label, style = MaterialTheme.typography.titleSmall, color = if (diff <= 1L) Pills.saffron().fg else MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(top = 10.dp, bottom = 2.dp))
 }
 
@@ -234,19 +276,22 @@ private fun DateHeader(iso: String, s: Strings, hindi: Boolean) {
 @Composable
 fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpenJob: (String) -> Unit = {}) {
     val idx by vm.index.collectAsStateWithLifecycle()
+    val search by vm.search.collectAsStateWithLifecycle()
     val loading by vm.loading.collectAsStateWithLifecycle()
     val error by vm.error.collectAsStateWithLifecycle()
     val f by vm.filters.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
     val hindi = settings.hindi
-    val list = remember(idx, f.updateType, f.updateFollowing, settings.follows) {
-        idx?.updates?.filter { (f.updateType.isEmpty() || it.ty == f.updateType) && (!f.updateFollowing || settings.follows(it.o)) } ?: emptyList()
+    val list = remember(idx, f.updateType, f.updateFollowing, f.updateQuery, settings.follows, search) {
+        idx?.let { vm.visibleUpdates(it, f, settings, search) } ?: emptyList()
     }
     RefreshNative("updates")
+    val adCfg by Ads.config.collectAsStateWithLifecycle()
     val typeName = { slug: String -> if (hindi) TYPE_HI[slug] ?: slug else idx?.types?.firstOrNull { it.slug == slug }?.name?.removeSuffix("s") ?: slug }
 
     Column(Modifier.fillMaxSize()) {
-        LazyRow(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        SearchBox(f.updateQuery, 0, s.x.searchResults, s.clear) { vm.setFilters(vm.filters.value.copy(updateQuery = it)) }
+        LazyRow(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { FilterChip(selected = f.updateType.isEmpty() && !f.upcoming, onClick = { vm.setFilters(f.copy(updateType = "", upcoming = false)) }, label = { Text(s.allTypes) }) }
             item {
                 FilterChip(selected = f.upcoming, onClick = { vm.setFilters(f.copy(upcoming = !f.upcoming, updateType = "")) },
@@ -267,24 +312,52 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
                 idx == null && loading -> Centered(s.loading)
                 idx == null -> Centered(s.couldNotLoad, s.retry) { vm.refresh() }
                 f.upcoming -> {
-                    val cal = remember(idx, hindi) { idx?.let { upcomingItems(it, hindi, s, typeName) } ?: emptyList() }
-                    if (cal.isEmpty()) Centered(s.noUpcoming)
+                    val cal = remember(idx, hindi, f.updateQuery, search) {
+                        val ix = idx ?: return@remember emptyList<CalItem>()
+                        val all = upcomingItems(ix, hindi, s, typeName)
+                        val q = SearchIndex.query(f.updateQuery)
+                        if (q.isEmpty) all else {
+                            val si = search?.takeIf { it.source === ix }
+                            val ups = ix.updates.associateBy { it.id }
+                            val jobs = ix.jobs.associateBy { it.id }
+                            all.filter { c ->
+                                if (c.isJob) jobs[c.id]?.let { j -> si?.jobMatches(j, q) ?: q.matches(SearchIndex.jobTokens(j, ix)) } == true
+                                else ups[c.id]?.let { u -> si?.updateMatches(u, q) ?: q.matches(SearchIndex.updateTokens(u, ix)) } == true
+                            }
+                        }
+                    }
+                    if (cal.isEmpty()) Centered(if (f.updateQuery.isNotBlank()) s.x.noMatchUpdates else s.noUpcoming)
                     else LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 0.dp, bottom = 24.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxSize()) {
                         cal.forEachIndexed { i, c ->
                             if (i == 0 || cal[i - 1].date != c.date) item(key = "h-${c.date}") { DateHeader(c.date, s, hindi) }
-                            item(key = "${if (c.isJob) "j" else "u"}-${c.id}") { CalRow(c) { if (c.isJob) onOpenJob(c.id) else onOpen(c.id) } }
+                            item(key = "${if (c.isJob) "j" else "u"}-${c.id}") {
+                                val key = if (c.isJob) "x:${c.id}" else "u:${c.id}"
+                                CalRow(c, tracked = key in settings.tracked, remindLabel = s.x.remindMe,
+                                    onRemind = { vm.toggleTracked(key, c.title, s.x.typeLabel(c.type), c.date) }) {
+                                    if (c.isJob) onOpenJob(c.id) else onOpen(c.id)
+                                }
+                            }
                         }
                     }
                 }
+                list.isEmpty() -> Centered(if (f.updateQuery.isNotBlank()) s.x.noMatchUpdates else s.noMatch)
                 else -> LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
+                    val long = list.size >= 10
                     itemsIndexed(list, key = { _, u -> u.id }) { i, u ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                            if (i == 6) NativeAdCard("updates", s.ad)
-                            UpdateRow(u, hindi, typeName(u.ty)) { onOpen(u.id) }
+                            // natives inside a long list: from the 7th entry, every nativeEvery entries, at most 5 (each preloads the next)
+                            val every = adCfg.nativeEvery.coerceAtLeast(5)
+                            if (long && i >= 6 && (i - 6) % every == 0 && (i - 6) / every < 5) {
+                                val k = (i - 6) / every
+                                NativeAdCard(if (k == 0) "updates" else "updates-$k", s.ad, preloadNext = if (k < 4) "updates-${k + 1}" else null)
+                            }
+                            UpdateRow(u, hindi, typeName(u.ty), s) { onOpen(u.id) }
                         }
                     }
+                    // a short (filtered) list: one native at its end instead
+                    if (list.size in 4..9) item(key = "native-end") { NativeAdCard("updates", s.ad) }
                 }
             }
         }
@@ -295,10 +368,14 @@ fun UpdatesScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit, onOpe
 fun SavedScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
     val idx by vm.index.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
-    // snapshots of saved jobs are files: read them off the main thread
-    val list by produceState(initialValue = emptyList<com.newsviews.app.data.JobItem>(), idx, settings.saved) {
-        value = withContext(Dispatchers.IO) { vm.savedJobs(idx, settings.saved) }
+    // snapshots of saved jobs are files: read them off the main thread (with which ones can be read offline)
+    val data by produceState(initialValue = emptyList<com.newsviews.app.data.JobItem>() to emptySet<String>(), idx, settings.saved) {
+        value = withContext(Dispatchers.IO) {
+            val l = vm.savedJobs(idx, settings.saved)
+            l to l.filter { vm.repo.hasOfflineCopy(it.id) }.map { it.id }.toSet()
+        }
     }
+    val (list, offline) = data
     if (list.isEmpty()) {
         Column(Modifier.fillMaxSize().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(Icons.Outlined.BookmarkBorder, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(bottom = 12.dp))
@@ -308,7 +385,12 @@ fun SavedScreen(vm: MainViewModel, s: Strings, onOpen: (String) -> Unit) {
         return
     }
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize()) {
-        items(list, key = { it.id }) { j -> JobCard(j, settings.hindi, s, true, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) }) }
+        items(list, key = { it.id }) { j ->
+            JobCard(j, settings.hindi, s, true, onSave = { vm.toggleSaved(j) }, onClick = { onOpen(j.id) },
+                applied = j.id in settings.applied, offline = j.id in offline,
+                // closed jobs need no "applied" switch (no reminders left to stop); one already marked keeps its badge
+                onApplied = if (j.status().isClosed()) null else { { vm.toggleApplied(j) } })
+        }
     }
 }
 

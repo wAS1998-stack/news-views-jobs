@@ -160,6 +160,7 @@ dependencies {
     implementation("com.google.android.ump:user-messaging-platform:4.0.0")
     implementation("com.google.android.play:review:2.0.2")        // Play's in-app rating sheet
     implementation("com.google.android.play:app-update:2.1.0")    // Play's in-app update download
+    implementation("com.android.installreferrer:installreferrer:2.2")   // which link brought the install (a job page's "Get the app")
     mediation.mapNotNull { mediationAdapters[it] }.forEach { implementation(it) }
     // SDKs that an adapter's published POM deliberately omits (found by the R8 release build: missing classes)
     if ("unity" in mediation) implementation("com.unity3d.ads:unity-ads:4.21.0")

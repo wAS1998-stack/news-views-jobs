@@ -60,7 +60,14 @@ import com.newsviews.app.ads.rememberAnchoredBanner
 import androidx.compose.material3.HorizontalDivider
 import com.newsviews.app.ads.findActivity
 import com.newsviews.app.play.PlayPrompts
+import com.newsviews.app.play.Referrer
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.ui.text.style.TextAlign
+import com.newsviews.app.ui.QuizHubScreen
+import com.newsviews.app.ui.openPlayListing
 import com.newsviews.app.ui.AlertsScreen
 import com.newsviews.app.ui.Brand
 import com.newsviews.app.ui.JobDetailScreen
@@ -90,6 +97,8 @@ class MainActivity : ComponentActivity() {
         // back with a saved state, and skipping start() then meant a whole session without ads
         if (savedInstanceState == null || !Ads.isStarted) Ads.start(this)
         if (savedInstanceState == null) PlayPrompts.checkForUpdate(this, updateLauncher)
+        // which link brought the install (once); a job link opens that job after the welcome screen
+        if (savedInstanceState == null) Referrer.check(this)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -101,6 +110,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         Ads.onResume(this)
+        PlayPrompts.onResume(this)          // back from the official site after an Apply tap: maybe the rating sheet
         vm.syncAlerts()
         vm.refreshIfStale()
     }
@@ -122,13 +132,35 @@ class MainActivity : ComponentActivity() {
         val kind = intent.getStringExtra("kind")
         val id = intent.getStringExtra("id")
         if ((kind == "job" || kind == "update") && ok(id)) { Ads.suppressAppOpen(); pending.value = kind!! to id!!; return }
+        // the morning quiz notification (release builds too)
+        if (kind == "quiz" && ok(id)) { Ads.suppressAppOpen(); pending.value = "quiz" to id!!; return }
         // the daily summary opens a tab (jobs / results)
         if (kind == "tab" && (id == "jobs" || id == "updates")) { Ads.suppressAppOpen(); pending.value = "tab" to id; return }
         val uri = intent.data ?: return
+        if (uri.host != "news-views.in") return
         Ads.suppressAppOpen()             // opened from a news-views.in link: no app-open ad in front of it
-        val seg = uri.pathSegments
+        // the Hindi pages (/hi/jobs/…, /hi/updates/…) open the same job / result
+        val seg = uri.pathSegments.let { if (it.firstOrNull() == "hi") it.drop(1) else it }
+        val f = vm.filters.value
         when {
             seg.size >= 2 && seg[0] == "jobs" && ok(seg[1]) -> pending.value = "job" to seg[1]
+            seg.size >= 2 && seg[0] == "quiz" && ok(seg[1]) -> pending.value = "quiz" to seg[1]
+            seg.firstOrNull() == "quiz" -> pending.value = "quizzes" to ""
+            // a state's job list: the Jobs tab filtered to that state (and qualification, for /state/<s>/<q>/)
+            seg.size >= 2 && seg[0] == "state" && ok(seg[1]) -> {
+                val q = seg.getOrNull(2)?.takeIf { it in QUAL_SLUGS } ?: ""
+                vm.setFilters(f.copy(state = seg[1], qual = q, forYou = false, cat = "", closingSoon = false, ageFits = false))
+                pending.value = "tab" to "jobs"
+            }
+            // a department's page: the Jobs tab searching for it ("rrb-chandigarh" -> "rrb chandigarh")
+            seg.size >= 2 && seg[0] == "organization" && ok(seg[1]) -> {
+                vm.setFilters(f.copy(query = seg[1].replace('-', ' '), queryRev = f.queryRev + 1, forYou = false, state = "", qual = "", cat = "", closingSoon = false, ageFits = false))
+                pending.value = "tab" to "jobs"
+            }
+            seg.firstOrNull() == "closing-soon" -> { vm.setFilters(f.copy(closingSoon = true)); pending.value = "tab" to "jobs" }
+            seg.firstOrNull() == "latest" -> pending.value = "tab" to "jobs"
+            // a list page without (or with an unknown) id: the Jobs tab
+            seg.firstOrNull().let { it == "jobs" || it == "state" || it == "organization" } -> pending.value = "tab" to "jobs"
             // the site's result / admit-card / answer-key / exam-date list pages open the Results tab, filtered
             seg.size >= 2 && seg[0] == "updates" && seg[1] in UPDATE_TYPES -> {
                 vm.setFilters(vm.filters.value.copy(updateType = seg[1], upcoming = false))
@@ -140,8 +172,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private val ID_RE = Regex("^[a-z0-9][a-z0-9-]{0,140}$")
+/** The feed's id format (jobs, results, quizzes): anything else from a notification or a link is ignored. */
+internal val ID_RE = Regex("^[a-z0-9][a-z0-9-]{0,140}$")
 private val UPDATE_TYPES = setOf("result", "admit-card", "answer-key", "exam-date")
+private val QUAL_SLUGS = setOf("10th-pass", "12th-pass", "graduate", "engineering-diploma", "post-graduate")
 
 private data class Tab(val route: String, val label: (Strings) -> String, val icon: androidx.compose.ui.graphics.vector.ImageVector)
 
@@ -185,6 +219,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
             route.startsWith("job/") -> idx?.jobs?.firstOrNull { it.id == argId }?.short(settings.hindi)
             route.startsWith("update/") -> idx?.updates?.firstOrNull { it.id == argId }?.short(settings.hindi)
             route.startsWith("quiz/") -> s.quizTitle
+            route == "quizzes" -> s.x.quizHub
             else -> null
         }
     }
@@ -198,24 +233,45 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         val isPage = route.startsWith("job/") || route.startsWith("update/") || route.startsWith("quiz/")
         val wasPage = prevRoute?.let { it.startsWith("job/") || it.startsWith("update/") || it.startsWith("quiz/") } == true
         if (isPage) { Ads.pageOpened(); activity?.let { PlayPrompts.pageOpened(it) } }
-        else if (wasPage && activity != null && !Ads.backFromPage(activity)) PlayPrompts.maybeAskReview(activity)
+        else if (wasPage && activity != null) Ads.backFromPage(activity)   // the rating sheet now waits for a positive moment
         prevRoute = route
     }
 
-    LaunchedEffect(open) {
+    // the feed says this version is too old to read it: nothing else is shown until the app is updated
+    val minVersion = idx?.minVersion ?: 0
+    val blocked = minVersion > 0 && BuildConfig.VERSION_CODE < minVersion
+
+    LaunchedEffect(open, blocked) {
+        if (blocked) return@LaunchedEffect                      // no NavHost on the "Update required" screen
         val p = open ?: return@LaunchedEffect
         // debug hook: a plain jump to the tab, clearing open pages (go() would restore the tab's saved stack)
         if (p.first != "tab") linkVisit = true
         if (p.first == "tab") nav.navigate(p.second) { popUpTo("jobs"); launchSingleTop = true }
         else if (p.first == "quiz") nav.navigate("quiz/${p.second}") { launchSingleTop = true }
+        else if (p.first == "quizzes") nav.navigate("quizzes") { launchSingleTop = true }
         else nav.navigate(if (p.first == "update") "update/${p.second}" else "job/${p.second}") { launchSingleTop = true }
         pending.value = null
+    }
+
+    if (blocked) {
+        Scaffold { pad -> UpdateRequired(s, Modifier.padding(pad)) }
+        return
     }
 
     if (!settings.onboarded && open == null && !linkVisit) {
         Scaffold { pad -> Column(Modifier.padding(pad)) { Onboarding(vm, s) } }
         return
     }
+
+    // installed from a job's "Get the app" link: that job, once the welcome screen is done
+    val refJob by Referrer.pendingJob.collectAsStateWithLifecycle()
+    LaunchedEffect(refJob) {
+        val j = refJob ?: return@LaunchedEffect
+        nav.navigate("job/$j") { launchSingleTop = true }
+        Referrer.consume()
+    }
+    // a good moment for Play's rating sheet (the second saved job with reminders on)
+    LaunchedEffect(Unit) { vm.reviewMoments.collect { r -> activity?.let { PlayPrompts.positiveMoment(it, r) } } }
 
     Scaffold(
         topBar = {
@@ -264,10 +320,11 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         containerColor = MaterialTheme.colorScheme.background,
     ) { pad ->
         NavHost(nav, startDestination = "jobs", modifier = Modifier.padding(pad)) {
-            composable("jobs") { JobsScreen(vm, s, onQuiz = { nav.navigate("quiz/$it") }) { nav.navigate("job/$it") } }
+            composable("jobs") { JobsScreen(vm, s, onQuiz = { nav.navigate("quiz/$it") }, onQuizzes = { nav.navigate("quizzes") { launchSingleTop = true } }) { nav.navigate("job/$it") } }
             composable("quiz/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                com.newsviews.app.ui.QuizScreen(vm, s, it.arguments?.getString("id") ?: "")
+                com.newsviews.app.ui.QuizScreen(vm, s, it.arguments?.getString("id") ?: "") { nav.navigate("quizzes") { launchSingleTop = true } }
             }
+            composable("quizzes") { QuizHubScreen(vm, s) { id -> nav.navigate("quiz/$id") } }
             composable("updates") { UpdatesScreen(vm, s, onOpen = { nav.navigate("update/$it") }, onOpenJob = { nav.navigate("job/$it") }) }
             composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
             composable("alerts") { AlertsScreen(vm, s) }
@@ -278,6 +335,21 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
                 UpdateDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
             }
         }
+    }
+}
+
+/** The feed's minVersion is above this version: a full screen asking to update (no way around it — the old app would
+    misread the feed). */
+@Composable
+private fun UpdateRequired(s: Strings, modifier: Modifier = Modifier) {
+    val ctx = LocalContext.current
+    Column(modifier.fillMaxSize().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(painterResource(R.drawable.ic_brand), null, modifier = Modifier.size(64.dp))
+        Spacer(Modifier.height(16.dp))
+        Text(s.x.updateRequired, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text(s.x.updateRequiredHint, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 10.dp))
+        Button(onClick = { openPlayListing(ctx) }, modifier = Modifier.padding(top = 20.dp)) { Text(s.x.updateButton) }
     }
 }
 
