@@ -190,7 +190,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-06T01:04:34.886Z",
+    "at": "2026-11-06T04:18:28.977Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -201,12 +201,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-06T01:04:39.283Z",
+    "at": "2026-11-06T04:19:59.691Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 208,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 208 sent\n  job tnpsc-group-no-pdf-2026 en [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job tnpsc-group-no-pdf-2026 hi [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job olm-bl"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-06T04:18:39.175Z",
+    "ok": false,
+    "submitted": 44,
+    "failed": 0,
+    "limited": true,
+    "kept": 43,
+    "usedToday": 200,
+    "log": [
+      "Indexing API: 87 to send (87 updated, 0 deleted); 0/200 used today (IST 2026-11-06).",
+      "Indexing API: sent 44, quota reached — 43 kept for the next run."
     ]
   }
 }
