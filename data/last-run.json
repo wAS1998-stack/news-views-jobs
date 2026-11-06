@@ -189,7 +189,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-06T10:06:24.941Z",
+    "at": "2026-11-06T12:43:26.842Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -200,11 +200,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-06T10:10:17.352Z",
+    "at": "2026-11-06T12:44:42.444Z",
     "ok": true,
     "sent": 68,
     "log": [
-      "push-notify: 68 sent\n  job texmin-project-associate-i-project-associate-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job texmin-project-associate-i-project-associate-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-engineer"
+      "push-notify: 68 sent\n  job goa-samagra-shiksha-technical-assistant-walkin-2026 en [('s-goa' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job goa-samagra-shiksha-technical-assistant-walkin-2026 en [('s-goa' in topics || 's-any' in topics) && 'q-engineering-dipl"
     ]
   },
   "indexing-api": {
