@@ -210,6 +210,7 @@ async function main() {
       job.apply_link_prev = job.apply_link || null;
       job.apply_link = hit.url;
       job.apply_src = hit.from;
+      job.updated = TODAY;   // the page's Apply button changed: shown as "Updated" on the job page and sent as "upd" to the app
       found++;
       log.push(`${job.id}: ${hit.url} (${hit.from}, score ${hit.score})`);
     } else {

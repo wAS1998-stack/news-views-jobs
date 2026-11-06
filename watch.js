@@ -171,12 +171,22 @@ async function extractUpdate(src, link, doc, kind) {
   return L.parseJson(await L.askAI(prompt, { maxTokens: 2200 }));
 }
 
+/** Does the text name only years from two or more years ago ("Cut-off Marks (01/2018)", "Advt. No. 05/2024")? */
+function oldYear(text, thisYear = Number(today().slice(0, 4))) {
+  const t = String(text || "");
+  const years = (t.match(/\b(20\d{2})\b/g) || []).map(Number)
+    .concat((t.match(/\/(\d{2})\b(?!\/)/g) || []).map((x) => 2000 + Number(x.slice(1))).filter((y) => y >= 2010 && y <= thisYear + 1));
+  return years.length > 0 && Math.max(...years) < thisYear - 1;
+}
+
 async function main() {
   const sources = JSON.parse(fs.readFileSync(SRC, "utf8")).sources || [];
   let state = {}; try { state = JSON.parse(fs.readFileSync(STATE, "utf8")); } catch {}
   let jobs = [], updates = [];
   try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch {}
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
+  const archived = L.readUpdatesArchive();               // older updates (pages still live): never published twice
+  const retiredUpd = L.retiredUpdateIds();
   console.log(`Watch: ${sources.length} official sources | AI ${L.AI_LABEL} | pdf ${pdfParse ? "on" : "off"} | max publish ${MAX_PUBLISH}`);
 
   // 1) scan every source
@@ -217,10 +227,11 @@ async function main() {
   console.log(`Watch: ${fresh.length} new official notice link(s) (${retry.length} retried).`);
 
   // 2) publish the new ones
-  const existingUrls = new Set([...jobs.flatMap((j) => [j.official_notification, j.apply_link, j.source]), ...updates.flatMap((u) => [u.official_link, u.link, u.source])].filter(Boolean).map(norm));
-  const fps = new Set([...jobs.map((j) => F.fingerprint(j.title)), ...updates.map((u) => F.fingerprint(u.title))]);
+  const existingUrls = new Set([...jobs.flatMap((j) => [j.official_notification, j.apply_link, j.source]), ...updates.concat(archived).flatMap((u) => [u.official_link, u.link, u.source])].filter(Boolean).map(norm));
+  const fps = new Set([...jobs.map((j) => F.fingerprint(j.title)), ...updates.concat(archived).map((u) => F.fingerprint(u.title))]);
   const added = { jobs: [], updates: [] }, skipped = [];
   let upgraded = 0;   // feed updates given their official notice link
+  let marked = 0;     // listed jobs marked cancelled / postponed by an official notice
   if (!L.AI) console.log("Watch: no AI key — new links recorded but not published.");
   const thisYear = new Date().getFullYear();
   const again = [];   // handled later: AI or fetch failed this time
@@ -228,8 +239,7 @@ async function main() {
     const { src, link } = item;
     if (existingUrls.has(norm(link.url))) { skipped.push("known url"); continue; }
     // Old notices re-surfacing on a homepage ("Cut-off Marks (01/2018)") are not news.
-    const years = (link.text.match(/\b(20\d{2})\b/g) || []).map(Number).concat((link.text.match(/\/(\d{2})\b/g) || []).map((x) => 2000 + Number(x.slice(1))).filter((y) => y >= 2010 && y <= thisYear + 1));
-    if (years.length && Math.max(...years) < thisYear - 1) { skipped.push("old notice: " + link.text.slice(0, 50)); continue; }
+    if (oldYear(link.text, thisYear)) { skipped.push("old notice: " + link.text.slice(0, 50)); continue; }
     const kind = F.classify(link.text);
     const doc = await readDoc(link.url);
     if (kind === "job") {
@@ -242,13 +252,33 @@ async function main() {
       // A job page needs real substance: a post name AND (vacancies, a last date or an advertisement number).
       if (!o.post_name || !(Number(o.total_vacancies) > 0 || /^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) || o.advt_no)) { skipped.push("too thin: " + link.text.slice(0, 50)); continue; }
       const title = L.cleanTitle(o.headline);
+      if (L.OFF_TOPIC.test(title) || L.JUNK_TITLE.test(title) || L.OFF_TOPIC.test(`${o.post_name || ""} | ${o.organization || ""}`)) { skipped.push("off-topic: " + title); continue; }
+      // an old notice re-surfacing (headline or advertisement number from two or more years ago) is not news, unless
+      // its application window is still open
+      if (oldYear(`${o.headline} ${o.advt_no || ""}`) && !(String(o.application_end || "") >= today())) { skipped.push("old notice: " + title); continue; }
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
-      const id = F.cleanSlug(title);
-      if (!id || jobs.some((j) => j.id === id) || RETIRED.has(id)) { skipped.push("id taken: " + id); continue; }
       // only the fields an extraction may set, in the right shapes (never via / careers_link / ids from the model)
       const job = L.aiJobFields(o);
       if (L.isNonGovt({ ...job, title })) { skipped.push("not a government employer: " + title); continue; }
+      // Ids: the same rules as fetch-jobs.js — a retired id stays retired, the same recruitment again is skipped, a
+      // DIFFERENT recruitment whose headline gives a taken id gets a distinguisher ("…-advt-11-2026").
+      let id = F.cleanSlug(title);
+      if (!id || RETIRED.has(id)) { skipped.push("id retired: " + id); continue; }
+      const legacy = F.legacySlug(title);
+      if (legacy !== id && RETIRED.has(legacy)) { skipped.push("old-style id retired: " + legacy); continue; }
+      const oldHolder = legacy !== id && jobs.find((j) => j.id === legacy);
+      if (oldHolder && (F.fingerprint(oldHolder.title) === fp || oldHolder.title.toLowerCase() === title.toLowerCase())) { skipped.push("already listed: " + legacy); continue; }
+      const holder = jobs.find((j) => j.id === id);
+      if (holder) {
+        if (holder.title.toLowerCase() === title.toLowerCase() || F.sameRecruitment({ ...job, title }, holder)) { skipped.push("same recruitment as " + id); continue; }
+        const nid = F.distinctId(id, job, new Set([...jobs.map((j) => j.id), ...RETIRED]));
+        if (!nid) { skipped.push("id taken, no free variant: " + id); continue; }
+        console.log(`   ~ id ${id} belongs to another recruitment (${holder.title}); saved as ${nid}`);
+        id = nid;
+      }
+      const twin = L.isDuplicate({ ...job, title, published: today(), official_notification: doc.pdf ? link.url : (job.official_notification || link.url) }, jobs);
+      if (twin) { skipped.push(`duplicate of ${twin.id}: ${title}`); continue; }
       const sameHostCands = doc.cands.filter((c) => c.url);
       Object.assign(job, {
         id, title, published: today(), via: "official", source: link.url, state_hint: src.state,
@@ -265,15 +295,17 @@ async function main() {
       if (o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
       if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.event_date || "")) && (Date.now() - new Date(o.event_date).getTime()) > 45 * 86400000) { skipped.push("old update: " + o.headline); continue; }
       const title = L.cleanTitle(o.headline);
+      if (L.OFF_TOPIC.test(title) || L.JUNK_TITLE.test(title) || L.OFF_TOPIC.test(`${o.exam_name || ""} | ${o.organization || ""}`)) { skipped.push("off-topic: " + title); continue; }
+      if (oldYear(`${o.headline} ${o.exam_name || ""}`) && !(String(o.event_date || "") >= today())) { skipped.push("old notice: " + title); continue; }
       const fp = F.fingerprint(title);
       if (fps.has(fp)) { skipped.push("duplicate: " + title); continue; }
-      const twin = updates.find((x) => L.isDupUpdate({ title, type: kind, date: today() }, [x]));
+      const twin = updates.find((x) => L.isDupUpdate({ title, type: kind, date: today(), official_link: link.url }, [x]));
       if (twin) {   // already on the site from a feed: give it the official link instead of a second page
         if (!twin.official_link || L.isBadOfficial(twin.link || "")) { twin.official_link = link.url; twin.link = link.url; upgraded++; }
         skipped.push("duplicate (same notice): " + title); continue;
       }
       const id = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
-      if (!id || updates.some((u) => u.id === id)) { skipped.push("id taken: " + id); continue; }
+      if (!id || updates.some((u) => u.id === id) || archived.some((u) => u.id === id) || retiredUpd.has(id)) { skipped.push("id taken or retired: " + id); continue; }
       const u = {
         id, type: kind, title, organization: String(o.organization || src.name).trim(), org_short: String(o.org_short || src.name).trim().slice(0, 30),
         exam_name: o.exam_name || undefined, event_date: /^\d{4}-\d{2}-\d{2}$/.test(String(o.event_date || "")) ? o.event_date : undefined,
@@ -283,6 +315,8 @@ async function main() {
       };
       for (const k of Object.keys(u)) if (u[k] === undefined || (Array.isArray(u[k]) && !u[k].length)) delete u[k];
       updates.unshift(u); fps.add(fp); existingUrls.add(norm(link.url)); added.updates.push(u);
+      // a cancellation / postponement of a listed recruitment marks that job too (red banner, no Apply button)
+      { const m = L.matchNoticeStatus({ title, date: today() }, jobs); if (m && L.applyNoticeStatus(m.job, m.status, { title, date: today(), link: link.url, id })) { marked++; console.log(`   ! ${m.job.id} marked ${m.status}`); } }
       console.log(`   * [${src.name}] ${title}`);
     }
     await new Promise((r) => setTimeout(r, 400));
@@ -292,8 +326,9 @@ async function main() {
   const over = (L.AI ? fresh.slice(MAX_PUBLISH) : []).map((f) => ({ src: f.src.id, link: f.link, tries: f.tries || 0 }));
   state._retry = [...again, ...over].slice(0, 60);
   fs.writeFileSync(STATE, JSON.stringify(state) + "\n");
-  if (added.jobs.length) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
-  if (added.updates.length || upgraded) fs.writeFileSync(UPDATES, JSON.stringify(updates.slice(0, 800), null, 2) + "\n");
+  if (added.jobs.length || marked) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
+  // the newest 800 stay in updates.json, older ones move to data/updates-archive.json (pages kept, never dropped)
+  if (added.updates.length || upgraded) { const r = L.saveUpdates(updates); if (r.archived) console.log(`Watch: moved ${r.archived} older update(s) to the archive.`); }
   if (added.jobs.length || added.updates.length) {
     fs.appendFileSync(NEWURLS, [...added.jobs.map((j) => `${SITE_URL}/jobs/${j.id}/`), ...added.updates.map((u) => `${SITE_URL}/updates/${u.id}/`)].join("\n") + "\n");
   }
@@ -303,4 +338,4 @@ async function main() {
   console.log(`Watch: ${ok}/${sources.length} sources healthy | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
 }
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { noticeLinks, anchors, apiToHtml };
+module.exports = { noticeLinks, anchors, apiToHtml, oldYear };

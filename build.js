@@ -42,7 +42,7 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
   for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
-    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl", "adsenseSlots"]) {
+    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl", "adsenseSlots", "appMinVersion"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -72,6 +72,17 @@ function orgKey(job) {
   return "";
 }
 function hostOf(u) { try { return new URL(u).host.replace(/^www\./, ""); } catch { return ""; } }
+/** Provenance: the official host the facts come from (the notice, else the organisation's website; never an aggregator). */
+function srcHostOf(r) {
+  for (const u of [r.official_notification, r.official_link, r.official_website]) { const h = hostOf(u || ""); if (h && !LIB.isAggregator(h)) return h; }
+  return "";
+}
+/** The record's last real update (a deadline extension, a cancellation notice), YYYY-MM-DD, or "" when it has none. */
+function updatedOf(r) {
+  const u = (String(r.updated || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0] || "";
+  const pub = String(r.published || r.date || "").slice(0, 10);
+  return u && u > pub ? u : "";
+}
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 /* ---- SEO title: short, specific, no empty placeholders (Google shows ~60 chars) ---- */
 function seoTitle(job) {
@@ -125,7 +136,17 @@ function daysLeft(endIso) {
   return Math.round((end - TODAY_IST_MS) / 86400000);
 }
 function ageDays(iso) { if (!iso) return null; const t = new Date(String(iso).slice(0, 10) + "T00:00:00+05:30"); return isNaN(t) ? null : (BUILT - t) / 86400000; }
+const STATUS_MEMO = new WeakMap();   // one answer per record per build (it depends only on the record and the build date)
 function statusOf(job) {
+  if (job && typeof job === "object" && STATUS_MEMO.has(job)) return STATUS_MEMO.get(job);
+  const st = statusOfUncached(job);
+  if (job && typeof job === "object") STATUS_MEMO.set(job, st);
+  return st;
+}
+function statusOfUncached(job) {
+  // a cancellation / postponement notice of this recruitment (lib.js matchNoticeStatus): not accepting applications
+  if (job.notice_status === "cancelled") return { cls: "closed", label: "Cancelled", live: false };
+  if (job.notice_status === "postponed") return { cls: "closed", label: "Postponed", live: false };
   const d = daysLeft(job.application_end);
   // No last date known: treat as open only while the notice is recent; an undated 2025 notice is not "open" forever.
   if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS ? { cls: "closed", label: "Closed", live: false } : { cls: "open", label: "Open", live: true }; }
@@ -200,17 +221,22 @@ const QUALS = [
       "Technical exams typically combine your discipline's core subjects with general aptitude, so keep both sharp. Eligibility clauses are stricter here — the exact branch, and whether a diploma is accepted where a degree is specified, matter — so read each notification's qualification clause carefully and verify on the official site before applying." ],
     guideSlugs: ["government-jobs-after-graduation", "government-job-eligibility-india", "how-to-read-government-job-notification"] },
   { slug: "post-graduate", name: "Post Graduate", h1: "Government Jobs for Post Graduates",
-    re: /post\s?-?graduat|master|m\.?sc|m\.?tech|\bmba\b|ph\.?d/i,
+    re: /post\s?-?graduat|master|m\.?sc|m\.?tech|\bmba\b|ph\.?d|\bpg\b/i,
     desc: "Latest government job notifications for post graduates — specialist officer, research, teaching and senior administrative recruitment across central and state government.",
     intro: [
       "A master's degree qualifies you for the specialist end of government recruitment: specialist officer posts in banks, research and scientific positions, assistant professor and teaching roles, and senior administrative services where a post-graduate qualification is required or gives an edge in the selection.",
       "Post-graduate recruitment is less frequent but more targeted, so track the bodies relevant to your subject closely and keep your documents ready to move quickly when notifications appear. Every listing below carries the key facts and a link to the official notification — always confirm the final eligibility there." ],
     guideSlugs: ["state-psc-vs-upsc-differences", "government-jobs-after-graduation", "interview-tips-government-job-selection"] },
 ];
+// "Post Graduate", "Post-Graduation", "PG", "Master's degree", "M.Sc", "MBA", "Ph.D" (and "Undergraduate") are not a
+// graduate qualification: they are removed before the graduate pattern is tried.
+const NOT_GRADUATE = /\b(post|under)[\s-]?graduat\w*(\s+degree)?|\bpostgraduat\w*(\s+degree)?|\bp\.?\s?g\.?(?![a-z])(\s+degree)?|\bmaster'?s?(\s+degree)?|\bm\.?\s?(a|sc|com|tech|e|phil|ed|pharm|ca|ba|lib|lisc|sw)\b\.?(\s+degree)?|\bmba\b|\bmca\b|\bph\.?\s?d\b\.?(\s+degree)?/gi;
+/** The qualification categories a job's notice names; [] when nothing matches (unknown = open to any qualification:
+    no qualification page claims it, the app shows it to everyone, JobPosting leaves educationRequirements out). */
 function qualsOf(job) {
   const t = `${job.qualification || ""} ${job.title || ""}`;
-  const out = QUALS.filter((q) => q.re.test(t));
-  return out.length ? out : QUALS.filter((q) => q.slug === "graduate");
+  const noPg = t.replace(NOT_GRADUATE, " ");
+  return QUALS.filter((q) => (q.slug === "graduate" ? q.re.test(noPg) : q.re.test(t)));
 }
 function levelsOf(job) { return qualsOf(job).map((q) => q.name); }
 
@@ -302,7 +328,12 @@ function inferState(job) {
   const byCity = STATES.filter((s) => s.slug !== "all-india" && s.kw.slice(1).some((k) => new RegExp(`\\b${k}\\b`).test(low)));
   return byCity.length === 1 ? byCity : [];
 }
+const STATES_MEMO = new WeakMap();
 function statesOf(job) {
+  if (job && typeof job === "object") { if (!STATES_MEMO.has(job)) STATES_MEMO.set(job, statesOfUncached(job)); return STATES_MEMO.get(job); }
+  return statesOfUncached(job);
+}
+function statesOfUncached(job) {
   // Overseas roles must never fall into the Indian state buckets.
   if (isGulf(job)) return [];
   const loc = String(job.location || "").toLowerCase();
@@ -539,9 +570,14 @@ function jobLine(job) {
   const meta = [job.total_vacancies ? `${inr(job.total_vacancies)} posts` : "", st.cls === "closed" ? "closed" : job.application_end ? `last date ${fmtDate(job.application_end)}` : ""].filter(Boolean).join(" &middot; ");
   return `<li><a href="/jobs/${esc(job.id)}/">${esc(job.title)}</a>${meta ? ` <span class="jl-meta${st.cls === "soon" ? " soon" : ""}">${meta}</span>` : ""}</li>`;
 }
-function jobList(list, { rich = 40, id = "", moreTitle = "More jobs" } = {}) {
+/** One responsive ad unit after the 6th card of a list (only when the list goes on after it, and only with ad IDs). */
+function withListAd(items, label) {
+  const ad = label && items.length > 6 ? adSlot(label, { format: "responsive", tag: "div" }) : "";
+  return ad ? [...items.slice(0, 6), `<li class="ad-li">${ad}</li>`, ...items.slice(6)] : items;
+}
+function jobList(list, { rich = 40, id = "", moreTitle = "More jobs", ad = "" } = {}) {
   const cards = list.slice(0, rich), rest = list.slice(rich);
-  return `<ul class="jobs"${id ? ` id="${id}"` : ""}>${cards.map(jobCard).join("\n")}</ul>` +
+  return `<ul class="jobs"${id ? ` id="${id}"` : ""}>${withListAd(cards.map(jobCard), ad).join("\n")}</ul>` +
     (rest.length ? `<h2 class="section-h more-h">${esc(moreTitle)} <span class="grp-count">${rest.length}</span></h2><ul class="joblines">${rest.map(jobLine).join("")}</ul>` : "");
 }
 function jobCard(job) {
@@ -601,6 +637,14 @@ function readUpdates() {
     return u.filter((x) => UPDATE_TYPES[x.type]).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   } catch { return []; }
 }
+/** Updates older than the newest 800 (data/updates-archive.json, written by lib.js saveUpdates): their pages stay
+    live and linked from exam hubs and organisation pages; the app feed, search, home and lists use the recent window. */
+let ARCHIVED_UPD = new Set();
+function readUpdatesArchive(recent) {
+  const ids = new Set(recent.map((u) => u.id));
+  return LIB.readUpdatesArchive().filter((x) => x && x.id && UPDATE_TYPES[x.type] && !ids.has(x.id))
+    .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+}
 /* ---- News & Views: current affairs + notification analysis ------- */
 const NEWS_TYPES = { "current-affairs": "Current Affairs", analysis: "Analysis" };
 function readNews() {
@@ -621,8 +665,23 @@ function newsCard(a) {
   </a></li>`;
 }
 function newsBody(a) {
-  return (a.body || []).map((b) =>
-    `${b.h ? `<h2 class="section-h">${esc(b.h)}</h2>` : ""}${(b.p || []).map((p) => `<p>${esc(p)}</p>`).join("")}`).join("");
+  return inArticleAds((a.body || []).map((b) =>
+    `${b.h ? `<h2 class="section-h">${esc(b.h)}</h2>` : ""}${(b.p || []).map((p) => `<p>${esc(p)}</p>`).join("")}`).join(""), "news-inline");
+}
+/** In-article ad units inside long text (guides, news digests): after every 4th paragraph, at most 3, never after the
+    last paragraph. Renders nothing without ad IDs. */
+function inArticleAds(html, label, { every = 4, max = 3 } = {}) {
+  const unit = adSlot(label);
+  if (!unit) return html;
+  const parts = String(html).split("</p>");
+  if (parts.length - 1 <= every) return html;
+  let out = "", n = 0;
+  for (let i = 0; i < parts.length - 1; i++) {
+    out += parts[i] + "</p>";
+    const last = i === parts.length - 2;
+    if (!last && (i + 1) % every === 0 && n < max) { out += unit; n++; }
+  }
+  return out + parts[parts.length - 1];
 }
 /* ---- Daily current-affairs quiz ---------------------------------- */
 function readQuiz() { try { const q = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "quiz.json"), "utf8")); return Array.isArray(q) ? q : []; } catch { return []; } }
@@ -650,8 +709,9 @@ function buildQuizPage(z, all) {
       `<button class="opt" type="button" data-i="${j}">${L[j]}. ${esc(o)}</button>`).join("")}</div>
       <details class="why"><summary>Show answer</summary>Answer: <b>${L[q.answer]}. ${esc(q.options[q.answer])}</b>${q.why ? ` — ${esc(q.why)}` : ""}</details></li>`).join("")}</ol>
     <p><span class="quiz-score" id="qs" hidden></span></p>
-    ${adSlot("quiz-end")}
+    ${shareRow({ url: canonical, title: z.title, text: `${z.title} — ${z.questions.length} current affairs questions with answers` })}
     ${more.length ? `<section class="related"><h2 class="section-h">Previous quizzes</h2><ul class="updates">${more.map(quizCard).join("")}</ul></section>` : ""}
+    ${adSlot("quiz-end")}
   </article>
 </main>
 <script>
@@ -679,21 +739,26 @@ function buildQuizIndex(all) {
   ${all.length ? `<ul class="updates">${all.map(quizCard).join("")}</ul>` : `<p class="empty">The first quiz will appear with the next daily digest.</p>`}
 </main>` + foot();
 }
+// AI "-explained" analysis pages repeat their job page in other words: they stay live for visitors (linked, "follow")
+// but are noindex, point their canonical at the job page and stay out of every sitemap (no new ones: fetch-news.js
+// maxAnalysisPerRun is 0).
+const isAnalysis = (a) => a && a.type === "analysis";
 function buildNewsPage(a, all) {
-  const canonical = `${SITE.url}/news/${a.id}/`;
+  const self = `${SITE.url}/news/${a.id}/`;
   const related = all.filter((x) => x.id !== a.id).slice(0, 4);
   const job = a.job_id ? (ALL_JOBS || []).find((j) => j.id === a.job_id) : null;
+  const canonical = isAnalysis(a) && job ? `${SITE.url}/jobs/${job.id}/` : self;
   const ld = [
-    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "News", url: SITE.url + "/news/" }, { name: a.title, url: canonical }]),
-    { "@context": "https://schema.org", "@type": "NewsArticle", headline: a.title, url: canonical,
+    breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "News", url: SITE.url + "/news/" }, { name: a.title, url: self }]),
+    { "@context": "https://schema.org", "@type": "NewsArticle", headline: a.title, url: self,
       datePublished: a.date, dateModified: a.date, description: a.summary || a.title,
       author: { "@type": "Organization", name: SITE.publisher },
       publisher: { "@type": "Organization", name: SITE.brand, logo: { "@type": "ImageObject", url: SITE.url + "/icon-512.png" } },
-      mainEntityOfPage: canonical,
+      mainEntityOfPage: self,
       // Top Stories and Discover need an image of at least 1200px: the related job's share card, else the site card
       image: (job && ogImage(`og/jobs/${job.id}.png`)) || SITE.url + "/og.png" },
   ];
-  return head({ title: `${a.title} | ${SITE.name}`, desc: (a.summary || a.title).slice(0, 155), canonical, ld, image: job && ogImage(`og/jobs/${job.id}.png`) }) + `
+  return head({ title: `${a.title} | ${SITE.name}`, desc: (a.summary || a.title).slice(0, 155), canonical, ld: isAnalysis(a) ? ld.slice(0, 1) : ld, noindex: isAnalysis(a), image: job && ogImage(`og/jobs/${job.id}.png`) }) + `
 <main class="wrap" id="main">
   <p class="crumb"><a href="/">Home</a> &nbsp;&rsaquo;&nbsp; <a href="/news/">News</a></p>
   <article class="prose">
@@ -784,6 +849,7 @@ function buildUpdatePage(u, all) {
   <article>
     <p class="eyebrow"><span class="upd-type upd-${u.type}">${typeLabel}</span> &middot; ${esc(u.org_short || u.organization)} &middot; ${fmtDate(u.date)}${isNew(u.date) ? ` <span class="new-badge">NEW</span>` : ""}</p>
     <h1>${esc(u.title)}</h1>
+    ${srcHostOf(u) || updatedOf(u) ? `<p class="provenance">${srcHostOf(u) ? `Source: ${esc(srcHostOf(u))} &middot; ` : ""}Published ${fmtDate(u.date)}${updatedOf(u) ? ` &middot; Updated ${fmtDate(updatedOf(u))}` : ""}</p>` : ""}
     ${u.via === "official" ? `<p class="verified">✓ Verified from the official website — <a href="${esc(u.official_link || u.link)}" rel="nofollow noopener" target="_blank">${esc(hostOf(u.official_link || u.link))}</a></p>` : ""}
     <div class="prose">
       <p class="lede">${esc(u.summary)}</p>
@@ -802,6 +868,7 @@ function buildUpdatePage(u, all) {
     <ol class="steps">${steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>
     ${adSlot("update-mid")}
     ${details.length ? `<div class="prose"><h2 class="section-h">What candidates should know</h2>${details.map((d) => `<p>${esc(d)}</p>`).join("")}</div>` : ""}
+    ${shareRow({ url: canonical, title: u.title, text: u.title + (u.event_date ? `\n${u.type === "exam-date" ? "Exam date" : "Date"}: ${fmtDate(u.event_date)}` : "") })}
     ${(() => { const ex = require("./exams.js").examOf(u.title); return ex ? `<p class="cta-row"><a class="btn btn-ghost" href="/exam/${ex.slug}/">All ${esc(ex.name)} updates &rarr;</a></p>` : ""; })()}
     ${tgCta("results and admit cards")}
     ${faqSection(faqs)}
@@ -839,7 +906,7 @@ function buildUpdateTypeIndex(type, list) {
     <p class="lede">${esc(seo.intro)}</p>
     <p class="tagrow">Also see: ${others}</p>
   </section>
-  ${list.length ? `<ul class="updates">${list.map(updateCard).join("\n")}</ul>` : `<p class="empty">No ${esc(t.plural.toLowerCase())} listed yet — new ones are added automatically several times a day.</p>`}
+  ${list.length ? `<ul class="updates">${withListAd(list.map(updateCard), "list-inline").join("\n")}</ul>` : `<p class="empty">No ${esc(t.plural.toLowerCase())} listed yet — new ones are added automatically several times a day.</p>`}
   <div class="prose">
     <h2 class="section-h">How ${esc(t.plural.toLowerCase())} are handled here</h2>
     <p>Each entry above is written from the official announcement and links straight to the board's own website, so you can download the ${esc(t.label.toLowerCase())} from the source. We never host candidate data, and we never ask for your roll number or password — always enter those only on the official portal.</p>
@@ -1062,11 +1129,12 @@ function buildVacancyTracker(jobs, updates) {
 }
 function buildUpdatesIndex(updates) {
   const canonical = SITE.url + "/updates/";
+  const firstK = Object.keys(UPDATE_TYPES).find((k) => updates.some((u) => u.type === k));   // one list ad per page
   const groups = Object.keys(UPDATE_TYPES).map((k) => {
     const list = updates.filter((u) => u.type === k);
     return list.length ? `<section class="upd-group">
       <h2 class="section-h"><a href="/updates/${k}/">${UPDATE_TYPES[k].plural}</a> <span class="grp-count">${list.length}</span></h2>
-      <ul class="updates">${list.slice(0, 20).map(updateCard).join("\n")}</ul>${list.length > 20 ? `<p class="backlink"><a href="/updates/${k}/">All ${list.length} ${UPDATE_TYPES[k].plural.toLowerCase()} &rarr;</a></p>` : ""}</section>` : "";
+      <ul class="updates">${withListAd(list.slice(0, 20).map(updateCard), k === firstK ? "list-inline" : "").join("\n")}</ul>${list.length > 20 ? `<p class="backlink"><a href="/updates/${k}/">All ${list.length} ${UPDATE_TYPES[k].plural.toLowerCase()} &rarr;</a></p>` : ""}</section>` : "";
   }).join("\n");
   const ld = [
     breadcrumbLd([{ name: "Home", url: SITE.url + "/" }, { name: "Updates", url: canonical }]),
@@ -1106,7 +1174,7 @@ function buildQualPage(q, list) {
     <h1>${esc(q.h1)}</h1>
     <div class="prose qual-intro">${q.intro.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
   </section>
-  ${sorted.length ? jobList(sorted)
+  ${sorted.length ? jobList(sorted, { ad: "list-inline" })
     : `<p class="empty">No live notifications in this category right now — new jobs are added automatically several times a day, so check back soon or <a href="/">browse all current jobs</a>.</p>`}
   ${guides.length ? `<section class="related">
     <h2 class="section-h">Guides for ${esc(q.name)} candidates</h2>
@@ -1147,7 +1215,7 @@ function buildStatePage(st, list) {
     return avail.length ? `<nav class="chips" aria-label="By qualification">${avail.map((q) =>
       `<a class="chip" href="/state/${st.slug}/${q.slug}/">${esc(st.name)} jobs for ${esc(q.name)}</a>`).join("")}</nav>` : "";
   })()}
-  ${sorted.length ? jobList(sorted)
+  ${sorted.length ? jobList(sorted, { ad: "list-inline" })
     : `<p class="empty">No live notifications for ${esc(st.name)} right now — new jobs are added automatically several times a day. Meanwhile, <a href="/state/all-india/">browse all-India jobs</a> open to everyone, or <a href="/">see all current jobs</a>.</p>`}
 </main>` + foot();
 }
@@ -1177,7 +1245,7 @@ function buildStateQualPage(st, q, list) {
     <h1>${esc(h1)}</h1>
     <p class="lede">${esc(intro)}</p>
   </section>
-  ${jobList(sorted)}
+  ${jobList(sorted, { ad: "list-inline" })}
   <p class="tagrow">Also see: <a href="/state/${st.slug}/">all ${esc(st.name)} jobs</a> &middot; <a href="/qualification/${q.slug}/">all ${esc(q.name)} jobs</a></p>
 </main>` + foot();
 }
@@ -1343,7 +1411,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
 
   <h2 class="section-h list-h" id="list-h">Latest government jobs</h2>
   <div id="results" hidden></div>
-  ${live.length ? `<div id="home-list">${jobList(live.slice(0, Number(SITE.homeMax || 300)), { id: "list", moreTitle: "More open jobs" })}
+  ${live.length ? `<div id="home-list">${jobList(live.slice(0, Number(SITE.homeMax || 300)), { id: "list", moreTitle: "More open jobs", ad: "list-inline" })}
     <p class="cta-row"><a class="btn btn-ghost" href="/jobs/">See all ${live.length} open jobs &rarr;</a> <a class="btn btn-ghost" href="/updates/">Results &amp; admit cards &rarr;</a></p>
   </div>
   <p class="empty" id="empty" hidden>No jobs match your search — try a department (SSC, RRB), a post, or a qualification.</p>` :
@@ -1402,7 +1470,8 @@ function buildCategory(kind, label, slugVal, jobs, opts = {}) {
     <p class="lede">${esc(desc)}</p>
   </section>
   <p class="count static">${sorted.length} ${sorted.length === 1 ? "job" : "jobs"}</p>
-  ${jobList(sorted)}
+  ${jobList(sorted, { ad: "list-inline" })}
+  ${(opts.updates || []).length ? `<section class="related"><h2 class="section-h">${esc(label)} results, admit cards &amp; answer keys</h2><ul class="updates">${opts.updates.slice(0, 12).map(updateCard).join("")}</ul></section>` : ""}
   <p class="backlink"><a href="/">&larr; All government jobs</a></p>
 </main>` + foot();
 }
@@ -1418,6 +1487,12 @@ function employmentTypeOf(job) {
   if (/\bapprentice|\btrainee\b|\binternship\b|\bintern\b/.test(t)) return "INTERN";
   if (/\bwalk-?in\b|\bproject\b|\bcontract(ual)?\b|\bconsultant\b|\bresearch (fellow|associate|assistant)\b|\bjrf\b|\bsrf\b|\bguest\b|\bad[- ]?hoc\b|\btemporary\b|\bpart[- ]time\b/.test(t)) return /\bpart[- ]time\b/.test(t) ? "PART_TIME" : "TEMPORARY";
   return "FULL_TIME";
+}
+/** The job's town/district for JobPosting, or "" when the location is only the country ("India", "All India", "Pan India"). */
+function localityOf(job) {
+  const l = String(job.location || "").replace(/\s+/g, " ").trim();
+  if (!l || /^(india|all india|pan[- ]india|across india|anywhere in india|all over india|various (places|locations)( in india)?|bharat)\.?$/i.test(l)) return "";
+  return l.length > 120 ? l.slice(0, 117).replace(/[,;\s]+\S*$/, "") + "…" : l;
 }
 function regionOf(job) {
   const s = statesOf(job).filter((x) => x.slug !== "all-india");
@@ -1441,29 +1516,39 @@ function jobLd(job) {
     employmentType: employmentTypeOf(job),
     directApply: false,
     identifier: { "@type": "PropertyValue", name: job.organization, value: job.id },
-    hiringOrganization: { "@type": "Organization", name: job.organization, ...(job.official_website || job.apply_link ? { sameAs: job.official_website || job.apply_link } : {}) },
+    // sameAs is the organisation's own website only (an application portal or a PDF is not the organisation)
+    hiringOrganization: { "@type": "Organization", name: job.organization, ...(/^https?:\/\//i.test(job.official_website || "") ? { sameAs: job.official_website } : {}) },
+    // a real place only: "India" / "All India" is not a locality (the country is already addressCountry)
     jobLocation: { "@type": "Place",
-      address: { "@type": "PostalAddress", addressLocality: job.location || "India", ...regionOf(job), addressCountry: "IN" } },
+      address: { "@type": "PostalAddress", ...(localityOf(job) ? { addressLocality: localityOf(job) } : {}), ...regionOf(job), addressCountry: "IN" } },
     applicantLocationRequirements: { "@type": "Country", name: "India" },
   };
   // without a printed last date the listing is treated as closed STALE_DAYS after publication — tell Google the same
   ld.validThrough = (job.application_end || addDays(job.published, Number(SITE.staleDays || 45))) + "T23:59:59+05:30";
   // Google accepts only these credential categories; the lowest level the job asks for is what a candidate needs.
+  // Unknown qualification: no educationRequirements at all (never a guessed "bachelor degree").
   const cred = { "10th-pass": "high school", "12th-pass": "high school", "iti": "professional certificate", "engineering-diploma": "professional certificate",
     "diploma": "professional certificate", "graduate": "bachelor degree", "post-graduate": "postgraduate degree" };
-  const lvl = qualsOf(job).map((q) => cred[q.slug]).find(Boolean);
+  const rank = { "high school": 1, "professional certificate": 2, "bachelor degree": 3, "postgraduate degree": 4 };
+  const lvl = qualsOf(job).map((q) => cred[q.slug]).filter(Boolean).sort((a, b) => rank[a] - rank[b])[0];
   if (lvl) ld.educationRequirements = { "@type": "EducationalOccupationalCredential", credentialCategory: lvl };
   if (sal) ld.baseSalary = { "@type": "MonetaryAmount", currency: "INR",
     value: { "@type": "QuantitativeValue", minValue: sal.min, maxValue: sal.max, unitText: sal.unit } };
   return ld;
 }
+// The candidate pool is sorted once per list (live first, newest first), not once per job page.
+const SORTED_POOL = new WeakMap();
 function relatedList(job, all) {
   const lvls = new Set(levelsOf(job));
-  const pool = all.filter((j) => j.id !== job.id);
+  if (!SORTED_POOL.has(all)) SORTED_POOL.set(all, [...all].sort(liveFirst));
+  const pool = SORTED_POOL.get(all).filter((j) => j.id !== job.id);
   const ok = slug(orgKey(job));
   const sameOrg = ok ? pool.filter((j) => slug(orgKey(j)) === ok) : [];
-  const sameLvl = pool.filter((j) => !sameOrg.includes(j) && levelsOf(j).some((l) => lvls.has(l)));
-  const picks = [...sameOrg, ...sameLvl].slice(0, 3);
+  // after the same organisation, the same state (a job in one state links to more jobs in that state)
+  const st = oneStateOf(job);
+  const sameState = st ? pool.filter((j) => !sameOrg.includes(j) && statusOf(j).live && statesOf(j).some((x) => x.slug === st.slug)) : [];
+  const sameLvl = pool.filter((j) => !sameOrg.includes(j) && !sameState.includes(j) && levelsOf(j).some((l) => lvls.has(l)));
+  const picks = [...sameOrg, ...sameState, ...sameLvl].slice(0, 3);
   if (!picks.length) return "";
   return `<section class="related">
     <h2 class="section-h">Related jobs</h2>
@@ -1522,11 +1607,47 @@ function prepTips(job) {
 /* In-content ad unit. Renders only when adsenseId is set, so the site stays
    clean (and policy-safe) until AdSense is approved. In-article placements
    earn far more than relying on Auto Ads alone. */
-function adSlot(label) {
-  // A manual unit needs its ad-unit ID: config.json "adsenseSlots" per placement ({"job-mid": "123…", "update-mid": …},
-  // so AdSense reports each placement), else the one "adsenseSlot". Without either, Auto ads (switched on in AdSense) place them.
+/* Share buttons (job, update and quiz pages): WhatsApp with the key facts and a tagged link, plus the phone's own share
+   sheet (navigator.share, wired in site.js; shown only where the browser supports it). Placed after the details,
+   never beside an Apply / Download button. */
+function shareRow({ url, title, text, lang = "en" }) {
+  const hi = lang === "hi";
+  const tagged = `${url}${url.includes("?") ? "&" : "?"}utm_source=whatsapp&utm_medium=share`;
+  const wa = "https://wa.me/?text=" + encodeURIComponent(`${text}\n${tagged}`);
+  return `<div class="share-row"><span class="share-l">${hi ? "दोस्तों को भेजें:" : "Share with a friend:"}</span><a class="btn btn-ghost btn-wa" href="${esc(wa)}" target="_blank" rel="noopener nofollow">WhatsApp</a><button class="btn btn-ghost btn-share" type="button" hidden data-share-url="${esc(url)}" data-share-title="${esc(title)}" data-share-text="${esc(text)}" data-done="${hi ? "लिंक कॉपी हो गया" : "Link copied"}">${hi ? "शेयर करें" : "Share"}</button></div>`;
+}
+function jobShareText(job, lang = "en") {
+  const hi = lang === "hi";
+  const t = hi && job.hi && job.hi.title ? job.hi.title : job.title;
+  return [t, job.total_vacancies ? `${hi ? "कुल पद" : "Posts"}: ${inr(job.total_vacancies)}` : "",
+    job.application_end ? `${hi ? "अंतिम तिथि" : "Last date"}: ${hi ? hiDateKF(job.application_end) : fmtDate(job.application_end)}` : ""].filter(Boolean).join("\n");
+}
+/** The job's one real state (not "All India", not overseas), or null when it lists none or several. */
+function oneStateOf(job) {
+  if (isGulf(job)) return null;
+  const s = statesOf(job).filter((x) => x.slug !== "all-india");
+  return s.length === 1 ? s[0] : null;
+}
+let COMBO_PAGES = new Set();   // "state/qual" pairs that get a page (set before job pages are rendered)
+function stateChips(job) {
+  const st = oneStateOf(job);
+  if (!st) return "";
+  const combos = qualsOf(job).filter((q) => COMBO_PAGES.has(`${st.slug}/${q.slug}`))
+    .map((q) => `<a class="chip" href="/state/${st.slug}/${q.slug}/">${esc(st.name)} jobs for ${esc(q.name)}</a>`).join("");
+  return `<p class="tagrow"><a class="chip" href="/state/${st.slug}/">More ${esc(st.name)} government jobs</a>${combos}</p>`;
+}
+function adSlot(label, { format = "in-article", tag = "aside" } = {}) {
+  // A manual unit needs its ad-unit ID: config.json "adsenseSlots" per placement ({"job-top", "job-mid", "job-end",
+  // "update-mid", "quiz-end", "guide-inline", "news-inline", "list-inline", "tool-result"}, so AdSense reports each
+  // placement), else the one "adsenseSlot". Without either, Auto ads (switched on in AdSense) place them.
+  // Rules: labelled "Advertisement", never beside an Apply / Download / Start / Calculate button.
   const unit = (SITE.adsenseSlots || {})[String(label || "").replace(/^hi-/, "")] || SITE.adsenseSlot;
   if (!SITE.adsenseId || !unit) return "";
+  if (format === "responsive") return `<${tag} class="ad-slot ad-responsive" aria-label="Advertisement" data-slot="${esc(label || "")}">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="${esc(SITE.adsenseId)}" data-ad-slot="${esc(unit)}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </${tag}>`;
   const hi = /^hi-/.test(label || "");
   const promo = `<b>${hi ? "सरकारी नौकरी का अलर्ट सबसे पहले" : "Get new govt job alerts first"}</b><span>${hi ? "सरकारी रडार ऐप — आपके राज्य और योग्यता की भर्तियाँ" : "Sarkari Radar app — jobs for your state and qualification"}</span><a href="/app/">${hi ? "ऐप लें" : "Get the app"}</a>`;
   return `<aside class="ad-slot" aria-label="Advertisement" data-slot="${esc(label || "")}">
@@ -1638,23 +1759,29 @@ function buildJob(job, all) {
   const steps = (job.how_to_apply || []).map((s) => `<li>${esc(s)}</li>`).join("\n");
   const pct = windowPct(job);
   const faqs = faqsFor(job);
-  const ld = [jobLd(job), breadcrumbLd([
+  const st1 = oneStateOf(job);
+  // a cancelled / postponed recruitment is not a job opening: no JobPosting markup (the page stays, with the notice)
+  const ld = [...(job.notice_status ? [] : [jobLd(job)]), breadcrumbLd([
     { name: "Jobs", url: SITE.url + "/" },
+    ...(st1 ? [{ name: `${st1.name} govt jobs`, url: `${SITE.url}/state/${st1.slug}/` }] : []),
     ...(ORG_PAGES.has(slug(orgKey(job))) ? [{ name: orgKey(job), url: `${SITE.url}/organization/${slug(orgKey(job))}/` }] : []),
     { name: job.title, url: canonical },
   ])];
+  const src = srcHostOf(job), upd = updatedOf(job);
   if (faqs.length) ld.push(faqLd(faqs));
   const lvlLinks = qualsOf(job)
     .map((q) => `<a class="chip" href="/qualification/${q.slug}/">${esc(q.name)}</a>`).join("");
   const selection = Array.isArray(job.selection_process) && job.selection_process.length
     ? `<h2 class="section-h">Selection process</h2><ol class="steps">${job.selection_process.map((s)=>`<li>${esc(s)}</li>`).join("")}</ol>`
     : "";
+  const elig = eligibilityProse(job);
+  const between = !!(selection || salaryProse(job) || steps);   // a content block between job-mid and the Apply bar
 
   const hiAlt = job.hi && job.hi.title ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/jobs/${job.id}/` } : {};
   return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt }) + `
 <main class="wrap" id="main">
   ${job.hi && job.hi.title ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
-  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${ORG_PAGES.has(slug(orgKey(job)))
+  <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${st1 ? `<a href="/state/${st1.slug}/">${esc(st1.name)} govt jobs</a> &nbsp;&rsaquo;&nbsp; ` : ""}${ORG_PAGES.has(slug(orgKey(job)))
     ? `<a href="/organization/${slug(orgKey(job))}/">${esc(orgKey(job))}</a>`
     : esc(orgKey(job) || job.organization)}</p>
   <div class="detail-head">
@@ -1663,8 +1790,10 @@ function buildJob(job, all) {
       <span class="status ${st.cls}">${esc(st.label)}</span>
     </div>
     <h1>${esc(job.title)}</h1>
+    <p class="provenance">${src ? `Source: ${esc(src)} &middot; ` : ""}Published ${fmtDate(job.published)}${upd ? ` &middot; Updated ${fmtDate(upd)}` : ""}</p>
     ${job.via === "official" ? `<p class="verified">✓ Verified from the official website${job.official_website ? ` — <a href="${esc(job.official_website)}" rel="nofollow noopener" target="_blank">${esc(hostOf(job.official_website))}</a>` : ""}</p>` : ""}
-    ${isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> ${job.application_end ? `The last date to apply was ${fmtDate(job.application_end)}.` : `Its notice is more than ${Number(SITE.staleDays || 45)} days old.`} This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
+    ${job.notice_status ? statusBanner(job, "en") : ""}
+    ${!job.notice_status && isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> ${job.application_end ? `The last date to apply was ${fmtDate(job.application_end)}.` : `Its notice is more than ${Number(SITE.staleDays || 45)} days old.`} This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
     ${keyFacts(job, "en", { cta: statusOf(job).live })}
     <p class="lede">${esc(job.summary || "")}</p>
     ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
@@ -1673,6 +1802,7 @@ function buildJob(job, all) {
       <div class="window-ends"><span>${fmtDate(job.application_start)}</span><span>${fmtDate(job.application_end)}</span></div>
     </div>` : ""}
   </div>
+  ${String(job.summary || "").length >= 100 ? adSlot("job-top") : ""}
 
   <h2 class="section-h">Recruitment details</h2>
   <div class="spec"><dl>
@@ -1688,10 +1818,11 @@ function buildJob(job, all) {
     ${row("Last date to apply", `<b>${fmtDate(job.application_end)}</b>`)}
     ${row("Exam date", fmtDate(job.exam_date), true)}
   </dl></div>
+  ${shareRow({ url: canonical, title: job.title, text: jobShareText(job) })}
 
-  ${adSlot("job-mid")}
+  ${elig ? `<div class="prose"><h2 class="section-h">Eligibility criteria</h2>${elig}${lvlLinks ? `<p class="tagrow">Eligibility: ${lvlLinks}</p>` : ""}</div>` : ""}
 
-  ${eligibilityProse(job) ? `<div class="prose"><h2 class="section-h">Eligibility criteria</h2>${eligibilityProse(job)}${lvlLinks ? `<p class="tagrow">Eligibility: ${lvlLinks}</p>` : ""}</div>` : ""}
+  ${elig && between ? adSlot("job-mid") : ""}
 
   ${selection}
 
@@ -1719,8 +1850,18 @@ function buildJob(job, all) {
 
   ${helpfulGuidesForJob(job)}
 
+  ${stateChips(job)}
   ${relatedList(job, all)}
 </main>` + foot();
+}
+/** Red banner on a cancelled / postponed recruitment, with the official notice (EN + HI). */
+function statusBanner(job, lang = "en") {
+  const hi = lang === "hi", c = job.notice_status === "cancelled";
+  const head = hi ? (c ? "यह भर्ती रद्द कर दी गई है।" : "यह भर्ती स्थगित कर दी गई है।") : (c ? "This recruitment has been cancelled." : "This recruitment has been postponed.");
+  const date = job.status_date ? (hi ? ` (${hiDateKF(job.status_date)})` : ` (${fmtDate(job.status_date)})`) : "";
+  const link = job.status_link ? ` <a href="${esc(job.status_link)}" target="_blank" rel="noopener nofollow">${hi ? "ऑफिशियल नोटिस देखें" : "Read the official notice"} &#8599;</a>` : "";
+  const ours = job.status_update ? ` <a href="${hi ? "/hi" : ""}/updates/${esc(job.status_update)}/">${hi ? "पूरी जानकारी" : "Details"}</a>` : "";
+  return `<div class="status-banner ${c ? "cancelled" : "postponed"}" role="alert"><strong>${head}</strong> ${esc(job.status_note || "")}${date}.${link}${ours} ${hi ? "यह पेज संदर्भ के लिए रखा गया है।" : "This page is kept for reference."}</div>`;
 }
 
 /* ---- 404 -------------------------------------------------------- */
@@ -1771,7 +1912,7 @@ function buildLatestSitemap({ jobs, updates, news }) {
   // primary job/result pages first (the Hindi twins stay in sitemap.xml and are linked via hreflang).
   for (const j of jobs) if (fresh(j.published)) add(`jobs/${j.id}/`, day(j.published));
   for (const u of updates) if (fresh(u.date)) add(`updates/${u.id}/`, day(u.date));
-  for (const a of news) if (fresh(a.date)) add(`news/${a.id}/`, day(a.date));
+  for (const a of news) if (fresh(a.date) && !isAnalysis(a)) add(`news/${a.id}/`, day(a.date));
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.join("")}</urlset>\n`;
 }
 /* Google News sitemap: results, admit cards, answer keys, exam dates and current-affairs articles from today and
@@ -1781,7 +1922,7 @@ function buildNewsSitemap({ updates, news }) {
   const recent = (x) => { const d = day(x) ? daysLeft(day(x)) : null; return d !== null && d <= 0 && d >= -1; };
   const items = [
     ...updates.filter((u) => recent(u.date)).map((u) => ({ loc: `${SITE.url}/updates/${u.id}/`, date: day(u.date), title: u.title })),
-    ...news.filter((a) => recent(a.date)).map((a) => ({ loc: `${SITE.url}/news/${a.id}/`, date: day(a.date), title: a.title })),
+    ...news.filter((a) => recent(a.date) && !isAnalysis(a)).map((a) => ({ loc: `${SITE.url}/news/${a.id}/`, date: day(a.date), title: a.title })),
   ].slice(0, 1000);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">` +
     items.map((x) => `<url><loc>${x.loc}</loc><news:news><news:publication><news:name>${esc(SITE.brand)}</news:name><news:language>en</news:language></news:publication><news:publication_date>${x.date}</news:publication_date><news:title>${esc(x.title)}</news:title></news:news></url>`).join("") +
@@ -1848,11 +1989,13 @@ function buildAppIndex(jobs, updates) {
   const J = appJobsInFeed(jobs).map((j) => ({
     id: j.id, t: j.title, th: (j.hi && j.hi.title) || "", o: orgKey(j) || "", p: j.post_name || "",
     v: Math.round(Number(j.total_vacancies)) || 0, q: qualsOf(j).map((x) => x.slug), s: appStates(j),
-    a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appDay(j.application_end),
+    a0: Number(j.age_min) || 0, a1: Number(j.age_max) || 0, st: appDay(j.application_start), en: appEnd(j),
     pub: appDay(j.published), x: appDay(j.exam_date), ok: j.via === "official" ? 1 : 0,
     tc: shortTitle(j.title), thc: shortTitle((j.hi && j.hi.title) || ""), w: /walk[- ]?in/i.test(`${j.title} ${j.post_name || ""}`) ? 1 : 0,
     ph: appStr(j.hi && j.hi.post_name),
     c: appCats(`${orgKey(j)} ${j.organization || ""} ${j.title} ${j.post_name || ""}`),
+    m: appCta(j).cta || "",                                  // what the main button opens (apply / form / notice / website …)
+    ...(j.notice_status ? { ns: j.notice_status } : {}),     // "cancelled" | "postponed"
   }));
   const U = appUpdatesInFeed(updates).map((u) => ({
     id: u.id, t: u.title, th: (u.hi && u.hi.title) || "", o: u.org_short || "", ty: u.type, d: appDay(u.date), ev: appDay(u.event_date),
@@ -1862,6 +2005,7 @@ function buildAppIndex(jobs, updates) {
   }));
   return JSON.stringify({
     api: APP_API, built: BUILD_ID, at: BUILT.toISOString(), site: SITE.url,
+    contact: SITE.email || "", minVersion: Math.max(0, Math.round(Number(SITE.appMinVersion) || 0)),
     states: STATES.map((x) => ({ slug: x.slug, name: x.name })),
     quals: QUALS.map((x) => ({ slug: x.slug, name: x.name })),
     types: Object.entries(UPDATE_TYPES).map(([k, v]) => ({ slug: k, name: v.plural })),
@@ -1876,6 +2020,17 @@ function buildAppIndex(jobs, updates) {
     })(),
   });
 }
+/* A cancelled / postponed recruitment in the app: the button opens the official notice that says so (apps that predate
+   "ns" show it as "Read official notification"), and the list's end date is the notice date, so those apps show it as
+   closed and send no "last date" reminders. The detail keeps the notice's own application_end. */
+function appCta(j) {
+  if (!j.notice_status) return ctaOf(j);
+  return j.status_link ? { cta: "notice", url: j.status_link } : { cta: "website", url: j.official_website || "" };
+}
+function appEnd(j) {
+  const end = appDay(j.application_end), st = appDay(j.status_date);
+  return j.notice_status && st && (!end || st < end) ? st : end;
+}
 function appJobDetail(j) {
   const h = j.hi || {};
   return JSON.stringify({
@@ -1889,7 +2044,9 @@ function appJobDetail(j) {
     selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
     preparation_tips: appArr(j.preparation_tips),
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
-    cta: ctaOf(j).cta || "", cta_url: ctaOf(j).url || "", apply_mode: LIB.applyMode(j),
+    cta: appCta(j).cta || "", cta_url: appCta(j).url || "", apply_mode: LIB.applyMode(j),
+    src_host: srcHostOf(j), upd: updatedOf(j) || appDay(j.published),
+    notice_status: j.notice_status || "", status_note: j.status_note || "", status_link: j.status_link || "",
     hi: h.title ? { title: h.title, summary: h.summary || j.summary_hindi || "", overview: appArr(h.overview), eligibility_notes: h.eligibility_notes ? String(h.eligibility_notes) : "",
       selection_process: appArr(h.selection_process), how_to_apply: appArr(h.how_to_apply), faq: appFaq(h.faq),
       // the notice's facts in Hindi too (the app used to show these in English on a Hindi page)
@@ -1905,6 +2062,7 @@ function appUpdateDetail(u) {
     organization: u.organization || "", org_short: u.org_short || "", exam_name: u.exam_name || "", date: appDay(u.date), event_date: appDay(u.event_date),
     summary: u.summary || "", steps: appArr(u.steps), details: appArr(u.details), faq: appFaq(u.faq),
     official_link: u.official_link || "", official_website: u.official_website || "", link: u.link || "",
+    src_host: srcHostOf(u), upd: updatedOf(u) || appDay(u.date),
     hi: h.title ? { title: h.title, summary: h.summary || u.summary_hi || "", steps: appArr(h.steps), details: appArr(h.details), faq: appFaq(h.faq) } : null,
   });
 }
@@ -2158,17 +2316,17 @@ We work to keep information correct and up to date, but details can change. Alwa
 
 ## Where notifications come from
 - **Official websites.** We monitor the notice boards of central and state recruitment bodies directly — commissions, selection boards, police recruitment boards, railway and banking recruiters and other departments. New notices are read from the official page or PDF itself.
-- **Established job-news feeds.** We also watch well-known notification feeds to catch announcements early, then trace each one back to the official source before linking to it.
+- **Established job-news feeds.** We also watch well-known notification feeds to catch announcements early. For each item we look for the official notice and the recruiter's own website among the links on the source page and link to those — never to the feed. When no official link can be found, the page links to the organisation's official homepage and says so on the button.
 
 ## What we check before publishing
 - **Official links only.** The "Apply" and "Official notification" buttons point only to government or recruiting-organisation websites — never to another job portal.
-- **Facts come from the notice.** Vacancies, dates, age limits, fees and eligibility are taken from the notification text. If a detail is not in the notice, we leave it out rather than guess.
+- **Facts come from the notice.** Vacancies, dates, age limits, fees and eligibility are extracted from the official notice — or, for feed items, from the source article that reports it — with the instruction to leave out anything that is not stated rather than guess.
 - **Verified badge.** Pages marked "✓ Verified from the official website" were read directly from the recruiter's own website.
 - **No duplicates or filler.** When the same recruitment is reported twice, we merge the pages and redirect the old address. We do not publish generic "latest jobs" round-ups or work-from-home schemes.
 - **Indian dates.** Deadlines are calculated in Indian Standard Time, so a recruitment shows as closed as soon as its last date has passed in India.
 
 ## How the pages are written
-Summaries, frequently asked questions, step-by-step application instructions and Hindi translations are drafted with the help of AI tools from the official notice text, then checked by automated rules — official-domain links, dates in range, no figures that do not appear in the source. Preparation guides are written by our editorial team.
+Facts, summaries, frequently asked questions, step-by-step application instructions and Hindi translations are drafted with the help of AI tools from that text. Automated rules then check every record before it is published: links must be real web addresses chosen from the links found on the source page, on official (non-aggregator) sites; dates must be real calendar dates, and a last date that falls before the notice was published is treated as an extraction error and dropped; numbers must be numbers; private employers, admission and board-exam notices and closed notices are filtered out; and the same recruitment reported twice is merged. These rules check the shape and the source of the information — they do not compare every figure with the notice, so always confirm vacancies, dates and fees in the official notification linked on each page. Each job page shows the official site the facts come from and when the page was published or last updated. Preparation guides are written by our editorial team.
 
 ## Updates and corrections
 Recruiting bodies often publish corrigenda, extend last dates or change exam dates. When that happens we update the page; for example, when a corrigendum changed the number of posts in a railway recruitment, the page was corrected and duplicate listings with the old figure were merged into it. If you spot an error, please [contact us](/contact/) with the link to the official notice and we will correct it.
@@ -2351,7 +2509,7 @@ function buildGuide(g) {
     <h1>${esc(g.meta.title)}</h1>
     ${g.meta.description ? `<p class="lede">${esc(g.meta.description)}</p>` : ""}
     ${toc}
-    <div class="prose">${md(g.body)}</div>
+    <div class="prose">${inArticleAds(md(g.body), "guide-inline")}</div>
     <div class="author-box">
       <div class="author-avatar" aria-hidden="true">N.</div>
       <div class="author-meta">
@@ -2369,6 +2527,8 @@ let TOOL_DEFS = [];
 let ALL_QUIZ = [];
 let ALL_JOBS = [];
 let ORG_PAGES = new Set();   // org slugs that actually get a page (active jobs only)
+let ORG_UPDATES = new Map(); // org slug -> updates of that body (recent + archived)
+const SITEMAP_CUTOFF = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays || 15) * 86400000).toISOString().slice(0, 10);
 function relatedGuidesHtml(current) {
   const others = ALL_GUIDES.filter((x) => x.slug !== current.slug);
   if (!others.length) return "";
@@ -2541,22 +2701,35 @@ function main() {
   ALL_GUIDES = guides;
   ALL_JOBS = jobs;
   const updates = readUpdates();
+  const archivedUpdates = readUpdatesArchive(updates);
+  const allUpdates = [...updates, ...archivedUpdates].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  ARCHIVED_UPD = new Set(archivedUpdates.map((u) => u.id));
+  if (archivedUpdates.length) console.log(`Updates: ${updates.length} recent + ${archivedUpdates.length} archived (pages kept).`);
+  ORG_UPDATES = new Map();   // organisation page slug -> its updates (recent and archived), newest first
+  for (const u of allUpdates) { const k = slug(orgKey(u)); if (k) { if (!ORG_UPDATES.has(k)) ORG_UPDATES.set(k, []); ORG_UPDATES.get(k).push(u); } }
   const news = readNews();
   TG = readTelegram();
   FOOT_LATEST = footLatest(activeJobs, updates);   // before any page is rendered
   makeShareImages(jobs, updates);                  // before job/update pages, which link their own image
 
   // Tools, salary pages (calculators that work in the browser)
-  const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection,
+  const TOOLS = require("./tools.js").buildToolPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, adSlot,
     rates: (JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")).payRates || {}) });
   for (const tp of TOOLS.pages) write(tp.path, tp.html);
-  const HI_TOOL_PAGES = require("./tools.js").buildHindiTools({ head, foot, esc, SITE, breadcrumbLd, faqLd,
+  const HI_TOOL_PAGES = require("./tools.js").buildHindiTools({ head, foot, esc, SITE, breadcrumbLd, faqLd, adSlot,
     rates: (JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")).payRates || {}) });
   for (const tp of HI_TOOL_PAGES) write(tp.path, tp.html);
   TOOLS.pages.push(...HI_TOOL_PAGES);
   TOOL_DEFS = TOOLS.defs;
   console.log(`Tools: ${TOOLS.defs.length} tools + ${TOOLS.levels.length} pay-level pages.`);
 
+  // state x qualification pages that will be built (job pages link to them, so this is known before they are rendered)
+  const MIN_COMBO = Number(SITE.minComboJobs || 3);   // don't publish thin combo pages
+  COMBO_PAGES = new Set();
+  for (const st of STATES) for (const q of QUALS) {
+    const liveN = (stateMap.get(st.slug) || []).filter((j) => qualsOf(j).some((x) => x.slug === q.slug) && statusOf(j).cls !== "closed").length;
+    if (liveN >= MIN_COMBO) COMBO_PAGES.add(`${st.slug}/${q.slug}`);
+  }
   write("index.html", buildHome(activeJobs, levels, orgs, guides, qualCounts, updates, stateCounts, news));
   for (const job of jobs) write(`jobs/${job.id}/index.html`, buildJob(job, jobs));
 
@@ -2567,13 +2740,14 @@ function main() {
   for (const a of news) write(`news/${a.id}/index.html`, buildNewsPage(a, news));
 
   write("updates/index.html", buildUpdatesIndex(updates));
-  for (const u of updates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
+  for (const u of allUpdates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
-  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates, STATES, QUALS, statesOf, qualsOf, keyFacts, ctaHtml });
+  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates: allUpdates, archivedUpdateIds: ARCHIVED_UPD, STATES, QUALS, statesOf, qualsOf, keyFacts, ctaHtml,
+    shareRow, jobShareText, oneStateOf, statusBanner, srcHostOf, updatedOf });
   HI_BROWSE = HINDI.hiBrowse;
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
-  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates, hiDate: require("./hindi.js").hiDate });
+  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates: allUpdates, hiDate: require("./hindi.js").hiDate });
   for (const ep of EXAMP.pages) write(ep.path, ep.html);
   console.log(`Exams: ${EXAMP.pages.filter((p) => !p.path.startsWith("hi/")).length - 1} exam hub(s) + ${EXAMP.pages.filter((p) => p.path.startsWith("hi/")).length - 1} Hindi.`);
   write("latest/index.html", buildLatestPage(activeJobs));
@@ -2584,7 +2758,7 @@ function main() {
 
   const cats = [];
   cats.push({ kind: "news", slug: "" });
-  for (const a of news) cats.push({ kind: "news", slug: a.id });
+  for (const a of news) cats.push({ kind: "news", slug: a.id, noindex: isAnalysis(a) });   // analysis pages: out of the sitemap
   for (const q of QUALS) {
     write(`qualification/${q.slug}/index.html`, buildQualPage(q, levelMap.get(q.slug) || []));
     cats.push({ kind: "qualification", slug: q.slug });
@@ -2600,7 +2774,6 @@ function main() {
   // State landing pages (statewise browsing)
   write("state/index.html", buildStatesIndex(stateCounts));
   cats.push({ kind: "state", slug: "" });
-  const MIN_COMBO = Number(SITE.minComboJobs || 3);   // don't publish thin combo pages
   let comboCount = 0;
   for (const st of STATES) {
     const stJobs = stateMap.get(st.slug) || [];
@@ -2609,8 +2782,7 @@ function main() {
     // Long-tail: "<State> government jobs for <qualification>"
     for (const q of QUALS) {
       const list = stJobs.filter((j) => qualsOf(j).some((x) => x.slug === q.slug));
-      const liveN = list.filter((j) => statusOf(j).cls !== "closed").length;
-      if (liveN < MIN_COMBO) continue;
+      if (!COMBO_PAGES.has(`${st.slug}/${q.slug}`)) continue;
       write(`state/${st.slug}/${q.slug}/index.html`, buildStateQualPage(st, q, list));
       cats.push({ kind: "state", slug: `${st.slug}/${q.slug}` });
       comboCount++;
@@ -2624,7 +2796,7 @@ function main() {
   for (const { short, jobs: list } of orgMap.values()) {
     const s = slug(short), thin = list.length < MIN_ORG_INDEX;
     if (thin) thinOrgs++;
-    write(`organization/${s}/index.html`, buildCategory("organization", short, s, list, { noindex: thin }));
+    write(`organization/${s}/index.html`, buildCategory("organization", short, s, list, { noindex: thin, updates: ORG_UPDATES.get(s) || [] }));
     cats.push({ kind: "organization", slug: s, noindex: thin });
   }
   if (thinOrgs) console.log(`Organisation pages: ${thinOrgs} with fewer than ${MIN_ORG_INDEX} listings kept out of the index.`);
@@ -2654,7 +2826,8 @@ function main() {
     ...TOPIC_HUBS.map((t) => `${t.slug}/`),
     "vacancy-tracker/",
     ...Object.keys(UPDATE_TYPES).map((k) => `updates/${k}/`),
-    ...updates.map((u) => `updates/${u.id}/`),
+    // archived updates leave the sitemap like closed jobs (sitemapClosedDays after their date); pages stay live
+    ...allUpdates.filter((u) => !ARCHIVED_UPD.has(u.id) || String(u.date || "") >= SITEMAP_CUTOFF).map((u) => `updates/${u.id}/`),
     ...guides.map((g) => `guides/${g.slug}/`),
     ...Object.keys(pages).map((s) => `${s}/`),
   ];
@@ -2662,13 +2835,14 @@ function main() {
   // Real modification dates for dated pages (everything else is a hub that changes with each build).
   const mods = new Map();
   const d = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
-  for (const u of updates) if (d(u.date)) { mods.set(`updates/${u.id}/`, d(u.date)); mods.set(`hi/updates/${u.id}/`, d(u.date)); }
+  for (const u of allUpdates) if (d(u.date)) { mods.set(`updates/${u.id}/`, d(u.date)); mods.set(`hi/updates/${u.id}/`, d(u.date)); }
   for (const j of jobs) if (d(j.published)) mods.set(`hi/jobs/${j.id}/`, d(j.published));
   for (const a of news) if (d(a.date)) mods.set(`news/${a.id}/`, d(a.date));
   for (const z of ALL_QUIZ) if (d(z.date)) mods.set(`quiz/${z.id}/`, d(z.date));
   for (const g of guides) if (d(g.meta && g.meta.date)) mods.set(`guides/${g.slug}/`, d(g.meta.date));
   const cutoff60 = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
   const oldClosed = new Set(jobs.filter((j) => j.application_end && j.application_end < cutoff60).map((j) => `hi/jobs/${j.id}/`));
+  for (const u of archivedUpdates) if (String(u.date || "") < SITEMAP_CUTOFF) oldClosed.add(`hi/updates/${u.id}/`);
   // Hindi twins stay out of the sitemap while Google's crawl budget for the site is small (they were 45% of it
   // and earn almost no impressions yet); they stay live and Google still finds them via hreflang links.
   // Set config.json "sitemapHindi": true to list them again.
@@ -2682,7 +2856,7 @@ function main() {
     SITE.url + "/",
     ...jobs.map((j) => `${SITE.url}/jobs/${j.id}/`),
     ...cats.map((c) => `${SITE.url}/${c.kind}/${c.slug ? c.slug + "/" : ""}`),
-    ...updates.map((u) => `${SITE.url}/updates/${u.id}/`),
+    ...allUpdates.map((u) => `${SITE.url}/updates/${u.id}/`),
     SITE.url + "/updates/",
     ...Object.keys(UPDATE_TYPES).map((k) => `${SITE.url}/updates/${k}/`),
     SITE.url + "/latest/", SITE.url + "/jobs/", SITE.url + "/closing-soon/", SITE.url + "/quiz/",
@@ -2690,7 +2864,7 @@ function main() {
     ...EXAMP.pages.map((p) => p.url),
     ...ALL_QUIZ.map((z) => `${SITE.url}/quiz/${z.id}/`),
     ...TOOLS.pages.map((p) => p.url),
-    ...news.map((a) => `${SITE.url}/news/${a.id}/`),
+    ...news.filter((a) => !isAnalysis(a)).map((a) => `${SITE.url}/news/${a.id}/`),
     SITE.url + "/news/",
     // Gulf pages are noindex while they have no live job — keep them out of the sitemap too
     ...([...gulfCounts.values()].some((n) => n > 0) ? [SITE.url + "/gulf/"] : []),
@@ -2797,4 +2971,6 @@ function main() {
   console.log(`Built: home + ${jobs.length} jobs + ${cats.length} categories + ${guides.length} guides + ${Object.keys(pages).length} pages + 404/sitemap/feed -> dist/`);
 }
 
-main();
+// `node build.js` builds the site; tests require() the pure helpers without building anything.
+if (require.main === module) main();
+module.exports = { qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf };

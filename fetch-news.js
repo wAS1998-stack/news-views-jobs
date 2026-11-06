@@ -34,7 +34,8 @@ const HDRS = { "user-agent": UA, "accept": "application/rss+xml, application/xml
 const NEWS_FEEDS = Array.isArray(CONFIG.newsFeeds) && CONFIG.newsFeeds.length
   ? CONFIG.newsFeeds
   : ["https://www.pib.gov.in/ViewRss.aspx?reg=1&lang=1"];
-const MAX_ANALYSIS = Number(CONFIG.maxAnalysisPerRun || 1);
+// 0 = no new AI "-explained" pages (they repeated the job page; existing ones are noindex with a canonical to the job)
+const MAX_ANALYSIS = Math.max(0, Number(CONFIG.maxAnalysisPerRun ?? 0) || 0);
 
 const today = () => new Date().toISOString().slice(0, 10);
 const stripTags = (s) => String(s || "").replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").replace(/\s+/g, " ").trim();

@@ -58,6 +58,9 @@ function buildHindi(ctx) {
   const pages = [];
   const hiJobs = jobs.filter((j) => j.hi && j.hi.title);
   const hiUpd = updates.filter((u) => u.hi && u.hi.title);
+  // archived updates (data/updates-archive.json) keep their pages, but lists and hubs show the recent window
+  const ARCH = ctx.archivedUpdateIds || new Set();
+  const hiUpdRecent = hiUpd.filter((u) => !ARCH.has(u.id));
   const openJobs = hiJobs.filter((j) => statusOf(j).cls !== "closed" && !isStale(j))
     .sort((a, b) => String(b.published || "").localeCompare(String(a.published || "")));
 
@@ -93,21 +96,27 @@ function buildHindi(ctx) {
     let title = `${h.title.split(/[:–|]/)[0].trim()}${vac}`;
     if (title.length > 62) title = title.slice(0, 60).replace(/\s+\S*$/, "");
     const desc = (h.summary || "").slice(0, 155);
-    const ld = [breadcrumbLd([{ name: "होम", url: SITE.url + "/hi/" }, { name: "सरकारी नौकरी", url: SITE.url + "/hi/" }, { name: h.title, url: canonical }])];
+    // a job in exactly one state: होम › <राज्य> सरकारी नौकरी › job (the state hub), as on the English page
+    const st1 = ctx.oneStateOf ? ctx.oneStateOf(j) : null, st1Hi = st1 ? (HI_STATES[st1.slug] || st1.name) : "";
+    const ld = [breadcrumbLd([{ name: "होम", url: SITE.url + "/hi/" }, st1 ? { name: `${st1Hi} सरकारी नौकरी`, url: `${SITE.url}/hi/state/${st1.slug}/` } : { name: "सरकारी नौकरी", url: SITE.url + "/hi/" }, { name: h.title, url: canonical }])];
     if (h.faq && h.faq.length) ld.push(faqLd(h.faq));
+    const srcH = ctx.srcHostOf ? ctx.srcHostOf(j) : "", updH = ctx.updatedOf ? ctx.updatedOf(j) : "";
     const notAgg = (x) => x && !require("./lib.js").isAggregator(new URL(x).hostname);
     const apply = j.apply_link || j.official_website || (notAgg(j.source) ? j.source : "");
     pages.push({ path: `hi/jobs/${j.id}/index.html`, url: canonical, html: head({ lang: "hi", title: `${title} | ${SITE.name}`, desc, canonical, ld, ogType: "article",
       alternates: alt(enPath, hiPath), langSwitch: enPath }) + `
 <main class="wrap" id="main">
-  <p class="crumb"><a href="/hi/">सरकारी नौकरी</a> &nbsp;&rsaquo;&nbsp; ${esc(h.organization || j.organization)}</p>
+  <p class="crumb"><a href="/hi/">सरकारी नौकरी</a> &nbsp;&rsaquo;&nbsp; ${st1 ? `<a href="/hi/state/${st1.slug}/">${esc(st1Hi)} सरकारी नौकरी</a> &nbsp;&rsaquo;&nbsp; ` : ""}${esc(h.organization || j.organization)}</p>
   <div class="detail-head">
     <div class="headline-row"><span class="org-tag">${esc(h.organization || j.organization)}</span><span class="status ${st.cls}">${esc(st.label)}</span></div>
     <h1>${esc(h.title)}</h1>
-    ${st.cls === "closed" ? `<div class="closed-notice"><strong>यह भर्ती बंद हो चुकी है।</strong> ${j.application_end ? `आवेदन की अंतिम तिथि ${hiDate(j.application_end)} थी।` : "इसका नोटिस 45 दिन से अधिक पुराना है।"} <a href="/hi/">नई सरकारी नौकरियाँ देखें</a>।</div>` : ""}
+    <p class="provenance">${srcH ? `स्रोत: ${esc(srcH)} &middot; ` : ""}प्रकाशित ${hiDate(j.published)}${updH ? ` &middot; अपडेट ${hiDate(updH)}` : ""}</p>
+    ${j.notice_status && ctx.statusBanner ? ctx.statusBanner(j, "hi") : ""}
+    ${st.cls === "closed" && !j.notice_status ? `<div class="closed-notice"><strong>यह भर्ती बंद हो चुकी है।</strong> ${j.application_end ? `आवेदन की अंतिम तिथि ${hiDate(j.application_end)} थी।` : "इसका नोटिस 45 दिन से अधिक पुराना है।"} <a href="/hi/">नई सरकारी नौकरियाँ देखें</a>।</div>` : ""}
     ${ctx.keyFacts ? ctx.keyFacts(j, "hi", { cta: st.cls !== "closed" }) : ""}
     <p class="lede">${esc(h.summary)}</p>
   </div>
+  ${String(h.summary || "").length >= 60 ? adSlot("hi-job-top") : ""}
   ${(h.overview || []).length ? `<div class="prose"><h2 class="section-h">भर्ती की जानकारी</h2>${h.overview.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
   <h2 class="section-h">महत्वपूर्ण विवरण</h2>
   <div class="spec"><dl>
@@ -123,8 +132,9 @@ function buildHindi(ctx) {
     ${row("अंतिम तिथि", j.application_end ? `<b>${hiDate(j.application_end)}</b>` : "")}
     ${row("परीक्षा तिथि", j.exam_date ? hiDate(j.exam_date) : "")}
   </dl></div>
-  ${adSlot("hi-job-mid")}
+  ${ctx.shareRow ? ctx.shareRow({ url: canonical, title: h.title, text: ctx.jobShareText(j, "hi"), lang: "hi" }) : ""}
   ${h.eligibility_notes ? `<div class="prose"><h2 class="section-h">पात्रता</h2><p>${esc(h.eligibility_notes)}</p></div>` : ""}
+  ${h.eligibility_notes && ((h.selection_process || []).length || (h.how_to_apply || []).length) ? adSlot("hi-job-mid") : ""}
   ${(h.selection_process || []).length ? `<h2 class="section-h">चयन प्रक्रिया</h2><ol class="steps">${h.selection_process.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   ${(h.how_to_apply || []).length ? `<h2 class="section-h">आवेदन कैसे करें</h2><ol class="steps">${h.how_to_apply.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : ""}
   <div class="apply-bar">
@@ -137,7 +147,7 @@ function buildHindi(ctx) {
   ${faqHtml(h.faq)}
   ${examLink(j.title)}
   ${(() => { const sts = statesOf(j).filter((st) => HI_STATES[st.slug]); const qs = qualsOf(j).filter((q) => HI_QUALS[q.slug]);
-    return sts.length || qs.length ? `<p class="tagrow">${sts.map((st) => `<a class="chip" href="/hi/state/${st.slug}/">${esc(st.slug === "all-india" ? "केंद्र सरकार की नौकरी" : HI_STATES[st.slug] + " सरकारी नौकरी")}</a>`).join("")}${qs.map((q) => `<a class="chip" href="/hi/qualification/${q.slug}/">${esc(HI_QUALS[q.slug].name)} नौकरी</a>`).join("")}</p>` : ""; })()}
+    return sts.length || qs.length ? `<p class="tagrow">${sts.map((st) => `<a class="chip" href="/hi/state/${st.slug}/">${esc(st.slug === "all-india" ? "केंद्र सरकार की नौकरी" : (st1 && st1.slug === st.slug ? "और " + HI_STATES[st.slug] + " सरकारी नौकरियाँ" : HI_STATES[st.slug] + " सरकारी नौकरी"))}</a>`).join("")}${qs.map((q) => `<a class="chip" href="/hi/qualification/${q.slug}/">${esc(HI_QUALS[q.slug].name)} नौकरी</a>`).join("")}</p>` : ""; })()}
   <p class="cta-row"><a class="btn btn-ghost" href="/hi/tools/age-calculator/">आयु कैलकुलेटर</a> <a class="btn btn-ghost" href="/hi/tools/photo-resizer/">फोटो-सिग्नेचर रिसाइज़र</a></p>
   ${(() => { const rel = openJobs.filter((x) => x.id !== j.id).slice(0, 3); return rel.length ? `<section class="related"><h2 class="section-h">और सरकारी नौकरियाँ</h2><ul class="jobs">${rel.map(jobCardHi).join("")}</ul></section>` : ""; })()}
 </main>` + foot() });
@@ -160,22 +170,24 @@ function buildHindi(ctx) {
   <article>
     <p class="eyebrow"><span class="upd-type upd-${u.type}">${T.label}</span> &middot; ${esc(u.org_short || "")} &middot; ${hiDate(u.date)}</p>
     <h1>${esc(h.title)}</h1>
+    ${ctx.srcHostOf && ctx.srcHostOf(u) ? `<p class="provenance">स्रोत: ${esc(ctx.srcHostOf(u))} &middot; प्रकाशित ${hiDate(u.date)}${ctx.updatedOf(u) ? ` &middot; अपडेट ${hiDate(ctx.updatedOf(u))}` : ""}</p>` : ""}
     <div class="prose"><p class="lede">${esc(h.summary)}</p></div>
     <p class="cta-row">${official ? `<a class="btn btn-primary" href="${esc(official)}" rel="nofollow noopener" target="_blank">ऑफिशियल वेबसाइट पर देखें &rarr;</a>` : ""} <a class="btn btn-ghost" href="${enPath}" lang="en">English</a></p>
     ${(h.steps || []).length ? `<h2 class="section-h">${T.label} कैसे डाउनलोड/चेक करें</h2><ol class="steps">${h.steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}
-    ${adSlot("hi-update-mid")}
+    ${(h.steps || []).length ? adSlot("hi-update-mid") : ""}
     ${(h.details || []).length ? `<div class="prose"><h2 class="section-h">उम्मीदवारों के लिए ज़रूरी बातें</h2>${h.details.map((p) => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
+    ${ctx.shareRow ? ctx.shareRow({ url: canonical, title: h.title, text: h.title + (u.event_date ? `\nतिथि: ${hiDate(u.event_date)}` : ""), lang: "hi" }) : ""}
     ${faqHtml(h.faq)}
     ${examLink(u.title)}
     <p class="smallprint">हमेशा ऑफिशियल वेबसाइट पर जानकारी की पुष्टि करें — ${esc(SITE.brand)} सरकारी संस्था नहीं है।</p>
-    ${(() => { const rel = hiUpd.filter((x) => x.id !== u.id && x.type === u.type).slice(0, 5); return rel.length ? `<section class="related"><h2 class="section-h">और ${T.plural}</h2><ul class="updates">${rel.map(updCardHi).join("")}</ul></section>` : ""; })()}
+    ${(() => { const rel = hiUpdRecent.filter((x) => x.id !== u.id && x.type === u.type).slice(0, 5); return rel.length ? `<section class="related"><h2 class="section-h">और ${T.plural}</h2><ul class="updates">${rel.map(updCardHi).join("")}</ul></section>` : ""; })()}
   </article>
 </main>` + foot() });
   }
 
   /* ---- hubs ---- */
   for (const [type, T] of Object.entries(HI_TYPES)) {
-    const list = hiUpd.filter((u) => u.type === type);
+    const list = hiUpdRecent.filter((u) => u.type === type);
     const canonical = `${SITE.url}/hi/updates/${type}/`;
     pages.push({ path: `hi/updates/${type}/index.html`, url: canonical, noindex: !list.length, html: head({ lang: "hi", noindex: !list.length, title: `${T.h1} ${year} – लेटेस्ट ${T.plural} (${T.seo}) | ${SITE.name}`,
       desc: `सभी सरकारी परीक्षाओं के लेटेस्ट ${T.plural} एक जगह — डाउनलोड/चेक करने का तरीका और ऑफिशियल लिंक के साथ।`, canonical,
@@ -205,8 +217,8 @@ function buildHindi(ctx) {
   <p class="lede">केंद्र और राज्य सरकार की नई भर्तियाँ, रिजल्ट और एडमिट कार्ड — सरल हिंदी में, ऑफिशियल लिंक के साथ। अभी <b>${openJobs.length}</b> भर्तियों में <b>${inr(vac)}+</b> पदों पर आवेदन जारी है।</p></section>
   <div class="glance">
     ${col("नई सरकारी नौकरी", "/hi/", openJobs.slice(0, 10).map((j) => `<li><a href="/hi/jobs/${esc(j.id)}/">${esc(j.hi.title)}</a></li>`))}
-    ${col("सरकारी रिजल्ट", "/hi/updates/result/", hiUpd.filter((u) => u.type === "result").slice(0, 10).map((u) => `<li><a href="/hi/updates/${esc(u.id)}/">${esc(u.hi.title)}</a></li>`))}
-    ${col("एडमिट कार्ड", "/hi/updates/admit-card/", hiUpd.filter((u) => u.type === "admit-card").slice(0, 10).map((u) => `<li><a href="/hi/updates/${esc(u.id)}/">${esc(u.hi.title)}</a></li>`))}
+    ${col("सरकारी रिजल्ट", "/hi/updates/result/", hiUpdRecent.filter((u) => u.type === "result").slice(0, 10).map((u) => `<li><a href="/hi/updates/${esc(u.id)}/">${esc(u.hi.title)}</a></li>`))}
+    ${col("एडमिट कार्ड", "/hi/updates/admit-card/", hiUpdRecent.filter((u) => u.type === "admit-card").slice(0, 10).map((u) => `<li><a href="/hi/updates/${esc(u.id)}/">${esc(u.hi.title)}</a></li>`))}
   </div>
   <h2 class="section-h">आवेदन जारी — सभी भर्तियाँ</h2>
   ${openJobs.length ? jobListHi(openJobs.slice(0, 200)) + (openJobs.length > 200 ? `<p class="cta-row"><a class="btn btn-ghost" href="/jobs/" lang="en">सभी ${openJobs.length} भर्तियाँ देखें (English) &rarr;</a></p>` : "") : `<p class="empty">हिंदी में भर्तियाँ जोड़ी जा रही हैं — तब तक <a href="/" lang="en">English</a> में देखें।</p>`}

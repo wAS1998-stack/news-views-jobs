@@ -128,7 +128,12 @@ const CHAIN_ERR = /UNABLE_TO_VERIFY_LEAF_SIGNATURE|UNABLE_TO_GET_ISSUER_CERT_LOC
    source sites, so every fetch has a fallback chain: direct -> alternate UA
    -> public read-through proxies. The diagnostics in data/last-run.json say
    which route worked. */
+// An optional relay on a server in India (tools-dev/india-relay.js, same ?url= interface and allow-list as the site's
+// relay): set INDIA_RELAY_URL (a GitHub secret / env) or config.json "indiaRelayUrl", e.g. "http://203.0.113.5:8787/relay".
+// When set it is tried first, because many state sites refuse every foreign address, Cloudflare's US data centres included.
+const INDIA_RELAY = String(process.env.INDIA_RELAY_URL || CONFIG.indiaRelayUrl || "").trim();
 const PROXIES = [
+  ...(/^https?:\/\//i.test(INDIA_RELAY) ? [(u) => `${INDIA_RELAY}${INDIA_RELAY.includes("?") ? "&" : "?"}url=${encodeURIComponent(u)}`] : []),
   // The site's own relay (functions/api/relay.js on Cloudflare, government hosts only). Tested 29 Oct: it reads 5
   // official sites the runners cannot (certificate-chain errors, a 403, a timeout) but, running in US data centres,
   // not the ones that block every foreign address.
@@ -144,7 +149,8 @@ async function tryFetch(url, headers, ms) {
   const text = await r.text();
   if (!text || text.length < 200) throw new Error("empty body");
   if (/<title>\s*(Just a moment|Attention Required|Access denied|403 Forbidden)/i.test(text) || /cf-browser-verification|challenge-platform/i.test(text)) throw new Error("bot challenge");
-  return { text, type: r.headers.get("content-type") || "", url: r.url || url };
+  // the relays serve pages as inert text/plain and pass the real type in x-relay-content-type
+  return { text, type: r.headers.get("x-relay-content-type") || r.headers.get("content-type") || "", url: r.headers.get("x-relay-final-url") || r.url || url };
 }
 async function fetchText(url, ms = 20000, { allowProxy = true, skipDirect = false, proxyMs } = {}) {
   const errors = [];
@@ -418,7 +424,29 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b[^–—:]*\bresult\b|\bresult\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresult\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
+const OFF_TOPIC_BASE = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b(?![^–—:]*\b(recruitment|vacanc\w*|non[- ]?teaching|faculty|assistant professors?|posts?)\b)[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresults?\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
+
+// Board, school and professional-course exams are not government jobs: ICAI/ICSI/ICMAI (CA, CS, CMA) exams, NIOS,
+// MSBTE, West Bengal Madhyamik / Uchcha Madhyamik, class 6/9/10/12 board exams and results, JNVST (Navodaya class 6/9
+// admission) and more university result pages. Each keeps recruitment notices of the same bodies (ICAI, NIOS, Navodaya
+// and universities hire staff too).
+const NOT_RECRUIT = "(?![^–—:]*\\b(recruitment|vacanc\\w*|posts?|jobs?|bharti|non[- ]?teaching|faculty)\\b)";
+const OFF_TOPIC_EXAMS = new RegExp([
+  `\\b(icai|icsi|icmai)\\b${NOT_RECRUIT}`,
+  `\\b(ca|cma|cs) (foundation|inter(mediate)?|final|executive|professional)\\b${NOT_RECRUIT}`,
+  `\\b(nios|msbte)\\b${NOT_RECRUIT}`,
+  `\\b(uchcha )?madhyamik\\b${NOT_RECRUIT}`,
+  `\\bclass[ -]?(6|9|10|11|12|vi|ix|x|xi|xii)(th)?\\b(?![^–—:]*\\b(pass|passed|qualified|level|recruitment|vacanc\\w*|posts?|jobs?|bharti)\\b)`,
+  `\\b(6th|9th|10th|11th|12th|matric|intermediate|inter|hsc|sslc|hslc|hse|puc|ii puc|plus two|\\+2) (board )?(annual |supplementary |compartment(al)? )?(exam(ination)? )?(results?|admit card|hall ticket|date ?sheet|time ?table|registration|exam form)\\b`,
+  `\\bjnvst\\b|\\bnavodaya\\b[^–—:]*\\b(class (6|9|vi|ix)|selection test|admission)\\b`,
+  `\\b(mdu|kuk|crsu|cdlu|lnmu|brabu|bnmu|tmbu|vksu|csjmu|dbrau|mgkvp|vbspu|rmlau|mjpru|davv|rdvv|apsu|sppu|du sol|osmania university|kakatiya university|anna university)\\b[^–—:]*\\b(results?|admit card|hall ticket|exam form)\\b`,
+].join("|"), "i");
+const OFF_TOPIC = new RegExp(OFF_TOPIC_BASE.source + "|" + OFF_TOPIC_EXAMS.source, "i");
+/** Guesswork headlines ("SSC GD 2027 Notification Expected Soon", "Result Release Date", "When will … come") are not
+    announcements: kept only when the record carries an official deep link or PDF (lib.js noticeKey). */
+const SPECULATIVE = /\b(expected|likely|release date|when will|kab (aayega|aaega|aaenge|jari hoga|hoga)|kab tak)\b|\b(coming|out|releas(e|ing)|declared?|announced?|available|notification|result|admit card|answer key|hall ticket|notice|dates?)\s*[-–—:]?\s*soon\b|(?<!(closing|ending|last date|apply) )\bsoon\s*$/i;
+const isSpeculative = (rec = {}) => SPECULATIVE.test(String(rec.title || "")) &&
+  ![rec.official_link, rec.official_notification, rec.apply_link].some((u) => noticeKey(u));
 
 /** Headlines that are not real recruitments / updates (newspaper PDF dumps, roundups, ads). */
 /** Not a government employer: private (deemed) universities, private-sector and urban co-operative banks, private
@@ -428,10 +456,10 @@ const OFF_TOPIC = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking
 const NON_GOVT = new RegExp([
   "amrita vishwa vidyapeetham|\\bamrita (university|school|institute)\\b|\\bbits pilani\\b|birla institute of technology (and|&) science|\\bchrist (university|\\(deemed)|^christ \\(|graphic era|nirma university|vinayaka mission|\\bvmrf\\b|manipal academy|\\bsrm (institute|university)\\b|vellore institute of technology|\\bvit (university|vellore|chennai|bhopal|ap)\\b|\\bamity (university|school|institute)\\b|lovely professional university|chandigarh university|sharda university|galgotias|symbiosis|\\bnmims\\b|shiv nadar|ashoka university|jindal global|thapar institute|\\bkiit\\b|kalinga institute of industrial|siksha ['‘’]?o['‘’]? anusandhan|sathyabama|saveetha|d\\.? ?y\\.? patil|bharati vidyapeeth|datta meghe|jain (deemed|university)|chitkara university|university of petroleum (and|&) energy studies|sri ramachandra|karunya|kalasalingam|hindustan institute of technology|koneru lakshmaiah|\\bgitam\\b|mit world peace|manav rachna|noida international university",
   "south indian bank|federal bank|karur vysya|city union bank|tamil ?nadu? mercantile|\\bcsb bank|catholic syrian bank|dhan(a)?la(x|k)shmi bank|karnataka bank|hdfc bank|icici bank|axis bank|kotak mahindra|indusind|\\byes bank|\\brbl bank|bandhan bank|idfc first|\\bau small finance|equitas|ujjivan|suryoday|jana small finance|utkarsh small finance|\\bdcb bank|urban co-?operative bank",
-  "\\bpvt\\.? ?ltd\\b|\\bprivate limited\\b|\\(p\\) ?ltd\\b|\\bm\\/s\\.? |sbc exports|\\bdav (public school|college managing|cmc)|delhi public school|nilachal seva pratisthan|surjeet memorial college|muktisar institute of higher education",
+  "\\bpvt\\.? ?ltd\\b|\\bprivate limited\\b|\\(p\\) ?ltd\\b|\\bm\\/s\\.? |sbc exports|\\bdav (public school|college managing|cmc)|delhi public school|nilachal seva pratisthan|surjeet memorial college|muktisar institute of higher education|\\bngos?\\b|non[- ]governmental organi[sz]ation",
 ].join("|"), "i");
 const isNonGovt = (job = {}) => NON_GOVT.test(`${job.title || ""} | ${job.organization || ""}`);
-const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|top \d+ jobs|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf|latest (govt|government|sarkari) jobs? (on|for|of) \d|\b\d[\d,]*\+? (all india )?vacancies open\b|government jobs on \d{1,2}(st|nd|rd|th)? \w+ 20\d\d|\(\d[\d,]*\+ [^)]*vacanc|\b\d[\d,]*\+ vacancies\b|closing govt jobs|free ?job ?alert|latest (\w+ )?(vacancy )?notifications\s*$|^latest\b[^–—:]*\b(govt|government|sarkari|railway|bank)\b[^–—:]*\bjobs\b|^[\w&.,' -]{0,30}\bgovt jobs 20\d\d\b|\b(govt|government) jobs for (diploma|engineers|graduates|10th|12th|iti|women|females?)\b/i;
+const JUNK_TITLE = /assignment abroad times|employment news(paper)? (pdf|this week)|rojgar samachar pdf|gulf times pdf|walk-?in (interview )?today|daily (job )?(update|digest)|\btop \d+ (\w+ ){0,3}(jobs?|vacanc\w*|recruitments?|notifications?|bharti)\b|jobs? (alert|digest) (today|this week)|weekly (jobs?|round-?up)|latest jobs? (today|list)|\bpdf today\b|newspaper pdf|latest (govt|government|sarkari) jobs? (on|for|of) \d|\b\d[\d,]*\+? (all india )?vacancies open\b|government jobs on \d{1,2}(st|nd|rd|th)? \w+ 20\d\d|\(\d[\d,]*\+ [^)]*vacanc|\b\d[\d,]*\+ vacancies\b|closing govt jobs|free ?job ?alert|latest (\w+ )?(vacancy )?notifications\s*$|^latest\b[^–—:]*\b(govt|government|sarkari|railway|bank)\b[^–—:]*\bjobs\b|^[\w&.,' -]{0,30}\bgovt jobs 20\d\d\b|\b(govt|government) jobs for (diploma|engineers|graduates|10th|12th|iti|women|females?)\b/i;
 
 /** Evergreen listicles, not a notification ("Latest High Court Jobs 2026 – Court Vacancies in India",
  *  "Government Jobs Without Exam", "Earn Money Online…"). Only rejected when the title names no post count. */
@@ -445,6 +473,53 @@ const isGenericList = (title) => {
   return EVERGREEN.test(t) && !counted && !/recruit|vacanc|apply|online form|notification|bharti|भर्ती|walk[- ]?in/i.test(t);
 };
 
+/* ---- numbers that tell recruitments apart: "TNPSC Group 2" ≠ "Group 4", "RRB NTPC CBT 1" ≠ "CBT 2", "CDS II" = "CDS 2" ---- */
+const ROMAN = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9, x: 10, xi: 11, xii: 12 };
+const STAGE_WORD = /^(group|grade|tier|phase|cbt|paper|level|cen|stage|post|category|class|batch|cycle)$/;
+/** A roman numeral of two or more letters (ii … xii) as its arabic number; any other word unchanged. Single letters
+    (i, v, x) are only read as numbers after a stage word, because "I"/"V"/"X" are also ordinary words or grades. */
+const romanWord = (w) => (w.length > 1 && ROMAN[w] ? String(ROMAN[w]) : w);
+/** "12", "04", "iv" → "12", "4", "4" (1–2 digits or a roman numeral up to xii); anything else → null. */
+function stageNum(tok) {
+  const t = String(tok || "").toLowerCase();
+  if (/^\d{1,2}$/.test(t)) return Number(t) ? String(Number(t)) : null;
+  return ROMAN[t] ? String(ROMAN[t]) : null;
+}
+/** Lower-case word list → the same list with a stage word and its number joined: ["tnpsc","group","iv"] →
+    ["tnpsc","group-4"]; "Grade A" / "Group D" keep their letter too ("grade-a"). */
+function joinStageNumbers(words) {
+  const out = [];
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i], nx = words[i + 1];
+    if (nx != null && STAGE_WORD.test(w)) {
+      const n = stageNum(nx);
+      if (n) { out.push(w + "-" + n); i++; continue; }
+      if (/^(group|grade|class|category)$/.test(w) && /^[a-d]$/.test(nx)) { out.push(w + "-" + nx); i++; continue; }
+    }
+    out.push(w);
+  }
+  return out;
+}
+/** A link that identifies ONE notice: a PDF, or a deep page with something specific in its address — never a
+    homepage or a generic "Careers" / "Recruitment" / "Notifications" / "Results" list page. Returns a comparable key or "". */
+const GENERIC_PAGE = /^(careers?|recruitments?|jobs?|vacanc(y|ies)|notifications?|notices?|advertisements?|advt|whats-?new|what-is-new|latest(-news|-updates)?|news|announcements?|employment|opportunit(y|ies)|current-?openings?|openings?|results?|admit-?cards?|downloads?|index|default|home|main|en|hi|page|list|all|recruitment-notices?|career-opportunities|job-opportunities)(\.(php|html?|aspx?|jsp|cfm))?$/i;
+function noticeKey(u) {
+  if (!u) return "";
+  let x; try { x = new URL(String(u)); } catch { return ""; }
+  const host = x.host.toLowerCase().replace(/^www\./, "");
+  let pth = x.pathname; try { pth = decodeURIComponent(pth); } catch { /* malformed %-escape: compare as written */ }
+  pth = pth.replace(/\/+$/, "");
+  const key = host + pth.toLowerCase() + (x.search || "").toLowerCase();
+  if (/\.pdf$/i.test(pth)) return key;
+  const segs = pth.split("/").filter(Boolean);
+  if (!segs.length) return "";
+  const last = segs[segs.length - 1];
+  if (GENERIC_PAGE.test(last) && !x.search) return "";
+  if (x.search && !/\d/.test(x.search) && GENERIC_PAGE.test(last)) return "";
+  // something specific: a number in the address (an advertisement id, a year) or a long descriptive slug
+  return /\d/.test(pth + x.search) || last.replace(/\.\w+$/, "").length >= 15 ? key : "";
+}
+
 /** Same announcement from two feeds ("HPSC HCS Final Result 2026 Out - Check…" vs
  *  "HPSC HCS and Allied Services Final Result 2026"): compare the subject words before the
  *  event keyword, plus the event itself (final result ≠ pre result ≠ exam city). */
@@ -454,7 +529,8 @@ function updateKey(title) {
   const t = String(title || "").toLowerCase().replace(/[–—]/g, "-");
   const m = t.match(EVENT_RE);
   if (!m) return null;
-  const words = t.slice(0, m.index + (m[1] || "").length).replace(/[^a-z0-9/ ]/g, " ").split(/\s+/).filter(Boolean);
+  // "CDS II" = "CDS 2": roman numerals count as the same number as arabic ones
+  const words = t.slice(0, m.index + (m[1] || "").length).replace(/[^a-z0-9/ ]/g, " ").split(/\s+/).filter(Boolean).map(romanWord);
   const stages = [], core = [];
   for (let i = 0; i < words.length; i++) {
     const w = words[i];
@@ -466,8 +542,12 @@ function updateKey(title) {
 }
 function isDupUpdate(u, list, days = 7) {
   const a = updateKey(u.title);
-  if (!a || a.core.length < 2) return false;
   const t = new Date(u.date || Date.now()).getTime();
+  // the same official notice (a PDF or a specific page, never a generic "Results" list page) is the same update
+  const nk = noticeKey(u.official_link);
+  if (nk && list.some((x) => x !== u && x.id !== u.id && noticeKey(x.official_link) === nk &&
+    Math.abs(new Date(x.date || 0).getTime() - t) <= 30 * 86400000)) return true;
+  if (!a || a.core.length < 2) return false;
   return list.some((x) => {
     if (x === u || x.id === u.id) return false;
     if (Math.abs(new Date(x.date || 0).getTime() - t) > days * 86400000) return false;
@@ -476,6 +556,84 @@ function isDupUpdate(u, list, days = 7) {
     const [s, l] = a.core.length <= b.core.length ? [a.core, b.core] : [b.core, a.core];
     return s.every((w) => l.includes(w));
   });
+}
+
+/* ---- the same recruitment twice (two feeds, a corrigendum, a short notice then the full one) ---- */
+// Organisation identity: the FULL normalised name (a 14-character prefix made every "Indian Institute of ..." look like
+// one body), plus a long short-form. Prefix match tolerates "Railway Recruitment Board" vs "Railway Recruitment Boards
+// (RRBs), Ministry of Railways".
+const orgNorm = (s) => String(s || "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "").replace(/s$/, "");
+const orgKeys = (x) => [orgNorm(x.organization), orgNorm(x.org_short)].filter((k, i) => k.length >= (i === 0 ? 4 : 6));
+const sameOrg = (a, b) => orgKeys(a).some((k1) => orgKeys(b).some((k2) => k1 === k2 ||
+  (Math.min(k1.length, k2.length) >= 12 && (k1.startsWith(k2) || k2.startsWith(k1)))));
+/** Organisation family: "RRB Ahmedabad" and "RRB" (Railway Recruitment Boards), "SSC" and "SSC (Central Region)". */
+const orgFamily = (x) => { const m = String(x.org_short || "").toLowerCase().match(/^[a-z]{3,}/); return m && !/^(the|govt|government|dept|department|office|india|indian|state|district|national)$/.test(m[0]) ? m[0] : ""; };
+const sameFamily = (a, b) => sameOrg(a, b) || (!!orgFamily(a) && orgFamily(a) === orgFamily(b));
+const normPost = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).map(romanWord).join(" ")
+  .replace(/\b(posts?|vacanc(y|ies)|recruitment|and|of|the|for)\b/g, " ").replace(/\s+/g, " ").trim();
+/** "Advt. No. 05/2026" → "05/2026" style key for comparing advertisement numbers. */
+const advtKey = (s) => String(s || "").toLowerCase().replace(/\b(advt|advertisement|notification|no|number|employment notice|cen)\b\.?/g, " ").replace(/[^a-z0-9]+/g, "").replace(/^0+(?=\d)/, "");
+/** Do two post names describe the same posts? Unknown counts as "maybe" (true); otherwise at least half of the shorter
+    name's distinctive words must appear in the other ("Assistant", "Officer", "Junior" alone prove nothing). */
+const POST_GENERIC = new Set("assistant officer junior senior grade other staff cum level class group multiple more".split(" "));
+// "Various Posts" names nothing: unknown. Plurals count as the singular ("Trainees" = "Trainee").
+const postWords = (s) => /\bvarious\b/i.test(String(s || "")) ? [] : [...new Set(normPost(s).split(" ").map((w) => (w.length > 4 ? w.replace(/s$/, "") : w)).filter((w) => w.length > 2 && !POST_GENERIC.has(w)))];
+/** `any`: one shared distinctive word is enough (for records already known to share one notice PDF). */
+const postsOverlap = (a, b, { any = false } = {}) => {
+  const A = postWords(a), B = postWords(b);
+  if (!A.length || !B.length) return true;
+  const [s, l] = A.length <= B.length ? [A, new Set(B)] : [B, new Set(A)];
+  const shared = s.filter((w) => l.has(w)).length;
+  return any ? shared > 0 : shared * 2 >= s.length;
+};
+const DAY = 86400000;
+/** Is `job` a twin of one of `list`? Returns the existing record or null. `onExtend(hit, newEnd)` is called when an
+    extension notice carries a later last date for the existing listing. */
+function isDuplicate(job, list, { onExtend } = {}) {
+  const v = Number(job.total_vacancies) || 0;
+  const t = new Date(job.published || Date.now()).getTime();
+  const post = normPost(job.post_name), end = job.application_end, start = job.application_start;
+  const nk = noticeKey(job.official_notification);
+  const hit = (list || []).find((x) => {
+    if (x === job || (x.id && x.id === job.id)) return false;
+    const dt = Math.abs(new Date(x.published || 0).getTime() - t);
+    if (dt >= 60 * DAY) return false;
+    const xv = Number(x.total_vacancies) || 0;
+    // Different advertisement numbers are different recruitments, whatever else matches.
+    const an = advtKey(job.advt_no), xn = advtKey(x.advt_no);
+    if (an && xn && an !== xn) return false;
+    // The same official notice: one PDF (or one specific page on the official site) is one recruitment.
+    if (nk && noticeKey(x.official_notification) === nk) return true;
+    if (!sameOrg(job, x)) {
+      // The same organisation family ("RRB" / "RRB Ahmedabad"), the same last date and a real recruitment (20+ posts)
+      // published within 45 days: one notice reported by two sources under different names.
+      return v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name);
+    }
+    if (v >= 10 && xv === v) return true;              // same body, same (distinctive) count — "Assam" vs "All India" spellings of one notice
+    // District-wise drives of one department (UP ECCE Educator: Meerut 98, Kushinagar 29, same dates) are separate
+    // recruitments: small notices for different places never count as twins.
+    const place = (l) => String(l || "").toLowerCase().split(/[,(]/)[0].replace(/[^a-z]/g, "");
+    const pj = place(job.location), px = place(x.location);
+    if (v < 500 && xv < 500 && pj && px && pj !== px && !String(x.location).toLowerCase().includes(pj) && !String(job.location).toLowerCase().includes(px)) return false;
+    if (v >= 10 && xv === v) return true;                                             // same body, same (distinctive) vacancy count
+    // The same recruitment announced again — "last date extended", a corrigendum — often with a slightly different
+    // count from another source (BPSC TRE 4.0: 32,388 vs 33,320, both opening 25 Sep): same body, same opening date.
+    if (start && x.application_start === start && v >= 100 && xv >= 100 && Math.abs(v - xv) / Math.max(v, xv) <= 0.05) return true;
+    // A real recruitment (20+ posts) with the same last date, published within 45 days, by the same body: twins,
+    // unless the posts plainly differ.
+    if (v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && postsOverlap(job.post_name, x.post_name)) return true;
+    // Same body and same post, with the same last date or the same count: one recruitment reported twice, or
+    // re-reported with a corrected count (RRB Station Master: 1215 -> 1265 after a corrigendum; ~1250 short notice).
+    if (!post || normPost(x.post_name) !== post) return false;
+    if ((end && x.application_end === end) || (v >= 2 && xv === v)) return true;
+    // A big national recruitment announced first as a short notice (no last date yet, approximate count) and then in
+    // full: same body and post, 500+ posts each within 6% of each other, within 30 days (RRB Station Master: short
+    // notice ~1200, full notice 1265). District-wise drives with similar counts stay separate (they are smaller).
+    return (!end || !x.application_end) && v >= 500 && xv >= 500 && Math.abs(v - xv) / Math.max(v, xv) <= 0.06 && dt < 30 * DAY;
+  });
+  // An extension notice carries the new last date: move the existing listing's deadline instead of adding a twin.
+  if (hit && end && onExtend && /\b(extend(ed|s)?|extension)\b|last date (extended|revised|increased)/i.test(String(job.title)) && (!hit.application_end || String(end) > String(hit.application_end))) onExtend(hit, end);
+  return hit || null;
 }
 
 /** Official homepage for a well-known recruiting body named in a title — used only when no
@@ -569,12 +727,15 @@ function applyInfo(job = {}) {
 
 /* ---- record hygiene: what the AI returns is not trusted to have the right shape ---- */
 const JOB_TEXT = ["title", "organization", "org_short", "post_name", "qualification", "fee", "salary", "location", "summary", "summary_hindi",
-  "eligibility_notes", "about_organization"];
+  "eligibility_notes", "about_organization", "advt_no", "status_note", "status_update"];
 const JOB_ARR = ["how_to_apply", "selection_process", "overview", "preparation_tips"];
-const JOB_DATE = ["application_start", "application_end", "exam_date", "published"];
-const JOB_LINK = ["apply_link", "official_notification", "official_website", "source", "careers_link"];
+const JOB_DATE = ["application_start", "application_end", "exam_date", "published", "updated", "status_date"];
+const JOB_LINK = ["apply_link", "official_notification", "official_website", "source", "careers_link", "status_link"];
+/** notice_status: set only by matchNoticeStatus below (never by the AI) — a cancellation / postponement notice of this recruitment. */
+const NOTICE_STATUS = new Set(["cancelled", "postponed"]);
 /** The fields an AI extraction may set on a job (never via, id, careers_link or anything else). */
-const AI_JOB_FIELDS = new Set([...JOB_TEXT.filter((k) => k !== "title"), ...JOB_ARR, ...JOB_DATE.filter((k) => k !== "published"),
+const NOT_AI = new Set(["title", "status_note", "status_update", "published", "updated", "status_date"]);
+const AI_JOB_FIELDS = new Set([...JOB_TEXT.filter((k) => !NOT_AI.has(k)), ...JOB_ARR, ...JOB_DATE.filter((k) => !NOT_AI.has(k)),
   "total_vacancies", "age_min", "age_max", "faq", "apply_link", "official_notification", "official_website"]);
 const human = (k) => { const t = String(k).replace(/_/g, " ").replace(/\s+/g, " ").trim();
   return /^(sc|st|obc|ews|ur|pwd|pwbd|ph|bc|mbc|sebc|esm|xsm|gen|sc\/st|obc\/ews)$/i.test(t) ? t.toUpperCase() : t.replace(/^./, (c) => c.toUpperCase()); };
@@ -612,6 +773,7 @@ function sanitizeJob(j) {
   if (o.age_min != null) { const n = ageNum(o.age_min, Math.min); if (n) o.age_min = n; else delete o.age_min; }
   if (o.age_max != null) { const n = ageNum(o.age_max, Math.max); if (n) o.age_max = n; else delete o.age_max; }
   if (o.faq != null) o.faq = (Array.isArray(o.faq) ? o.faq : []).filter((f) => f && f.q && f.a).map((f) => ({ q: toText(f.q), a: toText(f.a) }));
+  if (o.notice_status != null && !NOTICE_STATUS.has(String(o.notice_status))) { delete o.notice_status; delete o.status_note; delete o.status_link; delete o.status_date; delete o.status_update; }
   for (const k of Object.keys(o)) if (o[k] === "" || o[k] === null || o[k] === undefined) delete o[k];
   return o;
 }
@@ -621,8 +783,88 @@ function aiJobFields(obj) {
   for (const [k, v] of Object.entries(obj || {})) if (AI_JOB_FIELDS.has(k) && v !== null && v !== undefined && v !== "") out[k] = v;
   return sanitizeJob(out);
 }
+/* ---- cancelled / withdrawn / postponed recruitments ----
+   A notice that cancels or postpones a recruitment already listed marks that job (notice_status, status_note,
+   status_link, status_date, status_update): its page stays, with a red banner and the official notice, and it is no
+   longer "live" (no Apply button, no alerts). Only an unambiguous match is marked. */
+const CANCEL_RE = /\b(cancel+ed|cancel+ation|withdrawn|withdrawal|rescinded|scrapped|annulled)\b|रद्द|निरस्त/i;
+const POSTPONE_RE = /\b(postponed|deferred|kept in abeyance|put on hold|on hold)\b|स्थगित/i;
+// an exam, interview or stage being cancelled / postponed is not the recruitment itself
+const STAGE_CTX = /\b(exam(ination)?s?|cbt|paper|shifts?|interviews?|admit card|hall ticket|answer key|results?|skill test|typing test|physical|pet|pst|dv|document verification|cent(re|er)s?|phase|tier|round)\b|परीक्षा|साक्षात्कार/i;
+const RECRUIT_CTX = /recruit|\badvt\b|advertisement|vacanc|notification|bharti|भर्ती|\bposts?\b|rally|application process|engagement/i;
+/** "cancelled" | "postponed" | "" for a notice headline. */
+function noticeStatusOf(title) {
+  const t = String(title || "");
+  if (!RECRUIT_CTX.test(t) || STAGE_CTX.test(t)) return "";
+  if (CANCEL_RE.test(t)) return "cancelled";
+  if (POSTPONE_RE.test(t)) return "postponed";
+  return "";
+}
+const NOTICE_STOP = new Set(("cancelled canceled cancellation cancelation withdrawn withdrawal rescinded scrapped annulled postponed deferred abeyance hold " +
+  "notice official pdf fresh notification awaited out download check regarding of the for and in to due reason reasons administrative kept on till further " +
+  "order orders rally recruitment advertisement advt vacancy vacancies post posts bharti update news latest now released issued link apply online offline").split(" "));
+const noticeWords = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).map(romanWord)
+  .filter((w) => w.length > 1 && !NOTICE_STOP.has(w) && !/^20\d\d$/.test(w));
+/** "Army Public School Bareilly" → ["aps", "apsb"]: initials, so "APS Bareilly" finds it. */
+const initialsOf = (s) => { const i = String(s || "").toLowerCase().replace(/\(.*?\)/g, " ").split(/[^a-z]+/).filter((w) => w && !/^(of|and|the|for|in)$/.test(w)).map((w) => w[0]).join(""); return i.length >= 3 ? [...new Set([i.slice(0, 3), i])] : []; };
+/** The one listed job a cancellation / postponement notice is about, or null (none, or more than one candidate). */
+function matchNoticeStatus(notice, jobs) {
+  const status = noticeStatusOf(notice.title);
+  if (!status) return null;
+  const day = isoDate(notice.date) || todayIST();
+  const nw = [...new Set(noticeWords(notice.title))];
+  if (nw.length < 2) return null;
+  const hits = (jobs || []).filter((j) => {
+    if (!j || !j.title || String(j.published || "") > day) return false;                   // the job came first
+    if ((Date.parse(day) - Date.parse(j.published || day)) > 180 * 86400000) return false;
+    const jw = new Set([...noticeWords(`${j.title} ${j.organization || ""} ${j.org_short || ""} ${j.post_name || ""}`), ...initialsOf(j.organization), ...initialsOf(j.org_short)]);
+    return nw.every((w) => jw.has(w));
+  });
+  return hits.length === 1 ? { job: hits[0], status } : null;
+}
+/** Mark a job with the notice (title, date, official link, our update page id). Returns true when something changed. */
+function applyNoticeStatus(job, status, notice) {
+  const link = notice.link && /^https?:\/\//i.test(notice.link) && !isAggregator(hostOf(notice.link)) ? notice.link : "";
+  const before = JSON.stringify([job.notice_status, job.status_note, job.status_link, job.status_update]);
+  job.notice_status = status;
+  job.status_note = cleanTitle(notice.title).replace(/\s*[–—:|-]\s*((official )?notice( pdf)?|pdf|download\b.*|check\b.*)$/i, "").slice(0, 200);
+  if (link) job.status_link = link;
+  job.status_date = isoDate(notice.date) || todayIST();
+  if (notice.id) job.status_update = notice.id;
+  job.updated = job.status_date;
+  return JSON.stringify([job.notice_status, job.status_note, job.status_link, job.status_update]) !== before;
+}
+
+/* ---- updates: the newest 800 in data/updates.json, older ones in data/updates-archive.json ----
+   The fetchers once cut updates.json to 800 and the build then 301'd every dropped page. Now the overflow moves to the
+   archive (appended, one entry per id): its pages stay live (exam hubs, organisation pages and the sitemap still use
+   them), while the app feed, search and home stay on the recent window. */
+const UPDATES_FILE = path.join(ROOT, "data", "updates.json");
+const ARCHIVE_FILE = path.join(ROOT, "data", "updates-archive.json");
+const UPDATES_KEEP = 800;
+function readUpdatesArchive(file = ARCHIVE_FILE) { try { const a = JSON.parse(fs.readFileSync(file, "utf8")); return Array.isArray(a) ? a : []; } catch { return []; } }
+/** Write updates.json with the newest `keep` entries (file order = newest first) and append the rest to the archive. */
+function saveUpdates(updates, { file = UPDATES_FILE, archiveFile = ARCHIVE_FILE, keep = UPDATES_KEEP } = {}) {
+  const recent = updates.slice(0, keep), over = updates.slice(keep);
+  fs.writeFileSync(file, JSON.stringify(recent, null, 2) + "\n");
+  if (!over.length) return { kept: recent.length, archived: 0 };
+  const arch = readUpdatesArchive(archiveFile);
+  const recentIds = new Set(recent.map((u) => u && u.id));
+  const byId = new Map(arch.filter((u) => u && u.id && !recentIds.has(u.id)).map((u) => [u.id, u]));
+  for (const u of over) if (u && u.id && !recentIds.has(u.id)) byId.set(u.id, u);   // the newer copy of an id wins
+  const out = [...byId.values()].sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  fs.writeFileSync(archiveFile, JSON.stringify(out, null, 2) + "\n");
+  return { kept: recent.length, archived: over.length };
+}
+/** Update ids that were retired on purpose (merged, off-topic): never published again. */
+function retiredUpdateIds() {
+  try { return new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/updates\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean)); }
+  catch { return new Set(); }
+}
+
 /** Today's date in India (the automation runs on UTC machines; between 00:00 and 05:30 IST UTC is still yesterday). */
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
 module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor };
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP,
+  isDuplicate, sameOrg, normPost, postsOverlap, advtKey, noticeKey, joinStageNumbers, stageNum, romanWord, ROMAN, STAGE_WORD };
