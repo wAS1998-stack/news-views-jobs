@@ -59,6 +59,7 @@ const slug = (s) =>
     .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 const LIB = require("./lib.js");
+const DISTRICTS = require("./districts.js");
 /* ---- Organisation key: a clean short name, never a headline ---- */
 const ORG_JUNK = /recruitment|apply|vacanc|notification|\bjobs?\b|walk-?in|careers?|\[|\]|\||admit|result|\d{3,}|online|offline|interview/i;
 function orgKey(job) {
@@ -314,8 +315,10 @@ const STATE_BODIES = {
   "delhi": /\b(DSSSB|DSEU|DMRC|DJB|NDMC)\b/,
   "tripura": /\b(TPSC|JRBT)\b/,
 };
+// Central bodies that sit in a district (AIIMS Gorakhpur, IIT Dharwad, ECHS…) recruit for all of India: no district rule.
+const CENTRAL_BODY = /\b(AIIMS|IITs?|IIMs?|NITs?|IISER|IIITs?|IISc|NISER|ICAR|CSIR|DRDO|ISRO|BARC|ICMR|ESIC|EPFO|KVS|Kendriya Vidyalaya|NVS|Navodaya|JIPMER|PGIMER|Central University|ECHS|Cantonment|Army|Air Force|Navy|Coast Guard|BSF|CRPF|CISF|ITBP|SSB|Assam Rifles|Railways?|RRC|RRB|NHAI|AAI|ONGC|NTPC|BHEL|GAIL|IOCL|HPCL|BPCL|Coal India|SAIL|NMDC|BEL|HAL|Ordnance|Port Authority|Sainik School|Indian Institute|National Institute)\b/i;
 // National banks named after a state still recruit for all of India.
-const NATIONAL_NAMES = /punjab (national|& sind|and sind) bank|bank of maharashtra|central bank|indian (overseas )?bank|state bank|bank of india/i;
+const NATIONAL_NAMES = /punjab (national|& sind|and sind) bank|bank of maharashtra|bank of baroda|central bank|indian (overseas )?bank|state bank|bank of india|canara bank|union bank|uco bank|idbi bank/i;
 function inferState(job) {
   const text = `${job.organization || ""} ${job.org_short || ""} ${job.title || ""}`;
   if (NATIONAL_NAMES.test(text)) return [];
@@ -325,6 +328,8 @@ function inferState(job) {
   const byName = STATES.filter((s) => s.slug !== "all-india" && new RegExp(`\\b${s.kw[0]}\\b`).test(low));
   if (byName.length === 1) return byName;
   if (byName.length > 1) return [];
+  // A district names its state ("Zilla Panchayat, Dharwad"), except for central bodies located there (AIIMS, IITs…).
+  if (!CENTRAL_BODY.test(text)) { const d = DISTRICTS.districtState(text); if (d) return STATES.filter((s) => s.slug === d); }
   const byCity = STATES.filter((s) => s.slug !== "all-india" && s.kw.slice(1).some((k) => new RegExp(`\\b${k}\\b`).test(low)));
   return byCity.length === 1 ? byCity : [];
 }
@@ -343,9 +348,19 @@ function statesOfUncached(job) {
   if (matched.length) return matched;
   // Union territories without a page of their own stay in the central bucket (a Kochi employer hiring in Andaman is not a Kerala job).
   if (/andaman|nicobar|lakshadweep|puducherry|pondicherry|ladakh|chandigarh|dadra|daman|\bdiu\b/.test(loc)) return [STATES[0]];
+  const body = `${job.organization || ""} ${job.org_short || ""} ${job.title || ""}`;
+  const central = CENTRAL_BODY.test(body) || NATIONAL_NAMES.test(body);
+  const dLoc = central ? "" : DISTRICTS.districtState(loc);
+  if (dLoc) return STATES.filter((s) => s.slug === dLoc);
   // No location, or one that names no state: the recruiting body usually tells us (a state PSC, a state department).
   const inferred = inferState(job);
-  return inferred.length ? inferred : [STATES[0]];
+  if (inferred.length) return inferred;
+  // Last: a state-government or district web address (bhadrak.odisha.gov.in, vijayapura.dcourts.gov.in).
+  if (!central) for (const u of [job.official_website, job.apply_link, job.official_notification]) {
+    const d = DISTRICTS.domainState(u);
+    if (d) return STATES.filter((s) => s.slug === d);
+  }
+  return [STATES[0]];
 }
 
 

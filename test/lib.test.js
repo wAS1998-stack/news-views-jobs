@@ -44,6 +44,9 @@ test("isNonGovt blocks private employers and NGOs, keeps grey areas kept on purp
   assert.strictEqual(L.isNonGovt({ title: "ABC Infra Pvt Ltd Recruitment 2026" }), true);
   assert.strictEqual(L.isNonGovt({ title: "Helping Hands NGO Recruitment 2026 – Field Officer" }), true);
   assert.strictEqual(L.isNonGovt({ title: "HDFC Bank Relationship Manager Recruitment 2026" }), true);
+  assert.strictEqual(L.isNonGovt({ title: "MIT Manipal Research Associate Recruitment 2026", organization: "Manipal Institute of Technology" }), true);
+  assert.strictEqual(L.isNonGovt({ title: "MSRMC Recruitment 2026", organization: "Ramaiah Medical College Hospital" }), true);
+  assert.strictEqual(L.isNonGovt({ title: "MGUG X-Ray Technician Recruitment 2026", organization: "Mahayogi Gorakhnath University, Gorakhpur" }), true);
   assert.strictEqual(L.isNonGovt({ title: "Army Public School Bareilly Recruitment 2026", organization: "Army Public School Bareilly" }), false);
   assert.strictEqual(L.isNonGovt({ title: "Kangra DCCB Clerk Recruitment 2026", organization: "Kangra Central Co-operative Bank (DCCB)" }), false);
 });

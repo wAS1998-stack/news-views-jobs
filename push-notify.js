@@ -107,7 +107,7 @@ function jobTitle(j, lang) {
   const whole = new RegExp("(^|[^\\d,])(" + n.replace(/,/g, "\\,") + "|" + j.v + ")(?![\\d,])");
   if (whole.test(name)) return cut(name, TITLE_MAX);
   let post = String((hi ? j.ph : j.p) || "").replace(/\s*\b(posts?|vacanc(y|ies))\s*$/i, "").replace(/\s*(पद|पदों)\s*$/, "").trim();
-  if (post.length > 28 || /\b(various|multiple|other|more)\b|अन्य|विभिन्न/i.test(post) || (post && name.toLowerCase().includes(post.toLowerCase()))) post = "";
+  if (post.length > 28 || /,|\b(various|multiple|other|more)\b|अन्य|विभिन्न/i.test(post) || (post && name.toLowerCase().includes(post.toLowerCase()))) post = "";
   const posts = (p) => hi ? `${n}${p ? " " + p : ""} पद` : `${n}${p ? " " + p : ""} ${j.v === 1 ? "post" : "posts"}`;
   const sep = name.search(/\s[–—|-]\s|:\s/);
   const heads = [name, ...(sep >= 12 ? [name.slice(0, sep).trim()] : [])];
