@@ -194,7 +194,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-06T07:42:15.411Z",
+    "at": "2026-11-06T10:06:24.941Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -205,11 +205,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-06T07:43:35.543Z",
+    "at": "2026-11-06T10:10:17.352Z",
     "ok": true,
-    "sent": 74,
+    "sent": 68,
     "log": [
-      "push-notify: 74 sent\n  job manipur-police-constable-si-other-2026 en [('s-manipur' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job manipur-police-constable-si-other-2026 hi [('s-manipur' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in t"
+      "push-notify: 68 sent\n  job texmin-project-associate-i-project-associate-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job texmin-project-associate-i-project-associate-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-engineer"
     ]
   },
   "indexing-api": {
