@@ -687,8 +687,14 @@ function levelPages(rates) {
 }
 
 /* ---- rendering ---------------------------------------------------- */
+/* One ad unit under each tool: below the tool box and its first explanatory section, so a content block always sits
+   between it and the tool's Start / Calculate / Download buttons. Nothing without ad IDs (build.js adSlot). */
+function withToolAd(sections, adSlot, label) {
+  const ad = adSlot ? adSlot(label) : "";
+  return ad && sections.length ? [sections[0], ad, ...sections.slice(1)].join("") : sections.join("");
+}
 function buildToolPages(ctx) {
-  const { head, foot, esc, SITE, breadcrumbLd, faqLd, faqSection, rates } = ctx;
+  const { head, foot, esc, SITE, breadcrumbLd, faqLd, faqSection, rates, adSlot } = ctx;
   const defs = buildDefs(rates);
   const pages = [];
   const cats = [...new Set(defs.map((d) => d.cat))];
@@ -711,7 +717,7 @@ function buildToolPages(ctx) {
     <h1>${esc(d.h1)}</h1>
     <p class="lede">${esc(d.intro)}</p>
     ${d.body}
-    <div class="prose">${d.article.map(([h, p]) => `<h2 class="section-h">${esc(h)}</h2><p>${p}</p>`).join("")}</div>
+    <div class="prose">${withToolAd(d.article.map(([h, p]) => `<h2 class="section-h">${esc(h)}</h2><p>${p}</p>`), adSlot, "tool-result")}</div>
     ${faqSection(d.faq)}
     <section class="related"><h2 class="section-h">More free tools</h2>
       <ul class="tool-list">${related.map((r) => `<li><a class="tool-card" href="/tools/${r.slug}/"><b>${esc(r.h1)}</b><span>${esc(r.desc.slice(0, 110))}…</span></a></li>`).join("")}</ul>
@@ -878,7 +884,7 @@ const HI_LABELS = [
 ];
 
 function buildHindiTools(ctx) {
-  const { head, foot, esc, SITE, breadcrumbLd, faqLd, rates } = ctx;
+  const { head, foot, esc, SITE, breadcrumbLd, faqLd, rates, adSlot } = ctx;
   const defs = buildDefs(rates);
   const pages = [];
   for (const [slug, H] of Object.entries(HI_TOOLS)) {
@@ -898,7 +904,7 @@ function buildHindiTools(ctx) {
     <h1>${esc(H.h1)}</h1>
     <p class="lede">${esc(H.intro)}</p>
     ${body}
-    <div class="prose">${H.article.map(([h, p]) => `<h2 class="section-h">${esc(h)}</h2><p>${esc(p)}</p>`).join("")}</div>
+    <div class="prose">${withToolAd(H.article.map(([h, p]) => `<h2 class="section-h">${esc(h)}</h2><p>${esc(p)}</p>`), adSlot, "hi-tool-result")}</div>
     ${faqHtml}
     <section class="related"><h2 class="section-h">और मुफ़्त टूल्स</h2><ul class="tool-list">${others.map(([s, o]) => `<li><a class="tool-card" href="/hi/tools/${s}/"><b>${esc(o.h1)}</b><span>${esc(o.desc.slice(0, 100))}…</span></a></li>`).join("")}</ul></section>
   </article>

@@ -5,7 +5,8 @@
   "description": "Static government-jobs site for news-views.in",
   "scripts": {
     "build": "node build.js",
-    "fetch": "node fetch-jobs.js"
+    "fetch": "node fetch-jobs.js",
+    "test": "node --test test/*.test.js"
   },
   "engines": {
     "node": ">=18"

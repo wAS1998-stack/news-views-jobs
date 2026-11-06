@@ -936,3 +936,19 @@ h1, h2, h3, .lede { overflow-wrap: break-word; }
 /* "New jobs added — tap to refresh" (never an automatic reload) */
 .fresh-toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 88px; z-index: 70; background: #14213D; color: #fff;
   border: 0; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.25); cursor: pointer; }
+
+/* Provenance line under job / update titles: where the facts come from and when */
+.provenance { margin: 2px 0 10px; color: var(--muted); font-size: .86rem; }
+/* Cancelled / postponed recruitment (the page stays, with the official notice) */
+.status-banner { margin: 12px 0; padding: 12px 14px; border-radius: 10px; border: 1px solid #FCA5A5; background: #FEF2F2; color: #7F1D1D; line-height: 1.55; }
+.status-banner strong { color: #B91C1C; }
+.status-banner a { color: #B91C1C; font-weight: 600; }
+.status-banner.postponed { border-color: #FDBA74; background: #FFF7ED; color: #7C2D12; }
+.status-banner.postponed strong, .status-banner.postponed a { color: #C2410C; }
+/* Share buttons (after the details, never beside Apply / Download) */
+.share-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 18px 0; }
+.share-row .share-l { color: var(--muted); font-size: 14px; }
+.share-row .btn-wa { border-color: #25D366; color: #128C7E; }
+/* A list ad takes a full row of the card grid */
+.ad-li { list-style: none; grid-column: 1 / -1; }
+.ad-slot.ad-responsive { min-height: 120px; }

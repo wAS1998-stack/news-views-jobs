@@ -1,0 +1,29 @@
+name: Tests
+
+# Unit tests (node:test, no dependencies) for the data rules: record hygiene, employer filter, Apply-button labels,
+# twins, ids, qualifications and the Indexing API plan. Runs on pushes that change code or tests; it builds no site
+# and commits nothing, so it costs no Cloudflare build.
+on:
+  push:
+    paths:
+      - "**.js"
+      - "test/**"
+      - "package.json"
+      - ".github/workflows/test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Unit tests
+        run: npm test
+      - name: Id / fingerprint self-test
+        run: node fetch-jobs.js --self-test

@@ -162,3 +162,20 @@ if ("serviceWorker" in navigator) {
     document.documentElement.classList.remove("show-app");
   });
 })();
+
+// Share button (job, update and quiz pages): the phone's own share sheet where the browser has one, else "copy link".
+(function () {
+  var bs = document.querySelectorAll(".btn-share");
+  if (!bs.length || !(navigator.share || (navigator.clipboard && navigator.clipboard.writeText))) return;
+  Array.prototype.forEach.call(bs, function (b) {
+    b.hidden = false;
+    b.addEventListener("click", function () {
+      var url = b.getAttribute("data-share-url") + "?utm_source=share&utm_medium=native";
+      if (navigator.share) {
+        navigator.share({ title: b.getAttribute("data-share-title"), text: b.getAttribute("data-share-text"), url: url }).catch(function () { /* closed */ });
+      } else {
+        navigator.clipboard.writeText(url).then(function () { var t = b.textContent; b.textContent = b.getAttribute("data-done") || "Link copied"; setTimeout(function () { b.textContent = t; }, 1800); });
+      }
+    });
+  });
+})();
