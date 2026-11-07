@@ -71,15 +71,34 @@ adb logcat -d -s NVAds:* > "$OUT/ads-log.txt"
 # the ad SDK's own messages about failed requests (why a format didn't fill)
 adb logcat -d -s Ads:* | grep -iE "native|fail|error|could not|unable" | tail -60 > "$OUT/gma-log.txt"
 
-# 8b. Play Store listing screenshots: no ads (debug-only store_mode), English and Hindi -> android/ci/screens/store-*.jpg (below)
+# 8b. Play Store listing screenshots: no ads (debug-only store_mode), English and Hindi -> android/ci/screens/store-*.
+#     tools-dev/play-listing.js turns them into the captioned 1080x1920 store graphics.
 adb shell am force-stop $PKG; sleep 2
-adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez hindi false --es tab jobs; shot store-1-jobs 12
-if [ -n "$BIGJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$BIGJOB"; shot store-2-job 8; fi
+adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez hindi false --es tab jobs; sleep 15
+# the first start fetches the feed: open the list again so the shot shows jobs, not "Loading..."
+adb shell am start -n $PKG/$ACT --es tab jobs; shot store-1-jobs 6
+if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-2-job 8; fi
+if [ -n "$BIGJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$BIGJOB"; shot store-2b-bigjob 8; fi
 adb shell am start -n $PKG/$ACT --es tab updates; shot store-3-results 6
 if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-4-quiz 8; fi
 adb shell am start -n $PKG/$ACT --es tab alerts; shot store-5-alerts 5
-adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot store-6-hindi 6
-adb shell am start -n $PKG/$ACT --ez hindi false --ez store_mode false --es tab jobs; sleep 2
+adb shell am start -n $PKG/$ACT --ez upcoming true --es tab updates; shot store-7-upcoming 6
+# the same screens in Hindi (a fresh process, so the upcoming filter is off again)
+adb shell am force-stop $PKG; sleep 2
+adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi true --es tab jobs; sleep 10
+adb shell am start -n $PKG/$ACT --es tab jobs; shot store-6-hindi 6
+if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-h2-job 8; fi
+adb shell am start -n $PKG/$ACT --es tab updates; shot store-h3-results 6
+if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-h4-quiz 8; fi
+adb shell am start -n $PKG/$ACT --es tab alerts; shot store-h5-alerts 5
+adb shell am start -n $PKG/$ACT --ez upcoming true --es tab updates; shot store-h7-upcoming 6
+# the welcome screen of a first start, in both languages (clears the app's data: keep this last before the release run)
+adb shell pm clear $PKG >/dev/null 2>&1 || true
+adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
+adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi false; shot store-8-welcome 12
+adb shell am force-stop $PKG; sleep 2
+adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi true; shot store-h8-welcome 10
+adb shell am start -n $PKG/$ACT --ez hindi false --ez store_mode false; sleep 2
 
 # Play accepts phone screenshots up to a 2:1 aspect ratio and without transparency: the 1080x2400 PNGs become
 # 1080x2160 JPEGs (120 px off the top and the bottom: status bar and gesture bar), alpha removed, quality 92.
