@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-07",
+    "date": "2026-11-07",
+    "digest_id": "current-affairs-2026-11-07",
+    "title": "Current Affairs Quiz 7 November 2026",
+    "questions": [
+      {
+        "q": "Who inspected passenger facilities at New Delhi Railway Station?",
+        "options": [
+          "Ashwini Vaishnaw",
+          "Amit Shah",
+          "IIT Madras",
+          "Uttarakhand Police"
+        ],
+        "answer": 0,
+        "why": "Ashwini Vaishnaw visited New Delhi Railway Station to assess passenger amenities and security measures."
+      },
+      {
+        "q": "What prestigious recognition was presented to the Uttarakhand Police?",
+        "options": [
+          "Jewel of India Award",
+          "President's Colour",
+          "National Service Medal",
+          "Law Enforcement Excellence Award"
+        ],
+        "answer": 1,
+        "why": "The President’s Colour was presented to the Uttarakhand Police in recognition of their exemplary service."
+      },
+      {
+        "q": "Which institution is collaborating with the Indian Air Force to develop a secure communication system?",
+        "options": [
+          "IIT Delhi",
+          "IIT Madras",
+          "IIM Bangalore",
+          "BITS Pilani"
+        ],
+        "answer": 1,
+        "why": "IIT Madras is collaborating with the IAF to develop an indigenous secure communication system."
+      },
+      {
+        "q": "What was the aim of the Special Campaign 6 concluded by the Revenue Department?",
+        "options": [
+          "Promoting environmental sustainability",
+          "Institutionalizing cleanliness and reducing pending cases",
+          "Enhancing public awareness",
+          "Developing infrastructure projects"
+        ],
+        "answer": 1,
+        "why": "The campaign aimed at institutionalizing cleanliness and reducing pending cases to promote efficiency in public services."
+      },
+      {
+        "q": "What initiative aims to enhance digital connectivity in Telangana?",
+        "options": [
+          "Digital India Initiative",
+          "Smart City Mission",
+          "Bharatmala Project",
+          "Startup India"
+        ],
+        "answer": 0,
+        "why": "The revised BharatNet program under the Digital India Initiative aims to enhance digital connectivity in Telangana."
+      },
+      {
+        "q": "What web application portal was launched by Minister Ashwini Vaishnaw?",
+        "options": [
+          "Digitech Portal",
+          "SEMICON 2.0 Portal",
+          "E-Manufacturing Portal",
+          "TechIndia Portal"
+        ],
+        "answer": 1,
+        "why": "Minister Ashwini Vaishnaw launched the SEMICON 2.0 web application portal."
+      },
+      {
+        "q": "What is the purpose of the 'Rahaat Mitr' exercise initiated between India and Myanmar?",
+        "options": [
+          "Military Training",
+          "Humanitarian Assistance and Disaster Relief",
+          "Economic Cooperation",
+          "Cultural Exchange"
+        ],
+        "answer": 1,
+        "why": "'Rahaat Mitr' is a tri-services joint exercise focused on Humanitarian Assistance and Disaster Relief."
+      },
+      {
+        "q": "Which authority established guidelines for multi-lane free flow tolling on national highways?",
+        "options": [
+          "National Highways Authority of India",
+          "Ministry of Road Transport",
+          "Indian Railways",
+          "Traffic Management Department"
+        ],
+        "answer": 0,
+        "why": "The National Highways Authority of India set guidelines for standardizing multi-lane free flow tolling."
+      },
+      {
+        "q": "The collaboration between the IAF and IIT Madras highlights India's commitment towards what?",
+        "options": [
+          "Tourism",
+          "Self-reliance in defense technology",
+          "Environmental Protection",
+          "Public Welfare"
+        ],
+        "answer": 1,
+        "why": "The collaboration emphasizes India's commitment to self-reliance in defense technology."
+      },
+      {
+        "q": "The updates provided by the article are relevant for which of the following aspirants?",
+        "options": [
+          "Medical Interns",
+          "Civil Service",
+          "Agricultural Studies",
+          "Real Estate"
+        ],
+        "answer": 1,
+        "why": "The updates are crucial for aspirants preparing for various competitive exams including civil services."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-06",
     "date": "2026-11-06",
     "digest_id": "current-affairs-2026-11-06",

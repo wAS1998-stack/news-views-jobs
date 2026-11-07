@@ -1,5 +1,110 @@
 [
   {
+    "id": "current-affairs-2026-11-07",
+    "type": "current-affairs",
+    "title": "Current Affairs 7 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-07",
+    "summary": "Today's digest highlights significant updates from various sectors, including railways, police recognition, defense collaborations, and infrastructure initiatives. These developments are crucial for aspirants preparing for competitive exams such as SSC, UPSC, Banking, Railway, and State PSC.",
+    "body": [
+      {
+        "h": "Rail Minister Inspects Passenger Facilities",
+        "p": [
+          "Railway Minister Ashwini Vaishnaw visited New Delhi Railway Station to assess passenger amenities and security measures. This visit is part of ongoing efforts to enhance safety and comfort for travelers, which could impact rail service efficiency and customer satisfaction."
+        ]
+      },
+      {
+        "h": "President’s Colour Award for Uttarakhand Police",
+        "p": [
+          "Union Home and Cooperation Minister Amit Shah presented the President’s Colour to the Uttarakhand Police in Dehradun. This prestigious recognition acknowledges the exemplary service of the police force, highlighting their critical role in maintaining law and order, which is relevant for aspirants of the police services."
+        ]
+      },
+      {
+        "h": "Indigenous Secure Communication System for Air Force",
+        "p": [
+          "The Indian Air Force (IAF) and IIT Madras have signed a memorandum of understanding to develop an indigenous digital secure communication system for aerial platforms. This collaboration emphasizes India's commitment to self-reliance in defense technology, an important topic for UPSC and defense aspirants."
+        ]
+      },
+      {
+        "h": "Successful Completion of Special Campaign 6",
+        "p": [
+          "The Revenue Department of the Finance Ministry has concluded Special Campaign 6, aimed at institutionalizing cleanliness and reducing pending cases. This initiative is crucial in promoting efficiency and efficacy in public services, a key concern for civil service examinations."
+        ]
+      },
+      {
+        "h": "MoU for Digital India Initiative in Telangana",
+        "p": [
+          "An agreement has been signed among various stakeholders for the implementation of the revised BharatNet program in Telangana, funded by the Digital India Fund. This initiative aims to enhance digital connectivity, which is pivotal in improving access to government services and educational resources, relevant for State PSC exams."
+        ]
+      },
+      {
+        "h": "Launch of the SEMICON 2.0 Portal",
+        "p": [
+          "Minister Ashwini Vaishnaw launched the SEMICON 2.0 web application portal and announced the approval of 12 applicants under the Electronics Components Manufacturing Scheme. This portal is expected to boost the semiconductor manufacturing sector in India, which is significant for aspirants interested in the technology and manufacturing sectors."
+        ]
+      },
+      {
+        "h": "First Tri-Services Joint Humanitarian Exercise",
+        "p": [
+          "India and Myanmar have initiated the first tri-services joint Humanitarian Assistance and Disaster Relief (HADR) exercise named ‘Rahaat Mitr.’ This exercise will enhance cooperation between the two nations in disaster management, an important aspect of international relations relevant for competitive exams."
+        ]
+      },
+      {
+        "h": "Four Lane NH Tolling Standards",
+        "p": [
+          "The National Highways Authority of India has set guidelines for standardizing design and infrastructure for multi-lane free flow tolling on national highways. This is crucial for improving highway management and ensuring smooth transit, which benefits both the economy and transportation sectors, relevant for SSC and Railway aspirants."
+        ]
+      }
+    ],
+    "pointers": [
+      "Rail Minister’s inspection reflects ongoing government efforts to improve rail travel.",
+      "Uttarakhand Police's recognition highlights the importance of law enforcement in civil services.",
+      "Indigenous tech development is critical for self-reliance in defense, pivotal for UPSC aspirants.",
+      "Successful completion of cleanliness campaigns indicates a push for efficiency in public administration."
+    ],
+    "sources": [
+      {
+        "title": "केंद्रीय रेल मंत्री श्री अश्विनी वैष्णव ने नई दिल्ली रेलवे स्टेशन पर यात्री सुविधाओं और सुरक्षा व्यवस्थाओं का जायजा लिया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333786"
+      },
+      {
+        "title": "केन्द्रीय गृह एवं सहकारिता मंत्री श्री अमित शाह ने आज देहरादून में उत्तराखंड पुलिस को राष्ट्रपति निशान (President’s Colour) प्रदान किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333756"
+      },
+      {
+        "title": "भारतीय वायुसेना के सॉफ्टवेयर डेवलपमेंट इंस्टीट्यूट और आईआईटी मद्रास प्रवर्तक टेक्नोलॉजीज फाउंडेशन ने हवाई प्लेटफॉर्म के लिए स्वदेशी डिजिटल सुरक्षित संचार प्रणाली विकसित करने के उद्देश्य से एक समझौता ज्ञापन पर हस्ताक्षर किए",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333792"
+      },
+      {
+        "title": "वित्त मंत्रालय के राजस्व विभाग ने स्वच्छता को संस्थागत रूप देने और लंबित मामले कम करने के लिए चलाए गए विशेष अभियान 6 का सफलतापूर्वक समापन किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333784"
+      },
+      {
+        "title": "उर्वरक विभाग और उसके सार्वजनिक क्षेत्र के उपक्रमों ने विशेष अभियान-6 के अंतर्गत महत्वपूर्ण प्रगति की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333774"
+      },
+      {
+        "title": "उर्वरक विभाग और उसके सार्वजनिक क्षेत्र के उपक्रमों ने विशेष अभियान-6 के अंतर्गत महत्वपूर्ण प्रगति की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333774"
+      },
+      {
+        "title": "प्रधान वैज्ञानिक सलाहकार के कार्यालय और 'उद्योग और आंतरिक व्यापार संवर्धन विभाग ने राष्ट्रीय अनुसंधान बुनियादी ढांचे तक पहुंच मजबूत करने के लिए 'स्टार्टअप इंडिया' और 'I-STEM' पोर्टलों के बीच एपीआई एकीकरण की शुरुआत की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333761"
+      },
+      {
+        "title": "अंडमान और निकोबार कमान में पहले बिम्सटेक समुद्री सुरक्षा अभ्यास का सफलतापूर्वक समापन",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333778"
+      },
+      {
+        "title": "संयुक्त आशुलिपिक (ग्रेड ‘बी’/ग्रेड-‘I’) सीमित विभागीय प्रतियोगी परीक्षा, 2019, 2020 और 2021",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333806"
+      },
+      {
+        "title": "केंद्रीय मंत्री श्री अश्विनी वैष्णव ने सेमीकॉन 2.0 वेब एप्लिकेशन पोर्टल लॉन्च किया और इलेक्ट्रॉनिक्स कंपोनेंट्स मैन्युफैक्चरिंग स्कीम के तहत 12 स्वीकृत आवेदकों की घोषणा की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333813"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-06",
     "type": "current-affairs",
     "title": "Current Affairs 6 November 2026: Key Government Updates for Exam Aspirants",
@@ -23028,63 +23133,6 @@
       {
         "title": "Indira Gandhi Krishi Vishwavidyalaya Raipur — official notification",
         "link": "https://rajbhavancg.gov.in"
-      }
-    ]
-  },
-  {
-    "id": "iit-kharagpur-project-engineer-2026-explained",
-    "type": "analysis",
-    "title": "IIT Kharagpur Invites Applications for Project Engineer - Research Recruitment 2026",
-    "date": "2026-10-23",
-    "summary": "IIT Kharagpur has announced a vacancy for the position of Project Engineer - Research as part of its 6G Research project. Candidates with B.Tech/B.E or M.E/M.Tech qualifications are encouraged to apply online by November 5, 2026, for a competitive salary of ₹65,000 per month.",
-    "body": [
-      {
-        "h": "Overview of the Recruitment Announcement",
-        "p": [
-          "The Indian Institute of Technology Kharagpur has issued a recruitment notification for the role of Project Engineer - Research. This position is part of a significant initiative focused on 6G Research, indicating the importance of advanced telecommunications in the future technological landscape.",
-          "With only one vacancy available, it highlights the selective nature of the recruitment process, aimed at identifying the most qualified candidates for a critical role that is expected to contribute significantly to the project."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria and Suitability",
-        "p": [
-          "Candidates aspiring for this role must have a B.Tech/B.E or an M.E/M.Tech degree, which aligns with the technical demands of the project. Additionally, relevant experience in research or engineering fields will be advantageous, making this opportunity particularly suitable for individuals who have recently completed their postgraduate education or possess a few years of relevant work experience.",
-          "This position is well-suited for engineering graduates with a keen interest in research and development, especially in telecommunications and networking, as the 6G project signifies a strategic move in advancing India's technological capabilities."
-        ]
-      },
-      {
-        "h": "Selection Process and Candidate Expectations",
-        "p": [
-          "While specific details regarding the selection process are not provided in the notification, candidates should prepare for a competitive assessment that could involve interviews or technical evaluations tailored to their field of expertise. IIT Kharagpur, renowned for its rigorous academic standards, is likely to assess candidates on their theoretical knowledge as well as practical skills during the selection process.",
-          "Candidates are advised to check the official notification for any updates on the evaluation methodology, as well as to prepare thoroughly in alignment with the latest technological trends and research methodologies relevant to the 6G development."
-        ]
-      },
-      {
-        "h": "Contextual Importance for Aspirants",
-        "p": [
-          "The recruitment for the Project Engineer - Research position underscores IIT Kharagpur's commitment to significant technological advancements. As the demand for professionals in cutting-edge research areas like 6G technology rises, securing such a role can provide candidates with invaluable experience and a competitive edge in their careers.",
-          "In India's rapidly evolving tech landscape, this position offers a unique opportunity to contribute to a pioneering research initiative, which could play a crucial role in shaping the future of communication technology. For recent graduates and postgraduates, this could be a stepping stone into the world of high-impact research and development."
-        ]
-      },
-      {
-        "h": "Next Steps for Interested Candidates",
-        "p": [
-          "Candidates interested in the Project Engineer - Research position should prepare their applications, ensuring that all relevant qualifications and experiences are highlighted. It is important to submit the application online before the closing date of November 5, 2026.",
-          "To stay informed about the recruitment process, interested applicants should frequently refer to the official IIT Kharagpur website or the detailed recruitment notification for any updates regarding application procedures, eligibility clarifications, or changes in the selection process."
-        ]
-      }
-    ],
-    "pointers": [
-      "Ensure that your application is submitted online before the deadline of November 5, 2026.",
-      "Highlight relevant research experience and academic qualifications in your application.",
-      "Stay updated with any announcements by regularly checking the official IIT Kharagpur website.",
-      "Prepare for potential interviews or technical assessments by reviewing recent advancements in 6G technology."
-    ],
-    "job_id": "iit-kharagpur-project-engineer-2026",
-    "sources": [
-      {
-        "title": "Indian Institute of Technology Kharagpur — official notification",
-        "link": "https://erp.iitkgp.ac.in/SRICStaffRecruitment/Login.jsp?ref_no=IIT/SRIC/R/GEA/2026/109"
       }
     ]
   }
