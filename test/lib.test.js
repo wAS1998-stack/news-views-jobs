@@ -93,8 +93,8 @@ test("isDupUpdate: one login page serves different updates; the same PDF of the 
 
 test("OFF_TOPIC keeps recruitments that mention board exams, rejects the exams themselves", () => {
   for (const t of ["WBSSC SLST Class 9-10 Result 2026", "WBSSC Group D Recruitment 2026 – Madhyamik Pass", "Indian Navy Agniveer SSR (Class 12) Notification 2026",
-    "Assistant Director Vacancy at NIOS 2026", "Executive Assistant Vacancy in ICAI 2026", "Osmania University Assistant Professor Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), false, t);
-  for (const t of ["CA Inter Results 2026 Out ICAI", "NIOS Hall Ticket 2026 Out - Download Class 10 & 12", "MSBTE Hall Ticket 2026 Out", "JNVST Class 6 Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), true, t);
+    "Assistant Director Vacancy at NIOS 2026", "Executive Assistant Vacancy in ICAI 2026", "IISER Junior Research Fellow Recruitment 2026 with Scholarship", "Osmania University Assistant Professor Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), false, t);
+  for (const t of ["ONGC Scholarship 2026-27: Students Can Get Rs. 48,000 Per Year, Apply Before 30 November", "CA Inter Results 2026 Out ICAI", "NIOS Hall Ticket 2026 Out - Download Class 10 & 12", "MSBTE Hall Ticket 2026 Out", "JNVST Class 6 Result 2026"]) assert.strictEqual(L.OFF_TOPIC.test(t), true, t);
 });
 
 test("matchNoticeStatus: an old year's cancellation never cancels this year's recruitment", () => {

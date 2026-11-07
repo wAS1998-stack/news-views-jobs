@@ -441,6 +441,8 @@ const OFF_TOPIC_EXAMS = new RegExp(RECRUIT_ANY + "(?:" + [
   `\\b(uchcha )?madhyamik\\b${NOT_RECRUIT}`,
   `\\bclass[ -]?(6|9|10|11|12|vi|ix|x|xi|xii)(th)?\\b(?![^–—:]*\\b(pass|passed|qualified|level|recruitment|vacanc\\w*|posts?|jobs?|bharti)\\b)`,
   `\\b(6th|9th|10th|11th|12th|matric|intermediate|inter|hsc|sslc|hslc|hse|puc|ii puc|plus two|\\+2) (board )?(annual |supplementary |compartment(al)? )?(exam(ination)? )?(results?|admit card|hall ticket|date ?sheet|time ?table|registration|exam form)\\b`,
+  // student scholarships are not jobs ("ONGC Scholarship 2026-27: Students Can Get Rs. 48,000 Per Year")
+  `\\bscholarships?\\b${NOT_RECRUIT}`,
   `\\bjnvst\\b|\\bnavodaya\\b[^–—:]*\\b(class (6|9|vi|ix)|selection test|admission)\\b`,
   `\\b(mdu|kuk|crsu|cdlu|lnmu|brabu|bnmu|tmbu|vksu|csjmu|dbrau|mgkvp|vbspu|rmlau|mjpru|davv|rdvv|apsu|sppu|du sol|osmania university|kakatiya university|anna university)\\b[^–—:]*\\b(results?|admit card|hall ticket|exam form)\\b`,
 ].join("|") + ")", "i");
