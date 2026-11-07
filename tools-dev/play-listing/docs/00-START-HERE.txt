@@ -9,6 +9,8 @@ WHAT IS IN THIS FOLDER
 1-app-icon/icon-512.png                     App icon, 512 x 512 PNG
 2-feature-graphic/feature-graphic-1024x500.jpg   Feature graphic, 1024 x 500
 3-phone-screenshots/ (8 files)              Phone screenshots, 1080 x 1920, upload in order 01 to 08
+3b-tablet-7-inch-screenshots/               7-inch tablet screenshots, 1080 x 1920
+3c-tablet-10-inch-screenshots/              10-inch tablet screenshots, 1440 x 2560
 4-store-text/                               Copy and paste:
      1-app-name.txt                         {{title}} / 30 characters
      2-short-description.txt                {{short-description}} / 80 characters
@@ -31,7 +33,9 @@ A. MAIN STORE LISTING   (left menu: Grow users > Store presence > Main store lis
    6. Video ............... leave empty
    7. Phone screenshots ... upload all 8 files from 3-phone-screenshots, in order 01 to 08
                             (the first 3 appear in Play search results, so keep this order)
-   8. Tablet / Chromebook / TV / Wear screenshots: leave empty
+   8. 7-inch tablet screenshots .... upload all the files in 3b-tablet-7-inch-screenshots, in number order
+      10-inch tablet screenshots ... upload all the files in 3c-tablet-10-inch-screenshots, in number order
+      (real screens of the app on tablet-size displays; Chromebook / TV / Wear: leave empty)
    9. Click Save.
 
 B. STORE SETTINGS   (Grow users > Store presence > Store settings)
@@ -63,5 +67,6 @@ DO NOT CHANGE THESE WHEN YOU EDIT THE LISTING (Play rules)
 FILE RULES (already met, for your information)
 ---------------------------------------------
 Icon: 512 x 512, 32-bit PNG. Feature graphic: 1024 x 500, JPEG, no transparency.
-Screenshots: JPEG, no transparency, 1080 x 1920 (9:16). That is the size Google asks for when
-choosing apps to recommend (at least 4 screenshots, 1080 px or more).
+Screenshots: JPEG, no transparency, 9:16 portrait. Phone and 7-inch tablet 1080 x 1920, 10-inch
+tablet 1440 x 2560 (Play wants each side between 1,080 and 7,680 px for 10-inch). 1080 px or more and
+at least 4 screenshots is what Google asks for when choosing apps to recommend.

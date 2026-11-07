@@ -68,13 +68,22 @@ async function prep(){
   await document.fonts.ready;
   for (const c of document.querySelectorAll('canvas[data-src]')) {
     const img = new Image(); img.src = c.dataset.src; await img.decode();
-    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    c.width = img.naturalWidth; c.height = img.naturalHeight - (+c.dataset.cropb || 0);   // cropb: system taskbar off the bottom
     const x = c.getContext('2d'); x.drawImage(img, 0, 0);
     const bar = c.dataset.bar ? +c.dataset.bar : (img.naturalHeight >= 2300 ? 122 : 0);
     if (bar) { const p = x.getImageData(6, 6, 1, 1).data; x.fillStyle = 'rgb(' + p[0] + ',' + p[1] + ',' + p[2] + ')'; x.fillRect(0, 0, img.naturalWidth, bar); }
   }
   const cap = document.querySelector('.cap'), ph = document.querySelector('.phone.main');
   if (cap && ph) ph.style.top = Math.max(560, Math.round(cap.getBoundingClientRect().bottom + 64)) + 'px';
+  // a tablet shot that caught the splash screen (one logo in the middle) is not used: every real screen has its top
+  // bar, search or heading in the upper quarter, the splash screen has nothing there
+  for (const c of document.querySelectorAll('canvas[data-check]')) {
+    const t = document.createElement('canvas'); t.width = 150; t.height = 240;
+    const x = t.getContext('2d'); x.drawImage(c, 0, 0, 150, 240);
+    const px = x.getImageData(0, 20, 150, 40).data, bg = [px[0], px[1], px[2]];
+    let busy = 0; for (let i = 0; i < px.length; i += 4) if (Math.abs(px[i] - bg[0]) + Math.abs(px[i + 1] - bg[1]) + Math.abs(px[i + 2] - bg[2]) > 60) busy++;
+    if (busy < 20) return false;
+  }
   // tablets: the whole device, as large as fits under the caption
   const tab = document.querySelector('.tablet'), tc = tab && tab.querySelector('canvas');
   if (cap && tab) {
@@ -127,7 +136,7 @@ p{margin:26px auto 0;font-weight:500;font-size:38px;line-height:1.36;color:#C9D3
 </style></head><body><div class="bg"></div>${rings(540, 1300, [520, 680, 840])}
 <div class="cap">${c.brand ? `<div class="brand"><img src="data:image/png;base64,${b64(ICON)}"><b>Sarkari <em>Radar</em></b></div>` : ""}
 <h1>${c.h}</h1><p>${c.s}</p></div>
-<div class="tablet"><div class="cam"></div><div class="screen"><canvas data-bar="64" data-src="data:${shot.mime};base64,${b64(shot.file)}"></canvas></div></div>
+<div class="tablet"><div class="cam"></div><div class="screen"><canvas data-bar="120" data-cropb="120" data-check="1" data-src="data:${shot.mime};base64,${b64(shot.file)}"></canvas></div></div>
 <script>${PREP_JS}</script></body></html>`;
 }
 
@@ -160,9 +169,10 @@ ${back ? `<div class="phone b"><div class="screen"><canvas data-src="data:${back
 async function render(browser, html, w, h, file, scale = 1) {
   const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: scale });
   await page.setContent(html, { waitUntil: "load" });
-  await page.evaluate(() => window.prep());
-  await page.screenshot({ path: file, type: "jpeg", quality: 93 });   // JPEG: no alpha channel, as Play requires
+  const ok = await page.evaluate(() => window.prep());
+  if (ok) await page.screenshot({ path: file, type: "jpeg", quality: 93 });   // JPEG: no alpha channel, as Play requires
   await page.close();
+  return ok;
 }
 
 const jpegSize = (f) => {   // width/height from the SOF marker
@@ -195,8 +205,8 @@ async function main() {
         for (const [i, c] of CAP[lang].entries()) {
           const shot = c.tab && screen([`tab${n}-${c.tab}`]);
           if (!shot) { problems.push(`${n}-inch tablet ${c.file}: tab${n}-${c.tab} not found`); continue; }
-          await render(browser, tabletHtml(c, i, shot), 1080, 1920, path.join(dirs[`tab${n}`], `${c.file}.jpg`), scale);
-          report.push(`${n}-inch ${c.file}.jpg  <- ${shot.name}`);
+          const ok = await render(browser, tabletHtml(c, i, shot), 1080, 1920, path.join(dirs[`tab${n}`], `${c.file}.jpg`), scale);
+          report.push(ok ? `${n}-inch ${c.file}.jpg  <- ${shot.name}` : `${n}-inch ${c.file}: skipped, ${shot.name} shows the splash screen`);
         }
       }
       const f = CAP.feature[lang], front = screen(f.src), back = screen(f.back);
