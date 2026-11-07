@@ -1,28 +1,33 @@
-11-06 01:33:40.317  3408  3408 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1103)
-11-06 01:34:05.752  5239  5239 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1103)
-11-06 01:34:08.456  5239  5239 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/mad/sdk/native/production/sdk-core-v40-impl.js?n=true&lv=sdk_20190107_RC02:1096)
-11-06 01:34:17.459  5239  5239 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1103)
-11-06 01:34:18.550  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:34:18.553  5239  5474 I Ads     : Ad failed to load : 0
-11-06 01:34:18.560  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:34:18.563  5239  5483 I Ads     : Ad failed to load : 0
-11-06 01:34:21.544  5239  5239 E Ads     : JS: Refused to get unsafe header "X-Afma-Gcache-IsGcacheHit" (https://imasdk.googleapis.com/admob/sdkloader/versioned/nx.553.0/native_video_lima.js:833)
-11-06 01:34:21.800  5239  5239 E Ads     : JS: Refused to get unsafe header "X-Afma-Gcache-IsGcacheHit" (https://imasdk.googleapis.com/admob/sdkloader/versioned/nx.553.0/native_video_lima.js:833)
-11-06 01:34:35.179  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:34:35.184  5239  5483 I Ads     : Ad failed to load : 0
-11-06 01:34:35.222  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:34:35.234  5239  5443 I Ads     : Ad failed to load : 0
-11-06 01:34:49.727  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:34:49.731  5239  5443 I Ads     : Ad failed to load : 0
-11-06 01:35:05.801  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:35:05.813  5239  5484 I Ads     : Ad failed to load : 0
-11-06 01:35:06.410  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:35:06.413  5239  6774 I Ads     : Ad failed to load : 0
-11-06 01:35:06.442  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:35:06.449  5239  6772 I Ads     : Ad failed to load : 0
-11-06 01:35:39.361  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:35:39.372  5239  6780 I Ads     : Ad failed to load : 0
-11-06 01:36:06.949  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:36:06.952  5239  7294 I Ads     : Ad failed to load : 0
-11-06 01:36:07.144  5239  5239 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-06 01:36:07.146  5239  7299 I Ads     : Ad failed to load : 0
+11-07 12:34:03.637  4763  4763 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1108)
+11-07 12:34:09.234  4763  4763 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/mad/sdk/native/production/sdk-core-v40-impl.js?n=true&lv=sdk_20190107_RC02:1101)
+11-07 12:34:19.879  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:19.894  4763  5043 I Ads     : Ad failed to load : 0
+11-07 12:34:20.304  4763  4763 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1108)
+11-07 12:34:21.046  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:21.054  4763  5030 I Ads     : Ad failed to load : 0
+11-07 12:34:21.069  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:21.072  4763  5029 I Ads     : Ad failed to load : 0
+11-07 12:34:37.974  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:37.976  4763  5030 I Ads     : Ad failed to load : 0
+11-07 12:34:38.015  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:38.030  4763  5036 I Ads     : Ad failed to load : 0
+11-07 12:34:38.033  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:38.040  4763  5041 I Ads     : Ad failed to load : 0
+11-07 12:34:47.067  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:34:47.095  4763  5029 I Ads     : Ad failed to load : 0
+11-07 12:35:03.633  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:35:03.642  4763  5037 I Ads     : Ad failed to load : 0
+11-07 12:35:11.007  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:35:11.026  4763  5152 I Ads     : Ad failed to load : 0
+11-07 12:35:11.165  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:35:11.189  4763  5036 I Ads     : Ad failed to load : 0
+11-07 12:35:11.213  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:35:11.216  4763  5036 I Ads     : Ad failed to load : 0
+11-07 12:35:36.947  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:35:36.951  4763  6140 I Ads     : Ad failed to load : 0
+11-07 12:36:13.404  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:36:13.406  4763  6815 I Ads     : Ad failed to load : 0
+11-07 12:36:13.416  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:36:13.419  4763  6830 I Ads     : Ad failed to load : 0
+11-07 12:36:13.424  4763  4763 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-07 12:36:13.426  4763  6830 I Ads     : Ad failed to load : 0
