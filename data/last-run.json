@@ -23,7 +23,7 @@
     ]
   },
   "fetch": {
-    "at": "2026-11-07T01:45:03.646Z",
+    "at": "2026-11-07T02:25:18.907Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -70,7 +70,7 @@
     ]
   },
   "watch": {
-    "at": "2026-11-07T01:45:43.398Z",
+    "at": "2026-11-07T02:26:06.599Z",
     "sources": 59,
     "healthy": 17,
     "newLinks": 0,
@@ -101,10 +101,10 @@
       "hpsc": "paused (fails 69, geo-blocked)",
       "hppsc": "paused (fails 69, geo-blocked)",
       "ukpsc": "paused (fails 69, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 69, geo-blocked)",
       "gpsc": "paused (fails 69, geo-blocked)",
-      "tgpsc": "2 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 69, geo-blocked)",
       "apsc": "paused (fails 69, geo-blocked)",
       "jkpsc": "paused (fails 69, geo-blocked)",
@@ -113,8 +113,8 @@
       "rssb": "paused (fails 69, geo-blocked)",
       "esb-mp": "paused (fails 69, geo-blocked)",
       "bssc": "paused (fails 18)",
+      "tgpsc": "2 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via direct",
-      "ctet": "4 links, 0 new via news-views.in",
       "jssc": "paused (fails 69, geo-blocked)",
       "osssc": "paused (fails 36)",
       "gsssb": "paused (fails 69, geo-blocked)",
@@ -125,18 +125,18 @@
       "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 69, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "uksssc": "27 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 69, geo-blocked)",
       "tslprb": "paused (fails 69)",
       "slprb-ap": "paused (fails 69, geo-blocked)",
       "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
-      "ssc": "7 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
+      "wbssc": "13 links, 0 new via direct",
+      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -144,7 +144,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-07T01:45:43.781Z",
+    "at": "2026-11-07T02:26:06.955Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -159,7 +159,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-07T01:45:44.899Z",
+    "at": "2026-11-07T02:26:08.019Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -180,7 +180,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-07T01:45:45.262Z",
+    "at": "2026-11-07T02:26:08.375Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
