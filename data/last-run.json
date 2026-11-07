@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "runs": {},
   "notify": {
     "at": "2026-11-07T16:18:45.172Z",
@@ -22,7 +22,7 @@
     ]
   },
   "fetch": {
-    "at": "2026-11-07T18:09:02.992Z",
+    "at": "2026-11-07T18:50:03.648Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -31,10 +31,10 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 2,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-07; 95 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-07; 93 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-07; 17 already known",
@@ -69,7 +69,7 @@
     ]
   },
   "watch": {
-    "at": "2026-11-07T18:10:07.709Z",
+    "at": "2026-11-07T18:50:57.707Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -86,10 +86,10 @@
       "iaf-agniveer": "paused (fails 73, geo-blocked)",
       "rrb-portal": "paused (fails 69, geo-blocked)",
       "ncs": "paused (fails 61)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "rbi": "19 links, 0 new via direct",
       "bpsc": "paused (fails 71, geo-blocked)",
       "rpsc": "paused (fails 61, geo-blocked)",
-      "rbi": "19 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "mpsc": "paused (fails 73)",
       "tnpsc": "paused (fails 73, geo-blocked)",
       "kpsc": "paused (fails 73, geo-blocked)",
@@ -113,29 +113,29 @@
       "esb-mp": "paused (fails 73, geo-blocked)",
       "bssc": "paused (fails 22, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "4 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "jssc": "paused (fails 73, geo-blocked)",
       "osssc": "paused (fails 40)",
       "gsssb": "paused (fails 73, geo-blocked)",
       "sssb-punjab": "paused (fails 73, geo-blocked)",
       "hprca": "paused (fails 73, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "4 links, 0 new via direct",
       "kea": "paused (fails 73, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 73, geo-blocked)",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 73, geo-blocked)",
       "tslprb": "paused (fails 73)",
       "slprb-ap": "paused (fails 73, geo-blocked)",
+      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "mppsc": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 4)",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 4)"
+      "mppsc": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 5)",
+      "upsssc": "error: news-views.in: The operation was aborted due to timeout | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 5)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -143,22 +143,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-07T18:10:08.107Z",
+    "at": "2026-11-07T18:52:02.217Z",
     "ok": true,
-    "checked": 0,
+    "checked": 2,
     "found": 0,
-    "due": 0,
+    "due": 2,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
+      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-07T18:07:12.055Z",
+    "at": "2026-11-07T18:52:41.100Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -166,7 +166,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 2,
+    "hindiJobs": 2,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 4,
@@ -175,11 +176,13 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: JSERC बिजली लोकपाल भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: SRES-DID जिला कार्यक्रम प्रबंधक भर्ती 2026 – ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-07T18:07:12.420Z",
+    "at": "2026-11-07T18:52:41.479Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
