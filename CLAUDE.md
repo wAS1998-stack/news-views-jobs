@@ -137,8 +137,13 @@ hurting users or breaking Google's policies.
   marked sent only after a successful send; "Result declared" only when the headline says so.
 - App strings added since Nov 6 live in `ui/MoreStrings.kt` (`Strings.x`). Search: `data/Search.kt` (typed words by
   word start; synonyms and two-word phrases exact via indexed word pairs).
-- Store screenshots: `android/ci/screens/store-*.jpg` (1080×2160, no alpha, no ads) from every Android CI run;
-  `last-build.txt` ends with an "emulator crash:" line. Play listing copy (en-IN + hi-IN): `android/store/listing.md`.
+- Store screenshots: `android/ci/screens/store-*.png` (no ads, English + `store-h*` Hindi; the job page is the
+  biggest open job with a last date, an age limit and an apply page) from every Android CI run; `last-build.txt` ends
+  with an "emulator crash:" line. **Play listing** (owner wants English only): text in `tools-dev/play-listing/text/en-IN/`
+  (title 30, short 80, full 4000 chars; keep the government disclaimer + official source URLs, no "best/#1/free"),
+  captions in `captions.json`; `node tools-dev/play-listing/play-listing.js --zip` renders the captioned 1080×1920
+  screenshots and 1024×500 feature graphic (Chromium + Poppins) and writes the package with guides to
+  `android/ci/play/Sarkari-Radar-Play-Listing/` (`--langs en-IN,hi-IN` adds Hindi).
 - Content sourcing: `INDIA_RELAY_URL` secret / `indiaRelayUrl` config is tried first by the fetchers;
   `tools-dev/india-relay.js` is the server for an India-based host (the owner's cost decision). Tests: `npm test`
   (node:test, `test/*.test.js`, run by `.github/workflows/test.yml`).

@@ -1,0 +1,99 @@
+STORE SETTINGS AND APP CONTENT - ANSWERS FOR PLAY CONSOLE
+=========================================================
+
+STORE SETTINGS   (Grow users > Store presence > Store settings)
+--------------
+App or game ........ App
+Category ........... Education
+                     (job-alert and exam apps in India are listed there; the "News" category would
+                     need extra news-publisher declarations)
+Tags ............... pick up to 5 of Play's suggested tags that match jobs / careers, exam or test
+                     preparation, and education
+Email .............. contact@news-views.in   (the address the website and the app already show;
+                     make sure it reaches your inbox: Google and users will write to it)
+Website ............ https://news-views.in
+Phone .............. leave empty
+External marketing . leave ON (lets Google advertise the app outside Play at no cost to you)
+
+
+PRIVACY POLICY URL
+------------------
+https://news-views.in/privacy-policy/
+
+
+APP CONTENT   (Policy and programs > App content)
+-----------
+1. Privacy policy ......... https://news-views.in/privacy-policy/
+
+2. App access ............. "All functionality in my app is available without any access restrictions"
+                            (there is no login)
+
+3. Ads .................... "Yes, my app contains ads"
+                            (this first version shows none; ads start when the AdMob IDs are added,
+                            and then nothing has to change here)
+
+4. Content rating ......... Start questionnaire
+                            Email: your email. Category: "Reference, News, or Educational"
+                            Violence, sexuality, language, drugs, gambling: No
+                            Users can interact or share content with each other: No
+                            Shares the user's location with other users: No
+                            Digital purchases: No  (change to Yes only if you switch on "Pro" later)
+                            Unrestricted internet access / web browser: No
+                            Submit, then Apply rating.
+
+5. Target audience ........ 18 and over
+                            Could the app appeal to children: No
+
+6. News app ............... No (it is a job-alert app, not a news publisher)
+
+7. Government apps ........ No - not developed by or on behalf of a government
+                            (the app and the listing say it is not affiliated with any government)
+
+8. Financial features ..... "My app doesn't provide any financial features"
+
+9. Health apps ............ No health features
+
+10. Advertising ID ........ Yes, the app uses it. Purposes: Advertising or marketing, Analytics
+
+11. Data safety ........... see below
+
+
+DATA SAFETY   (what the app really does)
+-----------
+Does your app collect or share any of the required user data types?  Yes
+Is all of the data encrypted in transit?  Yes
+Do you provide a way for users to request that their data is deleted?  No
+   (the app has no accounts; settings and saved jobs stay on the phone)
+Account creation: the app doesn't let users create an account.
+
+Declare these data types (tick "Collected"; tick "Shared" where it says so):
+
+Location > Approximate location
+   Collected and shared (ads SDK, from the IP address; Firebase Analytics region)
+   Purposes: Advertising or marketing, Analytics, Fraud prevention, security and compliance
+   Required (users can't turn it off)
+
+App activity > App interactions
+   Collected and shared (ads SDK: ad views and taps; Firebase Analytics: screens and buttons)
+   Purposes: Analytics, Advertising or marketing
+   Required
+
+App info and performance > Crash logs
+   Collected, not shared (Firebase Crashlytics)
+   Purposes: App functionality, Analytics
+   Required
+
+App info and performance > Diagnostics
+   Collected and shared (ads SDK)
+   Purposes: Analytics, Fraud prevention, security and compliance, Advertising or marketing
+   Required
+
+Device or other IDs
+   Collected and shared (advertising ID / app set ID for ads; Firebase ID for notifications)
+   Purposes: App functionality, Advertising or marketing, Analytics, Fraud prevention, security and compliance
+   Required
+
+Do NOT declare: name, email, phone, contacts, photos, messages, precise location, files, health,
+financial info. The app doesn't collect them.
+(If you switch on the one-time "Pro" purchase later, add Financial info > Purchase history, collected
+by Firebase Analytics for Analytics, and change "Digital purchases" in the content rating to Yes.)

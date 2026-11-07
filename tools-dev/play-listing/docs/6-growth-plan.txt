@@ -1,0 +1,56 @@
+GROWTH PLAN - MORE ORGANIC INSTALLS FROM GOOGLE PLAY
+=====================================================
+Play ranks an app on: keywords in the listing, installs, ratings and reviews, how many people keep
+the app (retention), crashes, and how many store visitors install. In that order of effort:
+
+
+1. KEYWORDS - done in this listing
+   The listing targets what Indian job seekers type in Play: sarkari naukri, govt job alert,
+   government jobs, sarkari result, admit card, result, answer key, exam date, railway jobs, bank
+   jobs, SSC, police bharti, teacher jobs, 10th / 12th pass jobs, ITI / diploma, current affairs quiz,
+   and state names (Uttar Pradesh, Bihar, Rajasthan...).
+   Google reads them in the app name (strongest), the short description and the full description.
+   Leave them as they are; adding more repetitions or keyword lists hurts.
+
+2. FIRST RATINGS (week 1-3)
+   - Your 12+ closed testers: ask them to use the app for real and, once it is public, to leave an
+     honest rating and a short review in their own words.
+     Never pay for reviews, never offer anything for a rating, never ask for "5 stars only":
+     Play removes such reviews and can suspend the app.
+   - The app already shows Google's in-app review card at good moments: a quiz score of 7 or more,
+     saving a second job, or coming back after opening an application page (Google limits how often).
+   - Reply to every review within a day, most of all the 1-3 star ones. When you fix a problem,
+     reply "Fixed in version X - please update". Ratings go up when people see answers.
+
+3. YOUR WEBSITE = YOUR BIGGEST FREE INSTALL SOURCE (the day the app is live)
+   Send me the Play link. I will set playUrl in config.json, so every news-views.in job page shows
+   "Get the app on Google Play" and shared app links point to Play. Also send the App signing SHA-256
+   (Play Console > Test and release > Setup > App signing) so news-views.in links open in the app.
+
+4. STORE LISTING EXPERIMENTS (Play Console > Grow users > Store listing experiments)
+   Start when about 1,000 people a week visit the store page. Test ONE thing at a time, 50/50, at
+   least 7-14 days, then keep the winner:
+   - Short description B:
+     Govt job alerts for your state & qualification: results, admit cards, GK quiz   (77)
+   - Short description C:
+     New govt jobs for your state & qualification. Results, admit cards, daily quiz  (78)
+   - First screenshot: try 08-no-login-quick-setup.jpg in position 1.
+   - App name B:  Sarkari Radar: Sarkari Naukri   (29)
+
+5. KEEP THE APP HEALTHY (Play Console > Monitor and improve > Android vitals)
+   Play shows a warning on the store page and ranks the app lower when, over 28 days, more than
+   1.09% of daily users see a crash or more than 0.47% see an "app not responding". Crashlytics is
+   built in: send me any crash and I fix it.
+
+6. UPDATE EVERY 2-4 WEEKS
+   Each update with a clear "What's new" helps ranking and brings people back. I prepare the builds;
+   you upload them (or set up Play's automatic publishing later).
+
+7. CHANNELS YOU POST IN YOURSELF
+   Your Telegram channel (and a WhatsApp channel if you start one): post big new jobs with the Play
+   link. I can't post on your behalf.
+
+8. LATER, WHEN THERE IS BUDGET
+   - A 20-30 second screen recording of the app on YouTube, added as the listing video.
+   - Google Ads "App campaigns" for paid installs: start small (Rs 300-500 a day), watch cost per
+     install and day-7 retention before spending more.

@@ -1,0 +1,67 @@
+SARKARI RADAR - GOOGLE PLAY STORE LISTING (ENGLISH)
+===================================================
+Everything for the Play Console store listing, ready to upload.
+Package name: in.newsviews.app  (it comes from the AAB file; you never type it)
+
+
+WHAT IS IN THIS FOLDER
+----------------------
+1-app-icon/icon-512.png                     App icon, 512 x 512 PNG
+2-feature-graphic/feature-graphic-1024x500.jpg   Feature graphic, 1024 x 500
+3-phone-screenshots/ (8 files)              Phone screenshots, 1080 x 1920, upload in order 01 to 08
+4-store-text/                               Copy and paste:
+     1-app-name.txt                         30 / 30 characters
+     2-short-description.txt                78 / 80 characters
+     3-full-description.txt                 3,679 / 4,000 characters
+     4-whats-new-release-notes.txt          259 / 500 characters
+5-store-settings-and-app-content.txt        Category, contact details, and every App content answer
+6-growth-plan.txt                           How to get more organic installs after launch
+
+
+STEP BY STEP IN PLAY CONSOLE
+----------------------------
+(Open play.google.com/console and click your app "Sarkari Radar". Menu names can differ a little.)
+
+A. MAIN STORE LISTING   (left menu: Grow users > Store presence > Main store listing)
+   1. App name ............ paste 4-store-text/1-app-name.txt
+   2. Short description ... paste 4-store-text/2-short-description.txt
+   3. Full description .... paste 4-store-text/3-full-description.txt
+   4. App icon ............ upload 1-app-icon/icon-512.png
+   5. Feature graphic ..... upload 2-feature-graphic/feature-graphic-1024x500.jpg
+   6. Video ............... leave empty
+   7. Phone screenshots ... upload all 8 files from 3-phone-screenshots, in order 01 to 08
+                            (the first 3 appear in Play search results, so keep this order)
+   8. Tablet / Chromebook / TV / Wear screenshots: leave empty
+   9. Click Save.
+
+B. STORE SETTINGS   (Grow users > Store presence > Store settings)
+   Category: Education. Contact details: see 5-store-settings-and-app-content.txt
+
+C. APP CONTENT   (Policy and programs > App content, or "Dashboard > Set up your app")
+   Answer each item with 5-store-settings-and-app-content.txt
+
+D. RELEASE NOTES   (when you create the release in Testing > Closed testing)
+   In the "Release notes" box write:
+   <en-IN>
+   ...paste 4-store-text/4-whats-new-release-notes.txt here...
+   </en-IN>
+
+E. Click "Send for review" (Publishing overview). Google's first review usually takes a few days.
+
+
+DO NOT CHANGE THESE WHEN YOU EDIT THE LISTING (Play rules)
+---------------------------------------------------------
+- No "best", "No.1", "#1", "top", "free", "new" or emojis in the app name or in the graphics.
+- Keep the "not affiliated with any government" lines and the list of official websites in the full
+  description. Google requires both for apps that show government information.
+- Screenshots must show the real app, without ads. These do.
+- Don't add lists of keywords or names of other apps (Sarkari Result, Testbook, etc.). Keyword stuffing
+  gets listings rejected. The keywords are already written in naturally.
+- Don't promise anything the app doesn't do.
+
+
+FILE RULES (already met, for your information)
+---------------------------------------------
+Icon: 512 x 512, 32-bit PNG. Feature graphic: 1024 x 500, JPEG, no transparency.
+Screenshots: JPEG, no transparency, 1080 x 1920 (9:16). That is the size Google asks for when
+choosing apps to recommend (at least 4 screenshots, 1080 px or more).

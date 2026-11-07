@@ -1,0 +1,6 @@
+First release of Sarkari Radar:
+• Govt job alerts for your state and qualification
+• Results, admit cards, answer keys and exam dates, with an upcoming-dates calendar
+• Last-date reminders and department follow
+• Daily current affairs quiz
+• Hindi and English

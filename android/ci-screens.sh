@@ -42,7 +42,19 @@ today = (datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)).d
 live = [j for j in d["jobs"] if (not j.get("en") or j["en"] >= today) and j.get("ns", "") != "cancelled"] or d["jobs"]
 print(max(live, key=lambda j: j.get("v", 0))["id"])' "$FEED" 2>/dev/null)
 [ -n "$BIGJOB" ] || BIGJOB="$JOB"
-echo "job=$JOB update=$UPD store-job=$BIGJOB" > "$OUT/ids.txt"
+# the Play listing's job-page screenshot shows every field: the biggest open job with a last date at least 4 days
+# away, an age limit (so the "your age" check shows) and a real application page ("Apply online")
+STOREJOB=$(python3 -c '
+import json, sys, datetime, re
+d = json.load(open(sys.argv[1]))
+now = datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)
+soon = (now + datetime.timedelta(days=4)).date().isoformat()
+ok = [j for j in d["jobs"] if j.get("en", "") >= soon and j.get("v", 0) >= 20 and j.get("a1") and j.get("ns", "") != "cancelled"
+      and not re.search(r"scholarship|admission|internship", j.get("t", ""), re.I)]
+best = [j for j in ok if j.get("m") in ("apply", "page")] or ok
+print(max(best, key=lambda j: j.get("v", 0))["id"] if best else "")' "$FEED" 2>/dev/null)
+[ -n "$STOREJOB" ] || STOREJOB="$JOB"
+echo "job=$JOB update=$UPD big-job=$BIGJOB store-job=$STOREJOB" > "$OUT/ids.txt"
 if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot 03-job 8
   adb shell input swipe 540 1900 540 700 400; shot 03b-job-ad 5; fi
 # 4. a result / admit card page
@@ -77,7 +89,7 @@ adb shell am force-stop $PKG; sleep 2
 adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez hindi false --es tab jobs; sleep 15
 # the first start fetches the feed: open the list again so the shot shows jobs, not "Loading..."
 adb shell am start -n $PKG/$ACT --es tab jobs; shot store-1-jobs 6
-if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-2-job 8; fi
+if [ -n "$STOREJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$STOREJOB"; shot store-2-job 8; fi
 if [ -n "$BIGJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$BIGJOB"; shot store-2b-bigjob 8; fi
 adb shell am start -n $PKG/$ACT --es tab updates; shot store-3-results 6
 if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-4-quiz 8; fi
@@ -87,7 +99,7 @@ adb shell am start -n $PKG/$ACT --ez upcoming true --es tab updates; shot store-
 adb shell am force-stop $PKG; sleep 2
 adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi true --es tab jobs; sleep 10
 adb shell am start -n $PKG/$ACT --es tab jobs; shot store-6-hindi 6
-if [ -n "$JOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$JOB"; shot store-h2-job 8; fi
+if [ -n "$STOREJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$STOREJOB"; shot store-h2-job 8; fi
 adb shell am start -n $PKG/$ACT --es tab updates; shot store-h3-results 6
 if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot store-h4-quiz 8; fi
 adb shell am start -n $PKG/$ACT --es tab alerts; shot store-h5-alerts 5
