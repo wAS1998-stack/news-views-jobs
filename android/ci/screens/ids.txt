@@ -1,1 +1,1 @@
-job=amu-assistant-professor-tashreeh-wa-munafeual-2026 update=upsssc-bcg-technician-result-2026 store-job=rajasthan-safai-karamchari-2026
+job=imu-junior-research-fellow-2026 update=upsssc-bcg-technician-result-2026 big-job=rajasthan-safai-karamchari-2026 store-job=gpstr-teacher-extended-2026
