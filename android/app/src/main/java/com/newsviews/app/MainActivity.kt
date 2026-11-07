@@ -6,7 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -259,7 +261,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     }
 
     if (!settings.onboarded && open == null && !linkVisit) {
-        Scaffold { pad -> Column(Modifier.padding(pad)) { Onboarding(vm, s) } }
+        Scaffold { pad -> ReadableWidth(Modifier.padding(pad)) { Column { Onboarding(vm, s) } } }
         return
     }
 
@@ -319,22 +321,33 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { pad ->
-        NavHost(nav, startDestination = "jobs", modifier = Modifier.padding(pad)) {
-            composable("jobs") { JobsScreen(vm, s, onQuiz = { nav.navigate("quiz/$it") }, onQuizzes = { nav.navigate("quizzes") { launchSingleTop = true } }) { nav.navigate("job/$it") } }
-            composable("quiz/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                com.newsviews.app.ui.QuizScreen(vm, s, it.arguments?.getString("id") ?: "") { nav.navigate("quizzes") { launchSingleTop = true } }
-            }
-            composable("quizzes") { QuizHubScreen(vm, s) { id -> nav.navigate("quiz/$id") } }
-            composable("updates") { UpdatesScreen(vm, s, onOpen = { nav.navigate("update/$it") }, onOpenJob = { nav.navigate("job/$it") }) }
-            composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
-            composable("alerts") { AlertsScreen(vm, s) }
-            composable("job/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                JobDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
-            }
-            composable("update/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
-                UpdateDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
+        ReadableWidth(Modifier.padding(pad)) {
+            NavHost(nav, startDestination = "jobs", modifier = Modifier.fillMaxSize()) {
+                composable("jobs") { JobsScreen(vm, s, onQuiz = { nav.navigate("quiz/$it") }, onQuizzes = { nav.navigate("quizzes") { launchSingleTop = true } }) { nav.navigate("job/$it") } }
+                composable("quiz/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
+                    com.newsviews.app.ui.QuizScreen(vm, s, it.arguments?.getString("id") ?: "") { nav.navigate("quizzes") { launchSingleTop = true } }
+                }
+                composable("quizzes") { QuizHubScreen(vm, s) { id -> nav.navigate("quiz/$id") } }
+                composable("updates") { UpdatesScreen(vm, s, onOpen = { nav.navigate("update/$it") }, onOpenJob = { nav.navigate("job/$it") }) }
+                composable("saved") { SavedScreen(vm, s) { nav.navigate("job/$it") } }
+                composable("alerts") { AlertsScreen(vm, s) }
+                composable("job/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
+                    JobDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
+                }
+                composable("update/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
+                    UpdateDetailScreen(vm, s, it.arguments?.getString("id") ?: "") { j -> nav.navigate("job/$j") }
+                }
             }
         }
+    }
+}
+
+/** Tablets and landscape: lists and pages keep a readable width (at most 720 dp), centred; phones are narrower, so
+    nothing changes there. The top bar, tab bar and bottom banner stay full width. */
+@Composable
+private fun ReadableWidth(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    Box(modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+        Box(Modifier.widthIn(max = 720.dp).fillMaxSize()) { content() }
     }
 }
 

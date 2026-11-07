@@ -110,6 +110,25 @@ adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
 adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi false; shot store-8-welcome 12
 adb shell am force-stop $PKG; sleep 2
 adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi true; shot store-h8-welcome 10
+# 8c. tablet store screenshots: the same emulator as a 7-inch (1200x1920, 600 dp wide) and a 10-inch tablet
+#     (1600x2560, 800 dp wide), so Play's tablet slots show the app's real tablet layout -> tab7-*.png, tab10-*.png
+for T in 7:1200x1920 10:1600x2560; do
+  N=${T%%:*}; SZ=${T#*:}
+  adb shell wm size "$SZ"; adb shell wm density 320; sleep 4
+  adb shell pm clear $PKG >/dev/null 2>&1 || true
+  adb shell pm grant $PKG android.permission.POST_NOTIFICATIONS || true
+  adb shell am start -n $PKG/$ACT --ez store_mode true --ez hindi false; shot tab$N-8-welcome 12
+  adb shell am force-stop $PKG; sleep 2
+  adb shell am start -n $PKG/$ACT --ez store_mode true --ez skip_onboarding true --ez demo_profile true --ez hindi false --es tab jobs; sleep 12
+  adb shell am start -n $PKG/$ACT --es tab jobs; shot tab$N-1-jobs 6
+  if [ -n "$STOREJOB" ]; then adb shell am start -n $PKG/$ACT --es kind job --es id "$STOREJOB"; shot tab$N-2-job 8; fi
+  adb shell am start -n $PKG/$ACT --es tab updates; shot tab$N-3-results 6
+  adb shell am start -n $PKG/$ACT --es tab alerts; shot tab$N-5-alerts 5
+  if [ -n "${QUIZ:-}" ]; then adb shell am start -n $PKG/$ACT --es quiz "$QUIZ"; shot tab$N-6-quiz 8; fi
+  adb shell am start -n $PKG/$ACT --ez hindi true --es tab jobs; shot tab$N-7-hindi 6
+  adb shell am start -n $PKG/$ACT --ez hindi false --ez upcoming true --es tab updates; shot tab$N-4-upcoming 6
+done
+adb shell wm size reset; adb shell wm density reset; sleep 3
 adb shell am start -n $PKG/$ACT --ez hindi false --ez store_mode false; sleep 2
 
 # Play accepts phone screenshots up to a 2:1 aspect ratio and without transparency: the 1080x2400 PNGs become

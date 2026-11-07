@@ -70,10 +70,19 @@ async function prep(){
     const img = new Image(); img.src = c.dataset.src; await img.decode();
     c.width = img.naturalWidth; c.height = img.naturalHeight;
     const x = c.getContext('2d'); x.drawImage(img, 0, 0);
-    if (img.naturalHeight >= 2300) { const p = x.getImageData(6, 6, 1, 1).data; x.fillStyle = 'rgb(' + p[0] + ',' + p[1] + ',' + p[2] + ')'; x.fillRect(0, 0, img.naturalWidth, 122); }
+    const bar = c.dataset.bar ? +c.dataset.bar : (img.naturalHeight >= 2300 ? 122 : 0);
+    if (bar) { const p = x.getImageData(6, 6, 1, 1).data; x.fillStyle = 'rgb(' + p[0] + ',' + p[1] + ',' + p[2] + ')'; x.fillRect(0, 0, img.naturalWidth, bar); }
   }
   const cap = document.querySelector('.cap'), ph = document.querySelector('.phone.main');
   if (cap && ph) ph.style.top = Math.max(560, Math.round(cap.getBoundingClientRect().bottom + 64)) + 'px';
+  // tablets: the whole device, as large as fits under the caption
+  const tab = document.querySelector('.tablet'), tc = tab && tab.querySelector('canvas');
+  if (cap && tab) {
+    const top = Math.round(cap.getBoundingClientRect().bottom + 56), pad = 24, ratio = tc.height / tc.width;
+    const sw = Math.floor(Math.min(940 - 2 * pad, (1920 - top - 64 - 2 * pad) / ratio));
+    tab.style.top = top + 'px'; tab.style.width = (sw + 2 * pad) + 'px'; tab.style.left = Math.round((1080 - sw - 2 * pad) / 2) + 'px';
+    tab.querySelector('.screen').style.height = Math.round(sw * ratio) + 'px';
+  }
   return true;
 }`;
 
@@ -98,6 +107,27 @@ p{margin:${hi ? 26 : 30}px auto 0;font-weight:500;font-size:${hi ? 38 : 40}px;li
 <div class="cap">${c.brand ? `<div class="brand"><img src="data:image/png;base64,${b64(ICON)}"><b>Sarkari <em>Radar</em></b></div>` : ""}
 <h1>${c.h}</h1><p>${c.s}</p></div>
 <div class="phone main"><div class="screen"><canvas data-src="data:${shot.mime};base64,${b64(shot.file)}"></canvas><div class="cam"></div></div></div>
+<script>${PREP_JS}</script></body></html>`;
+}
+
+function tabletHtml(c, idx, shot) {
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${FONTS}${BASE_CSS}
+html,body{width:1080px;height:1920px}
+.cap{position:absolute;left:70px;right:70px;top:${c.brand ? 96 : 130}px;text-align:center}
+.brand{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:34px}
+.brand img{width:74px;height:74px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.brand b{font-weight:700;font-size:44px;letter-spacing:-.5px}
+h1,p{text-wrap:balance}
+h1{margin:0;font-weight:800;font-size:88px;line-height:1.07;letter-spacing:-1.5px}
+p{margin:26px auto 0;font-weight:500;font-size:38px;line-height:1.36;color:#C9D3E8;max-width:900px}
+.tablet{position:absolute;background:#0A101E;border-radius:52px;padding:24px;box-shadow:0 50px 110px rgba(0,0,0,.55),inset 0 0 0 3px #2E3E63}
+.tablet .screen{position:relative;overflow:hidden;border-radius:26px;background:#FAF8F3}
+.tablet .screen canvas{display:block;width:100%}
+.tablet .cam{position:absolute;top:8px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#26324D}
+</style></head><body><div class="bg"></div>${rings(540, 1300, [520, 680, 840])}
+<div class="cap">${c.brand ? `<div class="brand"><img src="data:image/png;base64,${b64(ICON)}"><b>Sarkari <em>Radar</em></b></div>` : ""}
+<h1>${c.h}</h1><p>${c.s}</p></div>
+<div class="tablet"><div class="cam"></div><div class="screen"><canvas data-bar="64" data-src="data:${shot.mime};base64,${b64(shot.file)}"></canvas></div></div>
 <script>${PREP_JS}</script></body></html>`;
 }
 
@@ -127,8 +157,8 @@ ${back ? `<div class="phone b"><div class="screen"><canvas data-src="data:${back
 <script>${PREP_JS}</script></body></html>`;
 }
 
-async function render(browser, html, w, h, file) {
-  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
+async function render(browser, html, w, h, file, scale = 1) {
+  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: scale });
   await page.setContent(html, { waitUntil: "load" });
   await page.evaluate(() => window.prep());
   await page.screenshot({ path: file, type: "jpeg", quality: 93 });   // JPEG: no alpha channel, as Play requires
@@ -144,7 +174,8 @@ const jpegSize = (f) => {   // width/height from the SOF marker
 
 async function main() {
   fs.rmSync(OUT, { recursive: true, force: true });
-  const dirs = { icon: path.join(OUT, "1-app-icon"), feature: path.join(OUT, "2-feature-graphic"), shots: path.join(OUT, "3-phone-screenshots"), text: path.join(OUT, "4-store-text") };
+  const dirs = { icon: path.join(OUT, "1-app-icon"), feature: path.join(OUT, "2-feature-graphic"), shots: path.join(OUT, "3-phone-screenshots"),
+    tab7: path.join(OUT, "3b-tablet-7-inch-screenshots"), tab10: path.join(OUT, "3c-tablet-10-inch-screenshots"), text: path.join(OUT, "4-store-text") };
   Object.values(dirs).forEach((d) => fs.mkdirSync(d, { recursive: true }));
   const problems = [], report = [];
 
@@ -160,6 +191,14 @@ async function main() {
         await render(browser, screenshotHtml(c, i, lang, shot), 1080, 1920, out);
         report.push(`${lang} ${c.file}.jpg  <- ${shot.name}${shot.name === c.src[0] ? "" : "  (fallback)"}`);
       }
+      if (lang === "en-IN") for (const [n, scale] of [[7, 1], [10, 4 / 3]]) {
+        for (const [i, c] of CAP[lang].entries()) {
+          const shot = c.tab && screen([`tab${n}-${c.tab}`]);
+          if (!shot) { problems.push(`${n}-inch tablet ${c.file}: tab${n}-${c.tab} not found`); continue; }
+          await render(browser, tabletHtml(c, i, shot), 1080, 1920, path.join(dirs[`tab${n}`], `${c.file}.jpg`), scale);
+          report.push(`${n}-inch ${c.file}.jpg  <- ${shot.name}`);
+        }
+      }
       const f = CAP.feature[lang], front = screen(f.src), back = screen(f.back);
       if (!front) problems.push(`${lang} feature graphic: none of ${f.src.join(", ")} found`);
       else { const name = LANGS.length > 1 ? f.file : "feature-graphic";
@@ -173,6 +212,10 @@ async function main() {
     if (w !== 1080 || h !== 1920) problems.push(`${f}: ${w}x${h}, expected 1080x1920`);
   }
   for (const f of fs.readdirSync(dirs.feature)) { const [w, h] = jpegSize(path.join(dirs.feature, f)); if (w !== 1024 || h !== 500) problems.push(`${f}: ${w}x${h}`); }
+  for (const [d, W, H] of [[dirs.tab7, 1080, 1920], [dirs.tab10, 1440, 2560]]) for (const f of fs.readdirSync(d)) {
+    const [w, h] = jpegSize(path.join(d, f)); if (w !== W || h !== H) problems.push(`${path.basename(d)}/${f}: ${w}x${h}, expected ${W}x${H}`);
+  }
+  for (const d of [dirs.tab7, dirs.tab10]) if (!fs.readdirSync(d).length) fs.rmdirSync(d);   // no tablet shots in this CI run
 
   const counts = {};
   for (const lang of LANGS) {

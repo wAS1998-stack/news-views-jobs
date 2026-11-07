@@ -1,45 +1,203 @@
 {
   "_note": "Captions of the Play Store phone screenshots, in the order Play shows them (the first three appear in search results). 'src' lists CI screenshots (android/ci/screens, without .png) in order of preference: store-* are taken without ads; the others are fallbacks whose ad banner sits below the visible part. <em> marks the highlighted words. Every claim must be true of the app.",
   "en-IN": [
-    { "file": "01-govt-jobs-for-your-state", "brand": true, "src": ["store-1-jobs", "02-jobs"],
-      "h": "Govt job alerts for <em>your state</em>", "s": "New sarkari naukri every day, matched to your state and qualification" },
-    { "file": "02-every-detail-official-links", "src": ["store-2-job", "03-job", "11-release-job"],
-      "h": "Every detail. <em>Official links.</em>", "s": "Posts, last date, age limit and a check of your age" },
-    { "file": "03-results-admit-cards", "src": ["store-3-results", "02b-results"],
-      "h": "Results &amp; <em>admit cards</em>", "s": "Answer keys and exam dates for SSC, Railway, Bank, Police and state exams" },
-    { "file": "04-never-miss-an-exam-date", "src": ["store-7-upcoming", "02f-upcoming"],
-      "h": "Never miss an <em>exam date</em>", "s": "Exams, admit cards and results due today, tomorrow and this week" },
-    { "file": "05-alerts-that-fit-you", "src": ["store-5-alerts", "02c-alerts"],
-      "h": "Alerts only for jobs <em>that fit you</em>", "s": "Last-date reminders, an evening summary and a daily quiz alert" },
-    { "file": "06-daily-current-affairs-quiz", "src": ["store-4-quiz", "05b-quiz"],
-      "h": "Daily <em>current affairs</em> quiz", "s": "Two minutes a day for SSC, Railway, Bank and state exams" },
-    { "file": "07-hindi-or-english", "src": ["store-6-hindi"],
-      "h": "Hindi or English, <em>your choice</em>", "s": "पूरा ऐप हिंदी में भी · switch any time" },
-    { "file": "08-no-login-quick-setup", "src": ["store-8-welcome", "10-release-welcome", "01-welcome"],
-      "h": "No login. Just pick <em>your state</em>", "s": "Set up in seconds, and every job links to its official notice" }
+    {
+      "file": "01-govt-jobs-for-your-state",
+      "brand": true,
+      "src": [
+        "store-1-jobs",
+        "02-jobs"
+      ],
+      "h": "Govt job alerts for <em>your state</em>",
+      "s": "New sarkari naukri every day, matched to your state and qualification",
+      "tab": "1-jobs"
+    },
+    {
+      "file": "02-every-detail-official-links",
+      "src": [
+        "store-2-job",
+        "03-job",
+        "11-release-job"
+      ],
+      "h": "Every detail. <em>Official links.</em>",
+      "s": "Posts, last date, age limit and a check of your age",
+      "tab": "2-job"
+    },
+    {
+      "file": "03-results-admit-cards",
+      "src": [
+        "store-3-results",
+        "02b-results"
+      ],
+      "h": "Results &amp; <em>admit cards</em>",
+      "s": "Answer keys and exam dates for SSC, Railway, Bank, Police and state exams",
+      "tab": "3-results"
+    },
+    {
+      "file": "04-never-miss-an-exam-date",
+      "src": [
+        "store-7-upcoming",
+        "02f-upcoming"
+      ],
+      "h": "Never miss an <em>exam date</em>",
+      "s": "Exams, admit cards and results due today, tomorrow and this week",
+      "tab": "4-upcoming"
+    },
+    {
+      "file": "05-alerts-that-fit-you",
+      "src": [
+        "store-5-alerts",
+        "02c-alerts"
+      ],
+      "h": "Alerts only for jobs <em>that fit you</em>",
+      "s": "Last-date reminders, an evening summary and a daily quiz alert",
+      "tab": "5-alerts"
+    },
+    {
+      "file": "06-daily-current-affairs-quiz",
+      "src": [
+        "store-4-quiz",
+        "05b-quiz"
+      ],
+      "h": "Daily <em>current affairs</em> quiz",
+      "s": "Two minutes a day for SSC, Railway, Bank and state exams",
+      "tab": "6-quiz"
+    },
+    {
+      "file": "07-hindi-or-english",
+      "src": [
+        "store-6-hindi"
+      ],
+      "h": "Hindi or English, <em>your choice</em>",
+      "s": "पूरा ऐप हिंदी में भी · switch any time",
+      "tab": "7-hindi"
+    },
+    {
+      "file": "08-no-login-quick-setup",
+      "src": [
+        "store-8-welcome",
+        "10-release-welcome",
+        "01-welcome"
+      ],
+      "h": "No login. Just pick <em>your state</em>",
+      "s": "Set up in seconds, and every job links to its official notice",
+      "tab": "8-welcome"
+    }
   ],
   "hi-IN": [
-    { "file": "01-aapke-rajya-ki-sarkari-naukri", "brand": true, "src": ["store-6-hindi"],
-      "h": "आपके <em>राज्य</em> की सरकारी नौकरी", "s": "राज्य और योग्यता के हिसाब से नई भर्ती के अलर्ट, हर दिन" },
-    { "file": "02-poori-jankari-adhikarik-link", "src": ["store-h2-job", "05-job-hindi"],
-      "h": "पूरी जानकारी, <em>आधिकारिक लिंक</em>", "s": "पद, अंतिम तिथि, आयु सीमा और आपकी आयु की जाँच" },
-    { "file": "03-result-admit-card", "src": ["store-h3-results", "store-3-results", "02b-results"],
-      "h": "<em>रिजल्ट</em> और एडमिट कार्ड", "s": "SSC, रेलवे, बैंक, पुलिस और राज्य परीक्षाओं की आंसर की और परीक्षा तिथि" },
-    { "file": "04-pariksha-tithi", "src": ["store-h7-upcoming", "store-7-upcoming", "02f-upcoming"],
-      "h": "कोई <em>परीक्षा तिथि</em> न चूकें", "s": "आज, कल और इस हफ़्ते की परीक्षाएँ, एडमिट कार्ड और रिजल्ट" },
-    { "file": "05-aapke-kaam-ke-alert", "src": ["store-h5-alerts", "store-5-alerts", "02c-alerts"],
-      "h": "सिर्फ़ <em>आपके काम</em> के अलर्ट", "s": "अंतिम तिथि रिमाइंडर, शाम का सारांश और क्विज़ अलर्ट" },
-    { "file": "06-current-affairs-quiz", "src": ["store-h4-quiz", "store-4-quiz", "05b-quiz"],
-      "h": "रोज़ का <em>करंट अफेयर्स</em> क्विज़", "s": "SSC, रेलवे, बैंक और राज्य परीक्षाओं के लिए दिन में दो मिनट" },
-    { "file": "07-hindi-ya-english", "src": ["store-1-jobs", "02-jobs"],
-      "h": "हिंदी या English, <em>आपकी पसंद</em>", "s": "एक टैप में भाषा बदलें" },
-    { "file": "08-bina-login", "src": ["store-h8-welcome", "store-8-welcome", "10-release-welcome"],
-      "h": "न लॉगिन, बस <em>अपना राज्य</em> चुनें", "s": "कुछ ही सेकंड में शुरू, हर भर्ती के साथ आधिकारिक नोटिस" }
+    {
+      "file": "01-aapke-rajya-ki-sarkari-naukri",
+      "brand": true,
+      "src": [
+        "store-6-hindi"
+      ],
+      "h": "आपके <em>राज्य</em> की सरकारी नौकरी",
+      "s": "राज्य और योग्यता के हिसाब से नई भर्ती के अलर्ट, हर दिन"
+    },
+    {
+      "file": "02-poori-jankari-adhikarik-link",
+      "src": [
+        "store-h2-job",
+        "05-job-hindi"
+      ],
+      "h": "पूरी जानकारी, <em>आधिकारिक लिंक</em>",
+      "s": "पद, अंतिम तिथि, आयु सीमा और आपकी आयु की जाँच"
+    },
+    {
+      "file": "03-result-admit-card",
+      "src": [
+        "store-h3-results",
+        "store-3-results",
+        "02b-results"
+      ],
+      "h": "<em>रिजल्ट</em> और एडमिट कार्ड",
+      "s": "SSC, रेलवे, बैंक, पुलिस और राज्य परीक्षाओं की आंसर की और परीक्षा तिथि"
+    },
+    {
+      "file": "04-pariksha-tithi",
+      "src": [
+        "store-h7-upcoming",
+        "store-7-upcoming",
+        "02f-upcoming"
+      ],
+      "h": "कोई <em>परीक्षा तिथि</em> न चूकें",
+      "s": "आज, कल और इस हफ़्ते की परीक्षाएँ, एडमिट कार्ड और रिजल्ट"
+    },
+    {
+      "file": "05-aapke-kaam-ke-alert",
+      "src": [
+        "store-h5-alerts",
+        "store-5-alerts",
+        "02c-alerts"
+      ],
+      "h": "सिर्फ़ <em>आपके काम</em> के अलर्ट",
+      "s": "अंतिम तिथि रिमाइंडर, शाम का सारांश और क्विज़ अलर्ट"
+    },
+    {
+      "file": "06-current-affairs-quiz",
+      "src": [
+        "store-h4-quiz",
+        "store-4-quiz",
+        "05b-quiz"
+      ],
+      "h": "रोज़ का <em>करंट अफेयर्स</em> क्विज़",
+      "s": "SSC, रेलवे, बैंक और राज्य परीक्षाओं के लिए दिन में दो मिनट"
+    },
+    {
+      "file": "07-hindi-ya-english",
+      "src": [
+        "store-1-jobs",
+        "02-jobs"
+      ],
+      "h": "हिंदी या English, <em>आपकी पसंद</em>",
+      "s": "एक टैप में भाषा बदलें"
+    },
+    {
+      "file": "08-bina-login",
+      "src": [
+        "store-h8-welcome",
+        "store-8-welcome",
+        "10-release-welcome"
+      ],
+      "h": "न लॉगिन, बस <em>अपना राज्य</em> चुनें",
+      "s": "कुछ ही सेकंड में शुरू, हर भर्ती के साथ आधिकारिक नोटिस"
+    }
   ],
   "feature": {
-    "en-IN": { "file": "feature-graphic-english", "src": ["store-1-jobs", "02-jobs"], "back": ["store-2-job", "03-job", "11-release-job"],
-      "tag": "Govt job alerts for your state &amp; qualification", "chips": ["Sarkari naukri", "Results &amp; admit cards", "Daily quiz"] },
-    "hi-IN": { "file": "feature-graphic-hindi", "src": ["store-6-hindi"], "back": ["store-h2-job", "05-job-hindi"],
-      "tag": "आपके राज्य और योग्यता की सरकारी नौकरी के अलर्ट", "chips": ["सरकारी नौकरी", "रिजल्ट व एडमिट कार्ड", "रोज़ का क्विज़"] }
-  }
+    "en-IN": {
+      "file": "feature-graphic-english",
+      "src": [
+        "store-1-jobs",
+        "02-jobs"
+      ],
+      "back": [
+        "store-2-job",
+        "03-job",
+        "11-release-job"
+      ],
+      "tag": "Govt job alerts for your state &amp; qualification",
+      "chips": [
+        "Sarkari naukri",
+        "Results &amp; admit cards",
+        "Daily quiz"
+      ]
+    },
+    "hi-IN": {
+      "file": "feature-graphic-hindi",
+      "src": [
+        "store-6-hindi"
+      ],
+      "back": [
+        "store-h2-job",
+        "05-job-hindi"
+      ],
+      "tag": "आपके राज्य और योग्यता की सरकारी नौकरी के अलर्ट",
+      "chips": [
+        "सरकारी नौकरी",
+        "रिजल्ट व एडमिट कार्ड",
+        "रोज़ का क्विज़"
+      ]
+    }
+  },
+  "_note_tablets": "'tab' names the tablet screenshot of the same screen: android/ci/screens/tab7-<tab>.png (7-inch, 1200x1920) and tab10-<tab>.png (10-inch, 1600x2560), taken by android/ci-screens.sh."
 }
