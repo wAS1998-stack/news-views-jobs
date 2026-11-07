@@ -2,7 +2,7 @@
   "date": "2026-11-07",
   "runs": {},
   "notify": {
-    "at": "2026-11-07T11:46:25.064Z",
+    "at": "2026-11-07T15:33:13.186Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -14,11 +14,11 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "push": {
-    "at": "2026-11-07T11:47:02.296Z",
+    "at": "2026-11-07T15:33:58.923Z",
     "ok": true,
-    "sent": 22,
+    "sent": 74,
     "log": [
-      "push-notify: 22 sent\n  job tmc-senior-resident-transfusion-medicine-walkin-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job tmc-senior-resident-transfusion-medicine-walkin-2026 en ['s-bihar' in topics && 'q-post-graduate' in t"
+      "push-notify: 74 sent\n  follow o-cec cec-demonstrator-workshop-instructor-walkin-2026 en: ok\n  follow o-cec cec-demonstrator-workshop-instructor-walkin-2026 hi: ok\n  follow o-begusarai-civil-court begusarai-civil-court-stenographer-clerk-peon-2026 en: ok\n  follow o-begusarai-civil-court begusarai-civ"
     ]
   },
   "fetch": {
