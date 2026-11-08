@@ -2,7 +2,7 @@
   "date": "2026-11-08",
   "runs": {},
   "fetch": {
-    "at": "2026-11-08T04:17:56.719Z",
+    "at": "2026-11-08T04:58:42.680Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,14 +11,14 @@
     },
     "feeds": 5,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 2,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-08; 95 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-08; 93 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://gulfjobvacancy.in/feed": "10 items via direct; newest 2026-10-29; 7 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-07; 17 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-07; 4 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-08; 4 already known"
     },
     "log": [
       "   = same source page as an existing job, skipped: CDOT Young Professional Recruitment 2026 - Apply Online for 05 Posts",
@@ -50,7 +50,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-08T04:18:06.803Z",
+    "at": "2026-11-08T04:58:53.187Z",
     "sources": 59,
     "healthy": 18,
     "newLinks": 0,
@@ -75,16 +75,16 @@
       "tnpsc": "paused (fails 76, geo-blocked)",
       "kpsc": "paused (fails 76, geo-blocked)",
       "appsc": "paused (fails 76, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "dsssb": "5 links, 0 new via direct",
       "wbpsc": "paused (fails 76, geo-blocked)",
       "opsc": "paused (fails 64)",
       "hpsc": "paused (fails 76, geo-blocked)",
       "hppsc": "paused (fails 76, geo-blocked)",
       "ukpsc": "paused (fails 76, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 76, geo-blocked)",
       "gpsc": "paused (fails 76, geo-blocked)",
-      "dsssb": "5 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "ppsc": "paused (fails 76, geo-blocked)",
       "apsc": "paused (fails 76, geo-blocked)",
       "jkpsc": "paused (fails 76, geo-blocked)",
@@ -93,30 +93,30 @@
       "rssb": "paused (fails 76, geo-blocked)",
       "esb-mp": "paused (fails 76, geo-blocked)",
       "bssc": "paused (fails 25, geo-blocked)",
+      "indiapost-gds": "142 links, 0 new via direct",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 76, geo-blocked)",
       "osssc": "paused (fails 43)",
       "gsssb": "paused (fails 76, geo-blocked)",
       "sssb-punjab": "paused (fails 76, geo-blocked)",
       "hprca": "paused (fails 76, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 76, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
-      "dsssb2": "paused (fails 76, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 76, geo-blocked)",
+      "kvs": "4 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
-      "uksssc": "27 links, 0 new via direct",
       "tnusrb": "paused (fails 76, geo-blocked)",
       "tslprb": "paused (fails 76)",
       "slprb-ap": "paused (fails 76, geo-blocked)",
+      "uksssc": "27 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in"
+      "bpssc": "209 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-08T04:18:07.190Z",
+    "at": "2026-11-08T04:58:53.510Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-08T04:18:08.317Z",
+    "at": "2026-11-08T04:59:29.788Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -160,7 +160,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 2,
+    "hindiJobs": 2,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 4,
@@ -169,11 +170,13 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: CHF CAU प्रोजेक्ट असोसिएट I भर्ती 2026 - ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ZSI रिसर्च एसोसिएट भर्ती 2026 – वॉकिन"
     ]
   },
   "news": {
-    "at": "2026-11-08T04:18:08.708Z",
+    "at": "2026-11-08T04:59:30.107Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
