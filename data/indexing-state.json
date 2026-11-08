@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 108,
+  "used": 111,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2208,5 +2208,17 @@
  "https://news-views.in/jobs/oav-papadahandi-assistant-cook-warden-more-2026/": {
   "sentAt": "2026-11-08T20:26:18.987Z",
   "hash": "73d4d04ed78c"
+ },
+ "https://news-views.in/jobs/dhhd-staff-nurse-community-health-assistant-2026/": {
+  "sentAt": "2026-11-08T22:27:46.523Z",
+  "hash": "fd2ac9b06a08"
+ },
+ "https://news-views.in/jobs/nit-kurukshetra-junior-research-fellow-jrf-2026/": {
+  "sentAt": "2026-11-08T22:27:46.751Z",
+  "hash": "947bd2b05210"
+ },
+ "https://news-views.in/jobs/nit-kurukshetra-junior-research-fellow-mechanical-2026/": {
+  "sentAt": "2026-11-08T22:27:46.961Z",
+  "hash": "4b1e15e8d317"
  }
 }
