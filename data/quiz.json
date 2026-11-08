@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-08",
+    "date": "2026-11-08",
+    "digest_id": "current-affairs-2026-11-08",
+    "title": "Current Affairs Quiz 8 November 2026",
+    "questions": [
+      {
+        "q": "Who held a high-level meeting to review law and order in Gujarat?",
+        "options": [
+          "A) Amit Shah",
+          "B) The President of India",
+          "C) The Speaker of the Lok Sabha",
+          "D) The Defence Minister"
+        ],
+        "answer": 0,
+        "why": "Amit Shah held the meeting to review internal security in Gujarat."
+      },
+      {
+        "q": "What significant event led leaders to extend greetings to citizens?",
+        "options": [
+          "A) Republic Day",
+          "B) Diwali",
+          "C) Independence Day",
+          "D) Christmas"
+        ],
+        "answer": 1,
+        "why": "The greetings were extended on the eve of Diwali by various leaders."
+      },
+      {
+        "q": "When do the revised prices for anti-cancer drugs come into effect?",
+        "options": [
+          "A) November 1",
+          "B) November 5",
+          "C) November 9",
+          "D) November 15"
+        ],
+        "answer": 2,
+        "why": "The article states that the revised prices will come into effect from November 9."
+      },
+      {
+        "q": "Where did the Defence Minister emphasize the need for peak operational readiness?",
+        "options": [
+          "A) New Delhi",
+          "B) Ahmedabad",
+          "C) Bagdogra Air Force Station",
+          "D) Chennai"
+        ],
+        "answer": 2,
+        "why": "The Defence Minister made the statement at Bagdogra Air Force Station."
+      },
+      {
+        "q": "What type of petrol was ensured to meet established quality standards?",
+        "options": [
+          "A) E10 Petrol",
+          "B) E20 Petrol",
+          "C) E5 Petrol",
+          "D) E15 Petrol"
+        ],
+        "answer": 1,
+        "why": "Public Sector Oil Marketing Companies confirmed that E20 petrol meets quality standards."
+      },
+      {
+        "q": "What action did the Central Air Quality Monitoring (CAQM) take in Delhi?",
+        "options": [
+          "A) Implemented Phase I of GRAP",
+          "B) Implemented Phase II of GRAP",
+          "C) Implemented Phase III of GRAP",
+          "D) No action was taken"
+        ],
+        "answer": 2,
+        "why": "The CAQM implemented Phase III of the Graded Response Action Plan immediately due to poor air quality."
+      },
+      {
+        "q": "Which institution signed an MoU with the Indian Air Force for communication system development?",
+        "options": [
+          "A) IIT Bombay",
+          "B) IIT Delhi",
+          "C) IIT Madras",
+          "D) IIT Kanpur"
+        ],
+        "answer": 2,
+        "why": "The Indian Air Force's Software Development Institute signed an MoU with IIT Madras."
+      },
+      {
+        "q": "What was the recorded Air Quality Index (AQI) in Delhi that prompted action?",
+        "options": [
+          "A) 250",
+          "B) 300",
+          "C) 382",
+          "D) 400"
+        ],
+        "answer": 2,
+        "why": "The article mentions a recorded AQI of 382 in Delhi."
+      },
+      {
+        "q": "What is the main focus of the collaboration between the IAF and IIT Madras?",
+        "options": [
+          "A) Urban Planning",
+          "B) Domestic Secure Communication System",
+          "C) Aerospace Engineering",
+          "D) Renewable Energy"
+        ],
+        "answer": 1,
+        "why": "The MoU aims to develop a domestic secure communication system for aerial platforms."
+      },
+      {
+        "q": "What is the significance of the festive greetings extended by leaders?",
+        "options": [
+          "A) Reflects governmental policies",
+          "B) Highlights cultural significance",
+          "C) Concerns international relations",
+          "D) Discusses infrastructure projects"
+        ],
+        "answer": 1,
+        "why": "The greetings reflect the cultural significance of Diwali and the government's engagement with citizens."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-07",
     "date": "2026-11-07",
     "digest_id": "current-affairs-2026-11-07",

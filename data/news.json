@@ -1,5 +1,104 @@
 [
   {
+    "id": "current-affairs-2026-11-08",
+    "type": "current-affairs",
+    "title": "Current Affairs 8 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-08",
+    "summary": "Today's digest covers significant developments including government meetings on internal security, festive greetings from leaders, and updates on healthcare policies and initiatives. Aspirants can also note important actions regarding environmental measures and technology collaborations.",
+    "body": [
+      {
+        "h": "Internal Security Review in Gujarat",
+        "p": [
+          "The Union Home and Cooperation Minister, Amit Shah, held a high-level meeting in Ahmedabad to review the law and order situation and internal security in Gujarat. This review is crucial for maintaining peace and ensuring safety in the region, making it an important topic for examinations focusing on governance and public administration."
+        ]
+      },
+      {
+        "h": "Festive Greetings from Leaders",
+        "p": [
+          "On the eve of Diwali, various leaders including the President of India and the Speaker of the Lok Sabha extended their festive greetings to the citizens. These messages highlight the cultural significance of Diwali and reflect the government's engagement with the populace, which is relevant for sections on national integration and culture in competitive examinations."
+        ]
+      },
+      {
+        "h": "Cancer Drug Pricing Update",
+        "p": [
+          "Revised prices for anti-cancer drugs will come into effect from November 9. This move is significant for the healthcare sector and reflects the government’s efforts to make essential medications more affordable and accessible, a critical point for any examination covering health policy."
+        ]
+      },
+      {
+        "h": "Defense Preparedness Statement",
+        "p": [
+          "The Defence Minister emphasized maintaining peak operational readiness in light of emerging threats during his remarks at Bagdogra Air Force Station. Continuous monitoring of diverse security challenges, including cyber security, is paramount, which is vital knowledge for aspirants aiming for defense and security sectors."
+        ]
+      },
+      {
+        "h": "Quality of E20 Petrol Ensured",
+        "p": [
+          "Public Sector Oil Marketing Companies have confirmed that the E20 petrol supplied meets established quality standards, based on samples collected from 27 states and union territories. This news is important as it combines aspects of environmental policy with energy security, both of which are relevant for examinations in sectors related to energy and environment."
+        ]
+      },
+      {
+        "h": "Initiatives for Clean Air in Delhi",
+        "p": [
+          "Following a recorded Air Quality Index of 382 in Delhi, the Central Air Quality Monitoring (CAQM) has implemented Phase III of the Graded Response Action Plan (GRAP) immediately. This action underscores the government's commitment to addressing air pollution, a crucial topic for aspirants focusing on environmental laws and policies."
+        ]
+      },
+      {
+        "h": "Collaboration between IAF and IIT Madras",
+        "p": [
+          "The Indian Air Force's Software Development Institute signed a memorandum of understanding with IIT Madras for developing a domestic secure communication system for aerial platforms. This highlights the importance of technology in defense, a key area of interest for students preparing for engineering and defense-related examinations."
+        ]
+      }
+    ],
+    "pointers": [
+      "Review of law and order in Gujarat emphasizes the government’s focus on security matters.",
+      "The revised pricing of cancer drugs reflects the government's aim to improve healthcare access.",
+      "Implementation of GRAP Phase III shows urgent action against air pollution in Delhi.",
+      "IAF's collaboration with IIT Madras signifies the growing importance of technology in defense."
+    ],
+    "sources": [
+      {
+        "title": "केन्द्रीय गृह एवं सहकारिता मंत्री श्री अमित शाह ने आज अहमदाबाद में उच्च स्तरीय बैठक में गुजरात की कानून-व्यवस्था एवं आंतरिक सुरक्षा की समीक्षा की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2334011"
+      },
+      {
+        "title": "दीपावली की पूर्व संध्या पर भारत की राष्ट्रपति की शुभकामनाएं",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333993"
+      },
+      {
+        "title": "लोकसभा अध्यक्ष ने दीपावली, गोवर्धन पूजा और भाई दूज की शुभकामनाएँ दीं",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333988"
+      },
+      {
+        "title": "प्रधानमंत्री ने नागरिकों को दिवाली की शुभकामनाएं दीं और कहा कि यह पर्व अंधकार पर विजय पाने के संकल्प का प्रतीक है",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333997"
+      },
+      {
+        "title": "प्रधानमंत्री ने उपराष्ट्रपति थिरु सी. पी. राधाकृष्णन से मुलाकात की और उन्हें दिवाली की शुभकामनाएं दीं",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333989"
+      },
+      {
+        "title": "कैंसर रोधी दवाओं की संशोधित कीमतें 9 नवंबर से लागू होंगी",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333968"
+      },
+      {
+        "title": "इस्पात मंत्रालय ने लंबित मामलों के निपटान के लिए विशेष अभियान (एससीडीपीएम) 6 सफलतापूर्वक संपन्न किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333962"
+      },
+      {
+        "title": "रक्षा बलों को उभरते खतरों से निपटने के लिए सर्वोच्च स्तर की परिचालन तैयारी बनाए रखनी चाहिए। इसके लिए सभी क्षेत्रों की स्थिति पर सतत निगरानी, साइबर सुरक्षा और सूचना की विश्वसनीयता एवं अखंडता सुनिश्चित करने पर विशेष जोर दिया जाए: बागडोगरा वायुसेना स्टेशन पर रक्षा मंत्री का वक्तव्य",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333947"
+      },
+      {
+        "title": "पीएसयू तेल विपणन कंपनियों द्वारा आपूर्ति किया जाने वाला ई20 पेट्रोल तय गुणवत्ता मानकों को पूरा करता है; 27 राज्यों और केंद्र शासित प्रदेशों से लिए गए 893 नमूने मानकों के अनुरूप पाए गए",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333951"
+      },
+      {
+        "title": "वेवएक्स ने आईएफएफआई गोवा 2026 के वेव्स बाज़ार में भाग लेने के लिए स्टार्टअप कंपनियों को आमंत्रित किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2333954"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-07",
     "type": "current-affairs",
     "title": "Current Affairs 7 November 2026: Key Government Updates for Exam Aspirants",
@@ -23077,62 +23176,6 @@
       {
         "title": "प्रधानमंत्री ने एशियाई पैरा खेलों में कांस्य पदक जीतने पर राहुल को बधाई दी",
         "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2326960"
-      }
-    ]
-  },
-  {
-    "id": "igkv-raipur-vice-chancellor-2026-explained",
-    "type": "analysis",
-    "title": "IGKV Raipur Invites Applications for Vice-Chancellor Position",
-    "date": "2026-10-23",
-    "summary": "Indira Gandhi Krishi Vishwavidyalaya in Raipur seeks to fill the role of Vice-Chancellor, targeting seasoned academicians in Agriculture and related fields. Interested candidates can submit their offline applications from September 29, 2026, to October 29, 2026.",
-    "body": [
-      {
-        "h": "Vice-Chancellor Position Announced",
-        "p": [
-          "The Indira Gandhi Krishi Vishwavidyalaya (IGKV) in Raipur has announced an opportunity for a distinguished academic to step into the role of Vice-Chancellor. This prestigious position is critical for steering the university towards excellence in education and research in the agricultural sector, lending significant influence over policies and programs relevant to agriculture and allied subjects."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria",
-        "p": [
-          "To qualify for the Vice-Chancellor position, candidates must be distinguished academicians with a minimum of ten years of experience as a Professor or hold an equivalent position in agricultural or allied disciplines. This requirement indicates that the selection committee is looking for individuals who not only have extensive teaching experience but also a strong background in research and administration, ensuring they can effectively lead the institution.",
-          "This role is particularly suited for candidates who have demonstrated leadership in academia, as well as experience in policy-making and educational reforms in agriculture. The position calls for an individual who can inspire faculty and students alike while navigating the complexities of higher education in today’s world."
-        ]
-      },
-      {
-        "h": "Selection Process Overview",
-        "p": [
-          "While the specific selection process details are not outlined in the notification, candidates can anticipate a rigorous evaluation. Typically, the selection for such high-profile academic positions involves assessments of academic credentials, leadership experience, and possibly interviews with selection committees comprising senior university officials and experts in the field.",
-          "Candidates may want to prepare detailed portfolios showcasing their achievements in academia and contributions to agricultural sciences, as these documents will likely play a crucial role in the assessment process."
-        ]
-      },
-      {
-        "h": "Importance for Aspirants",
-        "p": [
-          "This recruitment notice holds significant implications for aspirants eyeing leadership roles in the education sector, particularly in agriculture-focused institutions. As the field of agriculture evolves, the demand for experienced leadership becomes imperative for enhancing educational outcomes and contributing to agricultural advancements.",
-          "Moreover, aspiring academicians should take note of the rising trend towards appointing leaders with robust experience and proven track records in their respective fields, highlighting the competitive nature of such positions. This may catalyze a shift in focus for aspiring candidates from simply achieving qualifications to acquiring a diverse portfolio of experiences and accomplishments."
-        ]
-      },
-      {
-        "h": "Next Steps for Candidates",
-        "p": [
-          "Candidates interested in applying should prepare their applications as the window opens on September 29, 2026, and closes on October 29, 2026. It is advisable to gather necessary documents proving academic credentials and professional experiences ahead of the application process, as the application must be submitted offline.",
-          "Additionally, potential applicants should regularly check the official IGKV notification for any updates regarding application procedures, selection criteria, or additional requirements that may be announced during the recruitment period."
-        ]
-      }
-    ],
-    "pointers": [
-      "Be sure to check the official IGKV notification for updates or changes.",
-      "Prepare a comprehensive portfolio highlighting your academic and leadership achievements.",
-      "Ensure your qualifications align with the eligibility criteria before proceeding with the application.",
-      "Stay informed about the broader trends in academic leadership to better position yourself."
-    ],
-    "job_id": "igkv-raipur-vice-chancellor-2026",
-    "sources": [
-      {
-        "title": "Indira Gandhi Krishi Vishwavidyalaya Raipur — official notification",
-        "link": "https://rajbhavancg.gov.in"
       }
     ]
   }
