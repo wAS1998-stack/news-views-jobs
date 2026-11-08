@@ -185,7 +185,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-08T05:02:48.014Z",
+    "at": "2026-11-08T07:09:57.534Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -196,11 +196,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-08T05:03:18.035Z",
+    "at": "2026-11-08T07:10:04.686Z",
     "ok": true,
-    "sent": 58,
+    "sent": 8,
     "log": [
-      "push-notify: 58 sent\n  job csir-cdri-research-intern-2026 en [('s-uttar-pradesh' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job csir-cdri-research-intern-2026 hi [('s-uttar-pradesh' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-hi"
+      "push-notify: 8 sent\n  job research-centre-imarat-apprentice-2026 en [('s-telangana' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job research-centre-imarat-apprentice-2026 hi [('s-telangana' in topics || 's-any' in topics) && 'q-engineering-diploma'"
     ]
   }
 }
