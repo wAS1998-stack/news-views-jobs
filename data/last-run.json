@@ -185,5 +185,24 @@
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists."
     ]
+  },
+  "notify": {
+    "at": "2026-11-08T02:25:24.090Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "push": {
+    "at": "2026-11-08T02:25:59.221Z",
+    "ok": true,
+    "sent": 108,
+    "log": [
+      "push-notify: 108 sent\n  job dm-ho-contract-outsourcing-under-nhm-2026 en [('s-telangana' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dm-ho-contract-outsourcing-under-nhm-2026 hi [('s-telangana' in topics || 's-any' in topics) && 'q-graduate' in topics && "
+    ]
   }
 }
