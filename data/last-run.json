@@ -192,7 +192,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-08T15:53:09.499Z",
+    "at": "2026-11-08T17:58:07.839Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -203,11 +203,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-08T15:53:44.688Z",
+    "at": "2026-11-08T17:58:31.182Z",
     "ok": true,
-    "sent": 72,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 72 sent\n  job gsl-non-executive-2026 en [('s-goa' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job gsl-non-executive-2026 hi [('s-goa' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-hi' in topics]: ok\n  job g"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   }
 }
