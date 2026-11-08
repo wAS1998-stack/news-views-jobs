@@ -185,7 +185,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-08T07:09:57.534Z",
+    "at": "2026-11-08T09:22:59.188Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -196,11 +196,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-08T07:10:04.686Z",
+    "at": "2026-11-08T09:23:00.041Z",
     "ok": true,
-    "sent": 8,
+    "sent": 0,
+    "quiet": false,
     "log": [
-      "push-notify: 8 sent\n  job research-centre-imarat-apprentice-2026 en [('s-telangana' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job research-centre-imarat-apprentice-2026 hi [('s-telangana' in topics || 's-any' in topics) && 'q-engineering-diploma'"
+      "push-notify: nothing new to send."
     ]
   }
 }
