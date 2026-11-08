@@ -2,7 +2,7 @@
   "date": "2026-11-08",
   "runs": {},
   "fetch": {
-    "at": "2026-11-08T16:25:32.383Z",
+    "at": "2026-11-08T17:05:51.053Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-08T16:25:44.930Z",
+    "at": "2026-11-08T17:06:28.525Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 17,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 79, geo-blocked)",
       "bssc": "paused (fails 28, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 79, geo-blocked)",
       "osssc": "paused (fails 46)",
       "gsssb": "paused (fails 79, geo-blocked)",
       "sssb-punjab": "paused (fails 79, geo-blocked)",
       "hprca": "paused (fails 79, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "kea": "paused (fails 79, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 79, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 79, geo-blocked)",
+      "ctet": "4 links, 0 new via news-views.in",
       "kvs": "4 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
       "tnusrb": "paused (fails 79, geo-blocked)",
       "tslprb": "paused (fails 79)",
       "slprb-ap": "paused (fails 79, geo-blocked)",
+      "nta": "1 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
+      "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in"
+      "wbssc": "13 links, 0 new via direct",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-08T16:25:45.329Z",
+    "at": "2026-11-08T17:06:28.902Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -152,7 +152,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-08T16:25:46.467Z",
+    "at": "2026-11-08T17:06:30.031Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -173,7 +173,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-08T16:25:46.855Z",
+    "at": "2026-11-08T17:06:30.399Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
