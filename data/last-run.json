@@ -185,7 +185,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-09T00:54:06.446Z",
+    "at": "2026-11-09T03:31:35.922Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -196,12 +196,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-09T00:54:11.034Z",
+    "at": "2026-11-09T03:32:01.247Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 78,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 78 sent\n  job dhhd-staff-nurse-community-health-assistant-2026 en [('s-west-bengal' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dhhd-staff-nurse-community-health-assistant-2026 en [('s-west-bengal' in topics || 's-any' in topics) && 'q-engine"
     ]
   }
 }
