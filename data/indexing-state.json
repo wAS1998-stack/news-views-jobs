@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 111,
+  "used": 113,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -1723,7 +1723,9 @@
  },
  "https://news-views.in/jobs/semi-conductor-scl-various-2026/": {
   "sentAt": "2026-11-07T18:57:28.414Z",
-  "hash": "e5df2beeec00"
+  "hash": "e5df2beeec00",
+  "deleted": true,
+  "deletedAt": "2026-11-09T05:40:32.020Z"
  },
  "https://news-views.in/jobs/atma-simdega-block-technology-manager-assistant-2026/": {
   "sentAt": "2026-11-07T18:57:28.595Z",
@@ -2220,5 +2222,9 @@
  "https://news-views.in/jobs/nit-kurukshetra-junior-research-fellow-mechanical-2026/": {
   "sentAt": "2026-11-08T22:27:46.961Z",
   "hash": "4b1e15e8d317"
+ },
+ "https://news-views.in/jobs/bric-instem-scientist-2026/": {
+  "sentAt": "2026-11-09T05:40:31.756Z",
+  "hash": "cb164d4921da"
  }
 }
