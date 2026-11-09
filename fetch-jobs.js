@@ -444,11 +444,14 @@ async function main() {
     .sort((a, b) => b.ts - a.ts);
   console.log(`  ${queue.length} candidate item(s) across feeds (newest first)`);
 
+  // What became of the results/admit-card items (they are skipped silently otherwise): written to last-run.json.
+  const updDiag = { seen: 0, known: 0, added: 0, filtered: [], samples: [] };
   for (const it of queue) {
     try {
+      if (classify(it.title) !== "job") { updDiag.seen++; if (updDiag.samples.length < 15) updDiag.samples.push(String(it.title).slice(0, 80)); }
       // Stop only when BOTH caps are hit (jobs and updates are independent).
       if (fresh.length >= MAX_NEW && updatesAdded >= MAX_UPDATES) break;
-      if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title) || L.NON_GOVT.test(it.title)) continue;   // PDF dumps, syllabus, admissions, university results, private employers
+      if (L.JUNK_TITLE.test(it.title) || L.OFF_TOPIC.test(it.title) || L.NON_GOVT.test(it.title)) { if (classify(it.title) !== "job" && updDiag.filtered.length < 15) updDiag.filtered.push(String(it.title).slice(0, 80)); continue; }   // PDF dumps, syllabus, admissions, university results, private employers
       if (L.isGenericList(it.title)) continue;                                    // evergreen "Latest X Jobs" listicles, not a notification
       const kind = classify(it.title);
       if (kind !== "job") {
@@ -475,8 +478,9 @@ async function main() {
           newUpdateIds.push(uid);
           markNoticeStatus({ title: upd.title, date: today(), link: upd.official_link, id: uid });
           updatesAdded++;
+          updDiag.added++;
           console.log(`   * update: ${it.title}`);
-        }
+        } else updDiag.known++;
         continue;
       }
       if (fresh.length >= MAX_NEW) continue;
@@ -495,7 +499,7 @@ async function main() {
   }
   saveSkipped();
   const integrations = { ai: L.AI_LABEL, googleIndexing: process.env.HAS_GOOGLE === "true", telegram: process.env.HAS_TELEGRAM === "true", cloudflarePurge: process.env.HAS_CLOUDFLARE === "true" };
-  L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus });
+  L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus, updDiag });
   // Record exactly which job URLs are new this run, so the Indexing API pings
   // only those (fast + quota-efficient) instead of re-submitting everything.
   try {

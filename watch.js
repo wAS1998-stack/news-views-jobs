@@ -197,7 +197,7 @@ async function main() {
     // Sources failing for a long time are retried every 6th run only, so blocked sites don't slow every run.
     if ((st.fails || 0) >= 6 && runNo % 6) { health[s.id] = `paused (fails ${st.fails}${st.blocked ? ", geo-blocked" : ""})`; return; }
     try {
-      const { text, url, via } = await L.fetchText(s.api ? s.api.url : s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 20000 });
+      const { text, url, via } = await L.fetchText(s.api ? s.api.url : s.url, 12000, { skipDirect: !!st.blocked, proxyMs: 30000 });
       const prevVia = st.via; st.via = via;
       const links = noticeLinks(s.api ? apiToHtml(text, s.api) : text, url);
       if (!links.length) { st.fails = (st.fails || 0) + 1; health[s.id] = `0 notice links (fails ${st.fails})`; return; }

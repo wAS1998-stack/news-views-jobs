@@ -538,6 +538,65 @@ ${SALARY_JS}
     ],
   });
 
+
+  defs.push({
+    slug: "job-eligibility-finder", cat: "Eligibility",
+    h1: "Government Job Eligibility Finder",
+    title: "Government Job Eligibility Finder – Jobs by Age & Qualification",
+    desc: "Enter your date of birth, category, qualification and state to see the open government jobs that may fit you — updated with every new notification.",
+    intro: "Tell us your date of birth, category, highest qualification and state, and this finder lists the open government recruitments whose age limit and qualification may fit you, closest last date first. It runs in your browser and nothing you enter is stored or sent anywhere.",
+    body: `
+<div class="tool" id="ef">
+  <div class="tool-grid">
+    <label>Date of birth<input id="ef-dob" type="date" min="1960-01-01"></label>
+    <label>Category<select id="ef-cat"><option value="0">General / EWS</option><option value="3">OBC (non-creamy layer) +3 yrs</option><option value="5">SC / ST +5 yrs</option><option value="10">PwBD +10 yrs</option></select></label>
+    <label>Highest qualification<select id="ef-q"><option value="1">10th pass</option><option value="2">12th pass</option><option value="4" selected>Graduate</option><option value="5">Post graduate</option></select></label>
+    <label>State<select id="ef-st"><option value="">All states &amp; central</option></select></label>
+    <label class="chk"><input id="ef-tech" type="checkbox"> I have an ITI, diploma or engineering qualification</label>
+  </div>
+  <div class="result" id="ef-res" aria-live="polite"><p>Enter your date of birth to see matching jobs.</p></div>
+  <ul class="jobs" id="ef-list"></ul>
+  <p><button class="btn" id="ef-more" type="button" hidden>Show more</button></p>
+  <p class="tool-note">A guide, not a decision: we compare your age today with the age limit we list, and the notification's own cut-off date and rules apply. Age relaxation shown is the usual central-government rule; states and some posts differ. Always confirm eligibility in the official notification before you apply.</p>
+</div>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)},data=null,rows=[],shown=0,PAGE=30,RANK={"10th Pass":1,"12th Pass":2,"Engineering / Diploma":3,"Graduate":4,"Post Graduate":5};
+  function esc(s){var d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML}
+  function age(b){var t=new Date(),a=t.getFullYear()-b.getFullYear(),m=t.getMonth()-b.getMonth();if(m<0||(m===0&&t.getDate()<b.getDate()))a--;return a}
+  function load(cb){if(data)return cb();fetch("/eligibility.json").then(function(r){return r.json()}).then(function(d){data=d;var s=$("ef-st");d.states.forEach(function(x){if(x[0]==="all-india")return;var o=document.createElement("option");o.value=x[0];o.textContent=x[1];s.appendChild(o)});cb()}).catch(function(){$("ef-res").innerHTML="<p>Could not load the job list. Please try again.</p>"})}
+  function match(j,a,rx,q,tech,st){
+    if(j.ma&&a>j.ma+rx)return false;
+    if(j.mi&&a<j.mi)return false;
+    if(st&&j.z.length&&j.z.indexOf(st)<0&&j.z.indexOf("all-india")<0)return false;
+    if(j.q.length){var ok=false;for(var i=0;i<j.q.length;i++){var r=RANK[j.q[i]]||0;if(r===3?tech:r<=q)ok=true}if(!ok)return false}
+    return true}
+  function card(j){var bits=[];if(j.v)bits.push(j.v+(j.v===1?" post":" posts"));if(j.d)bits.push("Last date "+j.d);if(j.ma)bits.push("Age "+(j.mi?j.mi+"–":"up to ")+j.ma);else bits.push("Age limit not listed");
+    return '<li><a class="job" href="/jobs/'+encodeURIComponent(j.i)+'/"><div class="job-top"><span class="org-tag">'+esc(j.o)+'</span></div><h2>'+esc(j.t)+'</h2><p class="post">'+esc(bits.join(" · "))+'</p></a></li>'}
+  function more(){var list=$("ef-list"),next=rows.slice(shown,shown+PAGE);list.insertAdjacentHTML("beforeend",next.map(card).join(""));shown+=next.length;$("ef-more").hidden=shown>=rows.length}
+  function run(){var v=$("ef-dob").value;if(!v)return;var b=new Date(v+"T00:00:00");if(isNaN(b))return;load(function(){
+    var a=age(b),rx=+$("ef-cat").value,q=+$("ef-q").value,tech=$("ef-tech").checked,st=$("ef-st").value;
+    if(a<14||a>70){$("ef-res").innerHTML="<p>Please check the date of birth.</p>";$("ef-list").innerHTML="";$("ef-more").hidden=true;return}
+    rows=data.jobs.filter(function(j){return match(j,a,rx,q,tech,st)}).sort(function(x,y){return (x.e||"9999").localeCompare(y.e||"9999")});
+    $("ef-res").innerHTML="<p>You are <b>"+a+"</b> years old today. <b>"+rows.length.toLocaleString("en-IN")+"</b> of "+data.jobs.length.toLocaleString("en-IN")+" open jobs may fit you, closest last date first.</p>";
+    $("ef-list").innerHTML="";shown=0;more()})}
+  ["ef-dob","ef-cat","ef-q","ef-st","ef-tech"].forEach(function(i){$(i).addEventListener("input",run)});
+  $("ef-more").addEventListener("click",more);
+  load(function(){});
+})();
+</script>`,
+    article: [
+      ["How the finder decides", "It takes your age today and adds the usual category relaxation to each job's upper age limit, then checks your highest qualification against the levels the notification names. Jobs asking only for an ITI, diploma or engineering qualification appear when you tick that box. Where we do not list an age limit or a qualification, the job stays in the results so you can check it yourself."],
+      ["Your age on the cut-off date matters", "Each notification fixes its own date for counting age, often 1 January, 1 August or the last date to apply. A candidate close to a limit can be in or out depending on that date, so use the <a href=\"/tools/age-calculator/\">age calculator</a> with the date printed in the notification before applying."],
+      ["Age relaxation is not the same everywhere", "Central-government recruitments usually relax the upper limit by 3 years for OBC, 5 years for SC/ST and 10 years for PwBD, with more in some combinations. State governments set their own rules, and some posts differ. The notification decides."],
+    ],
+    faq: [
+      { q: "Is this finder's result final?", a: "No. It narrows the list using the age limit and qualification we have recorded for each job. Your eligibility is decided by the official notification, so read it before applying." },
+      { q: "Is my date of birth stored?", a: "No. The comparison runs in your browser and nothing you enter leaves your device." },
+      { q: "How often is the job list updated?", a: "The list is rebuilt with the site, every few hours, whenever new notifications are published." },
+    ],
+  });
+
   // ---- Hindi typing: Kruti Dev <-> Unicode (two pages, one widget, opposite default direction) ----
   for (const dir of ["k2u", "u2k"]) defs.push(krutiTool(dir));
   for (const lang of ["hi", "en"]) defs.push(typingTool(lang));

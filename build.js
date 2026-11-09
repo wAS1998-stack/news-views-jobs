@@ -370,10 +370,17 @@ function parseSalary(s) {
   // Accept numbers or objects the AI may return, not just strings.
   if (typeof s === "number") return s > 99 ? { min: s, max: s, unit: "MONTH" } : null;
   if (typeof s !== "string") { try { s = String(s); } catch { return null; } }
-  const nums = (s.match(/[\d,]+/g) || []).map((x) => Number(x.replace(/,/g, ""))).filter((n) => n > 99);
+  if (/\bper\s+(lecture|class|session|visit|period|case|sitting|assignment)\b/i.test(s)) return null;   // not a pay period Google has a unit for
+  // Grade pay ("Rs.36900-135100 with Grade Pay 4800") and years are not salary amounts; an unbounded mix is left out.
+  const clean = s.replace(/grade\s*pay\D{0,8}[\d,]+/gi, " ").replace(/\b(19|20)\d{2}\b(?!,)/g, " ");
+  let nums = (clean.match(/\d[\d,]*/g) || []).map((x) => Number(x.replace(/,/g, ""))).filter((n) => n > 99);
+  if (nums.length > 1 && Math.max(...nums) >= 5000) nums = nums.filter((n) => n >= 1000);
   if (!nums.length) return null;
-  const unit = /year|annum|p\.?a\.?|lpa/i.test(s) ? "YEAR" : /hour/i.test(s) ? "HOUR" : "MONTH";
-  return { min: nums[0], max: nums.length > 1 ? nums[nums.length - 1] : nums[0], unit };
+  // whole words only: "Pay Matrix" must not read as "p.a." (43 live jobs showed a monthly scale as a yearly salary)
+  const unit = /\bper\s+(year|annum)\b|\bp\.\s?a\.?(?![a-z])|\bpa\b|\blpa\b|\bannual(ly)?\b|\byearly\b|\/-?\s*(year|annum)\b/i.test(s) ? "YEAR"
+    : /\bper\s+(hour|hr)\b|\bhourly\b|\/\s*(hour|hr)\b/i.test(s) ? "HOUR"
+    : /\bper\s+day\b|\bdaily\b|\bper\s+diem\b|\/\s*day\b|\bdaily\s+wages?\b/i.test(s) ? "DAY" : "MONTH";
+  return { min: Math.min(...nums), max: Math.max(...nums), unit };
 }
 
 /* ---- Shared chrome ---------------------------------------------- */
@@ -526,6 +533,7 @@ function foot() {
     <a href="/tools/photo-resizer/">Photo resizer</a>
     <a href="/tools/income-tax-calculator/">Income tax calculator</a>
     <a href="/salary/">7th pay matrix</a>
+    <a href="/tools/job-eligibility-finder/">Job eligibility finder</a>
     <a href="/tools/age-calculator/">Age calculator</a>
     <a href="/tools/kruti-dev-to-unicode/">Kruti Dev to Unicode</a>
     <a href="/tools/hindi-typing-test/">Hindi typing test</a>
@@ -1436,7 +1444,7 @@ function buildHome(jobs, levels, orgs, guides, qualCounts, updates, stateCounts,
 
   ${TOOL_DEFS.length ? `<section class="home-tools">
     <h2 class="section-h">🧰 Free tools</h2>
-    <ul class="tool-list">${["photo-resizer", "hindi-typing-test", "kruti-dev-to-unicode", "age-calculator", "income-tax-calculator", "7th-pay-commission-salary-calculator"]
+    <ul class="tool-list">${["photo-resizer", "job-eligibility-finder", "hindi-typing-test", "kruti-dev-to-unicode", "age-calculator", "income-tax-calculator", "7th-pay-commission-salary-calculator"]
       .map((sl) => TOOL_DEFS.find((d) => d.slug === sl)).filter(Boolean)
       .map((d) => `<li><a class="tool-card" href="/tools/${d.slug}/"><b>${esc(d.h1)}</b><span>${esc(d.desc.slice(0, 96))}…</span></a></li>`).join("")}</ul>
     <p class="backlink"><a href="/tools/">All tools &rarr;</a> &nbsp; <a href="/salary/">Salary by pay level &rarr;</a></p>
@@ -1507,7 +1515,9 @@ function employmentTypeOf(job) {
 }
 /** The job's town/district for JobPosting, or "" when the location is only the country ("India", "All India", "Pan India"). */
 function localityOf(job) {
-  const l = String(job.location || "").replace(/\s+/g, " ").trim();
+  const l = String(job.location || "").replace(/\s+/g, " ").trim().replace(/^anywhere in\s+/i, "").replace(/,\s*any (place|bench|location)\b.*$/i, "");
+  // a sentence about postings ("Selected candidates are liable to be posted anywhere in India") is not a place
+  if (/\b(candidates?|liable|posted|posting|transferable)\b|\bas per\b/i.test(l)) return "";
   if (!l || /^(india|all india|pan[- ]india|across india|anywhere in india|all over india|various (places|locations)( in india)?|bharat)\.?$/i.test(l)) return "";
   return l.length > 120 ? l.slice(0, 117).replace(/[,;\s]+\S*$/, "") + "…" : l;
 }
@@ -1547,7 +1557,9 @@ function jobLd(job) {
   const cred = { "10th-pass": "high school", "12th-pass": "high school", "iti": "professional certificate", "engineering-diploma": "professional certificate",
     "diploma": "professional certificate", "graduate": "bachelor degree", "post-graduate": "postgraduate degree" };
   const rank = { "high school": 1, "professional certificate": 2, "bachelor degree": 3, "postgraduate degree": 4 };
-  const lvl = qualsOf(job).map((q) => cred[q.slug]).filter(Boolean).sort((a, b) => rank[a] - rank[b])[0];
+  // "Post Graduate Degree/Diploma" names a postgraduate qualification, not an entry-level diploma
+  const lvlJob = { ...job, qualification: String(job.qualification || "").replace(/\b(post[\s-]?graduate|p\.?\s?g\.?)(\s+degree\s*\/?\s*(or\s+)?)?\s*diploma\b/gi, "Post Graduate") };
+  const lvl = qualsOf(lvlJob).map((q) => cred[q.slug]).filter(Boolean).sort((a, b) => rank[a] - rank[b])[0];
   if (lvl) ld.educationRequirements = { "@type": "EducationalOccupationalCredential", credentialCategory: lvl };
   if (sal) ld.baseSalary = { "@type": "MonetaryAmount", currency: "INR",
     value: { "@type": "QuantitativeValue", minValue: sal.min, maxValue: sal.max, unitText: sal.unit } };
@@ -2122,6 +2134,14 @@ function buildSearchIndex(jobs, updates) {
     y: (UPDATE_TYPES[u.type] || {}).label || "Update", c: u.type, d: u.date ? fmtDate(String(u.date).slice(0, 10)) : "" }));
   return JSON.stringify({ built: BUILD_ID, jobs: J, updates: U });
 }
+/* /eligibility.json — every open job with what the Job Eligibility Finder filters on (loaded only by that tool). */
+function buildEligibilityIndex(jobs) {
+  const J = jobs.filter((j) => !isStale(j) && !isGulf(j) && statusOf(j).live).sort(liveFirst).map((j) => ({
+    i: j.id, t: j.title, o: orgKey(j) || j.organization || "", q: levelsOf(j), v: Number(j.total_vacancies) || 0,
+    mi: Number(j.age_min) || 0, ma: Number(j.age_max) || 0, e: j.application_end || "", d: j.application_end ? fmtDate(j.application_end) : "",
+    z: statesOf(j).map((s) => s.slug) }));
+  return JSON.stringify({ built: BUILD_ID, states: STATES.map((s) => [s.slug, s.name]), jobs: J });
+}
 /* Queue for the owner's daily manual "Request indexing" in Search Console (10 a day): the newest pages most
    worth Google's attention first — the biggest open recruitments interleaved with results/admit cards of
    major exams, then the hubs. The daily task skips anything already on Google or requested in 14 days. */
@@ -2137,7 +2157,7 @@ function buildIndexQueue({ jobs, updates }) {
     .slice(0, 12).map((u) => `${SITE.url}/updates/${u.id}/`);
   // New evergreen pages go first for their first ten days, so the daily requests reach them once (the task skips
   // anything it requested in the last 14 days).
-  const NEW_PAGES = [["tools/da-arrears-calculator/", "2026-11-02"], ["", "2026-10-31"], ["about/", "2026-10-31"],   // homepage + About: brand-first title and Organization data
+  const NEW_PAGES = [["tools/job-eligibility-finder/", "2026-11-09"], ["tools/da-arrears-calculator/", "2026-11-02"], ["", "2026-10-31"], ["about/", "2026-10-31"],   // homepage + About: brand-first title and Organization data
     ["vacancy-tracker/", "2026-10-30"], ["tools/kruti-dev-to-unicode/", "2026-10-30"], ["tools/unicode-to-kruti-dev/", "2026-10-30"], ["tools/hindi-typing-test/", "2026-10-30"], ["tools/english-typing-test/", "2026-10-30"],
     ["walk-in-interview/", "2026-10-30"], ["jobs-without-exam/", "2026-10-30"], ["apprentice/", "2026-10-30"]];
   const out = NEW_PAGES.filter(([, d]) => Date.parse(IST_DATE) - Date.parse(d) <= 10 * 86400000).map(([p]) => `${SITE.url}/${p}`);
@@ -2903,6 +2923,7 @@ function main() {
   write("sitemap-latest.xml", buildLatestSitemap({ jobs, updates, news }));
   write("index-queue.txt", buildIndexQueue({ jobs, updates }));
   write("search.json", buildSearchIndex(jobs, updates));
+  write("eligibility.json", buildEligibilityIndex(jobs));
   writeAppFeed(jobs, updates);
   write("news-sitemap.xml", buildNewsSitemap({ updates, news }));
   write("version.json", JSON.stringify({ build: BUILD_ID, at: BUILT.toISOString(), ist: `${IST_DATE} ${IST_TIME}` }) + "\n");
@@ -2998,4 +3019,4 @@ function main() {
 
 // `node build.js` builds the site; tests require() the pure helpers without building anything.
 if (require.main === module) main();
-module.exports = { qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf };
+module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf };

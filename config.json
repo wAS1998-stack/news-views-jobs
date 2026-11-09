@@ -49,7 +49,6 @@
   "feeds": [
     "https://www.freejobalert.com/feed/",
     "https://rajsarkariresult.com/feed",
-    "https://gulfjobvacancy.in/feed",
     "https://www.sarkariexam.com/feed/",
     "https://www.indgovtjobs.in/feeds/posts/default?alt=rss"
   ],
@@ -70,7 +69,7 @@
   "maxEnrichPerRun": 5,
   "maxLinkFixPerRun": 25,
   "maxUpdateEnrichPerRun": 15,
-  "_feedsNote": "Dead feeds removed 2026-10-15 (govtjobsblog, govtjobsdiary, sarkarifeed, gulfwalkin, gccwalkins). data/last-run.json shows per-feed health each run.",
+  "_feedsNote": "Dead feeds removed 2026-10-15 (govtjobsblog, govtjobsdiary, sarkarifeed, gulfwalkin, gccwalkins) and 2026-11-09 (gulfjobvacancy: no new post for 11 days, private overseas jobs). data/last-run.json shows per-feed health each run.",
   "payRates": {
     "_note": "Single source for all salary/tax tools. Update daPercent when the government notifies a new DA (63% from 1 July 2026: Cabinet approval, PIB 28 Oct 2026).",
     "daPercent": 63,
