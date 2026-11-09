@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 151,
+  "used": 163,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2378,5 +2378,53 @@
  "https://news-views.in/jobs/neigrihms-senior-resident-doctor-2026/": {
   "sentAt": "2026-11-09T10:27:13.796Z",
   "hash": "6ce66f5b2071"
+ },
+ "https://news-views.in/jobs/aai-junior-consultant-consultant-more-2026/": {
+  "sentAt": "2026-11-09T12:30:58.433Z",
+  "hash": "aee9e567dc3d"
+ },
+ "https://news-views.in/jobs/actrec-project-technical-support-i-walkin-2026/": {
+  "sentAt": "2026-11-09T12:30:58.652Z",
+  "hash": "337a506a0830"
+ },
+ "https://news-views.in/jobs/civil-courts-lakhisarai-stenographer-clerk-more-2026/": {
+  "sentAt": "2026-11-09T12:30:58.860Z",
+  "hash": "5fdbac9a62f3"
+ },
+ "https://news-views.in/jobs/igims-junior-resident-2026/": {
+  "sentAt": "2026-11-09T12:30:59.071Z",
+  "hash": "20a8d342e387"
+ },
+ "https://news-views.in/jobs/iiser-kolkata-project-assistant-2026/": {
+  "sentAt": "2026-11-09T12:30:59.277Z",
+  "hash": "c64acd740fe6"
+ },
+ "https://news-views.in/jobs/nam-accounting-clerk-optometrist-more-2026/": {
+  "sentAt": "2026-11-09T12:30:59.461Z",
+  "hash": "9583926a86b7"
+ },
+ "https://news-views.in/jobs/nit-warangal-jrf-2026/": {
+  "sentAt": "2026-11-09T12:30:59.665Z",
+  "hash": "887859a0ce80"
+ },
+ "https://news-views.in/jobs/tmc-clinical-research-coordinator-walkin-2026/": {
+  "sentAt": "2026-11-09T12:30:59.860Z",
+  "hash": "7b2d75cff20f"
+ },
+ "https://news-views.in/jobs/tmc-senior-resident-pulmonary-medicine-walkin-2026/": {
+  "sentAt": "2026-11-09T12:31:00.034Z",
+  "hash": "1efd2d80a122"
+ },
+ "https://news-views.in/jobs/tmc-senior-resident-radiation-oncology-walkin-2026/": {
+  "sentAt": "2026-11-09T12:31:00.210Z",
+  "hash": "64d244caa74b"
+ },
+ "https://news-views.in/jobs/uksssc-various-positions-2026/": {
+  "sentAt": "2026-11-09T12:31:00.387Z",
+  "hash": "1edbbe433298"
+ },
+ "https://news-views.in/jobs/uoc-project-associate-ii-2026/": {
+  "sentAt": "2026-11-09T12:31:00.563Z",
+  "hash": "995e31ac9bbf"
  }
 }
