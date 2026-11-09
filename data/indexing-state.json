@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 142,
+  "used": 151,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2342,5 +2342,41 @@
  "https://news-views.in/jobs/zsi-junior-research-fellow-2026/": {
   "sentAt": "2026-11-09T08:30:51.146Z",
   "hash": "c550aa7a5fdb"
+ },
+ "https://news-views.in/jobs/bihar-vidhan-sabha-assistant-caretaker-assistant-2026/": {
+  "sentAt": "2026-11-09T10:27:12.140Z",
+  "hash": "8694b9e53ade"
+ },
+ "https://news-views.in/jobs/dhew-chennai-mts-account-assistant-more-2026/": {
+  "sentAt": "2026-11-09T10:27:12.356Z",
+  "hash": "233cd9313f49"
+ },
+ "https://news-views.in/jobs/dlsa-kannur-para-legal-volunteer-2026/": {
+  "sentAt": "2026-11-09T10:27:12.577Z",
+  "hash": "a03ea987e7c5"
+ },
+ "https://news-views.in/jobs/dm-ho-bhadradri-kothagudem-anm-staff-2026/": {
+  "sentAt": "2026-11-09T10:27:12.790Z",
+  "hash": "b442539c25fd"
+ },
+ "https://news-views.in/jobs/esic-professor-walkin-2026/": {
+  "sentAt": "2026-11-09T10:27:12.987Z",
+  "hash": "6e3eec81d75d"
+ },
+ "https://news-views.in/jobs/icmr-nirbi-assistant-2026/": {
+  "sentAt": "2026-11-09T10:27:13.186Z",
+  "hash": "fa63d71415fc"
+ },
+ "https://news-views.in/jobs/ipgme-r-project-associate-walkin-2026/": {
+  "sentAt": "2026-11-09T10:27:13.389Z",
+  "hash": "f5a5b2e47d9a"
+ },
+ "https://news-views.in/jobs/national-library-lis-intern-2026/": {
+  "sentAt": "2026-11-09T10:27:13.596Z",
+  "hash": "e4646e6be967"
+ },
+ "https://news-views.in/jobs/neigrihms-senior-resident-doctor-2026/": {
+  "sentAt": "2026-11-09T10:27:13.796Z",
+  "hash": "6ce66f5b2071"
  }
 }
