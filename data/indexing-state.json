@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 113,
+  "used": 120,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2226,5 +2226,33 @@
  "https://news-views.in/jobs/bric-instem-scientist-2026/": {
   "sentAt": "2026-11-09T05:40:31.756Z",
   "hash": "cb164d4921da"
+ },
+ "https://news-views.in/jobs/cpdo-er-office-superintendent-2026/": {
+  "sentAt": "2026-11-09T06:28:11.937Z",
+  "hash": "654baf79c7ca"
+ },
+ "https://news-views.in/jobs/cpdo-upper-division-clerk-2027/": {
+  "sentAt": "2026-11-09T06:28:12.167Z",
+  "hash": "ee45d51983e4"
+ },
+ "https://news-views.in/jobs/icmr-scientist-scientist-d-c-b-2026/": {
+  "sentAt": "2026-11-09T06:28:12.458Z",
+  "hash": "5b573a1cd27b"
+ },
+ "https://news-views.in/jobs/iica-senior-consultant-2026/": {
+  "sentAt": "2026-11-09T06:28:12.751Z",
+  "hash": "e7d803a0d793"
+ },
+ "https://news-views.in/jobs/jssh-professor-assistant-professor-more-2026/": {
+  "sentAt": "2026-11-09T06:28:13.015Z",
+  "hash": "c9157f6a3eb8"
+ },
+ "https://news-views.in/jobs/kau-assistant-professor-agricultural-economics-walkin-2026/": {
+  "sentAt": "2026-11-09T06:28:13.283Z",
+  "hash": "1b6f6d7339e5"
+ },
+ "https://news-views.in/jobs/moc-consultant-walkin-2026/": {
+  "sentAt": "2026-11-09T06:28:13.492Z",
+  "hash": "c14057b6ddba"
  }
 }
