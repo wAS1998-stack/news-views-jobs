@@ -1,20 +1,15 @@
 {
- "date": "2026-11-08",
+ "date": "2026-11-09",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-10",
-  "2026-11-06"
+  "2026-10-11",
+  "2026-11-07"
  ],
  "totals": {
   "clicks": 35,
-  "impressions": 430
+  "impressions": 437
  },
  "daily": [
-  {
-   "date": "2026-10-10",
-   "clicks": 1,
-   "impressions": 4
-  },
   {
    "date": "2026-10-11",
    "clicks": 0,
@@ -149,19 +144,24 @@
    "date": "2026-11-06",
    "clicks": 0,
    "impressions": 5
+  },
+  {
+   "date": "2026-11-07",
+   "clicks": 1,
+   "impressions": 3
   }
  ],
  "home": {
   "page": "/",
   "clicks": 0,
-  "impressions": 10,
+  "impressions": 11,
   "ctr": 0,
-  "position": 6.5
+  "position": 6
  },
  "brand": {
   "range": [
-   "2026-08-09",
-   "2026-11-06"
+   "2026-08-10",
+   "2026-11-07"
   ],
   "rows": []
  },
@@ -202,18 +202,18 @@
    "position": 2
   },
   {
-   "page": "/jobs/bvfcl-apprentice-2026/",
-   "clicks": 2,
-   "impressions": 16,
-   "ctr": 12.5,
-   "position": 3.9
-  },
-  {
    "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
    "clicks": 2,
    "impressions": 10,
    "ctr": 20,
    "position": 2.8
+  },
+  {
+   "page": "/jobs/bvfcl-apprentice-2026/",
+   "clicks": 1,
+   "impressions": 12,
+   "ctr": 8.33,
+   "position": 4
   },
   {
    "page": "/jobs/delhi-university-project-technical-support-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -258,11 +258,18 @@
    "position": 2.7
   },
   {
+   "page": "/updates/tgpsc-deputy-educational-officers-hall-ticket-2026-released/",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 12
+  },
+  {
    "page": "/",
    "clicks": 0,
-   "impressions": 10,
+   "impressions": 11,
    "ctr": 0,
-   "position": 6.5
+   "position": 6
   },
   {
    "page": "/about/",
@@ -272,6 +279,13 @@
    "position": 4
   },
   {
+   "page": "/apprentice/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "page": "/disclaimer/",
    "clicks": 0,
    "impressions": 2,
@@ -279,11 +293,18 @@
    "position": 6
   },
   {
+   "page": "/exam/upsc-capf/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "page": "/guides/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 2
+   "position": 4
   },
   {
    "page": "/guides/documents-required-government-job-application/",
@@ -309,16 +330,16 @@
   {
    "page": "/hi/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
-   "position": 3.5
+   "position": 4.7
   },
   {
    "page": "/jobs/",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
-   "position": 24
+   "position": 15
   },
   {
    "page": "/jobs/aees-teacher-2026/",
@@ -456,9 +477,9 @@
   {
    "page": "/jobs/gulf-walkin-uae-shutdown-gulf-2024/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 5,
    "ctr": 0,
-   "position": 4.7
+   "position": 4.8
   },
   {
    "page": "/jobs/hpcl-officers-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -494,27 +515,6 @@
    "impressions": 2,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "page": "/jobs/income-tax-delhi-sports-quota-mts-2026/",
-   "clicks": 0,
-   "impressions": 7,
-   "ctr": 0,
-   "position": 5.3
-  },
-  {
-   "page": "/jobs/indian-army-tgc-out-lieutenant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
-  },
-  {
-   "page": "/jobs/indian-bank-2026/",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 4.5
   }
  ],
  "topQueries": [
@@ -1229,6 +1229,25 @@
    "queries": []
   },
   {
+   "page": "/jobs/bvfcl-apprentice-2026/",
+   "clicks": 1,
+   "impressions": 12,
+   "ctr": 8.33,
+   "position": 4,
+   "queries": [
+    {
+     "q": "brahmaputra valley fertilizer corporation limited recruitment",
+     "impressions": 4,
+     "position": 4.5
+    },
+    {
+     "q": "brahmaputra fertilizer recruitment",
+     "impressions": 1,
+     "position": 4
+    }
+   ]
+  },
+  {
    "page": "/jobs/saudi-aramco-gulf-2025/",
    "clicks": 0,
    "impressions": 12,
@@ -1253,6 +1272,14 @@
    ]
   },
   {
+   "page": "/",
+   "clicks": 0,
+   "impressions": 11,
+   "ctr": 0,
+   "position": 6,
+   "queries": []
+  },
+  {
    "page": "/jobs/supreme-court-sci-court-assistant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 11,
@@ -1275,14 +1302,6 @@
      "position": 4
     }
    ]
-  },
-  {
-   "page": "/",
-   "clicks": 0,
-   "impressions": 10,
-   "ctr": 0,
-   "position": 6.5,
-   "queries": []
   }
  ],
  "lowCtr": []

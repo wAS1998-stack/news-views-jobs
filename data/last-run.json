@@ -2,7 +2,7 @@
   "date": "2026-11-09",
   "runs": {},
   "fetch": {
-    "at": "2026-11-08T23:30:08.526Z",
+    "at": "2026-11-09T00:10:24.011Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -50,9 +50,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-08T23:30:48.437Z",
+    "at": "2026-11-09T00:10:32.276Z",
     "sources": 59,
-    "healthy": 17,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -67,7 +67,7 @@
       "iaf-agniveer": "paused (fails 81, geo-blocked)",
       "rrb-portal": "paused (fails 77, geo-blocked)",
       "ncs": "paused (fails 69)",
-      "rbi": "19 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "bpsc": "paused (fails 79, geo-blocked)",
       "rpsc": "paused (fails 69, geo-blocked)",
       "mppsc": "paused (fails 13, geo-blocked)",
@@ -75,16 +75,16 @@
       "tnpsc": "paused (fails 81, geo-blocked)",
       "kpsc": "paused (fails 81, geo-blocked)",
       "appsc": "paused (fails 81, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "rbi": "19 links, 0 new via direct",
       "wbpsc": "paused (fails 81, geo-blocked)",
       "opsc": "paused (fails 69)",
       "hpsc": "paused (fails 81, geo-blocked)",
       "hppsc": "paused (fails 81, geo-blocked)",
       "ukpsc": "paused (fails 81, geo-blocked)",
-      "dsssb": "5 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 81, geo-blocked)",
       "gpsc": "paused (fails 81, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "5 links, 0 new via direct",
       "ppsc": "paused (fails 81, geo-blocked)",
       "apsc": "paused (fails 81, geo-blocked)",
       "jkpsc": "paused (fails 81, geo-blocked)",
@@ -94,29 +94,29 @@
       "esb-mp": "paused (fails 81, geo-blocked)",
       "bssc": "paused (fails 30, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "jssc": "paused (fails 81, geo-blocked)",
       "osssc": "paused (fails 48)",
       "gsssb": "paused (fails 81, geo-blocked)",
       "sssb-punjab": "paused (fails 81, geo-blocked)",
       "hprca": "paused (fails 81, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
-      "kea": "paused (fails 81, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
-      "dsssb2": "paused (fails 81, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
       "ctet": "4 links, 0 new via news-views.in",
+      "kea": "paused (fails 81, geo-blocked)",
+      "hssc": "9 links, 0 new via direct",
+      "dsssb2": "paused (fails 81, geo-blocked)",
+      "kvs": "4 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "uksssc": "27 links, 0 new via direct",
       "tnusrb": "paused (fails 81, geo-blocked)",
       "tslprb": "paused (fails 81)",
       "slprb-ap": "paused (fails 81, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "6 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 1)"
+      "csbc": "195 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -124,7 +124,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-08T23:30:48.832Z",
+    "at": "2026-11-09T00:10:32.608Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -139,7 +139,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-08T23:30:49.951Z",
+    "at": "2026-11-09T00:10:34.933Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -150,7 +150,7 @@
     "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
-    "opportunities": 4,
+    "opportunities": 5,
     "log": [
       "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
@@ -160,15 +160,33 @@
     ]
   },
   "news": {
-    "at": "2026-11-08T23:30:50.318Z",
+    "at": "2026-11-09T00:11:06.142Z",
     "ai": "OpenAI",
-    "published": 0,
-    "quizzes": 0,
+    "published": 1,
+    "quizzes": 1,
     "existing": 400,
-    "feeds": {},
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    },
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists."
+      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
+      "  20 source headlines for today's digest",
+      "  + digest: Current Affairs 9 November 2026: Key Government Updates for Exam Aspirants (326 words)",
+      "  + quiz: Current Affairs Quiz 9 November 2026 (10 Qs)"
+    ]
+  },
+  "gsc": {
+    "at": "2026-11-09T00:10:33.836Z",
+    "ok": true,
+    "property": "https://news-views.in/",
+    "clicks28d": 35,
+    "impressions28d": 437,
+    "pages": 99,
+    "opportunities": 5,
+    "sitemap": 204,
+    "log": [
+      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
   }
 }

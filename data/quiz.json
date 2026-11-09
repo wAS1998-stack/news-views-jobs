@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-09",
+    "date": "2026-11-09",
+    "digest_id": "current-affairs-2026-11-09",
+    "title": "Current Affairs Quiz 9 November 2026",
+    "questions": [
+      {
+        "q": "Where did Prime Minister Narendra Modi celebrate Diwali with soldiers?",
+        "options": [
+          "A: Ayodhya",
+          "B: Karanpur",
+          "C: Sikkim",
+          "D: Maharashtra"
+        ],
+        "answer": 1,
+        "why": "The article states that he celebrated Diwali at the Cobra Operations Base in Karanpur, Bastar, Chhattisgarh."
+      },
+      {
+        "q": "What event did the Vice President inaugurate related to Diwali?",
+        "options": [
+          "A: Deepotsav 2026",
+          "B: Diwali Festival",
+          "C: Cultural Fair",
+          "D: Diwali Mela"
+        ],
+        "answer": 0,
+        "why": "The article mentions that the Vice President inaugurated the Deepotsav 2026 celebrations in Ayodhya."
+      },
+      {
+        "q": "Which state’s Chief Minister was praised by Prime Minister Modi for celebrating Diwali with farmers?",
+        "options": [
+          "A: Uttar Pradesh",
+          "B: Maharashtra",
+          "C: Chhattisgarh",
+          "D: Sikkim"
+        ],
+        "answer": 1,
+        "why": "The article notes that Prime Minister Modi praised the Chief Minister of Maharashtra for his initiative."
+      },
+      {
+        "q": "What initiative did WWF-India promote for Diwali in Delhi-NCR?",
+        "options": [
+          "A: Green Diwali pledge",
+          "B: Fireworks festival",
+          "C: Tree plantation drive",
+          "D: Pollution control program"
+        ],
+        "answer": 0,
+        "why": "WWF-India called upon residents to pledge for a green Diwali by celebrating with environmentally friendly practices."
+      },
+      {
+        "q": "In which location did the Defense Minister celebrate Diwali with troops?",
+        "options": [
+          "A: Sikkim",
+          "B: Karanpur",
+          "C: Ayodhya",
+          "D: Maharashtra"
+        ],
+        "answer": 0,
+        "why": "The article states that the Defense Minister celebrated Diwali with troops stationed at forward positions in Sikkim."
+      },
+      {
+        "q": "What was reviewed by the Defense Minister during his visit to Sukna?",
+        "options": [
+          "A: Diwali celebrations",
+          "B: Labor laws",
+          "C: Military readiness",
+          "D: Cultural festivals"
+        ],
+        "answer": 2,
+        "why": "The article highlights that the Defense Minister reviewed developmental works and military equipment deployments, emphasizing national security."
+      },
+      {
+        "q": "What did Prime Minister Modi express during his Diwali greetings to Ram Nath Kovind?",
+        "options": [
+          "A: Respect and greetings",
+          "B: Requests for support",
+          "C: Invitations to events",
+          "D: Critiques of policies"
+        ],
+        "answer": 0,
+        "why": "The article states he offered Diwali greetings, emphasizing respect towards past leaders."
+      },
+      {
+        "q": "What type of program was held in Madhya Pradesh’s Dewas district?",
+        "options": [
+          "A: Cultural festival",
+          "B: Capacity building program",
+          "C: Agricultural meeting",
+          "D: Security assessment"
+        ],
+        "answer": 1,
+        "why": "The article mentions a district-level capacity building and awareness program focusing on labor codes."
+      },
+      {
+        "q": "What is the focus of the initiative praised by Prime Minister Modi regarding farmers?",
+        "options": [
+          "A: Urban development",
+          "B: Food security",
+          "C: Tourism development",
+          "D: Environmental protection"
+        ],
+        "answer": 1,
+        "why": "The initiative underlines the government's focus on the agricultural sector, crucial for food security."
+      },
+      {
+        "q": "What is highlighted as part of the government's commitment during Diwali celebrations?",
+        "options": [
+          "A: Tourism promotion",
+          "B: Security forces morale",
+          "C: Economic reforms",
+          "D: Labor rights"
+        ],
+        "answer": 1,
+        "why": "The article emphasizes the government's commitment to honoring the sacrifices of security forces during festivals."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-08",
     "date": "2026-11-08",
     "digest_id": "current-affairs-2026-11-08",
