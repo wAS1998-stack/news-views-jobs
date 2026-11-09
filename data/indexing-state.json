@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-10",
-  "used": 81,
+  "used": 83,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2862,5 +2862,13 @@
  "https://news-views.in/jobs/district-women-child-development-department-narayanpur-2026/": {
   "sentAt": "2026-11-09T19:15:34.778Z",
   "hash": "c2d5b7a5beee"
+ },
+ "https://news-views.in/jobs/bbau-admin-cum-data-entry-operator-2026/": {
+  "sentAt": "2026-11-09T21:40:28.675Z",
+  "hash": "20ff771427b7"
+ },
+ "https://news-views.in/jobs/iiest-shibpur-senior-assistant-2026/": {
+  "sentAt": "2026-11-09T21:40:28.914Z",
+  "hash": "742860a3b134"
  }
 }
