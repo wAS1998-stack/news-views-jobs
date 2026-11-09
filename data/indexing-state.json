@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 171,
+  "used": 187,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2458,5 +2458,69 @@
  "https://news-views.in/jobs/juidco-graduate-diploma-apprentice-2026/": {
   "sentAt": "2026-11-09T13:15:31.988Z",
   "hash": "48d2894e8b1e"
+ },
+ "https://news-views.in/jobs/actrec-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-09T15:51:00.558Z",
+  "hash": "a2bb5f6e8e8d"
+ },
+ "https://news-views.in/jobs/aiims-bathinda-faculty-professor-assistant-professor-2026/": {
+  "sentAt": "2026-11-09T15:51:00.800Z",
+  "hash": "fe555d6f7a1b"
+ },
+ "https://news-views.in/jobs/ambedkar-university-delhi-faculty-2026/": {
+  "sentAt": "2026-11-09T15:51:01.049Z",
+  "hash": "d93f4d1b17ac"
+ },
+ "https://news-views.in/jobs/bpbcc-superintending-engineer-walkin-2026/": {
+  "sentAt": "2026-11-09T15:51:01.288Z",
+  "hash": "9405f9268c48"
+ },
+ "https://news-views.in/jobs/bsah-junior-resident-2026/": {
+  "sentAt": "2026-11-09T15:51:01.523Z",
+  "hash": "fc896de20ee2"
+ },
+ "https://news-views.in/jobs/icsil-lab-helper-walkin-2026/": {
+  "sentAt": "2026-11-09T15:51:01.752Z",
+  "hash": "0691a13b7862"
+ },
+ "https://news-views.in/jobs/iiitdm-kancheepuram-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-09T15:51:01.985Z",
+  "hash": "df9a63a9d6d0"
+ },
+ "https://news-views.in/jobs/iiitdm-kancheepuram-junior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-09T15:51:02.184Z",
+  "hash": "39ad877da641"
+ },
+ "https://news-views.in/jobs/iim-ranchi-manager-2026/": {
+  "sentAt": "2026-11-09T15:51:02.382Z",
+  "hash": "f76bdcff2b3a"
+ },
+ "https://news-views.in/jobs/iit-kanpur-research-associate-i-chemical-2026/": {
+  "sentAt": "2026-11-09T15:51:02.578Z",
+  "hash": "632976c1a6f9"
+ },
+ "https://news-views.in/jobs/iit-kanpur-research-associate-iii-biological-2026/": {
+  "sentAt": "2026-11-09T15:51:02.779Z",
+  "hash": "eabf1a4f2c0c"
+ },
+ "https://news-views.in/jobs/isi-project-linked-junior-research-fellow-advt-507-956-2026/": {
+  "sentAt": "2026-11-09T15:51:02.976Z",
+  "hash": "de15d2228320"
+ },
+ "https://news-views.in/jobs/kgbv-assistant-cook-head-cook-more-2026/": {
+  "sentAt": "2026-11-09T15:51:03.192Z",
+  "hash": "dca0d7cd4051"
+ },
+ "https://news-views.in/jobs/samagra-shiksha-jangaon-anm-assistant-cook-2026/": {
+  "sentAt": "2026-11-09T15:51:03.405Z",
+  "hash": "5a5d97aff817"
+ },
+ "https://news-views.in/jobs/srhc-walkin-senior-resident-2026/": {
+  "sentAt": "2026-11-09T15:51:03.601Z",
+  "hash": "db5b6af6caa9"
+ },
+ "https://news-views.in/jobs/tmc-kolkata-fellow-2026/": {
+  "sentAt": "2026-11-09T15:51:03.841Z",
+  "hash": "c787c32dfa51"
  }
 }

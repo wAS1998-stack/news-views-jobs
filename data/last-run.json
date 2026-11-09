@@ -210,7 +210,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-09T13:15:29.549Z",
+    "at": "2026-11-09T15:50:59.751Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -221,24 +221,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-09T13:16:30.895Z",
+    "at": "2026-11-09T15:52:11.221Z",
     "ok": true,
-    "sent": 40,
+    "sent": 110,
     "log": [
-      "push-notify: 40 sent\n  job juidco-graduate-diploma-apprentice-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job juidco-graduate-diploma-apprentice-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-engineering-diploma' in topi"
+      "push-notify: 110 sent\n  job aiims-bathinda-faculty-professor-assistant-professor-2026 en [('s-punjab' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job aiims-bathinda-faculty-professor-assistant-professor-2026 hi [('s-punjab' in topics || 's-any' in topics) && "
     ]
   },
   "indexing-api": {
-    "at": "2026-11-09T13:15:32.109Z",
+    "at": "2026-11-09T15:51:03.962Z",
     "ok": true,
-    "submitted": 8,
+    "submitted": 16,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 171,
+    "usedToday": 187,
     "log": [
-      "Indexing API: 8 to send (8 updated, 0 deleted); 163/200 used today (IST 2026-11-09).",
-      "Indexing API: sent 8."
+      "Indexing API: 16 to send (16 updated, 0 deleted); 171/200 used today (IST 2026-11-09).",
+      "Indexing API: sent 16."
     ]
   }
 }
