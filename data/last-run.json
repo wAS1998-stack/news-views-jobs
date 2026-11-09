@@ -228,7 +228,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-09T06:28:11.349Z",
+    "at": "2026-11-09T08:30:45.769Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -239,24 +239,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-09T06:28:55.251Z",
+    "at": "2026-11-09T08:31:43.231Z",
     "ok": true,
-    "sent": 38,
+    "sent": 74,
     "log": [
-      "push-notify: 38 sent\n  job jssh-professor-assistant-professor-more-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jssh-professor-assistant-professor-more-2026 hi [('s-delhi' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-"
+      "push-notify: 74 sent\n  job vmmc-safdarjung-hospital-senior-resident-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job vmmc-safdarjung-hospital-senior-resident-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-engineering-diploma"
     ]
   },
   "indexing-api": {
-    "at": "2026-11-09T06:28:13.613Z",
+    "at": "2026-11-09T08:30:51.267Z",
     "ok": true,
-    "submitted": 7,
+    "submitted": 22,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 120,
+    "usedToday": 142,
     "log": [
-      "Indexing API: 7 to send (7 updated, 0 deleted); 113/200 used today (IST 2026-11-09).",
-      "Indexing API: sent 7."
+      "Indexing API: 22 to send (22 updated, 0 deleted); 120/200 used today (IST 2026-11-09).",
+      "Indexing API: sent 22."
     ]
   }
 }
