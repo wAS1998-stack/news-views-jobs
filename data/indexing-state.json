@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 163,
+  "used": 171,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2426,5 +2426,37 @@
  "https://news-views.in/jobs/uoc-project-associate-ii-2026/": {
   "sentAt": "2026-11-09T12:31:00.563Z",
   "hash": "995e31ac9bbf"
+ },
+ "https://news-views.in/jobs/aft-jabalpur-junior-accountant-junior-accounts-2026/": {
+  "sentAt": "2026-11-09T13:15:30.433Z",
+  "hash": "3192cb9fba74"
+ },
+ "https://news-views.in/jobs/aiims-bhopal-data-entry-operator-2026/": {
+  "sentAt": "2026-11-09T13:15:30.644Z",
+  "hash": "4f54c0a882c7"
+ },
+ "https://news-views.in/jobs/aiims-bhopal-technical-coordinator-walkin-2026/": {
+  "sentAt": "2026-11-09T13:15:30.887Z",
+  "hash": "d74ceb742b3b"
+ },
+ "https://news-views.in/jobs/cihcs-director-2027/": {
+  "sentAt": "2026-11-09T13:15:31.150Z",
+  "hash": "a0213992e984"
+ },
+ "https://news-views.in/jobs/directorate-fisheries-lakshadweep-paid-apprentice-2026/": {
+  "sentAt": "2026-11-09T13:15:31.382Z",
+  "hash": "54822fc5f7b2"
+ },
+ "https://news-views.in/jobs/iiitdm-jabalpur-junior-research-fellow-ece-2026/": {
+  "sentAt": "2026-11-09T13:15:31.579Z",
+  "hash": "44ff532d9421"
+ },
+ "https://news-views.in/jobs/iit-bhubaneswar-accounts-trainee-2026/": {
+  "sentAt": "2026-11-09T13:15:31.790Z",
+  "hash": "45b036b96176"
+ },
+ "https://news-views.in/jobs/juidco-graduate-diploma-apprentice-2026/": {
+  "sentAt": "2026-11-09T13:15:31.988Z",
+  "hash": "48d2894e8b1e"
  }
 }

@@ -222,7 +222,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-09T12:30:57.774Z",
+    "at": "2026-11-09T13:15:29.549Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -233,24 +233,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-09T12:31:45.204Z",
+    "at": "2026-11-09T13:16:30.895Z",
     "ok": true,
-    "sent": 50,
+    "sent": 40,
     "log": [
-      "push-notify: 50 sent\n  job igims-junior-resident-2026 en [('s-bihar' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job igims-junior-resident-2026 hi [('s-bihar' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job aai-junior-"
+      "push-notify: 40 sent\n  job juidco-graduate-diploma-apprentice-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job juidco-graduate-diploma-apprentice-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-engineering-diploma' in topi"
     ]
   },
   "indexing-api": {
-    "at": "2026-11-09T12:31:00.684Z",
+    "at": "2026-11-09T13:15:32.109Z",
     "ok": true,
-    "submitted": 12,
+    "submitted": 8,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 163,
+    "usedToday": 171,
     "log": [
-      "Indexing API: 12 to send (12 updated, 0 deleted); 151/200 used today (IST 2026-11-09).",
-      "Indexing API: sent 12."
+      "Indexing API: 8 to send (8 updated, 0 deleted); 163/200 used today (IST 2026-11-09).",
+      "Indexing API: sent 8."
     ]
   }
 }
