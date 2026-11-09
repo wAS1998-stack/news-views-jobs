@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-09",
-  "used": 187,
+  "used": 191,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2522,5 +2522,21 @@
  "https://news-views.in/jobs/tmc-kolkata-fellow-2026/": {
   "sentAt": "2026-11-09T15:51:03.841Z",
   "hash": "c787c32dfa51"
+ },
+ "https://news-views.in/jobs/dhs-meghalaya-radiotherapy-technician-2026/": {
+  "sentAt": "2026-11-09T17:51:29.735Z",
+  "hash": "a0be9c5d1071"
+ },
+ "https://news-views.in/jobs/dhs-meghalaya-walkin-medical-physicist-radiation-2026/": {
+  "sentAt": "2026-11-09T17:51:30.106Z",
+  "hash": "33acc9e124cc"
+ },
+ "https://news-views.in/jobs/indian-coast-guard-region-east-mts-2026/": {
+  "sentAt": "2026-11-09T17:51:30.323Z",
+  "hash": "fb3291e62cd3"
+ },
+ "https://news-views.in/jobs/smc-faculty-professor-associate-professor-2026/": {
+  "sentAt": "2026-11-09T17:51:30.538Z",
+  "hash": "a5ee46b02c3b"
  }
 }
