@@ -1916,8 +1916,9 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
   // Jobs closed for 60+ days stay live and linked but leave the sitemap, so crawl slots go to new pages.
   const today = IST_DATE;
   // Google crawls a young site only ~100-200 pages a day, so the sitemap lists what is worth that budget:
-  // jobs leave it 15 days after closing (config sitemapClosedDays); their pages stay live and linked.
-  const cutoff = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays || 15) * 86400000).toISOString().slice(0, 10);
+  // jobs leave it 2 days after closing (config sitemapClosedDays); their pages stay live and linked. (At 15 days a
+  // quarter of the sitemap was closed jobs while Search Console showed 70% of open ones "Discovered – not indexed".)
+  const cutoff = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays ?? 2) * 86400000).toISOString().slice(0, 10);
   const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff));
   const urls = [
     { loc: SITE.url + "/", mod: today },
