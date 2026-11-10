@@ -211,5 +211,25 @@
     "log": [
       "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
+  },
+  "notify": {
+    "at": "2026-11-10T00:18:15.384Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "push": {
+    "at": "2026-11-10T00:18:19.902Z",
+    "ok": true,
+    "sent": 0,
+    "quiet": true,
+    "log": [
+      "push-notify: nothing new to send (quiet hours)."
+    ]
   }
 }
