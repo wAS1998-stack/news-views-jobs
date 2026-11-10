@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T04:04:29.789Z",
+    "at": "2026-11-10T04:45:45.341Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -16,12 +16,12 @@
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 92 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-09; 18 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-10; 19 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 8 already known"
     },
     "updDiag": {
-      "seen": 17,
-      "known": 17,
+      "seen": 15,
+      "known": 15,
       "added": 0,
       "filtered": [],
       "samples": [
@@ -72,9 +72,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T04:04:54.352Z",
+    "at": "2026-11-10T04:46:22.782Z",
     "sources": 59,
-    "healthy": 20,
+    "healthy": 19,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -97,21 +97,21 @@
       "tnpsc": "paused (fails 11, geo-blocked)",
       "kpsc": "paused (fails 88, geo-blocked)",
       "appsc": "paused (fails 88, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "wbpsc": "paused (fails 88, geo-blocked)",
       "opsc": "paused (fails 11)",
       "hpsc": "paused (fails 88, geo-blocked)",
       "hppsc": "paused (fails 88, geo-blocked)",
       "ukpsc": "paused (fails 88, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 88, geo-blocked)",
       "gpsc": "paused (fails 88, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "ppsc": "paused (fails 88, geo-blocked)",
       "apsc": "paused (fails 88, geo-blocked)",
       "jkpsc": "paused (fails 88, geo-blocked)",
       "goapsc": "paused (fails 88, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "rssb": "paused (fails 88, geo-blocked)",
       "esb-mp": "paused (fails 88, geo-blocked)",
       "bssc": "paused (fails 37, geo-blocked)",
@@ -122,23 +122,23 @@
       "gsssb": "paused (fails 88, geo-blocked)",
       "sssb-punjab": "paused (fails 88, geo-blocked)",
       "hprca": "paused (fails 88, geo-blocked)",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "kea": "paused (fails 88, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 88, geo-blocked)",
+      "kea": "paused (fails 88, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "dsssb2": "paused (fails 88, geo-blocked)",
       "kvs": "4 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 88, geo-blocked)",
       "tslprb": "paused (fails 88)",
       "slprb-ap": "paused (fails 88, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "6 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
+      "csbc": "195 links, 0 new via news-views.in",
       "upsssc": "4 links, 0 new via news-views.in",
-      "rpsc": "184 links, 0 new via news-views.in"
+      "rpsc": "184 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -146,7 +146,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T04:04:54.751Z",
+    "at": "2026-11-10T04:46:23.154Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -161,7 +161,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-10T04:04:55.908Z",
+    "at": "2026-11-10T04:46:24.234Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -182,7 +182,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-10T04:04:56.297Z",
+    "at": "2026-11-10T04:46:24.608Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
