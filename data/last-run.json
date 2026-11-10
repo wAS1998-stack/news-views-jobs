@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T11:11:18.710Z",
+    "at": "2026-11-10T11:53:55.083Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,18 +11,18 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 6,
-    "newUpdates": 1,
+    "newJobs": 12,
+    "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 50 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 44 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-10; 19 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 8 already known"
     },
     "updDiag": {
-      "seen": 44,
-      "known": 30,
-      "added": 1,
+      "seen": 42,
+      "known": 29,
+      "added": 2,
       "filtered": [
         "Kurukshetra University Date Sheet 2026 Out - Check Theory Exam Date Online @ kuk",
         "MCC NEET UG 2026 Special Stray Allotment Result Out - Download Online @ mcc.nic.",
@@ -33,11 +33,11 @@
         "MSDU Result 2026 Out - Check UG & PG Result Online at msduexam.co.in",
         "CBSE Board Class 10th & 12th Date Sheet 2027 Out - Download PDF, Check Subject-W",
         "Maharashtra Board SSC, HSC Time Table 2027 Out - Class 10, 12 Subject-Wise Exam ",
-        "Andhra University Results 2026 Out - Check PG Result Online @ andhrauniversity.e",
-        "JNTUH Results 2026 Out - Check UG & PG Result Online @ jntuh.ac.in",
-        "Kashmir University M.Sc Result 2026 Out - Check 4th Semester Result Online @ kas"
+        "Andhra University Results 2026 Out - Check PG Result Online @ andhrauniversity.e"
       ],
       "samples": [
+        "OPSC Admit Card 2026 Out Today - Download Assistant Agriculture Engineer and Geo",
+        "PSSSB Jail Warder PMT PET Admit Card 2026 Out - Download Warder, Matron Hall Tic",
         "MP Police Constable Admit Card 2026 - Download GD Hall Ticket at esb.mp.gov.in",
         "Kurukshetra University Date Sheet 2026 Out - Check Theory Exam Date Online @ kuk",
         "MP Police SI Answer Key 2026 Out - Download Response Sheet and Raise Objection b",
@@ -50,9 +50,7 @@
         "UPSC ESE Prelims Exam Date 2027 Out - Check Exam Schedule PDF",
         "DRDO CEPTAM 11 Tier 2 Result 2026 Out - Check Technician-A Merit List Released a",
         "Punjabi University Patiala Result 2026 Out - Check UG & PG Result Online @ punja",
-        "OSSSC Nursing Officer Revised Answer Key 2026 Out - Download Response Sheet at o",
-        "Palamuru University Time Table 2026 Out - Download UG Exam Dates Online @ palamu",
-        "Palamuru University UG Result 2026 Out - Direct Link to Check Result Online @ pa"
+        "OSSSC Nursing Officer Revised Answer Key 2026 Out - Download Response Sheet at o"
       ]
     },
     "log": [
@@ -80,14 +78,14 @@
       "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
       "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "Added 2 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T11:12:34.309Z",
+    "at": "2026-11-10T11:54:32.901Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -104,22 +102,22 @@
       "ncs": "paused (fails 13)",
       "rbi": "19 links, 0 new via direct",
       "bpsc": "paused (fails 88, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "mppsc": "paused (fails 10, geo-blocked)",
       "mpsc": "paused (fails 90)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "dsssb": "6 links, 0 new via direct",
       "kpsc": "paused (fails 90, geo-blocked)",
       "appsc": "paused (fails 90, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 90, geo-blocked)",
       "opsc": "paused (fails 13)",
       "hpsc": "paused (fails 90, geo-blocked)",
       "hppsc": "paused (fails 90, geo-blocked)",
       "ukpsc": "paused (fails 90, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 90, geo-blocked)",
       "gpsc": "paused (fails 90, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "ppsc": "paused (fails 90, geo-blocked)",
       "apsc": "paused (fails 90, geo-blocked)",
       "jkpsc": "paused (fails 90, geo-blocked)",
@@ -128,8 +126,8 @@
       "rssb": "paused (fails 90, geo-blocked)",
       "esb-mp": "paused (fails 90, geo-blocked)",
       "bssc": "paused (fails 39, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
+      "tnpsc": "35 links, 0 new via news-views.in",
       "jssc": "paused (fails 90, geo-blocked)",
       "osssc": "paused (fails 13, geo-blocked)",
       "gsssb": "paused (fails 90, geo-blocked)",
@@ -137,7 +135,7 @@
       "hprca": "paused (fails 90, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
       "kea": "paused (fails 90, geo-blocked)",
-      "tnpsc": "35 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "dsssb2": "paused (fails 90, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
@@ -145,13 +143,13 @@
       "tnusrb": "paused (fails 90, geo-blocked)",
       "tslprb": "paused (fails 90)",
       "slprb-ap": "paused (fails 90, geo-blocked)",
-      "csbc": "195 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
+      "csbc": "195 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
+      "upsssc": "4 links, 0 new via news-views.in",
       "rpsc": "184 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -159,22 +157,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T11:12:43.663Z",
+    "at": "2026-11-10T11:56:02.375Z",
     "ok": true,
-    "checked": 2,
+    "checked": 4,
     "found": 0,
-    "due": 2,
-    "cands": 2,
+    "due": 4,
+    "cands": 5,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
-      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 4, found 0 real application pages (4 due, pdf reader on)",
+      "  candidates seen 5, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-10T11:15:03.015Z",
+    "at": "2026-11-10T11:59:50.510Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -182,10 +180,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 6,
-    "hindiJobs": 6,
-    "hindiUpdatesPending": 1,
-    "hindiUpdates": 1,
+    "hindiJobsPending": 12,
+    "hindiJobs": 12,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -193,18 +191,25 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 6 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: TISS काउंसलर भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: ICAR-NBAIR भर्ती 2026 – 9 सहायक, LDC, UDC पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: MANIT रिसर्च असिस्टेंट भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: AAAL सिंथेटिक फ्लाइट इंस्ट्रक्टर – ATR 72-SFI भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS न्यू दिल्ली प्रोजेक्ट रिसर्च साइंटिस्ट II भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS परियोजना अनुसंधान वैज्ञानिक II (कम्युनिटी मेडिसिन केंद्र) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi update: MP पुलिस SI उत्तर कुंजी 2026 जारी - प्रतिक्रिया पत्रक डाउनलोड करें और 13 नवंबर तक आपत्ति दर्ज करें"
+      "Enrich/hindi: 12 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: NIEPVD भर्ती 2026 – 4 ब्रेल विकास अधिकारी, कार्यालय अधीक्षक और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: नेशनल बुक ट्रस्ट ई पब डेवलपर भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: पंचायती राज गाज़ीपुर भर्ती 2026 – 3 पंचायत सहायक / लेखाकार-सह-डाटा एंट्री ऑपरेटर पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: कालीकट विश्वविद्यालय बिजली कर्मचारी भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: MoEF&CC भर्ती 2026 – 3 असिस्टेंट, UDC और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: NIEPMD भर्ती 2026 – 22 DEO, ऑक्यूपेशनल थेरेपिस्ट और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: वाणिज्य मंत्रालय संयुक्त विकास आयुक्त भर्ती 2026 – ऑफलाइन आवेदन करें",
+      "  ✓ hindi: DU भर्ती 2026 – 2 सीनियर प्रोजेक्ट एसोसिएट, JRF पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIT अगर्तला पुस्तकालय प्रोफेशनल ट्रेनी भर्ती 2026 – वॉकइन",
+      "  ✓ hindi: IGIMS भर्ती 2026 – 12 जूनियर इंजीनियर, प्रशासनिक अधिकारी और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: CUSB भर्ती 2026 – 25 प्रोफेसर, सहायक प्रोफेसर और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NIELIT भर्ती 2026 – सीनियर प्रोग्रामर, सिस्टम एनालिस्ट और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: PSSSB जेल वार्डर PMT PET एडमिट कार्ड 2026 जारी - वार्डर, मेट्रन हॉल टिकट डाउनलोड करें",
+      "  ✓ hindi update: OPSC एडमिट कार्ड 2026 आज जारी - opsc.gov.in से सहायक कृषि इंजीनियर और भूविज्ञानी का हॉल टिकट डाउनलोड करें"
     ]
   },
   "news": {
-    "at": "2026-11-10T11:15:03.302Z",
+    "at": "2026-11-10T11:59:50.787Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
