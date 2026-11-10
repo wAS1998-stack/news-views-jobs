@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-11",
-  "used": 93,
+  "used": 94,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -3610,5 +3610,9 @@
  "https://news-views.in/jobs/pgimer-labour-officer-2026/": {
   "sentAt": "2026-11-10T20:15:01.802Z",
   "hash": "826e7c159652"
+ },
+ "https://news-views.in/jobs/kvs-walkin-primary-teacher-trained-graduate-2026/": {
+  "sentAt": "2026-11-10T22:53:04.556Z",
+  "hash": "8898c98c2222"
  }
 }
