@@ -216,7 +216,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T04:53:21.980Z",
+    "at": "2026-11-10T05:38:24.497Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -227,24 +227,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T04:53:40.544Z",
+    "at": "2026-11-10T05:38:49.080Z",
     "ok": true,
-    "sent": 30,
+    "sent": 14,
     "log": [
-      "push-notify: 30 sent\n  job j-k-bank-banking-associate-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job j-k-bank-banking-associate-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job directorate-fisheries-lakshadweep-paid-appr"
+      "push-notify: 14 sent\n  job lbsnaa-multi-tasking-staff-2026 en ['s-central' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job lbsnaa-multi-tasking-staff-2026 hi ['s-central' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  update ibps-rrb-po-admit-card-2026-out-downlo"
     ]
   },
   "indexing-api": {
-    "at": "2026-11-10T04:53:23.009Z",
+    "at": "2026-11-10T05:38:25.889Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 3,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 84,
+    "usedToday": 87,
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 83/200 used today (IST 2026-11-10).",
-      "Indexing API: sent 1."
+      "Indexing API: 3 to send (3 updated, 0 deleted); 84/200 used today (IST 2026-11-10).",
+      "Indexing API: sent 3."
     ]
   }
 }

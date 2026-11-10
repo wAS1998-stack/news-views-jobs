@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-10",
-  "used": 84,
+  "used": 87,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2874,5 +2874,17 @@
  "https://news-views.in/jobs/lbsnaa-multi-tasking-staff-2026/": {
   "sentAt": "2026-11-10T04:53:22.887Z",
   "hash": "bd153b0c8a49"
+ },
+ "https://news-views.in/jobs/mgu-assistant-professor-botany-2026/": {
+  "sentAt": "2026-11-10T05:38:25.262Z",
+  "hash": "8e6d45bdc1ed"
+ },
+ "https://news-views.in/jobs/nhai-intern-2026/": {
+  "sentAt": "2026-11-10T05:38:25.508Z",
+  "hash": "508e01708511"
+ },
+ "https://news-views.in/jobs/sctimst-project-assistant-biomedical-technology-wing-2026/": {
+  "sentAt": "2026-11-10T05:38:25.768Z",
+  "hash": "06ab1a6836ac"
  }
 }
