@@ -2,7 +2,7 @@
   "date": "2026-11-11",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T18:46:56.897Z",
+    "at": "2026-11-10T19:28:00.476Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,17 +11,17 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 4,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 65 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 63 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-10; 21 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 8 already known"
     },
     "updDiag": {
-      "seen": 36,
-      "known": 27,
+      "seen": 34,
+      "known": 26,
       "added": 0,
       "filtered": [
         "Pondicherry University M.D.S Result 2026 Out - Check First Year Result Online @ ",
@@ -30,8 +30,7 @@
         "Kashmir University Result 2026 Out - Check UG & PG Result Online @ kashmiruniver",
         "Calicut University Result 2026 Out - Check UG & PG Results Online @ uoc.ac.in",
         "Kurukshetra University Date Sheet 2026 Out - Check Theory Exam Date Online @ kuk",
-        "MCC NEET UG 2026 Special Stray Allotment Result Out - Download Online @ mcc.nic.",
-        "Punjabi University Patiala Result 2026 Out - Check UG & PG Result Online @ punja"
+        "MCC NEET UG 2026 Special Stray Allotment Result Out - Download Online @ mcc.nic."
       ],
       "samples": [
         "Railway RRB JE 04/2026 CBT I Answer Key 2026",
@@ -81,7 +80,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T18:47:45.429Z",
+    "at": "2026-11-10T19:29:10.880Z",
     "sources": 59,
     "healthy": 20,
     "newLinks": 0,
@@ -100,54 +99,54 @@
       "ncs": "paused (fails 15)",
       "rbi": "19 links, 0 new via direct",
       "bpsc": "paused (fails 90, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "dsssb": "6 links, 0 new via direct",
       "mppsc": "paused (fails 12, geo-blocked)",
       "mpsc": "paused (fails 92)",
       "indiapost-gds": "142 links, 0 new via direct",
       "kpsc": "paused (fails 92, geo-blocked)",
       "appsc": "paused (fails 92, geo-blocked)",
-      "dsssb": "6 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 92, geo-blocked)",
       "opsc": "paused (fails 15)",
       "hpsc": "paused (fails 92, geo-blocked)",
       "hppsc": "paused (fails 92, geo-blocked)",
       "ukpsc": "paused (fails 92, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "tgpsc": "3 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 92, geo-blocked)",
       "gpsc": "paused (fails 92, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "tnpsc": "35 links, 0 new via news-views.in",
       "ppsc": "paused (fails 92, geo-blocked)",
       "apsc": "paused (fails 92, geo-blocked)",
       "jkpsc": "paused (fails 92, geo-blocked)",
       "goapsc": "paused (fails 92, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "rssb": "paused (fails 92, geo-blocked)",
       "esb-mp": "paused (fails 92, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
-      "tnpsc": "35 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 92, geo-blocked)",
       "osssc": "paused (fails 15, geo-blocked)",
       "gsssb": "paused (fails 92, geo-blocked)",
       "sssb-punjab": "paused (fails 92, geo-blocked)",
       "hprca": "paused (fails 92, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "bssc": "785 links, 0 new via news-views.in",
       "kea": "paused (fails 92, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
       "dsssb2": "paused (fails 92, geo-blocked)",
       "jkssb": "1 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "6 links, 0 new via direct",
+      "csbc": "195 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 92, geo-blocked)",
       "tslprb": "paused (fails 92)",
       "slprb-ap": "paused (fails 92, geo-blocked)",
+      "kvs": "2 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "bssc": "785 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
-      "upsssc": "4 links, 0 new via news-views.in",
+      "uksssc": "27 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via news-views.in",
       "rpsc": "184 links, 0 new via news-views.in",
-      "nta": "error: news-views.in: HTTP 403 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "keralapsc": "error: news-views.in: HTTP 502 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -155,26 +154,23 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T18:51:26.220Z",
+    "at": "2026-11-10T19:30:22.167Z",
     "ok": true,
-    "checked": 20,
+    "checked": 6,
     "found": 0,
-    "due": 20,
-    "cands": 32,
+    "due": 6,
+    "cands": 206,
     "passed": 1,
     "jobsWithCands": 1,
-    "careers": 0,
+    "careers": 1,
     "log": [
       "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 32",
-      "Warning: TT: undefined function: 32",
-      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
-      "  candidates seen 32, passed the rules 1 (in 1 jobs); recruitment pages found: 0"
+      "apply-links: checked 6, found 0 real application pages (6 due, pdf reader on)",
+      "  candidates seen 206, passed the rules 1 (in 1 jobs); recruitment pages found: 1"
     ]
   },
   "enrich": {
-    "at": "2026-11-10T18:51:27.375Z",
+    "at": "2026-11-10T19:31:19.176Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -182,7 +178,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 4,
+    "hindiJobs": 4,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -191,11 +188,15 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 4 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: JMI ट्यूटर भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: JMI भर्ती 2026 - 85 UDC, उर्दू टाइपिस्ट और अन्य पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CAU प्रोजेक्ट असिस्टेंट भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: SMPA साउंडिंग सुपरवाइजर-कम-ड्राफ्ट्समैन भर्ती 2026 – ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-10T18:51:27.720Z",
+    "at": "2026-11-10T19:31:19.576Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
@@ -204,52 +205,6 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists."
-    ]
-  },
-  "gsc": {
-    "at": "2026-11-10T00:13:51.034Z",
-    "ok": true,
-    "property": "https://news-views.in/",
-    "clicks28d": 35,
-    "impressions28d": 446,
-    "pages": 102,
-    "opportunities": 6,
-    "sitemap": 204,
-    "log": [
-      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
-    ]
-  },
-  "notify": {
-    "at": "2026-11-10T16:36:32.234Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "push": {
-    "at": "2026-11-10T16:37:06.113Z",
-    "ok": true,
-    "sent": 0,
-    "quiet": true,
-    "log": [
-      "push-notify: nothing new to send (quiet hours)."
-    ]
-  },
-  "indexing-api": {
-    "at": "2026-11-10T16:36:36.272Z",
-    "ok": true,
-    "submitted": 15,
-    "failed": 0,
-    "limited": false,
-    "kept": 1,
-    "usedToday": 175,
-    "log": [
-      "Indexing API: 15 to send (15 updated, 0 deleted); 160/200 used today (IST 2026-11-10).",
-      "Indexing API: sent 15."
     ]
   }
 }
