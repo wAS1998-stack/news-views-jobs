@@ -207,7 +207,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T02:18:36.271Z",
+    "at": "2026-11-10T04:53:21.980Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -218,11 +218,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T02:19:02.003Z",
+    "at": "2026-11-10T04:53:40.544Z",
     "ok": true,
-    "sent": 66,
+    "sent": 30,
     "log": [
-      "push-notify: 66 sent\n  job odisha-police-special-police-officer-2026 en [('s-odisha' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job odisha-police-special-police-officer-2026 hi [('s-odisha' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' "
+      "push-notify: 30 sent\n  job j-k-bank-banking-associate-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job j-k-bank-banking-associate-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job directorate-fisheries-lakshadweep-paid-appr"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-10T04:53:23.009Z",
+    "ok": true,
+    "submitted": 1,
+    "failed": 0,
+    "limited": false,
+    "kept": 1,
+    "usedToday": 84,
+    "log": [
+      "Indexing API: 1 to send (1 updated, 0 deleted); 83/200 used today (IST 2026-11-10).",
+      "Indexing API: sent 1."
     ]
   }
 }

@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-10",
-  "used": 83,
+  "used": 84,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2870,5 +2870,9 @@
  "https://news-views.in/jobs/iiest-shibpur-senior-assistant-2026/": {
   "sentAt": "2026-11-09T21:40:28.914Z",
   "hash": "742860a3b134"
+ },
+ "https://news-views.in/jobs/lbsnaa-multi-tasking-staff-2026/": {
+  "sentAt": "2026-11-10T04:53:22.887Z",
+  "hash": "bd153b0c8a49"
  }
 }
