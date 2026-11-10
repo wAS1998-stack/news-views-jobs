@@ -216,7 +216,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T14:39:04.220Z",
+    "at": "2026-11-10T16:36:32.234Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -227,24 +227,25 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T14:40:40.964Z",
+    "at": "2026-11-10T16:37:06.113Z",
     "ok": true,
-    "sent": 144,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 144 sent\n  job kasez-preventive-officer-2027 en [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job kasez-preventive-officer-2027 hi [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job "
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "indexing-api": {
-    "at": "2026-11-10T14:39:09.659Z",
+    "at": "2026-11-10T16:36:36.272Z",
     "ok": true,
-    "submitted": 21,
+    "submitted": 15,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 160,
+    "usedToday": 175,
     "log": [
-      "Indexing API: 21 to send (21 updated, 0 deleted); 139/200 used today (IST 2026-11-10).",
-      "Indexing API: sent 21."
+      "Indexing API: 15 to send (15 updated, 0 deleted); 160/200 used today (IST 2026-11-10).",
+      "Indexing API: sent 15."
     ]
   }
 }
