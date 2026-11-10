@@ -1,20 +1,15 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-11",
-  "2026-11-07"
+  "2026-10-12",
+  "2026-11-08"
  ],
  "totals": {
   "clicks": 35,
-  "impressions": 437
+  "impressions": 446
  },
  "daily": [
-  {
-   "date": "2026-10-11",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-10-12",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-07",
    "clicks": 1,
    "impressions": 3
+  },
+  {
+   "date": "2026-11-08",
+   "clicks": 0,
+   "impressions": 10
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-10",
-   "2026-11-07"
+   "2026-08-11",
+   "2026-11-08"
   ],
   "rows": []
  },
@@ -183,9 +183,9 @@
   {
    "page": "/jobs/kochi-metro-recruit-apprentice/",
    "clicks": 4,
-   "impressions": 10,
-   "ctr": 40,
-   "position": 3.9
+   "impressions": 11,
+   "ctr": 36.36,
+   "position": 4.2
   },
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -521,9 +521,9 @@
   {
    "query": "kmrl internship",
    "clicks": 2,
-   "impressions": 2,
-   "ctr": 100,
-   "position": 1
+   "impressions": 3,
+   "ctr": 66.67,
+   "position": 3
   },
   {
    "query": "railway job vacancy 2026",
@@ -706,6 +706,13 @@
    "impressions": 2,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "barauni refinery vacancy 2026",
+   "clicks": 0,
+   "impressions": 3,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "brahmaputra fertilizer recruitment",
@@ -1016,6 +1023,13 @@
    "position": 2
   },
   {
+   "query": "iocl barauni recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "job alert 2026",
    "clicks": 0,
    "impressions": 1,
@@ -1142,6 +1156,20 @@
    "position": 2
   },
   {
+   "query": "manipur police constable result",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 80
+  },
+  {
+   "query": "manipur recruitment 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "medical officer jobs in west bengal",
    "clicks": 0,
    "impressions": 2,
@@ -1189,34 +1217,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
-  },
-  {
-   "query": "mp bhoj university",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "new notification 2026 karnataka",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "nfdc jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 7
-  },
-  {
-   "query": "ongc 10th pass job",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 1
   }
  ],
  "opportunities": [
@@ -1248,26 +1248,21 @@
    ]
   },
   {
-   "page": "/jobs/saudi-aramco-gulf-2025/",
-   "clicks": 0,
-   "impressions": 12,
-   "ctr": 0,
-   "position": 4.4,
+   "page": "/jobs/kochi-metro-recruit-apprentice/",
+   "clicks": 4,
+   "impressions": 11,
+   "ctr": 36.36,
+   "position": 4.2,
    "queries": [
     {
-     "q": "गल्फ जॉब",
-     "impressions": 3,
-     "position": 3.3
+     "q": "kmrl internship",
+     "impressions": 6,
+     "position": 2.8
     },
     {
-     "q": "gulf job today",
+     "q": "kochi metro internship",
      "impressions": 2,
-     "position": 4
-    },
-    {
-     "q": "gulf jobs 2025",
-     "impressions": 1,
-     "position": 7
+     "position": 8
     }
    ]
   },
@@ -1278,6 +1273,30 @@
    "ctr": 0,
    "position": 6,
    "queries": []
+  },
+  {
+   "page": "/jobs/saudi-aramco-gulf-2025/",
+   "clicks": 0,
+   "impressions": 11,
+   "ctr": 0,
+   "position": 4.5,
+   "queries": [
+    {
+     "q": "gulf job today",
+     "impressions": 2,
+     "position": 4
+    },
+    {
+     "q": "गल्फ जॉब",
+     "impressions": 2,
+     "position": 3.5
+    },
+    {
+     "q": "gulf jobs 2025",
+     "impressions": 1,
+     "position": 7
+    }
+   ]
   },
   {
    "page": "/jobs/supreme-court-sci-court-assistant-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",

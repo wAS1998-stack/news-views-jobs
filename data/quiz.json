@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-10",
+    "date": "2026-11-10",
+    "digest_id": "current-affairs-2026-11-10",
+    "title": "Current Affairs Quiz 10 November 2026",
+    "questions": [
+      {
+        "q": "What was the purpose of Kiran Rijiju's visit to Saudi Arabia?",
+        "options": [
+          "Strengthening bilateral relations",
+          "Inaugurating development projects",
+          "Promoting tourism",
+          "Celebrating Diwali"
+        ],
+        "answer": 0,
+        "why": "The visit aims to strengthen bilateral relations and enhance collaboration between India and Saudi Arabia."
+      },
+      {
+        "q": "Which development project did Amit Shah inaugurate recently?",
+        "options": [
+          "Education projects",
+          "Healthcare initiatives",
+          "Infrastructure projects worth ₹1400 crore",
+          "Tourism projects"
+        ],
+        "answer": 2,
+        "why": "Amit Shah inaugurated development projects worth approximately ₹1400 crore in Ahmedabad."
+      },
+      {
+        "q": "What does the 'Diwali Sneh Milan' initiative promote?",
+        "options": [
+          "Cultural heritage",
+          "Drug-free festive celebrations",
+          "Telecommunications regulations",
+          "Defense services modernization"
+        ],
+        "answer": 1,
+        "why": "This initiative promotes drug-free festive celebrations to address public health issues related to substance abuse."
+      },
+      {
+        "q": "Which campaign did the Power Ministry and the Ministry of New and Renewable Energy complete?",
+        "options": [
+          "Special Campaign 6",
+          "Nationwide cleanliness drive",
+          "Diwali Sneh Milan",
+          "River cruise launch"
+        ],
+        "answer": 0,
+        "why": "They successfully completed Special Campaign 6, focusing on pending case resolutions and cleanliness drives."
+      },
+      {
+        "q": "What is significant about the upcoming Yamuna River Cruise service?",
+        "options": [
+          "Cultural preservation",
+          "Enhancing tourism and accessibility",
+          "Drug-free celebrations",
+          "Regulatory updates"
+        ],
+        "answer": 1,
+        "why": "The first-ever Yamuna River Cruise service aims to enhance tourism and accessibility in the region."
+      },
+      {
+        "q": "What was highlighted during the Indian Navy's passing out parade?",
+        "options": [
+          "Infrastructure projects",
+          "Military recruitment transformation",
+          "Cultural heritage",
+          "Telecommunications policy"
+        ],
+        "answer": 1,
+        "why": "The event highlights the transformation of military recruitment and modernization efforts."
+      },
+      {
+        "q": "What regulatory updates did TRAI issue recently?",
+        "options": [
+          "Telecommunications Interconnection Regulations",
+          "Public health initiatives",
+          "Development projects",
+          "Cultural heritage laws"
+        ],
+        "answer": 0,
+        "why": "TRAI issued the Telecommunications Interconnection (Port Charges) (Third Amendment) Regulations 2026."
+      },
+      {
+        "q": "What recently arrived at the Thubchog Gatsel Ling monastery in Bomdila?",
+        "options": [
+          "Development projects",
+          "Buddhist relics",
+          "Telecommunications tools",
+          "Yamuna River Cruise plans"
+        ],
+        "answer": 1,
+        "why": "Sacred relics of Lord Shakyamuni Buddha have arrived at the monastery, signifying cultural heritage preservation."
+      },
+      {
+        "q": "What type of initiatives do the projects launched by Amit Shah focus on?",
+        "options": [
+          "Drug abuse",
+          "Cultural heritage",
+          "Infrastructure and economic growth",
+          "Telecommunications"
+        ],
+        "answer": 2,
+        "why": "These projects reflect the government’s commitment to development in infrastructure and economic growth."
+      },
+      {
+        "q": "Which ministry is associated with the completion of Special Campaign 6?",
+        "options": [
+          "Ministry of Minority Affairs",
+          "Ministry of Home Affairs",
+          "Ministry of New and Renewable Energy",
+          "Ministry of Tourism"
+        ],
+        "answer": 1,
+        "why": "The Power Ministry and the Ministry of New and Renewable Energy are associated with the completion of Special Campaign 6."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-09",
     "date": "2026-11-09",
     "digest_id": "current-affairs-2026-11-09",
