@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T07:30:36.571Z",
+    "at": "2026-11-10T08:08:15.275Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,19 +11,22 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 15,
+    "newJobs": 6,
     "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 62 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 60 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-10; 19 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 6 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 7 already known"
     },
     "updDiag": {
-      "seen": 29,
-      "known": 20,
+      "seen": 35,
+      "known": 23,
       "added": 2,
       "filtered": [
+        "Punjabi University Patiala Result 2026 Out - Check UG & PG Result Online @ punja",
+        "Palamuru University Time Table 2026 Out - Download UG Exam Dates Online @ palamu",
+        "Palamuru University UG Result 2026 Out - Direct Link to Check Result Online @ pa",
         "Calicut University UG Result 2026 Out - Check Results Online @ uoc.ac.in",
         "MSDU Result 2026 Out - Check UG & PG Result Online at msduexam.co.in",
         "CBSE Board Class 10th & 12th Date Sheet 2027 Out - Download PDF, Check Subject-W",
@@ -33,6 +36,12 @@
         "Kashmir University M.Sc Result 2026 Out - Check 4th Semester Result Online @ kas"
       ],
       "samples": [
+        "UPSC ESE Prelims Exam Date 2027 Out - Check Exam Schedule PDF",
+        "DRDO CEPTAM 11 Tier 2 Result 2026 Out - Check Technician-A Merit List Released a",
+        "Punjabi University Patiala Result 2026 Out - Check UG & PG Result Online @ punja",
+        "OSSSC Nursing Officer Revised Answer Key 2026 Out - Download Response Sheet at o",
+        "Palamuru University Time Table 2026 Out - Download UG Exam Dates Online @ palamu",
+        "Palamuru University UG Result 2026 Out - Direct Link to Check Result Online @ pa",
         "Calicut University UG Result 2026 Out - Check Results Online @ uoc.ac.in",
         "SSB Odisha Junior Assistant Exam Date 2026 Out - Download Exam Schedule PDF",
         "MSDU Result 2026 Out - Check UG & PG Result Online at msduexam.co.in",
@@ -41,13 +50,7 @@
         "CBSE Board Class 10th & 12th Date Sheet 2027 Out - Download PDF, Check Subject-W",
         "BSSC Stenographer Exam Date 2026 Out - Check CBT Schedule at bssc.bihar.gov.in",
         "Maharashtra Board SSC, HSC Time Table 2027 Out - Class 10, 12 Subject-Wise Exam ",
-        "Andhra University Results 2026 Out - Check PG Result Online @ andhrauniversity.e",
-        "RPSC Protection Officer City Intimation Slip 2026 Out - Check Exam District for ",
-        "JNTUH Results 2026 Out - Check UG & PG Result Online @ jntuh.ac.in",
-        "IBPS RRB PO Admit Card 2026 Out - Download Prelims Call Letter at ibps.in",
-        "Kashmir University M.Sc Result 2026 Out - Check 4th Semester Result Online @ kas",
-        "Supreme Court JCA City Intimation Slip 2026 Out - Download Junior Court Assistan",
-        "IBPS RRB XV 15th Officer Scale-I Pre Admit Card 2026"
+        "Andhra University Results 2026 Out - Check PG Result Online @ andhrauniversity.e"
       ]
     },
     "log": [
@@ -80,7 +83,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T07:31:15.553Z",
+    "at": "2026-11-10T08:09:21.636Z",
     "sources": 59,
     "healthy": 19,
     "newLinks": 0,
@@ -136,17 +139,17 @@
       "dsssb2": "paused (fails 89, geo-blocked)",
       "nta": "1 links, 0 new via news-views.in",
       "uksssc": "27 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "tnusrb": "paused (fails 89, geo-blocked)",
       "tslprb": "paused (fails 89)",
       "slprb-ap": "paused (fails 89, geo-blocked)",
-      "uppbpb": "6 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "rpsc": "184 links, 0 new via news-views.in",
-      "upsssc": "4 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 5)"
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -154,7 +157,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T07:31:19.388Z",
+    "at": "2026-11-10T08:09:24.005Z",
     "ok": true,
     "checked": 1,
     "found": 0,
@@ -162,14 +165,14 @@
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 1,
+    "careers": 0,
     "log": [
       "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 1"
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-10T07:36:50.496Z",
+    "at": "2026-11-10T08:12:13.236Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,8 +180,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 15,
-    "hindiJobs": 15,
+    "hindiJobsPending": 6,
+    "hindiJobs": 6,
     "hindiUpdatesPending": 2,
     "hindiUpdates": 2,
     "searchFaqPages": 0,
@@ -188,28 +191,19 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 15 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: SBI उत्पाद और अनुसंधान भर्ती 2026 - ऑनलाइन आवेदन करें 07 विशेषज्ञ अधिकारी पदों के लिए",
-      "  ✓ hindi: SBI रिस्क स्पेशलिस्ट भर्ती 2026 - 03 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS नई दिल्ली भर्ती 2026 – 6 प्रोजेक्ट रिसर्च साइंटिस्ट, प्रोजेक्ट नर्स और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS Bibinagar अनुसंधान सहयोगी ग्रेड III भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: IISER बहरामपुर तकनीकी अधिकारी भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: ABV-IIITM जूनियर रिसर्च फेलो भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: केंद्रीय बैंक ऑफ इंडिया काउंसलर भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: SPA विजयवाड़ा सहायक प्रोफेसर भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: आंध्र विश्वविद्यालय फील्ड असिस्टेंट भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DGRE भर्ती 2026 – 6 भुगतान वाली इंटर्नशिप और इंटर्नशिप पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DGMS युवा प्रोफेशनल भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DRDO सलाहकार भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS बठिंडा सीनियर रेजिडेंट भर्ती 2026 – 33 पदों के लिए वॉक-इन",
-      "  ✓ hindi: RCC तिरुवनंतपुरम सहायक प्रोफेसर भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: HBCHRC पंजाब प्रोजेक्ट असिस्टेंट भर्ती 2026 – वॉक इन",
-      "  ✓ hindi update: NICL AO प्रीलिम्स एडमिट कार्ड 2026 जारी - 321 पदों के लिए फेज-I कॉल लेटर डाउनलोड करें",
-      "  ✓ hindi update: SSB ओडिशा जूनियर असिस्टेंट परीक्षा तिथि 2026 घोषित - डाउनलोड करें परीक्षा कार्यक्रम PDF"
+      "Enrich/hindi: 6 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: CUJ अतिथि संकाय भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: BRIC-CDFD भर्ती 2026 – 7 प्रोजेक्ट वैज्ञानिक, शोध सहयोगी और अधिक पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: Collector & District Magistrate, Jangaon स्टाफ नर्स भर्ती 2026 - ऑफ़लाइन आवेदन करें",
+      "  ✓ hindi: NII प्रोजेक्ट असिस्टेंट (जीन रेगुलेशन लैबोरेटरी) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: IIT हैदराबाद प्रोजेक्ट असिस्टेंट (रसायन इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NSUT भर्ती 2026 – 2 कैम्पस डायरेक्टर, सहायक रजिस्ट्रार पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi update: OSSSC नर्सिंग ऑफिसर संशोधित उत्तर कुंजी 2026 जारी - osssc.gov.in से डाउनलोड करें",
+      "  ✓ hindi update: UPSC ESE प्रारंभिक परीक्षा तिथि 2027 जारी - परीक्षा कार्यक्रम PDF चेक करें"
     ]
   },
   "news": {
-    "at": "2026-11-10T07:36:50.890Z",
+    "at": "2026-11-10T08:12:13.639Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
