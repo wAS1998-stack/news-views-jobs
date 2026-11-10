@@ -219,7 +219,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T07:43:56.069Z",
+    "at": "2026-11-10T10:10:31.469Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -230,24 +230,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T07:45:18.176Z",
+    "at": "2026-11-10T10:11:37.157Z",
     "ok": true,
-    "sent": 98,
+    "sent": 42,
     "log": [
-      "push-notify: 98 sent\n  job infantry-battalion-territorial-army-rally-soldier-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job infantry-battalion-territorial-army-rally-soldier-2026 hi [('s-maharashtra' in topics || 's-any' in topics) "
+      "push-notify: 42 sent\n  job npc-project-executive-2026 en [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job npc-project-executive-2026 hi [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job j"
     ]
   },
   "indexing-api": {
-    "at": "2026-11-10T07:44:01.207Z",
+    "at": "2026-11-10T10:10:34.720Z",
     "ok": true,
-    "submitted": 23,
+    "submitted": 11,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 110,
+    "usedToday": 121,
     "log": [
-      "Indexing API: 23 to send (23 updated, 0 deleted); 87/200 used today (IST 2026-11-10).",
-      "Indexing API: sent 23."
+      "Indexing API: 11 to send (11 updated, 0 deleted); 110/200 used today (IST 2026-11-10).",
+      "Indexing API: sent 11."
     ]
   }
 }

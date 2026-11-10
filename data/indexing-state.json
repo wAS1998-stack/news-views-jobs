@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-10",
-  "used": 110,
+  "used": 121,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2978,5 +2978,49 @@
  "https://news-views.in/jobs/spa-vijayawada-assistant-professor-walkin-advt-10-26-2026/": {
   "sentAt": "2026-11-10T07:44:01.086Z",
   "hash": "7e9884864a05"
+ },
+ "https://news-views.in/jobs/bric-cdfd-project-scientist-research-associate-2026/": {
+  "sentAt": "2026-11-10T10:10:32.415Z",
+  "hash": "36eed1ade1bd"
+ },
+ "https://news-views.in/jobs/collector-district-magistrate-jangaon-staff-nurse-2026/": {
+  "sentAt": "2026-11-10T10:10:32.674Z",
+  "hash": "9f9a561db28b"
+ },
+ "https://news-views.in/jobs/cuj-guest-faculty-2026/": {
+  "sentAt": "2026-11-10T10:10:32.893Z",
+  "hash": "5848ad165fc6"
+ },
+ "https://news-views.in/jobs/iit-hyderabad-project-assistant-chemical-engineering-2026/": {
+  "sentAt": "2026-11-10T10:10:33.132Z",
+  "hash": "249503f7a924"
+ },
+ "https://news-views.in/jobs/jncasr-research-associate-engineering-mechanics-2026/": {
+  "sentAt": "2026-11-10T10:10:33.385Z",
+  "hash": "41f3821d8984"
+ },
+ "https://news-views.in/jobs/nfdc-junior-programmer-films-ott-programming-2026/": {
+  "sentAt": "2026-11-10T10:10:33.584Z",
+  "hash": "acf9e2f8a862"
+ },
+ "https://news-views.in/jobs/nii-project-assistant-gene-regulation-laboratory-2026/": {
+  "sentAt": "2026-11-10T10:10:33.780Z",
+  "hash": "6e9759676237"
+ },
+ "https://news-views.in/jobs/npc-advisor-2026/": {
+  "sentAt": "2026-11-10T10:10:33.980Z",
+  "hash": "fb211ada4528"
+ },
+ "https://news-views.in/jobs/npc-project-executive-2026/": {
+  "sentAt": "2026-11-10T10:10:34.202Z",
+  "hash": "aeb0f8a0e3d5"
+ },
+ "https://news-views.in/jobs/npc-senior-consultant-mining-expert-2026/": {
+  "sentAt": "2026-11-10T10:10:34.401Z",
+  "hash": "8351b0f26860"
+ },
+ "https://news-views.in/jobs/nsut-campus-director-assistant-registrar-2026/": {
+  "sentAt": "2026-11-10T10:10:34.598Z",
+  "hash": "cc754e5da3a3"
  }
 }
