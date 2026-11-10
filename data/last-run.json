@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T02:43:51.476Z",
+    "at": "2026-11-10T03:24:30.483Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 0,
+    "newJobs": 1,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-09; 92 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 91 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-09; 18 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-09; 9 already known"
@@ -72,9 +72,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T02:44:44.444Z",
+    "at": "2026-11-10T03:24:56.801Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -89,9 +89,9 @@
       "iaf-agniveer": "paused (fails 88, geo-blocked)",
       "rrb-portal": "paused (fails 84, geo-blocked)",
       "ncs": "paused (fails 11)",
-      "ssc": "7 links, 0 new via news-views.in",
-      "bpsc": "paused (fails 86, geo-blocked)",
       "rbi": "19 links, 0 new via direct",
+      "bpsc": "paused (fails 86, geo-blocked)",
+      "ssc": "7 links, 0 new via news-views.in",
       "mppsc": "paused (fails 8, geo-blocked)",
       "mpsc": "paused (fails 88)",
       "tnpsc": "paused (fails 11, geo-blocked)",
@@ -116,29 +116,29 @@
       "esb-mp": "paused (fails 88, geo-blocked)",
       "bssc": "paused (fails 37, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
-      "hssc": "9 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "jssc": "paused (fails 88, geo-blocked)",
       "osssc": "paused (fails 11, geo-blocked)",
       "gsssb": "paused (fails 88, geo-blocked)",
       "sssb-punjab": "paused (fails 88, geo-blocked)",
       "hprca": "paused (fails 88, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
-      "kea": "paused (fails 88, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
+      "kea": "paused (fails 88, geo-blocked)",
+      "upsssc": "4 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 88, geo-blocked)",
-      "uksssc": "27 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 88, geo-blocked)",
       "tslprb": "paused (fails 88)",
       "slprb-ap": "paused (fails 88, geo-blocked)",
-      "wbssc": "13 links, 0 new via direct",
+      "uksssc": "27 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "uppbpb": "6 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "rpsc": "184 links, 0 new via news-views.in",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 5)"
+      "rpsc": "184 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -146,7 +146,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T02:44:44.823Z",
+    "at": "2026-11-10T03:24:57.185Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -161,7 +161,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-10T02:14:57.997Z",
+    "at": "2026-11-10T03:25:14.955Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -169,7 +169,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
+    "hindiJobsPending": 1,
+    "hindiJobs": 1,
     "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
@@ -178,11 +179,12 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: LBSNAA मल्टी-टास्किंग स्टाफ भर्ती 2026 – ऑफलाइन आवेदन करें"
     ]
   },
   "news": {
-    "at": "2026-11-10T02:14:58.312Z",
+    "at": "2026-11-10T03:25:15.350Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
