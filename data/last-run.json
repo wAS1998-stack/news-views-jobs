@@ -207,7 +207,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T00:18:15.384Z",
+    "at": "2026-11-10T02:18:36.271Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -218,12 +218,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T00:18:19.902Z",
+    "at": "2026-11-10T02:19:02.003Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 66,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 66 sent\n  job odisha-police-special-police-officer-2026 en [('s-odisha' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job odisha-police-special-police-officer-2026 hi [('s-odisha' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' "
     ]
   }
 }
