@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "runs": {},
   "fetch": {
-    "at": "2026-11-10T08:08:15.275Z",
+    "at": "2026-11-10T08:46:16.378Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,18 +11,18 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 6,
-    "newUpdates": 2,
+    "newJobs": 0,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 60 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-10; 66 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-10; 19 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 7 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 6 already known"
     },
     "updDiag": {
       "seen": 35,
-      "known": 23,
-      "added": 2,
+      "known": 25,
+      "added": 0,
       "filtered": [
         "Punjabi University Patiala Result 2026 Out - Check UG & PG Result Online @ punja",
         "Palamuru University Time Table 2026 Out - Download UG Exam Dates Online @ palamu",
@@ -54,6 +54,7 @@
       ]
     },
     "log": [
+      "   = same source page as an existing job, skipped: Bihar Vidhan Sabha Junior Secretariat Assistant JSA Online Form 2026",
       "   = near-duplicate headline, skipped: Bihar Vidhan Sabha Office Attendant Online Form 2026",
       "   = rejected after reading on an earlier run, skipped: Railway RRC NR Apprentice Online Form 2026 (4651 Posts)",
       "   = same source page as an existing job, skipped: UPESSC UP Primary Teacher PRT Re-Open Online Form 2026 (For NIOS/ DELED)",
@@ -77,15 +78,14 @@
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
       "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts",
       "   = same source page as an existing job, skipped: NHB Recruitment 2026 – Apply Online for General Manager, Manager and More Posts",
-      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts",
-      "Added 2 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: Canara Bank Apprentice Recruitment 2026 Apply Online for 3500 Graduate Apprentice Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-10T08:09:21.636Z",
+    "at": "2026-11-10T08:47:08.094Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 18,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -114,10 +114,10 @@
       "hpsc": "paused (fails 89, geo-blocked)",
       "hppsc": "paused (fails 89, geo-blocked)",
       "ukpsc": "paused (fails 89, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "tgpsc": "3 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 89, geo-blocked)",
       "gpsc": "paused (fails 89, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via direct",
       "ppsc": "paused (fails 89, geo-blocked)",
       "apsc": "paused (fails 89, geo-blocked)",
       "jkpsc": "paused (fails 89, geo-blocked)",
@@ -127,29 +127,29 @@
       "esb-mp": "paused (fails 89, geo-blocked)",
       "bssc": "paused (fails 38, geo-blocked)",
       "ctet": "4 links, 0 new via news-views.in",
-      "kvs": "2 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "jssc": "paused (fails 89, geo-blocked)",
       "osssc": "paused (fails 12, geo-blocked)",
       "gsssb": "paused (fails 89, geo-blocked)",
       "sssb-punjab": "paused (fails 89, geo-blocked)",
       "hprca": "paused (fails 89, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "kea": "paused (fails 89, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 89, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "uksssc": "27 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
+      "uppbpb": "6 links, 0 new via direct",
       "tnusrb": "paused (fails 89, geo-blocked)",
       "tslprb": "paused (fails 89)",
       "slprb-ap": "paused (fails 89, geo-blocked)",
       "csbc": "195 links, 0 new via news-views.in",
-      "uppbpb": "6 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "rpsc": "184 links, 0 new via news-views.in",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)",
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -157,22 +157,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-10T08:09:24.005Z",
+    "at": "2026-11-10T08:47:08.346Z",
     "ok": true,
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-10T08:12:13.236Z",
+    "at": "2026-11-10T08:47:09.326Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -180,10 +180,8 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 6,
-    "hindiJobs": 6,
-    "hindiUpdatesPending": 2,
-    "hindiUpdates": 2,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 0,
     "searchFaqPages": 0,
     "opportunities": 6,
     "log": [
@@ -191,19 +189,11 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 6 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: CUJ अतिथि संकाय भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: BRIC-CDFD भर्ती 2026 – 7 प्रोजेक्ट वैज्ञानिक, शोध सहयोगी और अधिक पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: Collector & District Magistrate, Jangaon स्टाफ नर्स भर्ती 2026 - ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: NII प्रोजेक्ट असिस्टेंट (जीन रेगुलेशन लैबोरेटरी) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT हैदराबाद प्रोजेक्ट असिस्टेंट (रसायन इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: NSUT भर्ती 2026 – 2 कैम्पस डायरेक्टर, सहायक रजिस्ट्रार पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi update: OSSSC नर्सिंग ऑफिसर संशोधित उत्तर कुंजी 2026 जारी - osssc.gov.in से डाउनलोड करें",
-      "  ✓ hindi update: UPSC ESE प्रारंभिक परीक्षा तिथि 2027 जारी - परीक्षा कार्यक्रम PDF चेक करें"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-10T08:12:13.639Z",
+    "at": "2026-11-10T08:47:09.578Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
