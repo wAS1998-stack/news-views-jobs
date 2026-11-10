@@ -218,7 +218,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-10T12:34:07.652Z",
+    "at": "2026-11-10T14:39:04.220Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -229,24 +229,24 @@
     ]
   },
   "push": {
-    "at": "2026-11-10T12:35:12.949Z",
+    "at": "2026-11-10T14:40:40.964Z",
     "ok": true,
-    "sent": 68,
+    "sent": 144,
     "log": [
-      "push-notify: 68 sent\n  job cusb-professor-associate-professor-more-2026 en [('s-bihar' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job cusb-professor-associate-professor-more-2026 hi [('s-bihar' in topics || 's-any' in topics) && 'q-post-graduate' in top"
+      "push-notify: 144 sent\n  job kasez-preventive-officer-2027 en [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job kasez-preventive-officer-2027 hi [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job "
     ]
   },
   "indexing-api": {
-    "at": "2026-11-10T12:34:11.872Z",
+    "at": "2026-11-10T14:39:09.659Z",
     "ok": true,
-    "submitted": 18,
+    "submitted": 21,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 139,
+    "usedToday": 160,
     "log": [
-      "Indexing API: 18 to send (18 updated, 0 deleted); 121/200 used today (IST 2026-11-10).",
-      "Indexing API: sent 18."
+      "Indexing API: 21 to send (21 updated, 0 deleted); 139/200 used today (IST 2026-11-10).",
+      "Indexing API: sent 21."
     ]
   }
 }
