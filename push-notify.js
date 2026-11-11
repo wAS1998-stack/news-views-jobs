@@ -72,7 +72,12 @@ function jobCondition(job, lang) { return jobConditions(job, lang)[0]; }
 // when the app is already running in the background
 const CLICK = "in.newsviews.app.OPEN_ITEM";
 const fmtDate = (iso, hi) => { if (!iso) return ""; const d = new Date(iso + "T00:00:00Z"); return isNaN(d) ? "" : d.toLocaleDateString(hi ? "hi-IN" : "en-IN", { day: "numeric", month: "short", timeZone: "UTC" }); };
-const cut = (s, n) => (s.length > n ? s.slice(0, n - 1).trimEnd() + "…" : s);
+// shortened at a word boundary when one is near: "…(EHT Division) Recruitme…: 1 post" read badly on a lock screen
+const cut = (s, n) => {
+  if (s.length <= n) return s;
+  const head = s.slice(0, n - 1), sp = head.lastIndexOf(" ");
+  return (sp >= n * 0.6 ? head.slice(0, sp) : head).replace(/[\s,;:(–—-]+$/, "") + "…";
+};
 
 /* ---- notification copy (English / Hindi): what a candidate needs to decide whether to open it ---- */
 const STATE_HI = {
