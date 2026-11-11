@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-12",
-  "used": 114,
+  "used": 200,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -4494,5 +4494,9 @@
  "https://news-views.in/jobs/ggu-project-technical-support-iii-2026/": {
   "sentAt": "2026-11-11T18:59:17.004Z",
   "hash": "1b8d27a6f848"
+ },
+ "https://news-views.in/jobs/iiit-hyderabad-marketing-intern-2026/": {
+  "sentAt": "2026-11-11T22:16:31.915Z",
+  "hash": "c49aea816289"
  }
 }
