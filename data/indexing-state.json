@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-11",
-  "used": 97,
+  "used": 114,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -3626,5 +3626,73 @@
  "https://news-views.in/jobs/mgu-course-mentor-2026/": {
   "sentAt": "2026-11-11T03:03:14.549Z",
   "hash": "d1d4eedc553d"
+ },
+ "https://news-views.in/jobs/aau-accountant-cum-clerk-computer-programmer-2026/": {
+  "sentAt": "2026-11-11T06:26:10.047Z",
+  "hash": "4673436eed81"
+ },
+ "https://news-views.in/jobs/aiims-jodhpur-project-nurse-iii-general-2026/": {
+  "sentAt": "2026-11-11T06:26:10.292Z",
+  "hash": "199bdcc6adc3"
+ },
+ "https://news-views.in/jobs/appsc-group-2-executive-non-executive-2026/": {
+  "sentAt": "2026-11-11T06:26:10.500Z",
+  "hash": "fd0ec836a4e2"
+ },
+ "https://news-views.in/jobs/dibd-young-professional-2026/": {
+  "sentAt": "2026-11-11T06:26:10.810Z",
+  "hash": "8203f030d56f"
+ },
+ "https://news-views.in/jobs/dmrl-research-associate-2026/": {
+  "sentAt": "2026-11-11T06:26:11.023Z",
+  "hash": "f5607adef11b"
+ },
+ "https://news-views.in/jobs/gsvm-medical-college-faculty-walkin-professor-advt-271-0-2026/": {
+  "sentAt": "2026-11-11T06:26:11.246Z",
+  "hash": "c2b9169bc14d"
+ },
+ "https://news-views.in/jobs/icar-nipb-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T06:26:11.446Z",
+  "hash": "372595cbd5a6"
+ },
+ "https://news-views.in/jobs/iim-indore-deputy-general-manager-2026/": {
+  "sentAt": "2026-11-11T06:26:11.674Z",
+  "hash": "eb16aa969c18"
+ },
+ "https://news-views.in/jobs/iim-jammu-chief-administrative-officer-2026/": {
+  "sentAt": "2026-11-11T06:26:11.875Z",
+  "hash": "647838526175"
+ },
+ "https://news-views.in/jobs/iips-junior-research-scientist-walkin-2026/": {
+  "sentAt": "2026-11-11T06:26:12.097Z",
+  "hash": "114b9967532b"
+ },
+ "https://news-views.in/jobs/iiser-bhopal-institute-doctoral-fellow-biological-2026/": {
+  "sentAt": "2026-11-11T06:26:12.298Z",
+  "hash": "e6f5827a4d1a"
+ },
+ "https://news-views.in/jobs/indian-bank-ai-specialist-officer-2026/": {
+  "sentAt": "2026-11-11T06:26:12.513Z",
+  "hash": "2d6220b7e42b"
+ },
+ "https://news-views.in/jobs/indian-bank-consultant-information-technology-2026/": {
+  "sentAt": "2026-11-11T06:26:12.714Z",
+  "hash": "2fc45cb76f62"
+ },
+ "https://news-views.in/jobs/indian-bank-vice-president-assistant-vice-2026/": {
+  "sentAt": "2026-11-11T06:26:12.916Z",
+  "hash": "3b0293aa49f6"
+ },
+ "https://news-views.in/jobs/kvs-section-officer-finance-officer-2025/": {
+  "sentAt": "2026-11-11T06:26:13.114Z",
+  "hash": "fe07a0b77271"
+ },
+ "https://news-views.in/jobs/negd-non-technical-intern-2026/": {
+  "sentAt": "2026-11-11T06:26:13.319Z",
+  "hash": "ab0837962819"
+ },
+ "https://news-views.in/jobs/niftem-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T06:26:13.541Z",
+  "hash": "ecaad02d42a9"
  }
 }
