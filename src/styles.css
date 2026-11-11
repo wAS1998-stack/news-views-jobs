@@ -836,6 +836,7 @@ html[lang="hi"] h1 { line-height: 1.35; letter-spacing: 0; }
 .foot-latest li { padding: 4px 0; line-height: 1.35; }
 .foot-latest a { color: var(--ink); }
 .site-foot .foot-edu { margin: 0; width: 100%; }
+.site-foot .foot-note { margin: 8px 0 0; width: 100%; font-size: 12.5px; line-height: 1.5; color: var(--muted); }
 
 /* Telegram "join" call-to-action (shown only when the channel is set up) */
 .tg-cta { margin: 18px 0; }

@@ -52,3 +52,35 @@ test("_redirects: wildcard rules go last, or Cloudflare stops reading 100 rules 
   assert.strictEqual(capped.filter(B.isDynamicRedirect).length, 100);
   assert.strictEqual(capped.filter((l) => /\/jobs\/z\d+\/ 301$/.test(l)).length, 800, "specific redirects are kept");
 });
+
+const daysAgo = (n) => new Date(Date.now() + 5.5 * 3600e3 - n * 86400e3).toISOString().slice(0, 10);
+
+test("hasHiPage: a Hindi detail page only for open jobs and a week after the last date", () => {
+  const hi = { title: "भर्ती 2026" };
+  assert.strictEqual(B.hasHiPage({ hi, application_end: daysAgo(-10), published: daysAgo(2) }), true);
+  assert.strictEqual(B.hasHiPage({ hi, application_end: daysAgo(3), published: daysAgo(20) }), true);
+  assert.strictEqual(B.hasHiPage({ hi, application_end: daysAgo(30), published: daysAgo(50) }), false);
+  assert.strictEqual(B.hasHiPage({ application_end: daysAgo(-10), published: daysAgo(2) }), false);   // no Hindi version
+  assert.strictEqual(B.hasHiPage({ hi, published: daysAgo(5) }), true);                                // no last date: while it is fresh
+});
+
+test("fitToBudget: nothing leaves while the site fits; past the limit the oldest closed pages go, never an open job", () => {
+  const open = Array.from({ length: 5 }, (_, i) => ({ id: `open-${i}`, title: "Open", published: daysAgo(3), application_end: daysAgo(-20) }));
+  const closed = Array.from({ length: 30 }, (_, i) => ({ id: `closed-${i}`, title: "Closed", published: daysAgo(150 + i), application_end: daysAgo(100 + i) }));
+  const updates = Array.from({ length: 20 }, (_, i) => ({ id: `upd-${i}`, title: "Result", type: "result", date: daysAgo(101 + i * 2) }));
+  const roomy = B.fitToBudget([...open, ...closed], updates, 20000);
+  assert.strictEqual(roomy.jobs.size + roomy.updates.size, 0);
+  const tight = B.fitToBudget([...open, ...closed], updates, roomy.estimate - 25);
+  assert.strictEqual(tight.jobs.size + tight.updates.size, 25);                 // each of these costs one file
+  assert.ok(tight.estimate <= roomy.estimate - 25);
+  assert.ok(![...tight.jobs].some((id) => id.startsWith("open-")), "an open job was archived");
+  // oldest first: everything archived is older than everything kept
+  const when = new Map([...closed.map((j) => [j.id, j.application_end]), ...updates.map((u) => [u.id, u.date])]);
+  const gone = [...tight.jobs, ...tight.updates].map((id) => when.get(id)).sort();
+  const kept = [...when].filter(([id]) => !tight.jobs.has(id) && !tight.updates.has(id)).map(([, d]) => d).sort();
+  assert.ok(gone[gone.length - 1] <= kept[0], "a newer page was archived before an older one");
+  // even an impossible limit never removes open jobs
+  const impossible = B.fitToBudget([...open, ...closed], updates, 2100);
+  assert.strictEqual(impossible.jobs.size, 30);
+  assert.strictEqual(impossible.updates.size, 20);
+});

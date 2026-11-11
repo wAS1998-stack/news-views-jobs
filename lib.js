@@ -424,7 +424,7 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC_BASE = /\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b(?![^–—:]*\b(recruitment|vacanc\w*|non[- ]?teaching|faculty|assistant professors?|posts?)\b)[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresults?\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
+const OFF_TOPIC_BASE = /\b(recruitment|jobs?) notifications? list\b|\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b(?![^–—:]*\b(recruitment|vacanc\w*|non[- ]?teaching|faculty|assistant professors?|posts?)\b)[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresults?\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
 
 // Board, school and professional-course exams are not government jobs: ICAI/ICSI/ICMAI (CA, CS, CMA) exams, NIOS,
 // MSBTE, West Bengal Madhyamik / Uchcha Madhyamik, class 6/9/10/12 board exams and results, JNVST (Navodaya class 6/9
@@ -443,6 +443,11 @@ const OFF_TOPIC_EXAMS = new RegExp(RECRUIT_ANY + "(?:" + [
   `\\b(6th|9th|10th|11th|12th|matric|intermediate|inter|hsc|sslc|hslc|hse|puc|ii puc|plus two|\\+2) (board )?(annual |supplementary |compartment(al)? )?(exam(ination)? )?(results?|admit card|hall ticket|date ?sheet|time ?table|registration|exam form)\\b`,
   // student scholarships are not jobs ("ONGC Scholarship 2026-27: Students Can Get Rs. 48,000 Per Year")
   `\\bscholarships?\\b${NOT_RECRUIT}`,
+  // course admissions: "KNRUHS BHMS Allotment List - Management Quota", "Ayurveda and Allied Courses Phase 3 Provisional
+  // Allotment List", "AIIMS Fellowship Programme January 2027 - Apply Online for 93 Seats" (an allotment list of a
+  // recruitment - "IBPS Clerk Provisional Allotment List" - names no course, quota or seats and stays)
+  `\\ballotment\\b[^–—:]*\\b(quota|courses?|counsel+ing|seats?)\\b|\\b(courses?|quota|counsel+ing)\\b[^–—:]*\\ballotment\\b`,
+  `\\b(programme|program|courses?)\\b[^–—:]*\\b\\d+ seats\\b|\\b\\d+ seats\\b[^–—:]*\\b(programme|program|courses?)\\b`,
   `\\bjnvst\\b|\\bnavodaya\\b[^–—:]*\\b(class (6|9|vi|ix)|selection test|admission)\\b`,
   `\\b(mdu|kuk|crsu|cdlu|lnmu|brabu|bnmu|tmbu|vksu|csjmu|dbrau|mgkvp|vbspu|rmlau|mjpru|davv|rdvv|apsu|sppu|du sol|osmania university|kakatiya university|anna university)\\b[^–—:]*\\b(results?|admit card|hall ticket|exam form)\\b`,
 ].join("|") + ")", "i");
@@ -460,7 +465,7 @@ const isSpeculative = (rec = {}) => SPECULATIVE.test(String(rec.title || "")) &&
     off the site and the app. Tested on title + organisation. */
 const NON_GOVT = new RegExp([
   "manipal institute of technology|\\bmit manipal\\b|\\bramaiah (medical|institute|university|college|memorial)|mahayogi gorakhnath university|\\bmgug\\b|amrita vishwa vidyapeetham|\\bamrita (university|school|institute)\\b|\\bbits pilani\\b|birla institute of technology (and|&) science|\\bchrist (university|\\(deemed)|^christ \\(|graphic era|nirma university|vinayaka mission|\\bvmrf\\b|manipal academy|\\bsrm (institute|university)\\b|vellore institute of technology|\\bvit (university|vellore|chennai|bhopal|ap)\\b|\\bamity (university|school|institute)\\b|lovely professional university|chandigarh university|sharda university|galgotias|symbiosis|\\bnmims\\b|shiv nadar|ashoka university|jindal global|thapar institute|\\bkiit\\b|kalinga institute of industrial|siksha ['‘’]?o['‘’]? anusandhan|sathyabama|saveetha|d\\.? ?y\\.? patil|bharati vidyapeeth|datta meghe|jain (deemed|university)|chitkara university|university of petroleum (and|&) energy studies|sri ramachandra|karunya|kalasalingam|hindustan institute of technology|koneru lakshmaiah|\\bgitam\\b|mit world peace|manav rachna|noida international university",
-  "south indian bank|federal bank|karur vysya|city union bank|tamil ?nadu? mercantile|\\bcsb bank|catholic syrian bank|dhan(a)?la(x|k)shmi bank|karnataka bank|hdfc bank|icici bank|axis bank|kotak mahindra|indusind|\\byes bank|\\brbl bank|bandhan bank|idfc first|\\bau small finance|equitas|ujjivan|suryoday|jana small finance|utkarsh small finance|\\bdcb bank|urban co-?operative bank",
+  "\\bmahesh (co-?operative )?(urban )?bank\\b|south indian bank|federal bank|karur vysya|city union bank|tamil ?nadu? mercantile|\\bcsb bank|catholic syrian bank|dhan(a)?la(x|k)shmi bank|karnataka bank|hdfc bank|icici bank|axis bank|kotak mahindra|indusind|\\byes bank|\\brbl bank|bandhan bank|idfc first|\\bau small finance|equitas|ujjivan|suryoday|jana small finance|utkarsh small finance|\\bdcb bank|urban co-?operative bank",
   "\\bpvt\\.? ?ltd\\b|\\bprivate limited\\b|\\(p\\) ?ltd\\b|\\bm\\/s\\.? |sbc exports|\\bdav (public school|college managing|cmc)|delhi public school|nilachal seva pratisthan|surjeet memorial college|muktisar institute of higher education|\\bngos?\\b|non[- ]governmental organi[sz]ation",
 ].join("|"), "i");
 const isNonGovt = (job = {}) => NON_GOVT.test(`${job.title || ""} | ${job.organization || ""}`);
@@ -773,6 +778,19 @@ function toText(v, key = "") {
 }
 const isoDate = (v) => { const m = String(v || "").match(/^(\d{4})-(\d{2})-(\d{2})/); return m && !isNaN(Date.parse(m[0])) ? m[0] : null; };
 const toNum = (v) => { if (typeof v === "number" && isFinite(v)) return v; const m = String(v ?? "").replace(/,/g, "").match(/\d+(\.\d+)?/); return m ? Number(m[0]) : null; };
+/** An FAQ answer that guesses ("the notice does not mention a fee, so it is assumed to be free"): the site states only
+    what the notice states, so the guess is cut and the fact kept ("The notice does not mention a fee. Please confirm
+    in the official notification."); an answer that is nothing but a guess is dropped. "The fee is nil for SC/ST" is a fact. */
+const FAQ_GUESS = /\b(assumed to be|it is (likely|assumed|presumed|probable) that|presumably|most likely|may be (null|nil|free)\b|is null\b)/i;
+function faqFacts(list) {
+  return (Array.isArray(list) ? list : []).map((f) => {
+    if (!f || !FAQ_GUESS.test(String(f.a))) return f;
+    const fact = String(f.a).split(/[,;]\s*(?:so|hence|thus|therefore|suggesting|indicating|which suggests|and so)\b/i)[0].trim().replace(/[.,;]+$/, "");
+    return /\b(does not|doesn't|no\b[^.]*\bis) (mention|specify|state|mentioned|specified|stated)/i.test(fact) && !FAQ_GUESS.test(fact)
+      ? { ...f, a: `${fact}. Please confirm in the official notification.` } : null;
+  }).filter(Boolean);
+}
+const daysBetween = (a, b) => (new Date(String(b).slice(0, 10) + "T00:00:00Z") - new Date(String(a).slice(0, 10) + "T00:00:00Z")) / 86400000;
 /** Age given per post ({"Scientist": 45, "YP II": 35}): the widest range across the posts. */
 function ageNum(v, pick) {
   if (v && typeof v === "object" && !Array.isArray(v)) { const ns = Object.values(v).map(toNum).filter((n) => n && n > 0); return ns.length ? pick(...ns) : null; }
@@ -789,7 +807,15 @@ function sanitizeJob(j) {
   if (o.total_vacancies != null) { const n = toNum(o.total_vacancies); if (n) o.total_vacancies = Math.round(n); else delete o.total_vacancies; }
   if (o.age_min != null) { const n = ageNum(o.age_min, Math.min); if (n) o.age_min = n; else delete o.age_min; }
   if (o.age_max != null) { const n = ageNum(o.age_max, Math.max); if (n) o.age_max = n; else delete o.age_max; }
+  // An age limit nobody sets is an extraction slip (a pay level or "10 years' experience" read as an age: pages showed
+  // "Age limit 10–56 years"): no government post starts under 14 (the Apprentices Act minimum) or ends over 70.
+  if (o.age_min != null && (o.age_min < 14 || o.age_min > 65)) delete o.age_min;
+  if (o.age_max != null && (o.age_max < 15 || o.age_max > 70)) delete o.age_max;
+  if (o.age_min != null && o.age_max != null && o.age_min > o.age_max) { delete o.age_min; delete o.age_max; }
+  // A last date more than a year after publication is a standing scheme or a misread year, not a deadline to show.
+  if (o.application_end && o.published && daysBetween(o.published, o.application_end) > 366) delete o.application_end;
   if (o.faq != null) o.faq = (Array.isArray(o.faq) ? o.faq : []).filter((f) => f && f.q && f.a).map((f) => ({ q: toText(f.q), a: toText(f.a) }));
+  if (o.faq != null) o.faq = faqFacts(o.faq);
   if (o.notice_status != null && !NOTICE_STATUS.has(String(o.notice_status))) { delete o.notice_status; delete o.status_note; delete o.status_link; delete o.status_date; delete o.status_update; }
   for (const k of Object.keys(o)) if (o[k] === "" || o[k] === null || o[k] === undefined) delete o[k];
   return o;

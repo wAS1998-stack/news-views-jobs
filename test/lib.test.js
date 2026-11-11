@@ -145,3 +145,31 @@ test("saveUpdates moves the overflow to the archive, once per id", () => {
   assert.strictEqual(JSON.parse(fs.readFileSync(file, "utf8")).length, 5);
   fs.rmSync(dir, { recursive: true, force: true });
 });
+
+test("filters: a private urban co-operative bank, course allotment lists, programme seats and roundup lists are not jobs", () => {
+  assert.strictEqual(L.isNonGovt({ title: "AP Mahesh Bank Chief Compliance Officer in DGM Cadre Recruitment 2026", organization: "AP Mahesh Co-operative Urban Bank" }), true);
+  assert.strictEqual(L.isNonGovt({ title: "Kangra DCCB Clerk Recruitment 2026", organization: "Kangra Central Co-operative Bank (DCCB)" }), false);
+  for (const t of ["KNRUHS BHMS Allotment List 2026-27 Out - Download Management Quota PDF", "Kerala Ayurveda and Allied Courses Phase 3 Provisional Allotment List 2026 Out",
+    "AIIMS Fellowship Programme January 2027 - Apply Online for 93 Seats", "Metro Rail Jobs 2026 - Latest Recruitment Notifications List"]) assert.strictEqual(L.OFF_TOPIC.test(t), true, t);
+  for (const t of ["IBPS Clerk Provisional Allotment List 2026", "RRB NTPC Zone Allotment List 2026 Out", "ITI Apprentice Training Programme 2026 - 500 Seats",
+    "Metro Rail Recruitment 2026 – Apply Online for 120 Posts"]) assert.strictEqual(L.OFF_TOPIC.test(t), false, t);
+});
+
+test("sanitizeJob: impossible ages and a deadline over a year away are dropped; a guessed FAQ answer keeps only its fact", () => {
+  const j = L.sanitizeJob({ title: "X Recruitment 2026", published: "2026-10-21", application_end: "2028-01-01", age_min: 10, age_max: 56,
+    faq: [{ q: "Is there a fee?", a: "The notification does not mention any application fee, so it is assumed to be free." },
+      { q: "What is the fee?", a: "The application fee is nil for SC/ST and Rs. 500 for others." },
+      { q: "When is the exam?", a: "It is likely that the exam will be held in December." }] });
+  assert.strictEqual(j.age_min, undefined);
+  assert.strictEqual(j.age_max, 56);
+  assert.strictEqual(j.application_end, undefined);
+  assert.deepStrictEqual(j.faq.map((f) => f.a), ["The notification does not mention any application fee. Please confirm in the official notification.",
+    "The application fee is nil for SC/ST and Rs. 500 for others."]);
+  const k = L.sanitizeJob({ title: "Y", published: "2026-10-21", application_end: "2026-11-30", age_min: 18, age_max: 75 });
+  assert.strictEqual(k.application_end, "2026-11-30");
+  assert.strictEqual(k.age_min, 18);
+  assert.strictEqual(k.age_max, undefined);
+  const m = L.sanitizeJob({ title: "Z", age_min: 40, age_max: 30 });
+  assert.strictEqual(m.age_min, undefined);
+  assert.strictEqual(m.age_max, undefined);
+});

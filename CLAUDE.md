@@ -62,6 +62,9 @@ hurting users or breaking Google's policies.
 - A last date before publication is either a closed notice (skip it) or the extraction template "1–31 January" (drop the
   dates). Closed jobs never show an Apply button, are never pushed or posted to Telegram.
 - **Never delete a page without a redirect.** Retired job IDs go in `data/redirects.json` and are never re-added.
+  `_redirects` is written by `orderRedirects()` (build.js): plain rules first, wildcard rules ("/author/*") LAST —
+  Cloudflare counts every rule after the first wildcard as "dynamic" and stops after 100 (on Nov 11 two wildcard rules
+  at line 171 had silently switched off the 380 rules below them; retired pages answered 404).
   Retiring a record = add the English AND Hindi redirect AND remove it from jobs.json/updates.json (the build ignores a
   redirect while the page still exists). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
   move to `data/updates-archive.json` via `L.saveUpdates` and their pages stay live.
@@ -73,7 +76,13 @@ hurting users or breaking Google's policies.
   `--write`). Items rejected after the AI read them are remembered 14 days in `data/fetch-skipped.json` (no repeat AI cost).
 - **Cancelled/postponed recruitments:** a matching cancellation notice (same year, exactly one job) sets `notice_status`,
   `status_note`, `status_link`; the job stays live as a page with a red banner, loses JobPosting and its Apply button.
-- **Filters:** `OFF_TOPIC` also rejects board/professional exams (ICAI/CA/CS/CMA, NIOS, MSBTE, Madhyamik, class 6–12
+- **Sanitiser guards (`sanitizeJob`):** an age limit under 14 or over 70 is dropped (pay levels read as ages), a last
+  date more than a year after publication is dropped, and an FAQ answer that guesses ("…so it is assumed to be free")
+  keeps only its stated fact (`faqFacts`). The app feed carries only jobs with an official link of some kind (`ctaOf`;
+  a job without one may use the same organisation's website from its other notices, `orgHomeOf`), and never passes an
+  aggregator page as an update's `link`.
+- **Filters:** `OFF_TOPIC` also rejects course allotment lists ("…Allotment List – Management Quota"), "programme … N
+  seats" admissions and roundup articles ("… Recruitment Notifications List"), and board/professional exams (ICAI/CA/CS/CMA, NIOS, MSBTE, Madhyamik, class 6–12
   boards, JNVST) unless the headline has any recruitment word; speculative "expected/soon/release date" updates need an
   official PDF or deep link. `qualsOf` returns `[]` for unknown (any qualification; push routes it to `q-graduate`).
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
@@ -81,6 +90,15 @@ hurting users or breaking Google's policies.
   reads only the LAST commit of a push: if a push carries site changes, its last commit must not have the skip flag
   (a skip-flagged last commit silently leaves the earlier site changes undeployed until the next unflagged push), and a
   push that changes only docs such as CLAUDE.md is not built either — the "Cloudflare Pages" check on the commit shows it.
+- **File budget (Cloudflare Pages deploys at most 20,000 files; each job costs up to 4):** `fitToBudget()` in build.js
+  estimates the build and, past `maxFiles` (config, default 20000 — set 100000 after upgrading the Cloudflare plan),
+  leaves the longest-closed job pages and oldest update pages out of the BUILD, oldest first, never an open job
+  (records stay in data/; their addresses get the "archived" page `/jobs/404.html` / `/updates/404.html`, status 404).
+  Optional files are limited: share images only for the newest 700 open jobs + 200 updates (`ogMaxJobs`,
+  `ogMaxUpdates`; also keeps the Cloudflare build well under its 20-minute limit), Hindi job pages only while a job is
+  open and `hiClosedDays` (7) after (`hasHiPage`; later `/hi/jobs/404.html` forwards to the English page — link a
+  Hindi job page only through `hasHiPage`). Pages left out on purpose never become `_redirects` rules. The build must
+  never throw for size (update-jobs.yml discards a run's data when the build fails). `version.json` reports `files`.
 - **Crawl budget:** organisation pages with fewer than 3 listings are noindex (`minOrgIndex`); Hindi job/update detail
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason. AI
   "-explained" analysis twins are off (`maxAnalysisPerRun` 0); existing ones are noindex with a self canonical (never
@@ -155,6 +173,11 @@ hurting users or breaking Google's policies.
 - Action logs can't be downloaded; workflows write what's needed into committed files (`data/last-run.json` etc.).
 - `git pull --rebase` before pushing — the bots commit data every run.
 - Test locally with `node build.js` (no network needed) and open files in `dist/`.
+- **The live site cannot be reached from the sandbox.** Check it through Actions: dispatch `check-live.yml`
+  (`gh api -X POST repos/OWNER/REPO/actions/workflows/check-live.yml/dispatches -f ref=main -F "inputs[full]=true"`),
+  then read `data/live-report.json` (`tools-dev/live-check.js`: build stamp, core files, app feed, 404, redirects, ~55
+  sitemap pages, headers, relay; `full` also requests every URL in `data/known-urls.json` — each must answer 200 or
+  301, never 404). Run it after any change to redirects, robots, headers or the feed.
 
 ## Secrets (names only; the owner sets them in GitHub → Settings → Secrets → Actions)
 `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_SERVICE_ACCOUNT_JSON`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID`,

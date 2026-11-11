@@ -42,7 +42,8 @@ const BUILD_ID = `${(process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA |
 try {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
   for (const k of ["url", "email", "adsenseId", "adsenseSlot", "admob", "appAds", "brand", "name", "tagline", "staleDays",
-    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl", "adsenseSlots", "appMinVersion"]) {
+    "adsTxtExtra", "webAdsHead", "crawlHindiDetail", "minOrgIndex", "minComboJobs", "androidCertSha256", "trackingSince", "sitemapHindi", "sitemapClosedDays", "homeMax", "playUrl", "adsenseSlots", "appMinVersion",
+    "ogMaxJobs", "ogMaxUpdates", "hiClosedDays", "maxFiles"]) {
     if (cfg[k] !== undefined && cfg[k] !== "") SITE[k] = cfg[k];
   }
   if (SITE.url) SITE.url = SITE.url.replace(/\/$/, "");
@@ -162,6 +163,16 @@ function isStale(job) {
   const d = daysLeft(job.application_end);
   if (d === null) { const a = ageDays(job.published); return a !== null && a > STALE_DAYS * 2; }
   return d < -STALE_DAYS;
+}
+/* Cloudflare Pages deploys at most 20,000 files, and every job costs up to four (page, Hindi page, app feed file,
+   share image) — at 100 new jobs a day the site would stop deploying within weeks. So the optional files exist only
+   while they are useful. The Hindi detail page (not crawlable: robots.txt) is written for open jobs and for
+   HI_CLOSED_DAYS after the last date; later its URL is answered by /hi/jobs/404.html, which forwards to the English page. */
+const HI_CLOSED_DAYS = Number(SITE.hiClosedDays ?? 7);
+function hasHiPage(job) {
+  if (!(job && job.hi && job.hi.title)) return false;
+  const d = daysLeft(job.application_end);
+  return d === null ? !isStale(job) : d >= -HI_CLOSED_DAYS;
 }
 // Listing order: jobs still accepting applications first (newest first), recently closed ones after them.
 const liveFirst = (a, b) => (statusOf(a).cls === "closed") - (statusOf(b).cls === "closed") || (b.published || "").localeCompare(a.published || "");
@@ -485,10 +496,13 @@ const ogImage = (file) => OG_SET.has(file) ? `${SITE.url}/${file}` : undefined;
 function makeShareImages(jobs, updates) {
   if (process.env.GITHUB_ACTIONS || !(process.env.CF_PAGES || process.env.OG === "1")) return;
   const fact = (n, w) => n ? `${inr(n)} ${w}` : "";
+  // Optional files (see hasHiPage): only what is being shared now gets its own image — open jobs, newest first, and
+  // the newest updates; every other page uses /og.png. Also keeps the Cloudflare build short.
+  const newest = (a, b) => String(b.published || b.date || "").localeCompare(String(a.published || a.date || ""));
   const items = [
-    ...jobs.filter((j) => !isStale(j)).map((j) => ({ file: `og/jobs/${j.id}.png`, kicker: `${orgKey(j) || "Govt job"} · Recruitment`, title: j.title,
+    ...jobs.filter((j) => statusOf(j).live).sort(newest).slice(0, OG_MAX_JOBS).map((j) => ({ file: `og/jobs/${j.id}.png`, kicker: `${orgKey(j) || "Govt job"} · Recruitment`, title: j.title,
       facts: [fact(Number(j.total_vacancies), Number(j.total_vacancies) === 1 ? "post" : "posts"), j.application_end ? `Last date ${fmtDate(j.application_end)}` : "", levelsOf(j)[0] || ""] })),
-    ...updates.filter((u) => UPDATE_TYPES[u.type]).slice(0, 400).map((u) => ({ file: `og/updates/${u.id}.png`, kicker: `${u.org_short || "Update"} · ${UPDATE_TYPES[u.type].label}`,
+    ...updates.filter((u) => UPDATE_TYPES[u.type]).slice(0, OG_MAX_UPDATES).map((u) => ({ file: `og/updates/${u.id}.png`, kicker: `${u.org_short || "Update"} · ${UPDATE_TYPES[u.type].label}`,
       title: u.title, facts: [UPDATE_TYPES[u.type].label, u.date ? fmtDate(String(u.date).slice(0, 10)) : ""] })),
   ];
   const manifest = path.join(require("os").tmpdir(), `nv-og-${process.pid}.json`);
@@ -549,6 +563,7 @@ function foot() {
     <a href="/feed.xml">RSS</a>${TG ? `\n    <a href="${esc(TG.link)}" target="_blank" rel="noopener">Telegram</a>` : ""}
   </span>
   <p class="foot-edu">${QUALS.map((q) => `<a href="/qualification/${q.slug}/">${esc(q.name)} jobs</a>`).join(" &middot; ")}</p>
+  <p class="foot-note">${esc(SITE.brand)} is an independent information website. It is not a government website and is not affiliated with any government body or recruiting organisation. Always confirm details on the official website before you apply. <span lang="hi">यह एक स्वतंत्र सूचना वेबसाइट है — कोई सरकारी वेबसाइट नहीं है और किसी सरकारी संस्था से संबद्ध नहीं है।</span></p>
 </div></footer>
 <script src="/site.js?v=${ASSET_V["site.js"]}" defer></script>
 </body></html>`;
@@ -1731,6 +1746,25 @@ const CTA_TEXT = {
     hintWebsite: "नोटिस में सीधा आवेदन पेज नहीं है — ऑफिशियल वेबसाइट के Recruitment / Careers सेक्शन में देखें। तरीका नीचे दिया है।",
     notif: "नोटिफिकेशन PDF", site: "ऑफिशियल वेबसाइट", modes: { online: "ऑनलाइन", offline: "ऑफलाइन (डाक / स्वयं)", walkin: "वॉक-इन इंटरव्यू", email: "ईमेल से", unknown: "" } },
 };
+/* The official website the same organisation's other notices gave (exact organisation name, most frequent host):
+   the button of a job whose own notice gave no official link at all. Never guessed from a name. */
+let ORG_HOME = null;
+const orgNameKey = (s) => String(s || "").toLowerCase().replace(/\(.*?\)/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+function orgHomeOf(job) {
+  if (!ALL_JOBS.length) return "";   // before the build has loaded its data (tests, helpers)
+  if (!ORG_HOME) {
+    const votes = new Map();
+    for (const j of ALL_JOBS) {
+      const k = orgNameKey(j.organization), h = j.official_website ? hostOf(j.official_website) : "";
+      if (k.length < 8 || !h || LIB.isAggregator(h)) continue;
+      if (!votes.has(k)) votes.set(k, new Map());
+      votes.get(k).set(h, (votes.get(k).get(h) || 0) + 1);
+    }
+    ORG_HOME = new Map([...votes].map(([k, m]) => [k, [...m].sort((x, y) => y[1] - x[1])[0][0]]));
+  }
+  const h = ORG_HOME.get(orgNameKey(job.organization));
+  return h ? `https://${h}/` : "";
+}
 function ctaOf(job) {
   const a = LIB.applyInfo(job);
   if (a.cta) return a;
@@ -1738,6 +1772,8 @@ function ctaOf(job) {
   const home = LIB.hostFromTitle(job.title) ? `https://${LIB.hostFromTitle(job.title)}/` : LIB.officialHomeFor(job.title);
   if (home) return { ...a, cta: "website", url: home };
   if (job.source && !LIB.isAggregator(hostOf(job.source))) return { ...a, cta: "notice", url: job.source };
+  const sibling = orgHomeOf(job);
+  if (sibling) return { ...a, cta: "website", url: sibling };
   return a;
 }
 function ctaHtml(job, lang = "en", { hint = true } = {}) {
@@ -1806,10 +1842,10 @@ function buildJob(job, all) {
   const elig = eligibilityProse(job);
   const between = !!(selection || salaryProse(job) || steps);   // a content block between job-mid and the Apply bar
 
-  const hiAlt = job.hi && job.hi.title ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/jobs/${job.id}/` } : {};
+  const hiAlt = hasHiPage(job) ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/jobs/${job.id}/` } : {};
   return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt }) + `
 <main class="wrap" id="main">
-  ${job.hi && job.hi.title ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
+  ${hasHiPage(job) ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
   <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${st1 ? `<a href="/state/${st1.slug}/">${esc(st1.name)} govt jobs</a> &nbsp;&rsaquo;&nbsp; ` : ""}${ORG_PAGES.has(slug(orgKey(job)))
     ? `<a href="/organization/${slug(orgKey(job))}/">${esc(orgKey(job))}</a>`
     : esc(orgKey(job) || job.organization)}</p>
@@ -1972,13 +2008,83 @@ const appArr = (x) => (Array.isArray(x) ? x.filter(Boolean).map(String) : x ? [S
 const appStr = (x) => (x == null || typeof x === "object" ? "" : String(x));
 const appFaq = (x) => (Array.isArray(x) ? x.filter((f) => f && f.q && f.a).map((f) => ({ q: String(f.q), a: String(f.a) })) : []);
 function appStates(job) { return isGulf(job) ? ["gulf"] : statesOf(job).map((st) => st.slug); }
+const inAppFeed = (j) => { if (isStale(j) || isGulf(j)) return false; const d = daysLeft(j.application_end); return statusOf(j).live || (d !== null && d >= -15); };
+const appFeedCutoff = () => new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
 function appJobsInFeed(jobs) {
   // the app is "Govt Job Alerts": overseas (Gulf) jobs are private, so they stay on the website's labelled Gulf section only
-  return jobs.filter((j) => { if (isStale(j) || isGulf(j)) return false; const d = daysLeft(j.application_end); return statusOf(j).live || (d !== null && d >= -15); }).sort(liveFirst);
+  // ...and a job whose notice gave no official link of any kind waits until one is found (apply-links.js): the app
+  // and its alerts only carry jobs a candidate can check at the source
+  return jobs.filter((j) => inAppFeed(j) && ctaOf(j).url).sort(liveFirst);
 }
 function appUpdatesInFeed(updates) {
-  const cutoff = new Date(BUILT.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  const cutoff = appFeedCutoff();
   return updates.filter((u) => UPDATE_TYPES[u.type] && appDay(u.date) >= cutoff).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+/* ---- The file budget -------------------------------------------------------------------------------------------
+   Cloudflare Pages deploys at most 20,000 files (free plan; 100,000 on a paid plan — then set "maxFiles": 100000 in
+   config.json). Every job costs up to four files (page, Hindi page, app feed file, share image) and every update up
+   to four, and the site adds about 100 jobs and 40 updates a day, so without a budget a deployment would one day be
+   refused and the site would stop updating. fitToBudget() estimates the files of this build; when the estimate
+   passes the limit, the longest-closed jobs and the oldest updates leave the BUILD, oldest first (never an open
+   job): their records stay in data/, their addresses get the "archived" page (/jobs/404.html, /updates/404.html).
+   So the site always keeps as much history as fits, and a build never fails for size. */
+const MAX_FILES = Math.max(2000, Number(SITE.maxFiles) || 20000);
+const FILES_RESERVE = 3500;   // hubs, organisation/state/exam/news/tool/quiz pages and assets (about 1,400 today) + headroom
+const OG_MAX_JOBS = Number(SITE.ogMaxJobs ?? 700), OG_MAX_UPDATES = Number(SITE.ogMaxUpdates ?? 200);
+function fileCost(kind, x, feedCutoff) {
+  if (kind === "job") return 1 + (hasHiPage(x) ? 1 : 0) + (inAppFeed(x) ? 1 : 0);
+  return 1 + (x.hi && x.hi.title ? 1 : 0) + (UPDATE_TYPES[x.type] && appDay(x.date) >= feedCutoff ? 1 : 0);
+}
+function fitToBudget(jobs, updates, maxFiles = MAX_FILES) {
+  const cut = appFeedCutoff(), day = (v) => String(v || "").slice(0, 10);
+  const og = Math.min(jobs.filter((j) => statusOf(j).live).length, OG_MAX_JOBS) + Math.min(updates.length, OG_MAX_UPDATES);
+  let total = FILES_RESERVE + og + jobs.reduce((n, j) => n + fileCost("job", j), 0) + updates.reduce((n, u) => n + fileCost("update", u, cut), 0);
+  const out = { jobs: new Set(), updates: new Set(), estimate: total, limit: maxFiles, newest: "" };
+  if (total <= maxFiles) return out;
+  const cand = [
+    ...jobs.filter((j) => !statusOf(j).live).map((j) => ({ job: true, id: j.id, at: day(j.application_end) || day(j.published) || "0000", cost: fileCost("job", j) })),
+    ...updates.map((u) => ({ job: false, id: u.id, at: day(u.date) || "0000", cost: fileCost("update", u, cut) })),
+  ].sort((a, b) => a.at.localeCompare(b.at));
+  for (const c of cand) {
+    if (total <= maxFiles) break;
+    (c.job ? out.jobs : out.updates).add(c.id); total -= c.cost; out.newest = c.at;
+  }
+  out.estimate = total;
+  return out;
+}
+let ARCHIVED_PAGES = { jobs: new Set(), updates: new Set() };   // what this build left out to fit the budget
+/** The page shown for an address that is no longer built: a closed recruitment whose page was archived, a retired page
+    beyond the redirect limit, or a mistyped link. Cloudflare Pages serves the nearest 404.html, with status 404 — which
+    is also what Google asks for when a job posting has expired. The Hindi ones forward to the English address. */
+function buildArchived(kind) {
+  const job = kind === "jobs";
+  return head({ title: `${job ? "This recruitment page is no longer available" : "This update is no longer available"} | ${SITE.name}`,
+    desc: job ? "The recruitment has closed and its page was archived, or the link is wrong." : "The update was archived, or the link is wrong.",
+    canonical: `${SITE.url}/${kind}/`, ld: [], noAds: true, noindex: true }) + `
+<main class="wrap" id="main">
+  <section class="hero">
+    <p class="eyebrow">${job ? "Recruitment closed" : "Update archived"}</p>
+    <h1>${job ? "This recruitment page is no longer available" : "This update is no longer available"}</h1>
+    <p>${job ? "The recruitment has closed and its page was archived, or the link is wrong. Open government jobs are listed here, newest first."
+      : "This result, admit card or exam notice is an old one and its page was archived, or the link is wrong. The latest ones are listed here."}</p>
+    <div class="apply-bar"><a class="btn btn-primary" href="${job ? "/jobs/" : "/updates/"}">${job ? "See all open jobs" : "See the latest updates"}</a> <a class="btn btn-ghost" href="/latest/">New this week</a></div>
+  </section>
+</main>` + foot();
+}
+function buildArchivedHi(kind) {
+  const job = kind === "jobs";
+  return head({ lang: "hi", title: `${job ? "यह भर्ती पेज अब उपलब्ध नहीं है" : "यह अपडेट अब उपलब्ध नहीं है"} | ${SITE.name}`,
+    desc: "यह हिंदी पेज हटा दिया गया है; जानकारी अंग्रेज़ी पेज पर देखें।", canonical: `${SITE.url}/hi/`, ld: [], noAds: true, noindex: true }) + `
+<main class="wrap" id="main">
+  <section class="hero">
+    <p class="eyebrow">${job ? "सरकारी नौकरी" : "अपडेट"}</p>
+    <h1>${job ? "यह हिंदी पेज अब उपलब्ध नहीं है" : "यह अपडेट अब हिंदी में उपलब्ध नहीं है"}</h1>
+    <p>${job ? "आवेदन की अंतिम तिथि निकल जाने के बाद भर्ती का हिंदी पेज हटा दिया जाता है। पूरी जानकारी अंग्रेज़ी पेज पर है।" : "पुराने अपडेट का हिंदी पेज हटा दिया गया है। जानकारी अंग्रेज़ी पेज पर है।"}</p>
+    <div class="apply-bar"><a class="btn btn-primary" id="en-link" href="/${kind}/">अंग्रेज़ी पेज खोलें</a> <a class="btn btn-ghost" href="/hi/">नई सरकारी नौकरियाँ</a></div>
+  </section>
+</main>
+<script>(function(){var m=location.pathname.match(/^\/hi\/(jobs|updates)\/([a-z0-9-]+)\/?$/);if(!m)return;var u="/"+m[1]+"/"+m[2]+"/";var a=document.getElementById("en-link");if(a)a.href=u;location.replace(u);})();</script>` + foot();
 }
 /* Categories the app lets people browse and filter by (sent in the feed, so they can change without an app update).
    A job can be in more than one (BPSC teacher recruitment = PSC + Teaching). */
@@ -2095,7 +2201,7 @@ function appUpdateDetail(u) {
     id: u.id, url: `${SITE.url}/updates/${u.id}/`, type: u.type, type_name: (UPDATE_TYPES[u.type] || {}).label || "Update", title: u.title,
     organization: u.organization || "", org_short: u.org_short || "", exam_name: u.exam_name || "", date: appDay(u.date), event_date: appDay(u.event_date),
     summary: u.summary || "", steps: appArr(u.steps), details: appArr(u.details), faq: appFaq(u.faq),
-    official_link: u.official_link || "", official_website: u.official_website || "", link: u.link || "",
+    official_link: u.official_link || "", official_website: u.official_website || "", link: u.link && !LIB.isAggregator(hostOf(u.link)) ? u.link : "",
     src_host: srcHostOf(u), upd: updatedOf(u) || appDay(u.date),
     hi: h.title ? { title: h.title, summary: h.summary || u.summary_hi || "", steps: appArr(h.steps), details: appArr(h.details), faq: appFaq(h.faq) } : null,
   });
@@ -2692,6 +2798,15 @@ function main() {
   { const seen = new Set(); for (let i = jobs.length - 1; i >= 0; i--) {
       if (seen.has(jobs[i].id)) jobs.splice(i, 1); else seen.add(jobs[i].id);
   } }
+  // The file budget (fitToBudget): what does not fit Cloudflare's limit leaves this build, oldest closed first.
+  { const upd0 = readUpdates(); const updAll = [...upd0, ...readUpdatesArchive(upd0)];
+    const fit = fitToBudget(jobs, updAll);
+    ARCHIVED_PAGES = { jobs: fit.jobs, updates: fit.updates };
+    if (fit.jobs.size || fit.updates.size) {
+      for (let i = jobs.length - 1; i >= 0; i--) if (fit.jobs.has(jobs[i].id)) jobs.splice(i, 1);
+      console.log(`File budget: ${fit.jobs.size} closed job page(s) and ${fit.updates.size} update page(s) archived (everything up to ${fit.newest}) to fit ${fit.limit} files; estimate now ${fit.estimate}.`);
+    } else console.log(`File budget: about ${fit.estimate} of ${fit.limit} files.`);
+  }
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
@@ -2758,8 +2873,8 @@ function main() {
   const guides = readGuides();
   ALL_GUIDES = guides;
   ALL_JOBS = jobs;
-  const updates = readUpdates();
-  const archivedUpdates = readUpdatesArchive(updates);
+  const updates = readUpdates().filter((u) => !ARCHIVED_PAGES.updates.has(u.id));
+  const archivedUpdates = readUpdatesArchive(updates).filter((u) => !ARCHIVED_PAGES.updates.has(u.id));
   const allUpdates = [...updates, ...archivedUpdates].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   ARCHIVED_UPD = new Set(archivedUpdates.map((u) => u.id));
   ALL_UPDATES = allUpdates;
@@ -2801,12 +2916,12 @@ function main() {
   write("updates/index.html", buildUpdatesIndex(updates));
   for (const u of allUpdates) write(`updates/${u.id}/index.html`, buildUpdatePage(u, updates));
   for (const k of Object.keys(UPDATE_TYPES)) write(`updates/${k}/index.html`, buildUpdateTypeIndex(k, updates.filter((u) => u.type === k)));
-  const HINDI = require("./hindi.js").buildHindi({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates: allUpdates, archivedUpdateIds: ARCHIVED_UPD, STATES, QUALS, statesOf, qualsOf, keyFacts, ctaHtml,
+  const HINDI = require("./hindi.js").buildHindi({ hiPageOk: hasHiPage, head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, statusOf, daysLeft, isStale, adSlot, jobs, updates: allUpdates, archivedUpdateIds: ARCHIVED_UPD, STATES, QUALS, statesOf, qualsOf, keyFacts, ctaHtml,
     shareRow, jobShareText, oneStateOf, statusBanner, srcHostOf, updatedOf });
   HI_BROWSE = HINDI.hiBrowse;
   for (const hp of HINDI.pages) write(hp.path, hp.html);
   console.log(`Hindi: ${HINDI.hiJobIds.size} job + ${HINDI.hiUpdIds.size} update page(s) + hubs.`);
-  const EXAMP = require("./exams.js").buildExamPages({ head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates: allUpdates, hiDate: require("./hindi.js").hiDate });
+  const EXAMP = require("./exams.js").buildExamPages({ hiPageOk: hasHiPage, head, foot, esc, SITE, BUILT, breadcrumbLd, faqLd, faqSection, fmtDate, statusOf, adSlot, jobs, updates: allUpdates, hiDate: require("./hindi.js").hiDate });
   for (const ep of EXAMP.pages) write(ep.path, ep.html);
   console.log(`Exams: ${EXAMP.pages.filter((p) => !p.path.startsWith("hi/")).length - 1} exam hub(s) + ${EXAMP.pages.filter((p) => p.path.startsWith("hi/")).length - 1} Hindi.`);
   write("latest/index.html", buildLatestPage(activeJobs));
@@ -2861,6 +2976,12 @@ function main() {
   if (thinOrgs) console.log(`Organisation pages: ${thinOrgs} with fewer than ${MIN_ORG_INDEX} listings kept out of the index.`);
 
   write("404.html", build404());
+  // Cloudflare Pages answers a missing address with the nearest 404.html: closed recruitments and old updates whose
+  // pages are no longer built get a page that says so; missing Hindi detail pages forward to the English page.
+  write("jobs/404.html", buildArchived("jobs"));
+  write("updates/404.html", buildArchived("updates"));
+  write("hi/jobs/404.html", buildArchivedHi("jobs"));
+  write("hi/updates/404.html", buildArchivedHi("updates"));
 
   // Guides (markdown articles)
   write("guides/index.html", buildGuidesIndex(guides));
@@ -2954,8 +3075,16 @@ function main() {
       const current = [...new Set(allUrls.map((u) => u.replace(SITE.url, "")).filter((u) => u.endsWith("/")))];
       const have = new Set(reds.map((r) => r[0]));
       let auto = 0;
+      // Not for pages left out on purpose: a Hindi detail page outside its window (its English page is there, and
+      // /hi/jobs/404.html forwards to it) or a page archived by the file budget — thousands of such rules would
+      // use up Cloudflare's 2,000 and push out the real redirects of merged and retired pages.
+      const leftOut = (u) => {
+        const m = u.match(/^\/(hi\/)?(jobs|updates)\/([^/]+)\/$/); if (!m) return false;
+        if ((m[2] === "jobs" ? ARCHIVED_PAGES.jobs : ARCHIVED_PAGES.updates).has(m[3])) return true;
+        return !!m[1] && fs.existsSync(path.join(DIST, m[2], m[3], "index.html"));
+      };
       for (const u of known) {
-        if (fs.existsSync(path.join(DIST, u, "index.html")) || have.has(u)) continue;
+        if (fs.existsSync(path.join(DIST, u, "index.html")) || have.has(u) || leftOut(u)) continue;
         let parent = u.replace(/[^/]+\/$/, "");
         while (parent.length > 1 && !fs.existsSync(path.join(DIST, parent, "index.html"))) parent = parent.replace(/[^/]+\/$/, "");
         reds.push([u, parent || "/"]); have.add(u); auto++;
@@ -3022,9 +3151,22 @@ function main() {
   const appExtra = [].concat((SITE.admob || {}).appAdsTxt || []).map(String).filter(Boolean);
   if (appPub || appExtra.length) write("app-ads.txt", (appPub ? `google.com, ${appPub[1]}, DIRECT, f08c47fec0942fa0\n` : "") + appExtra.map((l) => l + "\n").join(""));
 
+  // What Cloudflare will be asked to deploy. The estimate keeps this well under the limit; if it was ever wrong, the
+  // optional share images go (their pages fall back to /og.png in the next build) rather than the deployment failing.
+  const countFiles = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((n, e) => n + (e.isDirectory() ? countFiles(path.join(d, e.name)) : 1), 0);
+  let files = countFiles(DIST);
+  if (files > MAX_FILES - 100 && fs.existsSync(path.join(DIST, "og"))) {
+    fs.rmSync(path.join(DIST, "og"), { recursive: true, force: true }); files = countFiles(DIST);
+    console.log("Files: over the limit — share images removed from this deployment.");
+  }
+  try {
+    const v = JSON.parse(fs.readFileSync(path.join(DIST, "version.json"), "utf8"));
+    write("version.json", JSON.stringify({ ...v, files, maxFiles: MAX_FILES, archivedJobs: ARCHIVED_PAGES.jobs.size, archivedUpdates: ARCHIVED_PAGES.updates.size }) + "\n");
+  } catch { /* version.json is informational */ }
+  console.log(`Files: ${files} of ${MAX_FILES} allowed by Cloudflare Pages${files > MAX_FILES * 0.9 ? " — near the limit" : ""}${process.env.CF_PAGES ? "" : " (share images are added only in the Cloudflare build)"}.`);
   console.log(`Built: home + ${jobs.length} jobs + ${cats.length} categories + ${guides.length} guides + ${Object.keys(pages).length} pages + 404/sitemap/feed -> dist/`);
 }
 
 // `node build.js` builds the site; tests require() the pure helpers without building anything.
 if (require.main === module) main();
-module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect };
+module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect, fitToBudget, hasHiPage };

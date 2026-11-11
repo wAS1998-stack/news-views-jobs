@@ -56,7 +56,8 @@ function buildHindi(ctx) {
   const inr = (n) => (n === 0 || n) ? Number(n).toLocaleString("en-IN") : "—";
   const year = BUILT.getFullYear();
   const pages = [];
-  const hiJobs = jobs.filter((j) => j.hi && j.hi.title);
+  // Hindi detail pages only while useful (build.js hasHiPage): open jobs and a few days after the last date
+  const hiJobs = jobs.filter((j) => j.hi && j.hi.title && (!ctx.hiPageOk || ctx.hiPageOk(j)));
   const hiUpd = updates.filter((u) => u.hi && u.hi.title);
   // archived updates (data/updates-archive.json) keep their pages, but lists and hubs show the recent window
   const ARCH = ctx.archivedUpdateIds || new Set();

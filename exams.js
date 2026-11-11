@@ -167,7 +167,7 @@ function buildExamPages(ctx) {
   const pages = [];
   const hiAlt = (en) => [{ hreflang: "en", href: SITE.url + en }, { hreflang: "hi", href: SITE.url + "/hi" + en }, { hreflang: "x-default", href: SITE.url + en }];
   const items = (e) => [
-    ...jobs.filter((j) => e.re.test(j.title)).map((j) => ({ type: "job", title: j.title, hiTitle: j.hi && j.hi.title, date: j.published, url: `/jobs/${j.id}/`, end: j.application_end, open: statusOf(j).cls !== "closed" })),
+    ...jobs.filter((j) => e.re.test(j.title)).map((j) => ({ type: "job", title: j.title, hiTitle: (!ctx.hiPageOk || ctx.hiPageOk(j)) && j.hi && j.hi.title, date: j.published, url: `/jobs/${j.id}/`, end: j.application_end, open: statusOf(j).cls !== "closed" })),
     ...updates.filter((u) => e.re.test(u.title)).map((u) => ({ type: u.type, title: u.title, hiTitle: u.hi && u.hi.title, date: u.date, url: `/updates/${u.id}/` })),
   ].sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 
