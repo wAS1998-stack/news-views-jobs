@@ -1,7 +1,7 @@
 {
  "_day": {
-  "date": "2026-11-11",
-  "used": 200,
+  "date": "2026-11-12",
+  "used": 114,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -183,41 +183,7 @@
   "hash": "c84278187dce"
  },
  "_retry": [
-  "https://news-views.in/jobs/iit-ism-dhanbad-research-associate-mathematics-2026/",
-  "https://news-views.in/jobs/iit-kharagpur-project-assistant-nano-fabrication-2026/",
-  "https://news-views.in/jobs/jamia-hamdard-guest-visiting-faculty-2026/",
-  "https://news-views.in/jobs/jkssb-mts-out-mts-sanitation-worker-2026/",
-  "https://news-views.in/jobs/mpsc-group-c-clerk-typist-staff-nurse-2026/",
-  "https://news-views.in/jobs/nhrdf-fortechnical-non-technical-2026/",
-  "https://news-views.in/jobs/nipgr-senior-research-fellow-walkin-2026/",
-  "https://news-views.in/jobs/nit-srinagar-student-internship-2026/",
-  "https://news-views.in/jobs/nit-warangal-junior-research-fellow-ece-2026/",
-  "https://news-views.in/jobs/nitw-project-scientist-i-2026/",
-  "https://news-views.in/jobs/nsut-project-research-scientist-i-2026/",
-  "https://news-views.in/jobs/rrb-ntpc-12th-level-2026/",
-  "https://news-views.in/jobs/sac-graduate-apprentice-technician-apprentice-more-2026/",
-  "https://news-views.in/jobs/salem-district-apprentice-walkin-2026/",
-  "https://news-views.in/jobs/uoh-junior-research-fellow-2026/",
-  "https://news-views.in/jobs/uoh-junior-research-fellow-school-chemistry-2026/",
-  "https://news-views.in/jobs/ghss-sindhigam-guest-faculty-2026/",
-  "https://news-views.in/jobs/ap-mahesh-bank-chief-compliance-officer-2026/",
-  "https://news-views.in/jobs/asrb-ta-sta-2026/",
-  "https://news-views.in/jobs/bric-nipgr-research-associate-ii-walkin-2026/",
-  "https://news-views.in/jobs/cast-ahl-drivers-ahl-assistants-more-2026/",
-  "https://news-views.in/jobs/coe-kisti-project-associate-2026/",
-  "https://news-views.in/jobs/dcpu-kancheepuram-support-persons-2026/",
-  "https://news-views.in/jobs/dghs-consultant-2026/",
-  "https://news-views.in/jobs/gstat-judicial-member-technical-member-2026/",
-  "https://news-views.in/jobs/igcar-drivers-as-consultant-2026/",
-  "https://news-views.in/jobs/iim-ranchi-faculty-assistant-professor-associate-2026/",
-  "https://news-views.in/jobs/iiser-tvm-graduate-apprentice-trainee-2026/",
-  "https://news-views.in/jobs/iit-kharagpur-driver-walkin-2026/",
-  "https://news-views.in/jobs/itpo-assistant-steno-2026/",
-  "https://news-views.in/jobs/mgu-junior-research-fellow-project-associate-2026/",
-  "https://news-views.in/jobs/niper-raebareli-junior-research-assistant-2026/",
-  "https://news-views.in/jobs/nipgr-technical-assistant-walkin-2026/",
-  "https://news-views.in/jobs/scert-project-officer-2026/",
-  "https://news-views.in/jobs/sci-junior-court-attendant-2026/"
+  "https://news-views.in/jobs/ghss-sindhigam-guest-faculty-2026/"
  ],
  "https://news-views.in/jobs/cwc-assistant-manager-junior-executive-2026/": {
   "sentAt": "2026-11-06T19:34:37.673Z",
@@ -4072,5 +4038,461 @@
  "https://news-views.in/jobs/iit-delhi-consultant-i-consultant-ii-2026/": {
   "sentAt": "2026-11-11T14:53:18.471Z",
   "hash": "6da9f4a8ec66"
+ },
+ "https://news-views.in/jobs/iit-ism-dhanbad-research-associate-mathematics-2026/": {
+  "sentAt": "2026-11-11T18:58:54.308Z",
+  "hash": "813b6b96652a"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-assistant-nano-fabrication-2026/": {
+  "sentAt": "2026-11-11T18:58:54.567Z",
+  "hash": "a8844bc5a0e9"
+ },
+ "https://news-views.in/jobs/jamia-hamdard-guest-visiting-faculty-2026/": {
+  "sentAt": "2026-11-11T18:58:54.799Z",
+  "hash": "6059d3a2ea7d"
+ },
+ "https://news-views.in/jobs/jkssb-mts-out-mts-sanitation-worker-2026/": {
+  "sentAt": "2026-11-11T18:58:55.037Z",
+  "hash": "166b0aeb4841"
+ },
+ "https://news-views.in/jobs/mpsc-group-c-clerk-typist-staff-nurse-2026/": {
+  "sentAt": "2026-11-11T18:58:55.265Z",
+  "hash": "6b50691892a4"
+ },
+ "https://news-views.in/jobs/nhrdf-fortechnical-non-technical-2026/": {
+  "sentAt": "2026-11-11T18:58:55.482Z",
+  "hash": "83955d45e0ee"
+ },
+ "https://news-views.in/jobs/nipgr-senior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-11T18:58:55.681Z",
+  "hash": "c52b21939696"
+ },
+ "https://news-views.in/jobs/nit-srinagar-student-internship-2026/": {
+  "sentAt": "2026-11-11T18:58:55.904Z",
+  "hash": "ff8237135192"
+ },
+ "https://news-views.in/jobs/nit-warangal-junior-research-fellow-ece-2026/": {
+  "sentAt": "2026-11-11T18:58:56.098Z",
+  "hash": "c0277b123086"
+ },
+ "https://news-views.in/jobs/nitw-project-scientist-i-2026/": {
+  "sentAt": "2026-11-11T18:58:56.313Z",
+  "hash": "fd1892293ec4"
+ },
+ "https://news-views.in/jobs/nsut-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-11T18:58:56.503Z",
+  "hash": "1d74bfc4215a"
+ },
+ "https://news-views.in/jobs/rrb-ntpc-12th-level-2026/": {
+  "sentAt": "2026-11-11T18:58:56.734Z",
+  "hash": "40bfaf58806f"
+ },
+ "https://news-views.in/jobs/sac-graduate-apprentice-technician-apprentice-more-2026/": {
+  "sentAt": "2026-11-11T18:58:56.932Z",
+  "hash": "b1bb97884942"
+ },
+ "https://news-views.in/jobs/salem-district-apprentice-walkin-2026/": {
+  "sentAt": "2026-11-11T18:58:57.126Z",
+  "hash": "061bbf904909"
+ },
+ "https://news-views.in/jobs/uoh-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T18:58:57.323Z",
+  "hash": "b1f0f14fec7e"
+ },
+ "https://news-views.in/jobs/uoh-junior-research-fellow-school-chemistry-2026/": {
+  "sentAt": "2026-11-11T18:58:57.531Z",
+  "hash": "7436d24f4a26"
+ },
+ "https://news-views.in/jobs/ap-mahesh-bank-chief-compliance-officer-2026/": {
+  "sentAt": "2026-11-11T18:58:57.735Z",
+  "hash": "f98a217c830c"
+ },
+ "https://news-views.in/jobs/asrb-ta-sta-2026/": {
+  "sentAt": "2026-11-11T18:58:57.929Z",
+  "hash": "429b15d10dbb"
+ },
+ "https://news-views.in/jobs/bric-nipgr-research-associate-ii-walkin-2026/": {
+  "sentAt": "2026-11-11T18:58:58.128Z",
+  "hash": "0627e50ef362"
+ },
+ "https://news-views.in/jobs/cast-ahl-drivers-ahl-assistants-more-2026/": {
+  "sentAt": "2026-11-11T18:58:58.344Z",
+  "hash": "2a6efb13a40f"
+ },
+ "https://news-views.in/jobs/coe-kisti-project-associate-2026/": {
+  "sentAt": "2026-11-11T18:58:58.539Z",
+  "hash": "6f6be3be00a5"
+ },
+ "https://news-views.in/jobs/dcpu-kancheepuram-support-persons-2026/": {
+  "sentAt": "2026-11-11T18:58:58.780Z",
+  "hash": "c0ab05c2dfec"
+ },
+ "https://news-views.in/jobs/dghs-consultant-2026/": {
+  "sentAt": "2026-11-11T18:58:58.982Z",
+  "hash": "ec584ef639c0"
+ },
+ "https://news-views.in/jobs/gstat-judicial-member-technical-member-2026/": {
+  "sentAt": "2026-11-11T18:58:59.186Z",
+  "hash": "e498ad92f8f9"
+ },
+ "https://news-views.in/jobs/igcar-drivers-as-consultant-2026/": {
+  "sentAt": "2026-11-11T18:58:59.427Z",
+  "hash": "7f395542bfec"
+ },
+ "https://news-views.in/jobs/iim-ranchi-faculty-assistant-professor-associate-2026/": {
+  "sentAt": "2026-11-11T18:58:59.617Z",
+  "hash": "dffb3532c013"
+ },
+ "https://news-views.in/jobs/iiser-tvm-graduate-apprentice-trainee-2026/": {
+  "sentAt": "2026-11-11T18:58:59.820Z",
+  "hash": "5e257b154e41"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-driver-walkin-2026/": {
+  "sentAt": "2026-11-11T18:59:00.019Z",
+  "hash": "5ddb32aa1864"
+ },
+ "https://news-views.in/jobs/itpo-assistant-steno-2026/": {
+  "sentAt": "2026-11-11T18:59:00.215Z",
+  "hash": "48d6aa811a42"
+ },
+ "https://news-views.in/jobs/mgu-junior-research-fellow-project-associate-2026/": {
+  "sentAt": "2026-11-11T18:59:00.412Z",
+  "hash": "181b8362f6d0"
+ },
+ "https://news-views.in/jobs/niper-raebareli-junior-research-assistant-2026/": {
+  "sentAt": "2026-11-11T18:59:00.602Z",
+  "hash": "33f10fb839b7"
+ },
+ "https://news-views.in/jobs/nipgr-technical-assistant-walkin-2026/": {
+  "sentAt": "2026-11-11T18:59:00.804Z",
+  "hash": "cffc56f63acb"
+ },
+ "https://news-views.in/jobs/scert-project-officer-2026/": {
+  "sentAt": "2026-11-11T18:59:01.000Z",
+  "hash": "b4fa52b556f6"
+ },
+ "https://news-views.in/jobs/sci-junior-court-attendant-2026/": {
+  "sentAt": "2026-11-11T18:59:01.233Z",
+  "hash": "fc90f6c06d24"
+ },
+ "https://news-views.in/jobs/nidm-senior-consultant-2026/": {
+  "sentAt": "2026-11-11T18:59:01.429Z",
+  "hash": "8d8429fefee5"
+ },
+ "https://news-views.in/jobs/smpa-senior-deputy-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:01.625Z",
+  "hash": "aea1e210f8ec"
+ },
+ "https://news-views.in/jobs/nitt-project-assistant-project-associate-ii-2026/": {
+  "sentAt": "2026-11-11T18:59:01.820Z",
+  "hash": "b3fea76a890c"
+ },
+ "https://news-views.in/jobs/governor-s-secretariat-hp-vice-chancellor-2026/": {
+  "sentAt": "2026-11-11T18:59:02.020Z",
+  "hash": "61115a38b342"
+ },
+ "https://news-views.in/jobs/saket-district-court-law-researcher-2026/": {
+  "sentAt": "2026-11-11T18:59:02.214Z",
+  "hash": "0398059ca5c0"
+ },
+ "https://news-views.in/jobs/dfccil-dy-cpm-pm-2026/": {
+  "sentAt": "2026-11-11T18:59:02.411Z",
+  "hash": "2cc9b5de4dd5"
+ },
+ "https://news-views.in/jobs/icar-iari-project-assistant-2026/": {
+  "sentAt": "2026-11-11T18:59:02.606Z",
+  "hash": "fda24922555a"
+ },
+ "https://news-views.in/jobs/rnu-ddk-bhopal-copy-editor-2026/": {
+  "sentAt": "2026-11-11T18:59:02.809Z",
+  "hash": "442321e3f5d2"
+ },
+ "https://news-views.in/jobs/intelligence-bureau-foreign-language-advisor-2027/": {
+  "sentAt": "2026-11-11T18:59:03.008Z",
+  "hash": "354d542a40c3"
+ },
+ "https://news-views.in/jobs/nfdc-general-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:03.202Z",
+  "hash": "cf7f7146b461"
+ },
+ "https://news-views.in/jobs/nmpa-senior-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:03.400Z",
+  "hash": "53fcdb4b4f24"
+ },
+ "https://news-views.in/jobs/icar-iihr-ches-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T18:59:03.594Z",
+  "hash": "f3b18cdef9a9"
+ },
+ "https://news-views.in/jobs/district-registrar-malda-temporary-muslim-marriage-2026/": {
+  "sentAt": "2026-11-11T18:59:03.789Z",
+  "hash": "7c11845cb86d"
+ },
+ "https://news-views.in/jobs/nit-goa-junior-assistant-2026/": {
+  "sentAt": "2026-11-11T18:59:03.987Z",
+  "hash": "bb7af7831b3c"
+ },
+ "https://news-views.in/jobs/ksssci-health-economist-2026/": {
+  "sentAt": "2026-11-11T18:59:04.179Z",
+  "hash": "410e528eab77"
+ },
+ "https://news-views.in/jobs/mbpa-principal-advisor-2026/": {
+  "sentAt": "2026-11-11T18:59:04.371Z",
+  "hash": "b7c1a5cb203f"
+ },
+ "https://news-views.in/jobs/hpnlu-counsellor-2026/": {
+  "sentAt": "2026-11-11T18:59:04.593Z",
+  "hash": "9c1b83835f87"
+ },
+ "https://news-views.in/jobs/motor-accident-claims-tribunal-kanpur-dehat-2026/": {
+  "sentAt": "2026-11-11T18:59:04.816Z",
+  "hash": "fee64e857609"
+ },
+ "https://news-views.in/jobs/district-legal-services-authority-jhabua-para-2026/": {
+  "sentAt": "2026-11-11T18:59:05.015Z",
+  "hash": "78bcbfd4fc51"
+ },
+ "https://news-views.in/jobs/nwda-director-general-2026/": {
+  "sentAt": "2026-11-11T18:59:05.213Z",
+  "hash": "e6cdd59fcae6"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-assistant-technical-physics-2026/": {
+  "sentAt": "2026-11-11T18:59:05.407Z",
+  "hash": "f4a6bd766084"
+ },
+ "https://news-views.in/jobs/gmch-tiruppur-ward-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:05.606Z",
+  "hash": "2fb36e0ef56f"
+ },
+ "https://news-views.in/jobs/rajarshi-shahu-arts-commerce-college-rukadi-2026/": {
+  "sentAt": "2026-11-11T18:59:05.807Z",
+  "hash": "b02670c665d6"
+ },
+ "https://news-views.in/jobs/gauhati-high-court-usher-2026/": {
+  "sentAt": "2026-11-11T18:59:06.009Z",
+  "hash": "ca6775dc4f72"
+ },
+ "https://news-views.in/jobs/iim-lucknow-research-associate-2026/": {
+  "sentAt": "2026-11-11T18:59:06.202Z",
+  "hash": "0350405cdb30"
+ },
+ "https://news-views.in/jobs/mea-consultant-2026/": {
+  "sentAt": "2026-11-11T18:59:06.394Z",
+  "hash": "7d7da3ad08b2"
+ },
+ "https://news-views.in/jobs/chpa-superintending-engineer-2026/": {
+  "sentAt": "2026-11-11T18:59:06.591Z",
+  "hash": "29962e8ce936"
+ },
+ "https://news-views.in/jobs/jadavpur-university-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T18:59:06.793Z",
+  "hash": "c0bab72852d5"
+ },
+ "https://news-views.in/jobs/prc-jss-ier-stenographer-2026/": {
+  "sentAt": "2026-11-11T18:59:06.995Z",
+  "hash": "c9d725ea7af4"
+ },
+ "https://news-views.in/jobs/uidai-director-2026/": {
+  "sentAt": "2026-11-11T18:59:07.187Z",
+  "hash": "2f9f00d35a5a"
+ },
+ "https://news-views.in/jobs/kalyani-university-director-2026/": {
+  "sentAt": "2026-11-11T18:59:07.383Z",
+  "hash": "ac4075aa38b3"
+ },
+ "https://news-views.in/jobs/litu-registrar-2026/": {
+  "sentAt": "2026-11-11T18:59:07.574Z",
+  "hash": "d9b5d284d34d"
+ },
+ "https://news-views.in/jobs/litu-finance-accounts-officer-2026/": {
+  "sentAt": "2026-11-11T18:59:07.800Z",
+  "hash": "6b3a062e4d93"
+ },
+ "https://news-views.in/jobs/dhfws-purba-medinipur-cluster-programme-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:07.995Z",
+  "hash": "78efd74b20e1"
+ },
+ "https://news-views.in/jobs/cipet-ipt-project-associate-i-2026/": {
+  "sentAt": "2026-11-11T18:59:08.187Z",
+  "hash": "93479472c059"
+ },
+ "https://news-views.in/jobs/iisc-bengaluru-research-associate-i-2026/": {
+  "sentAt": "2026-11-11T18:59:08.383Z",
+  "hash": "9a7645eb1d74"
+ },
+ "https://news-views.in/jobs/kasrs-assistant-professor-sanskrit-2026/": {
+  "sentAt": "2026-11-11T18:59:08.583Z",
+  "hash": "d9803c45dd5a"
+ },
+ "https://news-views.in/jobs/fddi-junior-faculty-footwear-design-production-2026/": {
+  "sentAt": "2026-11-11T18:59:08.779Z",
+  "hash": "aff58abcdb11"
+ },
+ "https://news-views.in/jobs/devbhumi-dwarka-family-court-counsellor-2026/": {
+  "sentAt": "2026-11-11T18:59:08.973Z",
+  "hash": "6f870cf11229"
+ },
+ "https://news-views.in/jobs/icar-cmfri-young-professional-i-2026/": {
+  "sentAt": "2026-11-11T18:59:09.170Z",
+  "hash": "87f809ec4692"
+ },
+ "https://news-views.in/jobs/iisc-junior-program-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:09.370Z",
+  "hash": "a06e89b00657"
+ },
+ "https://news-views.in/jobs/tnjfu-lab-technician-2026/": {
+  "sentAt": "2026-11-11T18:59:09.561Z",
+  "hash": "49f792f67d97"
+ },
+ "https://news-views.in/jobs/ju-finance-officer-2026/": {
+  "sentAt": "2026-11-11T18:59:09.758Z",
+  "hash": "0bd04141b3b6"
+ },
+ "https://news-views.in/jobs/dic-platform-security-engineer-2026/": {
+  "sentAt": "2026-11-11T18:59:09.956Z",
+  "hash": "c2a5370e090b"
+ },
+ "https://news-views.in/jobs/dic-product-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:10.152Z",
+  "hash": "7a3e3fda5b89"
+ },
+ "https://news-views.in/jobs/dic-qa-tester-2026/": {
+  "sentAt": "2026-11-11T18:59:10.351Z",
+  "hash": "d14c85c855a1"
+ },
+ "https://news-views.in/jobs/dic-junior-qa-security-support-2026/": {
+  "sentAt": "2026-11-11T18:59:10.544Z",
+  "hash": "5252492fb765"
+ },
+ "https://news-views.in/jobs/dic-full-stack-developer-2026/": {
+  "sentAt": "2026-11-11T18:59:10.741Z",
+  "hash": "a01b3d0c95bf"
+ },
+ "https://news-views.in/jobs/dic-frontend-developer-2026/": {
+  "sentAt": "2026-11-11T18:59:10.938Z",
+  "hash": "04b7ce5221a0"
+ },
+ "https://news-views.in/jobs/dic-manager-development-support-onboarding-2026/": {
+  "sentAt": "2026-11-11T18:59:11.131Z",
+  "hash": "db2531a7e38b"
+ },
+ "https://news-views.in/jobs/bhel-rajbhasha-hindi-translator-grade-iii-2026/": {
+  "sentAt": "2026-11-11T18:59:11.328Z",
+  "hash": "6b5cab63ac8a"
+ },
+ "https://news-views.in/jobs/dic-junior-l1-l2-application-support-2026/": {
+  "sentAt": "2026-11-11T18:59:11.518Z",
+  "hash": "0a2d190403fa"
+ },
+ "https://news-views.in/jobs/iit-guwahati-research-associate-2026/": {
+  "sentAt": "2026-11-11T18:59:11.726Z",
+  "hash": "87b96c643b4d"
+ },
+ "https://news-views.in/jobs/iimk-office-attendant-2026/": {
+  "sentAt": "2026-11-11T18:59:11.929Z",
+  "hash": "a5c1918a811c"
+ },
+ "https://news-views.in/jobs/aiims-jhajjar-project-technical-staff-iii-2026/": {
+  "sentAt": "2026-11-11T18:59:12.126Z",
+  "hash": "af9ceadc424b"
+ },
+ "https://news-views.in/jobs/district-magistrate-office-shravasti-district-2026/": {
+  "sentAt": "2026-11-11T18:59:12.318Z",
+  "hash": "6b1e1d49836a"
+ },
+ "https://news-views.in/jobs/iim-kozhikode-public-relations-executive-2026/": {
+  "sentAt": "2026-11-11T18:59:12.509Z",
+  "hash": "36fa9f6d1502"
+ },
+ "https://news-views.in/jobs/c-r-college-education-principal-2026/": {
+  "sentAt": "2026-11-11T18:59:12.706Z",
+  "hash": "76c976968b46"
+ },
+ "https://news-views.in/jobs/ju-registrar-2026/": {
+  "sentAt": "2026-11-11T18:59:12.910Z",
+  "hash": "871243a757eb"
+ },
+ "https://news-views.in/jobs/nedfl-deputy-manager-assistant-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:13.106Z",
+  "hash": "2b1ea309b071"
+ },
+ "https://news-views.in/jobs/bapu-lad-mahavidyalaya-principal-2026/": {
+  "sentAt": "2026-11-11T18:59:13.302Z",
+  "hash": "786c10274f6a"
+ },
+ "https://news-views.in/jobs/pesco-waiter-2026/": {
+  "sentAt": "2026-11-11T18:59:13.493Z",
+  "hash": "6e504803ac1e"
+ },
+ "https://news-views.in/jobs/iiidem-consultant-2026/": {
+  "sentAt": "2026-11-11T18:59:13.686Z",
+  "hash": "f8fdca1ca63b"
+ },
+ "https://news-views.in/jobs/gail-chief-general-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:13.884Z",
+  "hash": "6ad4147c0e24"
+ },
+ "https://news-views.in/jobs/anna-university-resident-counsellor-2026/": {
+  "sentAt": "2026-11-11T18:59:14.084Z",
+  "hash": "b4721bedfa44"
+ },
+ "https://news-views.in/jobs/aiims-delhi-technician-2026/": {
+  "sentAt": "2026-11-11T18:59:14.279Z",
+  "hash": "8e51a66d9ce1"
+ },
+ "https://news-views.in/jobs/krcl-chief-project-manager-2026/": {
+  "sentAt": "2026-11-11T18:59:14.471Z",
+  "hash": "d8e452172639"
+ },
+ "https://news-views.in/jobs/zilla-parishad-chandrapur-yoga-trainer-2026/": {
+  "sentAt": "2026-11-11T18:59:14.668Z",
+  "hash": "820912d873d0"
+ },
+ "https://news-views.in/jobs/iit-jodhpur-registrar-2026/": {
+  "sentAt": "2026-11-11T18:59:14.866Z",
+  "hash": "0d006f7325d3"
+ },
+ "https://news-views.in/jobs/mbpa-senior-deputy-chief-accounts-officer-2026/": {
+  "sentAt": "2026-11-11T18:59:15.064Z",
+  "hash": "857ba2b10e67"
+ },
+ "https://news-views.in/jobs/smp-kolkata-dy-chief-engineer-2026/": {
+  "sentAt": "2026-11-11T18:59:15.259Z",
+  "hash": "a053aa07583d"
+ },
+ "https://news-views.in/jobs/crs-senior-inspector-2027/": {
+  "sentAt": "2026-11-11T18:59:15.455Z",
+  "hash": "3e1cd444c074"
+ },
+ "https://news-views.in/jobs/apgenco-director-2026/": {
+  "sentAt": "2026-11-11T18:59:15.649Z",
+  "hash": "b399b31f219d"
+ },
+ "https://news-views.in/jobs/imsc-upper-division-clerk-2026/": {
+  "sentAt": "2026-11-11T18:59:15.843Z",
+  "hash": "16fab54a5211"
+ },
+ "https://news-views.in/jobs/voc-port-authority-senior-deputy-secretary-2026/": {
+  "sentAt": "2026-11-11T18:59:16.035Z",
+  "hash": "474fc4e4c504"
+ },
+ "https://news-views.in/jobs/nabfid-evp-head-market-risk-alm-2026/": {
+  "sentAt": "2026-11-11T18:59:16.227Z",
+  "hash": "5848a7b87e1e"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-technical-assistant-2026/": {
+  "sentAt": "2026-11-11T18:59:16.419Z",
+  "hash": "066978cdc44b"
+ },
+ "https://news-views.in/jobs/ctil-consultant-2026/": {
+  "sentAt": "2026-11-11T18:59:16.615Z",
+  "hash": "ea1743512c90"
+ },
+ "https://news-views.in/jobs/iim-ranchi-research-assistant-2026/": {
+  "sentAt": "2026-11-11T18:59:16.812Z",
+  "hash": "42ec38ac6844"
+ },
+ "https://news-views.in/jobs/ggu-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-11T18:59:17.004Z",
+  "hash": "1b8d27a6f848"
  }
 }
