@@ -1,5 +1,7 @@
 name: Check live site
-# On demand: records which build news-views.in and the Pages production address are serving.
+# On demand: records which build news-views.in and the Pages production address are serving (data/live-check.json),
+# then checks the deployed site end to end as a visitor, Google and the app see it (tools-dev/live-check.js ->
+# data/live-report.json): core files, app feed, 404, redirects, ~55 sitemap pages, headers, the relay's host rule.
 on: workflow_dispatch
 permissions:
   contents: write
@@ -19,7 +21,12 @@ jobs:
           q=$(curl -fsS "https://news-views.in/index-queue.txt?t=$t" | grep -c '^https' || true)
           printf '{"checked":"%s","domain":%s,"pages":%s,"homepageHeaders":"%s","files":"%s","queueUrls":%s}\n' "$(date -u +%FT%TZ)" "$dom" "$pages" "$hdr" "$files" "${q:-0}" > data/live-check.json
           cat data/live-check.json
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - name: End-to-end check of the deployed site
+        run: node tools-dev/live-check.js || echo "live-check.js failed"
       - name: Save result (no site build)
         run: |
           git config user.name "jobs-bot"; git config user.email "actions@users.noreply.github.com"
-          git add data/live-check.json && git commit -q -m "Live check [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main || true
+          git add data/live-check.json data/live-report.json 2>/dev/null || git add data/live-check.json
+          git commit -q -m "Live check [CF-Pages-Skip]" && git pull -q --rebase origin main && git push -q origin HEAD:main || true
