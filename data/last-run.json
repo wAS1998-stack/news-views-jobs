@@ -2,7 +2,7 @@
   "date": "2026-11-11",
   "runs": {},
   "fetch": {
-    "at": "2026-11-11T14:10:23.167Z",
+    "at": "2026-11-11T14:48:05.787Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,18 +11,18 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 16,
-    "newUpdates": 2,
+    "newJobs": 0,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 60 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 73 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-11; 9 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-11; 16 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-11; 9 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-11; 12 already known"
     },
     "updDiag": {
       "seen": 32,
-      "known": 23,
-      "added": 2,
+      "known": 25,
+      "added": 0,
       "filtered": [
         "Andhra University M.Sc Result 2026 Out - Check 2nd Semester at andhrauniversity.",
         "Calicut University B.Tech Time Table 2026 Out - Check 3rd Sem Exam Dates Online ",
@@ -49,6 +49,7 @@
       ]
     },
     "log": [
+      "   = rejected after reading on an earlier run, skipped: Supreme Court SPA Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: Armed Forces AFMS SSC Medical Officer Online Form 2026",
       "   = same source page as an existing job, skipped: ISRO SDSC SHAR Various Post Online Form 2026 – Last Date",
       "   = same source page as an existing job, skipped: RRB NTPC 10+2 UG Level 07/2026 Online Form 2026",
@@ -72,15 +73,14 @@
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
       "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
       "   = same source page as an existing job, skipped: Assam Rifles Technical And Tradesman Recruitment 2026 – Apply Online 354 Warrant Officer, Rifleman and Other Posts",
-      "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts",
-      "Added 2 update(s) (results/admit cards/answer keys)."
+      "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-11T14:11:30.757Z",
+    "at": "2026-11-11T14:49:10.372Z",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -100,7 +100,7 @@
       "dsssb": "6 links, 0 new via direct",
       "mppsc": "paused (fails 17, geo-blocked)",
       "mpsc": "paused (fails 97)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "kpsc": "paused (fails 97, geo-blocked)",
       "appsc": "paused (fails 97, geo-blocked)",
       "ssc": "7 links, 0 new via news-views.in",
@@ -109,18 +109,18 @@
       "hpsc": "paused (fails 97, geo-blocked)",
       "hppsc": "paused (fails 97, geo-blocked)",
       "ukpsc": "paused (fails 97, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "cgpsc": "paused (fails 97, geo-blocked)",
       "gpsc": "paused (fails 97, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "ppsc": "paused (fails 97, geo-blocked)",
       "apsc": "paused (fails 97, geo-blocked)",
       "jkpsc": "paused (fails 97, geo-blocked)",
       "goapsc": "paused (fails 97, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "rssb": "paused (fails 97, geo-blocked)",
       "esb-mp": "paused (fails 97, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
+      "tgpsc": "3 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
       "tnpsc": "35 links, 0 new via news-views.in",
       "jssc": "paused (fails 97, geo-blocked)",
@@ -128,23 +128,23 @@
       "gsssb": "paused (fails 97, geo-blocked)",
       "sssb-punjab": "paused (fails 97, geo-blocked)",
       "hprca": "paused (fails 97, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "kvs": "4 links, 0 new via direct",
       "kea": "paused (fails 97, geo-blocked)",
-      "uksssc": "26 links, 0 new via direct",
+      "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 97, geo-blocked)",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "bssc": "785 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
       "jkssb": "2 links, 0 new via news-views.in",
-      "uppbpb": "6 links, 0 new via direct",
       "tnusrb": "paused (fails 97, geo-blocked)",
       "tslprb": "paused (fails 97)",
       "slprb-ap": "paused (fails 97, geo-blocked)",
       "csbc": "195 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "184 links, 0 new via news-views.in",
-      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)",
-      "bpssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "bssc": "error: news-views.in: HTTP 525 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: The operation was aborted due to timeout (fails 1)",
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -152,26 +152,26 @@
     ]
   },
   "apply": {
-    "at": "2026-11-11T14:11:38.886Z",
+    "at": "2026-11-11T14:49:10.669Z",
     "ok": true,
-    "checked": 3,
+    "checked": 0,
     "found": 0,
-    "due": 3,
-    "cands": 2,
+    "due": 0,
+    "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 1,
+    "careers": 0,
     "log": [
-      "apply-links: checked 3, found 0 real application pages (3 due, pdf reader on)",
-      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 1"
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-11T14:12:15.945Z",
+    "at": "2026-11-11T14:49:43.208Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
-    "updatesEnriched": 2,
+    "updatesEnriched": 0,
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 87,
@@ -180,7 +180,7 @@
     "searchFaqPages": 0,
     "opportunities": 7,
     "log": [
-      "  ✓ update: TNPSC Departmental Exam Result 2026 Released - Check May Results, Rejection & Viva-Voce Lists -> tnpsc.gov.in",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 92 job(s) on template content | doing up to 5",
       "  (OpenAI HTTP 429)",
       "  - skipped (quality gate): BHEL Artisan Recruitment 2026 - Apply Online for 660 Posts",
@@ -208,7 +208,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-11T14:12:16.196Z",
+    "at": "2026-11-11T14:49:43.503Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
