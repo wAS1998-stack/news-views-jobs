@@ -91,9 +91,13 @@ async function main() {
   try { build = JSON.parse(vd.body); } catch { /* reported below */ }
   try { buildP = JSON.parse(vp.body); } catch { /* optional */ }
   report.build = { domain: build.build || `status ${vd.status}`, pagesDev: buildP.build || `status ${vp.status}`, at: build.at, files: build.files, maxFiles: build.maxFiles, archivedJobs: build.archivedJobs, archivedUpdates: build.archivedUpdates };
-  if (build.files && build.maxFiles) (build.files > build.maxFiles * 0.92 ? warn : ok)("file budget", `${build.files} of ${build.maxFiles} files before share images (Cloudflare Pages limit); ${build.archivedJobs || 0} job and ${build.archivedUpdates || 0} update pages archived to fit`);
+  if (build.files && build.maxFiles) (build.files > build.maxFiles * 0.92 ? warn : ok)("file budget", `${build.files} of ${build.maxFiles} files deployed (Cloudflare Pages limit); ${build.archivedJobs || 0} job and ${build.archivedUpdates || 0} update pages archived to fit`);
   if (!build.at) fail("version.json", `status ${vd.status} ${vd.error || ""}`);
   else {
+    // For a minute or two after a deployment Cloudflare can still answer with pages of the previous one (a sweep that
+    // started 13 seconds after a deploy saw 274 removed pages as 200): start four minutes after the build at the earliest.
+    const settle = 4 * 60000 - (Date.now() - new Date(build.at).getTime());
+    if (settle > 0 && settle <= 4 * 60000) { console.log(`Fresh deployment: waiting ${Math.round(settle / 1000)} s for it to settle.`); await new Promise((r) => setTimeout(r, settle)); }
     const ageH = (Date.now() - new Date(build.at).getTime()) / 3600000;
     report.build.ageHours = Math.round(ageH * 10) / 10;
     (ageH > 12 ? fail : ageH > 5 ? warn : ok)("build-age", `live build ${build.build}, ${report.build.ageHours} h old`);
