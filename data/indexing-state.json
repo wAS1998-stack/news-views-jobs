@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-11",
-  "used": 94,
+  "used": 95,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -3614,5 +3614,9 @@
  "https://news-views.in/jobs/kvs-walkin-primary-teacher-trained-graduate-2026/": {
   "sentAt": "2026-11-10T22:53:04.556Z",
   "hash": "8898c98c2222"
+ },
+ "https://news-views.in/jobs/dcac-principal-2026/": {
+  "sentAt": "2026-11-11T01:21:49.781Z",
+  "hash": "011902546b1c"
  }
 }

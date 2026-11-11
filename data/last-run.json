@@ -213,5 +213,38 @@
     "log": [
       "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
+  },
+  "notify": {
+    "at": "2026-11-11T01:21:48.993Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-11T01:21:49.902Z",
+    "ok": true,
+    "submitted": 1,
+    "failed": 0,
+    "limited": false,
+    "kept": 1,
+    "usedToday": 95,
+    "log": [
+      "Indexing API: 1 to send (1 updated, 0 deleted); 94/200 used today (IST 2026-11-11).",
+      "Indexing API: sent 1."
+    ]
+  },
+  "push": {
+    "at": "2026-11-11T01:21:57.915Z",
+    "ok": true,
+    "sent": 0,
+    "quiet": true,
+    "log": [
+      "push-notify: nothing new to send (quiet hours)."
+    ]
   }
 }
