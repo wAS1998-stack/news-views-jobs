@@ -173,3 +173,39 @@ test("sanitizeJob: impossible ages and a deadline over a year away are dropped; 
   assert.strictEqual(m.age_min, undefined);
   assert.strictEqual(m.age_max, undefined);
 });
+
+test("jobs store: one file per day, one record per line; untouched days are not rewritten; a leftover jobs.json is merged", () => {
+  const fs = require("fs"), os = require("os"), path = require("path");
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "nv-jobs-")), dir = path.join(tmp, "jobs"), legacy = path.join(tmp, "jobs.json");
+  const files = () => fs.readdirSync(dir, { recursive: true }).map(String).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\\/g, "/")).sort();
+  const jobs = [{ id: "d", title: "D", published: "2026-11-09" }, { id: "c", title: "C", published: "2026-11-09", hi: { title: "सी" } },
+    { id: "b", title: "B", published: "2026-11-02" }, { id: "a", title: "A", published: "2026-10-30" }, { id: "x", title: "No date" }];
+  let r = L.saveJobs(jobs, { dir, legacy });
+  assert.deepStrictEqual(files(), ["2026-10/2026-10-30.json", "2026-11/2026-11-02.json", "2026-11/2026-11-09.json", "undated.json"]);
+  assert.strictEqual(r.written, 4);
+  assert.strictEqual(fs.readFileSync(path.join(dir, "2026-11", "2026-11-09.json"), "utf8").trim().split("\n").length, 4);   // [, two records, ]
+  assert.deepStrictEqual(L.loadJobs({ dir, legacy }), jobs);                    // same records, same order (newest day first)
+  // changing one record rewrites only its day
+  const stamp = fs.statSync(path.join(dir, "2026-10", "2026-10-30.json")).mtimeMs;
+  jobs[1] = { ...jobs[1], total_vacancies: 12 };
+  r = L.saveJobs(jobs, { dir, legacy });
+  assert.strictEqual(r.written, 1);
+  assert.strictEqual(fs.statSync(path.join(dir, "2026-10", "2026-10-30.json")).mtimeMs, stamp);
+  // a day whose last record left disappears, and so does its empty month folder
+  L.saveJobs(jobs.filter((j) => j.id !== "a"), { dir, legacy });
+  assert.strictEqual(fs.existsSync(path.join(dir, "2026-10")), false);
+  // a jobs.json written by a run that started before the move: its records win, newer ones are kept, then it is removed
+  fs.writeFileSync(legacy, JSON.stringify([{ id: "b", title: "B from the old run", published: "2026-11-02" }, { id: "a", title: "A", published: "2026-10-30" }]));
+  const merged = L.loadJobs({ dir, legacy });
+  assert.deepStrictEqual(merged.map((j) => j.id).sort(), ["a", "b", "c", "d", "x"]);
+  assert.strictEqual(merged.find((j) => j.id === "b").title, "B from the old run");
+  L.saveJobs(merged, { dir, legacy });
+  assert.strictEqual(fs.existsSync(legacy), false);
+  assert.strictEqual(L.loadJobs({ dir, legacy }).length, 5);
+  // a list that would drop most of the store is a bug, not an update
+  const many = Array.from({ length: 300 }, (_, i) => ({ id: "j" + i, title: "J", published: "2026-11-01" }));
+  L.saveJobs(many, { dir, legacy, force: true });
+  assert.throws(() => L.saveJobs(many.slice(0, 20), { dir, legacy }), /refused/);
+  assert.strictEqual(L.loadJobs({ dir, legacy }).length, 300);
+  fs.rmSync(tmp, { recursive: true, force: true });
+});

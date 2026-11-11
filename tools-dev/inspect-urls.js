@@ -17,7 +17,7 @@ const istDate = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkat
 (async () => {
   if (!G.loadKey()) { console.log("no key"); return; }
   const token = await G.getToken("https://www.googleapis.com/auth/webmasters.readonly https://www.googleapis.com/auth/indexing");
-  const jobsRaw = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "jobs.json"), "utf8"));
+  const jobsRaw = require("../lib.js").loadJobs();
   const jobs = (Array.isArray(jobsRaw) ? jobsRaw : jobsRaw.jobs).filter((j) => j && j.id && j.published);
   const updRaw = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "updates.json"), "utf8"));
   const updates = (Array.isArray(updRaw) ? updRaw : updRaw.updates).filter((u) => u && u.id);

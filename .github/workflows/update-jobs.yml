@@ -157,7 +157,7 @@ jobs:
             # Our run's data wins on a conflicting hunk (it is the newer work); other files rebase normally.
             if git rebase -X theirs origin/main; then
               # Never push data that no longer parses or no longer builds after an automatic merge.
-              if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8"))' || ! node build.js >/dev/null; then
+              if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8")); require("./lib.js").loadJobs()' || ! node build.js >/dev/null; then
                 echo "::error::Merged data is invalid — discarding this run's data to protect the site"; git reset -q --hard origin/main; break
               fi
               if git push -q origin HEAD:main; then ok=true; break; fi

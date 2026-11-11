@@ -90,7 +90,8 @@ async function main() {
   let build = {}, buildP = {};
   try { build = JSON.parse(vd.body); } catch { /* reported below */ }
   try { buildP = JSON.parse(vp.body); } catch { /* optional */ }
-  report.build = { domain: build.build || `status ${vd.status}`, pagesDev: buildP.build || `status ${vp.status}`, at: build.at };
+  report.build = { domain: build.build || `status ${vd.status}`, pagesDev: buildP.build || `status ${vp.status}`, at: build.at, files: build.files, maxFiles: build.maxFiles, archivedJobs: build.archivedJobs, archivedUpdates: build.archivedUpdates };
+  if (build.files && build.maxFiles) (build.files > build.maxFiles * 0.92 ? warn : ok)("file budget", `${build.files} of ${build.maxFiles} files before share images (Cloudflare Pages limit); ${build.archivedJobs || 0} job and ${build.archivedUpdates || 0} update pages archived to fit`);
   if (!build.at) fail("version.json", `status ${vd.status} ${vd.error || ""}`);
   else {
     const ageH = (Date.now() - new Date(build.at).getTime()) / 3600000;
@@ -260,17 +261,32 @@ async function main() {
   if (process.env.LIVE_FULL === "1") {
     let known = []; try { known = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "known-urls.json"), "utf8")); } catch { warn("known-urls.json", "not readable"); }
     const tally = {}, broken = [];
+    // 404 by design: a Hindi detail page outside its window answers with the page that forwards to the English address
+    // (/hi/jobs/404.html), and a page the file budget archived (listed in /archived.json) with the "archived" page.
+    let archived = { jobs: [], updates: [] };
+    try { const a = JSON.parse((await get(`${SITE}/archived.json?t=${Date.now()}`)).body); archived = { jobs: a.jobs || [], updates: a.updates || [] }; } catch { /* a build before archived.json */ }
+    const arch = { jobs: new Set(archived.jobs), updates: new Set(archived.updates) };
+    const count = (k) => { tally[k] = (tally[k] || 0) + 1; };
     await pool(known, 12, async (u) => {
       let r = await get(SITE + u, { manual: true, timeout: 30000 });
       if (r.status === 0) r = await get(SITE + u, { manual: true, timeout: 30000 });   // one retry on a network error
-      let key = String(r.status);
+      if (r.status === 200) return count("200");
       if ([301, 308].includes(r.status)) {
         const loc = r.headers.get("location") || "";
         const t = await get(new URL(loc, SITE).toString(), { manual: true, timeout: 30000 });
-        key = `${r.status}->${t.status}`;
+        count(`${r.status}->${t.status}`);
         if (t.status !== 200) broken.push(`${u} -> ${loc} (${t.status})`);
-      } else if (r.status !== 200) broken.push(`${u} (${r.status}${r.error ? " " + r.error : ""})`);
-      tally[key] = (tally[key] || 0) + 1;
+        return;
+      }
+      const m = u.match(/^\/(hi\/)?(jobs|updates)\/([^/]+)\/$/);
+      if (r.status === 404 && m && arch[m[2]].has(m[3])) return count("404 archived by the file budget");
+      if (r.status === 404 && m && m[1] && /id="en-link"/.test(r.body)) {
+        const en = await get(`${SITE}/${m[2]}/${m[3]}/`, { manual: true, timeout: 30000 });
+        if ([200, 301, 308].includes(en.status)) return count("404 hindi page, forwards to the English one");
+        broken.push(`${u} (404, and the English page answers ${en.status})`); return count("404 hindi, English missing");
+      }
+      count(String(r.status));
+      broken.push(`${u} (${r.status}${r.error ? " " + r.error : ""})`);
     });
     report.knownUrls = { total: known.length, byStatus: tally, broken: broken.length, examples: broken.sort().slice(0, 60) };
     (broken.length ? fail : ok)("every URL ever published", `${known.length} URLs: ${JSON.stringify(tally)}${broken.length ? `; ${broken.length} broken, e.g. ${broken.slice(0, 3).join(" | ")}` : ""}`);

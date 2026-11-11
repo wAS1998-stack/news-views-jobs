@@ -98,7 +98,8 @@ async function main() {
   const state = readJson(STATE_FILE, {});
   if (!state._day || state._day.date !== today) state._day = { date: today, used: 0, drained: 0 };
   const budget = Math.max(0, DAILY - state._day.used);
-  const jobs = readJson(DATA("jobs.json"), []), redirects = readJson(DATA("redirects.json"), []);
+  let jobs = []; try { jobs = require("./lib.js").loadJobs(); } catch { /* no jobs readable: nothing to send */ }
+  const redirects = readJson(DATA("redirects.json"), []);
   const cli = process.argv.slice(2).filter((a) => /^https?:\/\//.test(a) && /\/jobs\/[^/]+\/?$/.test(a));
   const newUrls = String((() => { try { return fs.readFileSync(DATA("new-urls.txt"), "utf8"); } catch { return ""; } })())
     .split("\n").map((s) => s.trim()).filter((u) => /\/jobs\/[^/]+\/$/.test(u));

@@ -20,7 +20,6 @@ const L = require("./lib.js");
 const F = require("./fetch-jobs.js");
 
 const ROOT = __dirname;
-const JOBS = path.join(ROOT, "data", "jobs.json");
 const UPDATES = path.join(ROOT, "data", "updates.json");
 const C = L.CONFIG;
 const MAX_CONTENT = Number(process.env.ENRICH_MAX || C.maxEnrichPerRun || 5);
@@ -169,7 +168,7 @@ async function searchFaq(entry, queries, kind) {
 
 async function main() {
   let jobs = [], updates = [];
-  try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { console.log("Enrich: cannot read jobs.json"); return; }
+  try { jobs = L.loadJobs(); } catch (e) { console.log("Enrich: cannot read the jobs: " + e.message); return; }
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   if (!Array.isArray(jobs)) return;
   const stats = { ai: L.AI_LABEL, linksFixed: 0, linksPending: 0, updatesEnriched: 0, updatesPending: 0, contentWritten: 0, contentPending: 0 };
@@ -271,7 +270,7 @@ async function main() {
     stats.searchFaqPages = done; stats.opportunities = opp.length;
   }
 
-  if (jobsDirty) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
+  if (jobsDirty) L.saveJobs(jobs);
   if (updDirty) fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
   L.logRun("enrich", stats);
   console.log("Enrich:", JSON.stringify(stats));

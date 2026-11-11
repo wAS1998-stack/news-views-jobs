@@ -18,7 +18,6 @@ const ROOT = __dirname;
 const CONFIG = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8")); } catch { return {}; } })();
 const SITE_URL = (CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const NEWS = path.join(ROOT, "data", "news.json");
-const JOBS = path.join(ROOT, "data", "jobs.json");
 const NEWURLS = path.join(ROOT, "data", "new-urls.txt");
 
 const OPENAI_KEY = process.env.OPENAI_API_KEY || "";
@@ -223,7 +222,7 @@ async function main() {
   try { existing = JSON.parse(fs.readFileSync(NEWS, "utf8")); } catch { existing = []; }
   if (!Array.isArray(existing)) existing = [];
   let jobs = [];
-  try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { jobs = []; }
+  try { jobs = L.loadJobs(); } catch { jobs = []; }
 
   console.log(`News: AI ${AI} (${AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL}) | feeds ${NEWS_FEEDS.length} | min words ${MIN_WORDS} | existing ${existing.length}`);
   const fresh = [];

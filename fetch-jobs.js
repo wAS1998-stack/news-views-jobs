@@ -11,7 +11,7 @@
       to fill in vacancies, dates, eligibility, fee, salary and a summary —
       so each page is rich, not thin. Cost is about a few rupees a month.
       (Without a key it still publishes, using the feed's title + summary.)
-   4. De-duplicates and writes data/jobs.json. The Action commits it and
+   4. De-duplicates and writes the jobs (data/jobs/<month>.json, lib.js saveJobs). The Action commits it and
       Cloudflare redeploys. You touch nothing.
 
    ONE-TIME SETUP (then never again):
@@ -27,7 +27,6 @@ const path = require("path");
 const L = require("./lib.js");
 
 const ROOT = __dirname;
-const DATA = path.join(ROOT, "data", "jobs.json");
 const SOURCES = path.join(ROOT, "data", "sources.json");
 const UPDATES = path.join(ROOT, "data", "updates.json");
 function classify(title) {
@@ -398,7 +397,7 @@ async function toJob(item, existingIds, fingerprints) {
 
 /* ---- main ------------------------------------------------------- */
 async function main() {
-  const existing = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  const existing = L.loadJobs();   // data/jobs/<month>.json
   const ids = new Set(existing.map((j) => j.id));
   // Job pages that were retired on purpose (merged duplicates, notices that were not recruitments) stay retired.
   try { for (const [from] of JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8"))) { const m = /^\/jobs\/([^/]+)\/$/.exec(from); if (m) ids.add(m[1]); } } catch {}
@@ -512,7 +511,7 @@ async function main() {
   if (!fresh.length && !EXTENDED && !MARKED) { console.log("No new jobs found. jobs.json unchanged."); return; }
   const merged = [...fresh, ...existing]
     .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
-  fs.writeFileSync(DATA, JSON.stringify(merged, null, 2) + "\n");
+  L.saveJobs(merged);
   console.log(`Added ${fresh.length} new job(s). Total: ${merged.length}.`);
 }
 

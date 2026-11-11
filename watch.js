@@ -26,7 +26,6 @@ const F = require("./fetch-jobs.js");
 const ROOT = __dirname;
 const SRC = path.join(ROOT, "data", "sources-official.json");
 const STATE = path.join(ROOT, "data", "watch-state.json");
-const JOBS = path.join(ROOT, "data", "jobs.json");
 // Job pages retired on purpose (merged duplicates, notices that were not recruitments) must not come back.
 const RETIRED = new Set((() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/jobs\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean); } catch { return []; } })());
 const UPDATES = path.join(ROOT, "data", "updates.json");
@@ -183,7 +182,7 @@ async function main() {
   const sources = JSON.parse(fs.readFileSync(SRC, "utf8")).sources || [];
   let state = {}; try { state = JSON.parse(fs.readFileSync(STATE, "utf8")); } catch {}
   let jobs = [], updates = [];
-  try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch {}
+  try { jobs = L.loadJobs(); } catch {}
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   const archived = L.readUpdatesArchive();               // older updates (pages still live): never published twice
   const retiredUpd = L.retiredUpdateIds();
@@ -326,7 +325,7 @@ async function main() {
   const over = (L.AI ? fresh.slice(MAX_PUBLISH) : []).map((f) => ({ src: f.src.id, link: f.link, tries: f.tries || 0 }));
   state._retry = [...again, ...over].slice(0, 60);
   fs.writeFileSync(STATE, JSON.stringify(state) + "\n");
-  if (added.jobs.length || marked) fs.writeFileSync(JOBS, JSON.stringify(jobs, null, 2) + "\n");
+  if (added.jobs.length || marked) L.saveJobs(jobs);
   // the newest 800 stay in updates.json, older ones move to data/updates-archive.json (pages kept, never dropped)
   if (added.updates.length || upgraded) { const r = L.saveUpdates(updates); if (r.archived) console.log(`Watch: moved ${r.archived} older update(s) to the archive.`); }
   if (added.jobs.length || added.updates.length) {

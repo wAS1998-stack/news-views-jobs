@@ -27,7 +27,6 @@ const TOKEN = (process.env.TELEGRAM_BOT_TOKEN || "").replace(/\s+/g, "").replace
 const CHAT = (process.env.TELEGRAM_CHAT_ID || "").trim().replace(/^["']|["']$/g, "");
 const MAX_POSTS = Number(process.env.TELEGRAM_MAX || CONFIG.maxTelegramPerRun || 8);
 
-const JOBS = path.join(ROOT, "data", "jobs.json");
 const NEWURLS = path.join(ROOT, "data", "new-urls.txt");
 const POSTED = path.join(ROOT, "data", "posted.json");
 
@@ -102,7 +101,7 @@ async function main() {
     return;
   }
   let jobs = [];
-  try { jobs = JSON.parse(fs.readFileSync(JOBS, "utf8")); } catch { console.log("Telegram: cannot read jobs.json"); return; }
+  try { jobs = require("./lib.js").loadJobs(); } catch (e) { console.log("Telegram: cannot read the jobs: " + e.message); return; }
   if (!Array.isArray(jobs) || !jobs.length) return;
 
   const posted = loadPosted();

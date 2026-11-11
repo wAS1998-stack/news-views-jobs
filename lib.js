@@ -902,6 +902,69 @@ function saveUpdates(updates, { file = UPDATES_FILE, archiveFile = ARCHIVE_FILE,
   fs.writeFileSync(archiveFile, JSON.stringify(out, null, 2) + "\n");
   return { kept: recent.length, archived: over.length };
 }
+/* ---- jobs: one file per day of publication, data/jobs/<YYYY-MM>/<YYYY-MM-DD>.json ---------------------------------
+   data/jobs.json was one pretty-printed array: 37 MB after four weeks and growing 1.4 MB a day (the Hindi text is
+   most of it), on course for GitHub's 100 MB per-file limit — pushes refused, the automation stopped — before the end
+   of December 2026. Jobs now live in one file per day of publication (about 1.3 MB; "undated.json" for the few without
+   a date), one record per line: a run rewrites only the days it touched, past days never change, a changed record is
+   a one-line diff, and no file can come near a limit.
+   Every script reads with loadJobs() and writes with saveJobs(); nothing else opens these files. */
+const JOBS_DIR = path.join(ROOT, "data", "jobs"), JOBS_LEGACY = path.join(ROOT, "data", "jobs.json");
+const jobShard = (j) => { const d = (String((j && j.published) || "").match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/) || [])[0]; return d ? `${d.slice(0, 7)}/${d}` : "undated"; };
+const shardText = (list) => "[\n" + list.map((j) => JSON.stringify(j)).join(",\n") + "\n]\n";
+/** The day files that exist, as shard keys ("2026-11/2026-11-12", "undated"), newest first. */
+function jobShards(dir = JOBS_DIR) {
+  const keys = [];
+  let top = []; try { top = fs.readdirSync(dir, { withFileTypes: true }); } catch { return keys; }   // no day files yet
+  for (const e of top) {
+    if (e.isFile() && e.name === "undated.json") keys.push("undated");
+    else if (e.isDirectory() && /^\d{4}-\d{2}$/.test(e.name)) for (const f of fs.readdirSync(path.join(dir, e.name))) if (new RegExp(`^${e.name}-\\d{2}\\.json$`).test(f)) keys.push(`${e.name}/${f.slice(0, -5)}`);
+  }
+  return keys.sort((a, b) => (a === "undated") - (b === "undated") || b.localeCompare(a));
+}
+/** Job ids that were retired on purpose (data/redirects.json): never published again. */
+function retiredJobIds() {
+  try { return new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/jobs\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean)); }
+  catch { return new Set(); }
+}
+/** All job records: newest day first, in stored order within a day (new jobs sit at the top). Throws if a file does
+    not parse (callers treat that as "cannot read" and change nothing). */
+function loadJobs({ dir = JOBS_DIR, legacy = JOBS_LEGACY } = {}) {
+  const keys = jobShards(dir), jobs = [];
+  for (const k of keys) { const a = JSON.parse(fs.readFileSync(path.join(dir, k + ".json"), "utf8")); if (!Array.isArray(a)) throw new Error(`${k}.json: not an array`); jobs.push(...a); }
+  if (!fs.existsSync(legacy)) return jobs;
+  // data/jobs.json next to the day files was written by a run that started before the move to day files: its records
+  // win (it held the whole list), newer records it does not know are kept, and ids retired meanwhile stay retired.
+  const old = JSON.parse(fs.readFileSync(legacy, "utf8")); const list = Array.isArray(old) ? old : [];
+  if (!keys.length) return list;
+  const retired = retiredJobIds(), ids = new Set(list.map((j) => j && j.id));
+  return [...jobs.filter((j) => j && !ids.has(j.id)), ...list.filter((j) => j && !retired.has(j.id))];
+}
+/** Writes the records to their day files (only files whose content changed are touched), removes day files that no
+    longer hold a record and a leftover data/jobs.json. Refuses a list that would drop more than half of what is
+    stored — that is a bug, not an update. */
+function saveJobs(jobs, { dir = JOBS_DIR, legacy = JOBS_LEGACY, force = false } = {}) {
+  if (!Array.isArray(jobs)) throw new Error("saveJobs: not an array");
+  const list = jobs.filter((j) => j && typeof j === "object" && j.id);
+  if (!force) {
+    let stored = 0; try { stored = loadJobs({ dir, legacy }).length; } catch { /* unreadable: nothing to compare with */ }
+    if (stored >= 200 && list.length < stored / 2) throw new Error(`saveJobs: ${list.length} records would replace ${stored} — refused`);
+  }
+  const groups = new Map();
+  for (const j of list) { const k = jobShard(j); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(j); }
+  let written = 0;
+  for (const [k, part] of groups) {
+    const file = path.join(dir, k + ".json"), text = shardText(part);
+    let cur = null; try { cur = fs.readFileSync(file, "utf8"); } catch { /* a new day */ }
+    if (cur === text) continue;
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file + ".tmp", text); fs.renameSync(file + ".tmp", file); written++;
+  }
+  for (const k of jobShards(dir)) if (!groups.has(k)) { fs.rmSync(path.join(dir, k + ".json")); written++; }
+  try { for (const e of fs.readdirSync(dir, { withFileTypes: true })) if (e.isDirectory() && !fs.readdirSync(path.join(dir, e.name)).length) fs.rmdirSync(path.join(dir, e.name)); } catch { /* tidy-up only */ }
+  if (fs.existsSync(legacy)) fs.rmSync(legacy);
+  return { records: list.length, files: groups.size, written };
+}
 /** Update ids that were retired on purpose (merged, off-topic): never published again. */
 function retiredUpdateIds() {
   try { return new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/updates\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean)); }
@@ -912,5 +975,5 @@ function retiredUpdateIds() {
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
 module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP,
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
   isDuplicate, sameOrg, normPost, postsOverlap, advtKey, noticeKey, joinStageNumbers, stageNum, romanWord, ROMAN, STAGE_WORD };

@@ -21,7 +21,6 @@ const fs = require("fs");
 const path = require("path");
 const L = require("./lib.js");
 
-const FILE = path.join(__dirname, "data", "jobs.json");
 const MAX = Number(process.env.APPLY_MAX || 20);
 const BUDGET_MS = Number(process.env.APPLY_BUDGET_MS || 5 * 60 * 1000);
 const TODAY = L.todayIST();
@@ -191,7 +190,7 @@ async function findFor(job) {
 }
 
 async function main() {
-  let jobs; try { jobs = JSON.parse(fs.readFileSync(FILE, "utf8")); } catch { console.log("apply-links: no jobs.json"); return; }
+  let jobs; try { jobs = L.loadJobs(); } catch (e) { console.log("apply-links: cannot read the jobs: " + e.message); return; }
   const open = (j) => !j.application_end || j.application_end >= TODAY;
   const due = (j) => !j.apply_checked || (j.apply_tries || 0) < 3 && (Date.parse(TODAY) - Date.parse(j.apply_checked)) >= 7 * 86400000;
   const todo = jobs.filter((j) => open(j) && ["website", "careers"].includes(L.applyInfo(j).cta) && due(j))
@@ -217,7 +216,7 @@ async function main() {
       job.apply_tries = (job.apply_tries || 0) + 1;
     }
   }
-  if (checked) fs.writeFileSync(FILE, JSON.stringify(jobs, null, 2) + "\n");
+  if (checked) L.saveJobs(jobs);
   console.log(`apply-links: checked ${checked}, found ${found} real application pages (${todo.length} due, pdf reader ${pdfParse ? "on" : "off"})`);
   for (const l of log) console.log("  " + l);
   console.log(`  candidates seen ${STATS.cands}, passed the rules ${STATS.passed} (in ${STATS.jobsWithCands} jobs); recruitment pages found: ${jobs.filter((j) => j.careers_link).length - careers0}`);

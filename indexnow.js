@@ -26,7 +26,7 @@ function collectUrls() {
   }
   if (!urls.length) {
     try {
-      const jobs = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "jobs.json"), "utf8"));
+      const jobs = require("./lib.js").loadJobs();
       urls = jobs.filter((j) => j && j.id).map((j) => `${SITE}/jobs/${j.id}/`);
     } catch { urls = []; }
   }

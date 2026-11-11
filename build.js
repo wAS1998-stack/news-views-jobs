@@ -1,6 +1,6 @@
 /* ==================================================================
    build.js  —  news-views.in · Government Jobs
-   Reads data/jobs.json and generates a complete static site to dist/.
+   Reads the jobs (data/jobs/<month>.json, via lib.js loadJobs) and generates a complete static site to dist/.
    No framework, zero runtime dependencies.  Cloudflare runs: node build.js
    ================================================================== */
 
@@ -26,7 +26,6 @@ const SITE = {
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
-const DATA = path.join(ROOT, "data", "jobs.json");
 const BUILT = new Date();
 // Content fingerprints for static assets: a changed file gets a new URL, so no browser or CDN keeps an old copy.
 const ASSET_V = Object.fromEntries(["styles.css", "site.js"].map((f) => {
@@ -2758,7 +2757,7 @@ function write(rel, content) {
 }
 
 function main() {
-  const rawJobs = JSON.parse(fs.readFileSync(DATA, "utf8"));
+  const rawJobs = LIB.loadJobs();   // data/jobs/<month>.json
   // Defensive sanitiser: the automation's AI can occasionally return a field as a
   // number/object/array. Coerce text fields to strings so the build never crashes.
   const TEXT = ["id", "title", "organization", "org_short", "post_name", "qualification",
@@ -2976,6 +2975,7 @@ function main() {
   if (thinOrgs) console.log(`Organisation pages: ${thinOrgs} with fewer than ${MIN_ORG_INDEX} listings kept out of the index.`);
 
   write("404.html", build404());
+  write("archived.json", JSON.stringify({ jobs: [...ARCHIVED_PAGES.jobs], updates: [...ARCHIVED_PAGES.updates] }) + "\n");   // read by tools-dev/live-check.js
   // Cloudflare Pages answers a missing address with the nearest 404.html: closed recruitments and old updates whose
   // pages are no longer built get a page that says so; missing Hindi detail pages forward to the English page.
   write("jobs/404.html", buildArchived("jobs"));

@@ -17,7 +17,6 @@ const path = require("path");
 const L = require("../lib.js");
 
 const ROOT = path.join(__dirname, "..");
-const JOBS = path.join(ROOT, "data", "jobs.json");
 const REDIRECTS = path.join(ROOT, "data", "redirects.json");
 const write = process.argv.includes("--write");
 
@@ -53,7 +52,7 @@ function findPairs(jobs) {
 }
 
 function main() {
-  const jobs = JSON.parse(fs.readFileSync(JOBS, "utf8"));
+  const jobs = L.loadJobs();
   const reds = JSON.parse(fs.readFileSync(REDIRECTS, "utf8"));
   const { pairs, doubtful } = findPairs(jobs);
   for (const p of pairs) {
@@ -76,7 +75,7 @@ function main() {
     }
   }
   const kept = jobs.filter((j) => !drop.has(j.id));
-  fs.writeFileSync(JOBS, JSON.stringify(kept, null, 2) + "\n");
+  L.saveJobs(kept);
   fs.writeFileSync(REDIRECTS, JSON.stringify(reds, null, 2) + "\n");
   console.log(`Merged ${drop.size} newer record(s) into their older twin; ${kept.length} jobs left; redirects added.`);
 }

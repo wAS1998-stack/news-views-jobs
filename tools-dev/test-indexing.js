@@ -9,7 +9,7 @@ const ROOT = path.join(__dirname, "..");
   let token;
   try { token = await G.getToken("https://www.googleapis.com/auth/indexing"); } catch (e) { out.tokenError = e.message; }
   if (token) {
-    const raw = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "jobs.json"), "utf8"));
+    const raw = require("../lib.js").loadJobs();
     const jobs = (Array.isArray(raw) ? raw : raw.jobs).filter((j) => j && j.id).sort((a, b) => String(b.published).localeCompare(String(a.published)));
     const urls = jobs.slice(0, 2).map((j) => `https://news-views.in/jobs/${j.id}/`);
     const oldest = `https://news-views.in/jobs/${jobs[jobs.length - 1].id}/`;

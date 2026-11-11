@@ -12,11 +12,20 @@ const BIG = /\b(ssc|rrb|railway|ibps|sbi|rbi|upsc|nda|cds|nvs|jnvst?|ctet|police
 const list = (x) => (Array.isArray(x) ? x : (x && (x.jobs || x.updates)) || []);
 const now = (f) => { try { return list(JSON.parse(fs.readFileSync(f, "utf8"))); } catch { return []; } };
 const before = (f) => { try { return list(JSON.parse(execSync(`git show origin/main:${f}`, { maxBuffer: 1 << 30 }).toString())); } catch { return null; } };
-const oldJobs = before("data/jobs.json"), oldUpd = before("data/updates.json");
+// Jobs live in one file per day (data/jobs/<month>/<day>.json, lib.js saveJobs). A job that is new in this run can
+// only be in a job file this run changed: the new jobs are the records of those files that origin/main's version of
+// the same files does not have (a record that only moved to another day is in both lists; a run that touched no job
+// file has no new job). The old single data/jobs.json is handled the same way while a checkout still has one.
+const sh = (cmd) => { try { return execSync(cmd, { maxBuffer: 1 << 30, stdio: ["ignore", "pipe", "ignore"] }).toString(); } catch { return ""; } };
+const changedJobFiles = sh("git diff --name-only origin/main -- data/jobs/ data/jobs.json").split("\n").filter((f) => /\.json$/.test(f));
+const onMain = (f) => { const t = sh(`git show origin/main:${f}`); try { return t ? list(JSON.parse(t)) : []; } catch { return []; } };   // [] for a new day file
+const oldJobs = sh("git rev-parse --verify origin/main") ? changedJobFiles.flatMap(onMain) : null;
+const newJobs = () => changedJobFiles.flatMap(now);   // now() gives [] for a file this run removed
+const oldUpd = before("data/updates.json");
 if (!oldJobs || !oldUpd) { console.log("no"); process.exit(0); }
 const seenJ = new Set(oldJobs.map((j) => j.id)), seenU = new Set(oldUpd.map((u) => u.id));
 const big = [
-  ...now("data/jobs.json").filter((j) => !seenJ.has(j.id) && (Number(j.total_vacancies) || 0) >= 500),
+  ...newJobs().filter((j) => !seenJ.has(j.id) && (Number(j.total_vacancies) || 0) >= 500),
   ...now("data/updates.json").filter((u) => !seenU.has(u.id) && BIG.test(`${u.title} ${u.org_short || ""}`)),
 ];
 if (big.length) console.error("priority: " + big.slice(0, 5).map((x) => x.title).join(" | "));

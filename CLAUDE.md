@@ -29,7 +29,7 @@ hurting users or breaking Google's policies.
 | `districts.js` | District → state table and state-government web addresses, used by `statesOf()` (build.js) only where a job would otherwise fall into All India / Central (that bucket feeds the default-on `s-central` alert). Central bodies (`CENTRAL_BODY`) and national banks never use it. Leave out names shared by two states or that are common words; `test/districts.test.js` checks |
 | `tools.js`, `krutidev.js`, `typingtest.js` | Tool pages (salary calculators, Kruti Dev converter, typing tests) |
 | `functions/api/relay.js` | The only server code: a Pages Function that fetches .gov.in/.nic.in pages for the fetchers |
-| `data/` | Source of truth: `jobs.json`, `updates.json`, `redirects.json` (retired IDs → 301), `watch-state.json`, run logs |
+| `data/` | Source of truth: the jobs (`data/jobs/<YYYY-MM>/<YYYY-MM-DD>.json`, one file per day of publication, one record per line — read and written ONLY through `L.loadJobs()` / `L.saveJobs()`), `updates.json`, `redirects.json` (retired IDs → 301), `watch-state.json`, run logs |
 | `android/` | The app; `android/ci/last-build.txt` and `android/ci/screens/` hold the latest CI build result and emulator screenshots |
 | `.github/workflows/` | `update-jobs.yml` (fetch → build → notify), `chain.yml` (scheduler that dispatches it every ~40 min), `android.yml` (app build + screenshots), `inspect.yml` (diagnostics) |
 
@@ -65,8 +65,8 @@ hurting users or breaking Google's policies.
   `_redirects` is written by `orderRedirects()` (build.js): plain rules first, wildcard rules ("/author/*") LAST —
   Cloudflare counts every rule after the first wildcard as "dynamic" and stops after 100 (on Nov 11 two wildcard rules
   at line 171 had silently switched off the 380 rules below them; retired pages answered 404).
-  Retiring a record = add the English AND Hindi redirect AND remove it from jobs.json/updates.json (the build ignores a
-  redirect while the page still exists). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
+  Retiring a record = add the English AND Hindi redirect AND remove it from the jobs store / updates.json (the build
+  ignores a redirect while the page still exists). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
   move to `data/updates-archive.json` via `L.saveUpdates` and their pages stay live.
 - **IDs and twins:** ids keep stage numbers (`group-4`, `cbt-2`, roman → arabic; `node fetch-jobs.js --self-test`); an id
   taken by a different recruitment gets `distinctId`, never a silent drop; `legacySlug` only recognises old listings.
@@ -85,6 +85,12 @@ hurting users or breaking Google's policies.
   seats" admissions and roundup articles ("… Recruitment Notifications List"), and board/professional exams (ICAI/CA/CS/CMA, NIOS, MSBTE, Madhyamik, class 6–12
   boards, JNVST) unless the headline has any recruitment word; speculative "expected/soon/release date" updates need an
   official PDF or deep link. `qualsOf` returns `[]` for unknown (any qualification; push routes it to `q-graduate`).
+- **The jobs store is day files, not one file.** `data/jobs.json` (one pretty-printed array) had reached 37 MB in four
+  weeks, +1.4 MB a day — GitHub refuses files over 100 MB, which would have stopped every push in late December 2026.
+  `L.saveJobs()` writes `data/jobs/<month>/<day>.json` (about 1.3 MB each), touches only the days that changed, and
+  refuses a list that would drop more than half of the store; `L.loadJobs()` returns all records, newest day first
+  (and merges a leftover `data/jobs.json`). Never read or write these files directly. `data/updates-archive.json` is
+  still one file (about 0.4 MB a day): split it the same way before it nears 50 MB.
 - **Cloudflare Pages free plan = 500 builds/month.** Commits that don't change the site (app code, CLAUDE.md, data
   logs, docs) must include `[CF-Pages-Skip]` in the commit message. Batch site changes into few commits. Cloudflare
   reads only the LAST commit of a push: if a push carries site changes, its last commit must not have the skip flag
