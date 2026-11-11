@@ -2146,6 +2146,19 @@ function buildEligibilityIndex(jobs) {
 /* Queue for the owner's daily manual "Request indexing" in Search Console (10 a day): the newest pages most
    worth Google's attention first — the biggest open recruitments interleaved with results/admit cards of
    major exams, then the hubs. The daily task skips anything already on Google or requested in 14 days. */
+/* Cloudflare Pages reads _redirects top to bottom and, from the first rule with a wildcard ("*" or ":name") on, counts
+   EVERY following rule as "dynamic" — and stops reading after 100 of those. Two legacy wildcard rules in the middle
+   of the file ("/author/* ...") made it ignore the 380 rules below them: retired and merged pages answered 404 on the
+   live site while the file looked complete. So: plain rules first (at most 1,900 of the 2,000 allowed; past that the
+   fallbacks to a section page go first, the specific merged-page rules stay), wildcard rules last (at most 100). */
+const isDynamicRedirect = (line) => /\*|:[A-Za-z]/.test(String(line).trim().split(/\s+/)[0]);
+function orderRedirects(lines) {
+  const generic = (l) => /\s\/(jobs|updates|hi\/jobs|hi\/updates|organization|hi)?\/?\s301$/.test(l);
+  const plain = lines.filter((l) => !isDynamicRedirect(l));
+  const kept = plain.length > 1900 ? [...plain.filter((l) => !generic(l)), ...plain.filter(generic)].slice(0, 1900) : plain;
+  return [...kept, ...lines.filter(isDynamicRedirect).slice(0, 100)];
+}
+
 function buildIndexQueue({ jobs, updates }) {
   const day = (x) => (String(x || "").match(/^\d{4}-\d{2}-\d{2}/) || [])[0];
   const ago = (x) => { const d = day(x) ? daysLeft(day(x)) : null; return d === null ? 99 : -d; };
@@ -2964,15 +2977,9 @@ function main() {
       if (dst === from) continue;
       seen.add(from); lines.push(`${from} ${dst} 301`);
     }
-    // Cloudflare Pages allows 2,000 static redirects: past 1,900, keep the specific ones (merged pages) over the
-    // fallbacks to a section page, so the file never stops working as a whole
-    if (lines.length > 1900) {
-      const generic = (l) => /\s\/(jobs|updates|hi\/jobs|hi\/updates|organization|hi)?\/?\s301$/.test(l);
-      const keep = [...lines.filter((l) => !generic(l)), ...lines.filter(generic)].slice(0, 1900);
-      console.log(`Redirects: ${lines.length} rules, capped at 1900 (dropped ${lines.length - 1900} fallbacks to section pages)`);
-      lines.length = 0; lines.push(...keep);
-    }
-    if (lines.length) { write("_redirects", lines.join("\n") + "\n"); console.log(`Redirects: ${lines.length} retired URL(s) -> 301.`); }
+    const ordered = orderRedirects(lines);
+    if (ordered.length < lines.length) console.log(`Redirects: ${lines.length} rules, ${lines.length - ordered.length} dropped at Cloudflare's limits (fallbacks to section pages first)`);
+    if (ordered.length) { write("_redirects", ordered.join("\n") + "\n"); console.log(`Redirects: ${ordered.length} retired URL(s) -> 301 (${ordered.filter(isDynamicRedirect).length} wildcard rule(s), written last).`); }
   } catch { /* no redirects file */ }
   write("offline/index.html", head({ title: `Offline | ${SITE.name}`, desc: "You are offline.", canonical: SITE.url + "/offline/", noAds: true }) + `
 <main class="wrap" id="main"><section class="cat-head">
@@ -3020,4 +3027,4 @@ function main() {
 
 // `node build.js` builds the site; tests require() the pure helpers without building anything.
 if (require.main === module) main();
-module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf };
+module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect };

@@ -38,3 +38,17 @@ test("a cancelled recruitment is not live", () => {
   assert.strictEqual(B.statusOf({ application_end: "2099-01-01", notice_status: "cancelled" }).live, false);
   assert.strictEqual(B.statusOf({ application_end: "2099-01-01" }).live, true);
 });
+
+test("_redirects: wildcard rules go last, or Cloudflare stops reading 100 rules after the first one", () => {
+  const lines = ["/jobs/a/ /jobs/ 301", "/author/* /about/ 301", "/jobs/b/ /jobs/b-2/ 301", "/category/:name/ /guides/ 301", "/jobs/c/ /jobs/ 301"];
+  const out = B.orderRedirects(lines);
+  assert.deepStrictEqual(out, ["/jobs/a/ /jobs/ 301", "/jobs/b/ /jobs/b-2/ 301", "/jobs/c/ /jobs/ 301", "/author/* /about/ 301", "/category/:name/ /guides/ 301"]);
+  const firstDynamic = out.findIndex(B.isDynamicRedirect);
+  assert.ok(out.slice(firstDynamic).every(B.isDynamicRedirect), "a plain rule after a wildcard rule would count as dynamic");
+  // limits: 1,900 plain rules (specific ones kept over fallbacks to a section page) and 100 wildcard rules
+  const many = [...Array.from({ length: 1500 }, (_, i) => `/jobs/x${i}/ /jobs/ 301`), ...Array.from({ length: 800 }, (_, i) => `/jobs/y${i}/ /jobs/z${i}/ 301`), ...Array.from({ length: 130 }, (_, i) => `/old${i}/* / 301`)];
+  const capped = B.orderRedirects(many);
+  assert.strictEqual(capped.filter((l) => !B.isDynamicRedirect(l)).length, 1900);
+  assert.strictEqual(capped.filter(B.isDynamicRedirect).length, 100);
+  assert.strictEqual(capped.filter((l) => /\/jobs\/z\d+\/ 301$/.test(l)).length, 800, "specific redirects are kept");
+});
