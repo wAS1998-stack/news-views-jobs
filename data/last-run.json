@@ -2,7 +2,7 @@
   "date": "2026-11-12",
   "runs": {},
   "fetch": {
-    "at": "2026-11-11T21:29:00.703Z",
+    "at": "2026-11-11T22:09:28.035Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,10 +11,10 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 1,
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 77 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 78 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-11; 9 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-11; 16 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-11; 17 already known"
@@ -78,7 +78,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-11T21:29:50.170Z",
+    "at": "2026-11-11T22:10:20.835Z",
     "sources": 59,
     "healthy": 20,
     "newLinks": 0,
@@ -112,7 +112,7 @@
       "uppsc": "1 links, 0 new via direct",
       "cgpsc": "paused (fails 99, geo-blocked)",
       "gpsc": "paused (fails 99, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "kvs": "4 links, 0 new via direct",
       "ppsc": "paused (fails 99, geo-blocked)",
       "apsc": "paused (fails 99, geo-blocked)",
       "jkpsc": "paused (fails 99, geo-blocked)",
@@ -120,31 +120,31 @@
       "upsssc": "paused (fails 7, geo-blocked)",
       "rssb": "paused (fails 99, geo-blocked)",
       "esb-mp": "paused (fails 99, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
       "ctet": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "tgpsc": "3 links, 0 new via news-views.in",
+      "tnpsc": "34 links, 0 new via news-views.in",
       "jssc": "paused (fails 99, geo-blocked)",
       "osssc": "paused (fails 22, geo-blocked)",
       "gsssb": "paused (fails 99, geo-blocked)",
       "sssb-punjab": "paused (fails 99, geo-blocked)",
       "hprca": "paused (fails 99, geo-blocked)",
-      "tnpsc": "34 links, 0 new via news-views.in",
-      "kea": "paused (fails 99, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 99, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
+      "kea": "paused (fails 99, geo-blocked)",
+      "jpsc": "47 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 99, geo-blocked)",
       "uksssc": "26 links, 0 new via direct",
       "bssc": "785 links, 0 new via news-views.in",
+      "jkssb": "2 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 99, geo-blocked)",
       "tslprb": "paused (fails 99)",
       "slprb-ap": "paused (fails 99, geo-blocked)",
-      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "6 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
-      "jkssb": "2 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "185 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)"
+      "keralapsc": "error: news-views.in: HTTP 403 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 3)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -152,26 +152,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-11T21:29:56.432Z",
+    "at": "2026-11-11T22:10:21.238Z",
     "ok": true,
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 1,
+    "careers": 0,
     "log": [
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: invalid function id: 136",
-      "Warning: TT: invalid function id: 136",
-      "Warning: TT: undefined function: 21",
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 1"
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
-    "at": "2026-11-11T21:30:30.627Z",
+    "at": "2026-11-11T22:10:55.978Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -212,7 +208,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-11T21:30:30.988Z",
+    "at": "2026-11-11T22:10:56.340Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
