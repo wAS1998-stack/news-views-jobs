@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-11T12:55:43.098Z",
+    "at": "2026-11-11T14:53:14.948Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -244,24 +244,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-11T12:55:50.717Z",
+    "at": "2026-11-11T14:53:18.593Z",
     "ok": true,
-    "submitted": 36,
+    "submitted": 15,
     "failed": 0,
     "limited": false,
-    "kept": 1,
-    "usedToday": 185,
+    "kept": 17,
+    "usedToday": 200,
     "log": [
-      "Indexing API: 36 to send (36 updated, 0 deleted); 149/200 used today (IST 2026-11-11).",
-      "Indexing API: sent 36."
+      "Indexing API: 15 to send (15 updated, 0 deleted); 185/200 used today (IST 2026-11-11).",
+      "Indexing API: sent 15."
     ]
   },
   "push": {
-    "at": "2026-11-11T12:57:00.480Z",
+    "at": "2026-11-11T14:54:58.371Z",
     "ok": true,
-    "sent": 72,
+    "sent": 128,
     "log": [
-      "push-notify: 72 sent\n  job district-ayush-society-ri-bhoi-ayush-2026 en [('s-meghalaya' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job district-ayush-society-ri-bhoi-ayush-2026 hi [('s-meghalaya' in topics || 's-any' in topics) && 'q-graduate' in topics && '"
+      "push-notify: 128 sent\n  job iit-ism-dhanbad-research-associate-mathematics-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job iit-ism-dhanbad-research-associate-mathematics-2026 hi [('s-jharkhand' in topics || 's-any' in topics) && 'q-gra"
     ]
   }
 }
