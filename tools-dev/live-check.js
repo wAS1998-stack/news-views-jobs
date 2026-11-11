@@ -120,7 +120,23 @@ async function main() {
 
   const robots = byPath["/robots.txt"].body;
   for (const need of ["Sitemap: " + SITE + "/sitemap.xml", "Disallow: /api/", "Disallow: /hi/jobs/"]) (robots.includes(need) ? ok : fail)("robots " + need, robots.includes(need) ? "" : "missing");
-  if (/^Disallow:\s*\/\s*$/m.test(robots)) fail("robots blocks everything", "Disallow: /");
+  // "Disallow: /" matters only in a group that applies to search engines; Cloudflare's managed robots.txt adds such
+  // groups for AI crawlers (GPTBot, ClaudeBot, Google-Extended...), which do not affect Google Search.
+  report.robotsTxt = robots.slice(0, 5000);
+  const groups = []; let cur = null, inRules = false;
+  for (const raw of robots.split(/\r?\n/)) {
+    const line = raw.replace(/#.*/, "").trim(); const m = line.match(/^([A-Za-z-]+)\s*:\s*(.*)$/); if (!m) continue;
+    const k = m[1].toLowerCase(), v = m[2].trim();
+    if (k === "user-agent") { if (!cur || inRules) { cur = { agents: [], rules: [] }; groups.push(cur); inRules = false; } cur.agents.push(v.toLowerCase()); }
+    else if (cur && (k === "disallow" || k === "allow")) { inRules = true; cur.rules.push([k, v]); }
+  }
+  const blocksAll = (g) => g.rules.some(([k, v]) => k === "disallow" && v === "/") && !g.rules.some(([k, v]) => k === "allow" && v === "/");
+  const search = /^(\*|googlebot|googlebot-news|googlebot-image|bingbot|slurp|duckduckbot|yandex|mediapartners-google|adsbot-google)$/;
+  const blockedSearch = groups.filter(blocksAll).flatMap((g) => g.agents).filter((a) => search.test(a));
+  const blockedOther = groups.filter(blocksAll).flatMap((g) => g.agents).filter((a) => !search.test(a));
+  (blockedSearch.length ? fail : ok)("robots: search engines allowed", blockedSearch.length ? "blocked: " + blockedSearch.join(", ") : `${groups.length} groups`);
+  if (blockedOther.length) add("robots: other crawlers blocked", "warn", `${blockedOther.length} (not written by build.js — Cloudflare's managed robots.txt?): ${blockedOther.join(", ")}`);
+  if (robots.length > 600 && !/Cloudflare/i.test(robots)) add("robots.txt differs from the build", "warn", `${robots.length} bytes`);
 
   // 3. the app feed
   let index = null;
@@ -171,6 +187,7 @@ async function main() {
   await pool(redSample, 5, async ([from]) => {
     const r = await get(SITE + from, { manual: true });
     const loc = r.headers.get("location") || "";
+    if (r.status === 200 && /^\/(hi\/)?(organization|state)\//.test(from)) return;   // the page has listings again: build.js drops its redirect
     if (![301, 308].includes(r.status) || !loc) { redBad++; return fail("redirect " + from, `status ${r.status}, location ${loc || "-"}`); }
     const t = await get(new URL(loc, SITE).toString(), { manual: true });
     if (t.status !== 200) { redBad++; fail("redirect " + from, `-> ${loc} answers ${t.status}${t.headers.get("location") ? " -> " + t.headers.get("location") : ""}`); }
@@ -210,8 +227,9 @@ async function main() {
   (non200.length ? fail : ok)("sitemap URL statuses", non200.length ? `${non200.length} of ${st.length} not 200, e.g. ${non200.slice(0, 3).map((x) => x[0].replace(SITE, "") + " " + x[1]).join(", ")}` : `${st.length} more URLs: all 200`);
 
   // 8. Hindi detail page (served, but kept out of Google by robots.txt) and headers
-  if (index && index.jobs && index.jobs[0]) {
-    const r = await get(`${SITE}/hi/jobs/${index.jobs[0].id}/`);
+  const hiJob = index && (index.jobs || []).find((j) => j.th);
+  if (hiJob) {
+    const r = await get(`${SITE}/hi/jobs/${hiJob.id}/`);
     (r.status === 200 && /lang="hi"/.test(r.body) ? ok : warn)("hindi job page", `status ${r.status}`);
   }
   const hh = byPath["/"].headers;
@@ -236,6 +254,27 @@ async function main() {
   const gov = await get(`${SITE}/api/relay?url=${encodeURIComponent("https://upsc.gov.in/")}`, { timeout: 40000 });
   add("relay upsc.gov.in", gov.status === 200 ? "ok" : "warn", `status ${gov.status}, ${gov.bytes} B, served as ${gov.headers.get("content-type")}, colo ${gov.headers.get("x-relay-colo") || "-"}`);
   if (gov.status === 200 && /text\/html/.test(gov.headers.get("content-type") || "")) fail("relay content type", "an official page is served as text/html from news-views.in");
+
+  // 10. full mode (LIVE_FULL=1): every URL the site ever published (data/known-urls.json) must answer 200, or 301/308
+  //     to a page that answers 200 — never 404. Takes a few minutes.
+  if (process.env.LIVE_FULL === "1") {
+    let known = []; try { known = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "known-urls.json"), "utf8")); } catch { warn("known-urls.json", "not readable"); }
+    const tally = {}, broken = [];
+    await pool(known, 12, async (u) => {
+      let r = await get(SITE + u, { manual: true, timeout: 30000 });
+      if (r.status === 0) r = await get(SITE + u, { manual: true, timeout: 30000 });   // one retry on a network error
+      let key = String(r.status);
+      if ([301, 308].includes(r.status)) {
+        const loc = r.headers.get("location") || "";
+        const t = await get(new URL(loc, SITE).toString(), { manual: true, timeout: 30000 });
+        key = `${r.status}->${t.status}`;
+        if (t.status !== 200) broken.push(`${u} -> ${loc} (${t.status})`);
+      } else if (r.status !== 200) broken.push(`${u} (${r.status}${r.error ? " " + r.error : ""})`);
+      tally[key] = (tally[key] || 0) + 1;
+    });
+    report.knownUrls = { total: known.length, byStatus: tally, broken: broken.length, examples: broken.sort().slice(0, 60) };
+    (broken.length ? fail : ok)("every URL ever published", `${known.length} URLs: ${JSON.stringify(tally)}${broken.length ? `; ${broken.length} broken, e.g. ${broken.slice(0, 3).join(" | ")}` : ""}`);
+  }
 
   const problems = checks.filter((c) => c.level !== "ok");
   report.summary = { ok: checks.filter((c) => c.level === "ok").length, warn: checks.filter((c) => c.level === "warn").length, fail: checks.filter((c) => c.level === "fail").length, pagesChecked: pages.length, pagesWithProblems: badPages.length };
