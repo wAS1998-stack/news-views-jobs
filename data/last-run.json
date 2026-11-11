@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-11T14:53:14.948Z",
+    "at": "2026-11-11T16:57:12.337Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -257,11 +257,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-11T14:54:58.371Z",
+    "at": "2026-11-11T16:57:42.221Z",
     "ok": true,
-    "sent": 128,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 128 sent\n  job iit-ism-dhanbad-research-associate-mathematics-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job iit-ism-dhanbad-research-associate-mathematics-2026 hi [('s-jharkhand' in topics || 's-any' in topics) && 'q-gra"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   }
 }
