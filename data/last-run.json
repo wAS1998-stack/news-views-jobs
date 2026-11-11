@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-11T10:54:26.442Z",
+    "at": "2026-11-11T12:55:43.098Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,24 +243,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-11T10:54:31.009Z",
+    "at": "2026-11-11T12:55:50.717Z",
     "ok": true,
-    "submitted": 18,
+    "submitted": 36,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 149,
+    "usedToday": 185,
     "log": [
-      "Indexing API: 18 to send (18 updated, 0 deleted); 131/200 used today (IST 2026-11-11).",
-      "Indexing API: sent 18."
+      "Indexing API: 36 to send (36 updated, 0 deleted); 149/200 used today (IST 2026-11-11).",
+      "Indexing API: sent 36."
     ]
   },
   "push": {
-    "at": "2026-11-11T10:55:20.342Z",
+    "at": "2026-11-11T12:57:00.480Z",
     "ok": true,
-    "sent": 40,
+    "sent": 72,
     "log": [
-      "push-notify: 40 sent\n  job iim-jammu-professor-associate-professor-more-2026 en [('s-jammu-kashmir' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job iim-jammu-professor-associate-professor-more-2026 hi [('s-jammu-kashmir' in topics || 's-any' in topics) && 'q-"
+      "push-notify: 72 sent\n  job district-ayush-society-ri-bhoi-ayush-2026 en [('s-meghalaya' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job district-ayush-society-ri-bhoi-ayush-2026 hi [('s-meghalaya' in topics || 's-any' in topics) && 'q-graduate' in topics && '"
     ]
   }
 }
