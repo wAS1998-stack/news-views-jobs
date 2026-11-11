@@ -508,7 +508,7 @@ async function main() {
     console.log(`Recorded ${newUrls.length} new URL(s) for indexing.`);
   } catch {}
 
-  if (!fresh.length && !EXTENDED && !MARKED) { console.log("No new jobs found. jobs.json unchanged."); return; }
+  if (!fresh.length && !EXTENDED && !MARKED) { console.log("No new jobs found. The jobs store is unchanged."); return; }
   const merged = [...fresh, ...existing]
     .sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   L.saveJobs(merged);

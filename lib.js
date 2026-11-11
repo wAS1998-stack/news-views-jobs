@@ -947,7 +947,10 @@ function saveJobs(jobs, { dir = JOBS_DIR, legacy = JOBS_LEGACY, force = false } 
   if (!Array.isArray(jobs)) throw new Error("saveJobs: not an array");
   const list = jobs.filter((j) => j && typeof j === "object" && j.id);
   if (!force) {
-    let stored = 0; try { stored = loadJobs({ dir, legacy }).length; } catch { /* unreadable: nothing to compare with */ }
+    // Never write over a store that cannot be read (a damaged day file): the caller's list would then be whatever it
+    // managed to load — perhaps nothing — and saving it would delete every other day.
+    let stored;
+    try { stored = loadJobs({ dir, legacy }).length; } catch (e) { throw new Error(`saveJobs: the stored jobs cannot be read (${e.message}) — refused`); }
     if (stored >= 200 && list.length < stored / 2) throw new Error(`saveJobs: ${list.length} records would replace ${stored} — refused`);
   }
   const groups = new Map();

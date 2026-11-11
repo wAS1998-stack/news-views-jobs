@@ -207,5 +207,10 @@ test("jobs store: one file per day, one record per line; untouched days are not 
   L.saveJobs(many, { dir, legacy, force: true });
   assert.throws(() => L.saveJobs(many.slice(0, 20), { dir, legacy }), /refused/);
   assert.strictEqual(L.loadJobs({ dir, legacy }).length, 300);
+  // a damaged day file: loading throws, and saving refuses instead of writing over the rest
+  fs.writeFileSync(path.join(dir, "2026-11", "2026-11-01.json"), "[\n{\"id\":\"j0\",\n");
+  assert.throws(() => L.loadJobs({ dir, legacy }));
+  assert.throws(() => L.saveJobs([{ id: "new", title: "N", published: "2026-11-12" }], { dir, legacy }), /cannot be read/);
+  assert.strictEqual(fs.existsSync(path.join(dir, "2026-11", "2026-11-12.json")), false);
   fs.rmSync(tmp, { recursive: true, force: true });
 });

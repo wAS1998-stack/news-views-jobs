@@ -182,7 +182,8 @@ async function main() {
   const sources = JSON.parse(fs.readFileSync(SRC, "utf8")).sources || [];
   let state = {}; try { state = JSON.parse(fs.readFileSync(STATE, "utf8")); } catch {}
   let jobs = [], updates = [];
-  try { jobs = L.loadJobs(); } catch {}
+  // without the stored jobs there is nothing to compare new notices with (and saving would be refused): stop here
+  try { jobs = L.loadJobs(); } catch (e) { console.log("Watch: cannot read the jobs: " + e.message); return; }
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   const archived = L.readUpdatesArchive();               // older updates (pages still live): never published twice
   const retiredUpd = L.retiredUpdateIds();
