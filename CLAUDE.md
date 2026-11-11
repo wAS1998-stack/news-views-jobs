@@ -192,6 +192,16 @@ hurting users or breaking Google's policies.
 `FIREBASE_SERVICE_ACCOUNT_JSON`. `android/ci/last-build.txt` line 2 says which signing secrets were seen.
 
 ## Where things stand / what's next
+- **Final end-to-end check, Nov 11:** found and fixed four hidden problems that would each have stopped the site:
+  380 retired URLs answering 404 (redirect rule order), the Cloudflare 20,000-file limit about two weeks away, the
+  Cloudflare build at 14 of its 20 minutes (3,100 share images), and jobs.json on its way to GitHub's 100 MB limit.
+  After a change to redirects/headers/feed, run the live check (`check-live.yml`, `full`). Capacity now: about
+  11,000 files, growing ~180 a day (one page per job and per update, kept for ever) — the file budget starts archiving
+  the oldest closed pages around the end of December 2026; a paid Cloudflare plan (100,000 files) plus
+  `"maxFiles": 100000` keeps about five times more history (the owner's cost decision).
+- **Only the owner can fix (Cloudflare dashboard):** `www.news-views.in` answers error 525 (make the `www` DNS record
+  proxied and add Rules › Redirect Rules › "Redirect from WWW to root"); HSTS is off (SSL/TLS › Edge Certificates);
+  the live robots.txt carries Cloudflare's managed block of AI-training crawlers (harmless for Google Search).
 - Google Jobs already sends clicks; manual "Request indexing" in Search Console is done daily by a scheduled task.
 - Brand search: the homepage is indexed (URL Inspection, Oct 30) but didn't rank for "news-views.in"; brand signals
   were added Oct 31. `data/gsc.json` → `brand` (searches for the site's own name, 90 days) and `home` track progress;
