@@ -2,7 +2,7 @@
   "date": "2026-11-11",
   "runs": {},
   "fetch": {
-    "at": "2026-11-11T02:55:36.168Z",
+    "at": "2026-11-11T03:36:23.921Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,12 +11,12 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "newJobs": 2,
+    "newJobs": 0,
     "newUpdates": 1,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 72 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-11; 74 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-04; 10 already known",
-      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-11; 21 already known",
+      "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-11; 20 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-10; 8 already known"
     },
     "updDiag": {
@@ -32,6 +32,7 @@
         "Kurukshetra University Date Sheet 2026 Out - Check Theory Exam Date Online @ kuk"
       ],
       "samples": [
+        "UPSC Engineering Services Pre Exam Schedule 2027",
         "BSF Constable Tradesman Written Exam / Admit Card Notice 2026",
         "NICL Administrative Officers AO Pre Admit Card 2026",
         "Railway RRB JE 04/2026 CBT I Answer Key 2026",
@@ -45,11 +46,11 @@
         "Calicut University Result 2026 Out - Check UG & PG Results Online @ uoc.ac.in",
         "APPSC TGT Final Answer Key 2026 Out - Download Secondary Level Answer Key PDF",
         "OPSC Admit Card 2026 Out Today - Download Assistant Agriculture Engineer and Geo",
-        "PSSSB Jail Warder PMT PET Admit Card 2026 Out - Download Warder, Matron Hall Tic",
-        "MP Police Constable Admit Card 2026 - Download GD Hall Ticket at esb.mp.gov.in"
+        "PSSSB Jail Warder PMT PET Admit Card 2026 Out - Download Warder, Matron Hall Tic"
       ]
     },
     "log": [
+      "   = rejected after reading on an earlier run, skipped: Indian Bank Apprentice Online Form 2026",
       "   = same source page as an existing job, skipped: Bihar Vidhan Sabha Junior Secretariat Assistant JSA Online Form 2026",
       "   = near-duplicate headline, skipped: Bihar Vidhan Sabha Office Attendant Online Form 2026",
       "   = rejected after reading on an earlier run, skipped: Railway RRC NR Apprentice Online Form 2026 (4651 Posts)",
@@ -63,7 +64,6 @@
       "   = same source page as an existing job, skipped: UP Anganwadi Bharti Online Form 2026 (Update)",
       "   = same source page as an existing job, skipped: NTA CSIR UGC NET December Online Form 2026",
       "   = same source page as an existing job, skipped: UPSSSC Junior Engineer JE Electrical Online Form 2026",
-      "   = rejected after reading on an earlier run, skipped: ISRO SDSC SHAR Apprentice Online Form 2026",
       "   = same source page as an existing job, skipped: Oil India Geologist Recruitment 2026 – Walk-in Interview for 3 Contractual Geologist Posts",
       "   = same source page as an existing job, skipped: Jamia Hamdard Recruitment 2026 – Walk-in for 7 Guest/Visiting Faculty Posts",
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
@@ -79,9 +79,9 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-11T02:56:22.491Z",
+    "at": "2026-11-11T03:37:38.806Z",
     "sources": 59,
-    "healthy": 21,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -96,15 +96,15 @@
       "iaf-agniveer": "paused (fails 94, geo-blocked)",
       "rrb-portal": "paused (fails 90, geo-blocked)",
       "ncs": "paused (fails 17)",
-      "ssc": "7 links, 0 new via news-views.in",
-      "bpsc": "paused (fails 92, geo-blocked)",
       "rbi": "19 links, 0 new via direct",
+      "bpsc": "paused (fails 92, geo-blocked)",
+      "ssc": "7 links, 0 new via news-views.in",
       "mppsc": "paused (fails 14, geo-blocked)",
       "mpsc": "paused (fails 94)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "kpsc": "paused (fails 94, geo-blocked)",
       "appsc": "paused (fails 94, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "wbpsc": "paused (fails 94, geo-blocked)",
       "opsc": "paused (fails 17)",
       "hpsc": "paused (fails 94, geo-blocked)",
@@ -121,31 +121,31 @@
       "tgpsc": "3 links, 0 new via news-views.in",
       "rssb": "paused (fails 94, geo-blocked)",
       "esb-mp": "paused (fails 94, geo-blocked)",
+      "nta": "1 links, 0 new via news-views.in",
       "kvs": "2 links, 0 new via direct",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 94, geo-blocked)",
       "osssc": "paused (fails 17, geo-blocked)",
       "gsssb": "paused (fails 94, geo-blocked)",
       "sssb-punjab": "paused (fails 94, geo-blocked)",
       "hprca": "paused (fails 94, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "tnpsc": "35 links, 0 new via news-views.in",
       "kea": "paused (fails 94, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 94, geo-blocked)",
       "uksssc": "27 links, 0 new via direct",
-      "tnpsc": "35 links, 0 new via news-views.in",
       "bssc": "785 links, 0 new via news-views.in",
+      "csbc": "195 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 94, geo-blocked)",
       "tslprb": "paused (fails 94)",
       "slprb-ap": "paused (fails 94, geo-blocked)",
-      "jkssb": "1 links, 0 new via news-views.in",
-      "bpssc": "209 links, 0 new via news-views.in",
       "uppbpb": "6 links, 0 new via direct",
-      "csbc": "195 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
+      "jkssb": "1 links, 0 new via news-views.in",
       "rpsc": "184 links, 0 new via news-views.in",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 2)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)",
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 3)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -153,7 +153,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-11T02:56:22.799Z",
+    "at": "2026-11-11T03:37:39.202Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -168,7 +168,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-11T02:37:13.100Z",
+    "at": "2026-11-11T03:38:25.465Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -176,8 +176,10 @@
     "updatesPending": 0,
     "contentWritten": 0,
     "contentPending": 0,
-    "hindiJobsPending": 0,
-    "hindiUpdatesPending": 0,
+    "hindiJobsPending": 2,
+    "hindiJobs": 2,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
     "searchFaqPages": 0,
     "opportunities": 7,
     "log": [
@@ -185,11 +187,15 @@
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
+      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: MGU कोर्स मेंटर भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: CAF&CS विभाग सदस्य भर्ती 2026 – ऑफ़लाइन आवेदन करें",
+      "  ✓ hindi update: UPSC इंजीनियरिंग सेवाएं प्री परीक्षा का शेड्यूल 2027 जारी – ऐसे करें चेक",
+      "  ✓ hindi update: BSF कांस्टेबल ट्रेड्समैन लिखित परीक्षा / एडमिट कार्ड नोटिस 2026"
     ]
   },
   "news": {
-    "at": "2026-11-11T02:37:13.378Z",
+    "at": "2026-11-11T03:38:25.851Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
