@@ -1,20 +1,15 @@
 {
- "date": "2026-11-10",
+ "date": "2026-11-11",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-12",
-  "2026-11-08"
+  "2026-10-13",
+  "2026-11-09"
  ],
  "totals": {
-  "clicks": 35,
-  "impressions": 446
+  "clicks": 37,
+  "impressions": 501
  },
  "daily": [
-  {
-   "date": "2026-10-12",
-   "clicks": 0,
-   "impressions": 3
-  },
   {
    "date": "2026-10-13",
    "clicks": 0,
@@ -149,19 +144,24 @@
    "date": "2026-11-08",
    "clicks": 0,
    "impressions": 10
+  },
+  {
+   "date": "2026-11-09",
+   "clicks": 2,
+   "impressions": 38
   }
  ],
  "home": {
   "page": "/",
   "clicks": 0,
-  "impressions": 11,
+  "impressions": 13,
   "ctr": 0,
-  "position": 6
+  "position": 5.2
  },
  "brand": {
   "range": [
-   "2026-08-11",
-   "2026-11-08"
+   "2026-08-12",
+   "2026-11-09"
   ],
   "rows": []
  },
@@ -183,9 +183,9 @@
   {
    "page": "/jobs/kochi-metro-recruit-apprentice/",
    "clicks": 4,
-   "impressions": 11,
-   "ctr": 36.36,
-   "position": 4.2
+   "impressions": 12,
+   "ctr": 33.33,
+   "position": 4.4
   },
   {
    "page": "/jobs/nrlm-karnataka-cluster-supervisor-other-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -237,6 +237,13 @@
    "position": 3
   },
   {
+   "page": "/jobs/esic-medical-college-hospital-beltola-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 1,
+   "impressions": 1,
+   "ctr": 100,
+   "position": 2
+  },
+  {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
    "clicks": 1,
    "impressions": 14,
@@ -249,6 +256,13 @@
    "impressions": 21,
    "ctr": 4.76,
    "position": 2
+  },
+  {
+   "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
+   "clicks": 1,
+   "impressions": 31,
+   "ctr": 3.23,
+   "position": 4
   },
   {
    "page": "/jobs/nfsu-senior-project-associate-walkin-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -267,28 +281,28 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 11,
+   "impressions": 13,
    "ctr": 0,
-   "position": 6
+   "position": 5.2
   },
   {
    "page": "/about/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 1,
    "ctr": 0,
    "position": 4
   },
   {
    "page": "/apprentice/",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 4,
    "ctr": 0,
    "position": 5
   },
   {
    "page": "/disclaimer/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 1,
    "ctr": 0,
    "position": 6
   },
@@ -302,9 +316,9 @@
   {
    "page": "/guides/",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 5,
    "ctr": 0,
-   "position": 4
+   "position": 6.8
   },
   {
    "page": "/guides/documents-required-government-job-application/",
@@ -316,7 +330,7 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 8,
+   "impressions": 7,
    "ctr": 0,
    "position": 83.6
   },
@@ -330,16 +344,16 @@
   {
    "page": "/hi/",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 6,
    "ctr": 0,
-   "position": 4.7
+   "position": 5.8
   },
   {
    "page": "/jobs/",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 5,
    "ctr": 0,
-   "position": 15
+   "position": 9.6
   },
   {
    "page": "/jobs/aees-teacher-2026/",
@@ -375,6 +389,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 5
+  },
+  {
+   "page": "/jobs/bhel-artisan-out-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "page": "/jobs/bpsc-auditor-mains-2026/",
@@ -494,36 +515,15 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
-  },
-  {
-   "page": "/jobs/igntu-junior-research-fellow-project-fellow-2026/",
-   "clicks": 0,
-   "impressions": 3,
-   "ctr": 0,
-   "position": 4
-  },
-  {
-   "page": "/jobs/iit-delhi-walkin-senior-project-engineer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 7,
-   "ctr": 0,
-   "position": 3
-  },
-  {
-   "page": "/jobs/iit-ism-dhanbad-anrf-junior-research-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 2
   }
  ],
  "topQueries": [
   {
    "query": "kmrl internship",
    "clicks": 2,
-   "impressions": 3,
-   "ctr": 66.67,
-   "position": 3
+   "impressions": 4,
+   "ctr": 50,
+   "position": 4
   },
   {
    "query": "railway job vacancy 2026",
@@ -708,9 +708,37 @@
    "position": 2
   },
   {
-   "query": "barauni refinery vacancy 2026",
+   "query": "barauni iocl job vacancy",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "barauni refinery job",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "barauni refinery job vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
+   "query": "barauni refinery vacancy",
    "clicks": 0,
    "impressions": 3,
+   "ctr": 0,
+   "position": 5.3
+  },
+  {
+   "query": "barauni refinery vacancy 2026",
+   "clicks": 0,
+   "impressions": 8,
    "ctr": 0,
    "position": 5
   },
@@ -811,6 +839,20 @@
    "impressions": 3,
    "ctr": 0,
    "position": 3
+  },
+  {
+   "query": "dental hygienist job vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "dental job vacancy near me",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "query": "dentist vacancy near me",
@@ -960,13 +1002,6 @@
    "position": 4
   },
   {
-   "query": "how to prepare for ssc cgl exam",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 84
-  },
-  {
    "query": "how to start preparation for ssc cgl",
    "clicks": 0,
    "impressions": 1,
@@ -1002,13 +1037,6 @@
    "position": 2
   },
   {
-   "query": "indian bank recruitment 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 7
-  },
-  {
    "query": "indian govt bank jobs",
    "clicks": 0,
    "impressions": 1,
@@ -1028,6 +1056,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "query": "iocl barauni refinery vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   },
   {
    "query": "job alert 2026",
@@ -1163,6 +1198,13 @@
    "position": 80
   },
   {
+   "query": "manipur police recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "manipur recruitment 2026",
    "clicks": 0,
    "impressions": 1,
@@ -1175,51 +1217,53 @@
    "impressions": 2,
    "ctr": 0,
    "position": 4
-  },
-  {
-   "query": "medical officer vacancy in west bengal",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
-   "query": "medical specialists jobs",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
-   "query": "metro jobs in chennai",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "metro jobs vacancy 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "metro ticket counter job vacancy in chennai",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "ministry vacancy 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
   }
  ],
  "opportunities": [
+  {
+   "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
+   "clicks": 1,
+   "impressions": 31,
+   "ctr": 3.23,
+   "position": 4,
+   "queries": [
+    {
+     "q": "barauni refinery vacancy 2026",
+     "impressions": 8,
+     "position": 5
+    },
+    {
+     "q": "barauni refinery vacancy",
+     "impressions": 3,
+     "position": 5.3
+    },
+    {
+     "q": "barauni iocl job vacancy",
+     "impressions": 2,
+     "position": 3
+    },
+    {
+     "q": "barauni refinery job",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "barauni refinery job vacancy 2026",
+     "impressions": 1,
+     "position": 5
+    },
+    {
+     "q": "iocl barauni recruitment",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "iocl barauni refinery vacancy 2026",
+     "impressions": 1,
+     "position": 5
+    }
+   ]
+  },
   {
    "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
    "clicks": 4,
@@ -1227,6 +1271,33 @@
    "ctr": 25,
    "position": 7.8,
    "queries": []
+  },
+  {
+   "page": "/",
+   "clicks": 0,
+   "impressions": 13,
+   "ctr": 0,
+   "position": 5.2,
+   "queries": []
+  },
+  {
+   "page": "/jobs/kochi-metro-recruit-apprentice/",
+   "clicks": 4,
+   "impressions": 12,
+   "ctr": 33.33,
+   "position": 4.4,
+   "queries": [
+    {
+     "q": "kmrl internship",
+     "impressions": 7,
+     "position": 3.4
+    },
+    {
+     "q": "kochi metro internship",
+     "impressions": 2,
+     "position": 8
+    }
+   ]
   },
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
@@ -1246,33 +1317,6 @@
      "position": 4
     }
    ]
-  },
-  {
-   "page": "/jobs/kochi-metro-recruit-apprentice/",
-   "clicks": 4,
-   "impressions": 11,
-   "ctr": 36.36,
-   "position": 4.2,
-   "queries": [
-    {
-     "q": "kmrl internship",
-     "impressions": 6,
-     "position": 2.8
-    },
-    {
-     "q": "kochi metro internship",
-     "impressions": 2,
-     "position": 8
-    }
-   ]
-  },
-  {
-   "page": "/",
-   "clicks": 0,
-   "impressions": 11,
-   "ctr": 0,
-   "position": 6,
-   "queries": []
   },
   {
    "page": "/jobs/saudi-aramco-gulf-2025/",

@@ -41967,7 +41967,26 @@
         }
       ],
       "at": "2026-11-06"
-    }
+    },
+    "faq_search_at": "2026-11-11",
+    "faq_search": [
+      {
+        "q": "barauni refinery vacancy",
+        "a": "Indian Oil Corporation Limited is recruiting for 272 apprentice positions at its Barauni Refinery in Bihar."
+      },
+      {
+        "q": "barauni iocl job vacancy",
+        "a": "There are 272 job vacancies for Trade Apprentice and Technician Apprentice positions at the Barauni Refinery."
+      },
+      {
+        "q": "barauni refinery job",
+        "a": "The Barauni Refinery is currently offering job opportunities for Trade Apprentices and Technician Apprentices."
+      },
+      {
+        "q": "iocl barauni recruitment",
+        "a": "The recruitment by IOCL at Barauni Refinery includes 272 positions for apprentices, and the applications will be accepted from November 6 to December 6, 2026."
+      }
+    ]
   },
   {
     "id": "railtel-advisor-2026",

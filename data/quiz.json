@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-11",
+    "date": "2026-11-11",
+    "digest_id": "current-affairs-2026-11-11",
+    "title": "Current Affairs Quiz 11 November 2026",
+    "questions": [
+      {
+        "q": "What was the sales figure recorded at the Shilp Samagam Mela held at Dilli Haat?",
+        "options": [
+          "₹64.52 lakh",
+          "₹60 lakh",
+          "₹70 lakh",
+          "₹65 lakh"
+        ],
+        "answer": 0,
+        "why": "The article states that the Shilp Samagam Mela recorded sales exceeding ₹64.52 lakh."
+      },
+      {
+        "q": "Which department completed the sixth phase of its special military campaign?",
+        "options": [
+          "Department of Defense",
+          "Department of Military Affairs",
+          "Department of Home Affairs",
+          "Department of Security"
+        ],
+        "answer": 1,
+        "why": "The article mentions the successful completion of the sixth phase of the campaign by the Department of Military Affairs."
+      },
+      {
+        "q": "What is the focus of the national roadmap prepared by Odisha?",
+        "options": [
+          "Enhancing traditional crafts",
+          "Transforming coarse cereal-based agriculture",
+          "Boosting tourism",
+          "Increasing medical device production"
+        ],
+        "answer": 1,
+        "why": "The article notes that Odisha's national roadmap is focused on transforming coarse cereal-based agriculture."
+      },
+      {
+        "q": "What has been invited under the incentive scheme related to production?",
+        "options": [
+          "Food sector innovations",
+          "Medical devices",
+          "Agricultural tools",
+          "Tourism development"
+        ],
+        "answer": 1,
+        "why": "The article states that new applications are invited under the incentive scheme for the production of medical devices."
+      },
+      {
+        "q": "How many individuals participated in the ‘Nasha Mukt Yuva, Viksit Bharat Quiz’?",
+        "options": [
+          "20,000",
+          "25,607",
+          "30,000",
+          "35,000"
+        ],
+        "answer": 1,
+        "why": "The article mentions that over 25,607 individuals participated in the quiz."
+      },
+      {
+        "q": "What significant milestone did the new AIIMS achieve regarding outpatient consultations?",
+        "options": [
+          "3 crore",
+          "4 crore",
+          "6 crore",
+          "5 crore"
+        ],
+        "answer": 2,
+        "why": "The article notes that the AIIMS has provided over 6 crore outpatient consultations since 2021-22."
+      },
+      {
+        "q": "Which two ministries successfully completed their respective special campaigns?",
+        "options": [
+          "Home Ministry and Defense Production",
+          "Department of Military Affairs and Home Ministry",
+          "Department of Defense Production and Home Ministry",
+          "Department of Military Affairs and Department of Defense"
+        ],
+        "answer": 2,
+        "why": "The article highlights that both the Department of Defence Production and the Home Ministry completed their special campaigns."
+      },
+      {
+        "q": "What is the purpose of the Yamuna Recreational Cruise Service?",
+        "options": [
+          "Enhancing tourism",
+          "Boosting military readiness",
+          "Improving healthcare access",
+          "Promoting agricultural practices"
+        ],
+        "answer": 0,
+        "why": "The article indicates that the launch of the Yamuna Recreational Cruise Service aims to promote tourism."
+      },
+      {
+        "q": "What aspect of healthcare does the article emphasize regarding the new AIIMS?",
+        "options": [
+          "Increased surgical procedures",
+          "Enhanced healthcare infrastructure",
+          "Higher patient fees",
+          "Reduction in wait times"
+        ],
+        "answer": 1,
+        "why": "The article emphasizes the enhancement of healthcare infrastructure due to increased outpatient consultations."
+      },
+      {
+        "q": "Which sector’s engagements are highlighted as relevant for candidates of State PSC and social work?",
+        "options": [
+          "Health sector",
+          "Military sector",
+          "Youth awareness on substance abuse",
+          "Tourism sector"
+        ],
+        "answer": 2,
+        "why": "The involvement in the youth quiz regarding substance abuse awareness highlights social issues relevant for State PSC candidates."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-10",
     "date": "2026-11-10",
     "digest_id": "current-affairs-2026-11-10",
