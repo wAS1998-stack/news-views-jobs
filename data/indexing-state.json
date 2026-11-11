@@ -1,7 +1,7 @@
 {
  "_day": {
   "date": "2026-11-11",
-  "used": 114,
+  "used": 131,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -3694,5 +3694,73 @@
  "https://news-views.in/jobs/niftem-junior-research-fellow-2026/": {
   "sentAt": "2026-11-11T06:26:13.541Z",
   "hash": "ecaad02d42a9"
+ },
+ "https://news-views.in/jobs/aiims-patna-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-11T08:32:23.634Z",
+  "hash": "3397618580d7"
+ },
+ "https://news-views.in/jobs/aniims-lady-medical-officer-2026/": {
+  "sentAt": "2026-11-11T08:32:23.890Z",
+  "hash": "2f986b22737b"
+ },
+ "https://news-views.in/jobs/csir-neeri-project-associate-ii-eht-2026/": {
+  "sentAt": "2026-11-11T08:32:24.159Z",
+  "hash": "3fc64d4ce0d6"
+ },
+ "https://news-views.in/jobs/dhfws-rampurhat-community-health-assistant-2026/": {
+  "sentAt": "2026-11-11T08:32:24.418Z",
+  "hash": "ddee123837f5"
+ },
+ "https://news-views.in/jobs/exim-bank-management-trainee-manager-2026/": {
+  "sentAt": "2026-11-11T08:32:24.676Z",
+  "hash": "c9f051f5ed33"
+ },
+ "https://news-views.in/jobs/iit-bhu-project-officer-2026/": {
+  "sentAt": "2026-11-11T08:32:24.917Z",
+  "hash": "eeb3b5705fe6"
+ },
+ "https://news-views.in/jobs/iit-indore-jrf-1-posts-2026/": {
+  "sentAt": "2026-11-11T08:32:25.127Z",
+  "hash": "b40983f5ca93"
+ },
+ "https://news-views.in/jobs/iit-indore-junior-research-fellow-project-2026/": {
+  "sentAt": "2026-11-11T08:32:25.365Z",
+  "hash": "cf6ac76f32c7"
+ },
+ "https://news-views.in/jobs/malkangiri-forest-division-wildlife-veterinary-2026/": {
+  "sentAt": "2026-11-11T08:32:25.604Z",
+  "hash": "e3941726c5e5"
+ },
+ "https://news-views.in/jobs/mgu-course-coordinator-walkin-2026/": {
+  "sentAt": "2026-11-11T08:32:25.851Z",
+  "hash": "0876a70ea1b9"
+ },
+ "https://news-views.in/jobs/nhpc-industrial-trainee-2026/": {
+  "sentAt": "2026-11-11T08:32:26.060Z",
+  "hash": "9455e87d11fe"
+ },
+ "https://news-views.in/jobs/nowboicha-college-principal-2027/": {
+  "sentAt": "2026-11-11T08:32:26.255Z",
+  "hash": "ac846d88fa9c"
+ },
+ "https://news-views.in/jobs/ouat-assistant-professor-2026/": {
+  "sentAt": "2026-11-11T08:32:26.470Z",
+  "hash": "94c7312ad639"
+ },
+ "https://news-views.in/jobs/rmlh-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-11T08:32:26.681Z",
+  "hash": "6a045a3a927a"
+ },
+ "https://news-views.in/jobs/sssced-professor-associate-professor-more-2026/": {
+  "sentAt": "2026-11-11T08:32:26.884Z",
+  "hash": "ef106f9fe8f1"
+ },
+ "https://news-views.in/jobs/thdcil-adhoc-general-duty-medical-officer-2026/": {
+  "sentAt": "2026-11-11T08:32:27.129Z",
+  "hash": "3408603345f5"
+ },
+ "https://news-views.in/jobs/tripura-high-court-law-clerks-cum-2026/": {
+  "sentAt": "2026-11-11T08:32:27.381Z",
+  "hash": "cafcac5a3379"
  }
 }

@@ -237,7 +237,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-11T06:26:09.192Z",
+    "at": "2026-11-11T08:32:22.924Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -248,24 +248,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-11T06:26:13.663Z",
+    "at": "2026-11-11T08:32:27.503Z",
     "ok": true,
     "submitted": 17,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 114,
+    "usedToday": 131,
     "log": [
-      "Indexing API: 17 to send (17 updated, 0 deleted); 97/200 used today (IST 2026-11-11).",
+      "Indexing API: 17 to send (17 updated, 0 deleted); 114/200 used today (IST 2026-11-11).",
       "Indexing API: sent 17."
     ]
   },
   "push": {
-    "at": "2026-11-11T06:27:20.675Z",
+    "at": "2026-11-11T08:33:40.122Z",
     "ok": true,
-    "sent": 78,
+    "sent": 68,
     "log": [
-      "push-notify: 78 sent\n  job appsc-group-2-executive-non-executive-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job appsc-group-2-executive-non-executive-2026 hi [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in"
+      "push-notify: 68 sent\n  job sssced-professor-associate-professor-more-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job sssced-professor-associate-professor-more-2026 hi [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' "
     ]
   }
 }
