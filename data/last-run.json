@@ -1,42 +1,8 @@
 {
   "date": "2026-11-12",
   "runs": {},
-  "notify": {
-    "at": "2026-11-11T22:16:31.039Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
-  "indexing-api": {
-    "at": "2026-11-11T22:16:32.081Z",
-    "ok": false,
-    "submitted": 1,
-    "failed": 0,
-    "limited": true,
-    "kept": 1,
-    "usedToday": 200,
-    "log": [
-      "Indexing API: 3 to send (1 updated, 2 deleted); 114/200 used today (IST 2026-11-12).",
-      "Indexing API: sent 1, quota reached — 0 kept for the next run."
-    ]
-  },
-  "push": {
-    "at": "2026-11-11T22:16:36.610Z",
-    "ok": true,
-    "sent": 0,
-    "quiet": true,
-    "log": [
-      "push-notify: nothing new to send (quiet hours)."
-    ]
-  },
   "fetch": {
-    "at": "2026-11-11T22:49:33.789Z",
+    "at": "2026-11-11T23:29:52.427Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -110,10 +76,11 @@
       "   = near-duplicate headline, skipped: NPCC Recruitment 2026 Notification Out – Apply Online for 52 Assistant, Junior Engineer and More Posts"
     ]
   },
+  "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-11T22:50:20.065Z",
+    "at": "2026-11-11T23:30:40.107Z",
     "sources": 59,
-    "healthy": 19,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -128,9 +95,9 @@
       "iaf-agniveer": "paused (fails 99, geo-blocked)",
       "rrb-portal": "paused (fails 95, geo-blocked)",
       "ncs": "paused (fails 22)",
-      "rbi": "19 links, 0 new via direct",
-      "bpsc": "paused (fails 97, geo-blocked)",
       "ssc": "7 links, 0 new via news-views.in",
+      "bpsc": "paused (fails 97, geo-blocked)",
+      "rbi": "19 links, 0 new via direct",
       "mppsc": "paused (fails 19, geo-blocked)",
       "mpsc": "paused (fails 99)",
       "indiapost-gds": "142 links, 0 new via direct",
@@ -142,10 +109,10 @@
       "hpsc": "paused (fails 99, geo-blocked)",
       "hppsc": "paused (fails 99, geo-blocked)",
       "ukpsc": "paused (fails 99, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 99, geo-blocked)",
       "gpsc": "paused (fails 99, geo-blocked)",
-      "kvs": "4 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "ppsc": "paused (fails 99, geo-blocked)",
       "apsc": "paused (fails 99, geo-blocked)",
       "jkpsc": "paused (fails 99, geo-blocked)",
@@ -154,30 +121,30 @@
       "rssb": "paused (fails 99, geo-blocked)",
       "esb-mp": "paused (fails 99, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "tnpsc": "34 links, 0 new via news-views.in",
+      "kvs": "4 links, 0 new via direct",
       "jssc": "paused (fails 99, geo-blocked)",
       "osssc": "paused (fails 22, geo-blocked)",
       "gsssb": "paused (fails 99, geo-blocked)",
       "sssb-punjab": "paused (fails 99, geo-blocked)",
       "hprca": "paused (fails 99, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "kea": "paused (fails 99, geo-blocked)",
-      "bssc": "785 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "dsssb2": "paused (fails 99, geo-blocked)",
+      "bssc": "785 links, 0 new via news-views.in",
       "uksssc": "26 links, 0 new via direct",
-      "tnpsc": "34 links, 0 new via news-views.in",
-      "jkssb": "2 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 99, geo-blocked)",
       "tslprb": "paused (fails 99)",
       "slprb-ap": "paused (fails 99, geo-blocked)",
       "wbssc": "13 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via news-views.in",
       "uppbpb": "6 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
+      "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "185 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 4)",
-      "nta": "error: news-views.in: HTTP 403 | api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 5)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -185,7 +152,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-11T22:50:20.488Z",
+    "at": "2026-11-11T23:30:40.507Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -200,7 +167,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-11T22:50:54.164Z",
+    "at": "2026-11-11T23:31:14.513Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -241,7 +208,7 @@
     ]
   },
   "news": {
-    "at": "2026-11-11T22:50:54.551Z",
+    "at": "2026-11-11T23:31:14.889Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
