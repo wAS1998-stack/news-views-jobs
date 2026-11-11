@@ -214,7 +214,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-11T01:21:48.993Z",
+    "at": "2026-11-11T03:03:13.553Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -225,25 +225,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-11T01:21:49.902Z",
+    "at": "2026-11-11T03:03:14.671Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 2,
     "failed": 0,
     "limited": false,
     "kept": 1,
-    "usedToday": 95,
+    "usedToday": 97,
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 94/200 used today (IST 2026-11-11).",
-      "Indexing API: sent 1."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 95/200 used today (IST 2026-11-11).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-11T01:21:57.915Z",
+    "at": "2026-11-11T03:04:06.139Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 134,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 134 sent\n  job jmi-udc-urdu-typist-more-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job jmi-udc-urdu-typist-more-2026 hi [('s-delhi' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n"
     ]
   }
 }
