@@ -246,7 +246,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T07:34:49.163Z",
+    "at": "2026-11-12T08:19:28.430Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -257,11 +257,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T07:36:22.550Z",
+    "at": "2026-11-12T08:20:22.729Z",
     "ok": true,
-    "sent": 156,
+    "sent": 44,
     "log": [
-      "push-notify: 156 sent\n  job rrb-ntpc-12th-level-2026 en ['s-central' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job rrb-ntpc-12th-level-2026 hi ['s-central' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job assam-rifles-technical-tradesman-rally-new-2026 en [('"
+      "push-notify: 44 sent\n  job nhpc-industrial-trainee-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job nhpc-industrial-trainee-2026 hi [('s-haryana' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job m"
     ]
   }
 }
