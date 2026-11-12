@@ -241,7 +241,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T09:22:50.950Z",
+    "at": "2026-11-12T11:24:48.355Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -252,11 +252,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T09:23:40.808Z",
+    "at": "2026-11-12T11:26:09.239Z",
     "ok": true,
-    "sent": 38,
+    "sent": 72,
     "log": [
-      "push-notify: 38 sent\n  job rri-research-assistant-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job rri-research-assistant-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in top"
+      "push-notify: 72 sent\n  job drdo-tbrl-paid-internship-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job drdo-tbrl-paid-internship-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics"
     ]
   }
 }
