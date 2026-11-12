@@ -10,6 +10,9 @@ import androidx.work.workDataOf
 import com.newsviews.app.data.Dates
 import com.newsviews.app.data.JobItem
 import com.newsviews.app.data.Prefs
+import com.newsviews.app.data.Status
+import com.newsviews.app.data.isClosed
+import com.newsviews.app.data.status
 import com.newsviews.app.data.UpdateItem
 import com.newsviews.app.push.Alerts
 import java.time.Duration
@@ -27,7 +30,7 @@ object Reminders {
 
     private fun enqueue(wm: WorkManager, unique: String, at: ZonedDateTime, data: androidx.work.Data): Boolean {
         val delay = Duration.between(ZonedDateTime.now(Dates.IST), at).toMillis()
-        if (delay <= 0) return false
+        if (delay <= 0) { wm.cancelUniqueWork(unique); return false }   // the date moved earlier or passed: no stale reminder
         val req = OneTimeWorkRequestBuilder<ReminderWorker>().setInitialDelay(delay, TimeUnit.MILLISECONDS).setInputData(data).build()
         wm.enqueueUniqueWork(unique, ExistingWorkPolicy.REPLACE, req)
         return true
@@ -46,8 +49,10 @@ object Reminders {
         idempotent. Jobs marked as applied get no reminders. */
     fun rescheduleAll(context: Context, jobs: List<JobItem>, hindi: Boolean, applied: Set<String> = emptySet()) {
         for (j in jobs) {
-            if (j.id in applied) cancel(context, j.id)
-            else if (j.en.isNotBlank()) schedule(context, j.id, j.title(hindi), j.en)
+            // applied, closed, cancelled or postponed (the feed's date is then the notice date): no reminders
+            val st = j.status()
+            if (j.id in applied || st.isClosed() || st == Status.POSTPONED || j.ns.isNotBlank() || j.en.isBlank()) cancel(context, j.id)
+            else schedule(context, j.id, j.title(hindi), j.en)
         }
     }
 

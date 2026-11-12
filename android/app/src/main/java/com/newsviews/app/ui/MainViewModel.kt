@@ -147,6 +147,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         val keep = mutableSetOf<String>()
         for (key in s.tracked) {
             val date = Reminders.eventDate(key, jobs, ups)
+            // no longer in the feed (a job leaves it 16 days after its last date, often before the exam): the reminders
+            // already scheduled stay, they carry their own date
+            if (date.isEmpty()) { keep += key; continue }
             if (date.length < 10 || date.take(10) < today) { Reminders.cancelEvent(ctx, key); continue }
             keep += key
             val (title, label) = trackedText(key, jobs, ups, s.hindi)

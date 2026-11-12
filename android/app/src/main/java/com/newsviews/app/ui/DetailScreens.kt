@@ -128,6 +128,9 @@ internal fun <T> Loader(key: String, load: suspend () -> T, s: Strings, web: Str
         catch (e: Exception) { if (data == null) failed = true }
     }
     val d = data
+    val showing = d != null
+    LaunchedEffect(showing) { com.newsviews.app.ads.Ads.pageContent.value = showing }
+    androidx.compose.runtime.DisposableEffect(Unit) { onDispose { com.newsviews.app.ads.Ads.pageContent.value = false } }
     when {
         d != null -> content(d)
         failed -> Column(Modifier.fillMaxSize().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -204,7 +207,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
                 if (saved && id in settings.applied) Pill(s.x.applied, Pills.green())
                 if (j.verified) Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Filled.Verified, null, tint = Brand.Green); Spacer(Modifier.width(4.dp))
-                    Text(s.verified, style = MaterialTheme.typography.labelMedium, color = Brand.Green)
+                    Text(s.verified, style = MaterialTheme.typography.labelMedium, color = Pills.green().fg)
                 }
             }
             Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -226,7 +229,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
                 val under = j.age_min > 0 && age < j.age_min
                 val fits = !under && age <= j.age_max + settings.relaxation()
                 Text(if (fits) s.ageOk(age) else if (under) s.ageUnder(age) else s.ageOver(age), style = MaterialTheme.typography.labelLarge,
-                    color = if (fits) Brand.Green else Brand.Saffron, modifier = Modifier.padding(top = 10.dp))
+                    color = if (fits) Pills.green().fg else Pills.saffron().fg, modifier = Modifier.padding(top = 10.dp))
             }
             Spacer(Modifier.height(14.dp))
             val ctaUrl = j.cta_url.ifBlank { j.apply_link.ifBlank { j.official_website } }
@@ -234,7 +237,7 @@ fun JobDetailScreen(vm: MainViewModel, s: Strings, id: String, onOpenJob: (Strin
             val onSave = {
                 vm.toggleSaved(item)
                 // no reminder prompt for a closed job: there is nothing left to remind about
-                if (!saved && !closed && settings.reminders && item.en.isNotBlank()) reminderPrompt()
+                if (!saved && !closed && settings.reminders && item.en.isNotBlank() && item.ns.isBlank()) reminderPrompt()
             }
             if (closed) {
                 // closed or cancelled: no Apply button — what happened, and the notice for reference only

@@ -48,7 +48,8 @@ object Alerts {
         val t = mutableSetOf<String>()
         if (s.alerts) {
             if (s.central) t += "s-central"
-            if (s.states.isEmpty()) t += "s-any" else s.states.forEach { t += "s-$it" }
+            val states = s.states - "gulf"   // no Gulf jobs in the app (private employers)
+            if (states.isEmpty()) t += "s-any" else states.forEach { t += "s-$it" }
             s.qual.levels.forEach { t += "q-$it" }
             if (s.digest) t += "digest"   // the evening summary (push-notify.js), part of job alerts
         }
@@ -79,7 +80,8 @@ object Alerts {
             val fm = FirebaseMessaging.getInstance()
             val done = have.toMutableSet()
             for (t in have - want) if (withTimeoutOrNull(15_000) { runCatching { fm.unsubscribeFromTopic(t).await() }.isSuccess } == true) done -= t
-            for (t in want - have) if (withTimeoutOrNull(15_000) { runCatching { fm.subscribeToTopic(t).await() }.isSuccess } == true) done += t
+            // FCM queues a subscribe and finishes it later when it times out here: only an outright failure is "not subscribed"
+            for (t in want - have) if (withTimeoutOrNull(15_000) { runCatching { fm.subscribeToTopic(t).await() }.isSuccess } != false) done += t
             prefs.setSubscribed(done)
         }
     }

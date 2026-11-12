@@ -202,6 +202,9 @@ fun QuizScreen(vm: MainViewModel, s: Strings, id: String, onMore: () -> Unit = {
                 }
             }
             if (finished) {
+                // one in-page ad at the natural end of the quiz: after the answered questions, with the score and the
+                // streak between it and the Share / More quizzes buttons (never directly under a button)
+                InlineAd(s.ad, contentUrl = "${BuildConfig.SITE}/quiz/${z.id}/")
                 Spacer(Modifier.height(18.dp))
                 Text(s.quizScore(score, z.questions.size), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                 val streak = settings.quizStreak()
@@ -222,8 +225,6 @@ fun QuizScreen(vm: MainViewModel, s: Strings, id: String, onMore: () -> Unit = {
                     }) { Text(s.x.whatsapp) }
                 }
                 Button(onClick = onMore, modifier = Modifier.padding(top = 8.dp)) { Text(s.x.moreQuizzes) }
-                // one in-page ad at the natural end of the quiz, never between the answer buttons
-                InlineAd(s.ad, contentUrl = "${BuildConfig.SITE}/quiz/${z.id}/")
             }
             Spacer(Modifier.height(24.dp))
         }

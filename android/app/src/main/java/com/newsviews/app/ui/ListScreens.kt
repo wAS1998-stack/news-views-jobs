@@ -221,9 +221,10 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onQ
                     val quizzes = idx?.quizzes ?: emptyList()
                     val newest = quizzes.firstOrNull()
                     val playedToday = today.toString() in settings.quizDays
-                    if (newest != null && !playedToday && newest.date >= yesterday) item(key = "quiz-${newest.id}") {
+                    val playedNewest = newest != null && newest.date.take(10) in settings.quizScores
+                    if (newest != null && !playedNewest && newest.date >= yesterday) item(key = "quiz-${newest.id}") {
                         QuizCard(newest, settings.quizStreak(), s) { onQuiz(newest.id) }
-                    } else if (newest != null && playedToday) item(key = "quiz-done") {
+                    } else if (newest != null && (playedToday || playedNewest)) item(key = "quiz-done") {
                         val missed = quizzes.firstOrNull { it.date == yesterday && it.date !in settings.quizScores }
                         QuizDoneCard(settings.quizStreak(), s, onYesterday = missed?.let { m -> { onQuiz(m.id) } }, onAll = onQuizzes)
                     }
@@ -240,7 +241,7 @@ fun JobsScreen(vm: MainViewModel, s: Strings, onQuiz: (String) -> Unit = {}, onQ
                             JobCard(j, hindi, s, j.id in settings.saved, onSave = {
                                 val wasSaved = j.id in settings.saved
                                 vm.toggleSaved(j)
-                                if (!wasSaved && settings.reminders && j.en.isNotBlank() && !j.status().isClosed()) reminderPrompt()
+                                if (!wasSaved && settings.reminders && j.en.isNotBlank() && j.ns.isBlank() && !j.status().isClosed()) reminderPrompt()
                             }, onClick = { onOpen(j.id) })
                         }
                     }

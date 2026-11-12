@@ -134,7 +134,7 @@ fun jobShareText(item: JobItem, url: String, hindi: Boolean, s: Strings): String
     val facts = listOfNotNull(
         if (item.v > 0) s.posts(item.v) else null,
         item.q.firstOrNull()?.let { if (hindi) QUAL_HI[it] ?: qualName(it) else qualName(it) },
-        item.en.takeIf { it.isNotBlank() }?.let { "${s.lastDate} ${Dates.pretty(it, hindi)}" },
+        item.en.takeIf { it.isNotBlank() && item.ns.isBlank() }?.let { "${s.lastDate} ${Dates.pretty(it, hindi)}" },
     ).joinToString(" · ")
     return listOf(item.short(hindi), facts, withUtm(url)).filter { it.isNotBlank() }.joinToString("\n") + "\n\n" + s.shareFooter
 }
@@ -230,7 +230,7 @@ fun JobCard(job: JobItem, hindi: Boolean, s: Strings, saved: Boolean, onSave: ()
                 StatusPill(job, s)
                 if (job.w == 1) Pill(s.walkIn, Pills.azure())
                 if (job.v > 0) Pill(s.posts(job.v), MaterialTheme.colorScheme.onSurface, MaterialTheme.colorScheme.surfaceVariant)
-                if (job.en.isNotBlank()) Pill("${s.lastDate} ${Dates.short(job.en, hindi)}", MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant)
+                if (job.en.isNotBlank() && job.ns.isBlank()) Pill("${s.lastDate} ${Dates.short(job.en, hindi)}", MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.colorScheme.surfaceVariant)
                 job.q.firstOrNull()?.let { q -> Pill(if (hindi) QUAL_HI[q] ?: q else qualName(q), MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer) }
             }
             // saved jobs: "Applied" (a switch on the Saved tab: it stops the last-date reminders), and readable without network
@@ -400,7 +400,7 @@ fun RelatedJobs(title: String, items: List<JobItem>, hindi: Boolean, s: Strings,
                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
                         Text(j.short(hindi), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                        val meta = listOfNotNull(j.o.ifBlank { null }, if (j.v > 0) s.posts(j.v) else null, j.en.takeIf { it.isNotBlank() }?.let { "${s.lastDate} ${Dates.short(it, hindi)}" })
+                        val meta = listOfNotNull(j.o.ifBlank { null }, if (j.v > 0) s.posts(j.v) else null, j.en.takeIf { it.isNotBlank() && j.ns.isBlank() }?.let { "${s.lastDate} ${Dates.short(it, hindi)}" })
                         if (meta.isNotEmpty()) Text(meta.joinToString(" · "), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     }
                 }

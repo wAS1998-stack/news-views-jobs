@@ -225,7 +225,7 @@ object Builtin {
         "himachal-pradesh" to "Himachal Pradesh", "jharkhand" to "Jharkhand", "karnataka" to "Karnataka", "kerala" to "Kerala", "madhya-pradesh" to "Madhya Pradesh",
         "maharashtra" to "Maharashtra", "manipur" to "Manipur", "meghalaya" to "Meghalaya", "mizoram" to "Mizoram", "nagaland" to "Nagaland", "odisha" to "Odisha",
         "punjab" to "Punjab", "rajasthan" to "Rajasthan", "sikkim" to "Sikkim", "tamil-nadu" to "Tamil Nadu", "telangana" to "Telangana", "tripura" to "Tripura",
-        "uttar-pradesh" to "Uttar Pradesh", "uttarakhand" to "Uttarakhand", "west-bengal" to "West Bengal", "jammu-kashmir" to "Jammu & Kashmir", "gulf" to "Gulf / abroad",
+        "uttar-pradesh" to "Uttar Pradesh", "uttarakhand" to "Uttarakhand", "west-bengal" to "West Bengal", "jammu-kashmir" to "Jammu & Kashmir",
     ).map { Named(it.first, it.second) }
     val quals = listOf("10th-pass" to "10th Pass", "12th-pass" to "12th Pass", "graduate" to "Graduate", "engineering-diploma" to "Engineering / Diploma", "post-graduate" to "Post Graduate").map { Named(it.first, it.second) }
     val types = listOf("result" to "Results", "admit-card" to "Admit Cards", "answer-key" to "Answer Keys", "exam-date" to "Exam Dates").map { Named(it.first, it.second) }
@@ -256,7 +256,7 @@ fun Status.isClosed(): Boolean = this == Status.CLOSED || this == Status.CANCELL
 fun JobItem.status(): Status {
     if (ns == "cancelled") return Status.CANCELLED
     val left = Dates.daysLeft(en)
-    if (ns == "postponed") return if (left != null && left < 0) Status.CLOSED else Status.POSTPONED   // past its date it is simply closed
+    if (ns == "postponed") return Status.POSTPONED   // "en" is then the notice date (for older apps), not a last date
     val d = left ?: return Status.OPEN
     return when {
         d < 0 -> Status.CLOSED

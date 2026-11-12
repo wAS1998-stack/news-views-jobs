@@ -201,6 +201,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
     val top = TABS.any { it.route == route }
     val open by pending.collectAsStateWithLifecycle()
     val idx by vm.index.collectAsStateWithLifecycle()
+    val pageContent by Ads.pageContent.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val activity = context.findActivity()
     var prevRoute by rememberSaveable { mutableStateOf<String?>(null) }
@@ -248,6 +249,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         val p = open ?: return@LaunchedEffect
         // debug hook: a plain jump to the tab, clearing open pages (go() would restore the tab's saved stack)
         if (p.first != "tab") linkVisit = true
+        if (p.first == "tab" || p.first == "quizzes") prevRoute = null   // opened from a notification / link: not a "back" from a page
         if (p.first == "tab") nav.navigate(p.second) { popUpTo("jobs"); launchSingleTop = true }
         else if (p.first == "quiz") nav.navigate("quiz/${p.second}") { launchSingleTop = true }
         else if (p.first == "quizzes") nav.navigate("quizzes") { launchSingleTop = true }
@@ -299,7 +301,9 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
         },
         bottomBar = {
             if (top) Column {
-                if (route != "alerts") BottomBanner(banner, s.ad)
+                // no banner on a screen without publisher content: Alerts, an empty Saved tab, a list still loading
+                val tabContent = when (route) { "alerts" -> false; "saved" -> settings.saved.isNotEmpty(); "jobs", "updates" -> idx != null; else -> true }
+                if (tabContent) BottomBanner(banner, s.ad)
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                     TABS.forEach { t ->
@@ -313,7 +317,7 @@ private fun Root(vm: MainViewModel, pending: MutableStateFlow<Pair<String, Strin
                 }
             }
             // pages: the same banner, kept alive from the list (no new request), well below the Apply buttons at the top
-            else if (adCfg.bannerOnPages) Column(Modifier.navigationBarsPadding()) {
+            else if (adCfg.bannerOnPages && pageContent) Column(Modifier.navigationBarsPadding()) {
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 Spacer(Modifier.height(6.dp))
                 BottomBanner(banner, s.ad)

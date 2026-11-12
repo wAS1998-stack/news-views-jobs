@@ -124,7 +124,12 @@ object Ads {
     /** "Pro" bought through Play Billing: no ads, ever (see play/Billing.kt). */
     val pro: StateFlow<Boolean> = _pro.asStateFlow()
 
-    fun adFree(): Boolean = _pro.value || System.currentTimeMillis() < _adFreeUntil.value
+    /** A pass ends at most MAX_PASS ahead (rewardHours is at most 7 days): one set by a clock that was set forward is void. */
+    private const val MAX_PASS = 8L * 24 * 3_600_000L
+    private fun passOn(until: Long, now: Long = System.currentTimeMillis()): Boolean = until > now && until - now <= MAX_PASS
+    fun adFree(): Boolean = _pro.value || passOn(_adFreeUntil.value)
+    /** Set by a page's loader while it shows content: the banner never sits on an empty, loading or error screen. */
+    val pageContent = MutableStateFlow(false)
     fun setPro(v: Boolean) { _pro.value = v }
 
     /** No ads right now (a pass is running or Pro is owned). Call it first thing in a composable: it collects state. */
@@ -132,7 +137,7 @@ object Ads {
     fun adsOff(): Boolean {
         val until by adFreeUntil.collectAsStateWithLifecycle()
         val isPro by pro.collectAsStateWithLifecycle()
-        return storeMode || isPro || until > System.currentTimeMillis()
+        return storeMode || isPro || passOn(until)
     }
 
     /** Debug-only (CI): no ads at all, for the Play Store listing screenshots. Set before the first screen is drawn. */
@@ -144,7 +149,7 @@ object Ads {
     fun restore(ctx: Context) {
         app = ctx.applicationContext
         val p = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        _adFreeUntil.value = p.getLong("adFreeUntil", 0L)
+        _adFreeUntil.value = p.getLong("adFreeUntil", 0L).let { if (it - System.currentTimeMillis() > MAX_PASS) 0L else it }
         _pro.value = p.getBoolean("pro", false)
         p.getString("config", null)?.let { s ->
             try { _config.value = json.decodeFromString(AdsConfig.serializer(), s); configKnown = true } catch (_: Exception) { }
@@ -373,6 +378,7 @@ object Ads {
         passFrom = from
         Stats.event(activity, "pass_watch", "from" to from)
         _fullScreen.value = true
+        markFullScreen(activity)
         ad.show(activity) { grantAdFree(activity) }
         return true
     }
@@ -382,7 +388,8 @@ object Ads {
     private fun grantAdFree(ctx: Context) {
         Stats.event(ctx, "pass_granted", "from" to passFrom)
         val hours = _config.value.rewardHours.coerceIn(1, 24 * 7)
-        val until = maxOf(System.currentTimeMillis(), _adFreeUntil.value) + hours * 3_600_000L
+        val now = System.currentTimeMillis()
+        val until = minOf(maxOf(now, _adFreeUntil.value) + hours * 3_600_000L, now + MAX_PASS)
         ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putLong("adFreeUntil", until).apply()
         _adFreeUntil.value = until
         Log.i(TAG, "ad-free pass until $until")
@@ -398,19 +405,20 @@ object Ads {
     private var appOpenLoading = false
     private var backgroundSince = 0L
     private var foregroundPending = false
+    private var openSuppressed = false
     /** Debug-only (CI screenshots): show the next app-open ad regardless of the caps. */
     var forceAppOpen = false
 
     /** The whole app went to the background (ProcessLifecycleOwner ON_STOP). */
-    fun onProcessBackground() { backgroundSince = now(); foregroundPending = false }
+    fun onProcessBackground() { backgroundSince = now(); foregroundPending = false; openSuppressed = false }
 
     /** The app came back (ON_START): an app-open ad becomes possible if the break was long enough. */
     fun onProcessForeground() {
-        foregroundPending = backgroundSince > 0 && now() - backgroundSince >= _config.value.appOpenAway.coerceAtLeast(60) * 1000L
+        foregroundPending = !openSuppressed && backgroundSince > 0 && now() - backgroundSince >= _config.value.appOpenAway.coerceAtLeast(60) * 1000L
     }
 
     /** Arrived through a notification or a link: show what they came for, no app-open ad this time. */
-    fun suppressAppOpen() { foregroundPending = false }
+    fun suppressAppOpen() { foregroundPending = false; openSuppressed = true }
 
     private fun preloadAppOpen(ctx: Context) {
         val c = _config.value
@@ -426,15 +434,16 @@ object Ads {
 
     private fun maybeShowAppOpen(activity: Activity) {
         if (!_ready.value) return
-        val pending = foregroundPending || forceAppOpen
+        val pending = (foregroundPending && !openSuppressed) || forceAppOpen
         foregroundPending = false
+        openSuppressed = false
         val ad = appOpenAd
         val now = now()
         val wall = System.currentTimeMillis()
         val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val c = _config.value
         val allowed = forceAppOpen || (on() && c.appOpen && wall - installedAt >= 24 * 3_600_000L &&
-            wall - p.getLong("appOpenShown", 0L) >= c.appOpenGap.coerceAtLeast(3600) * 1000L && gapPassed(60_000L))
+            (wall - p.getLong("appOpenShown", 0L)).let { it < 0 || it >= c.appOpenGap.coerceAtLeast(3600) * 1000L } && gapPassed(60_000L))
         val fresh = ad != null && now - appOpenAt < 4 * 3_600_000L
         if (!pending || !allowed || !fresh || _fullScreen.value || activity.isFinishing || activity.isDestroyed) return
         forceAppOpen = false
@@ -631,11 +640,15 @@ fun NativeAdCard(slot: String, label: String, modifier: Modifier = Modifier, pre
     val off = Ads.adsOff()
     val version by Ads.nativeVersion.collectAsStateWithLifecycle()
     if (!ready || !BuildConfig.ADS || !cfg.on || !cfg.nativeAds || BuildConfig.AD_NATIVE.isBlank() || off) return
-    val ad = remember(version, slot) { Ads.nativeAd(slot) } ?: return
     if (preloadNext != null) {
         val ctx = LocalContext.current
         LaunchedEffect(preloadNext) { Ads.preloadNative(ctx, preloadNext, contentUrl) }   // the next card down the list
     }
+    // only a spot whose ad was ready when it was first drawn shows one: an ad arriving while the reader scrolls past an
+    // empty spot would push the card under their finger down (the spot fills the next time it is drawn)
+    val readyAtFirstDraw = remember(slot) { Ads.nativeAd(slot) != null }
+    if (!readyAtFirstDraw) return
+    val ad = remember(version, slot) { Ads.nativeAd(slot) } ?: return
     val fg = MaterialTheme.colorScheme.onSurface.toArgb()
     val muted = MaterialTheme.colorScheme.onSurfaceVariant.toArgb()
     Card(shape = RoundedCornerShape(14.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),

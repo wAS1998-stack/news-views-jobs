@@ -56,6 +56,8 @@ class SearchIndex private constructor(
             "job", "jobs", "vacancy", "vacancies", "recruitment", "recruitments", "bharti", "bharati", "naukri", "naukari", "sarkari", "govt",
             "government", "2025", "2026", "2027", "notification", "online", "form", "apply", "latest", "new", "the", "for", "of", "in", "and",
             "भर्ती", "भर्तियाँ", "नौकरी", "नौकरियाँ", "सरकारी", "वैकेंसी", "की", "के", "का", "में",
+            // "10th pass" / "12वीं पास": the level is the word that matters ("pass" matched no word, so the search found nothing)
+            "pass", "passed", "पास",
         )
 
         /** Query words that mean the same thing (each group: any member finds the others). Multi-word members are phrases. */

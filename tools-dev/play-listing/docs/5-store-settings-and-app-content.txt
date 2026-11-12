@@ -74,7 +74,8 @@ Location > Approximate location
    Required (users can't turn it off)
 
 App activity > App interactions
-   Collected and shared (ads SDK: ad views and taps; Firebase Analytics: screens and buttons)
+   Collected and shared (ads SDK: ad views and taps; Firebase Analytics: screens and buttons, and two settings as
+   anonymous user properties: the app language and the qualification level chosen for alerts)
    Purposes: Analytics, Advertising or marketing
    Required
 
