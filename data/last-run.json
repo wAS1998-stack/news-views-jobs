@@ -231,7 +231,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T11:24:48.355Z",
+    "at": "2026-11-12T13:56:33.272Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -242,11 +242,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T11:26:09.239Z",
+    "at": "2026-11-12T13:58:16.197Z",
     "ok": true,
-    "sent": 72,
+    "sent": 128,
     "log": [
-      "push-notify: 72 sent\n  job drdo-tbrl-paid-internship-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job drdo-tbrl-paid-internship-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics"
+      "push-notify: 128 sent\n  job jharkhand-home-guard-bokaro-district-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job jharkhand-home-guard-bokaro-district-2026 hi [('s-jharkhand' in topics || 's-any' in topics) && 'q-10th-pass' in topics &"
     ]
   }
 }
