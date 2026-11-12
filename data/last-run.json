@@ -243,7 +243,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T03:20:46.050Z",
+    "at": "2026-11-12T05:22:20.520Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -254,11 +254,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T03:21:55.279Z",
+    "at": "2026-11-12T05:22:59.005Z",
     "ok": true,
-    "sent": 112,
+    "sent": 38,
     "log": [
-      "push-notify: 112 sent\n  job exim-bank-management-trainee-manager-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job exim-bank-management-trainee-manager-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dibd-young-professiona"
+      "push-notify: 38 sent\n  job gmch-project-assistant-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gmch-project-assistant-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job gmch-chandigarh-lab-technician-2026 en ['s-central'"
     ]
   }
 }
