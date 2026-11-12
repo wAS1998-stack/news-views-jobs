@@ -21,6 +21,11 @@ const PAGES_DEV = "https://news-views-jobs.pages.dev";
 const MAP = process.env.LIVE_MAP || "";   // testing only: fetch the site's URLs from this origin instead (a local copy of dist/)
 const UA = "news-views-live-check/1.0 (+https://news-views.in/about/)";
 const checks = [], pages = [];
+// Job pages that carry no JobPosting on purpose: a job listed from its headline while the AI could not read the notice
+// (lib.js factless — the employer name is a guess until enrich-jobs.js reads the notice again).
+let HEADLINE_ONLY = new Set();
+try { const L = require("../lib.js"); HEADLINE_ONLY = new Set(L.loadJobs().filter((j) => L.factless(j)).map((j) => j.id)); } catch { /* the check works without the store */ }
+let headlineOnlySeen = 0;
 const add = (id, level, detail) => { checks.push({ id, level, detail: String(detail).slice(0, 400) }); };
 const ok = (id, d = "") => add(id, "ok", d), warn = (id, d) => add(id, "warn", d), fail = (id, d) => add(id, "fail", d);
 
@@ -71,7 +76,10 @@ async function checkPage(url, kind, expectIndexable = true) {
     }
   }
   row.ld = [...new Set(types.flat().filter(Boolean))].join(",");
-  if (kind === "job" && !/JobPosting/.test(row.ld) && !/closed-notice|has closed|cancelled|postponed/i.test(h)) bad("open job page without JobPosting");
+  if (kind === "job" && !/JobPosting/.test(row.ld) && !/closed-notice|has closed|cancelled|postponed/i.test(h)) {
+    const id = (row.url.match(/^\/jobs\/([^/]+)\/$/) || [])[1];
+    if (id && HEADLINE_ONLY.has(id)) { row.headlineOnly = true; headlineOnlySeen++; } else bad("open job page without JobPosting");
+  }
   const t = text(h);
   row.words = t.split(" ").length;
   for (const re of JUNK) { const m = t.match(re); if (m) bad("junk text: " + t.slice(Math.max(0, m.index - 30), m.index + 40)); }
@@ -218,6 +226,8 @@ async function main() {
   await pool(sample, 5, ([u, kind]) => checkPage(u, kind, true));
   const badPages = pages.filter((p) => p.problems.length);
   (badPages.length ? fail : ok)("page sample", `${pages.length} pages checked, ${badPages.length} with problems`);
+  // the size of the backlog the AI still has to read (it grows while the AI account has no credit: see aiStatus in data/last-run.json)
+  if (HEADLINE_ONLY.size) (HEADLINE_ONLY.size > 40 ? warn : ok)("headline-only jobs", `${HEADLINE_ONLY.size} job page(s) list only the headline and official links (no dates yet, no JobPosting); ${headlineOnlySeen} in this sample`);
   const ms = pages.map((p) => p.ms).sort((a, b) => a - b);
   report.counts.medianPageMs = ms[Math.floor(ms.length / 2)]; report.counts.slowestPageMs = ms[ms.length - 1];
   report.counts.medianPageBytes = pages.map((p) => p.bytes).sort((a, b) => a - b)[Math.floor(pages.length / 2)];
