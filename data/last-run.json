@@ -240,7 +240,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T00:16:16.682Z",
+    "at": "2026-11-12T03:20:46.050Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -251,12 +251,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T00:16:17.461Z",
+    "at": "2026-11-12T03:21:55.279Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 112,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 112 sent\n  job exim-bank-management-trainee-manager-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job exim-bank-management-trainee-manager-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dibd-young-professiona"
     ]
   }
 }
