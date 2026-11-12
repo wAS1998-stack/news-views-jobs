@@ -220,8 +220,10 @@ hurting users or breaking Google's policies.
   `app-latest` release is the Play upload. Firebase secrets are in (instant alerts on). Waiting for the owner's Play
   Console upload (12 testers × 14 days for new personal accounts) and the AdMob IDs (no ads in release until then). After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
-- **Open on 12 Nov:** OpenAI has refused every call since 11 Nov ~08:19 UTC (see `aiStatus` in `data/last-run.json`).
-  If it says `insufficient_quota`, the owner has to add credit / raise the monthly limit at platform.openai.com → Billing;
-  the 110 headline-only jobs and 14 thin updates from that day heal by themselves once calls work again.
+- **Open on 12 Nov — the owner must act:** the OpenAI account has no credit left. Every call has answered 429
+  `credit_balance_exhausted` since 11 Nov ~08:19 UTC (`aiStatus` in `data/last-run.json`). Until credit is added at
+  platform.openai.com → Billing, new jobs are listed from the headline only, and Hindi pages, the daily quiz and the
+  current-affairs articles stand still. The headline-only jobs (115 on 12 Nov) and the thin updates heal by themselves
+  once calls work again (enrich pass 0, 15 a run).
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.

@@ -47,6 +47,19 @@ test("askAI: essential calls go to the second provider while the first one refus
   assert.match(r.status, /2 answered by the second provider/);
 });
 
+test("askAI: every wording of an empty account stops the calls at the first refusal", () => {
+  for (const [body, want] of [
+    [`{ error: { code: "credit_balance_exhausted" } }`, "credit_balance_exhausted"],
+    [`{ error: { code: "billing_hard_limit_reached" } }`, "billing_hard_limit_reached"],
+    [`{ error: { type: "invalid_request_error", message: "Your credit balance is too low to access the API." } }`, "no_credit"],
+  ]) {
+    const r = withAI({ OPENAI_API_KEY: "k" }, `const OPENAI = () => ({ status: 429, body: ${body} }); const CLAUDE = () => ({ status: 500, body: {} });`, `
+      const out = [await L.askAI("a"), await L.askAI("b")];`);
+    assert.strictEqual(r.calls.openai, 1, want);
+    assert.strictEqual(r.down, want);
+  }
+});
+
 test("askAI: a working call reports ok", () => {
   const r = withAI({ OPENAI_API_KEY: "k" }, `const OPENAI = () => ({ status: 200, body: { choices: [{ message: { content: '{"a":1}' } }], usage: { prompt_tokens: 3, completion_tokens: 2 } } });
     const CLAUDE = () => ({ status: 500, body: {} });`, `

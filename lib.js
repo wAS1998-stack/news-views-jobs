@@ -364,7 +364,10 @@ process.on("exit", () => {
    both keys are set (config "aiFallback": false switches that off): a job page without dates is worse than a dearer call. */
 const AI_HEALTH = { ok: 0, failed: 0, down: "", last: "", fallback: 0, streak: 0 };
 const USAGE_FB = { calls: 0, in: 0, out: 0 };
-const QUOTA_CODES = /insufficient_quota|billing|account_deactivated|invalid_api_key|invalid_request_error.*key|authentication|permission/i;
+// what a provider calls "this account cannot be used now": OpenAI insufficient_quota / credit_balance_exhausted /
+// billing_hard_limit_reached / account_deactivated / invalid_api_key, Anthropic authentication_error / permission_error
+// (and its "credit balance is too low" message, which errorCode() turns into no_credit)
+const QUOTA_CODES = /insufficient_quota|credit|balance|exhausted|billing|deactivated|invalid_api_key|authentication|permission/i;
 const aiDown = () => AI_HEALTH.down;
 /** One line for the run summary: "ok (12 calls)" | "OpenAI refused: insufficient_quota (0 ok, 3 failed)". */
 function aiStatus() {
@@ -384,7 +387,11 @@ function aiFailed(provider, status, code) {
   }
 }
 async function errorCode(res) {
-  try { const d = await res.json(); const e = (d && d.error) || {}; return String(e.code || e.type || "").slice(0, 40); } catch { return ""; }
+  try {
+    const d = await res.json(); const e = (d && d.error) || {};
+    const code = String(e.code || e.type || "").slice(0, 40);
+    return !QUOTA_CODES.test(code) && /credit balance|current quota|billing/i.test(String(e.message || "")) ? "no_credit" : code;
+  } catch { return ""; }
 }
 async function callOpenAI(prompt, maxTokens) {
   for (let attempt = 1; ; attempt++) {
