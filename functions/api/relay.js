@@ -19,7 +19,10 @@ const MAX_BYTES = 15e6;
 const reply = (status, text, extra = {}) =>
   new Response(text, { status, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex", ...extra } });
 
-export async function onRequestGet({ request }) {
+export async function onRequestGet({ request, env }) {
+  // Set RELAY_KEY (Cloudflare Pages > Settings > Environment variables) and the GitHub secret of the same name, and the
+  // relay answers only the site's own automation; without it the relay stays open to any government page, as before.
+  if (env && env.RELAY_KEY && request.headers.get("x-relay-key") !== env.RELAY_KEY) return reply(403, "forbidden");
   const params = new URL(request.url).searchParams;
   const colo = (request.cf && request.cf.colo) || "";
 

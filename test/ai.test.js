@@ -142,3 +142,41 @@ test("enrich: reading the facts again fills the record and keeps what must not c
     assert.strictEqual(job.how_to_apply.length, 4);
   } finally { Object.assign(F, keep); }
 });
+
+test("enrich: a notice read later keeps its own past last date, drops the January template, and flags a private employer", async () => {
+  const E = require("../enrich-jobs.js"), F = require("../fetch-jobs.js");
+  const keep = { readSource: F.readSource, aiExtract: F.aiExtract };
+  const base = () => ({ id: "x-2026", title: "X Recruitment 2026", organization: "X", summary: "feed", source: "https://example.com/x",
+    published: "2026-11-11", how_to_apply: L.GENERIC_STEPS.slice() });
+  try {
+    F.readSource = async () => ({ text: "notice", cands: [] });
+    F.aiExtract = async () => ({ organization: "X Board", post_name: "Clerk", application_start: "2026-10-01", application_end: "2026-10-20" });
+    const closed = base();
+    assert.strictEqual(await E.readFacts(closed), "ok");
+    assert.strictEqual(closed.application_end, "2026-10-20", "a real date before publication is kept: the page shows the job as closed");
+    F.aiExtract = async () => ({ organization: "X Board", post_name: "Clerk", application_start: "2026-01-01", application_end: "2026-01-31" });
+    const tpl = base();
+    assert.strictEqual(await E.readFacts(tpl), "ok");
+    assert.ok(!tpl.application_end && !tpl.application_start, "the 1–31 January template is not a date");
+    F.aiExtract = async () => ({ organization: "M/s. A-1 Facility and Property Managers Pvt. Ltd.", post_name: "Junior Engineer" });
+    const priv = base();
+    assert.strictEqual(await E.readFacts(priv), "private");
+    assert.ok(L.isNonGovt(priv));
+  } finally { Object.assign(F, keep); }
+});
+
+test("quiz: English only, no answer the explanation contradicts, right option spread over A–D", () => {
+  const N = require("../fetch-news.js");
+  const ok = (q, options, answer, why) => N.quizQuestionOk({ q, options, answer, why });
+  assert.ok(ok("Which ministry launched the scheme?", ["Ministry of Power", "Ministry of Coal", "Ministry of Mines", "Ministry of Steel"], 0, "The Ministry of Power launched it."));
+  assert.ok(!ok("योजना किस मंत्रालय ने शुरू की?", ["ऊर्जा मंत्रालय", "कोयला मंत्रालय", "खान मंत्रालय", "इस्पात मंत्रालय"], 0, "ऊर्जा मंत्रालय"), "Hindi on an English page");
+  assert.ok(!ok("Which ministry launched the scheme?", ["Ministry of Power", "Ministry of Coal", "Ministry of Mines", "Ministry of Steel"], 0, "The Ministry of Coal launched it."), "the explanation names another option");
+  const pos = new Set();
+  for (let i = 0; i < 40; i++) {
+    const x = N.spreadAnswer({ q: `Question number ${i} about the budget?`, options: ["right", "w1", "w2", "w3"], answer: 0, why: "" });
+    assert.strictEqual(x.options[x.answer], "right"); assert.strictEqual(new Set(x.options).size, 4); pos.add(x.answer);
+  }
+  assert.strictEqual(pos.size, 4, "every position is used");
+  const keep = { q: "Which are true?", options: ["A only", "B only", "Both A and B", "Neither"], answer: 2, why: "" };
+  assert.deepStrictEqual(N.spreadAnswer(keep), keep, "options that point at others are not moved");
+});

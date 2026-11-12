@@ -225,14 +225,18 @@ const QUALS = [
       "Because most graduate exams test the same core subjects, a single foundation of preparation lets you attempt several of them from one effort. Browse the live notifications below — each page summarises vacancies, eligibility, dates and fees, and links to the official notification for verification." ],
     guideSlugs: ["government-jobs-after-graduation", "ssc-vs-banking-vs-railway-jobs", "how-to-prepare-ssc-cgl"] },
   { slug: "engineering-diploma", name: "Engineering / Diploma", h1: "Government Jobs for Engineers & Diploma Holders",
-    re: /engineer|b\.?e\b|b\.?tech|diploma|\biti\b|polytechnic/i,
+    // "B.E." / "BE" as a degree, not the word "be" ("Candidates must be residents…" was tagged Engineering on 22 open jobs);
+    // the capital "BE" is checked separately, case-sensitively, in qualsOf
+    re: /engineer|\bb\.\s?e\b|\bb\.?\s?tech\b|diploma|\biti\b|polytechnic/i,
     desc: "Latest government job notifications for engineering graduates, diploma and ITI holders — technical posts in railways, PSUs, defence research and state departments.",
     intro: [
       "Technical qualifications open a distinct, well-paid track in government recruitment. Engineering graduates are sought by PSUs, railway technical cadres, defence research organisations and junior-engineer posts across departments, while diploma and ITI holders qualify for a large base of technician, apprentice and skilled trade positions.",
       "Technical exams typically combine your discipline's core subjects with general aptitude, so keep both sharp. Eligibility clauses are stricter here — the exact branch, and whether a diploma is accepted where a degree is specified, matter — so read each notification's qualification clause carefully and verify on the official site before applying." ],
     guideSlugs: ["government-jobs-after-graduation", "government-job-eligibility-india", "how-to-read-government-job-notification"] },
   { slug: "post-graduate", name: "Post Graduate", h1: "Government Jobs for Post Graduates",
-    re: /post\s?-?graduat|master|m\.?sc|m\.?tech|\bmba\b|ph\.?d|\bpg\b/i,
+    // "Master" is a degree only in the qualification text (qualsOf checks MASTER_DEGREE there): in a headline it is a
+    // post — "Branch Postmaster" (India Post GDS, 10th pass), "Headmaster", "Station Master"
+    re: /post\s?-?graduat|\bm\.?\s?sc\b|\bm\.?\s?tech\b|\bmba\b|\bph\.?\s?d\b|\bpg\b/i,
     desc: "Latest government job notifications for post graduates — specialist officer, research, teaching and senior administrative recruitment across central and state government.",
     intro: [
       "A master's degree qualifies you for the specialist end of government recruitment: specialist officer posts in banks, research and scientific positions, assistant professor and teaching roles, and senior administrative services where a post-graduate qualification is required or gives an edge in the selection.",
@@ -244,10 +248,12 @@ const QUALS = [
 const NOT_GRADUATE = /\b(post|under)[\s-]?graduat\w*(\s+degree)?|\bpostgraduat\w*(\s+degree)?|\bp\.?\s?g\.?(?![a-z])(\s+degree)?|\bmaster'?s?(\s+degree)?|\bm\.?\s?(a|sc|com|tech|e|phil|ed|pharm|ca|ba|lib|lisc|sw)\b\.?(\s+degree)?|\bmba\b|\bmca\b|\bph\.?\s?d\b\.?(\s+degree)?/gi;
 /** The qualification categories a job's notice names; [] when nothing matches (unknown = open to any qualification:
     no qualification page claims it, the app shows it to everyone, JobPosting leaves educationRequirements out). */
+const MASTER_DEGREE = /(?<!\b(post|station|head|quarter|branch|band|drawing|craft|dock|yard|ship|game|web|scrum)[\s-]?)\bmaster(?!['’]?s?\s*(certificate|mariner|trainer|craftsman|card|data|plan))['’]?s?\b/i;
 function qualsOf(job) {
   const t = `${job.qualification || ""} ${job.title || ""}`;
   const noPg = t.replace(NOT_GRADUATE, " ");
-  return QUALS.filter((q) => (q.slug === "graduate" ? q.re.test(noPg) : q.re.test(t)));
+  return QUALS.filter((q) => (q.slug === "graduate" ? q.re.test(noPg)
+    : q.re.test(t) || (q.slug === "engineering-diploma" && /\bBE\b/.test(t)) || (q.slug === "post-graduate" && MASTER_DEGREE.test(job.qualification || ""))));
 }
 function levelsOf(job) { return qualsOf(job).map((q) => q.name); }
 
@@ -348,13 +354,21 @@ function statesOf(job) {
   if (job && typeof job === "object") { if (!STATES_MEMO.has(job)) STATES_MEMO.set(job, statesOfUncached(job)); return STATES_MEMO.get(job); }
   return statesOfUncached(job);
 }
+// A state keyword counts only as a whole word: "Lakhisarai" (Bihar) holds "hisar", "Sriharikota" holds "kota", and
+// a substring test filed 25 jobs under the wrong state (their alerts went to that state's phones).
+const KW_RE = new Map();
+function hasKw(text, k) {
+  let re = KW_RE.get(k);
+  if (!re) { re = new RegExp(`(^|[^a-z])${k}([^a-z]|$)`); KW_RE.set(k, re); }
+  return re.test(text);
+}
 function statesOfUncached(job) {
   // Overseas roles must never fall into the Indian state buckets.
   if (isGulf(job)) return [];
   const loc = String(job.location || "").toLowerCase();
   // All-India jobs go under the central bucket (anyone can apply regardless of state).
-  if (loc && STATES[0].kw.some((k) => loc.includes(k))) return [STATES[0]];
-  const matched = loc ? STATES.filter((s) => s.slug !== "all-india" && s.kw.some((k) => loc.includes(k))) : [];
+  if (loc && STATES[0].kw.some((k) => hasKw(loc, k))) return [STATES[0]];
+  const matched = loc ? STATES.filter((s) => s.slug !== "all-india" && s.kw.some((k) => hasKw(loc, k))) : [];
   if (matched.length) return matched;
   // Union territories without a page of their own stay in the central bucket (a Kochi employer hiring in Andaman is not a Kerala job).
   if (/andaman|nicobar|lakshadweep|puducherry|pondicherry|ladakh|chandigarh|dadra|daman|\bdiu\b/.test(loc)) return [STATES[0]];
@@ -381,6 +395,10 @@ function parseSalary(s) {
   if (typeof s === "number") return s > 99 ? { min: s, max: s, unit: "MONTH" } : null;
   if (typeof s !== "string") { try { s = String(s); } catch { return null; } }
   if (/\bper\s+(lecture|class|session|visit|period|case|sitting|assignment)\b/i.test(s)) return null;   // not a pay period Google has a unit for
+  // Lakh / crore / CTC amounts, foreign currencies, pay bands and pre-revised scales, and texts that give two pay periods
+  // ("Rs.16,140 per month (@ Rs.538 per day)") cannot be one min–max per unit: "₹90 Lakhs to ₹160 Lakhs" became ₹160 a year.
+  if (/\b(lakhs?|lacs?|crores?|ctc|lpa)\b|\bpay\s*band\b|\bpb-?\s?[1-4]\b|pre-?revised|\b6th\s+cpc\b|\b(usd|eur|gbp|aed|sar|qar|kwd|omr)\b|[$€£]/i.test(s)) return null;
+  if ([/\bper\s+(month|mensem)\b|\bp\.?\s?m\.?(?![a-z])|\bmonthly\b|\/-?\s*month\b/i, /\bper\s+day\b|\bdaily\b|\/\s*day\b/i, /\bper\s+(hour|hr)\b|\bhourly\b/i, /\bper\s+(year|annum)\b|\bannual(ly)?\b|\byearly\b/i].filter((re) => re.test(s)).length > 1) return null;
   // Grade pay ("Rs.36900-135100 with Grade Pay 4800") and years are not salary amounts; an unbounded mix is left out.
   const clean = s.replace(/grade\s*pay\D{0,8}[\d,]+/gi, " ").replace(/\b(19|20)\d{2}\b(?!,)/g, " ");
   let nums = (clean.match(/\d[\d,]*/g) || []).map((x) => Number(x.replace(/,/g, ""))).filter((n) => n > 99);
@@ -409,7 +427,7 @@ function head(o) {
     : "";
   // App bar for Android visitors: rendered in every page but hidden unless a tiny inline script (run before the first
   // paint, so nothing shifts) sees an Android browser that hasn't closed it in the last 14 days. Not on /app/ itself.
-  const appBar = String(o.canonical || "").endsWith("/app/") ? "" : appBarHtml(o.lang === "hi");
+  const appBar = String(o.canonical || "").endsWith("/app/") ? "" : appBarHtml(o.lang === "hi", (String(o.canonical || "").match(/\/jobs\/([^/]+)\/$/) || [])[1]);
   return `<!doctype html>
 <html lang="${o.lang || "en"}">
 <head>
@@ -481,9 +499,11 @@ ${o.lang === "hi" ? `    <a href="/hi/">नौकरी</a>
 
 /* "Get the app" strip for Android visitors (see head()). Goes to the Play listing once config.json playUrl is set — with
    an install referrer, so Play Console shows how many installs the site brings — and to /app/ until then. */
-function appBarHtml(hindi) {
+// on a job page the Play referrer names the job (utm_content=job:<id>): the app opens it after the install (play/Referrer.kt)
+function appBarHtml(hindi, jobId) {
   const play = SITE.playUrl || "";
-  const href = play ? `${play}${play.includes("?") ? "&" : "?"}referrer=${encodeURIComponent("utm_source=news-views.in&utm_medium=app_bar")}` : "/app/";
+  const ref = `utm_source=news-views.in&utm_medium=app_bar${jobId ? `&utm_content=job:${jobId}` : ""}`;
+  const href = play ? `${play}${play.includes("?") ? "&" : "?"}referrer=${encodeURIComponent(ref)}` : "/app/";
   const text = hindi ? `<b>सरकारी रडार ऐप</b> — आपके राज्य और योग्यता की नई सरकारी नौकरी का अलर्ट, मुफ़्त` : `<b>Sarkari Radar app</b> — free alerts for new govt jobs in your state &amp; qualification`;
   return `\n<div class="app-bar" role="region" aria-label="${hindi ? "एंड्रॉइड ऐप" : "Android app"}"><div class="wrap"><span class="app-bar-text">${text}</span><a class="app-bar-go" href="${esc(href)}"${play ? ` rel="noopener"` : ""}>${hindi ? "ऐप लें" : "Get app"}</a><button class="app-bar-x" type="button" aria-label="${hindi ? "बंद करें" : "Close"}">&times;</button></div></div>`;
 }
@@ -1523,7 +1543,9 @@ function row(dt, dd, mono) {
 // Google for Jobs fields: employment type from the post, and the state when the job is in one state.
 function employmentTypeOf(job) {
   const t = `${job.title} ${job.post_name || ""}`.toLowerCase();
-  if (/\bapprentice|\btrainee\b|\binternship\b|\bintern\b/.test(t)) return "INTERN";
+  // apprentices, interns and student/project-type trainees only: a PSU "Engineer Trainee" or "Management Trainee" is a
+  // regular post (Google Jobs showed Powergrid's 319 Engineer Trainee posts as internships)
+  if (/\bapprentice|\binternship\b|\bintern\b|\b(student|industrial|research|project|proficiency|summer|graduate apprentice) trainee\b/.test(t)) return "INTERN";
   if (/\bwalk-?in\b|\bproject\b|\bcontract(ual)?\b|\bconsultant\b|\bresearch (fellow|associate|assistant)\b|\bjrf\b|\bsrf\b|\bguest\b|\bad[- ]?hoc\b|\btemporary\b|\bpart[- ]time\b/.test(t)) return /\bpart[- ]time\b/.test(t) ? "PART_TIME" : "TEMPORARY";
   return "FULL_TIME";
 }
@@ -1643,7 +1665,7 @@ function prepTips(job) {
   const all = aiTips.length >= 3 ? aiTips.slice(0, 5) : [...extra, ...generic].slice(0, 4);
   return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(orgKey(job) || job.organization)} ${esc(job.post_name || "this exam")}</h2>
     <p>Preparation for ${esc(job.title)} is most effective when it is planned and consistent. A few practical pointers:</p>
-    <ul>${all.map((x) => `<li>${x}</li>`).join("")}</ul>
+    <ul>${all.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
     <p>For a fuller, step-by-step plan, see the helpful guides linked below — they cover exam strategy, subject-wise tips and common mistakes in detail.</p>
   </div>`;
 }
@@ -2085,7 +2107,7 @@ function buildArchivedHi(kind) {
     <div class="apply-bar"><a class="btn btn-primary" id="en-link" href="/${kind}/">अंग्रेज़ी पेज खोलें</a> <a class="btn btn-ghost" href="/hi/">नई सरकारी नौकरियाँ</a></div>
   </section>
 </main>
-<script>(function(){var m=location.pathname.match(/^\/hi\/(jobs|updates)\/([a-z0-9-]+)\/?$/);if(!m)return;var u="/"+m[1]+"/"+m[2]+"/";var a=document.getElementById("en-link");if(a)a.href=u;location.replace(u);})();</script>` + foot();
+<script>(function(){var m=location.pathname.match(/^\\/hi\\/(jobs|updates)\\/([a-z0-9-]+)\\/?$/);if(!m)return;var u="/"+m[1]+"/"+m[2]+"/";var a=document.getElementById("en-link");if(a)a.href=u;location.replace(u);})();</script>` + foot();
 }
 /* Categories the app lets people browse and filter by (sent in the feed, so they can change without an app update).
    A job can be in more than one (BPSC teacher recruitment = PSC + Teaching). */
@@ -2212,9 +2234,7 @@ function appUpdateDetail(u) {
 const ANDROID_CERTS = [
   "6B:C4:D6:A1:F4:10:6B:4B:56:4A:69:C1:BD:18:47:48:DE:DF:30:D0:A5:4A:F2:3F:64:EC:F2:54:9C:10:5D:DE",   // the owner's upload key (SARKARI_KEYSTORE_BASE64; signs the release APK/AAB since build 36)
   "86:97:1F:B4:DB:E0:05:19:9D:F2:6D:1A:6C:0E:59:1C:15:9B:7F:50:DC:AC:02:2F:9F:3B:0F:E5:CA:9E:0C:AE",   // an earlier key
-  // android/test-signing.jks: what CI signs every build with until the upload-key secrets exist (keytool -list -v
-  // -keystore android/test-signing.jks -storepass android). Remove once the Play build is out.
-  "A0:8D:AD:83:1B:22:8B:54:CC:31:BE:26:AF:7C:EF:2F:68:1B:73:8F:85:12:6D:33:62:40:DA:4B:CE:0B:8E:D0",
+  // (android/test-signing.jks, which signs debug builds, is public: an APK signed with it must not get verified links)
   ...[].concat(SITE.androidCertSha256 || []),
 ];
 function writeAppFeed(jobs, updates) {
@@ -2527,12 +2547,12 @@ We may use third-party advertising companies, including Google, to serve ads whe
 We may use analytics tools to measure traffic and usage patterns in aggregate. This data is not used to personally identify you.
 
 ## Android app
-Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsviews.app), has no accounts: it never asks for your name, phone number, email address, contacts or documents. Your saved jobs, language, alert choices (states, qualification, followed departments) and the optional date of birth and category you enter for the age check are stored only on your phone and are never sent to us.
+Our Android app, **Sarkari Radar** (published by ${SITE.brand}, package in.newsviews.app), has no accounts: it never asks for your name, phone number, email address, contacts or documents. Your saved jobs, followed departments and the optional date of birth and category you enter for the age check are stored only on your phone and are never sent to us. Two settings, your app language and the qualification level you choose, are also sent to Google Firebase Analytics as anonymous user properties (the language also with crash reports), so we can see in aggregate how many people use the app in Hindi or at each level; your alert choices reach Firebase Cloud Messaging as alert topics (below).
 
 ### What is collected, by whom and why
 - **Job alerts (Google Firebase Cloud Messaging):** an app-instance token and the alert topics you choose, so alerts can be delivered.
 - **Ads (Google AdMob and its partner networks):** your device's advertising ID (or app set ID), your IP address and the approximate location derived from it, device and app information, how you interact with ads, and diagnostics — to show and measure ads, cap how often they appear and prevent fraud. In regions where the law requires it (such as the EEA and the UK), the app asks for your consent first, and you can change your choice at any time under Alerts › About › Ad privacy choices. ${mediationPolicy().trim()}
-- **Usage statistics (Google Firebase Analytics):** an app-instance identifier, device model, Android and app version, approximate location (region and city, from the IP address), and which screens are opened and which buttons are used (for example how many people open an official notice) — to understand, in aggregate, what is useful and to measure ad revenue.
+- **Usage statistics (Google Firebase Analytics):** an app-instance identifier, device model, Android and app version, approximate location (region and city, from the IP address), your app language, qualification level and whether alerts are on, and which screens are opened and which buttons are used (for example how many people open an official notice) — to understand, in aggregate, what is useful and to measure ad revenue.
 - **Crash reports (Google Firebase Crashlytics):** crash traces, device state and an app-instance identifier, so crashes can be fixed.
 - **Purchases (Google Play Billing):** the optional "Pro" purchase is handled entirely by Google Play. We receive only confirmation that it was bought — never your payment details.
 - **Install source (Google Play Install Referrer):** once, on first launch, the app reads the campaign details of the link it was installed from (for example "installed from a job page on news-views.in"), so it can open that job; it contains no personal information.

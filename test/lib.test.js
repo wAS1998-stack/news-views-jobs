@@ -214,3 +214,20 @@ test("jobs store: one file per day, one record per line; untouched days are not 
   assert.strictEqual(fs.existsSync(path.join(dir, "2026-11", "2026-11-12.json")), false);
   fs.rmSync(tmp, { recursive: true, force: true });
 });
+
+test("off-topic filter: staff results and recruitment-board exams pass, student results and admissions do not", () => {
+  for (const t of ["CBSE Junior Assistant Result 2026 Out", "IGNOU Stenographer Skill Test Result 2026", "Patna University Clerk Result 2026",
+    "RSMSSB Recruitment Board Exam Date 2026 Out", "HPSC Counselling Psychologist Recruitment 2026"]) assert.ok(!L.OFF_TOPIC.test(t), t);
+  for (const t of ["CBSE Class 10 Result 2026 Declared", "IGNOU June TEE Result 2026", "NEET UG Counselling 2026 Round 2",
+    "Patna University BA Part 1 Result 2026", "Bihar Board Exam Date Sheet 2026", "AKTU B.Tech Result 2026"]) assert.ok(L.OFF_TOPIC.test(t), t);
+});
+
+test("twins: two different official PDFs of one site with clearly different counts are two recruitments", () => {
+  const a = { id: "a", title: "Orissa High Court District Judge Recruitment 2026", organization: "Orissa High Court", post_name: "District Judge",
+    total_vacancies: 38, application_end: "2026-11-25", published: "2026-11-01", official_notification: "https://orissahighcourt.nic.in/uploads/recruitment/r-1.pdf" };
+  const b = { ...a, id: "b", title: "Orissa High Court Civil Judge Recruitment 2026", post_name: "Civil Judge", total_vacancies: 30,
+    official_notification: "https://orissahighcourt.nic.in/uploads/recruitment/r-2.pdf", published: "2026-11-02" };
+  assert.strictEqual(L.isDuplicate(b, [a]), null);
+  // the same notice reported twice is still one recruitment
+  assert.ok(L.isDuplicate({ ...a, id: "c", published: "2026-11-03" }, [a]));
+});

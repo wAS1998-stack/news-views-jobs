@@ -141,6 +141,11 @@ const PROXIES = [
   (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
   (u) => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}`,
 ];
+// The site's relay answers only requests that carry RELAY_KEY when the owner has set one (Cloudflare Pages env var +
+// GitHub secret of the same name). The key goes to our own relay hosts only, never to the public proxies.
+const RELAY_KEY = String(process.env.RELAY_KEY || "").trim();
+const OWN_RELAY_HOSTS = new Set([hostOf(CONFIG.url || "https://news-views.in"), hostOf(INDIA_RELAY)].filter(Boolean));
+function relayKeyFor(u) { return RELAY_KEY && OWN_RELAY_HOSTS.has(hostOf(u)) ? { "x-relay-key": RELAY_KEY } : {}; }
 async function tryFetch(url, headers, ms) {
   let r;
   try { r = await fetch(url, { headers, signal: AbortSignal.timeout(ms), redirect: "follow" }); }
@@ -168,7 +173,7 @@ async function fetchText(url, ms = 20000, { allowProxy = true, skipDirect = fals
   }
   if (allowProxy) {
     for (const p of PROXIES) {
-      try { const r = await tryFetch(p(url), { "user-agent": UA, accept: "*/*" }, proxyMs || ms + 10000); return { ...r, url, via: new URL(p(url)).host }; }
+      try { const r = await tryFetch(p(url), { "user-agent": UA, accept: "*/*", ...relayKeyFor(p(url)) }, proxyMs || ms + 10000); return { ...r, url, via: new URL(p(url)).host }; }
       catch (e) { errors.push(new URL(p(url)).host + ": " + e.message); }
     }
   }
@@ -450,7 +455,9 @@ async function askAI(prompt, { maxTokens = 3000, essential = false } = {}) {
       return out;
     }
     return null;
-  } catch (e) { console.log("  (AI error: " + e.message + ")"); AI_HEALTH.failed++; AI_HEALTH.last = "error: " + String(e.message).slice(0, 60); return null; }
+  } catch (e) {   // a timeout or network error counts like a refusal: six in a row stop the calls for this step
+    console.log("  (AI error: " + e.message + ")"); aiFailed(AI, 0, ""); AI_HEALTH.last = "error: " + String(e.message).slice(0, 60); return null;
+  }
 }
 function parseJson(raw) {
   if (!raw) return null;
@@ -492,7 +499,10 @@ const RUNLOG = path.join(ROOT, "data", "last-run.json");
 function logRun(section, info) {
   let cur = {};
   try { cur = JSON.parse(fs.readFileSync(RUNLOG, "utf8")); } catch {}
-  if (!cur.runs || cur.date !== new Date().toISOString().slice(0, 10)) cur = { date: new Date().toISOString().slice(0, 10), runs: {} };
+  // the Indian date, as heartbeat.js writes it (a UTC date here made each run between 00:00 and 05:30 IST wipe the
+  // other steps' diagnostics, aiStatus included)
+  const day = todayIST();
+  if (!cur.runs || cur.date !== day) cur = { date: day, runs: {} };
   cur[section] = { at: new Date().toISOString(), ...info, log: logTail(info && info.logLines || 25) };
   delete cur[section].logLines;
   cur.note = "Written by the automation after each step so run health can be checked without opening Actions logs.";
@@ -500,7 +510,7 @@ function logRun(section, info) {
 }
 
 /** Not government-job content at all: syllabus/exam-pattern explainers, admissions & counselling, university semester results. */
-const OFF_TOPIC_BASE = /\b(recruitment|jobs?) notifications? list\b|\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b(?![^–—:]*\b(recruitment|vacanc\w*|non[- ]?teaching|faculty|assistant professors?|posts?)\b)[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b[^–—:]*\bresults?\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
+const OFF_TOPIC_BASE = /\b(recruitment|jobs?) notifications? list\b|\bsyllabus\b|exam pattern|seat matrix|choice (filling|locking)|counsel+ing\b(?!\s*(psycholog|officer|assistant|coordinator|expert|staff))|\badmission\b|\bmerit list for admission\b|re-?valuation|\btime ?table\b|\bdate ?sheet\b|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|b\.?tech|m\.?tech|b\.?sc|m\.?sc|b\.?com|m\.?com|bams|bhms|mbbs|bds|bpt|b\.?ed|ph\.?d|llb|bca|mca|ug|pg|\d(st|nd|rd|th) prof(essional)?|professional)\b[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(sem(ester)?|ug and pg|ug & pg|ph\.?d|mbbs|bams|b\.?sc|m\.?sc)\b|\b(university|vishwavidyalaya)\b(?![^–—:]*\b(recruitment|vacanc\w*|non[- ]?teaching|faculty|assistant professors?|posts?|clerks?|assistants?|officers?|stenographers?|junior|staff|technicians?|drivers?|mts)\b)[^–—:]*\bresults?\b|\bresults?\b[^–—:]*\b(b\.e|b\.?pharm|m\.?pharm|bph|diploma|b\.?a\.?|m\.?a\.?|bba|mba|ug|pg)\b(?![^–—:]*\b(post|recruitment|vacanc|clerk|teacher|assistant|officer)\w*)|\b(gtu|aktu|rgpv|vtu|ccsu|ignou|rtmnu|sppu|cbse|icse)\b(?![^–—:]*\b(recruitment|vacanc\w*|posts?|junior|assistants?|clerks?|officers?|stenographers?|superintendents?|teachers?|staff|non[- ]?teaching|drivers?|accountants?|pgt|tgt|prt)\b)[^–—:]*\bresults?\b|\btime-table\b|\bmarks memo\b|\bph\.?d fellowship\b|\bcurrent affairs\b|\bjee main|\bnift\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\bneet\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\biit jam\b|\bjam 20\d\d\b|stray (vacancy )?round|(?<!\b(selection|recruitment|promotion|services?|subordinate)\s)\bboard exam(ination)?s?\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|\b(matric|inter|10th|12th) (exam )?form\b|\bentrance (test|exam(ination)?)\b(?![^–—:]*\b(recruitment|vacanc|posts?)\b)|(?<!\b(ntpc|rrb|cbt|level|10\+2)[\s(-]*)\b(sem(ester)?|ug|pg|b\.?a|m\.?a|b\.?sc|m\.?sc|b\.?com|m\.?com|b\.?ed|ph\.?d|llb|bca|mca|bba|mba)\b(?![^–—:]*\b(teachers?|lecturers?|recruitment|vacanc\w*|posts?|tgt|pgt|assistant|officer)\b)[^–—:]*\b(admit card|hall ticket|exam (form|dates?))\b|\b(university|vishwavidyalaya)\b[^–—:]*\b(admit card|hall ticket|exam form)\b|\b(snap|xat|cmat|nmat|cuet|clat|ailet|gmat)\s*(20\d\d|ug|pg)\b|\bcat 20\d\d\b/i;   // + semester/university hall tickets and admission tests (CUET, CLAT, SNAP …)
 
 // Board, school and professional-course exams are not government jobs: ICAI/ICSI/ICMAI (CA, CS, CMA) exams, NIOS,
 // MSBTE, West Bengal Madhyamik / Uchcha Madhyamik, class 6/9/10/12 board exams and results, JNVST (Navodaya class 6/9
@@ -702,10 +712,16 @@ function isDuplicate(job, list, { onExtend } = {}) {
     // (A PDF only — OPSC serves several recruitments from one view_content page — of the same body, with overlapping
     // posts: one combined district PDF can announce unrelated posts.)
     if (nk && /\.pdf($|\?)/i.test(nk) && noticeKey(x.official_notification) === nk && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name, { any: true })) return true;
+    // Two different official PDFs on the same site with clearly different counts are two notices, even when the body
+    // closes both on the same day: the same-last-date rules below merged "District Judge" into "Civil Judge" (one shared
+    // word) and the second notice was dropped unseen. (A corrigendum within 5% of the count still matches.)
+    const xk = noticeKey(x.official_notification);
+    const otherNotice = !!(nk && xk && nk !== xk && /\.pdf($|\?)/i.test(nk) && /\.pdf($|\?)/i.test(xk) && nk.split("/")[0] === xk.split("/")[0]
+      && v && xv && Math.abs(v - xv) / Math.max(v, xv) > 0.05);
     if (!sameOrg(job, x)) {
       // The same organisation family ("RRB" / "RRB Ahmedabad"), the same last date and a real recruitment (20+ posts)
       // published within 45 days: one notice reported by two sources under different names.
-      return v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name);
+      return !otherNotice && v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name);
     }
     if (v >= 10 && xv === v) return true;              // same body, same (distinctive) count — "Assam" vs "All India" spellings of one notice
     // District-wise drives of one department (UP ECCE Educator: Meerut 98, Kushinagar 29, same dates) are separate
@@ -719,7 +735,7 @@ function isDuplicate(job, list, { onExtend } = {}) {
     if (start && x.application_start === start && v >= 100 && xv >= 100 && Math.abs(v - xv) / Math.max(v, xv) <= 0.05) return true;
     // A real recruitment (20+ posts) with the same last date, published within 45 days, by the same body: twins,
     // unless the posts plainly differ.
-    if (v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && postsOverlap(job.post_name, x.post_name)) return true;
+    if (!otherNotice && v >= 20 && xv >= 20 && end && x.application_end === end && dt < 45 * DAY && postsOverlap(job.post_name, x.post_name)) return true;
     // Same body and same post, with the same last date or the same count: one recruitment reported twice, or
     // re-reported with a corrected count (RRB Station Master: 1215 -> 1265 after a corrigendum; ~1250 short notice).
     if (!post || normPost(x.post_name) !== post) return false;
@@ -1040,6 +1056,28 @@ function retiredJobIds() {
   try { return new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "data", "redirects.json"), "utf8")).map((r) => (/^\/jobs\/([^/]+)\/$/.exec(r[0]) || [])[1]).filter(Boolean)); }
   catch { return new Set(); }
 }
+/** Retires pages: adds [from, to] 301 pairs to data/redirects.json (those not there yet), in the file's own format.
+    A retired job id is never re-added (fetch-jobs.js / watch.js read the file). Returns how many were added. */
+function addRedirects(pairs, file = path.join(ROOT, "data", "redirects.json")) {
+  const red = JSON.parse(fs.readFileSync(file, "utf8"));
+  const have = new Set(red.map((r) => r[0]));
+  let added = 0;
+  for (const [from, to] of pairs) if (from && to && from !== to && !have.has(from)) { red.push([from, to]); have.add(from); added++; }
+  if (added) fs.writeFileSync(file, JSON.stringify(red, null, 2) + "\n");
+  return added;
+}
+/** Two listings of one recruitment: the newer record's facts fill what the older one lacks (never its own id, headline,
+    dates of publication or written text), and its English and Hindi pages redirect to the older one (the rules of
+    tools-dev/dedupe.js). The caller removes `newer` from the store. */
+const MERGE_KEEP_OWN = new Set(["id", "title", "published", "hi", "summary", "summary_hindi", "overview", "faq", "via", "state_hint",
+  "apply_checked", "apply_tries", "apply_link_prev", "apply_src", "links_checked", "faq_search_at", "faq_search", "facts_tries", "facts_read", "updated"]);
+function mergeTwin(older, newer, today = todayIST()) {
+  const empty = (v) => v == null || v === "" || (Array.isArray(v) && !v.length);
+  let filled = 0;
+  for (const [k, v] of Object.entries(newer)) if (!MERGE_KEEP_OWN.has(k) && empty(older[k]) && !empty(v)) { older[k] = v; filled++; }
+  if (filled) older.updated = today;
+  return [[`/jobs/${newer.id}/`, `/jobs/${older.id}/`], [`/hi/jobs/${newer.id}/`, `/hi/jobs/${older.id}/`]];
+}
 /** All job records: newest day first, in stored order within a day (new jobs sit at the top). Throws if a file does
     not parse (callers treat that as "cannot read" and change nothing). */
 function loadJobs({ dir = JOBS_DIR, legacy = JOBS_LEGACY } = {}) {
@@ -1087,9 +1125,25 @@ function retiredUpdateIds() {
   catch { return new Set(); }
 }
 
+/** Drops records whose page was retired (data/redirects.json) from the jobs store and data/updates.json. Run by the
+    bot after it rebases onto a concurrent push: "-X theirs" takes the bot's copy of a conflicting hunk, which brought
+    retired records back (and the build ignores a redirect while its page exists — 3 retired updates were live twins). */
+function dropRetired() {
+  const rj = retiredJobIds(), ru = retiredUpdateIds();
+  let jobs = 0, updates = 0;
+  const all = loadJobs(), keep = all.filter((j) => !(j && rj.has(j.id)));
+  if (keep.length !== all.length) { jobs = all.length - keep.length; saveJobs(keep); }
+  const file = path.join(ROOT, "data", "updates.json");
+  try {
+    const ups = JSON.parse(fs.readFileSync(file, "utf8"));
+    const k = ups.filter((u) => !(u && ru.has(u.id)));
+    if (k.length !== ups.length) { updates = ups.length - k.length; fs.writeFileSync(file, JSON.stringify(k, null, 2) + "\n"); }
+  } catch { /* no updates file */ }
+  return { jobs, updates, changed: jobs + updates > 0 };
+}
 /** Today's date in India (the automation runs on UTC machines; between 00:00 and 05:30 IST UTC is still yesterday). */
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
 module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, aiDown, aiStatus, aiHealth, factless, factsPending, GENERIC_STEPS, GENERIC_STEPS_HI, isGenericSteps, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, aiDown, aiStatus, aiHealth, addRedirects, mergeTwin, dropRetired, relayKeyFor, factless, factsPending, GENERIC_STEPS, GENERIC_STEPS_HI, isGenericSteps, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
   isDuplicate, sameOrg, normPost, postsOverlap, advtKey, noticeKey, joinStageNumbers, stageNum, romanWord, ROMAN, STAGE_WORD };

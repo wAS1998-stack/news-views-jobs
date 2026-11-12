@@ -341,7 +341,12 @@ async function toJob(item, existingIds, fingerprints) {
     published: item.date ? istDate(item.date) : today(),
   };
   // only the fields an extraction may set, with the right shapes (objects → text, numbers, YYYY-MM-DD, http links)
+  const aiMark = L.aiHealth().failed;
   const extra = L.aiJobFields(await aiExtract(item, src));
+  // the AI could not read the notice (no credit, an outage): a decision that needs its facts (is it a twin, is it the
+  // recruitment that already holds this id) is not taken now — the item is read again on the next run instead of being
+  // remembered as rejected for 14 days
+  const aiMissed = !Object.keys(extra).length && (L.aiHealth().failed > aiMark || !!L.aiDown());
   const merged = { ...base, ...extra, id, title: item.title };
   // government jobs only: the extraction may reveal a private employer the headline didn't name
   if (L.isNonGovt(merged)) { console.log(`   - not a government employer, skipped: ${item.title}`); return rejectAfterRead(item.link); }
@@ -376,8 +381,9 @@ async function toJob(item, existingIds, fingerprints) {
   }
   for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
   Object.assign(merged, L.sanitizeJob(merged));
-  if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return rejectAfterRead(item.link); }
+  if (isDuplicate(merged)) { console.log(`   = duplicate of an existing recruitment, skipped: ${merged.title}`); return aiMissed ? null : rejectAfterRead(item.link); }
   if (holder) {
+    if (aiMissed) { console.log(`   ~ id ${id} is taken and the AI could not read this notice: read again on the next run: ${merged.title}`); return null; }
     if (sameRecruitment(merged, holder)) { console.log(`   = same recruitment as ${id}, skipped: ${merged.title}`); return rejectAfterRead(item.link); }
     const nid = distinctId(id, merged, existingIds);
     if (!nid) { console.log(`   - id ${id} taken by another recruitment and no free variant, skipped: ${merged.title}`); return rejectAfterRead(item.link); }

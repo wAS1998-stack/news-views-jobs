@@ -185,17 +185,39 @@ async function analysis(existing, jobs) {
 
 
 /* ---- daily quiz: 10 MCQs grounded ONLY in a published digest ------------ */
+// Checks the model's output, not only its shape (3 of 30 quizzes came out in Hindi on English pages, one marked a
+// wrong answer, and the right option was almost never D):
+// - English only: a question whose text and options are mostly Devanagari is dropped;
+// - an explanation that names another option and not the marked one contradicts the answer: dropped;
+// - the right option is moved to a position taken from the question text, so A–D are equally likely — unless an option
+//   points at the others ("All of the above", "Both A and B"), which a move would break.
+const devaShare = (t) => { const d = (String(t).match(/[ऀ-ॿ]/g) || []).length, l = (String(t).match(/[A-Za-z]/g) || []).length; return d + l ? d / (d + l) : 0; };
+function quizQuestionOk(x) {
+  if (devaShare([x.q, ...x.options].join(" ")) > 0.3) return false;
+  const why = x.why.toLowerCase();
+  const named = x.options.map((o, i) => (o.length >= 4 && why.includes(o.toLowerCase()) ? i : -1)).filter((i) => i >= 0);
+  return !(named.length === 1 && named[0] !== x.answer);
+}
+function spreadAnswer(x) {
+  if (x.options.some((o) => /\b(all|none|both|neither) of the above\b|\bboth\b.*\band\b|\b[a-d] (and|&) [a-d]\b|\boption [a-d]\b/i.test(o))) return x;
+  let h = 0; for (const c of x.q) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const to = h % 4;
+  if (to === x.answer) return x;
+  const options = x.options.slice(); [options[to], options[x.answer]] = [options[x.answer], options[to]];
+  return { ...x, options, answer: to };
+}
 const QUIZ = path.join(ROOT, "data", "quiz.json");
 async function makeQuiz(digest) {
   const text = [digest.title, digest.summary, ...(digest.body || []).map((b) => `${b.h}: ${(b.p || []).join(" ")}`)].join("\n");
   const prompt = `Write a 10-question multiple-choice current affairs quiz for Indian competitive-exam aspirants, using ONLY facts stated in the article below. ` +
     `Every question must be answerable from the article; never add outside facts, numbers or names. Each question has exactly 4 options, one correct. ` +
-    `Vary the position of the correct option. Return ONLY a JSON object: {"questions":[{"q":"...","options":["A","B","C","D"],"answer":0,"why":"one-sentence explanation citing the article"}]} where answer is the 0-based index.\n\nARTICLE:\n${text.slice(0, 7000)}`;
+    `Write every question, option and explanation in English. Vary the position of the correct option. Return ONLY a JSON object: {"questions":[{"q":"...","options":["A","B","C","D"],"answer":0,"why":"one-sentence explanation citing the article"}]} where answer is the 0-based index.\n\nARTICLE:\n${text.slice(0, 7000)}`;
   const obj = parseJson(await askAI(prompt, 3500));
   const qs = (obj && Array.isArray(obj.questions) ? obj.questions : []).map((x) => ({
     q: String(x.q || "").trim(), options: (Array.isArray(x.options) ? x.options : []).map((o) => String(o).trim()).filter(Boolean),
     answer: Number(x.answer), why: String(x.why || "").trim(),
-  })).filter((x) => x.q && x.options.length === 4 && x.answer >= 0 && x.answer < 4 && new Set(x.options).size === 4);
+  })).filter((x) => x.q && x.options.length === 4 && x.answer >= 0 && x.answer < 4 && new Set(x.options).size === 4)
+    .filter(quizQuestionOk).map(spreadAnswer);
   if (qs.length < 6) { console.log(`  quiz for ${digest.id}: only ${qs.length} valid questions — not published.`); return null; }
   return { id: `current-affairs-quiz-${digest.date}`, date: digest.date, digest_id: digest.id,
     title: `Current Affairs Quiz ${new Date(digest.date + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`,
@@ -241,4 +263,5 @@ async function main() {
   } catch { /* non-fatal */ }
   console.log(`News: published ${fresh.length} article(s).`);
 }
-main();
+module.exports = { quizQuestionOk, spreadAnswer };
+if (require.main === module) main();

@@ -69,7 +69,7 @@ function anchors(html, base) {
 async function getBuf(url, ms = 20000) {
   for (const target of [url, RELAY(url)]) {
     try {
-      const r = await fetch(target, { headers: L.HDRS, signal: AbortSignal.timeout(ms), redirect: "follow" });
+      const r = await fetch(target, { headers: { ...L.HDRS, ...(target === url ? {} : L.relayKeyFor(target)) }, signal: AbortSignal.timeout(ms), redirect: "follow" });
       if (!r.ok) { if (r.status === 404 || r.status === 410) return { status: r.status }; continue; }
       return { buf: Buffer.from(await r.arrayBuffer()), type: r.headers.get("content-type") || "", url: target === url ? (r.url || url) : url };
     } catch { /* try the relay */ }
@@ -203,9 +203,11 @@ async function main() {
     if (Date.now() - t0 > BUDGET_MS) break;
     checked++;
     let hit = null;
+    const aiMark = L.aiHealth().failed;
     try { hit = await findFor(job); } catch (e) { log.push(`${job.id}: error ${e.message}`); }
-    // the AI that confirms the link is refusing calls: nothing was really checked — stop without using up a try
+    // the AI that confirms the link did not answer (refused, timed out): nothing was really checked — no try is used
     if (!hit && L.aiDown()) { checked--; log.push(`stopped: the AI is not answering (${L.aiDown()})`); break; }
+    if (!hit && L.aiHealth().failed > aiMark) { checked--; log.push(`${job.id}: the AI did not answer — checked again next run`); continue; }
     job.apply_checked = TODAY;
     if (hit) {
       job.apply_link_prev = job.apply_link || null;

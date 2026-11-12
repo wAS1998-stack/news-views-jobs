@@ -24,11 +24,11 @@ hurting users or breaking Google's policies.
 | `build.js` | The whole site generator: pages, sitemaps, schema (JobPosting, NewsArticle), redirects, robots, app feed, ads.txt / app-ads.txt |
 | `fetch-jobs.js`, `watch.js`, `lib.js` | Pull job/result notices from feeds and official sites; `classify()` sorts jobs vs results; `isDuplicate()` merges twins |
 | `enrich-jobs.js`, `due.js`, `hindi.js` | AI enrichment (summaries, eligibility, Hindi) within daily cost caps |
-| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-central` for central/all-India jobs — the app's "Central Government" choice, on by default — `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`, `o-<department>` for followers — same slug rule in the app's `orgSlug` — and `digest`, one evening summary per state a day. Budgets are per audience: ≤2 jobs per state per build, ≤4 per state and ≤5 central per IST day, results 3/6, followers results-first ≤5 per department a day; quiet hours 22:00–07:00 IST, unsent items stay eligible for a day) |
+| `push-notify.js` | Firebase topic alerts to the app after each build (topics `s-central` for central/all-India jobs — the app's "Central Government" choice, on by default — `s-<state>`/`s-any`, `q-<level>`, `l-en`/`l-hi`, `results`, `o-<department>` for followers — same slug rule in the app's `orgSlug` — and `digest`, one evening summary per state a day. Budgets are per audience: ≤2 jobs per state per build, ≤4 per state and ≤5 central per IST day, "All states" phones (`s-any`) the biggest ≤2 per build / ≤4 per day of the state jobs (`ja:<id>` in pushed.json; until 12 Nov every state job carried the s-any clause and default phones got 53–96 alerts a day), results 3/6, followers results-first ≤5 per department a day; headline-only jobs (`L.factless`) wait until their notice is read; "Result declared" only from the English headline; quiet hours 22:00–07:00 IST, unsent items stay eligible for a day) |
 | `notify-search.js`, `indexnow.js`, `gsc.js`, `google.js` | IndexNow, Search Console data, Google APIs |
 | `districts.js` | District → state table and state-government web addresses, used by `statesOf()` (build.js) only where a job would otherwise fall into All India / Central (that bucket feeds the default-on `s-central` alert). Central bodies (`CENTRAL_BODY`) and national banks never use it. Leave out names shared by two states or that are common words; `test/districts.test.js` checks |
 | `tools.js`, `krutidev.js`, `typingtest.js` | Tool pages (salary calculators, Kruti Dev converter, typing tests) |
-| `functions/api/relay.js` | The only server code: a Pages Function that fetches .gov.in/.nic.in pages for the fetchers |
+| `functions/api/relay.js` | The only server code: a Pages Function that fetches .gov.in/.nic.in pages for the fetchers. Optional `RELAY_KEY` (Cloudflare Pages env var + GitHub secret, same value): then it answers only requests with that `x-relay-key` header, which lib.js/apply-links.js send to the site's own relay only |
 | `data/` | Source of truth: the jobs (`data/jobs/<YYYY-MM>/<YYYY-MM-DD>.json`, one file per day of publication, one record per line — read and written ONLY through `L.loadJobs()` / `L.saveJobs()`), `updates.json`, `redirects.json` (retired IDs → 301), `watch-state.json`, run logs |
 | `android/` | The app; `android/ci/last-build.txt` and `android/ci/screens/` hold the latest CI build result and emulator screenshots |
 | `.github/workflows/` | `update-jobs.yml` (fetch → build → notify), `chain.yml` (scheduler that dispatches it every ~40 min), `android.yml` (app build + screenshots), `inspect.yml` (diagnostics) |
@@ -62,8 +62,12 @@ hurting users or breaking Google's policies.
   that off; its use is metered under `fallback` in `data/ai-usage.json`). Jobs listed meanwhile are headline-only
   (`L.factless`): no JobPosting (the employer name is a guess), the stand-in steps `L.GENERIC_STEPS` (true for every way
   of applying — never "register online" on a walk-in), and `enrich-jobs.js` pass 0 reads their notice again, newest
-  first (`maxFactsPerRun`, default 40; 3 empty readings at most). A reading that failed because the AI did not answer
-  is never a try and never a mark: watch.js keeps the notice queued, apply-links.js stops, a thin update stays due.
+  first (`maxFactsPerRun`, default 40; 3 empty readings at most) with the checks a new notice gets: a twin of a listing
+  that was there first (same last date or none) is merged into it and redirected (`L.mergeTwin`, `L.addRedirects`), a
+  private employer is flagged and never announced, and only the "1–31 January" template date is dropped (a real past
+  date shows the job as closed). A reading that failed because the AI did not answer (refused, timed out) is never a
+  try and never a mark: watch.js keeps the notice queued, apply-links.js skips the job, a thin update stays due, and
+  fetch-jobs.js takes no twin / taken-id decision without the facts (the item is read again next run).
 - **One brand name: News-Views.in** (alternates "News-Views", "NewsViews"). The homepage title starts with it, and the
   header, `og:site_name` and the Organization + WebSite JSON-LD (`orgLd()`/`websiteLd()` in build.js, also on /about/)
   all use it — change it everywhere or nowhere. `sameAs` lists only real profiles (Telegram once it works; add the Play
@@ -76,7 +80,9 @@ hurting users or breaking Google's policies.
   Cloudflare counts every rule after the first wildcard as "dynamic" and stops after 100 (on Nov 11 two wildcard rules
   at line 171 had silently switched off the 380 rules below them; retired pages answered 404).
   Retiring a record = add the English AND Hindi redirect AND remove it from the jobs store / updates.json (the build
-  ignores a redirect while the page still exists). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
+  ignores a redirect while the page still exists; `L.addRedirects` writes them). The bot's commit step runs
+  `L.dropRetired()` after its `rebase -X theirs`, which could bring a record retired by a concurrent push back (3
+  retired updates had come back as live twins). Updates are never cut: the newest 800 stay in `data/updates.json`, older ones
   move to `data/updates-archive.json` via `L.saveUpdates` and their pages stay live.
 - **IDs and twins:** ids keep stage numbers (`group-4`, `cbt-2`, roman → arabic; `node fetch-jobs.js --self-test`); an id
   taken by a different recruitment gets `distinctId`, never a silent drop; `legacySlug` only recognises old listings.
@@ -94,7 +100,11 @@ hurting users or breaking Google's policies.
 - **Filters:** `OFF_TOPIC` also rejects course allotment lists ("…Allotment List – Management Quota"), "programme … N
   seats" admissions and roundup articles ("… Recruitment Notifications List"), and board/professional exams (ICAI/CA/CS/CMA, NIOS, MSBTE, Madhyamik, class 6–12
   boards, JNVST) unless the headline has any recruitment word; speculative "expected/soon/release date" updates need an
-  official PDF or deep link. `qualsOf` returns `[]` for unknown (any qualification; push routes it to `q-graduate`).
+  official PDF or deep link. `qualsOf` returns `[]` for unknown (any qualification; push routes it to `q-graduate`);
+  "B.E."/capital "BE" only (the word "be" tagged 22 jobs Engineering), "Master" counts as a degree only in the
+  qualification text (Branch Postmaster, Headmaster, Station Master are posts). State keywords in `statesOf` match whole
+  words only ("Visakhapatnam" held "patna", "Lakhisarai" "hisar": 28 jobs had a wrong state). Two different official
+  PDFs of one site with counts more than 5% apart are never twins (Orissa HC District Judge vs Civil Judge).
 - **The jobs store is day files, not one file.** `data/jobs.json` (one pretty-printed array) had reached 37 MB in four
   weeks, +1.4 MB a day — GitHub refuses files over 100 MB, which would have stopped every push in late December 2026.
   `L.saveJobs()` writes `data/jobs/<month>/<day>.json` (about 1.3 MB each), touches only the days that changed, and
@@ -119,7 +129,7 @@ hurting users or breaking Google's policies.
   pages are disallowed in robots.txt until `crawlHindiDetail` is set true. Don't undo these without a reason. AI
   "-explained" analysis twins are off (`maxAnalysisPerRun` 0); existing ones are noindex with a self canonical (never
   noindex + a cross-page canonical) and out of all sitemaps. Indexing API: `ping-google.js` keeps
-  `data/indexing-state.json` (200/day IST budget, new → changed incl. cancellations → backlog → deleted; `--plan`).
+  `data/indexing-state.json` (200 a day counted on Google's clock — midnight Pacific, `_day.tz: "PT"`; counted per IST day it stalled ~20 h after each 429 — new → changed incl. cancellations → backlog → deleted; `--plan`; headline-only jobs are not sent).
 - **Ads must stay policy-safe:** label every ad "Advertisement", never place ads next to Apply/Download buttons, never
   incentivise clicks, keep the in-app full-screen ad capped (`appAds.every`, `appAds.gap`) and only on "back"; the
   app-open ad only on returning after ≥15 min away (`appOpenAway`), ≤1 per 4 h (`appOpenGap`), never on a cold start, the
@@ -224,9 +234,13 @@ hurting users or breaking Google's policies.
   calls work again — `aiStatus` in `data/last-run.json`). Metered cost: about $0.20–0.25 a day in normal running
   (`data/ai-usage.json`), up to $0.91 a day while the backlog was written. Ask the owner to switch on auto-recharge at
   platform.openai.com → Billing. The headline-only jobs of that day (132) are read again 40 a run by enrich pass 0.
-- **Not done:** the multi-agent code review of the final check could not finish inside the Claude usage limit (three
-  attempts). What was verified instead: scripted audits over every page, record and link, 43 tests, the full live check
-  (0 broken of 8,208 URLs), CI builds. Worth running once when usage allows: site/build.js, ingest, enrich, notify,
-  workflows + relay security, and the three app areas (prompt in the session's workflow script final-e2e-check-v3).
+- **Multi-agent final check, 12 Nov** (8 areas, each finding re-checked): fixed the "All states" alert flood, the
+  Indexing API clock, wrong states (substring matches) and qualification tags, 8 outage twins + 3 private + 1 closed
+  listing retired, AI tips written into pages unescaped (now escaped), the broken Hindi-404 forwarder, Telegram
+  failures stopping the notify steps, IndexNow resubmitting every URL, run-log dates, quiz quality checks
+  (English only, no contradicted answers, answers spread over A–D), privacy-policy wording on Firebase user properties,
+  JobPosting `INTERN` on PSU trainee posts, salary texts that one unit cannot describe (no baseSalary), the service
+  worker caching eligibility.json, and the public test key in assetlinks. App fixes went into build 52+. Left for the
+  owner: third-party actions in android.yml are pinned by tag (pin to commit SHAs), and set RELAY_KEY to close the relay.
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.

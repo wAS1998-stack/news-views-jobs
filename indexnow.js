@@ -17,14 +17,16 @@ const SITE = (CFG.url || "https://news-views.in").replace(/\/$/, "");
 const HOST = SITE.replace(/^https?:\/\//, "");
 
 function collectUrls() {
-  let urls = process.argv.slice(2);
+  let urls = process.argv.slice(2).filter((a) => /^https?:\/\//.test(a));
   if (!urls.length) {
     try {
       const txt = fs.readFileSync(path.join(ROOT, "data", "new-urls.txt"), "utf8");
       urls = txt.split("\n").map((s) => s.trim()).filter(Boolean);
     } catch { /* ignore */ }
   }
-  if (!urls.length) {
+  // No new page in this build: only the hub pages below. (Resubmitting every job URL on such builds — about 2,800
+  // unchanged URLs, 8 times in 5 days — is what IndexNow engines throttle.) "--all" still sends every job page.
+  if (!urls.length && process.argv.includes("--all")) {
     try {
       const jobs = require("./lib.js").loadJobs();
       urls = jobs.filter((j) => j && j.id).map((j) => `${SITE}/jobs/${j.id}/`);

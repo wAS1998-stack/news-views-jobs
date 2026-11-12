@@ -1,5 +1,5 @@
 /* News-Views service worker — network-first pages, SWR assets, offline fallback */
-const V = "nv-v3";   // bump: drops every page copy cached by older versions
+const V = "nv-v4";   // bump: drops every page copy cached by older versions
 const CORE = ["/offline/", "/styles.css", "/site.js", "/icon-192.png"];   // pages are never pre-cached
 
 self.addEventListener("install", (e) => {
@@ -13,7 +13,7 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
-  if (/^\/(version|search)\.json$/.test(new URL(req.url).pathname)) return;   // freshness check and search index always come from the network
+  if (/^\/(version|search|eligibility)\.json$/.test(new URL(req.url).pathname)) return;   // freshness check, search index and eligibility data always come from the network
   if (req.mode === "navigate") {
     // pages: always try network (fresh jobs), fall back to cache, then offline page
     e.respondWith(

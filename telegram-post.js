@@ -59,14 +59,18 @@ function message(job) {
 }
 
 async function send(text) {
-  const res = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT, text, parse_mode: "HTML",
-      disable_web_page_preview: false,
-    }),
-  });
+  let res;
+  try {
+    res = await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT, text, parse_mode: "HTML",
+        disable_web_page_preview: false,
+      }),
+      signal: AbortSignal.timeout(20000),
+    });
+  } catch (e) { return { ok: false, status: 0, why: "network: " + String(e && e.message || e).slice(0, 80) }; }
   if (!res.ok) {
     let why = "";
     try { why = (await res.json()).description || ""; } catch { /* ignore */ }
@@ -165,4 +169,5 @@ async function main() {
     console.log(`Telegram: posted ${sent} job(s).`);
   }
 }
-main();
+// a network failure must not fail the workflow step: the app alerts, IndexNow and the state save run after this one
+main().catch((e) => console.log("Telegram error (non-fatal): " + (e && e.message || e)));

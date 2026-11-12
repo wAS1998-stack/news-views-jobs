@@ -34,6 +34,8 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      RELAY_KEY: ${{ secrets.RELAY_KEY }}   # optional: see functions/api/relay.js
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,7 +48,9 @@ jobs:
       - name: Decide which heavy steps are due this run
         id: due
         env:
-          FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          # a run started by a person forces every step; the scheduler (chain.yml) dispatches as github-actions[bot] and
+          # its runs are paced by due.js like scheduled ones
+          FORCE_ALL: ${{ github.event_name == 'workflow_dispatch' && github.triggering_actor != 'github-actions[bot]' && '1' || '0' }}
         run: |
           echo "enrich=$(node due.js enrich 100)" >> "$GITHUB_OUTPUT"
           echo "news=$(node due.js news 100)" >> "$GITHUB_OUTPUT"
@@ -156,6 +160,10 @@ jobs:
             git fetch -q origin main
             # Our run's data wins on a conflicting hunk (it is the newer work); other files rebase normally.
             if git rebase -X theirs origin/main; then
+              # A record retired by a concurrent push stays retired ("-X theirs" can bring our older copy of it back).
+              if [ "$(node -e 'console.log(require("./lib.js").dropRetired().changed ? "yes" : "no")' 2>/dev/null)" = yes ]; then
+                git add data/ && git commit -q --amend --no-edit
+              fi
               # Never push data that no longer parses or no longer builds after an automatic merge.
               if ! node -e 'for (const f of require("fs").readdirSync("data").filter(f=>f.endsWith(".json"))) JSON.parse(require("fs").readFileSync("data/"+f,"utf8")); require("./lib.js").loadJobs()' || ! node build.js >/dev/null; then
                 echo "::error::Merged data is invalid — discarding this run's data to protect the site"; git reset -q --hard origin/main; break
@@ -225,7 +233,7 @@ jobs:
           git commit -q -m "Auto: telegram posted-history [CF-Pages-Skip]"
           for i in 1 2 3; do
             git fetch -q origin main
-            if git rebase -X theirs origin/main && git push -q origin HEAD:main; then echo "Saved."; exit 0; fi
+            if git rebase --autostash -X theirs origin/main && git push -q origin HEAD:main; then echo "Saved."; exit 0; fi
             git rebase --abort 2>/dev/null || true; sleep $((i * 5))
           done
           echo "::warning::Could not save posted-history this run"

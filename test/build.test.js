@@ -84,3 +84,26 @@ test("fitToBudget: nothing leaves while the site fits; past the limit the oldest
   assert.strictEqual(impossible.jobs.size, 30);
   assert.strictEqual(impossible.updates.size, 20);
 });
+
+test("state names count only as whole words", () => {
+  const { statesOf } = require("../build.js");
+  const st = (location, extra = {}) => statesOf({ id: "x", title: "X Recruitment 2026", organization: "X", location, ...extra }).map((s) => s.slug).join(",");
+  assert.strictEqual(st("Visakhapatnam, Andhra Pradesh"), "andhra-pradesh", "'patna' inside Visakhapatnam is not Bihar");
+  assert.strictEqual(st("College of Horticulture, Durgapura, Jaipur"), "rajasthan", "'durgapur' inside Durgapura is not West Bengal");
+  assert.strictEqual(st("Evening Court, Lakhisarai"), "bihar", "'hisar' inside Lakhisarai is not Haryana");
+  assert.strictEqual(st("Patna, Bihar"), "bihar");
+  assert.strictEqual(st("Kota, Rajasthan"), "rajasthan");
+});
+
+test("qualification tags: 'be' is not B.E., a Postmaster or Headmaster post is not a master's degree", () => {
+  const { qualsOf } = require("../build.js");
+  const q = (qualification, title = "X Recruitment 2026") => qualsOf({ qualification, title }).map((x) => x.slug).join(",");
+  assert.strictEqual(q("10th pass. Candidates must be residents of the district."), "10th-pass");
+  assert.strictEqual(q("BE/B.Tech in Civil Engineering"), "engineering-diploma");
+  assert.strictEqual(q("B.E. in Mechanical"), "engineering-diploma");
+  assert.strictEqual(q("10th pass with Mathematics and English", "India Post GDS Branch Postmaster Recruitment 2026"), "10th-pass");
+  assert.strictEqual(q("Graduation in any stream", "RRB Station Master Recruitment 2026"), "graduate");
+  assert.strictEqual(q("Master's Degree in Economics"), "post-graduate");
+  assert.strictEqual(q("M. Sc. in Chemistry"), "post-graduate");
+  assert.strictEqual(q("Foreign Going Master's Certificate"), "");
+});

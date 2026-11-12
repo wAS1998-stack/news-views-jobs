@@ -42,6 +42,18 @@ function needsUpdateEnrich(u) {
   if (Array.isArray(u.steps) && u.steps.length >= 3) return false;
   return !u.enriched || (u.enriched === "partial" && daysOld(u.date) <= 14);
 }
+/** A job read in pass 0 may be a re-post of a recruitment already listed: with the headline alone the twin check
+    (lib.js isDuplicate, as fetch-jobs.js runs it on every new notice) had nothing to compare. A twin that was listed
+    first, with the same last date or none, keeps its page; the healed copy is merged into it and redirected (8 pairs
+    from the outage of 11 Nov). Different last dates may be a new cycle of the same posts: both stay. */
+function mergeIfTwin(job, jobs, redirects) {
+  const twin = L.isDuplicate(job, jobs.filter((x) => x !== job && String(x.published || "") <= String(job.published || "")));
+  if (!twin || (twin.application_end && job.application_end && twin.application_end !== job.application_end)) return false;
+  redirects.push(...L.mergeTwin(twin, job));
+  jobs.splice(jobs.indexOf(job), 1);
+  console.log(`  = the same recruitment as ${twin.id}: merged into it and redirected: ${job.title}`);
+  return true;
+}
 /** Did the AI fail to answer since `mark` (L.aiHealth().failed before the call)? An empty result then says nothing about the notice. */
 const aiFault = (mark) => !!L.AI && (L.aiHealth().failed > mark || !!L.aiDown());
 
@@ -61,8 +73,11 @@ async function readFacts(job) {
   }
   const today = L.todayIST();
   const merged = { ...job, ...extra, id: job.id, title: job.title, published: job.published, source: job.source };
-  // a last date before the page was published is a misread year or the template "1–31 January": unknown, not wrong
-  if (merged.application_end && merged.application_end < String(job.published || today)) { delete merged.application_end; delete merged.application_start; }
+  // the extraction template "1–31 January" on a notice published later in the year is not a date (same rule as
+  // fetch-jobs.js); any other last date is the notice's own — a past one shows the page as closed, which is the truth
+  const template = /-01-31$/.test(String(merged.application_end || "")) && (!merged.application_start || /-01-(0\d|10)$/.test(String(merged.application_start)))
+    && String(job.published || today).slice(5, 7) >= "04";
+  if (template && merged.application_end < String(job.published || today)) { delete merged.application_end; delete merged.application_start; }
   // links: only real candidates from the page (never what the model typed), an upgraded apply link stays
   const picked = L.validateLinks(extra, src.cands), heur = L.pickLinksHeuristic(src.cands);
   merged.apply_link = job.apply_src ? job.apply_link
@@ -73,6 +88,9 @@ async function readFacts(job) {
   if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) merged.how_to_apply = job.how_to_apply || L.GENERIC_STEPS.slice();
   for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
   const clean = L.sanitizeJob(merged);
+  // the notice names a private employer (lib.js NON_GOVT, as fetch-jobs.js checks after reading a new notice): the
+  // build already leaves such a record out (its address redirects); it is stored as read but never announced
+  const priv = L.isNonGovt(clean);
   delete clean.facts_tries;
   delete clean.hi;                                           // a translation of the headline-only record is out of date
   if (!job.apply_src) { delete clean.apply_checked; delete clean.apply_tries; }   // apply-links.js looks again, now with the real organisation and post
@@ -80,7 +98,7 @@ async function readFacts(job) {
   if (String(job.published || "") < today) clean.updated = today;
   for (const k of Object.keys(job)) delete job[k];
   Object.assign(job, clean);
-  return "ok";
+  return priv ? "private" : "ok";
 }
 
 /* ---- pass 1: official links ------------------------------------- */
@@ -228,16 +246,19 @@ async function main() {
     const factJobs = jobs.filter((j) => j && j.id && j.title && L.factsPending(j)).sort((a, b) => String(b.published || "").localeCompare(String(a.published || "")));
     console.log(`Enrich/facts: ${factJobs.length} job(s) without the notice's facts | doing up to ${MAX_FACTS}`);
     let done = 0;
-    const healed = [];
+    const healed = [], redirects = [];
     for (const job of factJobs.slice(0, MAX_FACTS)) {
       const r = await readFacts(job);
       if (r === "ai") { console.log(`  - the AI is not answering: ${factJobs.length - done} job(s) wait for a later run`); break; }
       jobsDirty = true; done++;
-      if (r === "ok") { healed.push(job.id); stats.factsRead++; console.log(`  ✓ facts: ${job.title}${job.application_end ? " (last date " + job.application_end + ")" : ""}`); }
+      if (r === "private") { stats.factsPrivate = (stats.factsPrivate || 0) + 1; console.log(`  - the notice names a private employer (left out of the site): ${job.title}`); }
+      else if (r === "ok" && mergeIfTwin(job, jobs, redirects)) { stats.factsTwins = (stats.factsTwins || 0) + 1; }
+      else if (r === "ok") { if (!(job.application_end && job.application_end < L.todayIST())) healed.push(job.id); stats.factsRead++; console.log(`  ✓ facts: ${job.title}${job.application_end ? " (last date " + job.application_end + ")" : ""}`); }
       else console.log(`  - nothing usable read (try ${job.facts_tries}): ${job.title}`);
       await sleep(500);
     }
     stats.factsPending = jobs.filter((j) => j && L.factsPending(j)).length;
+    if (redirects.length) L.addRedirects(redirects);
     // their pages now carry the facts and a JobPosting: announce them to the search engines like new pages
     if (healed.length) { try { fs.appendFileSync(path.join(ROOT, "data", "new-urls.txt"), healed.map((id) => `${SITE_URL}/jobs/${id}/`).join("\n") + "\n"); } catch { /* announcing is optional */ } }
   }
@@ -355,5 +376,5 @@ async function main() {
   L.logRun("enrich", stats);
   console.log("Enrich:", JSON.stringify(stats));
 }
-module.exports = { devanagariShare, needsUpdateEnrich, readFacts };
+module.exports = { devanagariShare, needsUpdateEnrich, readFacts, mergeIfTwin };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

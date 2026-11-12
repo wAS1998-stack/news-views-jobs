@@ -30,6 +30,10 @@ const L = require("./lib.js");
 const ROOT = __dirname;
 const SITE = (L.CONFIG.url || "https://news-views.in").replace(/\/$/, "");
 const PUSHED = path.join(ROOT, "data", "pushed.json");
+// "All states" phones (s-any) are one more audience with the same budget as a state: the biggest state jobs only.
+// (Until 12 Nov every state job carried "|| 's-any' in topics", so a phone left on the default "All states" received
+// every state's alerts: 68–96 a day on 10–12 Nov.)
+const MAX_ANY_BUILD = 2, MAX_ANY_DAY = 4;
 const MAX_SEG_BUILD = 2, MAX_SEG_DAY = 4, MAX_CENTRAL_DAY = 5, MAX_UPDATES = 3, MAX_UPDATES_DAY = 6, MAX_FOLLOW = 30, MAX_ORG_DAY = 5, MAX_EXT = 10;
 const QUIET_FROM = 22, QUIET_TO = 7;   // IST hours
 const QUIZ_FROM = 8;                  // the quiz notification: not before 8 am IST
@@ -56,18 +60,18 @@ function jobTopics(q) {
 }
 /* One FCM condition per (state, qualification track): a condition may use at most 5 topics, so a job listing three
    states is sent three times — the phone shows it once (same notification tag, alert-once). */
-function jobConditions(job, lang) {
+function jobConditions(job, lang, { any = true } = {}) {
   const states = (job.s || []).filter(Boolean);
   let stateClauses;
   // central / all-India jobs go to phones with "Central Government" on (s-central, on by default in the app)
   if (states.includes("all-india") || !states.length) stateClauses = ["'s-central' in topics"];
   else if (states[0] === "gulf") stateClauses = ["'s-gulf' in topics"];
-  else stateClauses = states.filter((st) => st !== "gulf").slice(0, 3).map((st, i) => (i === 0 ? `('s-${st}' in topics || 's-any' in topics)` : `'s-${st}' in topics`));
+  else stateClauses = states.filter((st) => st !== "gulf").slice(0, 3).map((st, i) => (i === 0 && any ? `('s-${st}' in topics || 's-any' in topics)` : `'s-${st}' in topics`));
   const out = [];
   for (const sc of stateClauses) for (const qt of jobTopics(job.q || [])) out.push([sc, `'${qt}' in topics`, `'l-${lang}' in topics`].filter(Boolean).join(" && "));
   return out;
 }
-function jobCondition(job, lang) { return jobConditions(job, lang)[0]; }
+function jobCondition(job, lang, opts) { return jobConditions(job, lang, opts)[0]; }
 // notification taps open this action (an intent filter on MainActivity), not the launcher, so the job opens even
 // when the app is already running in the background
 const CLICK = "in.newsviews.app.OPEN_ITEM";
@@ -141,7 +145,11 @@ function jobBody(j, lang, stateNames) {
 function updateTitle(u, lang) { return cut(String((lang === "hi" && (u.thc || u.th)) || u.tc || u.t || ""), TITLE_MAX); }
 function updateBody(u, lang) {
   const i = lang === "hi" ? 1 : 0;
-  const declared = u.ty === "result" && /\bresults?\b/i.test(u.t || "") && /\b(out|declared|released|announced)\b|जारी|घोषित/i.test(`${u.t} ${u.th || ""}`);
+  // decided from the source headline only: the Hindi title is written by the AI, whose example says "जारी" (released),
+  // and "Result 2026 – Check Result Date" or "… Out Soon" is not a declared result
+  const t = String(u.t || "");
+  const declared = u.ty === "result" && /\bresults?\b/i.test(t) && /\b(out|declared|released|announced)\b/i.test(t)
+    && !/\bresult date\b|\b(expected|likely|soon|awaited|kab)\b/i.test(t);
   const verb = declared ? ["Result declared — check now", "रिजल्ट जारी — अभी देखें"][i] : (RESULT_VERB[u.ty] || ["New update", "नया अपडेट"])[i];
   const title = updateTitle(u, lang).toLowerCase();
   return u.o && !title.includes(String(u.o).toLowerCase()) ? `${verb} · ${u.o}` : verb;
@@ -175,6 +183,10 @@ async function main() {
   const bump = (m, k) => { m[k] = (m[k] || 0) + 1; };
   const stateNames = Object.fromEntries((index.states || []).map((x) => [x.slug, x.name]));
   const jobs0 = index.jobs || [], updates0 = index.updates || [];
+  // a job listed from its headline only (the AI could not read the notice: lib.js factless) is not announced yet — its
+  // qualification and last date are unknown, so it would reach the wrong phones; it goes out once enrich-jobs.js has
+  // read the notice (it puts the page back into new-urls.txt)
+  let thin = new Set(); try { thin = new Set(L.loadJobs().filter((j) => L.factless(j)).map((j) => j.id)); } catch { /* store unreadable: no filter */ }
 
   // every job's last date is remembered; a date that moved later is announced to the people who saved the job
   let enChanged = false;
@@ -187,15 +199,23 @@ async function main() {
   }
 
   let jobs = [], updates = [], follow = [];
+  const anyAudience = new Set();
   if (!quiet) {
     // jobs: per-audience budgets (see the header)
     const dayCount = {}, buildCount = {};
     for (const j of jobs0) if (sentToday(`j:${j.id}`)) bump(dayCount, segOf(j));
-    const cands = jobs0.filter((j) => (jobIds.has(j.id) || recent(j.pub)) && open(j) && ttlOk(j) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v);
+    const cands = jobs0.filter((j) => (jobIds.has(j.id) || recent(j.pub)) && open(j) && ttlOk(j) && !thin.has(j.id) && !pushed[`j:${j.id}`]).sort((a, b) => b.v - a.v);
     for (const j of cands) {
       const seg = segOf(j);
       if ((dayCount[seg] || 0) >= (seg === "central" ? MAX_CENTRAL_DAY : MAX_SEG_DAY) || (buildCount[seg] || 0) >= MAX_SEG_BUILD) continue;
       bump(dayCount, seg); bump(buildCount, seg); jobs.push(j);
+    }
+    // the biggest of this build's state jobs also go to "All states" phones, within their own budget (ja:<id>)
+    let anyDay = Object.keys(pushed).filter((k) => k.startsWith("ja:") && pushed[k] === today).length, anyBuild = 0;
+    for (const j of jobs) {
+      const seg = segOf(j);
+      if (seg === "central" || seg === "gulf" || anyBuild >= MAX_ANY_BUILD || anyDay >= MAX_ANY_DAY) continue;
+      anyAudience.add(j.id); anyBuild++; anyDay++;
     }
     // results / admit cards of major exams
     const updSent = Object.keys(pushed).filter((k) => k.startsWith("u:") && pushed[k] === today).length;
@@ -208,7 +228,7 @@ async function main() {
     for (const u of updates0) if (u.o && sentToday(`fu:${u.id}`)) bump(orgCount, orgTopic(u.o));
     const fc = [
       ...updates0.filter((u) => u.o && (updIds.has(u.id) || recent(u.d)) && !pushed[`fu:${u.id}`]).map((u) => ({ kind: "update", x: u })),
-      ...jobs0.filter((j) => j.o && (jobIds.has(j.id) || recent(j.pub)) && open(j) && ttlOk(j) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
+      ...jobs0.filter((j) => j.o && (jobIds.has(j.id) || recent(j.pub)) && open(j) && ttlOk(j) && !thin.has(j.id) && !pushed[`fj:${j.id}`]).map((j) => ({ kind: "job", x: j })),
     ];
     for (const f of fc) {
       const t = orgTopic(f.x.o);
@@ -291,7 +311,7 @@ async function main() {
     let okAny = false;
     const ttl = jobTtl(j);
     for (const lang of ["en", "hi"]) {
-      for (const condition of jobConditions(j, lang)) {
+      for (const condition of jobConditions(j, lang, { any: anyAudience.has(j.id) })) {
         const res = await send({
           condition,
           notification: { title: jobTitle(j, lang), body: jobBody(j, lang, stateNames) },
@@ -301,7 +321,7 @@ async function main() {
         log.push(`job ${j.id} ${lang} [${condition}]: ${res}`); if (res === "ok") { sent++; okAny = true; }
       }
     }
-    if (okAny) pushed[`j:${j.id}`] = today;               // not accepted at all: tried again on the next build
+    if (okAny) { pushed[`j:${j.id}`] = today; if (anyAudience.has(j.id)) pushed[`ja:${j.id}`] = today; }   // not accepted at all: tried again on the next build
   }
   for (const u of updates) {
     let okAny = false;

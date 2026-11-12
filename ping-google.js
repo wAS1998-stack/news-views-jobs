@@ -33,6 +33,10 @@ const DRAIN_DAILY = Number(process.env.INDEXING_DRAIN || 80);
 const STATE_FILE = DATA("indexing-state.json");
 const PLAN_ONLY = process.argv.includes("--plan");
 const todayIST = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+// Google's 200-a-day quota restarts at midnight Pacific time (08:00 UTC, 13:30 IST), so the budget is counted on that
+// clock. Counted per IST day, the IST-midnight sends fell into the same Google day as the afternoon's: Google answered
+// 429 at 22:16 UTC on 11 Nov and nothing was sent for the rest of the IST day (~20 hours).
+const quotaDay = () => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const jobUrl = (id) => `${SITE_URL}/jobs/${id}/`;
 const hashOf = (j) => crypto.createHash("sha1").update(JSON.stringify([j.title || "", j.application_end || "", j.apply_link || "", Number(j.total_vacancies) || 0, j.notice_status || ""])).digest("hex").slice(0, 12);
@@ -98,7 +102,8 @@ async function main() {
   if (!PLAN_ONLY && !RAW.trim()) { console.log("Indexing API: GOOGLE_SERVICE_ACCOUNT_JSON not set — skipping (this is optional)."); return; }
   const today = todayIST();
   const state = readJson(STATE_FILE, {});
-  if (!state._day || state._day.date !== today) state._day = { date: today, used: 0, drained: 0 };
+  const qday = quotaDay();   // a day record without tz "PT" was counted on the IST clock: start afresh
+  if (!state._day || state._day.date !== qday || state._day.tz !== "PT") state._day = { date: qday, tz: "PT", used: 0, drained: 0 };
   const budget = Math.max(0, DAILY - state._day.used);
   let jobs = []; try { jobs = require("./lib.js").loadJobs(); } catch { /* no jobs readable: nothing to send */ }
   const redirects = readJson(DATA("redirects.json"), []);
@@ -109,9 +114,14 @@ async function main() {
     : plan({ jobs, redirects, state, newUrls, today, budget, drainLeft: Math.max(0, DRAIN_DAILY - (state._day.drained || 0)) });
   const todo = p.todo;
   const count = (t) => todo.filter((x) => x.type === t).length;
-  console.log(`Indexing API: ${todo.length} to send (${count("URL_UPDATED")} updated, ${count("URL_DELETED")} deleted); ${state._day.used}/${DAILY} used today (IST ${today}).`);
+  console.log(`Indexing API: ${todo.length} to send (${count("URL_UPDATED")} updated, ${count("URL_DELETED")} deleted); ${state._day.used}/${DAILY} used in Google's day ${qday} (Pacific).`);
   if (PLAN_ONLY) { for (const x of todo.slice(0, 40)) console.log(`  ${x.type} ${x.url}`); return; }
-  if (!todo.length) { state._retry = [...new Set([...(state._retry || []), ...p.deferred])].slice(0, 400); fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 1) + "\n"); return; }
+  if (!todo.length) {
+    state._retry = [...new Set([...(state._retry || []), ...p.deferred])].slice(0, 400); fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 1) + "\n");
+    // a day without sends is visible in data/last-run.json too (quota used up, or nothing new)
+    try { require("./lib.js").logRun("indexing-api", { ok: true, submitted: 0, budgetLeft: budget, usedToday: state._day.used, kept: state._retry.length, quotaDay: qday }); } catch {}
+    return;
+  }
 
   let KEY; try { KEY = JSON.parse(RAW); } catch { console.log("Indexing API: service-account JSON is not valid JSON — skipping."); return; }
   let token; try { token = await getAccessToken(KEY); } catch (e) { console.log("Indexing API: auth failed — " + e.message + " (skipping)."); return; }

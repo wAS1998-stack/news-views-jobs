@@ -7,7 +7,7 @@
  */
 const SHA = (process.env.WAIT_SHA || "").slice(0, 7);
 const URL_ = process.env.WAIT_URL || "https://news-views-jobs.pages.dev/version.json";
-const MAX_MS = Number(process.env.WAIT_MAX_MS || 6 * 60 * 1000);
+const MAX_MS = Number(process.env.WAIT_MAX_MS || 12 * 60 * 1000);   // a slow Cloudflare build queue can take more than 6 minutes
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 (async () => {
   if (!SHA) { console.log("wait-deploy: no sha given — waiting 90s instead."); await sleep(90000); return; }
