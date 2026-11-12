@@ -1,5 +1,5 @@
 {
- "at": "2026-11-12T05:46:48.807Z",
+ "at": "2026-11-12T05:50:45.307Z",
  "site": "https://news-views.in",
  "build": {
   "domain": "11b050e 2026-11-12T05:20Z",
@@ -9,7 +9,7 @@
   "maxFiles": 20000,
   "archivedJobs": 0,
   "archivedUpdates": 0,
-  "ageHours": 0.4
+  "ageHours": 0.5
  },
  "robotsTxt": "# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n# use:      how AI systems may consume the content (immediate, reference, or full).\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no,use=reference\nAllow: /\n\n# Training crawlers\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Diffbot\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: omgili\nDisallow: /\n\nUser-agent: anthropic-ai\nDisallow: /\n\nUser-agent: Claude-Web\nDisallow: /\n\nUser-agent: cohere-ai\nDisallow: /\n\nUser-agent: MistralAI-Training\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\nUser-agent: GoogleOther\nDisallow: /\n\nUser-agent: Baiduspider\nDisallow: /\n\nUser-agent: PetalBot\nDisallow: /\n\nUser-agent: AwarioSmartBot\nUser-agent: AwarioRssBot\nDisallow: /\n\nUser-agent: Google-CloudVertexBot\nDisallow: /\n\nUser-agent: QualifiedBot\nDisallow: /\n\nUser-agent: Cotoyogi\nDisallow: /\n\nUser-agent: ICC-Crawler\nDisallow: /\n\nUser-agent: atlassian-bot\nDisallow: /\n\nUser-agent: FishBot\nDisallow: /\n\nUser-agent: BorderxBot\nDisallow: /\n\nUser-agent: NavuBot\nDisallow: /\n\nUser-agent: SemrushBot-SWA\nDisallow: /\n\nUser-agent: WARDBot\nDisallow: /\n\nUser-agent: magpie-crawler\nDisallow: /\n\nUser-agent: KimiBot\nDisallow: /\n\nUser-agent: CitibotSiteCrawler\nDisallow: /\n\n# END Cloudflare Managed Content\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /hi/jobs/\nDisallow: /hi/updates/\nSitemap: https://news-views.in/sitemap.xml\nSitemap: https://news-views.in/sitemap-latest.xml\nSitemap: https://news-views.in/news-sitemap.xml\n",
  "counts": {
@@ -21,38 +21,23 @@
   "sitemapUrls": 3161,
   "sitemapJobs": 2032,
   "sitemapUpdates": 562,
-  "medianPageMs": 194,
-  "slowestPageMs": 335,
+  "medianPageMs": 104,
+  "slowestPageMs": 179,
   "medianPageBytes": 26088
- },
- "knownUrls": {
-  "total": 8208,
-  "byStatus": {
-   "200": 7369,
-   "301->200": 554,
-   "404 hindi page, forwards to the English one": 285
-  },
-  "broken": 0,
-  "examples": []
  },
  "summary": {
   "ok": 57,
-  "warn": 4,
-  "fail": 1,
+  "warn": 5,
+  "fail": 0,
   "pagesChecked": 53,
-  "pagesWithProblems": 5
+  "pagesWithProblems": 0
  },
  "problems": [
   "WARN robots: other crawlers blocked: 32 (not written by build.js — Cloudflare's managed robots.txt?): amazonbot, applebot-extended, bytespider, ccbot, claudebot, diffbot, google-extended, gptbot, omgili, anthropic-ai, claude-web, cohere-ai, mistralai-training, meta-externalagent, googleother, baiduspider, petalbot, awariosmartbot, awariorssbot, google-cloudvertexbot, qualifiedbot, cotoyogi, icc-crawler, atlassian-bot, fishbot, border",
   "WARN www host: status 525 -> -",
-  "FAIL page sample: 53 pages checked, 5 with problems",
+  "WARN headline-only jobs: 131 job page(s) list only the headline and official links (no dates yet, no JobPosting); 5 in this sample",
   "WARN header strict-transport-security: missing (Cloudflare > SSL/TLS > Edge Certificates > HSTS)",
-  "WARN relay upsc.gov.in: status 522, 7231 B, served as text/html; charset=UTF-8, colo -",
-  "PAGE /jobs/kerala-high-court-system-assistant-2026/: open job page without JobPosting",
-  "PAGE /jobs/optcl-company-secretary-by-oct-2025/: open job page without JobPosting",
-  "PAGE /jobs/iiit-hyderabad-marketing-intern-2026/: open job page without JobPosting",
-  "PAGE /jobs/orissa-high-court-junior-stenographer-2026/: open job page without JobPosting",
-  "PAGE /jobs/high-court-orissa-junior-grade-typist-2026/: open job page without JobPosting"
+  "WARN relay upsc.gov.in: status 522, 7230 B, served as text/html; charset=UTF-8, colo -"
  ],
  "checks": [
   {
@@ -63,7 +48,7 @@
   {
    "id": "build-age",
    "level": "ok",
-   "detail": "live build 11b050e 2026-11-12T05:20Z, 0.4 h old"
+   "detail": "live build 11b050e 2026-11-12T05:20Z, 0.5 h old"
   },
   {
    "id": "domain-vs-pages",
@@ -73,82 +58,82 @@
   {
    "id": "file /robots.txt",
    "level": "ok",
-   "detail": "2942 B, 63 ms, public, max-age=14400, must-revalidate"
+   "detail": "2942 B, 83 ms, public, max-age=14400, must-revalidate"
   },
   {
    "id": "file /feed.xml",
    "level": "ok",
-   "detail": "38341 B, 78 ms, public, max-age=0, must-revalidate, public, max-age=600"
-  },
-  {
-   "id": "file /sitemap-latest.xml",
-   "level": "ok",
-   "detail": "38086 B, 89 ms, public, max-age=0, must-revalidate"
+   "detail": "38341 B, 86 ms, public, max-age=0, must-revalidate, public, max-age=600"
   },
   {
    "id": "file /news-sitemap.xml",
    "level": "ok",
-   "detail": "11528 B, 108 ms, public, max-age=0, must-revalidate"
+   "detail": "11528 B, 100 ms, public, max-age=0, must-revalidate"
   },
   {
    "id": "file /sitemap.xml",
    "level": "ok",
-   "detail": "375115 B, 112 ms, public, max-age=0, must-revalidate, public, max-age=0, must-revalidate"
+   "detail": "375115 B, 105 ms, public, max-age=0, must-revalidate, public, max-age=0, must-revalidate"
   },
   {
-   "id": "file /styles.css",
+   "id": "file /sitemap-latest.xml",
    "level": "ok",
-   "detail": "51762 B, 39 ms, public, max-age=86400, must-revalidate, stale-while-revalidate=604800"
-  },
-  {
-   "id": "file /site.js",
-   "level": "ok",
-   "detail": "10025 B, 34 ms, public, max-age=86400, must-revalidate, stale-while-revalidate=604800"
+   "detail": "38086 B, 109 ms, public, max-age=0, must-revalidate"
   },
   {
    "id": "file /",
    "level": "ok",
-   "detail": "119533 B, 129 ms, public, max-age=0, must-revalidate"
+   "detail": "119533 B, 114 ms, public, max-age=0, must-revalidate"
   },
   {
-   "id": "file /favicon.svg",
+   "id": "file /styles.css",
    "level": "ok",
-   "detail": "411 B, 29 ms, public, max-age=2592000, must-revalidate, immutable"
+   "detail": "51876 B, 28 ms, public, max-age=86400, must-revalidate, stale-while-revalidate=604800"
+  },
+  {
+   "id": "file /site.js",
+   "level": "ok",
+   "detail": "10025 B, 37 ms, public, max-age=86400, must-revalidate, stale-while-revalidate=604800"
   },
   {
    "id": "file /icon-192.png",
    "level": "ok",
-   "detail": "3530 B, 49 ms, public, max-age=2592000, must-revalidate, immutable"
-  },
-  {
-   "id": "file /og.png",
-   "level": "ok",
-   "detail": "75718 B, 51 ms, public, max-age=2592000, must-revalidate, immutable"
+   "detail": "3530 B, 34 ms, public, max-age=2592000, must-revalidate, immutable"
   },
   {
    "id": "file /search.json",
    "level": "ok",
-   "detail": "820453 B, 126 ms, public, max-age=0, must-revalidate"
-  },
-  {
-   "id": "file /site.webmanifest",
-   "level": "ok",
-   "detail": "627 B, 81 ms, public, max-age=0, must-revalidate"
+   "detail": "820453 B, 80 ms, public, max-age=0, must-revalidate"
   },
   {
    "id": "file /sw.js",
    "level": "ok",
-   "detail": "1598 B, 92 ms, public, max-age=14400, must-revalidate"
+   "detail": "1598 B, 63 ms, public, max-age=14400, must-revalidate"
+  },
+  {
+   "id": "file /og.png",
+   "level": "ok",
+   "detail": "75718 B, 41 ms, public, max-age=2592000, must-revalidate, immutable"
   },
   {
    "id": "file /.well-known/assetlinks.json",
    "level": "ok",
-   "detail": "550 B, 153 ms, public, max-age=0, must-revalidate"
+   "detail": "550 B, 55 ms, public, max-age=0, must-revalidate"
+  },
+  {
+   "id": "file /favicon.svg",
+   "level": "ok",
+   "detail": "411 B, 130 ms, public, max-age=2592000, must-revalidate, immutable"
+  },
+  {
+   "id": "file /site.webmanifest",
+   "level": "ok",
+   "detail": "627 B, 212 ms, public, max-age=0, must-revalidate"
   },
   {
    "id": "file /app/v1/index.json",
    "level": "ok",
-   "detail": "2037433 B, 404 ms, public, max-age=0, must-revalidate, public, max-age=300"
+   "detail": "2037433 B, 248 ms, public, max-age=0, must-revalidate, public, max-age=300"
   },
   {
    "id": "file /ads.txt",
@@ -198,7 +183,7 @@
   {
    "id": "app feed age",
    "level": "ok",
-   "detail": "0.4 h"
+   "detail": "0.5 h"
   },
   {
    "id": "newest job in the feed",
@@ -292,8 +277,13 @@
   },
   {
    "id": "page sample",
-   "level": "fail",
-   "detail": "53 pages checked, 5 with problems"
+   "level": "ok",
+   "detail": "53 pages checked, 0 with problems"
+  },
+  {
+   "id": "headline-only jobs",
+   "level": "warn",
+   "detail": "131 job page(s) list only the headline and official links (no dates yet, no JobPosting); 5 in this sample"
   },
   {
    "id": "sitemap URL statuses",
@@ -358,21 +348,26 @@
   {
    "id": "relay upsc.gov.in",
    "level": "warn",
-   "detail": "status 522, 7231 B, served as text/html; charset=UTF-8, colo -"
-  },
-  {
-   "id": "every URL ever published",
-   "level": "ok",
-   "detail": "8208 URLs: {\"200\":7369,\"301->200\":554,\"404 hindi page, forwards to the English one\":285}"
+   "detail": "status 522, 7230 B, served as text/html; charset=UTF-8, colo -"
   }
  ],
  "pages": [
+  {
+   "url": "/jobs/",
+   "kind": "hub",
+   "status": 200,
+   "bytes": 409757,
+   "ms": 67,
+   "words": 31112,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "All Government Jobs 2026 — 1789 Open Sarkari Naukri Notifications | News-Views"
+  },
   {
    "url": "/hi/",
    "kind": "hindi",
    "status": 200,
    "bytes": 120890,
-   "ms": 62,
+   "ms": 74,
    "words": 5230,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "सरकारी नौकरी 2026 – लेटेस्ट सरकारी भर्ती, रिजल्ट, एडमिट कार्ड | News-Views"
@@ -388,186 +383,161 @@
    "title": "News-Views.in: Latest Govt Jobs 2026, Sarkari Naukri & Results"
   },
   {
-   "url": "/jobs/",
-   "kind": "hub",
-   "status": 200,
-   "bytes": 409757,
-   "ms": 98,
-   "words": 31112,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "All Government Jobs 2026 — 1789 Open Sarkari Naukri Notifications | News-Views"
-  },
-  {
-   "url": "/jobs/kerala-high-court-system-assistant-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 19470,
-   "ms": 112,
-   "words": 1115,
-   "ld": "BreadcrumbList,FAQPage",
-   "title": "Kerala High Court System Assistant Recruitment 2026 | News-Views",
-   "problems": [
-    "open job page without JobPosting"
-   ]
-  },
-  {
-   "url": "/jobs/optcl-company-secretary-by-oct-2025/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 19295,
-   "ms": 95,
-   "words": 1115,
-   "ld": "BreadcrumbList,FAQPage",
-   "title": "OPTCL Company Secretary Recruitment 2025 | News-Views",
-   "problems": [
-    "open job page without JobPosting"
-   ]
-  },
-  {
    "url": "/updates/",
    "kind": "hub",
    "status": 200,
    "bytes": 51417,
-   "ms": 206,
+   "ms": 105,
    "words": 2032,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "Sarkari Result, Admit Card & Answer Key 2026 — Latest Updates | News-Views"
-  },
-  {
-   "url": "/jobs/iiit-hyderabad-marketing-intern-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 19890,
-   "ms": 162,
-   "words": 1116,
-   "ld": "BreadcrumbList,FAQPage",
-   "title": "IIIT Hyderabad Marketing Intern Recruitment 2026 | News-Views",
-   "problems": [
-    "open job page without JobPosting"
-   ]
   },
   {
    "url": "/latest/",
    "kind": "hub",
    "status": 200,
    "bytes": 152354,
-   "ms": 228,
+   "ms": 120,
    "words": 10410,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "Sarkari Naukri Today — New Government Jobs This Week (12 Nov 2026) | News-Views"
   },
   {
-   "url": "/jobs/jmi-tutor-walkin-2026/",
+   "url": "/jobs/optcl-company-secretary-by-oct-2025/",
    "kind": "job",
    "status": 200,
-   "bytes": 27078,
-   "ms": 92,
-   "words": 1558,
-   "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "JMI Tutor Recruitment 2026 – 2 Posts | News-Views"
-  },
-  {
-   "url": "/jobs/orissa-high-court-junior-stenographer-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 19839,
-   "ms": 146,
+   "bytes": 19295,
+   "ms": 87,
    "words": 1115,
    "ld": "BreadcrumbList,FAQPage",
-   "title": "Orissa High Court Junior Stenographer Recruitment 2026 | News-Views",
-   "problems": [
-    "open job page without JobPosting"
-   ]
+   "title": "OPTCL Company Secretary Recruitment 2025 | News-Views"
+  },
+  {
+   "url": "/jobs/iiit-hyderabad-marketing-intern-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 19890,
+   "ms": 113,
+   "words": 1116,
+   "ld": "BreadcrumbList,FAQPage",
+   "title": "IIIT Hyderabad Marketing Intern Recruitment 2026 | News-Views"
   },
   {
    "url": "/jobs/high-court-orissa-junior-grade-typist-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 19892,
-   "ms": 144,
+   "ms": 83,
    "words": 1132,
    "ld": "BreadcrumbList,FAQPage",
-   "title": "High Court of Orissa Recruitment 2026 | News-Views",
-   "problems": [
-    "open job page without JobPosting"
-   ]
+   "title": "High Court of Orissa Recruitment 2026 | News-Views"
   },
   {
-   "url": "/jobs/jmi-udc-urdu-typist-more-2026/",
+   "url": "/jobs/kerala-high-court-system-assistant-2026/",
    "kind": "job",
    "status": 200,
-   "bytes": 27500,
-   "ms": 172,
-   "words": 1541,
-   "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "JMI Recruitment 2026 – 85 Posts, Last Date 11 Dec | News-Views"
+   "bytes": 19470,
+   "ms": 142,
+   "words": 1115,
+   "ld": "BreadcrumbList,FAQPage",
+   "title": "Kerala High Court System Assistant Recruitment 2026 | News-Views"
+  },
+  {
+   "url": "/jobs/orissa-high-court-junior-stenographer-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 19839,
+   "ms": 135,
+   "words": 1115,
+   "ld": "BreadcrumbList,FAQPage",
+   "title": "Orissa High Court Junior Stenographer Recruitment 2026 | News-Views"
   },
   {
    "url": "/jobs/cau-project-assistant-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 26599,
-   "ms": 248,
+   "ms": 90,
    "words": 1467,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "CAU Project Assistant Recruitment 2026 – 1 Post, Last Date 16 Nov"
+  },
+  {
+   "url": "/jobs/jmi-udc-urdu-typist-more-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 27500,
+   "ms": 89,
+   "words": 1541,
+   "ld": "JobPosting,BreadcrumbList,FAQPage",
+   "title": "JMI Recruitment 2026 – 85 Posts, Last Date 11 Dec | News-Views"
+  },
+  {
+   "url": "/jobs/jmi-tutor-walkin-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 27078,
+   "ms": 82,
+   "words": 1558,
+   "ld": "JobPosting,BreadcrumbList,FAQPage",
+   "title": "JMI Tutor Recruitment 2026 – 2 Posts | News-Views"
   },
   {
    "url": "/jobs/gmch-srf-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 26989,
-   "ms": 164,
+   "ms": 103,
    "words": 1604,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "GMCH SRF Recruitment 2026 – 1 Post, Last Date 23 Nov | News-Views"
-  },
-  {
-   "url": "/jobs/ksmha-steno-typist-assistant-office-attendant-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 28632,
-   "ms": 169,
-   "words": 1657,
-   "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "KSMHA Recruitment 2026 – 9 Posts, Last Date 26 Nov | News-Views"
   },
   {
    "url": "/jobs/gmch-chandigarh-lab-technician-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 26948,
-   "ms": 189,
+   "ms": 94,
    "words": 1583,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "GMCH Chandigarh Lab Technician Recruitment 2026 – 1 Post | News-Views"
+  },
+  {
+   "url": "/jobs/ksmha-steno-typist-assistant-office-attendant-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 28632,
+   "ms": 82,
+   "words": 1657,
+   "ld": "JobPosting,BreadcrumbList,FAQPage",
+   "title": "KSMHA Recruitment 2026 – 9 Posts, Last Date 26 Nov | News-Views"
+  },
+  {
+   "url": "/jobs/iit-kanpur-jrf-2026/",
+   "kind": "job",
+   "status": 200,
+   "bytes": 27428,
+   "ms": 101,
+   "words": 1581,
+   "ld": "JobPosting,BreadcrumbList,FAQPage",
+   "title": "IIT Kanpur JRF Recruitment 2026 – 1 Post, Last Date 30 Nov | News-Views"
   },
   {
    "url": "/jobs/integrated-child-development-project-pasan-anganwadi-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 26088,
-   "ms": 250,
+   "ms": 131,
    "words": 1440,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "ICDP Pasan Anganwadi Sahayika Recruitment 2026 – Last Date 26 Nov"
-  },
-  {
-   "url": "/jobs/powergrid-engineer-trainee-through-gate-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 27748,
-   "ms": 136,
-   "words": 1576,
-   "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "POWERGRID Engineer Trainee Recruitment 2026 – 319 Posts | News-Views"
   },
   {
    "url": "/jobs/ccs-hau-senior-research-fellow-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 27692,
-   "ms": 215,
+   "ms": 94,
    "words": 1624,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "CCS HAU Senior Research Fellow Recruitment 2026 – 1 Post | News-Views"
@@ -577,267 +547,267 @@
    "kind": "job",
    "status": 200,
    "bytes": 25861,
-   "ms": 241,
+   "ms": 130,
    "words": 1508,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "MEA Consultant Recruitment 2026 – 1 Post, Last Date 24 Nov | News-Views"
   },
   {
-   "url": "/jobs/iit-kanpur-jrf-2026/",
+   "url": "/jobs/powergrid-engineer-trainee-through-gate-2026/",
    "kind": "job",
    "status": 200,
-   "bytes": 27428,
-   "ms": 303,
-   "words": 1581,
+   "bytes": 27748,
+   "ms": 139,
+   "words": 1576,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "IIT Kanpur JRF Recruitment 2026 – 1 Post, Last Date 30 Nov | News-Views"
-  },
-  {
-   "url": "/jobs/ksssci-walkin-senior-resident-medical-physics-2026/",
-   "kind": "job",
-   "status": 200,
-   "bytes": 27484,
-   "ms": 164,
-   "words": 1542,
-   "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "KSSSCI Recruitment 2026 – 5 Posts | News-Views"
+   "title": "POWERGRID Engineer Trainee Recruitment 2026 – 319 Posts | News-Views"
   },
   {
    "url": "/jobs/hbchrc-technician-walkin-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 27337,
-   "ms": 261,
+   "ms": 111,
    "words": 1607,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "HBCHRC Technician Recruitment 2026 – 2 Posts | News-Views"
   },
   {
-   "url": "/jobs/dopt-information-commissioner-2026/",
+   "url": "/jobs/ksssci-walkin-senior-resident-medical-physics-2026/",
    "kind": "job",
    "status": 200,
-   "bytes": 26138,
-   "ms": 160,
-   "words": 1492,
+   "bytes": 27484,
+   "ms": 118,
+   "words": 1542,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
-   "title": "DoPT Information Commissioner Recruitment 2026 – 2 Posts | News-Views"
+   "title": "KSSSCI Recruitment 2026 – 5 Posts | News-Views"
   },
   {
    "url": "/jobs/mlsu-visiting-faculty-walkin-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 27708,
-   "ms": 230,
+   "ms": 114,
    "words": 1635,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "MLSU Visiting Faculty Recruitment 2026 – 4 Posts | News-Views"
   },
   {
-   "url": "/updates/result/",
-   "kind": "update",
+   "url": "/jobs/dopt-information-commissioner-2026/",
+   "kind": "job",
    "status": 200,
-   "bytes": 81701,
-   "ms": 194,
-   "words": 3751,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "Sarkari Result 2026 — Latest Results | News-Views"
+   "bytes": 26138,
+   "ms": 139,
+   "words": 1492,
+   "ld": "JobPosting,BreadcrumbList,FAQPage",
+   "title": "DoPT Information Commissioner Recruitment 2026 – 2 Posts | News-Views"
   },
   {
    "url": "/jobs/esic-hospital-sahibabad-walkin-super-specialist-2026/",
    "kind": "job",
    "status": 200,
    "bytes": 28788,
-   "ms": 279,
+   "ms": 133,
    "words": 1640,
    "ld": "JobPosting,BreadcrumbList,FAQPage",
    "title": "ESIC Hospital Sahibabad Recruitment 2026 – 41 Posts | News-Views"
-  },
-  {
-   "url": "/updates/ssc-je-admit-card-2026-out-download-paper-1-hall-ticket-at-ssc-gov-in/",
-   "kind": "update",
-   "status": 200,
-   "bytes": 21306,
-   "ms": 184,
-   "words": 981,
-   "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
-   "title": "SSC JE Admit Card 2026 Out | News-Views"
   },
   {
    "url": "/updates/concor-mt-assistant-officer-admit-card-2026/",
    "kind": "update",
    "status": 200,
    "bytes": 20219,
-   "ms": 215,
+   "ms": 88,
    "words": 959,
    "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
    "title": "CONCOR MT, Assistant Officer Admit Card 2026 | News-Views"
+  },
+  {
+   "url": "/updates/result/",
+   "kind": "update",
+   "status": 200,
+   "bytes": 81701,
+   "ms": 123,
+   "words": 3751,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "Sarkari Result 2026 — Latest Results | News-Views"
   },
   {
    "url": "/updates/tpsc-medical-officer-dental-provisional-answer-key-2026-out-download-a/",
    "kind": "update",
    "status": 200,
    "bytes": 20032,
-   "ms": 254,
+   "ms": 158,
    "words": 924,
    "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
    "title": "TPSC Medical Officer (Dental) Provisional Answer Key 2026 | News-Views"
-  },
-  {
-   "url": "/updates/railway-rrb-alp-cen-01-2025-cbat-exam-city-details-2026/",
-   "kind": "update",
-   "status": 200,
-   "bytes": 21205,
-   "ms": 195,
-   "words": 1004,
-   "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
-   "title": "Railway RRB ALP CEN 01/2025 CBAT Exam City Details 2026 | News-Views"
   },
   {
    "url": "/updates/dsssb-admit-card-2026-out-for-deo-assistant-tgt-and-other-posts-downlo/",
    "kind": "update",
    "status": 200,
    "bytes": 22282,
-   "ms": 250,
+   "ms": 96,
    "words": 1069,
    "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
    "title": "DSSSB Admit Card 2026 Out for DEO, Assistant, TGT and | News-Views"
   },
   {
-   "url": "/state/chhattisgarh/engineering-diploma/",
-   "kind": "state",
+   "url": "/updates/railway-rrb-alp-cen-01-2025-cbat-exam-city-details-2026/",
+   "kind": "update",
    "status": 200,
-   "bytes": 45111,
-   "ms": 173,
-   "words": 1638,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "Chhattisgarh Government Jobs for Engineering / Diploma 2026 — 19 Live Vacancies | News-Vie"
-  },
-  {
-   "url": "/state/all-india/",
-   "kind": "state",
-   "status": 200,
-   "bytes": 122413,
-   "ms": 225,
-   "words": 7751,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "All India & Central Government Jobs 2026 — Latest Notifications | News-Views"
+   "bytes": 21205,
+   "ms": 98,
+   "words": 1004,
+   "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
+   "title": "Railway RRB ALP CEN 01/2025 CBAT Exam City Details 2026 | News-Views"
   },
   {
    "url": "/updates/avnl-executive-non-executive-post-result-2026-download-merit-list-pdf/",
    "kind": "update",
    "status": 200,
    "bytes": 20802,
-   "ms": 240,
+   "ms": 87,
    "words": 975,
    "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
    "title": "AVNL Executive & Non-Executive Post Result 2026 | News-Views"
   },
   {
-   "url": "/state/jharkhand/12th-pass/",
-   "kind": "state",
+   "url": "/updates/ssc-je-admit-card-2026-out-download-paper-1-hall-ticket-at-ssc-gov-in/",
+   "kind": "update",
    "status": 200,
-   "bytes": 13646,
-   "ms": 153,
-   "words": 546,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "Jharkhand Government Jobs for 12th Pass 2026 — 3 Live Vacancies | News-Views"
-  },
-  {
-   "url": "/state/manipur/post-graduate/",
-   "kind": "state",
-   "status": 200,
-   "bytes": 14727,
-   "ms": 165,
-   "words": 579,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "Manipur Government Jobs for Post Graduate 2026 — 3 Live Vacancies | News-Views"
+   "bytes": 21306,
+   "ms": 117,
+   "words": 981,
+   "ld": "BreadcrumbList,NewsArticle,HowTo,FAQPage",
+   "title": "SSC JE Admit Card 2026 Out | News-Views"
   },
   {
    "url": "/state/telangana/10th-pass/",
    "kind": "state",
    "status": 200,
    "bytes": 20385,
-   "ms": 150,
+   "ms": 94,
    "words": 814,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "Telangana Government Jobs for 10th Pass 2026 — 4 Live Vacancies | News-Views"
   },
   {
-   "url": "/organization/iitgn/",
-   "kind": "org",
+   "url": "/state/jharkhand/12th-pass/",
+   "kind": "state",
    "status": 200,
-   "bytes": 13643,
-   "ms": 146,
-   "words": 507,
+   "bytes": 13646,
+   "ms": 104,
+   "words": 546,
    "ld": "BreadcrumbList,CollectionPage",
-   "title": "IITGN Recruitment 2026 — Latest IITGN Vacancies | News-Views"
+   "title": "Jharkhand Government Jobs for 12th Pass 2026 — 3 Live Vacancies | News-Views"
+  },
+  {
+   "url": "/state/chhattisgarh/engineering-diploma/",
+   "kind": "state",
+   "status": 200,
+   "bytes": 45111,
+   "ms": 132,
+   "words": 1638,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "Chhattisgarh Government Jobs for Engineering / Diploma 2026 — 19 Live Vacancies | News-Vie"
+  },
+  {
+   "url": "/state/manipur/post-graduate/",
+   "kind": "state",
+   "status": 200,
+   "bytes": 14727,
+   "ms": 135,
+   "words": 579,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "Manipur Government Jobs for Post Graduate 2026 — 3 Live Vacancies | News-Views"
+  },
+  {
+   "url": "/state/all-india/",
+   "kind": "state",
+   "status": 200,
+   "bytes": 122413,
+   "ms": 179,
+   "words": 7751,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "All India & Central Government Jobs 2026 — Latest Notifications | News-Views"
   },
   {
    "url": "/organization/tmc/",
    "kind": "org",
    "status": 200,
    "bytes": 28000,
-   "ms": 248,
+   "ms": 80,
    "words": 976,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "TMC Recruitment 2026 — Latest TMC Vacancies | News-Views"
-  },
-  {
-   "url": "/organization/dcu/",
-   "kind": "org",
-   "status": 200,
-   "bytes": 12648,
-   "ms": 253,
-   "words": 489,
-   "ld": "BreadcrumbList,CollectionPage",
-   "title": "DCU Recruitment 2026 — Latest DCU Vacancies | News-Views"
   },
   {
    "url": "/organization/bel/",
    "kind": "org",
    "status": 200,
    "bytes": 15322,
-   "ms": 335,
+   "ms": 105,
    "words": 573,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "BEL Recruitment 2026 — Latest BEL Vacancies | News-Views"
+  },
+  {
+   "url": "/organization/iitgn/",
+   "kind": "org",
+   "status": 200,
+   "bytes": 13643,
+   "ms": 86,
+   "words": 507,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "IITGN Recruitment 2026 — Latest IITGN Vacancies | News-Views"
+  },
+  {
+   "url": "/organization/dcu/",
+   "kind": "org",
+   "status": 200,
+   "bytes": 12648,
+   "ms": 97,
+   "words": 489,
+   "ld": "BreadcrumbList,CollectionPage",
+   "title": "DCU Recruitment 2026 — Latest DCU Vacancies | News-Views"
   },
   {
    "url": "/qualification/10th-pass/",
    "kind": "qual",
    "status": 200,
    "bytes": 83209,
-   "ms": 236,
+   "ms": 107,
    "words": 4686,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "Government Jobs for 10th Pass 2026 — Latest Notifications | News-Views"
-  },
-  {
-   "url": "/exam/ssc-cgl/",
-   "kind": "exam",
-   "status": 200,
-   "bytes": 17576,
-   "ms": 191,
-   "words": 785,
-   "ld": "BreadcrumbList,FAQPage,ItemList",
-   "title": "SSC CGL 2026: Notification, Admit Card, Answer Key | News-Views"
   },
   {
    "url": "/tools/photo-resizer/",
    "kind": "tool",
    "status": 200,
    "bytes": 20417,
-   "ms": 194,
+   "ms": 94,
    "words": 948,
    "ld": "BreadcrumbList,WebApplication,FAQPage",
    "title": "Photo Resizer for SSC, IBPS, RRB Forms – 20 KB to 50 KB | News-Views"
+  },
+  {
+   "url": "/exam/ssc-cgl/",
+   "kind": "exam",
+   "status": 200,
+   "bytes": 17576,
+   "ms": 117,
+   "words": 785,
+   "ld": "BreadcrumbList,FAQPage,ItemList",
+   "title": "SSC CGL 2026: Notification, Admit Card, Answer Key | News-Views"
   },
   {
    "url": "/exam/sbi-po/",
    "kind": "exam",
    "status": 200,
    "bytes": 15320,
-   "ms": 251,
+   "ms": 118,
    "words": 649,
    "ld": "BreadcrumbList,FAQPage,ItemList",
    "title": "SBI PO 2026: Notification, Result, Eligibility & Selection | News-Views"
@@ -847,7 +817,7 @@
    "kind": "qual",
    "status": 200,
    "bytes": 250218,
-   "ms": 310,
+   "ms": 170,
    "words": 18433,
    "ld": "BreadcrumbList,CollectionPage",
    "title": "Government Jobs for Graduates 2026 — Latest Notifications | News-Views"
@@ -857,7 +827,7 @@
    "kind": "tool",
    "status": 200,
    "bytes": 17280,
-   "ms": 168,
+   "ms": 97,
    "words": 830,
    "ld": "BreadcrumbList,WebApplication,FAQPage",
    "title": "8th Pay Commission Salary Calculator – Fitment Factor Estimate"
@@ -867,50 +837,50 @@
    "kind": "guide",
    "status": 200,
    "bytes": 25501,
-   "ms": 151,
+   "ms": 92,
    "words": 2163,
    "ld": "Article,BreadcrumbList,FAQPage",
    "title": "SSC vs Banking vs Railway Jobs — Which Government Job Should You Choose in 2026? | News-Vi"
-  },
-  {
-   "url": "/quiz/current-affairs-quiz-2026-11-11/",
-   "kind": "quiz",
-   "status": 200,
-   "bytes": 23938,
-   "ms": 206,
-   "words": 1004,
-   "ld": "BreadcrumbList,Quiz",
-   "title": "Current Affairs Quiz 11 November 2026 – MCQs with Answers"
-  },
-  {
-   "url": "/salary/pay-level-1/",
-   "kind": "salary",
-   "status": 200,
-   "bytes": 15258,
-   "ms": 203,
-   "words": 812,
-   "ld": "BreadcrumbList,FAQPage",
-   "title": "Pay Level 1 Salary – In-hand with 63% DA (7th CPC) | News-Views"
   },
   {
    "url": "/guides/how-to-crack-reasoning-section-government-exams/",
    "kind": "guide",
    "status": 200,
    "bytes": 28215,
-   "ms": 247,
+   "ms": 89,
    "words": 2124,
    "ld": "Article,BreadcrumbList,FAQPage",
    "title": "How to Crack the Reasoning Section in Government Exams | News-Views"
+  },
+  {
+   "url": "/salary/pay-level-1/",
+   "kind": "salary",
+   "status": 200,
+   "bytes": 15258,
+   "ms": 76,
+   "words": 812,
+   "ld": "BreadcrumbList,FAQPage",
+   "title": "Pay Level 1 Salary – In-hand with 63% DA (7th CPC) | News-Views"
   },
   {
    "url": "/news/current-affairs-2026-11-11/",
    "kind": "news",
    "status": 200,
    "bytes": 20998,
-   "ms": 229,
+   "ms": 118,
    "words": 1253,
    "ld": "BreadcrumbList,NewsArticle",
    "title": "Current Affairs 11 November 2026: Key Government Updates for Exam Aspirants | News-Views"
+  },
+  {
+   "url": "/quiz/current-affairs-quiz-2026-11-11/",
+   "kind": "quiz",
+   "status": 200,
+   "bytes": 23938,
+   "ms": 143,
+   "words": 1004,
+   "ld": "BreadcrumbList,Quiz",
+   "title": "Current Affairs Quiz 11 November 2026 – MCQs with Answers"
   }
  ]
 }
