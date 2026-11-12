@@ -1825,7 +1825,9 @@ function buildJob(job, all) {
   const faqs = faqsFor(job);
   const st1 = oneStateOf(job);
   // a cancelled / postponed recruitment is not a job opening: no JobPosting markup (the page stays, with the notice)
-  const ld = [...(job.notice_status ? [] : [jobLd(job)]), breadcrumbLd([
+  // no JobPosting for a cancelled / postponed recruitment, nor for a record that has no fact from the notice yet (its
+  // employer name is a guess from the headline — LIB.factless; enrich-jobs.js reads the notice again)
+  const ld = [...(job.notice_status || LIB.factless(job) ? [] : [jobLd(job)]), breadcrumbLd([
     { name: "Jobs", url: SITE.url + "/" },
     ...(st1 ? [{ name: `${st1.name} govt jobs`, url: `${SITE.url}/state/${st1.slug}/` }] : []),
     ...(ORG_PAGES.has(slug(orgKey(job))) ? [{ name: orgKey(job), url: `${SITE.url}/organization/${slug(orgKey(job))}/` }] : []),

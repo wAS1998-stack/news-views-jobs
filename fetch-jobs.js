@@ -188,7 +188,7 @@ async function aiExtract(item, src) {
     `Write overview, about_organization, eligibility_notes, preparation_tips and faq as genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate. ` +
     `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\n` +
     `TITLE: ${item.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nTEXT:\n${pageText}`;
-  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 3200 }));
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 3200, essential: true }));
   if (!obj) { console.log("  (AI extract failed)"); return {}; }
   return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== null && v !== "" && !(Array.isArray(v) && !v.length)));
 }
@@ -210,7 +210,7 @@ async function aiUpdate(it, kind, src) {
     `official_website (the exam body's own homepage, from the candidate list or null).\n` +
     `Never pick a news/blog/aggregator site as official. Write clear, original, neutral English.\n\n` +
     `TITLE: ${it.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nSOURCE TEXT:\n${(src.text || it.summary || "").slice(0, 6000)}`;
-  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 2000 }));
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 2000, essential: true }));
   return obj || {};
 }
 function finishUpdate(base, ai, src) {
@@ -367,17 +367,9 @@ async function toJob(item, existingIds, fingerprints) {
   if (L.isSpeculative(merged)) { console.log(`   - speculative headline without an official notice, skipped: ${item.title}`); return rejectAfterRead(item.link); }
   if (!merged.apply_link) console.log(`   ! no official link on source (${src.err || (src.cands.length ? "no fit" : "0 candidates")}${src.viaFeed ? ", feed html tried" : ""}): ${item.title}`);
   if (!merged.organization || merged.organization === merged.title) merged.organization = L.orgFromTitle(item.title) || "Government of India";
-  // Quality floor: ensure every page has substantial content even if extraction was sparse.
-  if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) {
-    merged.how_to_apply = [
-      "Visit the official website linked on this page and open the recruitment/registration link.",
-      "Complete the one-time registration with a valid email and mobile number.",
-      "Fill in your personal, educational and category details exactly as in your documents.",
-      "Upload a recent photograph and signature in the required format.",
-      "Pay the application fee online where applicable and submit the form.",
-      "Download and save the confirmation page for future reference.",
-    ];
-  }
+  // No steps from the notice: the stand-in text that is true for every way of applying (lib.js GENERIC_STEPS).
+  // A record without any fact from the notice (the AI could not read it) is read again by enrich-jobs.js (pass 0).
+  if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) merged.how_to_apply = L.GENERIC_STEPS.slice();
   if (!merged.summary || merged.summary.length < 40) {
     merged.summary = `${merged.organization} has released a notification for ${merged.title}. ` +
       `Check the eligibility, important dates and application details below, and apply through the official website before the last date.`;
@@ -498,7 +490,7 @@ async function main() {
   }
   saveSkipped();
   const integrations = { ai: L.AI_LABEL, googleIndexing: process.env.HAS_GOOGLE === "true", telegram: process.env.HAS_TELEGRAM === "true", cloudflarePurge: process.env.HAS_CLOUDFLARE === "true" };
-  L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, newJobs: fresh.length, newUpdates: updatesAdded, feedStatus, updDiag });
+  L.logRun("fetch", { integrations, feeds: feeds.length, ai: L.AI_LABEL, aiStatus: L.aiStatus(), newJobs: fresh.length, newUpdates: updatesAdded, feedStatus, updDiag });
   // Record exactly which job URLs are new this run, so the Indexing API pings
   // only those (fast + quota-efficient) instead of re-submitting everything.
   try {

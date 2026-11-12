@@ -54,6 +54,16 @@ hurting users or breaking Google's policies.
   text, numbers, YYYY-MM-DD dates, http(s) links. build.js applies the same on load. Dates are Indian dates (`L.todayIST`).
   `L.stripTags` decodes Cloudflare-hidden e-mail addresses (`data-cfemail`); older text that says "[email protected]"
   is rewritten by `sanitizeJob` to point at the official notice (it was showing on 55 job pages).
+- **When the AI refuses calls** (no credit, an outage — it happened on 11 Nov: every OpenAI call answered 429 for a day
+  and nobody saw it): `askAI` logs the provider's reason (`insufficient_quota`, `rate_limit_exceeded`), stops asking for
+  the rest of that step when the account has no credit, and every section of `data/last-run.json` carries `aiStatus`
+  ("ok (12 calls)" / "OpenAI refused: insufficient_quota") — read it first when pages look thin. Calls that read a new
+  notice (`essential`) go to the second provider when both keys are set (`"aiFallback": false` in config.json switches
+  that off; its use is metered under `fallback` in `data/ai-usage.json`). Jobs listed meanwhile are headline-only
+  (`L.factless`): no JobPosting (the employer name is a guess), the stand-in steps `L.GENERIC_STEPS` (true for every way
+  of applying — never "register online" on a walk-in), and `enrich-jobs.js` pass 0 reads their notice again, newest
+  first (`maxFactsPerRun`, default 15; 3 empty readings at most). A reading that failed because the AI did not answer
+  is never a try and never a mark: watch.js keeps the notice queued, apply-links.js stops, a thin update stays due.
 - **One brand name: News-Views.in** (alternates "News-Views", "NewsViews"). The homepage title starts with it, and the
   header, `og:site_name` and the Organization + WebSite JSON-LD (`orgLd()`/`websiteLd()` in build.js, also on /about/)
   all use it — change it everywhere or nowhere. `sameAs` lists only real profiles (Telegram once it works; add the Play
@@ -210,5 +220,8 @@ hurting users or breaking Google's policies.
   `app-latest` release is the Play upload. Firebase secrets are in (instant alerts on). Waiting for the owner's Play
   Console upload (12 testers × 14 days for new personal accounts) and the AdMob IDs (no ads in release until then). After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
+- **Open on 12 Nov:** OpenAI has refused every call since 11 Nov ~08:19 UTC (see `aiStatus` in `data/last-run.json`).
+  If it says `insufficient_quota`, the owner has to add credit / raise the monthly limit at platform.openai.com → Billing;
+  the 110 headline-only jobs and 14 thin updates from that day heal by themselves once calls work again.
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.

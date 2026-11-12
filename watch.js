@@ -157,7 +157,7 @@ async function extractJob(src, link, doc) {
     `overview (array of 3 paragraphs, 160-220 words total, plain English for an Indian job seeker), about_organization (2-3 sentences), ` +
     `eligibility_notes (2-3 sentences), preparation_tips (array of 3-4), faq (array of 4-5 {q,a}). ` +
     `Use ONLY the notice text — never invent numbers, dates or fees.\n\nLINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nCANDIDATE LINKS:\n${candList(doc.cands)}\n\nNOTICE TEXT:\n${doc.text || "(text not readable — use the link text only and leave unknown fields null)"}`;
-  return L.parseJson(await L.askAI(prompt, { maxTokens: 3500 }));
+  return L.parseJson(await L.askAI(prompt, { maxTokens: 3500, essential: true }));
 }
 async function extractUpdate(src, link, doc, kind) {
   const label = { "admit-card": "admit card / hall ticket", result: "result / merit or selection list / cut-off", "answer-key": "answer key", "exam-date": "exam date / schedule / interview" }[kind];
@@ -167,7 +167,7 @@ async function extractUpdate(src, link, doc, kind) {
     `organization, org_short, exam_name, event_date (YYYY-MM-DD or null), summary (3-4 factual sentences: what was released, for which exam/post, where to check), ` +
     `summary_hi (same in Hindi), steps (array of 4-6 steps to download/check it on ${new URL(link.url).host}), details (array of 2-3 short paragraphs with what happens next), ` +
     `faq (array of 3-4 {q,a}).\n\nLINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nNOTICE TEXT:\n${doc.text || "(text not readable — use the link text only)"}`;
-  return L.parseJson(await L.askAI(prompt, { maxTokens: 2200 }));
+  return L.parseJson(await L.askAI(prompt, { maxTokens: 2200, essential: true }));
 }
 
 /** Does the text name only years from two or more years ago ("Cut-off Marks (01/2018)", "Advt. No. 05/2024")? */
@@ -235,6 +235,10 @@ async function main() {
   if (!L.AI) console.log("Watch: no AI key — new links recorded but not published.");
   const thisYear = new Date().getFullYear();
   const again = [];   // handled later: AI or fetch failed this time
+  // A reading that failed because the AI refused the call (no credit, an outage) is not a try: the notice waits in the
+  // queue until the AI answers again (three failed tries used to drop official notices after two hours of an outage).
+  let aiFailed = L.aiHealth().failed;
+  const tryCost = () => { const fault = L.aiHealth().failed > aiFailed || !!L.aiDown(); aiFailed = L.aiHealth().failed; return fault ? 0 : 1; };
   for (const item of (L.AI ? fresh : []).slice(0, MAX_PUBLISH)) {
     const { src, link } = item;
     if (existingUrls.has(norm(link.url))) { skipped.push("known url"); continue; }
@@ -244,7 +248,7 @@ async function main() {
     const doc = await readDoc(link.url);
     if (kind === "job") {
       const o = await extractJob(src, link, doc);
-      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + 1 }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
+      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + tryCost() }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
       // an extraction with "null"/"undefined" in the headline ("… – Null Posts") is cleaned, never published as is
       if (o.headline) o.headline = String(o.headline).replace(/\s*[–—-]?\s*\b(null|undefined|nan)\b(\s+posts?)?/gi, "").replace(/\s{2,}/g, " ").replace(/\s*[–—-]\s*$/, "").trim();
       if (o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
@@ -291,7 +295,7 @@ async function main() {
       console.log(`   + [${src.name}] ${title}`);
     } else {
       const o = await extractUpdate(src, link, doc, kind);
-      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + 1 }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
+      if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + tryCost() }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
       if (o.is_specific_notice === false || !o.headline || !(o.exam_name && String(o.exam_name).trim()) || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific notice: " + link.text.slice(0, 50)); continue; }
       if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.event_date || "")) && (Date.now() - new Date(o.event_date).getTime()) > 45 * 86400000) { skipped.push("old update: " + o.headline); continue; }
       const title = L.cleanTitle(o.headline);
@@ -333,7 +337,7 @@ async function main() {
     fs.appendFileSync(NEWURLS, [...added.jobs.map((j) => `${SITE_URL}/jobs/${j.id}/`), ...added.updates.map((u) => `${SITE_URL}/updates/${u.id}/`)].join("\n") + "\n");
   }
   const ok = Object.values(health).filter((h) => !/^error|^0 notice|^paused/.test(h)).length;
-  L.logRun("watch", { sources: sources.length, healthy: ok, newLinks: fresh.length, publishedJobs: added.jobs.length, publishedUpdates: added.updates.length,
+  L.logRun("watch", { aiStatus: L.aiStatus(), sources: sources.length, healthy: ok, newLinks: fresh.length, publishedJobs: added.jobs.length, publishedUpdates: added.updates.length,
     skipped: skipped.slice(0, 30), sources_health: health, logLines: 40 });
   console.log(`Watch: ${ok}/${sources.length} sources healthy | published ${added.jobs.length} job(s), ${added.updates.length} update(s) | skipped ${skipped.length}`);
 }

@@ -233,7 +233,7 @@ async function main() {
   const all = [...fresh, ...existing].slice(0, 400);
   if (fresh.length) fs.writeFileSync(NEWS, JSON.stringify(all, null, 2) + "\n");
   const quizMade = await quizzes(all);
-  L.logRun("news", { ai: AI, published: fresh.length, quizzes: quizMade, existing: existing.length, feeds: NEWS_STATUS });
+  L.logRun("news", { ai: AI, aiStatus: L.aiStatus(), published: fresh.length, quizzes: quizMade, existing: existing.length, feeds: NEWS_STATUS });
   if (!fresh.length) { console.log("News: nothing new to publish."); return; }
   try {
     const urls = fresh.map((a) => `${SITE_URL}/news/${a.id}/`).join("\n") + "\n";

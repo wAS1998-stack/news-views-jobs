@@ -329,7 +329,7 @@ const AI_LABEL = AI ? `${AI} (${AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL
 const AI_PRICES = { "gpt-4o-mini": [0.15, 0.60], "claude-haiku-4-5-20251001": [1.00, 5.00] };
 const USAGE = { calls: 0, in: 0, out: 0 };
 process.on("exit", () => {
-  if (!USAGE.calls) return;
+  if (!USAGE.calls && !USAGE_FB.calls) return;
   try {
     const file = path.join(ROOT, "data", "ai-usage.json");
     let u = {}; try { u = JSON.parse(fs.readFileSync(file, "utf8")); } catch {}
@@ -340,41 +340,110 @@ process.on("exit", () => {
     const d = u.days[day] || { calls: 0, in: 0, out: 0 };
     d.calls += USAGE.calls; d.in += USAGE.in; d.out += USAGE.out;
     d.usd = +((d.in * pi + d.out * po) / 1e6).toFixed(4);
+    if (USAGE_FB.calls) {   // calls answered by the second provider while the first one refused (its own, higher price)
+      const [fi, fo] = AI_PRICES[ANTHROPIC_MODEL] || [1.00, 5.00];
+      const f = d.fallback || { model: ANTHROPIC_MODEL, calls: 0, in: 0, out: 0 };
+      f.calls += USAGE_FB.calls; f.in += USAGE_FB.in; f.out += USAGE_FB.out; f.usd = +((f.in * fi + f.out * fo) / 1e6).toFixed(4);
+      d.fallback = f;
+    }
     u.days[day] = d;
     for (const k of Object.keys(u.days).sort().slice(0, -60)) delete u.days[k];
     u.note = "Token usage of the site automation's AI calls, per day (IST). usd = estimated cost at pricePerMillion.";
     fs.writeFileSync(file, JSON.stringify(u, null, 1) + "\n");
   } catch { /* metering must never break a run */ }
 });
-async function askAI(prompt, { maxTokens = 3000, attempt = 1 } = {}) {
-  if (!AI) return null;
-  try {
-    if (AI === "OpenAI") {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${OPENAI_KEY}` },
-        body: JSON.stringify({ model: OPENAI_MODEL, messages: [{ role: "user", content: prompt }], response_format: { type: "json_object" }, max_tokens: maxTokens }),
-        signal: AbortSignal.timeout(90000),
-      });
-      if (!res.ok) {
-        if (attempt < 2 && res.status !== 401 && res.status !== 400) { await new Promise((r) => setTimeout(r, 2500)); return askAI(prompt, { maxTokens, attempt: attempt + 1 }); }
-        console.log(`  (OpenAI HTTP ${res.status})`); return null;
-      }
-      const d = await res.json();
-      USAGE.calls++; USAGE.in += (d.usage && d.usage.prompt_tokens) || 0; USAGE.out += (d.usage && d.usage.completion_tokens) || 0;
-      return d.choices?.[0]?.message?.content || "";
-    }
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+/* ---- AI health: why a call failed, and when to stop asking ----
+   The provider's answer to a failed call says what is wrong ("insufficient_quota": the account has no credit left;
+   "rate_limit_exceeded": too many requests this minute; "invalid_api_key"). It is logged with the status, kept for the
+   run summary (data/last-run.json → aiStatus) and decides what happens next:
+   - no credit / bad key: asking again cannot work — the provider is "down" for the rest of this process, later calls
+     return at once (no waiting, no log noise), and callers keep their work for a later run (aiDown());
+   - a rate limit: wait as long as the provider says (at most 20 s) and try again, twice;
+   - a server error: one more try.
+   Calls marked essential (reading the facts of a new notice) go to the second provider when the first one is down and
+   both keys are set (config "aiFallback": false switches that off): a job page without dates is worse than a dearer call. */
+const AI_HEALTH = { ok: 0, failed: 0, down: "", last: "", fallback: 0, streak: 0 };
+const USAGE_FB = { calls: 0, in: 0, out: 0 };
+const QUOTA_CODES = /insufficient_quota|billing|account_deactivated|invalid_api_key|invalid_request_error.*key|authentication|permission/i;
+const aiDown = () => AI_HEALTH.down;
+/** One line for the run summary: "ok (12 calls)" | "OpenAI refused: insufficient_quota (0 ok, 3 failed)". */
+function aiStatus() {
+  if (!AI) return "off";
+  const n = `${AI_HEALTH.ok} ok, ${AI_HEALTH.failed} failed${AI_HEALTH.fallback ? `, ${AI_HEALTH.fallback} answered by the second provider` : ""}`;
+  if (AI_HEALTH.down) return `${AI} refused: ${AI_HEALTH.down} (${n})`;
+  return AI_HEALTH.failed ? `${AI} partly failing: ${AI_HEALTH.last} (${n})` : `ok (${AI_HEALTH.ok} calls)`;
+}
+const aiHealth = () => ({ ...AI_HEALTH, provider: AI });
+function aiFailed(provider, status, code) {
+  AI_HEALTH.failed++; AI_HEALTH.streak++;
+  AI_HEALTH.last = `HTTP ${status}${code ? " " + code : ""}`;
+  // no credit, a bad key, or six refusals in a row: stop asking in this process
+  if (!AI_HEALTH.down && (QUOTA_CODES.test(code) || status === 401 || status === 403 || AI_HEALTH.streak >= 6)) {
+    AI_HEALTH.down = code || `HTTP ${status}`;
+    console.log(`  (${provider} is refusing calls: ${AI_HEALTH.down} — no more AI calls in this step; the work is kept for a later run)`);
+  }
+}
+async function errorCode(res) {
+  try { const d = await res.json(); const e = (d && d.error) || {}; return String(e.code || e.type || "").slice(0, 40); } catch { return ""; }
+}
+async function callOpenAI(prompt, maxTokens) {
+  for (let attempt = 1; ; attempt++) {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
-      headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: maxTokens, messages: [{ role: "user", content: prompt }] }),
+      headers: { "content-type": "application/json", authorization: `Bearer ${OPENAI_KEY}` },
+      body: JSON.stringify({ model: OPENAI_MODEL, messages: [{ role: "user", content: prompt }], response_format: { type: "json_object" }, max_tokens: maxTokens }),
       signal: AbortSignal.timeout(90000),
     });
-    if (!res.ok) { console.log(`  (Claude HTTP ${res.status})`); return null; }
-    const d = await res.json();
-    USAGE.calls++; USAGE.in += (d.usage && d.usage.input_tokens) || 0; USAGE.out += (d.usage && d.usage.output_tokens) || 0;
-    return (d.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
-  } catch (e) { console.log("  (AI error: " + e.message + ")"); return null; }
+    if (res.ok) {
+      const d = await res.json();
+      USAGE.calls++; USAGE.in += (d.usage && d.usage.prompt_tokens) || 0; USAGE.out += (d.usage && d.usage.completion_tokens) || 0;
+      AI_HEALTH.ok++; AI_HEALTH.streak = 0;
+      return d.choices?.[0]?.message?.content || "";
+    }
+    const code = await errorCode(res);
+    const hopeless = res.status === 400 || res.status === 401 || res.status === 403 || QUOTA_CODES.test(code);
+    if (!hopeless && attempt < (res.status === 429 ? 3 : 2)) {
+      const wait = Math.min(20, Math.max(2.5, Number(res.headers.get("retry-after")) || 0));
+      await new Promise((r) => setTimeout(r, wait * 1000));
+      continue;
+    }
+    console.log(`  (OpenAI HTTP ${res.status}${code ? " " + code : ""})`);
+    aiFailed("OpenAI", res.status, code);
+    return null;
+  }
+}
+async function callClaude(prompt, maxTokens, usage = USAGE) {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
+    body: JSON.stringify({ model: ANTHROPIC_MODEL, max_tokens: maxTokens, messages: [{ role: "user", content: prompt }] }),
+    signal: AbortSignal.timeout(90000),
+  });
+  if (!res.ok) {
+    const code = await errorCode(res);
+    console.log(`  (Claude HTTP ${res.status}${code ? " " + code : ""})`);
+    if (usage === USAGE) aiFailed("Claude", res.status, code);
+    return null;
+  }
+  const d = await res.json();
+  usage.calls++; usage.in += (d.usage && d.usage.input_tokens) || 0; usage.out += (d.usage && d.usage.output_tokens) || 0;
+  if (usage === USAGE) { AI_HEALTH.ok++; AI_HEALTH.streak = 0; } else AI_HEALTH.fallback++;
+  return (d.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
+}
+let FALLBACK_DEAD = false;
+async function askAI(prompt, { maxTokens = 3000, essential = false } = {}) {
+  if (!AI) return null;
+  try {
+    if (AI !== "OpenAI") return AI_HEALTH.down ? null : await callClaude(prompt, maxTokens);
+    if (!AI_HEALTH.down) { const out = await callOpenAI(prompt, maxTokens); if (out !== null || !AI_HEALTH.down) return out; }
+    // OpenAI is refusing: the facts of a new notice may be read by the second provider
+    if (essential && ANTHROPIC_KEY && CONFIG.aiFallback !== false && !FALLBACK_DEAD) {
+      const out = await callClaude(prompt, maxTokens, USAGE_FB);
+      if (out === null) FALLBACK_DEAD = true;
+      return out;
+    }
+    return null;
+  } catch (e) { console.log("  (AI error: " + e.message + ")"); AI_HEALTH.failed++; AI_HEALTH.last = "error: " + String(e.message).slice(0, 60); return null; }
 }
 function parseJson(raw) {
   if (!raw) return null;
@@ -796,12 +865,49 @@ function ageNum(v, pick) {
   if (v && typeof v === "object" && !Array.isArray(v)) { const ns = Object.values(v).map(toNum).filter((n) => n && n > 0); return ns.length ? pick(...ns) : null; }
   const n = toNum(v); return n && n > 0 && n < 100 ? n : null;
 }
+/* ---- a job stored without the notice's facts ----
+   When the AI cannot read a notice (no credit, an outage), the fetcher still lists the job from its headline and the
+   official links: no dates, posts, vacancies or qualification, and an organisation guessed from the headline.
+   - factless(): such a record (facts_read marks one that was read and whose notice names none of them). Its page
+     carries no JobPosting data (the employer name is a guess).
+   - factsPending(): …and it is still worth reading again: enrich-jobs.js (pass 0) re-reads the newest ones each run
+     until the facts are in (3 failed readings at most, 30 days).
+   - GENERIC_STEPS: the "how to apply" text of such a record. It must be true for every way of applying, so it names
+     none (an earlier version told people to "complete the one-time registration" on walk-in and postal jobs), and it
+     must not contain words applyMode() reads as a mode. sanitizeJob() swaps the old text for this one. */
+const FACT_KEYS = ["application_end", "application_start", "total_vacancies", "qualification", "post_name", "exam_date"];
+const factless = (j) => !!j && !j.facts_read && !FACT_KEYS.some((k) => j[k]);
+function factsPending(j, today = todayIST()) {
+  return factless(j) && /^https?:\/\//i.test(String(j.source || "")) && (j.facts_tries || 0) < 3 && daysBetween(j.published || today, today) <= 30;
+}
+const GENERIC_STEPS = [
+  "Open the official notification linked on this page and read the eligibility, the important dates and the application fee.",
+  "Check that you meet the age limit and the qualification before you apply.",
+  "Apply only in the way the official notification describes, with the documents it lists.",
+  "Pay the application fee where the notification asks for one, and submit your application before the last date.",
+  "Keep a copy of your application and of the fee receipt for the later stages.",
+];
+const GENERIC_STEPS_HI = [
+  "इस पेज पर दिया गया आधिकारिक नोटिफिकेशन खोलें और पात्रता, महत्वपूर्ण तिथियाँ और आवेदन शुल्क ध्यान से पढ़ें।",
+  "आवेदन करने से पहले जाँच लें कि आप आयु सीमा और शैक्षणिक योग्यता पूरी करते हैं।",
+  "आवेदन केवल उसी तरीके से करें जो आधिकारिक नोटिफिकेशन में बताया गया है, और उसमें बताए गए दस्तावेज़ साथ लगाएँ।",
+  "जहाँ नोटिफिकेशन में आवेदन शुल्क माँगा गया हो वहाँ शुल्क जमा करें और अंतिम तिथि से पहले आवेदन जमा कर दें।",
+  "आगे की प्रक्रिया के लिए अपने आवेदन और शुल्क रसीद की एक प्रति संभालकर रखें।",
+];
+const OLD_GENERIC_STEP = "Complete the one-time registration with a valid email and mobile number.";
+const isGenericSteps = (list) => Array.isArray(list) && (list.includes(OLD_GENERIC_STEP) || list[0] === GENERIC_STEPS[0]);
+
 /** Cleans a job record in place-safe fashion and returns it: text fields are strings, numbers are numbers, dates are
     YYYY-MM-DD, links are http(s), list fields are arrays of strings, FAQ entries have q and a. Unknown shapes are dropped. */
 function sanitizeJob(j) {
   const o = deepFixEmail({ ...j });
   for (const k of JOB_TEXT) if (o[k] != null && typeof o[k] !== "string") o[k] = toText(o[k], k);
   for (const k of JOB_ARR) if (o[k] != null) o[k] = (Array.isArray(o[k]) ? o[k] : [o[k]]).map((x) => toText(x)).filter(Boolean);
+  // the stand-in "how to apply" text: the old one named online registration on every job (see GENERIC_STEPS)
+  if (isGenericSteps(o.how_to_apply) && o.how_to_apply.includes(OLD_GENERIC_STEP)) {
+    o.how_to_apply = GENERIC_STEPS.slice();
+    if (o.hi && typeof o.hi === "object" && Array.isArray(o.hi.how_to_apply)) o.hi = { ...o.hi, how_to_apply: GENERIC_STEPS_HI.slice() };
+  }
   for (const k of JOB_DATE) if (o[k] != null) { const d = isoDate(o[k]); if (d) o[k] = d; else delete o[k]; }
   for (const k of JOB_LINK) if (o[k] != null && !/^https?:\/\/[^\s]+$/i.test(String(o[k]))) delete o[k];
   if (o.total_vacancies != null) { const n = toNum(o.total_vacancies); if (n) o.total_vacancies = Math.round(n); else delete o.total_vacancies; }
@@ -978,5 +1084,5 @@ function retiredUpdateIds() {
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
 module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, aiDown, aiStatus, aiHealth, factless, factsPending, GENERIC_STEPS, GENERIC_STEPS_HI, isGenericSteps, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
   isDuplicate, sameOrg, normPost, postsOverlap, advtKey, noticeKey, joinStageNumbers, stageNum, romanWord, ROMAN, STAGE_WORD };

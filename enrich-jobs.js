@@ -3,7 +3,9 @@
  * enrich-jobs.js — upgrades EXISTING data, a few entries per run, so the whole
  * archive improves over time without a big one-off API bill.
  *
- * Three passes, each capped per run (config.json / env):
+ * Passes, each capped per run (config.json / env):
+ *   0. facts    — jobs stored while the AI could not read the notice (only a
+ *                 headline: no dates, posts or qualification) are read again.
  *   1. links    — jobs whose "official" links still point at the source blog
  *                 (a middleman) get the real government / recruiter URLs,
  *                 discovered on the source page and confirmed by the model.
@@ -32,7 +34,53 @@ function needsLinks(j) { return badLink(j.apply_link) && badLink(j.official_noti
 function needsContent(j) {
   return !(Array.isArray(j.overview) && j.overview.length >= 2) || !(Array.isArray(j.faq) && j.faq.length >= 3);
 }
-function needsUpdateEnrich(u) { return !(Array.isArray(u.steps) && u.steps.length >= 3) && !u.enriched; }
+// "partial" = read once and no steps came back: one more reading within two weeks (then "partial-2", final). An update
+// whose reading failed because the AI refused the call is not marked at all, so it stays due.
+const daysOld = (d) => (Date.now() - new Date(String(d || "").slice(0, 10) + "T00:00:00Z").getTime()) / 86400000;
+function needsUpdateEnrich(u) {
+  if (Array.isArray(u.steps) && u.steps.length >= 3) return false;
+  return !u.enriched || (u.enriched === "partial" && daysOld(u.date) <= 14);
+}
+/** Did the AI fail to answer since `mark` (L.aiHealth().failed before the call)? An empty result then says nothing about the notice. */
+const aiFault = (mark) => !!L.AI && (L.aiHealth().failed > mark || !!L.aiDown());
+
+/* ---- pass 0: the facts of jobs stored without them ------------------
+   While the AI refuses calls (no credit, an outage) the fetcher still lists new jobs from the headline and the official
+   links (lib.js factless). This reads their notice again — the same extraction as for a new job — and fills in the
+   record. Returns "ok" | "empty" (read, nothing usable: counts as a try) | "ai" (the AI did not answer: not a try). */
+const MAX_FACTS = Number(process.env.ENRICH_FACTS || C.maxFactsPerRun || 15);
+async function readFacts(job) {
+  const src = await F.readSource(job.source);
+  const mark = L.aiHealth().failed;
+  const extra = L.aiJobFields(await F.aiExtract({ title: job.title, summary: job.summary }, src));
+  if (!Object.keys(extra).length) {
+    if (aiFault(mark)) return "ai";
+    job.facts_tries = (job.facts_tries || 0) + 1;
+    return "empty";
+  }
+  const today = L.todayIST();
+  const merged = { ...job, ...extra, id: job.id, title: job.title, published: job.published, source: job.source };
+  // a last date before the page was published is a misread year or the template "1–31 January": unknown, not wrong
+  if (merged.application_end && merged.application_end < String(job.published || today)) { delete merged.application_end; delete merged.application_start; }
+  // links: only real candidates from the page (never what the model typed), an upgraded apply link stays
+  const picked = L.validateLinks(extra, src.cands), heur = L.pickLinksHeuristic(src.cands);
+  merged.apply_link = job.apply_src ? job.apply_link
+    : picked.apply_link || job.apply_link || heur.apply_link || picked.official_notification || job.official_notification || heur.official_notification;
+  merged.official_notification = picked.official_notification || job.official_notification || heur.official_notification;
+  merged.official_website = picked.official_website || job.official_website || heur.official_website;
+  if (!merged.organization || merged.organization === merged.title) merged.organization = job.organization;
+  if (!Array.isArray(merged.how_to_apply) || merged.how_to_apply.length < 3) merged.how_to_apply = job.how_to_apply || L.GENERIC_STEPS.slice();
+  for (const k of Object.keys(merged)) if (merged[k] === null || merged[k] === undefined) delete merged[k];
+  const clean = L.sanitizeJob(merged);
+  delete clean.facts_tries;
+  delete clean.hi;                                           // a translation of the headline-only record is out of date
+  if (!job.apply_src) { delete clean.apply_checked; delete clean.apply_tries; }   // apply-links.js looks again, now with the real organisation and post
+  if (L.factless(clean)) clean.facts_read = today;           // read; the notice itself names no date, post or qualification
+  if (String(job.published || "") < today) clean.updated = today;
+  for (const k of Object.keys(job)) delete job[k];
+  Object.assign(job, clean);
+  return "ok";
+}
 
 /* ---- pass 1: official links ------------------------------------- */
 async function fixLinks(job) {
@@ -171,7 +219,24 @@ async function main() {
   try { jobs = L.loadJobs(); } catch (e) { console.log("Enrich: cannot read the jobs: " + e.message); return; }
   try { updates = JSON.parse(fs.readFileSync(UPDATES, "utf8")); } catch {}
   if (!Array.isArray(jobs)) return;
-  const stats = { ai: L.AI_LABEL, linksFixed: 0, linksPending: 0, updatesEnriched: 0, updatesPending: 0, contentWritten: 0, contentPending: 0 };
+  const stats = { ai: L.AI_LABEL, factsRead: 0, factsPending: 0, linksFixed: 0, linksPending: 0, updatesEnriched: 0, updatesPending: 0, contentWritten: 0, contentPending: 0 };
+  let jobsDirty = false;
+
+  // Pass 0 — facts of jobs stored while the AI could not read the notice (newest first)
+  if (L.AI) {
+    const factJobs = jobs.filter((j) => j && j.id && j.title && L.factsPending(j)).sort((a, b) => String(b.published || "").localeCompare(String(a.published || "")));
+    console.log(`Enrich/facts: ${factJobs.length} job(s) without the notice's facts | doing up to ${MAX_FACTS}`);
+    let done = 0;
+    for (const job of factJobs.slice(0, MAX_FACTS)) {
+      const r = await readFacts(job);
+      if (r === "ai") { console.log(`  - the AI is not answering: ${factJobs.length - done} job(s) wait for a later run`); break; }
+      jobsDirty = true; done++;
+      if (r === "ok") { stats.factsRead++; console.log(`  ✓ facts: ${job.title}${job.application_end ? " (last date " + job.application_end + ")" : ""}`); }
+      else console.log(`  - nothing usable read (try ${job.facts_tries}): ${job.title}`);
+      await sleep(500);
+    }
+    stats.factsPending = jobs.filter((j) => j && L.factsPending(j)).length;
+  }
 
   // Pass 1 — official links (works even without an AI key: heuristic pick)
   for (const j of jobs) {   // purge any share/aggregator URLs that slipped in earlier
@@ -181,7 +246,6 @@ async function main() {
   const linkJobs = jobs.filter((j) => j && j.id && needsLinks(j));
   stats.linksPending = linkJobs.length;
   console.log(`Enrich/links: ${linkJobs.length} job(s) still link to the source blog | doing up to ${MAX_LINKS}`);
-  let jobsDirty = false;
   for (const job of linkJobs.slice(0, MAX_LINKS)) {
     const ok = await fixLinks(job);
     jobsDirty = true;   // links_checked marker or new links
@@ -197,11 +261,15 @@ async function main() {
   let updDirty = false;
   for (const u of pendUpd.slice(0, MAX_UPD)) {
     const src = await F.readSource(u.source || u.link);
+    const mark = L.aiHealth().failed;
     const ai = L.AI ? await F.aiUpdate({ title: u.title, summary: u.summary }, u.type, src) : {};
+    // the AI did not answer: the update stays due (marking it "partial" here left result pages as one-liners for good)
+    if (L.AI && !Object.keys(ai).length && aiFault(mark)) { console.log("  - the AI is not answering: thin updates wait for a later run"); break; }
+    const second = u.enriched === "partial";
     const rich = F.finishUpdate({ ...u, link: u.source || u.link }, ai, src);
     if (!L.AI && !rich.official_link) { u.enriched = "no-ai"; updDirty = true; continue; }
     Object.assign(u, rich);
-    if (Array.isArray(u.steps) && u.steps.length >= 3) u.enriched = new Date().toISOString().slice(0, 10); else u.enriched = "partial";
+    if (Array.isArray(u.steps) && u.steps.length >= 3) u.enriched = new Date().toISOString().slice(0, 10); else u.enriched = second ? "partial-2" : "partial";
     updDirty = true; stats.updatesEnriched++;
     console.log(`  ✓ update: ${u.title}${u.official_link ? " -> " + L.hostOf(u.official_link) : ""}`);
     await sleep(600);
@@ -210,9 +278,11 @@ async function main() {
 
   // Pass 3 — content (AI only)
   if (L.AI) {
-    const pending = jobs.filter((j) => j && j.id && j.title && needsContent(j));
+    // not for a record still waiting for its facts (pass 0): prose written from "not stated" would stay for good
+    const pending = jobs.filter((j) => j && j.id && j.title && needsContent(j) && !L.factsPending(j));
     console.log(`Enrich/content: ${pending.length} job(s) on template content | doing up to ${MAX_CONTENT}`);
     for (const job of pending.slice(0, MAX_CONTENT)) {
+      if (L.aiDown()) { console.log("  - the AI is not answering: content waits for a later run"); break; }
       const rich = await enrichContent(job);
       if (!rich) { console.log(`  - skipped (quality gate): ${job.title}`); continue; }
       // the model's output gets the same shape checks as everything else (objects → text, arrays of strings, …)
@@ -233,6 +303,7 @@ async function main() {
     stats.hindiJobsPending = hj.length;
     console.log(`Enrich/hindi: ${hj.length} job(s) without Hindi | doing up to ${MAX_HI_JOBS}`);
     for (const job of hj.slice(0, MAX_HI_JOBS)) {
+      if (L.aiDown()) break;
       const hi = await hindiJob(job);
       if (!hi) { console.log(`  - hindi skipped (quality gate): ${job.title}`); continue; }
       job.hi = hi; jobsDirty = true; stats.hindiJobs = (stats.hindiJobs || 0) + 1;
@@ -242,6 +313,7 @@ async function main() {
     const hu = updates.filter((u) => u && u.id && !u.hi && Array.isArray(u.steps) && u.steps.length).sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
     stats.hindiUpdatesPending = hu.length;
     for (const u of hu.slice(0, MAX_HI_UPD)) {
+      if (L.aiDown()) break;
       const hi = await hindiUpdate(u);
       if (!hi) { console.log(`  - hindi update skipped: ${u.title}`); continue; }
       u.hi = hi; updDirty = true; stats.hindiUpdates = (stats.hindiUpdates || 0) + 1;
@@ -261,7 +333,10 @@ async function main() {
       const m = o.page.match(/^\/(jobs|updates)\/([^/]+)\/$/); if (!m || !(o.queries || []).length) continue;
       const entry = m[1] === "jobs" ? jobs.find((j) => j.id === m[2]) : updates.find((u) => u.id === m[2]);
       if (!entry || fresh(entry)) continue;
+      if (L.aiDown()) break;
+      const mark = L.aiHealth().failed;
       const faq = await searchFaq(entry, o.queries, m[1] === "jobs" ? "job" : "update");
+      if (!faq.length && aiFault(mark)) continue;   // no answer from the AI: not stamped, tried again next run
       entry.faq_search_at = new Date().toISOString().slice(0, 10);
       if (faq.length) { entry.faq_search = faq; console.log(`  ✓ search FAQ (${faq.length}) for ${o.page} [pos ${o.position}, ${o.impressions} impr]`); }
       if (m[1] === "jobs") jobsDirty = true; else updDirty = true;
@@ -272,8 +347,9 @@ async function main() {
 
   if (jobsDirty) L.saveJobs(jobs);
   if (updDirty) fs.writeFileSync(UPDATES, JSON.stringify(updates, null, 2) + "\n");
+  stats.aiStatus = L.aiStatus();
   L.logRun("enrich", stats);
   console.log("Enrich:", JSON.stringify(stats));
 }
-module.exports = { devanagariShare };
+module.exports = { devanagariShare, needsUpdateEnrich, readFacts };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

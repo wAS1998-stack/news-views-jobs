@@ -204,6 +204,8 @@ async function main() {
     checked++;
     let hit = null;
     try { hit = await findFor(job); } catch (e) { log.push(`${job.id}: error ${e.message}`); }
+    // the AI that confirms the link is refusing calls: nothing was really checked — stop without using up a try
+    if (!hit && L.aiDown()) { checked--; log.push(`stopped: the AI is not answering (${L.aiDown()})`); break; }
     job.apply_checked = TODAY;
     if (hit) {
       job.apply_link_prev = job.apply_link || null;
@@ -221,7 +223,7 @@ async function main() {
   for (const l of log) console.log("  " + l);
   console.log(`  candidates seen ${STATS.cands}, passed the rules ${STATS.passed} (in ${STATS.jobsWithCands} jobs); recruitment pages found: ${jobs.filter((j) => j.careers_link).length - careers0}`);
   STATS.careers = jobs.filter((j) => j.careers_link).length - careers0;
-  L.logRun("apply", { ok: true, checked, found, due: todo.length, ...STATS, log: log.slice(0, 30) });
+  L.logRun("apply", { ok: true, aiStatus: L.aiStatus(), checked, found, due: todo.length, ...STATS, log: log.slice(0, 30) });
 }
 if (require.main === module) main().catch((e) => console.log("apply-links error (non-fatal): " + e.message));
 module.exports = { urlsInText, related, baseOf, findFor, tiesOf, tied, WRONG_KIND };
