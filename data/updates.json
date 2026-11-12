@@ -3,208 +3,1246 @@
     "id": "tndte-gte-august-result-2026-out-download-marksheet-online-tndtegteonl",
     "type": "result",
     "title": "TNDTE GTE August Result 2026 Out - Download Marksheet Online @ tndtegteonline.in",
-    "organization": "TNDTE GTE August",
-    "org_short": "TNDTE GTE",
+    "organization": "Directorate of Technical Education (DoTE), Tamil Nadu",
+    "org_short": "TNDTE",
     "date": "2026-11-12",
-    "link": "https://tndtegteonline.in/",
-    "summary": "The Directorate of Technical Education (DoTE), Tamil Nadu, has declared the Government Technical Examination (GTE) - TME August 2026 results on 11 November 2026. Candidates who appeared for Typewriting, Shorthand and Accountancy examinations can check their results through the official website at tn Check the official website for the direct link and full details.",
-    "official_link": "https://tndtegteonline.in/",
+    "link": "https://tndtegteonline.in/api/files/announcements/1794397977646_GTE_A26_TME_Results.pdf",
+    "summary": "The TNDTE has released the August 2026 results for the Government Technical Examination (GTE). Candidates can check their individual results online as of November 11, 2026. The results can be accessed using the register number and date of birth at the official website tndtegteonline.in.",
+    "official_link": "https://tndtegteonline.in/api/files/announcements/1794397977646_GTE_A26_TME_Results.pdf",
     "official_website": "https://tndtegteonline.in/",
-    "source": "https://www.freejobalert.com/articles/tndte-gte-august-result-2026-out-download-marksheet-online-3080438"
+    "source": "https://www.freejobalert.com/articles/tndte-gte-august-result-2026-out-download-marksheet-online-3080438",
+    "exam_name": "Government Technical Examination (GTE)",
+    "event_date": "2026-11-11",
+    "summary_hi": "TNDTE ने अगस्त 2026 के सरकारी तकनीकी परीक्षा (GTE) के परिणाम जारी किए हैं। उम्मीदवार 11 नवंबर 2026 से अपनी व्यक्तिगत परिणाम ऑनलाइन चेक कर सकते हैं। परिणामों को आधिकारिक वेबसाइट tndtegteonline.in पर रजिस्टर नंबर और जन्म तिथि का उपयोग करके एक्सेस किया जा सकता है।",
+    "steps": [
+      "Visit the official website at tndtegteonline.in.",
+      "Open the Results section on the homepage.",
+      "Select the TME examination category.",
+      "Choose the August 2026 examination cycle.",
+      "Enter your examination register number and date of birth in the requested format.",
+      "Click the option to view your result and take a printout for future reference."
+    ],
+    "details": [
+      "Following the results announcement, candidates have the opportunity to apply for answer-script photocopies from November 12 to 18, 2026. Additionally, the revaluation application period is available from November 19 to 25, 2026. Candidates should review the instructions and application fees on the official portal before submitting their applications.",
+      "Candidates who have received a 'Withheld' status on their results should reach out to the respective institution or the Directorate for clarification. It is important to note that a withheld result does not automatically indicate failure. Follow the department's procedures for verification to address any issues with results."
+    ],
+    "faq": [
+      {
+        "q": "How can I check my individual result?",
+        "a": "You can check your individual result by visiting the official website tndtegteonline.in and entering your register number and date of birth."
+      },
+      {
+        "q": "What should I do if my result is withheld?",
+        "a": "If your result is withheld, you should contact your respective institute or the Directorate for clarification on the reason behind it."
+      },
+      {
+        "q": "When can I apply for photocopies of my answer scripts?",
+        "a": "You can apply for photocopies of your answer scripts from November 12 to 18, 2026."
+      },
+      {
+        "q": "What are the dates for revaluation applications?",
+        "a": "Revaluation applications are open from November 19 to 25, 2026."
+      }
+    ],
+    "enriched": "2026-11-12",
+    "hi": {
+      "title": "TNDTE GTE अगस्त रिजल्ट 2026 जारी - ऑनलाइन मार्कशीट डाउनलोड करें @ tndtegteonline.in",
+      "organization": "राज्य तकनीकी शिक्षा निदेशालय (DoTE), तमिलनाडु",
+      "exam_name": "सरकारी तकनीकी परीक्षा (GTE)",
+      "summary": "TNDTE ने सरकारी तकनीकी परीक्षा (GTE) के लिए अगस्त 2026 के परिणाम जारी कर दिए हैं। उम्मीदवार 11 नवंबर, 2026 से अपने व्यक्तिगत परिणाम ऑनलाइन चेक कर सकते हैं। परिणाम को आधिकारिक वेबसाइट tndtegteonline.in पर रजिस्टर नंबर और जन्म तिथि के उपयोग से देखा जा सकता है।",
+      "steps": [
+        "आधिकारिक वेबसाइट tndtegteonline.in पर जाएं।",
+        "होमपेज पर परिणाम सेक्शन खोलें।",
+        "TME परीक्षा श्रेणी चुनें।",
+        "अगस्त 2026 परीक्षा चक्र को चुनें।",
+        "अपना परीक्षा रजिस्टर नंबर और जन्म तिथि आवश्यक प्रारूप में दर्ज करें।",
+        "अपना परिणाम देखने के लिए विकल्प पर क्लिक करें और भविष्य के संदर्भ के लिए प्रिंट आउट लें।"
+      ],
+      "details": [
+        "परिणामों की घोषणा के बाद, उम्मीदवार 12 से 18 नवंबर, 2026 तक उत्तर पत्रों की फोटोकॉपी के लिए आवेदन कर सकते हैं। इसके अलावा, पुनर्मूल्यांकन आवेदन की अवधि 19 से 25 नवंबर, 2026 तक है। उम्मीदवारों को आवेदन करने से पहले आधिकारिक पोर्टल पर निर्देशों और आवेदन शुल्क की समीक्षा करनी चाहिए।",
+        "जो उम्मीदवार अपने परिणाम पर 'निलंबित' स्थिति मिली है, उन्हें स्पष्टीकरण के लिए संबंधित संस्थान या निदेशालय से संपर्क करना चाहिए। ध्यान दें कि निलंबित परिणाम का मतलब स्वचालित रूप से असफल होना नहीं है। परिणामों के साथ किसी भी समस्या को सुलझाने के लिए विभाग की प्रक्रियाओं का पालन करें।"
+      ],
+      "faq": [
+        {
+          "q": "मैं अपना व्यक्तिगत परिणाम कैसे चेक कर सकता हूँ?",
+          "a": "आप अपने व्यक्तिगत परिणाम को आधिकारिक वेबसाइट tndtegteonline.in पर जाकर और अपना रजिस्टर नंबर और जन्म तिथि दर्ज करके चेक कर सकते हैं।"
+        },
+        {
+          "q": "अगर मेरा परिणाम निलंबित है तो मुझे क्या करना चाहिए?",
+          "a": "अगर आपका परिणाम निलंबित है, तो आपको इसके कारण की स्पष्टीकरण के लिए अपने संबंधित संस्थान या निदेशालय से संपर्क करना चाहिए।"
+        },
+        {
+          "q": "मैं अपने उत्तर पत्रों की फोटोकॉपी कब के लिए आवेदन कर सकता हूँ?",
+          "a": "आप 12 से 18 नवंबर, 2026 तक अपने उत्तर पत्रों की फोटोकॉपी के लिए आवेदन कर सकते हैं।"
+        },
+        {
+          "q": "पुनर्मूल्यांकन आवेदन की तिथियाँ क्या हैं?",
+          "a": "पुनर्मूल्यांकन आवेदन 19 से 25 नवंबर, 2026 तक खुले हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "pfrda-grade-a-mains-admit-card-2026-download-hall-ticket-at-pfrda-org-",
     "type": "admit-card",
     "title": "PFRDA Grade A Mains Admit Card 2026 - Download Hall Ticket at pfrda.org.in",
-    "organization": "PFRDA Grade A Mains",
-    "org_short": "PFRDA Grade",
+    "organization": "Pension Fund Regulatory and Development Authority",
+    "org_short": "PFRDA",
     "date": "2026-11-12",
-    "link": "https://www.pfrda.org.in/",
-    "summary": "The PFRDA Grade A Mains Admit Card 2026 is expected to be released in the second week of November 2026. The Pension Fund Regulatory and Development Authority (PFRDA) will conduct the Phase 2 examination for Officer Grade A (Assistant Manager) posts on 20 November 2026. Check the official website for the direct link and full details.",
-    "official_link": "https://www.pfrda.org.in/",
+    "link": "https://pfrda.org.in",
+    "summary": "Candidates who qualified in the Phase 1 examination can download their mains call letters from the official website at pfrda.org.in. The PFRDA Grade A Mains Admit Card 2026 is expected to be released in the 2nd week of November 2026, ahead of the Phase 2 exam scheduled for 20 November 2026. Applicants should keep their registration number or roll number and password or date of birth ready to access the admit card.",
+    "official_link": "https://pfrda.org.in",
     "official_website": "https://pfrda.org.in/",
-    "source": "https://www.freejobalert.com/articles/pfrda-grade-a-mains-admit-card-2026-3080441"
+    "source": "https://www.freejobalert.com/articles/pfrda-grade-a-mains-admit-card-2026-3080441",
+    "exam_name": "Officer Grade A (Assistant Manager)",
+    "summary_hi": "जो उम्मीदवार चरण 1 परीक्षा में पास हुए हैं, वे अपनी मुख्य कॉल लेटर pfrda.org.in पर आधिकारिक वेबसाइट से डाउनलोड कर सकते हैं। पीएफआरडीए ग्रेड A मेन्स एडमिट कार्ड 2026 के 2 नवंबर 2026 के दूसरे सप्ताह में जारी होने की उम्मीद है, जो 20 नवंबर 2026 को होने वाली चरण 2 परीक्षा से पहले है।Applicants को एडमिट कार्ड तक पहुंचने के लिए अपना पंजीकरण नंबर या रोल नंबर और पासवर्ड या जन्मतिथि तैयार रखनी चाहिए।",
+    "steps": [
+      "Visit the official PFRDA website at pfrda.org.in.",
+      "Open the Careers or Recruitment section.",
+      "Find the link titled 'Recruitment of Officer Grade 'A' (Assistant Manager)-2026 – Call Letter for Online Phase-II Examination'.",
+      "Click the admit card download link.",
+      "Enter your Registration Number or Roll Number and Password or Date of Birth.",
+      "Enter the captcha code, if displayed, and click Login."
+    ],
+    "details": [
+      "After downloading the admit card, candidates must verify the details such as their name, roll number, photograph, and examination details. The examination date and the reporting time will be indicated on the admit card. If any discrepancies are found, it is crucial to contact PFRDA through the official communication channels.",
+      "On the examination day, candidates must carry a printed copy of the admit card along with a valid photo identity proof, such as an Aadhaar Card or PAN Card. A recent passport-size photograph may also be required if specified. Candidates should ensure they follow all instructions outlined on their call letter regarding necessary documents."
+    ],
+    "faq": [
+      {
+        "q": "How can I download my PFRDA Grade A Mains Admit Card?",
+        "a": "You can download it by visiting the official PFRDA website and following the provided steps to access the admit card."
+      },
+      {
+        "q": "What documents do I need to carry to the examination?",
+        "a": "You need to bring the printed copy of your admit card and a valid photo identity proof."
+      },
+      {
+        "q": "What should I do if there is an error on my admit card?",
+        "a": "If there is any discrepancy, you should contact PFRDA immediately through the contact details mentioned in the recruitment notice."
+      },
+      {
+        "q": "When will the PFRDA Grade A Mains Admit Card be released?",
+        "a": "The admit card is expected to be released in the 2nd week of November 2026."
+      }
+    ],
+    "enriched": "2026-11-12",
+    "hi": {
+      "title": "PFRDA ग्रेड A मेन एडमिट कार्ड 2026 - pfrda.org.in से हॉल टिकट डाउनलोड करें",
+      "organization": "पेंशन फंड नियामक और विकास प्राधिकरण",
+      "exam_name": "अधिकारी ग्रेड A (सहायक प्रबंधक)",
+      "summary": "जो उम्मीदवार चरण 1 परीक्षा में योग्य हैं, वे अपने मेन कॉल लेटर को आधिकारिक वेबसाइट pfrda.org.in से डाउनलोड कर सकते हैं। PFRDA ग्रेड A मेन एडमिट कार्ड 2026 की अपेक्षा 20 नवंबर 2026 को होने वाली चरण 2 परीक्षा से पहले नवंबर 2026 के दूसरे सप्ताह में जारी की जाएगी। आवेदकों को एडमिट कार्ड तक पहुंचने के लिए अपना पंजीकरण नंबर या रोल नंबर और पासवर्ड या जन्म तिथि तैयार रखनी चाहिए।",
+      "steps": [
+        "आधिकारिक PFRDA वेबसाइट pfrda.org.in पर जाएं।",
+        "करियर या भर्ती अनुभाग खोलें।",
+        "लिंक ढूंढें जिसका शीर्षक 'अधिकारी ग्रेड 'A' (सहायक प्रबंधक)-2026 के लिए भर्ती - ऑनलाइन चरण-II परीक्षा के लिए कॉल लेटर' है।",
+        "एडमिट कार्ड डाउनलोड लिंक पर क्लिक करें।",
+        "अपना पंजीकरण नंबर या रोल नंबर और पासवर्ड या जन्म तिथि दर्ज करें।",
+        "यदि कैप्चा कोड दिखाया गया है, तो उसे भरें और लॉगिन पर क्लिक करें।"
+      ],
+      "details": [
+        "एडमिट कार्ड डाउनलोड करने के बाद, उम्मीदवारों को अपने नाम, रोल नंबर, तस्वीर और परीक्षा विवरण जैसे जानकारी की पुष्टि करनी होगी। परीक्षा की तारीख और रिपोर्टिंग का समय एडमिट कार्ड पर उल्लेखित होगा। यदि किसी भी प्रकार की विसंगति पाई जाती है, तो PFRDA से आधिकारिक संचार चैनलों के माध्यम से तुरंत संपर्क करना महत्वपूर्ण है।",
+        "परीक्षा के दिन, उम्मीदवारों को एडमिट कार्ड की प्रिंटेड कॉपी के साथ एक वैध फोटो पहचान पत्र, जैसे कि आधार कार्ड या पैन कार्ड लाना होगा। यदि निर्दिष्ट किया गया हो, तो हाल का पासपोर्ट साइज फोटो भी आवश्यक हो सकता है। उम्मीदवारों को अपने कॉल लेटर में आवश्यक दस्तावेजों के बारे में सभी निर्देशों का पालन करना सुनिश्चित करना चाहिए।"
+      ],
+      "faq": [
+        {
+          "q": "मैं अपना PFRDA ग्रेड A मेन एडमिट कार्ड कैसे डाउनलोड कर सकता हूँ?",
+          "a": "आप इसे आधिकारिक PFRDA वेबसाइट पर जाकर और एडमिट कार्ड तक पहुंचने के लिए दिए गए चरणों का पालन करके डाउनलोड कर सकते हैं।"
+        },
+        {
+          "q": "मुझे परीक्षा में कौन से दस्तावेज ले जाने की आवश्यकता है?",
+          "a": "आपको अपने एडमिट कार्ड की प्रिंटेड कॉपी और एक वैध फोटो पहचान पत्र लाना होगा।"
+        },
+        {
+          "q": "अगर मेरे एडमिट कार्ड में कोई गलती है तो मुझे क्या करना चाहिए?",
+          "a": "यदि कोई विसंगति है, तो आपको तुरंत भर्ती नोटिस में उल्लिखित संपर्क विवरणों के माध्यम से PFRDA से संपर्क करना चाहिए।"
+        },
+        {
+          "q": "PFRDA ग्रेड A मेन एडमिट कार्ड कब जारी होगा?",
+          "a": "एडमिट कार्ड की अपेक्षा नवंबर 2026 के दूसरे सप्ताह में जारी की जाएगी।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "psssb-junior-engineer-recruitment-2026-application-reopened-revised-ex",
     "type": "exam-date",
     "title": "PSSSB Junior Engineer Recruitment 2026 – Application Reopened & Revised Exam Date",
-    "organization": "PSSSB Junior Engineer",
-    "org_short": "PSSSB Junior",
+    "organization": "Punjab Subordinate Services Selection Board",
+    "org_short": "PSSSB",
     "date": "2026-11-12",
-    "link": "https://eservices.punjab.gov.in/loginWindow.do",
-    "summary": "Subordinate Services Selection Board, Punjab (SSSB Punjab) has invited online applications for the post of Junior Engineer (Civil/Mechanical/Electrical) Group-B. Applications can be submitted from 12 October 2026 to 27 October 2026. Check the official website for the direct link and full details.",
-    "official_link": "https://eservices.punjab.gov.in/loginWindow.do",
-    "official_website": "https://eservices.punjab.gov.in/",
-    "source": "https://www.freejobalert.com/articles/sssb-punjab-junior-engineer-recruitment-2026-apply-online-3072223"
+    "link": "https://sssb.punjab.gov.in/wp-content/uploads/2026/10/Public-Notice-dated-09.10.2026-Advt-No-7-of-2026.pdf",
+    "summary": "The Punjab Subordinate Services Selection Board (PSSSB) has released a public notice on October 9, 2026, announcing the reopening of online applications for the Junior Engineer (Civil, Mechanical, and Electrical) recruitment. The new application period is from October 12 to October 27, 2026. The revised exam dates for the Junior Engineer positions are set for December 6 and December 12, 2026. Candidates can find more information through the official website.",
+    "official_link": "https://sssb.punjab.gov.in/wp-content/uploads/2026/10/Public-Notice-dated-09.10.2026-Advt-No-7-of-2026.pdf",
+    "official_website": "https://sssb.punjab.gov.in/",
+    "source": "https://www.freejobalert.com/articles/sssb-punjab-junior-engineer-recruitment-2026-apply-online-3072223",
+    "exam_name": "Junior Engineer Recruitment 2026",
+    "event_date": "2026-10-09",
+    "summary_hi": "पंजाब अधीनस्थ सेवा चयन बोर्ड (PSSSB) ने 9 अक्टूबर 2026 को जूनियर इंजीनियर (नागरिक, यांत्रिक औरElectrical) भर्ती के लिए ऑनलाइन आवेदनों के फिर से खोलने की घोषणा की है। नई आवेदन अवधि 12 अक्टूबर से 27 अक्टूबर 2026 है। जूनियर इंजीनियर पदों के लिए संशोधित परीक्षा तिथियाँ 6 और 12 दिसंबर 2026 को निर्धारित की गई हैं। अधिक जानकारी के लिए उम्मीदवार आधिकारिक वेबसाइट देख सकते हैं।",
+    "steps": [
+      "Visit the official PSSSB website at sssb.punjab.gov.in.",
+      "Navigate to the 'Recruitment' section available on the homepage.",
+      "Look for the announcement related to Junior Engineer Recruitment 2026.",
+      "Click on the appropriate link to access the application form.",
+      "Enter your registration number and date of birth to log in.",
+      "Fill in the required details and submit your application before the deadline."
+    ],
+    "details": [
+      "Candidates who have already applied need not submit a new application; their existing applications remain valid. After the completion of the application process, the Board will conduct an objective-type written examination followed by document verification and counseling for selected candidates. It’s essential to keep checking the official website for updated information regarding cut-offs and the selection process.",
+      "For the examination, candidates are advised to carry a print-out of their admit card along with valid ID proof. It is crucial to arrive at the examination venue well ahead of time. Ensure you have all necessary documents and materials (like stationary) ready. Any issues with downloading the admit card or technical problems should be reported to the helpline available on the official site."
+    ],
+    "faq": [
+      {
+        "q": "What is the new application period for PSSSB Junior Engineer Recruitment?",
+        "a": "The new application period is from October 12 to October 27, 2026."
+      },
+      {
+        "q": "When will the revised exam for Junior Engineer be conducted?",
+        "a": "The revised exam dates are set for December 6 and December 12, 2026."
+      },
+      {
+        "q": "Do I need to apply again if I have already submitted my application?",
+        "a": "No, candidates who have already applied do not need to submit another application."
+      },
+      {
+        "q": "Where can I find the official notification for the Junior Engineer recruitment?",
+        "a": "You can find the official notification on the PSSSB website at sssb.punjab.gov.in."
+      }
+    ],
+    "enriched": "2026-11-12",
+    "hi": {
+      "title": "PSSSB जूनियर इंजीनियर भर्ती 2026 – आवेदन फिर से खोला गया और संशोधित परीक्षा तिथि",
+      "organization": "पंजाब अधीनस्थ सेवा चयन बोर्ड",
+      "exam_name": "जूनियर इंजीनियर भर्ती 2026",
+      "summary": "पंजाब अधीनस्थ सेवा चयन बोर्ड (PSSSB) ने 9 अक्टूबर, 2026 को एक सार्वजनिक नोटिस जारी किया है, जिसमें जूनियर इंजीनियर (सिविल, मैकेनिकल और इलेक्ट्रिकल) भर्ती के लिए ऑनलाइन आवेदनों का पुनः खोलना घोषित किया गया है। नया आवेदन अवधि 12 अक्टूबर से 27 अक्टूबर, 2026 तक है। जूनियर इंजीनियर पदों के लिए संशोधित परीक्षा तिथियां 6 दिसंबर और 12 दिसंबर, 2026 निर्धारित की गई हैं। उम्मीदवार आधिकारिक वेबसाइट के माध्यम से अधिक जानकारी प्राप्त कर सकते हैं।",
+      "steps": [
+        "प्रतिष्ठित PSSSB वेबसाइट sssb.punjab.gov.in पर जाएं।",
+        "मुख पृष्ठ पर उपलब्ध 'भर्ती' सेक्शन में जाएं।",
+        "जूनियर इंजीनियर भर्ती 2026 से संबंधित घोषणा की तलाश करें।",
+        "आवेदन पत्र तक पहुंचने के लिए उचित लिंक पर क्लिक करें।",
+        "लगिन करने के लिए अपनी पंजीकरण संख्या और जन्म तिथि दर्ज करें।",
+        "आवश्यक जानकारी भरें और समय पर अपना आवेदन प्रस्तुत करें।"
+      ],
+      "details": [
+        "जिन उम्मीदवारों ने पहले ही आवेदन किया है, उन्हें फिर से नया आवेदन देने की आवश्यकता नहीं है; उनके मौजूदा आवेदन मान्य हैं। आवेदन प्रक्रिया पूरी होने के बाद, बोर्ड एक वस्तुनिष्ठ प्रकार की लिखित परीक्षा आयोजित करेगा जिसके बाद चयनित उम्मीदवारों के लिए दस्तावेज़ सत्यापन और परामर्श किया जाएगा। कट ऑफ और चयन प्रक्रिया के संबंध में अद्यतन जानकारी के लिए आधिकारिक वेबसाइट को देखना महत्वपूर्ण है।",
+        "परीक्षा के लिए, उम्मीदवारों को अपने एडमिट कार्ड का प्रिंट-आउट और मान्य आईडी प्रूफ साथ लाने की सलाह दी जाती है। परीक्षा स्थल पर समय से पहुंचना बहुत जरूरी है। सुनिश्चित करें कि आपके पास सभी आवश्यक दस्तावेज और सामग्री (जैसे स्टेशनरी) तैयार हो। एडमिट कार्ड डाउनलोड करने में कोई समस्या या तकनीकी समस्याओं की रिपोर्ट आधिकारिक साइट पर उपलब्ध हेल्पलाइन पर की जानी चाहिए।"
+      ],
+      "faq": [
+        {
+          "q": "PSSSB जूनियर इंजीनियर भर्ती के लिए नया आवेदन अवधि क्या है?",
+          "a": "नया आवेदन अवधि 12 अक्टूबर से 27 अक्टूबर, 2026 तक है।"
+        },
+        {
+          "q": "जूनियर इंजीनियर के लिए संशोधित परीक्षा कब आयोजित होगी?",
+          "a": "संशोधित परीक्षा तिथियां 6 दिसंबर और 12 दिसंबर, 2026 निर्धारित की गई हैं।"
+        },
+        {
+          "q": "क्या मुझे फिर से आवेदन करने की आवश्यकता है यदि मैंने पहले ही अपना आवेदन प्रस्तुत कर दिया है?",
+          "a": "नहीं, उम्मीदवारों को जो पहले ही आवेदन कर चुके हैं, उन्हें फिर से एक और आवेदन प्रस्तुत करने की आवश्यकता नहीं है।"
+        },
+        {
+          "q": "मैं जूनियर इंजीनियर भर्ती के लिए आधिकारिक सूचना कहाँ पा सकता हूँ?",
+          "a": "आप आधिकारिक सूचना PSSSB वेबसाइट पर sssb.punjab.gov.in पर पा सकते हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "avnl-non-executive-merit-list-2026-check-junior-technician-combined-me",
     "type": "result",
     "title": "AVNL Non Executive Merit List 2026 - Check Junior Technician Combined Merit List PDF",
-    "organization": "AVNL Non Executive",
-    "org_short": "AVNL Non",
+    "organization": "Armoured Vehicles Nigam Limited",
+    "org_short": "AVNL",
     "date": "2026-11-11",
-    "link": "http://avnl.co.in",
-    "summary": "Armoured Vehicles Nigam Limited (AVNL) has published a combined merit list document for 13 Non-Executive posts (Junior Technician) under Advt. No. AVNL/CO/HR/2026/06. The PDF lists 13 trades, and candidates must click against the post they applied for to view the merit list for that trade. Check the official website for the direct link and full details.",
-    "official_link": "http://avnl.co.in",
+    "link": "https://avnl.co.in/files/careers-vacancies-document/meritNe.pdf",
+    "summary": "AVNL has released the Combined Merit List for 13 Non-Executive Junior Technician posts. Candidates can check the merit list by clicking on their respective trades in the provided PDF. The official website for checking the merit list is avnl.co.in. Make sure to look out for further announcements under advertisement number AVNL/CO/HR/2026/06.",
+    "official_link": "https://avnl.co.in/files/careers-vacancies-document/meritNe.pdf",
     "official_website": "https://avnl.co.in/",
     "source": "https://www.freejobalert.com/articles/avnl-non-executive-merit-list-2026-3080374",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Junior Technician Combined Merit List",
+    "summary_hi": "AVNL ने 13 गैर-कार्यकारी जूनियर तकनीशियन पदों के लिए संयुक्त मेरिट सूची जारी की है। उम्मीदवार संबंधित ट्रेडों पर क्लिक करके मेरिट सूची की जांच कर सकते हैं। मेरिट सूची की जांच के लिए आधिकारिक वेबसाइट avnl.co.in है। विज्ञापन संख्या AVNL/CO/HR/2026/06 के तहत आगे की घोषणाओं के लिए ध्यान दें।",
+    "steps": [
+      "Visit the official website: avnl.co.in.",
+      "Navigate to the careers section.",
+      "Locate the link for the Combined Merit List PDF.",
+      "Open the PDF and find the trade you applied for.",
+      "Click on the link next to your trade to view the merit list.",
+      "Search for your name or details within the opened list."
+    ],
+    "details": [
+      "The AVNL Junior Technician Combined Merit List lists candidates for various trades from Electrician to Welder. It is important to note that the merit list document does not provide information about the final selection. Candidates should refer to the official recruitment notice for details about the next stages of the selection process.",
+      "Candidates are advised to regularly check the official website, avnl.co.in, for updates and further announcements related to advertisement number AVNL/CO/HR/2026/06. It is crucial to carry appropriate documents as specified in the official notices when moving to the next stages."
+    ],
+    "faq": [
+      {
+        "q": "Has AVNL released the Non Executive merit list 2026?",
+        "a": "Yes. AVNL has published a combined merit list document for 13 Non-Executive (Junior Technician) posts."
+      },
+      {
+        "q": "How many trades are covered in the AVNL Non Executive merit list?",
+        "a": "The PDF covers 13 Junior Technician trades, ranging from Electrician to Welder."
+      },
+      {
+        "q": "How do I check my AVNL Junior Technician merit list?",
+        "a": "Open the official merit list PDF and click against the post you applied for to view the trade-wise list."
+      },
+      {
+        "q": "Which advertisement number does the AVNL Non Executive merit list belong to?",
+        "a": "It belongs to Advt. No. AVNL/CO/HR/2026/06."
+      }
+    ],
+    "hi": {
+      "title": "AVNL नॉन एग्जीक्यूटिव मेरिट लिस्ट 2026 - जूनियर टेक्नीशियन संयुक्त मेरिट लिस्ट PDF चेक करें",
+      "organization": "आर्मर्ड वेहिकल्स निगम लिमिटेड",
+      "exam_name": "जूनियर टेक्नीशियन संयुक्त मेरिट लिस्ट",
+      "summary": "AVNL ने 13 नॉन-एग्जीक्यूटिव जूनियर टेक्नीशियन पदों के लिए संयुक्त मेरिट लिस्ट जारी की है। आवेदक दिए गए PDF में अपने संबंधित ट्रेड पर क्लिक करके मेरिट लिस्ट देख सकते हैं। मेरिट लिस्ट चेक करने के लिए आधिकारिक वेबसाइट avnl.co.in है। विज्ञापन संख्या AVNL/CO/HR/2026/06 के तहत आगे की घोषणाओं के लिए ध्यान रखें।",
+      "steps": [
+        "आधिकारिक वेबसाइट पर जाएं: avnl.co.in.",
+        "करियर सेक्शन में जाएं.",
+        "संयुक्त मेरिट लिस्ट PDF के लिंक को खोजें.",
+        "PDF खोलें और उस ट्रेड को ढूंढें जिसमें आपने आवेदन किया है.",
+        "मेरिट लिस्ट देखने के लिए अपने ट्रेड के बगल में लिंक पर क्लिक करें.",
+        "खुली हुई लिस्ट में अपना नाम या जानकारी खोजें."
+      ],
+      "details": [
+        "AVNL जूनियर टेक्नीशियन संयुक्त मेरिट लिस्ट में इलेक्ट्रिशियन से वेल्डर तक विभिन्न ट्रेडों के लिए उम्मीदवारों की सूची दी गई है। यह महत्वपूर्ण है कि मेरिट लिस्ट दस्तावेज़ अंतिम चयन के बारे में जानकारी नहीं देता। उम्मीदवारों को चयन प्रक्रिया के अगले चरणों के विवरण के लिए आधिकारिक भर्ती सूचना का संदर्भ लेना चाहिए।",
+        "उम्मीदवारों को सुझाव दिया जाता है कि वे नियमित रूप से आधिकारिक वेबसाइट, avnl.co.in, पर विज्ञापन संख्या AVNL/CO/HR/2026/06 से संबंधित अपडेट और आगे की घोषणाओं के लिए जाँच करते रहें। अगले चरणों में जाने के लिए आधिकारिक सूचनाओं में निर्दिष्ट उचित दस्तावेज़ रखना अत्यंत महत्वपूर्ण है।"
+      ],
+      "faq": [
+        {
+          "q": "क्या AVNL ने नॉन एग्जीक्यूटिव मेरिट लिस्ट 2026 जारी की है?",
+          "a": "हाँ। AVNL ने 13 नॉन-एग्जीक्यूटिव (जूनियर टेक्नीशियन) पदों के लिए संयुक्त मेरिट लिस्ट दस्तावेज़ प्रकाशित किया है।"
+        },
+        {
+          "q": "AVNL नॉन एग्जीक्यूटिव मेरिट लिस्ट में कितने ट्रेड शामिल हैं?",
+          "a": "PDF में 13 जूनियर टेक्नीशियन ट्रेड शामिल हैं, जो इलेक्ट्रिशियन से वेल्डर तक हैं।"
+        },
+        {
+          "q": "मैं अपनी AVNL जूनियर टेक्नीशियन मेरिट लिस्ट कैसे चेक करूं?",
+          "a": "आधिकारिक मेरिट लिस्ट PDF खोलें और उस पद के खिलाफ क्लिक करें जिसमें आपने आवेदन किया है ताकि ट्रेड-वार लिस्ट देख सकें।"
+        },
+        {
+          "q": "AVNL नॉन एग्जीक्यूटिव मेरिट लिस्ट किस विज्ञापन संख्या से संबंधित है?",
+          "a": "यह विज्ञापन संख्या संख्या AVNL/CO/HR/2026/06 से संबंधित है।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "tnpsc-departmental-exam-result-2026-released-check-may-results-rejecti",
     "type": "result",
     "title": "TNPSC Departmental Exam Result 2026 Released - Check May Results, Rejection & Viva-Voce Lists",
-    "organization": "TNPSC Departmental Exam",
-    "org_short": "TNPSC Departmental",
+    "organization": "Tamil Nadu Public Service Commission",
+    "org_short": "TNPSC",
     "date": "2026-11-11",
     "link": "https://www.tnpsc.gov.in/english/dcheckresult.aspx?id=e21df49e-ae59-401b-a147-0c07947440b3&&phase=0d5a1b48-d06b-41ae-847a-bcf2cdbd935a",
-    "summary": "TNPSC Departmental Exam Result 2026 for the May 2026 examinations has been published, with the results page updated on 6 November 2026. Candidates can check their results using their register number and download the Rejection Lists for Test Codes 201 and 205, the Test Code 019 Viva-Voce List, and Se Check the official website for the direct link and full details.",
+    "summary": "TNPSC has released the results for the Departmental Examinations conducted in May 2026. Candidates can check the results along with the rejection lists and viva-voce list for the Second Class Language Test on the official TNPSC website. The results page was last updated on June 11, 2026.",
     "official_link": "https://www.tnpsc.gov.in/english/dcheckresult.aspx?id=e21df49e-ae59-401b-a147-0c07947440b3&&phase=0d5a1b48-d06b-41ae-847a-bcf2cdbd935a",
     "official_website": "https://tnpsc.gov.in/",
     "source": "https://www.freejobalert.com/articles/tnpsc-departmental-exam-result-2026-3080380",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Departmental Examinations - May 2026",
+    "event_date": "2026-06-11",
+    "summary_hi": "TNPSC ने मई 2026 में आयोजित विभागीय परीक्षा का परिणाम जारी किया है। उम्मीदवार अपने परिणामों के साथ-साथ दूसरे श्रेणी की भाषा परीक्षा के लिए अस्वीकृति सूचियों और विवा-वत्स सूचियों को आधिकारिक TNPSC वेबसाइट पर देख सकते हैं। परिणाम पृष्ठ को अंतिम बार 11 जून 2026 को अपडेट किया गया था।",
+    "steps": [
+      "Go to the official TNPSC website at tnpsc.gov.in.",
+      "Navigate to the 'Employee Corner' and then select 'Departmental Examination'.",
+      "Click on 'Results of Departmental Examinations - May 2026'.",
+      "Enter your register number in the provided field and follow the prompts to view your result.",
+      "To check rejection lists or language test results, select the required PDF link from the results page.",
+      "Search for your register number in the PDF."
+    ],
+    "details": [
+      "Candidates whose register numbers appear on the viva-voce list for the Second Class Language Test must stay updated on the official website for any further instructions regarding the date, venue, and reporting requirements. It's crucial to remain attentive to announcements while preparing for the next stage of the recruitment process.",
+      "If your number is in a rejection list, you can refer to the official documents for reasons. Make sure to download or print your results for future reference, as these will be essential for subsequent procedures. For any queries, you can contact TNPSC's toll-free number for assistance."
+    ],
+    "faq": [
+      {
+        "q": "Is the TNPSC departmental exam result 2026 out?",
+        "a": "Yes. TNPSC has published the results of the Departmental Examinations – May 2026, with an update date of June 11, 2026."
+      },
+      {
+        "q": "How can I check my TNPSC departmental exam result?",
+        "a": "Open the Results page under Employee Corner > Departmental Examination on tnpsc.gov.in and enter your register number. For language tests and rejection lists, open the relevant PDF and search for your register number."
+      },
+      {
+        "q": "Do I need a register number to check the result?",
+        "a": "Yes, the result page requires you to enter your register number."
+      },
+      {
+        "q": "What is the TNPSC departmental exam rejection list?",
+        "a": "TNPSC has published rejection lists for Test Code 201 and Test Code 205. The reasons for rejection are not stated on the results page, so candidates should refer to the official PDFs and the exam instructions."
+      }
+    ],
+    "hi": {
+      "title": "TNPSC विभागीय परीक्षा परिणाम 2026 जारी - मई के परिणाम, अस्वीकृति और वाइवा-वोइस सूची चेक करें",
+      "organization": "तमिलनाडु पब्लिक सर्विस कमीशन",
+      "exam_name": "विभागीय परीक्षा - मई 2026",
+      "summary": "TNPSC ने मई 2026 में आयोजित विभागीय परीक्षा के परिणाम जारी कर दिए हैं। उम्मीदवार आधिकारिक TNPSC वेबसाइट पर अस्वीकृति सूची और दूसरी कक्षा भाषा परीक्षा के लिए वाइवा-वोइस सूची के साथ परिणाम चेक कर सकते हैं। परिणाम पृष्ठ को 11 जून 2026 को अंतिम बार अपडेट किया गया था।",
+      "steps": [
+        "आधिकारिक TNPSC वेबसाइट tnpsc.gov.in पर जाएं।",
+        "'Employee Corner' पर जाएं और फिर 'Departmental Examination' चुनें।",
+        "'Results of Departmental Examinations - May 2026' पर क्लिक करें।",
+        "प्रदान किए गए क्षेत्र में अपना रजिस्ट्रेशन नंबर डालें और अपना परिणाम देखने के लिए स्वरूप का पालन करें।",
+        "अस्वीकृति सूची या भाषा परीक्षा के परिणाम चेक करने के लिए, परिणाम पृष्ठ से आवश्यक PDF लिंक चुनें।",
+        "PDF में अपना रजिस्ट्रेशन नंबर खोजें।"
+      ],
+      "details": [
+        "जिन उम्मीदवारों का रजिस्ट्रेशन नंबर दूसरी कक्षा भाषा परीक्षा के वाइवा-वोइस सूची में है, उन्हें आगे की तारीख, स्थान और रिपोर्टिंग आवश्यकताओं के बारे में किसी भी निर्देश के लिए आधिकारिक वेबसाइट पर अपडेट रहना चाहिए। अगली भर्ती प्रक्रिया के चरण के लिए तैयारी करते समय घोषणाओं पर ध्यान देना महत्वपूर्ण है।",
+        "यदि आपका नंबर अस्वीकृति सूची में है, तो आप कारणों के लिए आधिकारिक दस्तावेज़ों का संदर्भ ले सकते हैं। भविष्य के संदर्भ के लिए अपने परिणामों को डाउनलोड या प्रिंट करना सुनिश्चित करें, क्योंकि ये आगे की प्रक्रियाओं के लिए आवश्यक होंगे। किसी भी प्रश्न के लिए, आप सहायता के लिए TNPSC के टोल-फ्री नंबर पर संपर्क कर सकते हैं।"
+      ],
+      "faq": [
+        {
+          "q": "क्या TNPSC विभागीय परीक्षा परिणाम 2026 जारी हो गया है?",
+          "a": "हाँ। TNPSC ने विभागीय परीक्षा के परिणाम - मई 2026 प्रकाशित किए हैं, जिनकी अपडेट तिथि 11 जून 2026 है।"
+        },
+        {
+          "q": "मैं अपने TNPSC विभागीय परीक्षा परिणाम को कैसे चेक कर सकता हूँ?",
+          "a": "tnpsc.gov.in पर Employee Corner > Departmental Examination के तहत परिणाम पृष्ठ खोलें और अपना रजिस्ट्रेशन नंबर डालें। भाषा परीक्षण और अस्वीकृति सूची के लिए, संबंधित PDF खोलें और अपने रजिस्ट्रेशन नंबर को खोजें।"
+        },
+        {
+          "q": "क्या मुझे परिणाम चेक करने के लिए रजिस्ट्रेशन नंबर चाहिए?",
+          "a": "हाँ, परिणाम पृष्ठ के लिए आपको अपना रजिस्ट्रेशन नंबर डालना होगा।"
+        },
+        {
+          "q": "TNPSC विभागीय परीक्षा अस्वीकृति सूची क्या है?",
+          "a": "TNPSC ने टेस्ट कोड 201 और टेस्ट कोड 205 के लिए अस्वीकृति सूचियाँ प्रकाशित की हैं। अस्वीकृति के कारण परिणाम पृष्ठ पर नहीं बताए गए हैं, इसलिए उम्मीदवारों को आधिकारिक PDFs और परीक्षा निर्देशों का संदर्भ लेना चाहिए।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "mizoram-psc-soil-conservation-ranger-answer-key-2026-out-download-prov",
     "type": "answer-key",
     "title": "Mizoram PSC Soil Conservation Ranger Answer Key 2026 Out - Download Provisional Key PDF",
-    "organization": "Mizoram PSC Soil Conservation Ranger",
-    "org_short": "Mizoram PSC",
+    "organization": "Mizoram Public Service Commission",
+    "org_short": "MPSC",
     "date": "2026-11-11",
-    "link": "https://mpsc.mizoram.gov.in",
-    "summary": "The Mizoram Public Service Commission (MPSC) has released the Provisional Answer Key for the written examination for Soil Conservation Ranger under the Land Resources, Soil & Water Conservation Department, Government of Mizoram. Check the official website for the direct link and full details.",
-    "official_link": "https://mpsc.mizoram.gov.in",
+    "link": "https://mpsc.mizoram.gov.in/uploads/attachments/2026/11/87de41d5799bb6faf8ec3848fc94d994/provisional-answer-key-of-soil-conservation-ranger-under-lr-swc-deptt-2026.pdf",
+    "summary": "The Mizoram Public Service Commission (MPSC) has released the Provisional Answer Key for the Soil Conservation Ranger exam conducted from 13th to 15th October 2026. The answer key was published on 10th November 2026 and can be downloaded from the official MPSC website. Candidates can check their responses against this provisional key.",
+    "official_link": "https://mpsc.mizoram.gov.in/uploads/attachments/2026/11/87de41d5799bb6faf8ec3848fc94d994/provisional-answer-key-of-soil-conservation-ranger-under-lr-swc-deptt-2026.pdf",
     "official_website": "https://mpsc.mizoram.gov.in/",
     "source": "https://www.freejobalert.com/articles/mizoram-psc-soil-conservation-ranger-answer-key-2026-3080348",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Soil Conservation Ranger",
+    "event_date": "2026-11-10",
+    "summary_hi": "मिजोरम लोक सेवा आयोग (MPSC) ने 13 से 15 अक्टूबर 2026 को आयोजित हुआ सॉइल कंसेर्वेशन रेंजर परीक्षा के लिए अस्थायी उत्तर कुंजी जारी की है। यह उत्तर कुंजी 10 नवंबर 2026 को प्रकाशित की गई थी और इसे आधिकारिक MPSC वेबसाइट से डाउनलोड किया जा सकता है। उम्मीदवार अपनी प्रतिक्रियाओं की जांच इस अस्थायी कुंजी के खिलाफ कर सकते हैं।",
+    "steps": [
+      "Open the official MPSC website, mpsc.mizoram.gov.in.",
+      "Look for the notification titled 'Provisional Answer Key of Soil Conservation Ranger under LR, S&WC Deptt., 2026'.",
+      "Click on the notification to access the PDF document.",
+      "Review each paper's answer options listed in the PDF.",
+      "If necessary, save or print the PDF for any future complaints or remarks."
+    ],
+    "details": [
+      "The Provisional Answer Key allows candidates to assess their performance in the exam. Candidates should compare their marked answers with the key provided in the PDF. Note that since this is a provisional key, candidates can submit any objections within three working days from the notification date, which ends on 13 November 2026.",
+      "To raise a complaint, candidates must submit a written statement to the Controller of Examinations at the Mizoram Public Service Commission, along with any required supporting documents. It is crucial to ensure all complaints are well-substantiated to be considered."
+    ],
+    "faq": [
+      {
+        "q": "Is the Mizoram PSC Soil Conservation Ranger answer key 2026 released?",
+        "a": "Yes, MPSC released the Provisional Answer Key on 10/11/2026 for the written examination held from 13/10/2026 to 15/10/2026."
+      },
+      {
+        "q": "How to download the Soil Conservation Ranger answer key PDF?",
+        "a": "Open the official MPSC website at mpsc.mizoram.gov.in, find the Provisional Answer Key notification for Soil Conservation Ranger under LR, S&WC Department, and open the PDF."
+      },
+      {
+        "q": "Which papers are covered in the MPSC Soil Conservation Ranger answer key?",
+        "a": "The key covers General English (Section-B), General Studies, Technical Paper-I (Section-I), Technical Paper-II (Section-I) and Technical Paper-III (Section-I)."
+      },
+      {
+        "q": "What is the last date to raise an objection against the MPSC answer key?",
+        "a": "Complaints or remarks must be submitted within 3 working days from the date of the notification, 10/11/2026."
+      }
+    ],
+    "hi": {
+      "title": "मिजोरम PSC मिट्टी संरक्षण रेंजर उत्तर कुंजी 2026 जारी - अस्थायी कुंजी PDF डाउनलोड करें",
+      "organization": "मिजोरम सार्वजनिक सेवा आयोग",
+      "exam_name": "मिट्टी संरक्षण रेंजर",
+      "summary": "मिजोरम सार्वजनिक सेवा आयोग (MPSC) ने 13 से 15 अक्टूबर 2026 तक आयोजित किए गए मिट्टी संरक्षण रेंजर परीक्षा के लिए अस्थायी उत्तर कुंजी जारी की है। उत्तर कुंजी 10 नवंबर 2026 को प्रकाशित की गई थी और इसे आधिकारिक MPSC वेबसाइट से डाउनलोड किया जा सकता है। उम्मीदवार इस अस्थायी कुंजी के खिलाफ अपने उत्तरों की जांच कर सकते हैं।",
+      "steps": [
+        "आधिकारिक MPSC वेबसाइट, mpsc.mizoram.gov.in खोलें।",
+        "LR, S&WC विभाग के अंतर्गत 'मिट्टी संरक्षण रेंजर की अस्थायी उत्तर कुंजी, 2026' शीर्षक वाला नोटिफिकेशन खोजें।",
+        "PDF दस्तावेज़ तक पहुँचने के लिए नोटिफिकेशन पर क्लिक करें।",
+        "PDF में सूचीबद्ध प्रत्येक प्रश्न पत्र के उत्तर विकल्पों की समीक्षा करें।",
+        "यदि आवश्यक हो, तो किसी भी भविष्य की शिकायत या टिप्पणी के लिए PDF को सहेजें या प्रिंट करें।"
+      ],
+      "details": [
+        "अस्थायी उत्तर कुंजी उम्मीदवारों को परीक्षा में उनके प्रदर्शन का आकलन करने की अनुमति देती है। उम्मीदवारों को PDF में दी गई कुंजी के साथ अपने द्वारा अंकित उत्तरों की तुलना करनी चाहिए। ध्यान दें कि यह अस्थायी कुंजी है, इसलिए उम्मीदवारों को नोटिफिकेशन की तारीख से तीन कार्य दिवसों के भीतर कोई भी आपत्ति दायर करने का अवसर है, जो 13 नवंबर 2026 को समाप्त होती है।",
+        "शिकायत उठाने के लिए, उम्मीदवारों को मिजोरम सार्वजनिक सेवा आयोग के परीक्षा नियंत्रक के पास एक लिखित बयान प्रस्तुत करना होगा, साथ ही किसी भी आवश्यक सहायक दस्तावेजों के साथ। यह सुनिश्चित करना महत्वपूर्ण है कि सभी शिकायतें पर्याप्त रूप से समर्थित हों ताकि उन्हें ध्यान में लिया जा सके।"
+      ],
+      "faq": [
+        {
+          "q": "क्या मिजोरम PSC मिट्टी संरक्षण रेंजर उत्तर कुंजी 2026 जारी की गई है?",
+          "a": "हाँ, MPSC ने 10/11/2026 को 13/10/2026 से 15/10/2026 तक आयोजित लिखित परीक्षा के लिए अस्थायी उत्तर कुंजी जारी की।"
+        },
+        {
+          "q": "मिट्टी संरक्षण रेंजर उत्तर कुंजी PDF कैसे डाउनलोड करें?",
+          "a": "आधिकारिक MPSC वेबसाइट mpsc.mizoram.gov.in खोलें, मिट्टी संरक्षण रेंजर के लिए अस्थायी उत्तर कुंजी नोटिफिकेशन खोजें और PDF खोलें।"
+        },
+        {
+          "q": "MPSC मिट्टी संरक्षण रेंजर उत्तर कुंजी में कौन से पत्र शामिल हैं?",
+          "a": "कुंजी में सामान्य अंग्रेजी (सेक्शन-B), सामान्य अध्ययन, तकनीकी पेपर-I (सेक्शन-I), तकनीकी पेपर-II (सेक्शन-I) और तकनीकी पेपर-III (सेक्शन-I) शामिल हैं।"
+        },
+        {
+          "q": "MPSC उत्तर कुंजी के खिलाफ आपत्ति उठाने की अंतिम तिथि क्या है?",
+          "a": "शिकायतें या टिप्पणियाँ नोटिफिकेशन की तारीख, 10/11/2026 से 3 कार्य दिवसों के भीतर प्रस्तुत की जानी चाहिए।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "uiic-ao-prelims-result-2026-out-at-uiic-co-in-5-806-candidates-shortli",
     "type": "result",
     "title": "UIIC AO Prelims Result 2026 Out at uiic.co.in - 5,806 Candidates Shortlisted Download Result PDF",
-    "organization": "UIIC AO Prelims",
-    "org_short": "UIIC AO",
+    "organization": "United India Insurance Company Limited",
+    "org_short": "UIIC",
     "date": "2026-11-11",
-    "link": "https://uiic.co.in",
-    "summary": "The UIIC AO Result 2026 is Out on 11 November 2026 for 225 Administrative Officer vacancies. Candidates can download the result PDF, check their roll numbers, and learn about the next stages of the selection process. Check the official website for the direct link and full details.",
-    "official_link": "https://uiic.co.in",
+    "link": "https://uiic.co.in/web/sites/default/files/Recruitment_UiiC/6.%20Note%20-%20Prelims%20Result%20Publishing.pdf",
+    "summary": "The UIIC AO Prelims Result 2026 has been published, shortlisting a total of 5,806 candidates for the Tier-II Mains exam scheduled for 30 November 2026. The result is available as a PDF containing roll numbers. Candidates can check their status by visiting the official website uiic.co.in.",
+    "official_link": "https://uiic.co.in/web/sites/default/files/Recruitment_UiiC/6.%20Note%20-%20Prelims%20Result%20Publishing.pdf",
     "official_website": "https://uiic.co.in/",
     "source": "https://www.freejobalert.com/articles/uiic-ao-prelims-result-2026-3080356",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Administrative Officer (Scale I) - Generalists and Hindi Officers",
+    "event_date": "2026-11-11",
+    "summary_hi": "UIIC AO प्रीलिम्स परिणाम 2026 जारी किया गया है, जिसमें 30 नवंबर 2026 को होने वाली टीयर- II मेन्स परीक्षा के लिए कुल 5,806 उम्मीदवारों को शॉर्टलिस्ट किया गया है। परिणाम रोल नंबरों की एक पीडीएफ के रूप में उपलब्ध है। उम्मीदवार अपनी स्थिति की जांच करने के लिए आधिकारिक वेबसाइट uiic.co.in पर जा सकते हैं।",
+    "steps": [
+      "Go to the official UIIC website, uiic.co.in.",
+      "Open the Recruitment section on the homepage.",
+      "Click the link for Recruitment of Administrative Officers (Scale I) – Generalists and Hindi Officers 2026.",
+      "Select the list of shortlisted candidates for the Tier-II Mains examination.",
+      "When the PDF opens, press Ctrl + F (Cmd + F on Mac) and type your roll number.",
+      "If your roll number is highlighted, you are in the provisional Mains shortlist; download and save the PDF."
+    ],
+    "details": [
+      "The results have provisionally shortlisted candidates based on their performance in the Prelims exam held on 22 October 2026. Those shortlisted will now prepare for the Mains exam, scheduled for 30 November 2026. It is essential to keep in mind that this shortlist is provisional, and candidates should maintain awareness of eligibility checks by UIIC.",
+      "Candidates are encouraged to download and save their result PDF, as it may be replaced on the website in future updates. The next stage involves detailed preparation for the Mains exam, which consists of an objective test followed by a descriptive test, and failures to meet criteria could lead to disqualification."
+    ],
+    "faq": [
+      {
+        "q": "Is the UIIC AO Prelims Result 2026 out?",
+        "a": "Yes. UIIC released the result on 11 November 2026 on its official website, uiic.co.in, as a PDF of roll numbers."
+      },
+      {
+        "q": "How many candidates are shortlisted in the UIIC AO Prelims Result 2026?",
+        "a": "A total of 5,806 candidates are provisionally shortlisted for the Tier-II Mains exam."
+      },
+      {
+        "q": "How can I check the UIIC AO Prelims Result 2026?",
+        "a": "Open the result PDF from the Recruitment section of uiic.co.in, press Ctrl + F and search for your roll number. If it appears, you are in the provisional Mains shortlist."
+      },
+      {
+        "q": "What should I do if my roll number does not appear in the list?",
+        "a": "If your roll number does not appear in the list, unfortunately, you are not among the provisionally shortlisted candidates. Ensure you entered your roll number exactly as it appears on your Prelims admit card."
+      }
+    ],
+    "hi": {
+      "title": "UIIC AO प्रीलीम्स रिजल्ट 2026 जारी – 5,806 उम्मीदवार शॉर्टलिस्टेड, रिजल्ट PDF डाउनलोड करें",
+      "organization": "यूनाइटेड इंडिया इंश्योरेंस कंपनी लिमिटेड",
+      "exam_name": "एडमिनिस्ट्रेटिव ऑफिसर (स्केल I) - जनरलिस्ट्स और हिंदी ऑफिसर्स",
+      "summary": "UIIC AO प्रीलीम्स रिजल्ट 2026 प्रकाशित हो गया है, जिसमें कुल 5,806 उम्मीदवारों को 30 नवंबर 2026 को होने वाली टियर-II मेन्स परीक्षा के लिए शॉर्टलिस्ट किया गया है। रिजल्ट रोल नंबरों के साथ PDF में उपलब्ध है। उम्मीदवार अपने स्टेटस को आधिकारिक वेबसाइट uiic.co.in पर जाकर चेक कर सकते हैं।",
+      "steps": [
+        "आधिकारिक UIIC वेबसाइट uiic.co.in पर जाएँ।",
+        "होमपेज पर भर्ती सेक्शन खोलें।",
+        "एडमिनिस्ट्रेटिव ऑफिसर्स (स्केल I) – जनरलिस्ट्स और हिंदी ऑफिसर्स 2026 भर्ती के लिए लिंक पर क्लिक करें।",
+        "टियर-II मेन्स परीक्षा के लिए शॉर्टलिस्टेड उम्मीदवारों की सूची चुनें।",
+        "जब PDF खुले, Ctrl + F (Mac पर Cmd + F) दबाएँ और अपना रोल नंबर टाइप करें।",
+        "यदि आपका रोल नंबर हाईलाइट हो जाता है, तो आप प्रोविजनल मेन्स शॉर्टलिस्ट में हैं; PDF को डाउनलोड और सेव करें।"
+      ],
+      "details": [
+        "रिजल्ट ने 22 अक्टूबर 2026 को हुई प्रीलीम्स परीक्षा में उनके प्रदर्शन के आधार पर उम्मीदवारों को प्रोविजनली शॉर्टलिस्ट किया है। जो उम्मीदवार शॉर्टलिस्ट हुए हैं, वे अब 30 नवंबर 2026 को होने वाली मेन्स परीक्षा की तैयारी करेंगे। यह ध्यान रखना जरूरी है कि यह शॉर्टलिस्ट प्रोविजनल है, और उम्मीदवारों को UIIC द्वारा पात्रता जांच के बारे में जागरूक रहना होगा।",
+        "उम्मीदवारों से प्रोत्साहित किया गया है कि वे अपना रिजल्ट PDF डाउनलोड और सेव करें, क्योंकि इसे भविष्य में वेबसाइट पर अपडेट में बदला जा सकता है। अगला चरण मेन्स परीक्षा की विस्तृत तैयारी है, जिसमें एक ऑब्जेक्टिव टेस्ट के बाद एक डिस्क्रिप्टिव टेस्ट शामिल है, और मानदंडों को पूरा न करने पर अयोग्यता हो सकती है।"
+      ],
+      "faq": [
+        {
+          "q": "क्या UIIC AO प्रीलीम्स रिजल्ट 2026 जारी हो गया है?",
+          "a": "हाँ। UIIC ने 11 नवंबर 2026 को अपनी आधिकारिक वेबसाइट uiic.co.in पर रोल नंबरों के PDF के रूप में रिजल्ट जारी किया।"
+        },
+        {
+          "q": "UIIC AO प्रीलीम्स रिजल्ट 2026 में कितने उम्मीदवार शॉर्टलिस्टेड हैं?",
+          "a": "कुल 5,806 उम्मीदवारों को टियर-II मेन्स परीक्षा के लिए प्रोविजनली शॉर्टलिस्ट किया गया है।"
+        },
+        {
+          "q": "मैं UIIC AO प्रीलीम्स रिजल्ट 2026 कैसे चेक कर सकता हूँ?",
+          "a": "uiic.co.in के भर्ती सेक्शन से रिजल्ट PDF खोलें, Ctrl + F दबाएँ और अपने रोल नंबर की खोज करें। यदि यह सामने आता है, तो आप प्रोविजनल मेन्स शॉर्टलिस्ट में हैं।"
+        },
+        {
+          "q": "यदि मेरा रोल नंबर सूची में नहीं दिखता है तो मुझे क्या करना चाहिए?",
+          "a": "यदि आपका रोल नंबर सूची में नहीं दिखता है, तो दुर्भाग्यवश आप प्रोविजनली शॉर्टलिस्टेड उम्मीदवारों में नहीं हैं। सुनिश्चित करें कि आपने अपना रोल नंबर ठीक उसी तरह दर्ज किया है जैसा यह आपके प्रीलीम्स एडमिट कार्ड पर है।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "ssc-gd-physical-exam-date-2026-check-pet-pst-schedule-at-ssc-gov-in",
     "type": "exam-date",
     "title": "SSC GD Physical Exam Date 2026 - Check PET/PST Schedule at ssc.gov.in",
-    "organization": "SSC GD Physical",
-    "org_short": "SSC GD",
+    "organization": "Staff Selection Commission",
+    "org_short": "SSC",
     "date": "2026-11-11",
     "link": "https://ssc.gov.in",
-    "summary": "SSC GD Physical Exam 2026 (PET/PST) is scheduled to begin on 26 November and continue until the second week of December. A total of 1,97,408 candidates have been shortlisted for the physical tests against 25,487 Constable GD vacancies. Check the official website for the direct link and full details.",
+    "summary": "The Staff Selection Commission has announced the Physical Efficiency Test (PET) and Physical Standard Test (PST) dates for the SSC GD Constable Exam 2026. These tests will take place from 26 November 2026 to the second week of December 2026. Candidates can check the specific details and download the admit card from the official SSC website.",
     "official_link": "https://ssc.gov.in",
     "official_website": "https://ssc.gov.in/",
     "source": "https://www.freejobalert.com/articles/ssc-gd-physical-exam-date-2026-3080362",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "SSC GD Constable Exam 2026",
+    "summary_hi": "कर्मचारी चयन आयोग ने SSC GD कांस्टेबल परीक्षा 2026 के लिए शारीरिक दक्षता परीक्षा (PET) और शारीरिक मानक परीक्षा (PST) की तिथियों की घोषणा की है। ये परीक्षण 26 नवंबर 2026 से लेकर दिसंबर 2026 के दूसरे सप्ताह तक आयोजित किए जाएंगे। उम्मीदवार विशेष विवरण और प्रवेश पत्र डाउनलोड करने के लिए आधिकारिक SSC वेबसाइट पर जा सकते हैं।",
+    "steps": [
+      "Open the official website of the Staff Selection Commission at ssc.gov.in.",
+      "Look for the SSC GD PET/PST admit card link on the homepage.",
+      "Log in using your registration number and date of birth.",
+      "Check your details, including name, roll number, test date, reporting time, and centre.",
+      "Download the admit card and take a printed copy for the exam."
+    ],
+    "details": [
+      "Candidates who qualify in the Computer Based Test (CBT) will move on to the Physical Tests. The PET consists mainly of running events, tailored for male and female candidates, with specific requirements for those from the Ladakh region. After completing the physical tests, candidates will undergo document verification and a medical examination.",
+      "It is important for candidates to carry their admit card and a valid photo ID to the testing centre. Those claiming relaxation in physical standards must provide the necessary certificates. Failing the physical standard test does not allow for an appeal, but candidates can appeal regarding the height or chest measurement on the same day. Prepare thoroughly as this is a crucial stage in the selection process."
+    ],
+    "faq": [
+      {
+        "q": "What is the SSC GD physical exam date 2026?",
+        "a": "The SSC GD PET/PST will run from 26 November 2026 to the second week of December 2026."
+      },
+      {
+        "q": "How many candidates are shortlisted for SSC GD PET/PST 2026?",
+        "a": "A total of 1,97,408 candidates have been shortlisted for the physical examination."
+      },
+      {
+        "q": "What is the running time for SSC GD PET 2026?",
+        "a": "Male candidates must run 5 km in 24 minutes, while female candidates must run 1.6 km in 8 minutes 30 seconds."
+      },
+      {
+        "q": "What documents do I need to bring for the SSC GD physical test?",
+        "a": "You need to bring a printed admit card, a valid photo ID, and any prescribed certificates if claiming relaxation."
+      }
+    ],
+    "hi": {
+      "title": "SSC GD शारीरिक परीक्षा तिथि 2026 - PET/PST शेड्यूल चेक करें ssc.gov.in",
+      "organization": "स्टाफ सेलेक्शन कमीशन",
+      "exam_name": "SSC GD कांस्टेबल परीक्षा 2026",
+      "summary": "स्टाफ सेलेक्शन कमीशन ने SSC GD कांस्टेबल परीक्षा 2026 के लिए शारीरिक दक्षता परीक्षण (PET) और शारीरिक मानक परीक्षण (PST) तिथियों की घोषणा की है। ये परीक्षण 26 नवंबर 2026 से लेकर दिसंबर 2026 के दूसरे सप्ताह तक होंगे। उम्मीदवार विशेष विवरण देख सकते हैं और आधिकारिक SSC वेबसाइट से एडमिट कार्ड डाउनलोड कर सकते हैं।",
+      "steps": [
+        "स्टाफ सेलेक्शन कमीशन की आधिकारिक वेबसाइट ssc.gov.in खोलें।",
+        "होमपेज पर SSC GD PET/PST एडमिट कार्ड लिंक देखें।",
+        "अपनी रजिस्ट्रेशन संख्या और जन्म तिथि के साथ लॉग इन करें।",
+        "अपने विवरण चेक करें, जिसमें नाम, रोल नंबर, परीक्षा तिथि, रिपोर्टिंग समय और केंद्र शामिल हैं।",
+        "एडमिट कार्ड डाउनलोड करें और परीक्षा के लिए उसका एक प्रिंटेड कॉपी लें।"
+      ],
+      "details": [
+        "जो उम्मीदवार कंप्यूटर आधारित परीक्षण (CBT) में सफल होते हैं, वे शारीरिक परीक्षणों की ओर बढ़ेंगे। PET मुख्यतः दौड़ परीक्षणों का होता है, जो पुरुष और महिला उम्मीदवारों के लिए तैयार किया गया है, और लद्दाख क्षेत्र के लोगों के लिए विशेष आवश्यकताएं हैं। शारीरिक परीक्षणों के बाद, उम्मीदवारों का दस्तावेज़ सत्यापन और चिकित्सा परीक्षा होगी।",
+        "उम्मीदवारों के लिए आवश्यक है कि वे अपने एडमिट कार्ड और एक वैध फोटो ID परीक्षण केंद्र पर ले जाएं। जो शारीरिक मानकों में छूट का दावा कर रहे हैं, उन्हें आवश्यक प्रमाण पत्र प्रदान करना होगा। शारीरिक मानक परीक्षण में असफल होने पर अपील करने की अनुमति नहीं है, लेकिन उम्मीदवार उसी दिन ऊंचाई या छाती माप पर अपील कर सकते हैं। यह चयन प्रक्रिया के लिए एक महत्वपूर्ण चरण है, इसलिए अच्छी तैयारी करें।"
+      ],
+      "faq": [
+        {
+          "q": "SSC GD शारीरिक परीक्षा तिथि 2026 क्या है?",
+          "a": "SSC GD PET/PST 26 नवंबर 2026 से लेकर दिसंबर 2026 के दूसरे सप्ताह तक चलेगा।"
+        },
+        {
+          "q": "SSC GD PET/PST 2026 के लिए कितने उम्मीदवार शॉर्टलिस्ट किए गए हैं?",
+          "a": "कुल 1,97,408 उम्मीदवारों को शारीरिक परीक्षा के लिए शॉर्टलिस्ट किया गया है।"
+        },
+        {
+          "q": "SSC GD PET 2026 के लिए दौड़ने का समय क्या है?",
+          "a": "पुरुष उम्मीदवारों को 24 मिनट में 5 किमी दौड़ना होगा, जबकि महिला उम्मीदवारों को 8 मिनट 30 सेकंड में 1.6 किमी दौड़ना होगा।"
+        },
+        {
+          "q": "SSC GD शारीरिक परीक्षण के लिए मुझे कौन से दस्तावेज़ लाने होंगे?",
+          "a": "आपको एक प्रिंटेड एडमिट कार्ड, एक वैध फोटो ID और अगर छूट का दावा कर रहे हों तो किसी भी निर्धारित प्रमाण पत्र लाने होंगे।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "asrb-interview-call-letter-2025-download-combined-ars-sms-sto-personal",
     "type": "admit-card",
     "title": "ASRB Interview Call Letter 2025 - Download Combined ARS, SMS & STO Personal Interview Hall Ticket",
-    "organization": "ASRB Interview",
-    "org_short": "ASRB Interview",
+    "organization": "Agricultural Scientists Recruitment Board",
+    "org_short": "ASRB",
     "date": "2026-11-11",
-    "link": "https://asrb.gov.in",
-    "summary": "The Agricultural Scientists Recruitment Board (ASRB) has made the personal interview call letters for the Combined ARS, SMS (T-6) and STO (T-6) Examination-2025 available to download. Eligible candidates can use the direct link below, and the interview schedule is published in a separate official PD Check the official website for the direct link and full details.",
-    "official_link": "https://asrb.gov.in",
+    "link": "https://asrb.gov.in/UserDocs/__/__6f63aa5b-f684-4612-a160-8c65b59a1bba_Interview%20Schedule%20of%20Combined%20ARS%20SMS%20STO%20Exam%202025.pdf",
+    "summary": "The ASRB has released the call letters for the personal interviews of the Combined ARS, SMS and STO Examination-2025. Candidates can access these call letters online through the official ASRB website. It is important for candidates to check their names and examination details on the call letter. For more information, refer to the interview schedule PDF provided by the board.",
+    "official_link": "https://asrb.gov.in/UserDocs/__/__6f63aa5b-f684-4612-a160-8c65b59a1bba_Interview%20Schedule%20of%20Combined%20ARS%20SMS%20STO%20Exam%202025.pdf",
     "official_website": "https://asrb.gov.in/",
     "source": "https://www.freejobalert.com/articles/asrb-ars-sms-and-sto-interview-call-letter-2025-3080373",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Combined ARS, SMS (T-6) & STO (T-6) Examination-2025",
+    "summary_hi": "ASRB ने संयुक्त ARS, SMS और STO परीक्षा-2025 के व्यक्तिगत साक्षात्कार के लिए कॉल लेटर जारी किए हैं। उम्मीदवार इन कॉल लेटर को आधिकारिक ASRB वेबसाइट के माध्यम से ऑनलाइन एक्सेस कर सकते हैं। उम्मीदवारों के लिए कॉल लेटर पर अपने नाम और परीक्षा विवरण को चेक करना महत्वपूर्ण है। अधिक जानकारी के लिए, बोर्ड द्वारा प्रदान की गई साक्षात्कार अनुसूची पीडीएफ पर देखें।",
+    "steps": [
+      "Open the ASRB personal interview call letter page.",
+      "Enter your login details such as registration number and date of birth.",
+      "Submit the details to access your call letter.",
+      "Download the call letter and take a printout for the interview."
+    ],
+    "details": [
+      "After the personal interview, candidates must check the ASRB notice and call letter for the next steps in the selection process. The final results and merit list will be declared by the board later. It is essential to follow the instructions provided in the call letter and the interview schedule PDF, as they contain specific guidelines relevant to individual candidates.",
+      "Candidates are advised to carry their printed call letter along with any required documents and photo ID as specified in the instructions. If there are any discrepancies or issues with the call letter, candidates should contact ASRB through its official website immediately. For those who experience trouble downloading the call letter, verifying the login details and trying again after some time is recommended."
+    ],
+    "faq": [
+      {
+        "q": "Where can I download the ASRB interview call letter 2025?",
+        "a": "You can download it from the ASRB personal interview call letter page."
+      },
+      {
+        "q": "Which examination does this call letter belong to?",
+        "a": "It is for the personal interview of the Combined ARS, SMS (T-6) and STO (T-6) Examination-2025."
+      },
+      {
+        "q": "Where can I find the ASRB interview schedule 2025?",
+        "a": "The schedule is available in the official Interview Schedule PDF."
+      },
+      {
+        "q": "What documents are required for the ASRB interview?",
+        "a": "The required documents are listed in the call letter and official notice."
+      }
+    ],
+    "hi": {
+      "title": "ASRB इंटरव्यू कॉल लेटर 2025 - डाउनलोड करें संयुक्त ARS, SMS और STO व्यक्तिगत इंटरव्यू हॉल टिकट",
+      "organization": "कृषि वैज्ञानिक भर्ती बोर्ड",
+      "exam_name": "संयुक्त ARS, SMS (T-6) और STO (T-6) परीक्षा-2025",
+      "summary": "ASRB ने संयुक्त ARS, SMS और STO परीक्षा-2025 के व्यक्तिगत इंटरव्यू के लिए कॉल लेटर जारी कर दिए हैं। उम्मीदवार इन कॉल लेटर्स को आधिकारिक ASRB वेबसाइट के माध्यम से ऑनलाइन देख सकते हैं। उम्मीदवारों के लिए यह महत्वपूर्ण है कि वे अपने नाम और परीक्षा की जानकारी कॉल लेटर पर चेक करें। अधिक जानकारी के लिए, बोर्ड द्वारा प्रदान किए गए इंटरव्यू शेड्यूल PDF को देखें।",
+      "steps": [
+        "ASRB व्यक्तिगत इंटरव्यू कॉल लेटर पृष्ठ खोलें।",
+        "अपनी लॉगिन जानकारी जैसे पंजीकरण संख्या और जन्मतिथि डालें।",
+        "अपने कॉल लेटर तक पहुंचने के लिए विवरण प्रस्तुत करें।",
+        "कॉल लेटर डाउनलोड करें और इंटरव्यू के लिए प्रिंट आउट लें।"
+      ],
+      "details": [
+        "व्यक्तिगत इंटरव्यू के बाद, उम्मीदवारों को चयन प्रक्रिया के अगले चरणों के लिए ASRB नोटिस और कॉल लेटर चेक करना चाहिए। अंतिम परिणाम और मेरिट लिस्ट बाद में बोर्ड द्वारा घोषित की जाएगी। कॉल लेटर और इंटरव्यू शेड्यूल PDF में दिए गए निर्देशों का पालन करना अनिवार्य है, क्योंकि इनमें व्यक्तिगत उम्मीदवारों से संबंधित विशिष्ट दिशा-निर्देश होते हैं।",
+        "उम्मीदवारों को चाहिए कि वे अपने प्रिंटेड कॉल लेटर के साथ किसी भी आवश्यक दस्तावेज़ और फोटो आईडी लेकर आएं, जैसा कि निर्देशों में बताया गया है। यदि कॉल लेटर में कोई विसंगति या समस्या है, तो उम्मीदवारों को तुरंत आधिकारिक वेबसाइट के माध्यम से ASRB से संपर्क करना चाहिए। यदि किसी को कॉल लेटर डाउनलोड करने में परेशानी होती है, तो लॉगिन विवरण की पुष्टि करना और कुछ समय बाद फिर से कोशिश करना सलाह दी जाती है।"
+      ],
+      "faq": [
+        {
+          "q": "मैं ASRB इंटरव्यू कॉल लेटर 2025 कहाँ से डाउनलोड कर सकता हूँ?",
+          "a": "आप इसे ASRB व्यक्तिगत इंटरव्यू कॉल लेटर पृष्ठ से डाउनलोड कर सकते हैं।"
+        },
+        {
+          "q": "यह कॉल लेटर किस परीक्षा से संबंधित है?",
+          "a": "यह संयुक्त ARS, SMS (T-6) और STO (T-6) परीक्षा-2025 के व्यक्तिगत इंटरव्यू के लिए है।"
+        },
+        {
+          "q": "मैं ASRB इंटरव्यू शेड्यूल 2025 कहाँ पा सकता हूँ?",
+          "a": "यह शेड्यूल आधिकारिक इंटरव्यू शेड्यूल PDF में उपलब्ध है।"
+        },
+        {
+          "q": "ASRB इंटरव्यू के लिए कौन से दस्तावेज़ आवश्यक हैं?",
+          "a": "आवश्यक दस्तावेज़ कॉल लेटर और आधिकारिक नोटिस में सूचीबद्ध हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "mpsc-group-c-prelims-revised-exam-date-2026-download-pdf",
     "type": "exam-date",
     "title": "MPSC Group C Prelims Revised Exam Date 2026 - Download PDF",
-    "organization": "MPSC Group C Prelims Revised",
-    "org_short": "MPSC Group",
+    "organization": "Maharashtra Public Service Commission",
+    "org_short": "MPSC",
     "date": "2026-11-11",
-    "link": "https://mpsconline.gov.in/",
-    "summary": "The MPSC Group C Prelims Revised Exam Date 2026 has been announced by the Maharashtra Public Service Commission (MPSC). As per the revised schedule, the Maharashtra Group C Services Combined Preliminary Examination 2026 will now be conducted on 24 January 2027 (Sunday), instead of 3 January 2027. Ca Check the official website for the direct link and full details.",
-    "official_link": "https://mpsconline.gov.in/",
-    "official_website": "https://mpsconline.gov.in/",
+    "link": "https://mpsc.gov.in/announcement_and_circular/4",
+    "summary": "The Maharashtra Public Service Commission has announced the revised exam date for the Group C Combined Preliminary Examination 2026. The new exam date is set for 24 January 2027, following the previous schedule of 3 January 2027. Candidates are advised to regularly check the official MPSC website for updates regarding the admit card and examination center. The announcement was made on 6 November 2026.",
+    "official_link": "https://mpsc.gov.in/announcement_and_circular/4",
+    "official_website": "https://mpsc.gov.in/",
     "source": "https://www.freejobalert.com/articles/mpsc-group-c-prelims-exam-date-2026-3059252",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Maharashtra Group C Services Combined Preliminary Examination 2026",
+    "event_date": "2026-11-06",
+    "summary_hi": "महाराष्ट्र लोक सेवा आयोग ने समूह सी संयुक्त प्रारंभिक परीक्षा 2026 के लिए संशोधित परीक्षा की तिथि की घोषणा की है। नई परीक्षा की तिथि 24 जनवरी 2027 निर्धारित की गई है, जो पहले 3 जनवरी 2027 के लिए निर्धारित थी। उम्मीदवारों को सलाह दी जाती है कि वे प्रवेश पत्र और परीक्षा केंद्र के बारे में अपडेट के लिए नियमित रूप से आधिकारिक एमपीएससी वेबसाइट की जांच करें। यह घोषणा 6 नवंबर 2026 को की गई थी।",
+    "steps": [
+      "Visit the official website at mpsc.gov.in.",
+      "Open the Advertisements / Corrigendum or Announcements section.",
+      "Find the notice related to Maharashtra Group C Services Combined Preliminary Examination 2026 (Advertisement No. 017/2026).",
+      "Open the revised examination date notification dated 6 November 2026.",
+      "Check the updated preliminary examination date.",
+      "Download the notice PDF for future reference."
+    ],
+    "details": [
+      "After the revised exam date, candidates are advised to prepare thoroughly for the examination, which is set to take place offline in OMR-based format. It is imperative for candidates to carry necessary documents, including a valid ID proof and the admit card once it is released.",
+      "The admit card release date will be announced later, and all candidates should keep an eye on the official website for further details. Following the preliminary examination, the selection process will continue with subsequent stages based on cut-offs, which will be determined after exam results are declared."
+    ],
+    "faq": [
+      {
+        "q": "What is the revised MPSC Group C Prelims Exam Date 2026?",
+        "a": "The MPSC Group C Combined Preliminary Examination 2026 will be held on 24 January 2027."
+      },
+      {
+        "q": "What was the previous MPSC Group C Prelims Exam Date?",
+        "a": "The examination was previously scheduled for 3 January 2027."
+      },
+      {
+        "q": "When was the MPSC Group C revised exam date announced?",
+        "a": "The Maharashtra Public Service Commission issued the latest revised examination schedule on 6 November 2026."
+      },
+      {
+        "q": "Who conducts the MPSC Group C Examination?",
+        "a": "The examination is conducted by the Maharashtra Public Service Commission (MPSC)."
+      }
+    ],
+    "hi": {
+      "title": "MPSC ग्रुप C प्रीलिम्स का संशोधित परीक्षा तिथि 2026 - PDF डाउनलोड करें",
+      "organization": "महाराष्ट्र लोक सेवा आयोग",
+      "exam_name": "महाराष्ट्र ग्रुप C सेवाएँ संयुक्त प्रीलिमिनरी परीक्षा 2026",
+      "summary": "महाराष्ट्र लोक सेवा आयोग ने ग्रुप C संयुक्त प्रीलिमिनरी परीक्षा 2026 की संशोधित परीक्षा तिथि की घोषणा की है। नई परीक्षा तिथि 24 जनवरी 2027 निर्धारित की गई है, जो पहले की अनुसूची 3 जनवरी 2027 के बाद है। उम्मीदवारों को सलाह दी जाती है कि वे प्रवेश पत्र और परीक्षा केंद्र से संबंधित अपडेट के लिए नियमित रूप से आधिकारिक MPSC वेबसाइट की जांच करें। यह घोषणा 6 नवंबर 2026 को की गई थी।",
+      "steps": [
+        "आधिकारिक वेबसाइट पर जाएं mpsc.gov.in।",
+        "विज्ञापन / सुधार या घोषणाएँ अनुभाग खोलें।",
+        "महाराष्ट्र ग्रुप C सेवाएँ संयुक्त प्रीलिमिनरी परीक्षा 2026 से संबंधित नोटिस खोजें (विज्ञापन संख्या 017/2026)।",
+        "6 नवंबर 2026 की तिथि वाला संशोधित परीक्षा तिथि नोटिफिकेशन खोलें।",
+        "संशोधित प्रीलिमिनरी परीक्षा तिथि की जांच करें।",
+        "भविष्य में संदर्भ के लिए नोटिस PDF डाउनलोड करें।"
+      ],
+      "details": [
+        "संशोधित परीक्षा तिथि के बाद, उम्मीदवारों को परीक्षा के लिए पूरी तरह से तैयारी करने की सलाह दी गई है, जो OMR आधारित फॉर्मेट में ऑफलाइन आयोजित की जाएगी। उम्मीदवारों के लिए आवश्यक दस्तावेज़ लाना अनिवार्य है, जिसमें एक वैध आईडी प्रूफ और प्रवेश पत्र शामिल है जब यह जारी किया जाएगा।",
+        "प्रवेश पत्र जारी करने की तिथि बाद में घोषित की जाएगी, और सभी उम्मीदवारों को आगे की जानकारी के लिए आधिकारिक वेबसाइट पर ध्यान देना चाहिए। प्रारंभिक परीक्षा के बाद, चयन प्रक्रिया कट-ऑफ के आधार पर आगे के चरणों के साथ जारी रहेगी, जो परीक्षा परिणामों की घोषणा के बाद निर्धारित की जाएगी।"
+      ],
+      "faq": [
+        {
+          "q": "MPSC ग्रुप C प्रीलिम्स परीक्षा की संशोधित तिथि 2026 क्या है?",
+          "a": "MPSC ग्रुप C संयुक्त प्रीलिमिनरी परीक्षा 2026 24 जनवरी 2027 को होगी।"
+        },
+        {
+          "q": "पहली MPSC ग्रुप C प्रीलिम्स परीक्षा की तिथि क्या थी?",
+          "a": "परीक्षा पहले 3 जनवरी 2027 को निर्धारित थी।"
+        },
+        {
+          "q": "MPSC ग्रुप C की संशोधित परीक्षा तिथि कब घोषित की गई?",
+          "a": "महाराष्ट्र लोक सेवा आयोग ने 6 नवंबर 2026 को नवीनतम संशोधित परीक्षा कार्यक्रम जारी किया।"
+        },
+        {
+          "q": "MPSC ग्रुप C परीक्षा का आयोजन कौन करता है?",
+          "a": "परीक्षा का आयोजन महाराष्ट्र लोक सेवा आयोग (MPSC) द्वारा किया जाता है।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "up-tgt-exam-date-2026-check-upessc-assistant-teacher-written-exam-sche",
     "type": "exam-date",
     "title": "UP TGT Exam Date 2026 - Check UPESSC Assistant Teacher Written Exam Schedule PDF",
-    "organization": "UP TGT",
-    "org_short": "UP TGT",
+    "organization": "Uttar Pradesh Education Services Selection Commission",
+    "org_short": "UPESSC",
     "date": "2026-11-11",
-    "link": "https://www.upessc.up.gov.in/",
-    "summary": "The UP TGT exam date 2026 is 23 and 24 December 2026. The Uttar Pradesh Education Services Selection Commission (UPESSC), Prayagraj, will hold the written examination for 17,735 Assistant Teacher (Trained Graduate Teacher, TGT) posts in aided secondary schools of Uttar Pradesh under Advertisement No Check the official website for the direct link and full details.",
-    "official_link": "https://www.upessc.up.gov.in/",
+    "link": "https://upessc.up.gov.in/Notice/bc7b-da7d-4adb-b354-d265.pdf",
+    "summary": "UPESSC has announced the written examination dates for the UP TGT exam scheduled on 23 and 24 December 2026. The official notification was released on 23 October 2026, detailing the exam structure and application timelines. Candidates can check the full exam schedule in the provided PDF on the official UPESSC website.",
+    "official_link": "https://upessc.up.gov.in/Notice/bc7b-da7d-4adb-b354-d265.pdf",
     "official_website": "https://upessc.up.gov.in/",
     "source": "https://www.freejobalert.com/articles/up-tgt-exam-date-2026-3080312",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Assistant Teacher (Trained Graduate Teacher, TGT)",
+    "event_date": "2026-12-23",
+    "summary_hi": "UPESSC ने UP TGT परीक्षा के लिए 23 और 24 दिसंबर 2026 को लिखित परीक्षा की तिथियों की घोषणा की है। आधिकारिक अधिसूचना 23 अक्टूबर 2026 को जारी की गई थी, जिसमें परीक्षा संरचना और आवेदन की समय सीमा का विवरण दिया गया है। उम्मीदवार आधिकारिक UPESSC वेबसाइट पर प्रदान किए गए पीडीएफ में पूरी परीक्षा कार्यक्रम की जांच कर सकते हैं।",
+    "steps": [
+      "Visit the official UPESSC website at upessc.up.gov.in.",
+      "Navigate to the 'Notices' section.",
+      "Look for the link titled 'Check Exam Schedule PDF'.",
+      "Download the PDF to see the complete exam schedule.",
+      "Keep your registration number and date of birth ready, as they may be needed for further processes."
+    ],
+    "details": [
+      "After the UP TGT Exam Date announcement, both the exam city information and admit card release dates will be shared on the official website. Following the examination days, a provisional answer key will be available, along with an objection window for candidates.",
+      "Results and the merit list will be declared after the exams. Candidates should carry necessary documents for verification once the results are announced. The exam structure is objective, and cut-offs will be determined based on candidate performance."
+    ],
+    "faq": [
+      {
+        "q": "What is the UP TGT exam date 2026?",
+        "a": "The UP TGT written exam will be held on 23 and 24 December 2026."
+      },
+      {
+        "q": "Who conducts the UP TGT exam?",
+        "a": "The exam is conducted by the Uttar Pradesh Education Services Selection Commission (UPESSC), Prayagraj."
+      },
+      {
+        "q": "What is the last date to apply for UP TGT 2026?",
+        "a": "The last date to apply and deposit the fee is 23 November 2026."
+      },
+      {
+        "q": "How many vacancies are there in UP TGT 2026?",
+        "a": "There are 17,735 vacancies available for the UP TGT exam."
+      }
+    ],
+    "hi": {
+      "title": "UP TGT परीक्षा तिथी 2026 - UPESSC सहायक शिक्षक लिखित परीक्षा कार्यक्रम PDF देखें",
+      "organization": "उत्तर प्रदेश शिक्षा सेवा चयन आयोग",
+      "exam_name": "सहायक शिक्षक (प्रशिक्षित स्नातक शिक्षक, TGT)",
+      "summary": "UPESSC ने UP TGT परीक्षा के लिए लिखित परीक्षा की तिथियों की घोषणा की है, जो 23 और 24 दिसंबर 2026 को निर्धारित है। आधिकारिक अधिसूचना 23 अक्टूबर 2026 को जारी की गई थी, जिसमें परीक्षा का ढांचा और आवेदन समयसीमाएं दी गई हैं। उम्मीदवार आधिकारिक UPESSC वेबसाइट पर दिए गए PDF में पूरा परीक्षा कार्यक्रम देख सकते हैं।",
+      "steps": [
+        "आधिकारिक UPESSC वेबसाइट पर जाएं: upessc.up.gov.in।",
+        "'सूचनाएँ' सेक्शन में जाएं।",
+        "'परीक्षा कार्यक्रम PDF देखें' शीर्षक वाला लिंक देखें।",
+        "पूरा परीक्षा कार्यक्रम देखने के लिए PDF डाउनलोड करें।",
+        "अपना पंजीकरण संख्या और जन्म तिथि तैयार रखें, क्योंकि यह आगे की प्रक्रियाओं के लिए आवश्यक हो सकती हैं।"
+      ],
+      "details": [
+        "UP TGT परीक्षा तिथि की घोषणा के बाद, परीक्षा शहर की जानकारी और एडमिट कार्ड जारी करने की तिथियाँ आधिकारिक वेबसाइट पर साझा की जाएँगी। परीक्षा दिन के बाद, एक अस्थायी उत्तर कुंजी उपलब्ध होगी, साथ ही उम्मीदवारों के लिए आपत्ति खिड़की भी होगी।",
+        "परिणाम और मेरिट सूची परीक्षाओं के बाद घोषित की जाएगी। उम्मीदवारों को परिणामों की घोषणा के बाद प्रमाणन के लिए आवश्यक दस्तावेज़ साथ लाने चाहिए। परीक्षा का ढांचा वस्तुनिष्ठ है, और कट-ऑफ उम्मीदवारों के प्रदर्शन के आधार पर निर्धारित किया जाएगा।"
+      ],
+      "faq": [
+        {
+          "q": "UP TGT परीक्षा तिथि 2026 क्या है?",
+          "a": "UP TGT लिखित परीक्षा 23 और 24 दिसंबर 2026 को होगी।"
+        },
+        {
+          "q": "UP TGT परीक्षा कौन आयोजित करता है?",
+          "a": "यह परीक्षा उत्तर प्रदेश शिक्षा सेवा चयन आयोग (UPESSC), प्रयागराज द्वारा आयोजित की जाती है।"
+        },
+        {
+          "q": "UP TGT 2026 के लिए आवेदन करने की अंतिम तिथि क्या है?",
+          "a": "आवेदन करने और शुल्क जमा करने की अंतिम तिथि 23 नवंबर 2026 है।"
+        },
+        {
+          "q": "UP TGT 2026 में कितनी रिक्तियां हैं?",
+          "a": "UP TGT परीक्षा के लिए 17,735 रिक्तियां उपलब्ध हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "rrc-southern-railway-cultural-quota-exam-date-2026-out-check-cbt-sched",
     "type": "exam-date",
     "title": "RRC Southern Railway Cultural Quota Exam Date 2026 Out - Check CBT Schedule PDF",
-    "organization": "RRC Southern Railway Cultural Quota",
-    "org_short": "RRC Southern",
+    "organization": "Railway Recruitment Cell (RRC), Southern Railway",
+    "org_short": "RRC SR",
     "date": "2026-11-11",
-    "link": "https://rrcmas.in/",
-    "summary": "The RRC Southern Railway Cultural Quota Exam Date 2026 has been announced by the Railway Recruitment Cell (RRC), Southern Railway, Chennai. According to the official notice issued on 11 November 2026, the Written Test / Computer Based Test (CBT) for Cultural Quota Recruitment 2026-27 will be held on Check the official website for the direct link and full details.",
-    "official_link": "https://rrcmas.in/",
+    "link": "https://rrcmas.in/downloads/notice-to-cultural-2026-27.pdf",
+    "summary": "RRC Southern Railway has announced the exam date for the Cultural Quota Recruitment 2026-27. The exam will take place on 6 December 2026 in Chennai. The eligible and ineligible candidates' lists have also been released, and candidates should verify their eligibility status. More details can be checked on the official website.",
+    "official_link": "https://rrcmas.in/downloads/notice-to-cultural-2026-27.pdf",
     "official_website": "https://rrcmas.in/",
     "source": "https://www.freejobalert.com/articles/rrc-southern-railway-cultural-quota-exam-date-2026-3080318",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Cultural Quota Recruitment 2026-27",
+    "event_date": "2026-11-11",
+    "summary_hi": "आरआरसी साउदर्न रेलवे ने कल्चरल कोटा भर्ती 2026-27 के लिए परीक्षा की तारीख की घोषणा की है। यह परीक्षा 6 दिसंबर 2026 को चेन्नई में आयोजित होगी। पात्र और अपात्र उम्मीदवारों की सूचियाँ भी प्रकाशित की गई हैं, और उम्मीदवारों को अपनी पात्रता स्थिति की पुष्टि करनी चाहिए। अधिक जानकारी आधिकारिक वेबसाइट पर देखी जा सकती है।",
+    "steps": [
+      "Visit the official RRC Chennai website at rrcmas.in.",
+      "Open the Open Market Recruitment section.",
+      "Find Employment Notice No. RRC-03/Cultural/2026-27.",
+      "Click on the Cultural Quota 2026-27 examination notice.",
+      "Check the Written Test / CBT date and examination location.",
+      "Open the eligible or ineligible candidates list to check your status."
+    ],
+    "details": [
+      "Candidates who are eligible will appear for the Written Test / CBT scheduled on 6 December 2026, at Chennai. It is crucial for candidates to prepare thoroughly for both the Written Test and subsequent stages, including the Practical Demonstration and Document Verification, as specified in the employment notice.",
+      "Only those candidates who are listed as eligible will be allowed to participate in the examination. It's advisable for candidates to carry necessary documents for verification on the exam day. If there are any discrepancies in eligibility status, candidates should contact RRC Southern Railway for clarification before the exam date."
+    ],
+    "faq": [
+      {
+        "q": "What is the RRC Southern Railway Cultural Quota Exam Date 2026?",
+        "a": "The Written Test / CBT will be conducted on 6 December 2026."
+      },
+      {
+        "q": "When was the exam date announced?",
+        "a": "The exam date notice was issued on 11 November 2026."
+      },
+      {
+        "q": "Where will the exam take place?",
+        "a": "The examination will be conducted in Chennai only."
+      },
+      {
+        "q": "Who can appear for the Cultural Quota Written Test?",
+        "a": "Only candidates declared eligible by the Railway Recruitment Cell can appear for the examination."
+      }
+    ],
+    "hi": {
+      "title": "RRC Southern Railway सांस्कृतिक कोटा परीक्षा की तारीख 2026 जारी - CBT शेड्यूल PDF चेक करें",
+      "organization": "रेलवे भर्ती सेल (RRC), दक्षिण रेलवे",
+      "exam_name": "सांस्कृतिक कोटा भर्ती 2026-27",
+      "summary": "RRC दक्षिण रेलवे ने सांस्कृतिक कोटा भर्ती 2026-27 के लिए परीक्षा की तारीख घोषित कर दी है। परीक्षा 6 दिसंबर 2026 को चेन्नई में होगी। योग्य और अयोग्य उम्मीदवारों की सूची भी जारी की गई है, और उम्मीदवारों को अपनी पात्रता की स्थिति की जांच करनी चाहिए। अधिक जानकारी आधिकारिक वेबसाइट पर देखी जा सकती है।",
+      "steps": [
+        "आधिकारिक RRC चेन्नई वेबसाइट rrcmas.in पर जाएं।",
+        "ओपन मार्केट भर्ती सेक्शन खोलें।",
+        "रोजगार सूचना संख्या RRC-03/सांस्कृतिक/2026-27 खोजें।",
+        "सांस्कृतिक कोटा 2026-27 परीक्षा नोटिस पर क्लिक करें।",
+        "लिखित परीक्षा / CBT की तारीख और परीक्षा स्थल जांचें।",
+        "अपनी स्थिति जांचने के लिए योग्य या अयोग्य उम्मीदवारों की सूची खोलें।"
+      ],
+      "details": [
+        "जो उम्मीदवार योग्य हैं, वे 6 दिसंबर 2026 को चेन्नई में आयोजित होने वाली लिखित परीक्षा / CBT में उपस्थित होंगे। उम्मीदवारों के लिए लिखित परीक्षा और बाद के चरणों, जिसमें व्यावसायिक प्रदर्शन और दस्तावेज़ सत्यापन शामिल हैं, के लिए पूरी तैयारी करना बहुत जरूरी है, जैसा कि रोजगार सूचना में बताया गया है।",
+        "केवल वे उम्मीदवार जो योग्य के रूप में सूचीबद्ध हैं, परीक्षा में भाग ले सकते हैं। परीक्षा के दिन सत्यापन के लिए आवश्यक दस्तावेज ले जाना उचित है। यदि पात्रता स्थिति में कोई भिन्नता है, तो उम्मीदवारों को परीक्षा की तारीख से पहले स्पष्टीकरण के लिए RRC दक्षिण रेलवे से संपर्क करना चाहिए।"
+      ],
+      "faq": [
+        {
+          "q": "RRC दक्षिण रेलवे सांस्कृतिक कोटा परीक्षा की तारीख 2026 क्या है?",
+          "a": "लिखित परीक्षा / CBT 6 दिसंबर 2026 को आयोजित की जाएगी।"
+        },
+        {
+          "q": "परीक्षा की तारीख कब घोषित की गई थी?",
+          "a": "परीक्षा की तारीख की सूचना 11 नवंबर 2026 को जारी की गई थी।"
+        },
+        {
+          "q": "परीक्षा कहाँ होगी?",
+          "a": "परीक्षा केवल चेन्नई में आयोजित की जाएगी।"
+        },
+        {
+          "q": "सांस्कृतिक कोटा लिखित परीक्षा के लिए कौन उपस्थित हो सकता है?",
+          "a": "केवल रेलवे भर्ती सेल द्वारा योग्य घोषित किए गए उम्मीदवार परीक्षा में उपस्थित हो सकते हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "psssb-warder-and-matron-pet-pmt-schedule-2026-out-check-dates-venue-an",
     "type": "exam-date",
     "title": "PSSSB Warder and Matron PET/PMT Schedule 2026 Out - Check Dates, Venue and Candidate List",
-    "organization": "PSSSB Warder and Matron PET/PMT Schedule",
-    "org_short": "PSSSB Warder",
+    "organization": "Subordinate Services Selection Board, Punjab",
+    "org_short": "PSSSB",
     "date": "2026-11-11",
-    "link": "https://sssb.punjab.gov.in",
-    "summary": "The Subordinate Services Selection Board, Punjab (PSSSB) has issued a public notice dated 07.11.2026 for the PMT/PET of Warder and Matron posts under Advertisement No. 08 of 2026. According to quoting the notice, the tests run from 11 November 2026 to 16 November 2026 at Polo Ground, Stadium Road, P Check the official website for the direct link and full details.",
-    "official_link": "https://sssb.punjab.gov.in",
+    "link": "https://sssb.punjab.gov.in/wp-content/uploads/2026/11/Updated-List-of-Candidates-for-PMT-PET.pdf",
+    "summary": "A corrigendum and an updated candidate list for the PSSSB Warder and Matron PET/PMT was released on 10 November 2026. The event is scheduled to take place from 11 November 2026 to 16 November 2026. Candidates can check the updated list and schedule on the official PSSSB website.",
+    "official_link": "https://sssb.punjab.gov.in/wp-content/uploads/2026/11/Updated-List-of-Candidates-for-PMT-PET.pdf",
     "official_website": "https://sssb.punjab.gov.in/",
     "source": "https://www.freejobalert.com/articles/psssb-warder-and-matron-pmt-pet-schedule-2026-3080322",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Warder and Matron PET/PMT",
+    "event_date": "2026-11-10",
+    "summary_hi": "PSSSB वार्डर और मातरन PET/PMT के लिए एक सुधार और अद्यीकृत उम्मीदवार सूची 10 नवंबर 2026 को जारी की गई। यह कार्यक्रम 11 नवंबर 2026 से 16 नवंबर 2026 तक आयोजित किया जाएगा। उम्मीदवारों को अद्यतित सूची और कार्यक्रम आधिकारिक PSSSB वेबसाइट पर देख सकते हैं।",
+    "steps": [
+      "Visit the official PSSSB website at sssb.punjab.gov.in.",
+      "Navigate to the Circulars or Public Notices section.",
+      "Select the notice for the PET/PMT schedule of Warder and Matron (Advertisement No. 08 of 2026).",
+      "Open the List of Candidates for PMT/PET and the Updated List.",
+      "Search for your name or roll number and note your date.",
+      "Download and save the PDFs for reference."
+    ],
+    "details": [
+      "Candidates are advised to read the corrigendum carefully before relying on the original notice. It is crucial to check the updated candidate list to confirm your participation in the PET/PMT. Attendance at the venue is mandatory on your designated date, and documentation as specified in the corrigendum must be brought along.",
+      "Following the PET/PMT, candidates will go through document verification to proceed further in the selection process. It's essential to prepare adequately for the physical tests as the results will determine eligibility for the next stages of recruitment. Contact the Jail Department if you have queries regarding the schedule or details about the venue."
+    ],
+    "faq": [
+      {
+        "q": "When is the PSSSB Warder and Matron PMT/PET scheduled?",
+        "a": "The PMT/PET is scheduled from 11 November 2026 to 16 November 2026."
+      },
+      {
+        "q": "Where will the PSSSB Warder and Matron PMT/PET be held?",
+        "a": "It will be held at Polo Ground, Stadium Road, Patiala."
+      },
+      {
+        "q": "What is the corrigendum regarding the PSSSB Warder and Matron PET/PMT schedule?",
+        "a": "PSSSB has issued a corrigendum regarding the schedule and an updated candidate list. For specifics, refer to the official PDF."
+      },
+      {
+        "q": "How can I obtain the candidate list for PSSSB Warder Matron PMT/PET?",
+        "a": "You can download it from the official PSSSB website using the links provided in the Important Links section."
+      }
+    ],
+    "hi": {
+      "title": "PSSSB वार्डर और मैट्रन PET/PMT शेड्यूल 2026 जारी - तारीखें, स्थल और उम्मीदवारों की सूची चेक करें",
+      "organization": "सहायक सेवाएं चयन बोर्ड, पंजाब",
+      "exam_name": "वार्डर और मैट्रन PET/PMT",
+      "summary": "PSSSB वार्डर और मैट्रन PET/PMT के लिए एक सुधार और अपडेटेड उम्मीदवार सूची 10 नवंबर 2026 को जारी की गई। यह कार्यक्रम 11 नवंबर 2026 से 16 नवंबर 2026 तक आयोजित होगा। उम्मीदवार आधिकारिक PSSSB वेबसाइट पर अपडेटेड सूची और शेड्यूल चेक कर सकते हैं।",
+      "steps": [
+        "आधिकारिक PSSSB वेबसाइट पर जाएं: sssb.punjab.gov.in।",
+        "Circulars या Public Notices सेक्शन में जाएं।",
+        "वार्डर और मैट्रन के PET/PMT शेड्यूल के लिए नोटिस चुनें (विज्ञापन संख्या 08 of 2026)।",
+        "PMT/PET के लिए उम्मीदवारों की सूची और अपडेटेड सूची खोलें।",
+        "अपने नाम या रोल नंबर की खोज करें और अपनी तारीख नोट करें।",
+        "संदर्भ के लिए PDFs डाउनलोड और सहेजें।"
+      ],
+      "details": [
+        "उम्मीदवारों को सलाह दी जाती है कि वे मूल नोटिस पर निर्भर रहने से पहले सुधार को ध्यान से पढ़ें। PET/PMT में भागीदारी की पुष्टि के लिए अपडेटेड उम्मीदवार सूची की जांच करना महत्वपूर्ण है। आपके निर्धारित तारीख पर स्थल पर उपस्थिति अनिवार्य है, और सुधार में निर्दिष्ट दस्तावेज लाना जरूरी है।",
+        "PET/PMT के बाद, उम्मीदवारों को आगे के चयन प्रक्रिया के लिए दस्तावेज़ सत्यापन से गुजरना होगा। शारीरिक परीक्षणों के लिए उचित तैयारी करना आवश्यक है क्योंकि परिणाम अगले भर्ती चरणों में पात्रता निर्धारित करेंगे। यदि आपके पास शेड्यूल या स्थल के विवरण के बारे में कोई प्रश्न हैं, तो जेल विभाग से संपर्क करें।"
+      ],
+      "faq": [
+        {
+          "q": "PSSSB वार्डर और मैट्रन PMT/PET कब आयोजित है?",
+          "a": "PMT/PET 11 नवंबर 2026 से 16 नवंबर 2026 तक आयोजित है।"
+        },
+        {
+          "q": "PSSSB वार्डर और मैट्रन PMT/PET कहाँ आयोजित होगा?",
+          "a": "यह पोलो ग्राउंड, स्टेडियम रोड, पटियाला में आयोजित किया जाएगा।"
+        },
+        {
+          "q": "PSSSB वार्डर और मैट्रन PET/PMT शेड्यूल के बारे में सुधार क्या है?",
+          "a": "PSSSB ने शेड्यूल और अपडेटेड उम्मीदवार सूची के बारे में एक सुधार जारी किया है। विशेष जानकारी के लिए, आधिकारिक PDF देखें।"
+        },
+        {
+          "q": "मैं PSSSB वार्डर मैट्रन PMT/PET के लिए उम्मीदवार सूची कैसे प्राप्त कर सकता हूँ?",
+          "a": "आप महत्वपूर्ण लिंक सेक्शन में दी गई लिंक का उपयोग करके इसे आधिकारिक PSSSB वेबसाइट से डाउनलोड कर सकते हैं।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "delhi-high-court-spa-admit-card-2026-download-hall-ticket-at-delhihigh",
     "type": "admit-card",
     "title": "Delhi High Court SPA Admit Card 2026 - Download Hall Ticket at delhihighcourt.nic.in",
-    "organization": "Delhi High Court SPA",
-    "org_short": "Delhi High",
+    "organization": "High Court of Delhi",
+    "org_short": "DHC",
     "date": "2026-11-11",
-    "link": "https://cdn.digialm.com/EForms/configuredHtml/33131/102306/login.html",
-    "summary": "The Delhi High Court SPA Admit Card 2026 is scheduled for release on 11 November 2026 for the Stage-I English Typing Test under the Senior Personal Assistant (Open) Examination 2026. Candidates can access the admit card through the official login link provided by the High Court of Delhi at delhihigh Check the official website for the direct link and full details.",
-    "official_link": "https://cdn.digialm.com/EForms/configuredHtml/33131/102306/login.html",
-    "official_website": "https://cdn.digialm.com/",
+    "link": "https://delhihighcourt.nic.in/files/2026-11/recuritment/admit_card_spa_stage-1.pdf",
+    "summary": "The Delhi High Court has released the SPA Admit Card 2026 on 11 November 2026 for the Senior Personal Assistant (Open) Examination. Candidates can download their hall tickets for the Stage-I English Typing Test scheduled on 14 November 2026. It is essential for candidates to check their examination details, including the centre and reporting time, before the test. The admit card is available online.",
+    "official_link": "https://delhihighcourt.nic.in/files/2026-11/recuritment/admit_card_spa_stage-1.pdf",
+    "official_website": "https://delhihighcourt.nic.in/",
     "source": "https://www.freejobalert.com/articles/delhi-high-court-spa-admit-card-2026-3080270",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Senior Personal Assistant (Open) Examination 2026",
+    "event_date": "2026-11-11",
+    "summary_hi": "दिल्ली उच्च न्यायालय ने 11 नवंबर 2026 को वरिष्ठ व्यक्तिगत सहायक (ओपन) परीक्षा के लिए SPA प्रवेश पत्र 2026 जारी किया है। उम्मीदवार 14 नवंबर 2026 को निर्धारित स्टेज-I अंग्रेजी टाइपिंग टेस्ट के लिए अपने हॉल टिकट डाउनलोड कर सकते हैं। परीक्षा से पहले उम्मीदवारों के लिए परीक्षा के विवरण, जिसमें केन्द्र और रिपोर्टिंग समय शामिल हैं, की जांच करना आवश्यक है। प्रवेश पत्र ऑनलाइन उपलब्ध है।",
+    "steps": [
+      "Visit the official website at delhihighcourt.nic.in.",
+      "Open the Job Openings section.",
+      "Find the link for the Senior Personal Assistant (Open) Examination 2026 Stage-I Admit Card.",
+      "Click on the official candidate login link.",
+      "Enter the required login credentials.",
+      "Submit the details to access the admit card, download it, and take a printout for examination use."
+    ],
+    "details": [
+      "Candidates should ensure they verify all the examination information on their downloaded admit card, including their name, identification details, examination name, date, reporting time, and examination centre. It is also crucial to follow the important instructions listed on the admit card to avoid any complications on the exam day.",
+      "On the exam day, candidates must carry their admit card along with valid identification documents as specified by the examination authority. It’s advisable to reach the examination centre well before the reporting time to complete the verification process without any last-minute rush."
+    ],
+    "faq": [
+      {
+        "q": "When will the Delhi High Court SPA Admit Card 2026 be released?",
+        "a": "The official notice states that the Stage-I admit card download link has activated from 11 November 2026."
+      },
+      {
+        "q": "What is the Delhi High Court SPA Stage-I Exam Date 2026?",
+        "a": "The English Typing Test is scheduled for 14 November 2026."
+      },
+      {
+        "q": "Where can I download the Delhi High Court SPA Admit Card 2026?",
+        "a": "Candidates can download the admit card through the official candidate login portal linked on delhihighcourt.nic.in."
+      },
+      {
+        "q": "When was the SPA Exam City Intimation Slip released?",
+        "a": "The exam city intimation slip download link was activated on 6 November 2026."
+      }
+    ],
+    "hi": {
+      "title": "दिल्ली हाईकोर्ट SPA एडमिट कार्ड 2026 जारी - delhihighcourt.nic.in से डाउनलोड करें",
+      "organization": "दिल्ली हाईकोर्ट",
+      "exam_name": "सीनियर पर्सनल असिस्टेंट (ओपन) परीक्षा 2026",
+      "summary": "दिल्ली हाईकोर्ट ने 11 नवंबर 2026 को सीनियर पर्सनल असिस्टेंट (ओपन) परीक्षा के लिए SPA एडमिट कार्ड 2026 जारी किया है। उम्मीदवार 14 नवंबर 2026 को होने वाली स्टेज-I अंग्रेजी टाइपिंग टेस्ट के लिए अपने हॉल टिकट डाउनलोड कर सकते हैं। उम्मीदवारों के लिए परीक्षा से पहले अपने परीक्षा विवरण, जिसमें केन्द्र और रिपोर्टिंग समय शामिल है, को चेक करना आवश्यक है। एडमिट कार्ड ऑनलाइन उपलब्ध है।",
+      "steps": [
+        "आधिकारिक वेबसाइट पर जाएं delhihighcourt.nic.in।",
+        "जॉब ओपनिंग सेक्शन खोलें।",
+        "सीनियर पर्सनल असिस्टेंट (ओपन) परीक्षा 2026 स्टेज-I एडमिट कार्ड का लिंक खोजें।",
+        "औपचारिक उम्मीदवार लॉगिन लिंक पर क्लिक करें।",
+        "जरूरी लॉगिन विवरण डालें।",
+        "एडमिट कार्ड एक्सेस करने के लिए विवरण सबमिट करें, इसे डाउनलोड करें और परीक्षा के उपयोग के लिए प्रिंट आउट लें।"
+      ],
+      "details": [
+        "उम्मीदवारों को यह सुनिश्चित करना चाहिए कि वे अपने डाउनलोड किए गए एडमिट कार्ड पर सभी परीक्षा जानकारी, जिसमें उनका नाम, पहचान विवरण, परीक्षा का नाम, तारीख, रिपोर्टिंग समय, और परीक्षा केन्द्र शामिल हैं, को जांचें। परीक्षा के दिन किसी भी कठिनाई से बचने के लिए एडमिट कार्ड पर उल्लिखित महत्वपूर्ण निर्देशों का पालन करना भी बहुत महत्वपूर्ण है।",
+        "परीक्षा के दिन, उम्मीदवारों को अपने एडमिट कार्ड के साथ परीक्षा प्राधिकरण द्वारा निर्दिष्ट मान्य पहचान दस्तावेज ले जाना अनिवार्य है। रिपोर्टिंग समय से पहले परीक्षा केन्द्र पर पहुंचना सलाहकार होता है ताकि सत्यापन प्रक्रिया बिना किसी अंतिम क्षण की भागदौड़ के पूरी हो सके।"
+      ],
+      "faq": [
+        {
+          "q": "दिल्ली हाईकोर्ट SPA एडमिट कार्ड 2026 कब जारी होगा?",
+          "a": "आधिकारिक नोटिस के अनुसार, स्टेज-I एडमिट कार्ड डाउनलोड लिंक 11 नवंबर 2026 से सक्रिय हो गया है।"
+        },
+        {
+          "q": "दिल्ली हाईकोर्ट SPA स्टेज-I परीक्षा तिथि 2026 क्या है?",
+          "a": "अंग्रेजी टाइपिंग टेस्ट 14 नवंबर 2026 को निर्धारित है।"
+        },
+        {
+          "q": "मैं दिल्ली हाईकोर्ट SPA एडमिट कार्ड 2026 कहां से डाउनलोड कर सकता हूं?",
+          "a": "उम्मीदवार एडमिट कार्ड को delhihighcourt.nic.in पर लिंक किए गए औपचारिक उम्मीदवार लॉगिन पोर्टल के माध्यम से डाउनलोड कर सकते हैं।"
+        },
+        {
+          "q": "SPA परीक्षा शहर सूचना स्लिप कब जारी हुई?",
+          "a": "परीक्षा शहर सूचना स्लिप डाउनलोड लिंक 6 नवंबर 2026 को सक्रिय हुआ।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "punjab-national-bank-pnb-lbo-result-2026-out",
     "type": "result",
     "title": "Punjab National Bank PNB LBO Result 2026 – Out",
-    "organization": "Punjab National Bank PNB LBO",
-    "org_short": "Punjab National",
+    "organization": "Punjab National Bank",
+    "org_short": "PNB",
     "date": "2026-11-11",
     "link": "https://www.sarkariexam.com/punjab-national-bank-pnb-lbo-2026/",
-    "summary": "Punjab National Bank PNB LBO Result 2026 Author: Sarkari Exam Team Tag: Graduate Job Short Information : Punjab National Bank (PNB) has released the Result for the post of Local Bank Officer (LBO). This recruitment has been issued for 545 posts. The online application process for Punjab National Ban Check the official website for the direct link and full details.",
+    "summary": "Punjab National Bank (PNB) has released the Result for the post of Local Bank Officer (LBO). This recruitment has been issued for 545 posts. Candidates can check the official website for the direct link and full details.",
     "official_link": "https://ibpsreg.ibps.in/pnbjul26/oecla_aug26/login.php?appid=35f6fc5c222701ae165314c834a28fb9",
     "official_website": "https://ibpsreg.ibps.in/",
     "source": "https://www.sarkariexam.com/punjab-national-bank-pnb-lbo-2026/",
-    "enriched": "partial"
+    "enriched": "2026-11-12",
+    "exam_name": "Local Bank Officer (LBO)",
+    "summary_hi": "पंजाब नेशनल बैंक (PNB) ने स्थानीय बैंक अधिकारी (LBO) के पद के लिए परिणाम जारी किया है। यह भर्ती 545 पदों के लिए जारी की गई है। उम्मीदवार पूरी जानकारी और सीधे लिंक के लिए आधिकारिक वेबसाइट देख सकते हैं।",
+    "steps": [
+      "Visit the official website of Punjab National Bank.",
+      "Look for the 'Results' section on the homepage.",
+      "Click on the link for 'LBO Result 2026'.",
+      "Enter your credentials, such as registration number and date of birth.",
+      "Submit the details to view your result.",
+      "Download and print the result for future reference."
+    ],
+    "details": [
+      "After the results are announced, candidates who qualify will be informed about the next steps in the recruitment process. Selected candidates will need to provide required documents for verification. It's essential to keep all relevant academic and professional documents ready.",
+      "The cut-off marks for this examination will determine which candidates proceed to the next stage of recruitment. If you encounter any issues accessing the results, ensure that you have entered the correct registration number and date of birth, and check for any announcements on the official website regarding system maintenance."
+    ],
+    "faq": [
+      {
+        "q": "How can I check my LBO result?",
+        "a": "You can check your result by visiting the official PNB website and following the results link."
+      },
+      {
+        "q": "What should I do if I forget my registration number?",
+        "a": "You may need to contact PNB's support for assistance with retrieving your registration number."
+      },
+      {
+        "q": "Is there a physical copy of the result I need?",
+        "a": "It is advisable to download and print the result for your records, even though a physical copy isn't necessary initially."
+      },
+      {
+        "q": "What happens after the result is declared?",
+        "a": "Candidates who qualify will receive further instructions regarding document verification and the recruitment process."
+      }
+    ],
+    "hi": {
+      "title": "पंजाब नेशनल बैंक PNB LBO रिजल्ट 2026 – आउट",
+      "organization": "पंजाब नेशनल बैंक",
+      "exam_name": "लोकल बैंक ऑफिसर (LBO)",
+      "summary": "पंजाब नेशनल बैंक (PNB) ने लोकल बैंक ऑफिसर (LBO) पद के लिए रिजल्ट जारी कर दिया है। यह भर्ती 545 पदों के लिए की गई है। उम्मीदवार सीधे लिंक और पूरी जानकारी के लिए आधिकारिक वेबसाइट देख सकते हैं।",
+      "steps": [
+        "पंजाब नेशनल बैंक की आधिकारिक वेबसाइट पर जाएं।",
+        "मुख्य पृष्ठ पर 'रिजल्ट' सेक्शन देखें।",
+        "लिंक पर क्लिक करें 'LBO रिजल्ट 2026'।",
+        "अपनी जानकारी भरें, जैसे रजिस्ट्रेशन नंबर और जन्म तिथि।",
+        "रिजल्ट देखने के लिए विवरण सबमिट करें।",
+        "भविष्य में संदर्भ के लिए रिजल्ट डाउनलोड और प्रिंट करें।"
+      ],
+      "details": [
+        "रिजल्ट घोषित होने के बाद, योग्य उम्मीदवारों को भर्ती प्रक्रिया के अगले चरणों के बारे में सूचित किया जाएगा। चयनित उम्मीदवारों को सत्यापन के लिए आवश्यक दस्तावेज प्रस्तुत करने होंगे। सभी संबंधित शैक्षणिक और व्यावसायिक दस्तावेजों को तैयार रखना आवश्यक है।",
+        "इस परीक्षा के लिए कट-ऑफ मार्क्स यह तय करेंगे कि कौन से उम्मीदवार भर्ती के अगले चरण में आगे बढ़ेंगे। यदि आपको रिजल्ट देखने में कोई समस्या आती है, तो सुनिश्चित करें कि आपने सही रजिस्ट्रेशन नंबर और जन्म तिथि भरी है, और आधिकारिक वेबसाइट पर सिस्टम मेंटेनेंस के बारे में कोई घोषणाएं देख लें।"
+      ],
+      "faq": [
+        {
+          "q": "मैं अपना LBO रिजल्ट कैसे चेक कर सकता हूँ?",
+          "a": "आप अपने रिजल्ट को आधिकारिक PNB वेबसाइट पर जाकर और रिजल्ट लिंक का पालन करके चेक कर सकते हैं।"
+        },
+        {
+          "q": "अगर मुझे अपना रजिस्ट्रेशन नंबर भूल जाएगा तो क्या करूँ?",
+          "a": "आपको संभवतः अपने रजिस्ट्रेशन नंबर को पुनर्प्राप्त करने के लिए PNB के समर्थन से संपर्क करने की आवश्यकता होगी।"
+        },
+        {
+          "q": "क्या मुझे रिजल्ट की एक भौतिक प्रति चाहिए?",
+          "a": "यह सलाह दी जाती है कि आप अपने रिकॉर्ड के लिए रिजल्ट डाउनलोड और प्रिंट कर लें, भले ही प्रारंभ में भौतिक प्रति की आवश्यकता न हो।"
+        },
+        {
+          "q": "रिजल्ट घोषित होने के बाद क्या होता है?",
+          "a": "जो उम्मीदवार योग्य होंगे उन्हें दस्तावेजों के सत्यापन और भर्ती प्रक्रिया के बारे में आगे की निर्देश मिलेंगे।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "balangir-district-court-exam-date-2026-out-download-shortlisted-candid",
@@ -278,7 +1316,44 @@
     ],
     "official_link": "https://psc.wb.gov.in/call-letter.jsp",
     "official_website": "https://psc.wb.gov.in/",
-    "source": "https://www.freejobalert.com/articles/wbpsc-miscellaneous-personality-test-call-letter-2026-3080202"
+    "source": "https://www.freejobalert.com/articles/wbpsc-miscellaneous-personality-test-call-letter-2026-3080202",
+    "hi": {
+      "title": "WBPSC विविध व्यक्तित्व परीक्षा कॉल लेटर 2026 जारी - इंटरव्यू शेड्यूल डाउनलोड करें psc.wb.gov.in से",
+      "organization": "पश्चिम बंगाल लोक सेवा आयोग",
+      "exam_name": "विविध सेवाएं भर्ती परीक्षा, 2023",
+      "summary": "WBPSC ने विविध व्यक्तित्व परीक्षा, 2026 के लिए हॉल टिकट जारी किया है। यह उन उम्मीदवारों के लिए है जो विविध सेवाएं भर्ती परीक्षा, 2023 के तहत शॉर्टलिस्ट किए गए हैं। उम्मीदवार 18 नवंबर 2026 से आधिकारिक WBPSC वेबसाइट से अपने कॉल लेटर डाउनलोड कर सकते हैं।",
+      "steps": [
+        "आधिकारिक वेबसाइट पर जाएं psc.wb.gov.in।",
+        "उम्मीदवारों के कोने के सेक्शन में जाएं।",
+        "‘इंटरव्यू/व्यक्तित्व परीक्षा के लिए कॉल लेटर डाउनलोड करें’ का चयन करें।",
+        "आवश्यक क्षेत्र में अपना पहला नाम भरें।",
+        "अपना नामांकन संख्या भरें।",
+        "अपने ई- कॉल लेटर तक पहुंचने के लिए 'कॉल लेटर डाउनलोड करें' बटन पर क्लिक करें।"
+      ],
+      "details": [
+        "विविध व्यक्तित्व परीक्षा के फेज-1 के लिए चयनित उम्मीदवारों को अपने इंटरव्यू तिथियों से पहले ऑनलाइन दस्तावेज़ सत्यापन पूरा करना होगा। सभी आवश्यक दस्तावेज़ों को एक ही PDF में संयोजित करके निर्धारित ईमेल पते पर निर्दिष्ट समय सीमा के भीतर भेजना होगा। समय पर इन दस्तावेज़ों को प्रस्तुत नहीं करने से उम्मीदवार की उम्मीदवारी रद्द हो सकती है, इसलिए उम्मीदवारों को अपनी प्रस्तुतियों का अच्छी तरह प्रबंधन करना चाहिए।",
+        "इंटरव्यू प्रक्रिया 25 नवंबर 2026 से शुरू होगी और 31 दिसंबर 2026 तक समाप्त होने की उम्मीद है। उम्मीदवारों को अपने व्यक्तिगत इंटरव्यू शेड्यूल के लिए आधिकारिक WBPSC घोषणाओं की जांच करनी चाहिए और दस्तावेज़ों की प्रस्तुतियों के संबंध में सभी निर्देशों का पालन करना चाहिए। इंटरव्यू के दिन उम्मीदवारों के लिए अपने कॉल लेटर की एक प्रिंटेड कॉपी लेना आवश्यक है।"
+      ],
+      "faq": [
+        {
+          "q": "कॉल लेटर डाउनलोड के लिए कब उपलब्ध होगा?",
+          "a": "कॉल लेटर 18 नवंबर 2026 से डाउनलोड के लिए उपलब्ध होगा।"
+        },
+        {
+          "q": "दस्तावेज़ सत्यापन प्रक्रिया के लिए मुझे कौन से दस्तावेज़ प्रस्तुत करने की आवश्यकता है?",
+          "a": "उम्मीदवारों को अपने दस्तावेज़ों का ऑनलाइन सत्यापन करना होगा और उन्हें एक ही PDF प्रारूप में निर्धारित ईमेल पर समय सीमा के भीतर प्रस्तुत करना होगा।"
+        },
+        {
+          "q": "यदि मैं कॉल लेटर तक पहुंच नहीं पा रहा हूं तो क्या करूं?",
+          "a": "सुनिश्चित करें कि आप सही पहला नाम और नामांकन संख्या भर रहे हैं। यदि समस्या बनी रहती है, तो अपडेट या मार्गदर्शन के लिए आधिकारिक वेबसाइट की जांच करें।"
+        },
+        {
+          "q": "यदि मैं दस्तावेज़ को प्रस्तुत करने की समय सीमा चूक जाता हूं तो क्या होगा?",
+          "a": "जो उम्मीदवार समय पर आवश्यक दस्तावेज़ प्रस्तुत नहीं करते हैं, उनका इंटरव्यू नहीं होगा और उनकी उम्मीदवारी रद्द हो सकती है।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "rpsc-protection-officer-exam-city-details-2026",
@@ -324,7 +1399,44 @@
     ],
     "official_link": "https://recruitment.rajasthan.gov.in/knowlocationservlet",
     "official_website": "https://rpsc.rajasthan.gov.in/",
-    "source": "https://www.sarkariexam.com/rpsc-protection-officer-recruitment-2026-last-date/"
+    "source": "https://www.sarkariexam.com/rpsc-protection-officer-recruitment-2026-last-date/",
+    "hi": {
+      "title": "RPSC प्रोटेक्शन ऑफिसर परीक्षा शहर विवरण 2026",
+      "organization": "राजस्थान लोक सेवा आयोग",
+      "exam_name": "प्रोटेक्शन ऑफिसर",
+      "summary": "राजस्थान लोक सेवा आयोग (RPSC) ने प्रोटेक्शन ऑफिसर पद के लिए परीक्षा शहर विवरण जारी किया है। जो उम्मीदवार इस भर्ती के लिए आवेदन कर चुके हैं वे अपने परीक्षा शहर विवरण 8 नवंबर 2026 से डाउनलोड कर सकते हैं। परीक्षा 15 नवंबर 2026 को होगी। ये विवरण आधिकारिक RPSC वेबसाइट पर उपलब्ध हैं।",
+      "steps": [
+        "आधिकारिक RPSC वेबसाइट पर जाएं: https://rpsc.rajasthan.gov.in/",
+        "'महत्वपूर्ण लिंक' सेक्शन पर जाएं।",
+        "'परीक्षा शहर विवरण' लिंक पर क्लिक करें।",
+        "अपना पंजीकरण संख्या और जन्म तिथि/पासवर्ड के साथ कैप्चा कोड दर्ज करें।",
+        "'लॉगिन' बटन पर क्लिक करें।",
+        "सफल लॉगिन के बाद अपने परीक्षा शहर विवरण डाउनलोड करें।"
+      ],
+      "details": [
+        "परीक्षा शहर विवरण डाउनलोड करने के बाद, उम्मीदवारों को अपने आवंटित परीक्षा केंद्रों की जांच करने की सलाह दी जाती है। परीक्षा के दिन, जो 15 नवंबर 2026 को है, अपने निर्धारित केंद्र पर पहुंचना जरूरी है। परीक्षा शहर विवरण के साथ, उम्मीदवारों को वैध पहचान पत्र और RPSC द्वारा निर्दिष्ट अन्य दस्तावेज भी ले जाने चाहिए।",
+        "चयन प्रक्रिया में लिखित परीक्षा के बाद दस्तावेज़ सत्यापन और चिकित्सा परीक्षण शामिल हैं। अपने पंजीकरण विवरण को बनाए रखें, क्योंकि ये भविष्य के अपडेट, जिसमें एडमिट कार्ड डाउनलोड शामिल हैं, की जांच करने के लिए महत्वपूर्ण होंगे। यदि उम्मीदवारों को अपने परीक्षा शहर विवरण डाउनलोड करने में कोई समस्या होती है, तो उन्हें अपने ब्राउज़र का कैशे हटाना चाहिए या किसी अन्य ब्राउज़र का उपयोग करके साइट तक पहुंचने का प्रयास करना चाहिए।"
+      ],
+      "faq": [
+        {
+          "q": "क्या RPSC प्रोटेक्शन ऑफिसर परीक्षा शहर विवरण 2026 जारी किया गया है?",
+          "a": "हाँ, RPSC प्रोटेक्शन ऑफिसर परीक्षा शहर विवरण 2026 जारी कर दिया गया है।"
+        },
+        {
+          "q": "मैं RPSC प्रोटेक्शन ऑफिसर परीक्षा शहर विवरण कब डाउनलोड कर सकता हूँ?",
+          "a": "आप 8 नवंबर 2026 से परीक्षा शहर विवरण डाउनलोड कर सकते हैं।"
+        },
+        {
+          "q": "परीक्षा शहर विवरण डाउनलोड करने के लिए किन विवरणों की आवश्यकता है?",
+          "a": "आपको अपना पंजीकरण संख्या और जन्म तिथि/पासवर्ड के साथ कैप्चा की आवश्यकता होगी।"
+        },
+        {
+          "q": "मैं परीक्षा के लिए नवीनतम अपडेट कहाँ देख सकता हूँ?",
+          "a": "अद्यतन आधिकारिक RPSC वेबसाइट पर देखा जा सकता है: https://rpsc.rajasthan.gov.in/news।"
+        }
+      ],
+      "at": "2026-11-12"
+    }
   },
   {
     "id": "sbi-clerk-prelims-result-2026-check-result-date-mains-exam-schedule",

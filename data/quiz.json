@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-12",
+    "date": "2026-11-12",
+    "digest_id": "current-affairs-2026-11-12",
+    "title": "Current Affairs Quiz 12 November 2026",
+    "questions": [
+      {
+        "q": "What recent initiative did Prime Minister Modi emphasize through a Sanskrit quote?",
+        "options": [
+          "Cultural heritage",
+          "Selfless dedication",
+          "National security",
+          "Sanitation efforts"
+        ],
+        "answer": 1,
+        "why": "Prime Minister Modi shared a quote emphasizing selfless dedication towards the welfare of others."
+      },
+      {
+        "q": "Who presented the Clean Survey Awards in India?",
+        "options": [
+          "Prime Minister Modi",
+          "Sarbanda Sonowal",
+          "President of India",
+          "Defense Minister"
+        ],
+        "answer": 2,
+        "why": "The President of India awarded the Clean Survey Awards recognizing efforts towards sanitation and cleanliness."
+      },
+      {
+        "q": "What did Sarbanda Sonowal lay the foundation stone for?",
+        "options": [
+          "Port projects",
+          "Cultural events",
+          "Cleanliness initiatives",
+          "Artisan markets"
+        ],
+        "answer": 0,
+        "why": "Sarbanda Sonowal laid the foundation stone for projects at Vizag Port."
+      },
+      {
+        "q": "Which event recorded sales surpassing ₹73.49 lakh?",
+        "options": [
+          "Clean Survey Awards",
+          "Ins Trishul mission",
+          "Shilp Samagam Mela",
+          "Tribal Glory Fortnight"
+        ],
+        "answer": 2,
+        "why": "The Shilp Samagam Mela held at Delhi Haat recorded sales showcasing artisan products."
+      },
+      {
+        "q": "What was the 15th bilateral maritime exercise between India and Oman called?",
+        "options": [
+          "Naseem Al Bahr",
+          "IMNEX-26",
+          "Tribal Glory Fortnight",
+          "Operation Safaga"
+        ],
+        "answer": 0,
+        "why": "The Indian Navy and Oman Royal Navy held the exercise called 'Naseem Al Bahr'."
+      },
+      {
+        "q": "What significant naval exercise commenced in Vizag between India and Myanmar?",
+        "options": [
+          "Naseem Al Bahr",
+          "IMNEX-26",
+          "Tribal Glory Fortnight",
+          "Clean Survey"
+        ],
+        "answer": 1,
+        "why": "The 8th India-Myanmar naval exercise (IMNEX-26) commenced in Vizag."
+      },
+      {
+        "q": "What does the 2025-26 Cleanliness Survey Awards reflect?",
+        "options": [
+          "Economic development",
+          "Community welfare",
+          "International relations",
+          "Cultural heritage"
+        ],
+        "answer": 1,
+        "why": "The awards highlight the government's focus on improving community welfare through sanitation initiatives."
+      },
+      {
+        "q": "INS Trishul's mission was completed at which location?",
+        "options": [
+          "Vizag",
+          "Delhi",
+          "Safaga Port",
+          "Mumbai"
+        ],
+        "answer": 2,
+        "why": "INS Trishul successfully completed its mission at Safaga Port, Egypt."
+      },
+      {
+        "q": "What does the 2026 Tribal Glory Fortnight celebrate?",
+        "options": [
+          "Naval cooperation",
+          "Cultural heritage",
+          "Community empowerment",
+          "Economic policies"
+        ],
+        "answer": 2,
+        "why": "The Tribal Glory Fortnight aims to honor tribal heritage and empower communities."
+      },
+      {
+        "q": "What is a significant outcome of the Clean Survey Awards?",
+        "options": [
+          "Economic growth",
+          "Hygiene initiatives",
+          "Cultural promotion",
+          "Defense strategies"
+        ],
+        "answer": 1,
+        "why": "The awards recognize efforts towards sanitation and cleanliness, highlighting the importance of hygiene."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-11",
     "date": "2026-11-11",
     "digest_id": "current-affairs-2026-11-11",
