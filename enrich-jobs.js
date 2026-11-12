@@ -28,6 +28,7 @@ const MAX_CONTENT = Number(process.env.ENRICH_MAX || C.maxEnrichPerRun || 5);
 const MAX_LINKS = Number(process.env.ENRICH_LINKS || C.maxLinkFixPerRun || 25);
 const MAX_UPD = Number(process.env.ENRICH_UPDATES || C.maxUpdateEnrichPerRun || 15);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const SITE_URL = (C.url || "https://news-views.in").replace(/\/$/, "");
 
 const badLink = (u) => !u || L.isBadOfficial(u);
 function needsLinks(j) { return badLink(j.apply_link) && badLink(j.official_notification) && !j.links_checked; }
@@ -227,15 +228,18 @@ async function main() {
     const factJobs = jobs.filter((j) => j && j.id && j.title && L.factsPending(j)).sort((a, b) => String(b.published || "").localeCompare(String(a.published || "")));
     console.log(`Enrich/facts: ${factJobs.length} job(s) without the notice's facts | doing up to ${MAX_FACTS}`);
     let done = 0;
+    const healed = [];
     for (const job of factJobs.slice(0, MAX_FACTS)) {
       const r = await readFacts(job);
       if (r === "ai") { console.log(`  - the AI is not answering: ${factJobs.length - done} job(s) wait for a later run`); break; }
       jobsDirty = true; done++;
-      if (r === "ok") { stats.factsRead++; console.log(`  ✓ facts: ${job.title}${job.application_end ? " (last date " + job.application_end + ")" : ""}`); }
+      if (r === "ok") { healed.push(job.id); stats.factsRead++; console.log(`  ✓ facts: ${job.title}${job.application_end ? " (last date " + job.application_end + ")" : ""}`); }
       else console.log(`  - nothing usable read (try ${job.facts_tries}): ${job.title}`);
       await sleep(500);
     }
     stats.factsPending = jobs.filter((j) => j && L.factsPending(j)).length;
+    // their pages now carry the facts and a JobPosting: announce them to the search engines like new pages
+    if (healed.length) { try { fs.appendFileSync(path.join(ROOT, "data", "new-urls.txt"), healed.map((id) => `${SITE_URL}/jobs/${id}/`).join("\n") + "\n"); } catch { /* announcing is optional */ } }
   }
 
   // Pass 1 — official links (works even without an AI key: heuristic pick)
@@ -274,7 +278,7 @@ async function main() {
     console.log(`  ✓ update: ${u.title}${u.official_link ? " -> " + L.hostOf(u.official_link) : ""}`);
     await sleep(600);
   }
-  stats.updatesPending = Math.max(0, pendUpd.length - MAX_UPD);
+  stats.updatesPending = updates.filter((u) => u && u.id && needsUpdateEnrich(u)).length;
 
   // Pass 3 — content (AI only)
   if (L.AI) {

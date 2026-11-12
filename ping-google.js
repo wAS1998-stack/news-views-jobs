@@ -44,7 +44,9 @@ function plan({ jobs, redirects, state, newUrls, today, budget, drainLeft = DRAI
   const L = require("./lib.js");
   const byUrl = new Map();
   for (const j of jobs) if (j && j.id && j.title && !L.isNonGovt(j)) byUrl.set(jobUrl(j.id), j);
-  const live = (j) => j && B.statusOf(j).live;
+  // a job listed from its headline only (lib.js factless) has no JobPosting on its page yet — the Indexing API is for
+  // JobPosting pages; it is sent when its notice has been read (enrich-jobs.js puts it back into new-urls.txt)
+  const live = (j) => j && B.statusOf(j).live && !L.factless(j);
   const daysLeft = (j) => (j.application_end ? Math.round((Date.parse(j.application_end) - Date.parse(today)) / 86400000) : null);
   const out = [], seen = new Set(), deferred = [];
   const add = (url, type, keep = false) => {

@@ -26,3 +26,12 @@ test("closed or nearly closed jobs are not drained", () => {
   const { todo } = plan({ jobs, redirects: [], state: {}, newUrls: [], today: "2099-06-01", budget: 50, drainLeft: 50 });
   assert.strictEqual(todo.length, 0);
 });
+
+test("a headline-only job (no JobPosting on its page) is not sent until its notice has been read", () => {
+  const thin = { id: "thin", title: "Thin Recruitment 2099", organization: "Thin", published: "2099-05-30", source: "https://example.com/thin" };
+  const a = plan({ jobs: [thin, job("full")], redirects: [], state: {}, newUrls: [U("thin"), U("full")], today: "2099-06-01", budget: 50, drainLeft: 50 });
+  assert.deepStrictEqual(a.todo.map((x) => x.url), [U("full")]);
+  const read = { ...thin, post_name: "Clerk", application_end: "2099-12-31", total_vacancies: 4 };
+  const b = plan({ jobs: [read], redirects: [], state: {}, newUrls: [U("thin")], today: "2099-06-01", budget: 50, drainLeft: 0 });
+  assert.deepStrictEqual(b.todo.map((x) => x.url), [U("thin")]);
+});
