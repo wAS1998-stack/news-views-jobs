@@ -249,7 +249,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T08:19:28.430Z",
+    "at": "2026-11-12T09:22:50.950Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -260,11 +260,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T08:20:22.729Z",
+    "at": "2026-11-12T09:23:40.808Z",
     "ok": true,
-    "sent": 44,
+    "sent": 38,
     "log": [
-      "push-notify: 44 sent\n  job nhpc-industrial-trainee-2026 en [('s-haryana' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job nhpc-industrial-trainee-2026 hi [('s-haryana' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job m"
+      "push-notify: 38 sent\n  job rri-research-assistant-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job rri-research-assistant-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in top"
     ]
   }
 }
