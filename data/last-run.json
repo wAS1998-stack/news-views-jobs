@@ -249,7 +249,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T05:22:20.520Z",
+    "at": "2026-11-12T07:34:49.163Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -260,11 +260,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T05:22:59.005Z",
+    "at": "2026-11-12T07:36:22.550Z",
     "ok": true,
-    "sent": 38,
+    "sent": 156,
     "log": [
-      "push-notify: 38 sent\n  job gmch-project-assistant-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gmch-project-assistant-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job gmch-chandigarh-lab-technician-2026 en ['s-central'"
+      "push-notify: 156 sent\n  job rrb-ntpc-12th-level-2026 en ['s-central' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job rrb-ntpc-12th-level-2026 hi ['s-central' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job assam-rifles-technical-tradesman-rally-new-2026 en [('"
     ]
   }
 }
