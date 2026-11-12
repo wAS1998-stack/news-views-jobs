@@ -224,7 +224,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-12T13:56:33.272Z",
+    "at": "2026-11-12T16:26:51.031Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -235,11 +235,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-12T13:58:16.197Z",
+    "at": "2026-11-12T16:27:46.213Z",
     "ok": true,
-    "sent": 128,
+    "sent": 90,
     "log": [
-      "push-notify: 128 sent\n  job jharkhand-home-guard-bokaro-district-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job jharkhand-home-guard-bokaro-district-2026 hi [('s-jharkhand' in topics || 's-any' in topics) && 'q-10th-pass' in topics &"
+      "push-notify: 90 sent\n  job iocl-eastern-region-apprentice-technician-trade-2026 en [('s-arunachal-pradesh' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job iocl-eastern-region-apprentice-technician-trade-2026 en [('s-arunachal-pradesh' in topics || 's-any' in"
     ]
   }
 }
