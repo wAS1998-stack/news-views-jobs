@@ -2,7 +2,7 @@
   "date": "2026-11-12",
   "runs": {},
   "fetch": {
-    "at": "2026-11-11T23:29:52.427Z",
+    "at": "2026-11-12T00:10:15.996Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -78,7 +78,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-11T23:30:40.107Z",
+    "at": "2026-11-12T00:10:44.585Z",
     "sources": 59,
     "healthy": 20,
     "newLinks": 0,
@@ -109,10 +109,10 @@
       "hpsc": "paused (fails 99, geo-blocked)",
       "hppsc": "paused (fails 99, geo-blocked)",
       "ukpsc": "paused (fails 99, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "cgpsc": "paused (fails 99, geo-blocked)",
       "gpsc": "paused (fails 99, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "ppsc": "paused (fails 99, geo-blocked)",
       "apsc": "paused (fails 99, geo-blocked)",
       "jkpsc": "paused (fails 99, geo-blocked)",
@@ -121,30 +121,30 @@
       "rssb": "paused (fails 99, geo-blocked)",
       "esb-mp": "paused (fails 99, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
-      "tnpsc": "34 links, 0 new via news-views.in",
       "kvs": "4 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "jssc": "paused (fails 99, geo-blocked)",
       "osssc": "paused (fails 22, geo-blocked)",
       "gsssb": "paused (fails 99, geo-blocked)",
       "sssb-punjab": "paused (fails 99, geo-blocked)",
       "hprca": "paused (fails 99, geo-blocked)",
-      "jpsc": "47 links, 0 new via news-views.in",
+      "tnpsc": "34 links, 0 new via news-views.in",
       "kea": "paused (fails 99, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
-      "dsssb2": "paused (fails 99, geo-blocked)",
-      "bssc": "785 links, 0 new via news-views.in",
-      "uksssc": "26 links, 0 new via direct",
       "nta": "1 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 99, geo-blocked)",
+      "hssc": "9 links, 0 new via direct",
+      "uksssc": "26 links, 0 new via direct",
+      "bssc": "785 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 99, geo-blocked)",
       "tslprb": "paused (fails 99)",
       "slprb-ap": "paused (fails 99, geo-blocked)",
-      "wbssc": "13 links, 0 new via direct",
       "jkssb": "2 links, 0 new via news-views.in",
       "uppbpb": "6 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "rpsc": "185 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 502 | api.codetabs.com: HTTP 522 (fails 5)"
+      "wbssc": "13 links, 0 new via direct",
+      "keralapsc": "0 notice links (fails 6)",
+      "rpsc": "185 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -152,7 +152,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-11T23:30:40.507Z",
+    "at": "2026-11-12T00:10:44.915Z",
     "ok": true,
     "checked": 0,
     "found": 0,
@@ -167,7 +167,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-11T23:31:14.513Z",
+    "at": "2026-11-12T00:12:03.022Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "linksFixed": 0,
     "linksPending": 0,
@@ -177,11 +177,9 @@
     "contentPending": 105,
     "hindiJobsPending": 4,
     "hindiUpdatesPending": 2,
-    "searchFaqPages": 0,
+    "searchFaqPages": 2,
     "opportunities": 7,
     "log": [
-      "Enrich/updates: 0 thin update(s) | doing up to 15",
-      "Enrich/content: 110 job(s) on template content | doing up to 5",
       "  (OpenAI HTTP 429)",
       "  - skipped (quality gate): IIIT Hyderabad Marketing Intern Recruitment 2026 – Apply Online",
       "  (OpenAI HTTP 429)",
@@ -204,19 +202,39 @@
       "  (OpenAI HTTP 429)",
       "  - hindi update skipped: WBPSC Miscellaneous Personality Test Call Letter 2026 - Download Interview Schedule at psc.wb.gov.in",
       "  (OpenAI HTTP 429)",
-      "  - hindi update skipped: RPSC Protection Officer Exam City Details 2026"
+      "  - hindi update skipped: RPSC Protection Officer Exam City Details 2026",
+      "  (OpenAI HTTP 429)",
+      "  (OpenAI HTTP 429)"
     ]
   },
   "news": {
-    "at": "2026-11-11T23:31:14.889Z",
+    "at": "2026-11-12T00:12:07.219Z",
     "ai": "OpenAI",
     "published": 0,
     "quizzes": 0,
     "existing": 400,
-    "feeds": {},
+    "feeds": {
+      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
+    },
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists."
+      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
+      "  20 source headlines for today's digest",
+      "  (OpenAI HTTP 429)",
+      "  current affairs generation failed."
+    ]
+  },
+  "gsc": {
+    "at": "2026-11-12T00:11:22.696Z",
+    "ok": true,
+    "property": "https://news-views.in/",
+    "clicks28d": 38,
+    "impressions28d": 541,
+    "pages": 109,
+    "opportunities": 7,
+    "sitemap": 204,
+    "log": [
+      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
   }
 }

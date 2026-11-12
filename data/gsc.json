@@ -1,20 +1,15 @@
 {
- "date": "2026-11-11",
+ "date": "2026-11-12",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-13",
-  "2026-11-09"
+  "2026-10-14",
+  "2026-11-10"
  ],
  "totals": {
-  "clicks": 37,
-  "impressions": 501
+  "clicks": 38,
+  "impressions": 541
  },
  "daily": [
-  {
-   "date": "2026-10-13",
-   "clicks": 0,
-   "impressions": 0
-  },
   {
    "date": "2026-10-14",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-09",
    "clicks": 2,
    "impressions": 38
+  },
+  {
+   "date": "2026-11-10",
+   "clicks": 1,
+   "impressions": 38
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-12",
-   "2026-11-09"
+   "2026-08-13",
+   "2026-11-10"
   ],
   "rows": []
  },
@@ -207,6 +207,13 @@
    "impressions": 10,
    "ctr": 20,
    "position": 2.8
+  },
+  {
+   "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
+   "clicks": 2,
+   "impressions": 52,
+   "ctr": 3.85,
+   "position": 4.1
   },
   {
    "page": "/jobs/bvfcl-apprentice-2026/",
@@ -258,13 +265,6 @@
    "position": 2
   },
   {
-   "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
-   "clicks": 1,
-   "impressions": 31,
-   "ctr": 3.23,
-   "position": 4
-  },
-  {
    "page": "/jobs/nfsu-senior-project-associate-walkin-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
    "impressions": 3,
@@ -274,9 +274,9 @@
   {
    "page": "/updates/tgpsc-deputy-educational-officers-hall-ticket-2026-released/",
    "clicks": 1,
-   "impressions": 1,
-   "ctr": 100,
-   "position": 12
+   "impressions": 2,
+   "ctr": 50,
+   "position": 10.5
   },
   {
    "page": "/",
@@ -440,6 +440,13 @@
    "position": 2
   },
   {
+   "page": "/jobs/dlsa-bhojpur-para-legal-volunteer-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 5
+  },
+  {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/",
    "clicks": 0,
    "impressions": 1,
@@ -508,13 +515,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
-  },
-  {
-   "page": "/jobs/igkv-raipur-vice-chancellor-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
   }
  ],
  "topQueries": [
@@ -538,6 +538,13 @@
    "impressions": 1,
    "ctr": 100,
    "position": 2
+  },
+  {
+   "query": "barauni refinery vacancy 2026",
+   "clicks": 1,
+   "impressions": 15,
+   "ctr": 6.67,
+   "position": 4.9
   },
   {
    "query": "chennai metro careers",
@@ -724,23 +731,16 @@
   {
    "query": "barauni refinery job vacancy 2026",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 3,
    "ctr": 0,
-   "position": 5
+   "position": 3.7
   },
   {
    "query": "barauni refinery vacancy",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 4,
    "ctr": 0,
    "position": 5.3
-  },
-  {
-   "query": "barauni refinery vacancy 2026",
-   "clicks": 0,
-   "impressions": 8,
-   "ctr": 0,
-   "position": 5
   },
   {
    "query": "brahmaputra fertilizer recruitment",
@@ -860,6 +860,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "deo hall ticket download",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 9
   },
   {
    "query": "field investigator jobs",
@@ -1051,6 +1058,13 @@
    "position": 2
   },
   {
+   "query": "iocl barauni internship",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 6
+  },
+  {
    "query": "iocl barauni recruitment",
    "clicks": 0,
    "impressions": 1,
@@ -1060,9 +1074,9 @@
   {
    "query": "iocl barauni refinery vacancy 2026",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 4,
    "ctr": 0,
-   "position": 5
+   "position": 5.5
   },
   {
    "query": "job alert 2026",
@@ -1203,39 +1217,35 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "query": "manipur recruitment 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "medical officer jobs in west bengal",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 4
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
-   "clicks": 1,
-   "impressions": 31,
-   "ctr": 3.23,
-   "position": 4,
+   "clicks": 2,
+   "impressions": 52,
+   "ctr": 3.85,
+   "position": 4.1,
    "queries": [
     {
      "q": "barauni refinery vacancy 2026",
-     "impressions": 8,
-     "position": 5
+     "impressions": 17,
+     "position": 4.4
     },
     {
      "q": "barauni refinery vacancy",
-     "impressions": 3,
+     "impressions": 4,
      "position": 5.3
+    },
+    {
+     "q": "iocl barauni refinery vacancy 2026",
+     "impressions": 4,
+     "position": 5.5
+    },
+    {
+     "q": "barauni refinery job vacancy 2026",
+     "impressions": 3,
+     "position": 3.7
     },
     {
      "q": "barauni iocl job vacancy",
@@ -1248,19 +1258,14 @@
      "position": 4
     },
     {
-     "q": "barauni refinery job vacancy 2026",
+     "q": "iocl barauni internship",
      "impressions": 1,
-     "position": 5
+     "position": 6
     },
     {
      "q": "iocl barauni recruitment",
      "impressions": 1,
      "position": 4
-    },
-    {
-     "q": "iocl barauni refinery vacancy 2026",
-     "impressions": 1,
-     "position": 5
     }
    ]
   },
