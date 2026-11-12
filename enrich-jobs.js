@@ -49,7 +49,7 @@ const aiFault = (mark) => !!L.AI && (L.aiHealth().failed > mark || !!L.aiDown())
    While the AI refuses calls (no credit, an outage) the fetcher still lists new jobs from the headline and the official
    links (lib.js factless). This reads their notice again — the same extraction as for a new job — and fills in the
    record. Returns "ok" | "empty" (read, nothing usable: counts as a try) | "ai" (the AI did not answer: not a try). */
-const MAX_FACTS = Number(process.env.ENRICH_FACTS || C.maxFactsPerRun || 15);
+const MAX_FACTS = Number(process.env.ENRICH_FACTS || C.maxFactsPerRun || 40);
 async function readFacts(job) {
   const src = await F.readSource(job.source);
   const mark = L.aiHealth().failed;

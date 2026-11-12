@@ -62,7 +62,7 @@ hurting users or breaking Google's policies.
   that off; its use is metered under `fallback` in `data/ai-usage.json`). Jobs listed meanwhile are headline-only
   (`L.factless`): no JobPosting (the employer name is a guess), the stand-in steps `L.GENERIC_STEPS` (true for every way
   of applying — never "register online" on a walk-in), and `enrich-jobs.js` pass 0 reads their notice again, newest
-  first (`maxFactsPerRun`, default 15; 3 empty readings at most). A reading that failed because the AI did not answer
+  first (`maxFactsPerRun`, default 40; 3 empty readings at most). A reading that failed because the AI did not answer
   is never a try and never a mark: watch.js keeps the notice queued, apply-links.js stops, a thin update stays due.
 - **One brand name: News-Views.in** (alternates "News-Views", "NewsViews"). The homepage title starts with it, and the
   header, `og:site_name` and the Organization + WebSite JSON-LD (`orgLd()`/`websiteLd()` in build.js, also on /about/)
@@ -220,10 +220,13 @@ hurting users or breaking Google's policies.
   `app-latest` release is the Play upload. Firebase secrets are in (instant alerts on). Waiting for the owner's Play
   Console upload (12 testers × 14 days for new personal accounts) and the AdMob IDs (no ads in release until then). After the first Play upload, add the Play app-signing
   SHA-256 to `config.json` → `androidCertSha256` so news-views.in links open in the app.
-- **Open on 12 Nov — the owner must act:** the OpenAI account has no credit left. Every call has answered 429
-  `credit_balance_exhausted` since 11 Nov ~08:19 UTC (`aiStatus` in `data/last-run.json`). Until credit is added at
-  platform.openai.com → Billing, new jobs are listed from the headline only, and Hindi pages, the daily quiz and the
-  current-affairs articles stand still. The headline-only jobs (115 on 12 Nov) and the thin updates heal by themselves
-  once calls work again (enrich pass 0, 15 a run).
+- **OpenAI credit ran out on 11 Nov** (429 `credit_balance_exhausted` for 22 hours; the owner added $10 on 12 Nov and
+  calls work again — `aiStatus` in `data/last-run.json`). Metered cost: about $0.20–0.25 a day in normal running
+  (`data/ai-usage.json`), up to $0.91 a day while the backlog was written. Ask the owner to switch on auto-recharge at
+  platform.openai.com → Billing. The headline-only jobs of that day (132) are read again 40 a run by enrich pass 0.
+- **Not done:** the multi-agent code review of the final check could not finish inside the Claude usage limit (three
+  attempts). What was verified instead: scripted audits over every page, record and link, 43 tests, the full live check
+  (0 broken of 8,208 URLs), CI builds. Worth running once when usage allows: site/build.js, ingest, enrich, notify,
+  workflows + relay security, and the three app areas (prompt in the session's workflow script final-e2e-check-v3).
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.
