@@ -1,548 +1,548 @@
 --------- beginning of main
-11-09 03:39:58.811  5255  5255 I NVAds   : banner request
-11-09 03:40:19.465  5255  5255 I NVAds   : banner loaded
-11-09 03:40:21.092  5255  5255 I NVAds   : native (detail-a): 0 Internal error. | {
-11-09 03:40:21.092  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:21.092  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:21.092  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:21.092  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:21.092  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:21.092  5255  5255 I NVAds   :     "Response ID": "mUDxarDRG_nEoPwPlN6l-A8",
-11-09 03:40:21.092  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:21.092  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:21.092  5255  5255 I NVAds   :       {
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Latency": 4556,
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:21.092  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=mUDxauCdGrG3jrgPjrzDmAU",
-11-09 03:40:21.092  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:21.092  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:21.092  5255  5255 I NVAds   :         },
-11-09 03:40:21.092  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:21.092  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:21.092  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:21.092  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:21.092  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:21.092  5255  5255 I NVAds   :         }
-11-09 03:40:21.092  5255  5255 I NVAds   :       }
-11-09 03:40:21.092  5255  5255 I NVAds   :     ],
-11-09 03:40:21.092  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:21.092  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:21.092  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:21.092  5255  5255 I NVAds   :     }
-11-09 03:40:21.092  5255  5255 I NVAds   :   }
-11-09 03:40:21.092  5255  5255 I NVAds   : }
-11-09 03:40:22.397  5255  5255 I NVAds   : app-open loaded
-11-09 03:40:23.272  5255  5255 I NVAds   : interstitial loaded
-11-09 03:40:26.358  5255  5255 I NVAds   : native (updates): 0 Internal error. | {
-11-09 03:40:26.358  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:26.358  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:26.358  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:26.358  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:26.358  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:26.358  5255  5255 I NVAds   :     "Response ID": "mUDxau_nIJWPoPwPuM-boQs",
-11-09 03:40:26.358  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:26.358  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:26.358  5255  5255 I NVAds   :       {
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Latency": 8561,
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:26.358  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=mUDxaqvaH-md6NwPyNe78Ak",
-11-09 03:40:26.358  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:26.358  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:26.358  5255  5255 I NVAds   :         },
-11-09 03:40:26.358  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:26.358  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:26.358  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:26.358  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:26.358  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:26.358  5255  5255 I NVAds   :         }
-11-09 03:40:26.358  5255  5255 I NVAds   :       }
-11-09 03:40:26.358  5255  5255 I NVAds   :     ],
-11-09 03:40:26.358  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:26.358  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:26.358  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:26.358  5255  5255 I NVAds   :     }
-11-09 03:40:26.358  5255  5255 I NVAds   :   }
-11-09 03:40:26.358  5255  5255 I NVAds   : }
-11-09 03:40:26.363  5255  5255 I NVAds   : native (jobs): 0 Internal error. | {
-11-09 03:40:26.363  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:26.363  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:26.363  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:26.363  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:26.363  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:26.363  5255  5255 I NVAds   :     "Response ID": "mUDxao_aMqbaoPwPo4DFuAQ",
-11-09 03:40:26.363  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:26.363  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:26.363  5255  5255 I NVAds   :       {
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Latency": 8150,
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:26.363  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=mUDxauO6MbDOpeEP26WeoAY",
-11-09 03:40:26.363  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:26.363  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:26.363  5255  5255 I NVAds   :         },
-11-09 03:40:26.363  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:26.363  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:26.363  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:26.363  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:26.363  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:26.363  5255  5255 I NVAds   :         }
-11-09 03:40:26.363  5255  5255 I NVAds   :       }
-11-09 03:40:26.363  5255  5255 I NVAds   :     ],
-11-09 03:40:26.363  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:26.363  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:26.363  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:26.363  5255  5255 I NVAds   :     }
-11-09 03:40:26.363  5255  5255 I NVAds   :   }
-11-09 03:40:26.363  5255  5255 I NVAds   : }
-11-09 03:40:27.913  5255  5255 I NVAds   : rewarded loaded
-11-09 03:40:30.037  5255  5255 I NVAds   : adapter com.google.android.gms.ads.MobileAds: READY 4938 ms
-11-09 03:40:30.047  5255  5255 I NVAds   : adapter com.google.ads.mediation.vungle.VungleMediationAdapter: NOT_READY 30002 ms
-11-09 03:40:30.048  5255  5255 I NVAds   : adapter com.google.ads.mediation.applovin.AppLovinMediationAdapter: NOT_READY 57 ms
-11-09 03:40:30.048  5255  5255 I NVAds   : adapter com.google.ads.mediation.adcolony.AdColonyMediationAdapter: NOT_READY 2 ms
-11-09 03:40:40.345  5255  5255 I NVAds   : native (detail-a): 0 Internal error. | {
-11-09 03:40:40.345  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:40.345  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:40.345  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:40.345  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:40.345  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:40.345  5255  5255 I NVAds   :     "Response ID": "tUDxarv4G_TNoPwPlrLdwAY",
-11-09 03:40:40.345  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:40.345  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:40.345  5255  5255 I NVAds   :       {
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Latency": 1736,
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:40.345  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=tUDxatejGt63jrgP7tWumQg",
-11-09 03:40:40.345  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:40.345  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:40.345  5255  5255 I NVAds   :         },
-11-09 03:40:40.345  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:40.345  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:40.345  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:40.345  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:40.345  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:40.345  5255  5255 I NVAds   :         }
-11-09 03:40:40.345  5255  5255 I NVAds   :       }
-11-09 03:40:40.345  5255  5255 I NVAds   :     ],
-11-09 03:40:40.345  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:40.345  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:40.345  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:40.345  5255  5255 I NVAds   :     }
-11-09 03:40:40.345  5255  5255 I NVAds   :   }
-11-09 03:40:40.345  5255  5255 I NVAds   : }
-11-09 03:40:42.537  5255  5255 I NVAds   : inline request 300x249.90475.dp
-11-09 03:40:44.874  5255  5255 I NVAds   : native (detail-b): 0 Internal error. | {
-11-09 03:40:44.874  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:44.874  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:44.874  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.874  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:44.874  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:44.874  5255  5255 I NVAds   :     "Response ID": "ukDxav-LItjMoPwP5aShiAg",
-11-09 03:40:44.874  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:44.874  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:44.874  5255  5255 I NVAds   :       {
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Latency": 926,
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:44.874  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=ukDxaoX5IJLfjrgP3rak2AE",
-11-09 03:40:44.874  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:44.874  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:44.874  5255  5255 I NVAds   :         },
-11-09 03:40:44.874  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:44.874  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:44.874  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:44.874  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.874  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:44.874  5255  5255 I NVAds   :         }
-11-09 03:40:44.874  5255  5255 I NVAds   :       }
-11-09 03:40:44.874  5255  5255 I NVAds   :     ],
-11-09 03:40:44.874  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:44.874  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:44.874  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:44.874  5255  5255 I NVAds   :     }
-11-09 03:40:44.874  5255  5255 I NVAds   :   }
-11-09 03:40:44.874  5255  5255 I NVAds   : }
-11-09 03:40:44.876  5255  5255 I NVAds   : native (jobs): 0 Internal error. | {
-11-09 03:40:44.876  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:44.876  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:44.876  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.876  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:44.876  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:44.876  5255  5255 I NVAds   :     "Response ID": "ukDxaoi3KrTZoPwPnt3EsQE",
-11-09 03:40:44.876  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:44.876  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:44.876  5255  5255 I NVAds   :       {
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Latency": 586,
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:44.876  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=ukDxarmSKaCxjrgPg6j14QQ",
-11-09 03:40:44.876  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:44.876  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:44.876  5255  5255 I NVAds   :         },
-11-09 03:40:44.876  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:44.876  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:44.876  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:44.876  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.876  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:44.876  5255  5255 I NVAds   :         }
-11-09 03:40:44.876  5255  5255 I NVAds   :       }
-11-09 03:40:44.876  5255  5255 I NVAds   :     ],
-11-09 03:40:44.876  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:44.876  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:44.876  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:44.876  5255  5255 I NVAds   :     }
-11-09 03:40:44.876  5255  5255 I NVAds   :   }
-11-09 03:40:44.876  5255  5255 I NVAds   : }
-11-09 03:40:44.914  5255  5255 I NVAds   : native (updates): 0 Internal error. | {
-11-09 03:40:44.914  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:40:44.914  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:40:44.914  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.914  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:40:44.914  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:40:44.914  5255  5255 I NVAds   :     "Response ID": "ukDxaojIKJCOoPwPtKvY6Qk",
-11-09 03:40:44.914  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:40:44.914  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:40:44.914  5255  5255 I NVAds   :       {
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Latency": 215,
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:40:44.914  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=ukDxao2sJ42fpeEP29rFgQw",
-11-09 03:40:44.914  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:40:44.914  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:40:44.914  5255  5255 I NVAds   :         },
-11-09 03:40:44.914  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:40:44.914  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:40:44.914  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:40:44.914  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:40:44.914  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:40:44.914  5255  5255 I NVAds   :         }
-11-09 03:40:44.914  5255  5255 I NVAds   :       }
-11-09 03:40:44.914  5255  5255 I NVAds   :     ],
-11-09 03:40:44.914  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:40:44.914  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:40:44.914  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:40:44.914  5255  5255 I NVAds   :     }
-11-09 03:40:44.914  5255  5255 I NVAds   :   }
-11-09 03:40:44.914  5255  5255 I NVAds   : }
-11-09 03:40:46.384  5255  5255 I NVAds   : inline loaded 300x249.90475.dp
-11-09 03:40:57.314  5255  5255 I NVAds   : inline request 300x249.90475.dp
-11-09 03:40:58.569  5255  5255 I NVAds   : inline loaded 300x249.90475.dp
-11-09 03:41:00.990  5255  5255 I NVAds   : native (detail-b): 0 Internal error. | {
-11-09 03:41:00.990  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:41:00.990  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:41:00.990  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:41:00.990  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:41:00.990  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:41:00.990  5255  5255 I NVAds   :     "Response ID": "zEDxaum5Epu_oPwPqrz-iA0",
-11-09 03:41:00.990  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:41:00.990  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:41:00.990  5255  5255 I NVAds   :       {
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Latency": 13,
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:41:00.990  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=zEDxatKREZCwpeEP-qWikA4",
-11-09 03:41:00.990  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:41:00.990  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:41:00.990  5255  5255 I NVAds   :         },
-11-09 03:41:00.990  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:41:00.990  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:41:00.990  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:41:00.990  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:41:00.990  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:41:00.990  5255  5255 I NVAds   :         }
-11-09 03:41:00.990  5255  5255 I NVAds   :       }
-11-09 03:41:00.990  5255  5255 I NVAds   :     ],
-11-09 03:41:00.990  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:41:00.990  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:41:00.990  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:41:00.990  5255  5255 I NVAds   :     }
-11-09 03:41:00.990  5255  5255 I NVAds   :   }
-11-09 03:41:00.990  5255  5255 I NVAds   : }
-11-09 03:41:05.777  5255  5255 I NVAds   : inline request 300x249.90475.dp
-11-09 03:41:07.166  5255  5255 I NVAds   : inline loaded 300x249.90475.dp
-11-09 03:41:11.169  5255  5255 I NVAds   : native (detail-a): 0 Internal error. | {
-11-09 03:41:11.169  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:41:11.169  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:41:11.169  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:41:11.169  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:41:11.169  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:41:11.169  5255  5255 I NVAds   :     "Response ID": "1kDxauyNMei7oPwPn5COiAo",
-11-09 03:41:11.169  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:41:11.169  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:41:11.169  5255  5255 I NVAds   :       {
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Latency": 20,
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:41:11.169  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=1kDxau_XL4KppeEP1fjIoAg",
-11-09 03:41:11.169  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:41:11.169  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:41:11.169  5255  5255 I NVAds   :         },
-11-09 03:41:11.169  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:41:11.169  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:41:11.169  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:41:11.169  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:41:11.169  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:41:11.169  5255  5255 I NVAds   :         }
-11-09 03:41:11.169  5255  5255 I NVAds   :       }
-11-09 03:41:11.169  5255  5255 I NVAds   :     ],
-11-09 03:41:11.169  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:41:11.169  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:41:11.169  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:41:11.169  5255  5255 I NVAds   :     }
-11-09 03:41:11.169  5255  5255 I NVAds   :   }
-11-09 03:41:11.169  5255  5255 I NVAds   : }
-11-09 03:41:15.795  5255  5255 I NVAds   : native (updates): 0 Internal error. | {
-11-09 03:41:15.795  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:41:15.795  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:41:15.795  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:41:15.795  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:41:15.795  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:41:15.795  5255  5255 I NVAds   :     "Response ID": "20DxaqvHEffUoPwPs83TqQc",
-11-09 03:41:15.795  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:41:15.795  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:41:15.795  5255  5255 I NVAds   :       {
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Latency": 140,
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:41:15.795  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=20DxarDHEOmd6NwPyNe78Ak",
-11-09 03:41:15.795  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:41:15.795  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:41:15.795  5255  5255 I NVAds   :         },
-11-09 03:41:15.795  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:41:15.795  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:41:15.795  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:41:15.795  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:41:15.795  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:41:15.795  5255  5255 I NVAds   :         }
-11-09 03:41:15.795  5255  5255 I NVAds   :       }
-11-09 03:41:15.795  5255  5255 I NVAds   :     ],
-11-09 03:41:15.795  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:41:15.795  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:41:15.795  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:41:15.795  5255  5255 I NVAds   :     }
-11-09 03:41:15.795  5255  5255 I NVAds   :   }
-11-09 03:41:15.795  5255  5255 I NVAds   : }
-11-09 03:41:15.811  5255  5255 I NVAds   : native (jobs): 0 Internal error. | {
-11-09 03:41:15.811  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:41:15.811  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:41:15.811  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:41:15.811  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:41:15.811  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:41:15.811  5255  5255 I NVAds   :     "Response ID": "20DxauTKEYvWoPwPlN-kwAE",
-11-09 03:41:15.811  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:41:15.811  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:41:15.811  5255  5255 I NVAds   :       {
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Latency": 32,
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:41:15.811  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=20Dxaty2EMKdpeEPq_nGmAs",
-11-09 03:41:15.811  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:41:15.811  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:41:15.811  5255  5255 I NVAds   :         },
-11-09 03:41:15.811  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:41:15.811  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:41:15.811  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:41:15.811  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:41:15.811  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:41:15.811  5255  5255 I NVAds   :         }
-11-09 03:41:15.811  5255  5255 I NVAds   :       }
-11-09 03:41:15.811  5255  5255 I NVAds   :     ],
-11-09 03:41:15.811  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:41:15.811  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:41:15.811  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:41:15.811  5255  5255 I NVAds   :     }
-11-09 03:41:15.811  5255  5255 I NVAds   :   }
-11-09 03:41:15.811  5255  5255 I NVAds   : }
-11-09 03:41:22.832  5255  5255 I NVAds   : inline request 300x249.90475.dp
-11-09 03:41:26.327  5255  5255 I NVAds   : inline loaded 300x249.90475.dp
-11-09 03:41:30.751  5255  5255 I NVAds   : banner loaded
-11-09 03:41:32.225  5255  5255 I NVAds   : back from page: due=true loaded=true pages=5
-11-09 03:41:35.681  5255  5255 I NVAds   : native (detail-b): 0 Internal error. | {
-11-09 03:41:35.681  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:41:35.681  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:41:35.681  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:41:35.681  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:41:35.681  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:41:35.681  5255  5255 I NVAds   :     "Response ID": "7kDxavyTGdieoPwPg_ufyQw",
-11-09 03:41:35.681  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:41:35.681  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:41:35.681  5255  5255 I NVAds   :       {
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Latency": 83,
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:41:35.681  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=7kDxapeRGJCwpeEP-qWikA4",
-11-09 03:41:35.681  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:41:35.681  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:41:35.681  5255  5255 I NVAds   :         },
-11-09 03:41:35.681  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:41:35.681  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:41:35.681  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:41:35.681  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:41:35.681  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:41:35.681  5255  5255 I NVAds   :         }
-11-09 03:41:35.681  5255  5255 I NVAds   :       }
-11-09 03:41:35.681  5255  5255 I NVAds   :     ],
-11-09 03:41:35.681  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:41:35.681  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:41:35.681  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:41:35.681  5255  5255 I NVAds   :     }
-11-09 03:41:35.681  5255  5255 I NVAds   :   }
-11-09 03:41:35.681  5255  5255 I NVAds   : }
-11-09 03:42:01.285  5255  5255 I NVAds   : interstitial loaded
-11-09 03:42:05.540  5255  5255 I NVAds   : app-open shown
-11-09 03:42:10.212  5255  5255 I NVAds   : app-open loaded
-11-09 03:42:11.937  5255  5255 I NVAds   : native (detail-a): 0 Internal error. | {
-11-09 03:42:11.937  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:42:11.937  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:42:11.937  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:42:11.937  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:42:11.937  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:42:11.937  5255  5255 I NVAds   :     "Response ID": "E0HxasawJ6HsoPwPyvXIuQY",
-11-09 03:42:11.937  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:42:11.937  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:42:11.937  5255  5255 I NVAds   :       {
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Latency": 22,
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:42:11.937  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=E0HxapjtJa2k6NwPxIW-iQU",
-11-09 03:42:11.937  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:42:11.937  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:42:11.937  5255  5255 I NVAds   :         },
-11-09 03:42:11.937  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:42:11.937  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:42:11.937  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:42:11.937  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:42:11.937  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:42:11.937  5255  5255 I NVAds   :         }
-11-09 03:42:11.937  5255  5255 I NVAds   :       }
-11-09 03:42:11.937  5255  5255 I NVAds   :     ],
-11-09 03:42:11.937  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:42:11.937  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:42:11.937  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:42:11.937  5255  5255 I NVAds   :     }
-11-09 03:42:11.937  5255  5255 I NVAds   :   }
-11-09 03:42:11.937  5255  5255 I NVAds   : }
-11-09 03:42:16.448  5255  5255 I NVAds   : native (updates): 0 Internal error. | {
-11-09 03:42:16.448  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:42:16.448  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:42:16.448  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:42:16.448  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:42:16.448  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:42:16.448  5255  5255 I NVAds   :     "Response ID": "GEHxavvRDJCOoPwPtKvY6Qk",
-11-09 03:42:16.448  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:42:16.448  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:42:16.448  5255  5255 I NVAds   :       {
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Latency": 12,
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:42:16.448  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=GEHxavzWB-HkjrgPifm-oAw",
-11-09 03:42:16.448  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:42:16.448  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:42:16.448  5255  5255 I NVAds   :         },
-11-09 03:42:16.448  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:42:16.448  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:42:16.448  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:42:16.448  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:42:16.448  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:42:16.448  5255  5255 I NVAds   :         }
-11-09 03:42:16.448  5255  5255 I NVAds   :       }
-11-09 03:42:16.448  5255  5255 I NVAds   :     ],
-11-09 03:42:16.448  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:42:16.448  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:42:16.448  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:42:16.448  5255  5255 I NVAds   :     }
-11-09 03:42:16.448  5255  5255 I NVAds   :   }
-11-09 03:42:16.448  5255  5255 I NVAds   : }
-11-09 03:42:18.175  5255  5255 I NVAds   : native (jobs): 0 Internal error. | {
-11-09 03:42:18.175  5255  5255 I NVAds   :   "Code": 0,
-11-09 03:42:18.175  5255  5255 I NVAds   :   "Message": "Internal error.",
-11-09 03:42:18.175  5255  5255 I NVAds   :   "Domain": "com.google.android.gms.ads",
-11-09 03:42:18.175  5255  5255 I NVAds   :   "Cause": "null",
-11-09 03:42:18.175  5255  5255 I NVAds   :   "Response Info": {
-11-09 03:42:18.175  5255  5255 I NVAds   :     "Response ID": "GEHxatysH-GOoPwP86Wh2QY",
-11-09 03:42:18.175  5255  5255 I NVAds   :     "Mediation Adapter Class Name": "",
-11-09 03:42:18.175  5255  5255 I NVAds   :     "Adapter Responses": [
-11-09 03:42:18.175  5255  5255 I NVAds   :       {
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Latency": 35,
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Ad Source Name": "Reservation campaign",
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Ad Source ID": "7068401028668408324",
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Credentials": {
-11-09 03:42:18.175  5255  5255 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=90&caqid=GEHxarSjHr2h6NwPgaPSuAc",
-11-09 03:42:18.175  5255  5255 I NVAds   :           "campaign_type": "1",
-11-09 03:42:18.175  5255  5255 I NVAds   :           "campaign_id": "739275108"
-11-09 03:42:18.175  5255  5255 I NVAds   :         },
-11-09 03:42:18.175  5255  5255 I NVAds   :         "Ad Error": {
-11-09 03:42:18.175  5255  5255 I NVAds   :           "Code": 0,
-11-09 03:42:18.175  5255  5255 I NVAds   :           "Message": "Internal error.",
-11-09 03:42:18.175  5255  5255 I NVAds   :           "Domain": "com.google.android.gms.ads",
-11-09 03:42:18.175  5255  5255 I NVAds   :           "Cause": "null"
-11-09 03:42:18.175  5255  5255 I NVAds   :         }
-11-09 03:42:18.175  5255  5255 I NVAds   :       }
-11-09 03:42:18.175  5255  5255 I NVAds   :     ],
-11-09 03:42:18.175  5255  5255 I NVAds   :     "Response Extras": {
-11-09 03:42:18.175  5255  5255 I NVAds   :       "mediation_group_name": "Campaign",
-11-09 03:42:18.175  5255  5255 I NVAds   :       "app_promotion_type": "INSTALL"
-11-09 03:42:18.175  5255  5255 I NVAds   :     }
-11-09 03:42:18.175  5255  5255 I NVAds   :   }
-11-09 03:42:18.175  5255  5255 I NVAds   : }
+11-12 17:45:41.691  5003  5003 I NVAds   : banner request
+11-12 17:45:55.085  5003  5003 I NVAds   : app-open loaded
+11-12 17:45:56.036  5003  5003 I NVAds   : banner loaded
+11-12 17:45:56.044  5003  5003 I NVAds   : native (detail-a): 0 Internal error. | {
+11-12 17:45:56.044  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:45:56.044  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:45:56.044  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:45:56.044  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:45:56.044  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:45:56.044  5003  5003 I NVAds   :     "Response ID": "SPv1atGCL-amodAP35uEmAk",
+11-12 17:45:56.044  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:45:56.044  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:45:56.044  5003  5003 I NVAds   :       {
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Latency": 3778,
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:45:56.044  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=SPv1apDnLL6vur8PxMjxqQM",
+11-12 17:45:56.044  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:45:56.044  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:45:56.044  5003  5003 I NVAds   :         },
+11-12 17:45:56.044  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:45:56.044  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:45:56.044  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:45:56.044  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:45:56.044  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:45:56.044  5003  5003 I NVAds   :         }
+11-12 17:45:56.044  5003  5003 I NVAds   :       }
+11-12 17:45:56.044  5003  5003 I NVAds   :     ],
+11-12 17:45:56.044  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:45:56.044  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:45:56.044  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:45:56.044  5003  5003 I NVAds   :     }
+11-12 17:45:56.044  5003  5003 I NVAds   :   }
+11-12 17:45:56.044  5003  5003 I NVAds   : }
+11-12 17:45:57.041  5003  5003 I NVAds   : interstitial loaded
+11-12 17:45:59.621  5003  5003 I NVAds   : native (updates): 0 Internal error. | {
+11-12 17:45:59.621  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:45:59.621  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:45:59.621  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:45:59.621  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:45:59.621  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:45:59.621  5003  5003 I NVAds   :     "Response ID": "SPv1aoTpKsWyodAPm4jG-A0",
+11-12 17:45:59.621  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:45:59.621  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:45:59.621  5003  5003 I NVAds   :       {
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Latency": 6702,
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:45:59.621  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=SPv1av3ZKKKP8L0P_8PFmA0",
+11-12 17:45:59.621  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:45:59.621  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:45:59.621  5003  5003 I NVAds   :         },
+11-12 17:45:59.621  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:45:59.621  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:45:59.621  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:45:59.621  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:45:59.621  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:45:59.621  5003  5003 I NVAds   :         }
+11-12 17:45:59.621  5003  5003 I NVAds   :       }
+11-12 17:45:59.621  5003  5003 I NVAds   :     ],
+11-12 17:45:59.621  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:45:59.621  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:45:59.621  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:45:59.621  5003  5003 I NVAds   :     }
+11-12 17:45:59.621  5003  5003 I NVAds   :   }
+11-12 17:45:59.621  5003  5003 I NVAds   : }
+11-12 17:45:59.667  5003  5003 I NVAds   : native (jobs): 0 Internal error. | {
+11-12 17:45:59.667  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:45:59.667  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:45:59.667  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:45:59.667  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:45:59.667  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:45:59.667  5003  5003 I NVAds   :     "Response ID": "SPv1aurML9Kj6tkPjO63gQs",
+11-12 17:45:59.667  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:45:59.667  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:45:59.667  5003  5003 I NVAds   :       {
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Latency": 6330,
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:45:59.667  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=SPv1aoTALfqVvMcP5s_g6AU",
+11-12 17:45:59.667  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:45:59.667  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:45:59.667  5003  5003 I NVAds   :         },
+11-12 17:45:59.667  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:45:59.667  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:45:59.667  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:45:59.667  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:45:59.667  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:45:59.667  5003  5003 I NVAds   :         }
+11-12 17:45:59.667  5003  5003 I NVAds   :       }
+11-12 17:45:59.667  5003  5003 I NVAds   :     ],
+11-12 17:45:59.667  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:45:59.667  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:45:59.667  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:45:59.667  5003  5003 I NVAds   :     }
+11-12 17:45:59.667  5003  5003 I NVAds   :   }
+11-12 17:45:59.667  5003  5003 I NVAds   : }
+11-12 17:46:03.863  5003  5003 I NVAds   : rewarded loaded
+11-12 17:46:07.989  5003  5003 I NVAds   : adapter com.google.android.gms.ads.MobileAds: READY 3581 ms
+11-12 17:46:07.989  5003  5003 I NVAds   : adapter com.google.ads.mediation.vungle.VungleMediationAdapter: NOT_READY 0 ms
+11-12 17:46:07.989  5003  5003 I NVAds   : adapter com.google.ads.mediation.applovin.AppLovinMediationAdapter: NOT_READY 19 ms
+11-12 17:46:07.989  5003  5003 I NVAds   : adapter com.google.ads.mediation.adcolony.AdColonyMediationAdapter: NOT_READY 2 ms
+11-12 17:46:13.311  5003  5003 I NVAds   : native (detail-a): 0 Internal error. | {
+11-12 17:46:13.311  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:13.311  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:13.311  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:13.311  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:13.311  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:13.311  5003  5003 I NVAds   :     "Response ID": "Y_v1ao-2L6v96tkP8rbLsAQ",
+11-12 17:46:13.311  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:13.311  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:13.311  5003  5003 I NVAds   :       {
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Latency": 149,
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:13.311  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=Y_v1apOZLe-VvMcPlo_y4AY",
+11-12 17:46:13.311  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:13.311  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:13.311  5003  5003 I NVAds   :         },
+11-12 17:46:13.311  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:13.311  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:13.311  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:13.311  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:13.311  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:13.311  5003  5003 I NVAds   :         }
+11-12 17:46:13.311  5003  5003 I NVAds   :       }
+11-12 17:46:13.311  5003  5003 I NVAds   :     ],
+11-12 17:46:13.311  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:13.311  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:13.311  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:13.311  5003  5003 I NVAds   :     }
+11-12 17:46:13.311  5003  5003 I NVAds   :   }
+11-12 17:46:13.311  5003  5003 I NVAds   : }
+11-12 17:46:16.302  5003  5003 I NVAds   : native (jobs): 0 Internal error. | {
+11-12 17:46:16.302  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:16.302  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:16.302  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:16.302  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:16.302  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:16.302  5003  5003 I NVAds   :     "Response ID": "Z_v1avvnFvbg6tkPwZuuiAw",
+11-12 17:46:16.302  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:16.302  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:16.302  5003  5003 I NVAds   :       {
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Latency": 41,
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:16.302  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=Z_v1atncFOqPvMcPt5fJuA4",
+11-12 17:46:16.302  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:16.302  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:16.302  5003  5003 I NVAds   :         },
+11-12 17:46:16.302  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:16.302  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:16.302  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:16.302  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:16.302  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:16.302  5003  5003 I NVAds   :         }
+11-12 17:46:16.302  5003  5003 I NVAds   :       }
+11-12 17:46:16.302  5003  5003 I NVAds   :     ],
+11-12 17:46:16.302  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:16.302  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:16.302  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:16.302  5003  5003 I NVAds   :     }
+11-12 17:46:16.302  5003  5003 I NVAds   :   }
+11-12 17:46:16.302  5003  5003 I NVAds   : }
+11-12 17:46:19.315  5003  5003 I NVAds   : native (updates): 0 Internal error. | {
+11-12 17:46:19.315  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:19.315  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:19.315  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:19.315  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:19.315  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:19.315  5003  5003 I NVAds   :     "Response ID": "Z_v1as-3E4mtodAPrZaCiQQ",
+11-12 17:46:19.315  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:19.315  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:19.315  5003  5003 I NVAds   :       {
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Latency": 1521,
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Ad Source Name": "",
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Ad Source ID": "5450213213286189855",
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Ad Source Instance Name": "",
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Ad Source Instance ID": "-1",
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:19.315  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=Z_v1avCnEabikPIP24TV4QE"
+11-12 17:46:19.315  5003  5003 I NVAds   :         },
+11-12 17:46:19.315  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:19.315  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:19.315  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:19.315  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:19.315  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:19.315  5003  5003 I NVAds   :         }
+11-12 17:46:19.315  5003  5003 I NVAds   :       }
+11-12 17:46:19.315  5003  5003 I NVAds   :     ],
+11-12 17:46:19.315  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:19.315  5003  5003 I NVAds   :       "mediation_group_name": "AdMob (default)",
+11-12 17:46:19.315  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:19.315  5003  5003 I NVAds   :     }
+11-12 17:46:19.315  5003  5003 I NVAds   :   }
+11-12 17:46:19.315  5003  5003 I NVAds   : }
+11-12 17:46:25.455  5003  5003 I NVAds   : inline request 300x249.90475.dp
+11-12 17:46:26.309  5003  5003 I NVAds   : native (detail-b): 0 Internal error. | {
+11-12 17:46:26.309  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:26.309  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:26.309  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:26.309  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:26.309  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:26.309  5003  5003 I NVAds   :     "Response ID": "cPv1as_aN_bd6tkPjdLhqQI",
+11-12 17:46:26.309  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:26.309  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:26.309  5003  5003 I NVAds   :       {
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Latency": 581,
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:26.309  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=cPv1avL9NPaUkPIP3-Lz-Ao",
+11-12 17:46:26.309  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:26.309  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:26.309  5003  5003 I NVAds   :         },
+11-12 17:46:26.309  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:26.309  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:26.309  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:26.309  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:26.309  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:26.309  5003  5003 I NVAds   :         }
+11-12 17:46:26.309  5003  5003 I NVAds   :       }
+11-12 17:46:26.309  5003  5003 I NVAds   :     ],
+11-12 17:46:26.309  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:26.309  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:26.309  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:26.309  5003  5003 I NVAds   :     }
+11-12 17:46:26.309  5003  5003 I NVAds   :   }
+11-12 17:46:26.309  5003  5003 I NVAds   : }
+11-12 17:46:27.323  5003  5003 I NVAds   : inline loaded 300x249.90475.dp
+11-12 17:46:39.041  5003  5003 I NVAds   : inline request 300x249.90475.dp
+11-12 17:46:41.750  5003  5003 I NVAds   : inline loaded 300x249.90475.dp
+11-12 17:46:43.045  5003  5003 I NVAds   : native (detail-b): 0 Internal error. | {
+11-12 17:46:43.045  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:43.045  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:43.045  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:43.045  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:43.045  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:43.045  5003  5003 I NVAds   :     "Response ID": "gvv1atGrFdaKzLEP7vTh6AU",
+11-12 17:46:43.045  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:43.045  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:43.045  5003  5003 I NVAds   :       {
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Latency": 60,
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:43.045  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=gvv1av-XE8afkPIP_pLMkAY",
+11-12 17:46:43.045  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:43.045  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:43.045  5003  5003 I NVAds   :         },
+11-12 17:46:43.045  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:43.045  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:43.045  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:43.045  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:43.045  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:43.045  5003  5003 I NVAds   :         }
+11-12 17:46:43.045  5003  5003 I NVAds   :       }
+11-12 17:46:43.045  5003  5003 I NVAds   :     ],
+11-12 17:46:43.045  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:43.045  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:43.045  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:43.045  5003  5003 I NVAds   :     }
+11-12 17:46:43.045  5003  5003 I NVAds   :   }
+11-12 17:46:43.045  5003  5003 I NVAds   : }
+11-12 17:46:44.946  5003  5003 I NVAds   : native (detail-a): 0 Internal error. | {
+11-12 17:46:44.946  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:44.946  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:44.946  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:44.946  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:44.946  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:44.946  5003  5003 I NVAds   :     "Response ID": "hPv1asT_H8Km6tkPtoqDyA0",
+11-12 17:46:44.946  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:44.946  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:44.946  5003  5003 I NVAds   :       {
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Latency": 34,
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:44.946  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=hPv1asH8Hdesur8PtNf_0AQ",
+11-12 17:46:44.946  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:44.946  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:44.946  5003  5003 I NVAds   :         },
+11-12 17:46:44.946  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:44.946  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:44.946  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:44.946  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:44.946  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:44.946  5003  5003 I NVAds   :         }
+11-12 17:46:44.946  5003  5003 I NVAds   :       }
+11-12 17:46:44.946  5003  5003 I NVAds   :     ],
+11-12 17:46:44.946  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:44.946  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:44.946  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:44.946  5003  5003 I NVAds   :     }
+11-12 17:46:44.946  5003  5003 I NVAds   :   }
+11-12 17:46:44.946  5003  5003 I NVAds   : }
+11-12 17:46:47.722  5003  5003 I NVAds   : inline request 300x249.90475.dp
+11-12 17:46:48.985  5003  5003 I NVAds   : native (jobs): 0 Internal error. | {
+11-12 17:46:48.985  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:48.985  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:48.985  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:48.985  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:48.985  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:48.985  5003  5003 I NVAds   :     "Response ID": "hvv1aoC0NLLe6tkPzZGGsAI",
+11-12 17:46:48.985  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:48.985  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:48.985  5003  5003 I NVAds   :       {
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Latency": 219,
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:48.985  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=hvv1asyRMvaUkPIP3-Lz-Ao",
+11-12 17:46:48.985  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:48.985  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:48.985  5003  5003 I NVAds   :         },
+11-12 17:46:48.985  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:48.985  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:48.985  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:48.985  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:48.985  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:48.985  5003  5003 I NVAds   :         }
+11-12 17:46:48.985  5003  5003 I NVAds   :       }
+11-12 17:46:48.985  5003  5003 I NVAds   :     ],
+11-12 17:46:48.985  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:48.985  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:48.985  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:48.985  5003  5003 I NVAds   :     }
+11-12 17:46:48.985  5003  5003 I NVAds   :   }
+11-12 17:46:48.985  5003  5003 I NVAds   : }
+11-12 17:46:49.933  5003  5003 I NVAds   : inline loaded 300x249.90475.dp
+11-12 17:46:51.228  5003  5003 I NVAds   : native (updates): 0 Internal error. | {
+11-12 17:46:51.228  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:46:51.228  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:46:51.228  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:46:51.228  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:46:51.228  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:46:51.228  5003  5003 I NVAds   :     "Response ID": "ifv1avbTNfatodAPs5udyQw",
+11-12 17:46:51.228  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:46:51.228  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:46:51.228  5003  5003 I NVAds   :       {
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Latency": 153,
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:46:51.228  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=ifv1aomvM8vykPIPw7rrkAo",
+11-12 17:46:51.228  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:46:51.228  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:46:51.228  5003  5003 I NVAds   :         },
+11-12 17:46:51.228  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:46:51.228  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:46:51.228  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:46:51.228  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:46:51.228  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:46:51.228  5003  5003 I NVAds   :         }
+11-12 17:46:51.228  5003  5003 I NVAds   :       }
+11-12 17:46:51.228  5003  5003 I NVAds   :     ],
+11-12 17:46:51.228  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:46:51.228  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:46:51.228  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:46:51.228  5003  5003 I NVAds   :     }
+11-12 17:46:51.228  5003  5003 I NVAds   :   }
+11-12 17:46:51.228  5003  5003 I NVAds   : }
+11-12 17:47:03.992  5003  5003 I NVAds   : inline request 300x249.90475.dp
+11-12 17:47:06.750  5003  5003 I NVAds   : inline loaded 300x249.90475.dp
+11-12 17:47:09.154  5003  5003 I NVAds   : banner loaded
+11-12 17:47:16.189  5003  5003 I NVAds   : native (detail-b): 0 Internal error. | {
+11-12 17:47:16.189  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:47:16.189  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:47:16.189  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:47:16.189  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:47:16.189  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:47:16.189  5003  5003 I NVAds   :     "Response ID": "o_v1aqLtMKvE6tkPnr_vgAs",
+11-12 17:47:16.189  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:47:16.189  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:47:16.189  5003  5003 I NVAds   :       {
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Latency": 11,
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:47:16.189  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=o_v1apy9Lq-KkPIPg_GgqQg",
+11-12 17:47:16.189  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:47:16.189  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:47:16.189  5003  5003 I NVAds   :         },
+11-12 17:47:16.189  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:47:16.189  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:47:16.189  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:47:16.189  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:47:16.189  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:47:16.189  5003  5003 I NVAds   :         }
+11-12 17:47:16.189  5003  5003 I NVAds   :       }
+11-12 17:47:16.189  5003  5003 I NVAds   :     ],
+11-12 17:47:16.189  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:47:16.189  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:47:16.189  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:47:16.189  5003  5003 I NVAds   :     }
+11-12 17:47:16.189  5003  5003 I NVAds   :   }
+11-12 17:47:16.189  5003  5003 I NVAds   : }
+11-12 17:47:26.212  5003  5003 I NVAds   : inline request 300x249.90475.dp
+11-12 17:47:27.763  5003  5003 I NVAds   : inline loaded 300x249.90475.dp
+11-12 17:47:34.210  5003  5003 I NVAds   : back from page: due=true loaded=true pages=6
+11-12 17:47:43.597  5003  5003 I NVAds   : interstitial loaded
+11-12 17:47:46.047  5003  5003 I NVAds   : native (detail-a): 0 Internal error. | {
+11-12 17:47:46.047  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:47:46.047  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:47:46.047  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:47:46.047  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:47:46.047  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:47:46.047  5003  5003 I NVAds   :     "Response ID": "wfv1auiaLfrLodAPieCWGA",
+11-12 17:47:46.047  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:47:46.047  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:47:46.047  5003  5003 I NVAds   :       {
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Latency": 11,
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:47:46.047  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=wfv1aueEK72SvMcPtufAsQg",
+11-12 17:47:46.047  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:47:46.047  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:47:46.047  5003  5003 I NVAds   :         },
+11-12 17:47:46.047  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:47:46.047  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:47:46.047  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:47:46.047  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:47:46.047  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:47:46.047  5003  5003 I NVAds   :         }
+11-12 17:47:46.047  5003  5003 I NVAds   :       }
+11-12 17:47:46.047  5003  5003 I NVAds   :     ],
+11-12 17:47:46.047  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:47:46.047  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:47:46.047  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:47:46.047  5003  5003 I NVAds   :     }
+11-12 17:47:46.047  5003  5003 I NVAds   :   }
+11-12 17:47:46.047  5003  5003 I NVAds   : }
+11-12 17:47:47.776  5003  5003 I NVAds   : app-open shown
+11-12 17:47:52.744  5003  5003 I NVAds   : native (jobs): 0 Internal error. | {
+11-12 17:47:52.744  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:47:52.744  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:47:52.744  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:47:52.744  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:47:52.744  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:47:52.744  5003  5003 I NVAds   :     "Response ID": "yPv1apPwA6KdodAP_sOfsQk",
+11-12 17:47:52.744  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:47:52.744  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:47:52.744  5003  5003 I NVAds   :       {
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Latency": 318,
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:47:52.744  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=yPv1aoTpAdesur8PtNf_0AQ",
+11-12 17:47:52.744  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:47:52.744  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:47:52.744  5003  5003 I NVAds   :         },
+11-12 17:47:52.744  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:47:52.744  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:47:52.744  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:47:52.744  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:47:52.744  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:47:52.744  5003  5003 I NVAds   :         }
+11-12 17:47:52.744  5003  5003 I NVAds   :       }
+11-12 17:47:52.744  5003  5003 I NVAds   :     ],
+11-12 17:47:52.744  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:47:52.744  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:47:52.744  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:47:52.744  5003  5003 I NVAds   :     }
+11-12 17:47:52.744  5003  5003 I NVAds   :   }
+11-12 17:47:52.744  5003  5003 I NVAds   : }
+11-12 17:47:52.748  5003  5003 I NVAds   : native (updates): 0 Internal error. | {
+11-12 17:47:52.748  5003  5003 I NVAds   :   "Code": 0,
+11-12 17:47:52.748  5003  5003 I NVAds   :   "Message": "Internal error.",
+11-12 17:47:52.748  5003  5003 I NVAds   :   "Domain": "com.google.android.gms.ads",
+11-12 17:47:52.748  5003  5003 I NVAds   :   "Cause": "null",
+11-12 17:47:52.748  5003  5003 I NVAds   :   "Response Info": {
+11-12 17:47:52.748  5003  5003 I NVAds   :     "Response ID": "yPv1aoPOBNaKzLEP7vTh6AU",
+11-12 17:47:52.748  5003  5003 I NVAds   :     "Mediation Adapter Class Name": "",
+11-12 17:47:52.748  5003  5003 I NVAds   :     "Adapter Responses": [
+11-12 17:47:52.748  5003  5003 I NVAds   :       {
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Adapter": "com.google.ads.mediation.admob.AdMobAdapter",
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Latency": 204,
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Ad Source Name": "Reservation campaign",
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Ad Source ID": "7068401028668408324",
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Ad Source Instance Name": "[DO NOT EDIT] Publisher Test Video App Install Ad",
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Ad Source Instance ID": "5662540674297680",
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Credentials": {
+11-12 17:47:52.748  5003  5003 I NVAds   :           "pubid": "ca-app-pub-3940256099942544\/1044960115\/cak=no_cache&cadc=b0&caqid=yPv1at_DAq-KkPIPg_GgqQg",
+11-12 17:47:52.748  5003  5003 I NVAds   :           "campaign_type": "1",
+11-12 17:47:52.748  5003  5003 I NVAds   :           "campaign_id": "739275108"
+11-12 17:47:52.748  5003  5003 I NVAds   :         },
+11-12 17:47:52.748  5003  5003 I NVAds   :         "Ad Error": {
+11-12 17:47:52.748  5003  5003 I NVAds   :           "Code": 0,
+11-12 17:47:52.748  5003  5003 I NVAds   :           "Message": "Internal error.",
+11-12 17:47:52.748  5003  5003 I NVAds   :           "Domain": "com.google.android.gms.ads",
+11-12 17:47:52.748  5003  5003 I NVAds   :           "Cause": "null"
+11-12 17:47:52.748  5003  5003 I NVAds   :         }
+11-12 17:47:52.748  5003  5003 I NVAds   :       }
+11-12 17:47:52.748  5003  5003 I NVAds   :     ],
+11-12 17:47:52.748  5003  5003 I NVAds   :     "Response Extras": {
+11-12 17:47:52.748  5003  5003 I NVAds   :       "mediation_group_name": "Campaign",
+11-12 17:47:52.748  5003  5003 I NVAds   :       "app_promotion_type": "INSTALL"
+11-12 17:47:52.748  5003  5003 I NVAds   :     }
+11-12 17:47:52.748  5003  5003 I NVAds   :   }
+11-12 17:47:52.748  5003  5003 I NVAds   : }
+11-12 17:47:52.977  5003  5003 I NVAds   : app-open loaded
