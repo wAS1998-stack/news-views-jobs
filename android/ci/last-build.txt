@@ -1,6 +1,5 @@
-OK build 51 cef4158 2026-11-09T03:37:00Z signed=true
+OK build 52 7d461b6 2026-11-12T17:42:23Z signed=true
 signing: SARKARI_KEYSTORE_BASE64 present, SARKARI_KEYSTORE_PASSWORD present, key alias 'repuvi' (PKCS12 keystore: the key password is the keystore password, SARKARI_KEY_PASSWORD is ignored): keystore OK, build is signed with the upload key
--rw-r--r-- 1 runner runner 44010319 Nov  9 03:31 android/app/build/outputs/apk/debug/app-debug.apk
--rw-r--r-- 1 runner runner 18679518 Nov  9 03:36 android/app/build/outputs/apk/release/app-release.apk
--rw-r--r-- 1 runner runner 25458504 Nov  9 03:36 android/app/build/outputs/bundle/release/app-release.aab
-emulator crash: no
+-rw-r--r-- 1 runner runner 44010323 Nov 12 17:37 android/app/build/outputs/apk/debug/app-debug.apk
+-rw-r--r-- 1 runner runner 18679518 Nov 12 17:41 android/app/build/outputs/apk/release/app-release.apk
+-rw-r--r-- 1 runner runner 25460675 Nov 12 17:41 android/app/build/outputs/bundle/release/app-release.aab
