@@ -207,7 +207,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T02:29:19.413Z",
+    "at": "2026-11-13T04:51:00.719Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -218,7 +218,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T02:29:19.867Z",
+    "at": "2026-11-13T04:51:01.177Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 0,
@@ -230,11 +230,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-13T02:30:19.104Z",
+    "at": "2026-11-13T04:51:15.400Z",
     "ok": true,
-    "sent": 140,
+    "sent": 46,
     "log": [
-      "push-notify: 140 sent\n  job ncl-iti-electrician-iti-fitter-more-2026 en [('s-madhya-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ncl-iti-electrician-iti-fitter-more-2026 en [('s-madhya-pradesh' in topics || 's-any' in topics) && 'q-engineering-dip"
+      "push-notify: 46 sent\n  job nta-director-joint-director-more-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job nta-director-joint-director-more-2026 hi [('s-delhi' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]"
     ]
   },
   "gsc": {
