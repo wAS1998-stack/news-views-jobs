@@ -212,7 +212,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T00:27:52.327Z",
+    "at": "2026-11-13T02:29:19.413Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -223,24 +223,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T00:27:52.783Z",
+    "at": "2026-11-13T02:29:19.867Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 0,
     "usedToday": 200,
-    "kept": 36,
+    "kept": 37,
     "quotaDay": "2026-11-12",
     "log": [
       "Indexing API: 0 to send (0 updated, 0 deleted); 200/200 used in Google's day 2026-11-12 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-13T00:28:08.316Z",
+    "at": "2026-11-13T02:30:19.104Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 140,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 140 sent\n  job ncl-iti-electrician-iti-fitter-more-2026 en [('s-madhya-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ncl-iti-electrician-iti-fitter-more-2026 en [('s-madhya-pradesh' in topics || 's-any' in topics) && 'q-engineering-dip"
     ]
   },
   "gsc": {
