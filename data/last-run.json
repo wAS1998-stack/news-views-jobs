@@ -231,7 +231,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T10:11:33.607Z",
+    "at": "2026-11-13T11:39:09.068Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -242,24 +242,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T10:12:12.949Z",
+    "at": "2026-11-13T11:39:12.381Z",
     "ok": true,
-    "submitted": 189,
+    "submitted": 11,
     "failed": 0,
     "limited": false,
-    "kept": 4,
-    "usedToday": 189,
+    "kept": 10,
+    "usedToday": 200,
     "log": [
-      "Indexing API: 189 to send (177 updated, 12 deleted); 0/200 used in Google's day 2026-11-13 (Pacific).",
-      "Indexing API: sent 189."
+      "Indexing API: 11 to send (11 updated, 0 deleted); 189/200 used in Google's day 2026-11-13 (Pacific).",
+      "Indexing API: sent 11."
     ]
   },
   "push": {
-    "at": "2026-11-13T10:13:17.340Z",
+    "at": "2026-11-13T11:40:14.556Z",
     "ok": true,
-    "sent": 68,
+    "sent": 52,
     "log": [
-      "push-notify: 68 sent\n  job bnu-walkin-teacher-guest-lecturer-more-2026 en ['s-karnataka' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job bnu-walkin-teacher-guest-lecturer-more-2026 hi ['s-karnataka' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job oav-b"
+      "push-notify: 52 sent\n  job punjabi-university-lecturer-tgt-more-2026 en ['s-punjab' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job punjabi-university-lecturer-tgt-more-2026 hi ['s-punjab' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job gad-driver-2026 en ['s-mi"
     ]
   },
   "gsc": {

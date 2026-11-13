@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-13",
   "tz": "PT",
-  "used": 189,
+  "used": 200,
   "drained": 80
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -184,6 +184,12 @@
   "hash": "c84278187dce"
  },
  "_retry": [
+  "https://news-views.in/jobs/kv-shamgarh-trained-graduate-teacher-walkin-2026/",
+  "https://news-views.in/jobs/nhsrc-consultant-bureau-planning-division-2026/",
+  "https://news-views.in/jobs/npsc-controller-examinations-2026/",
+  "https://news-views.in/jobs/punjabi-university-lecturer-tgt-more-2026/",
+  "https://news-views.in/jobs/tiss-training-research-officer-2026/",
+  "https://news-views.in/jobs/upmscl-manager-2026/",
   "https://news-views.in/jobs/ghss-sindhigam-guest-faculty-2026/",
   "https://news-views.in/jobs/optcl-company-secretary-by-oct-2025/",
   "https://news-views.in/jobs/indian-bank-consultant-it-consultant-2026/",
@@ -5642,5 +5648,49 @@
  "https://news-views.in/jobs/indian-air-force-hindi-typist-2026/": {
   "sentAt": "2026-11-13T10:12:10.372Z",
   "hash": "63d558c024a5"
+ },
+ "https://news-views.in/jobs/aiims-bhopal-gynaecology-consultant-2026/": {
+  "sentAt": "2026-11-13T11:39:09.796Z",
+  "hash": "01ad462dd883"
+ },
+ "https://news-views.in/jobs/aiims-madurai-junior-resident-2026/": {
+  "sentAt": "2026-11-13T11:39:10.060Z",
+  "hash": "9348b9e10c78"
+ },
+ "https://news-views.in/jobs/aiims-madurai-senior-resident-2026/": {
+  "sentAt": "2026-11-13T11:39:10.303Z",
+  "hash": "b7fd4eb61fca"
+ },
+ "https://news-views.in/jobs/calicut-university-assistant-professor-walkin-2026/": {
+  "sentAt": "2026-11-13T11:39:10.541Z",
+  "hash": "d74080d26428"
+ },
+ "https://news-views.in/jobs/cci-officer-2026/": {
+  "sentAt": "2026-11-13T11:39:10.815Z",
+  "hash": "1620a618d8e5"
+ },
+ "https://news-views.in/jobs/drda-khagaria-district-project-officer-2026/": {
+  "sentAt": "2026-11-13T11:39:11.065Z",
+  "hash": "f7a5521d85cc"
+ },
+ "https://news-views.in/jobs/dsac-assistant-professor-crop-physiology-biochemistry-2026/": {
+  "sentAt": "2026-11-13T11:39:11.315Z",
+  "hash": "1a8ae4528b20"
+ },
+ "https://news-views.in/jobs/gad-driver-2026/": {
+  "sentAt": "2026-11-13T11:39:11.535Z",
+  "hash": "7d5913f8cc9d"
+ },
+ "https://news-views.in/jobs/icar-sbi-project-fellow-walkin-2026/": {
+  "sentAt": "2026-11-13T11:39:11.766Z",
+  "hash": "51eda466e156"
+ },
+ "https://news-views.in/jobs/kfri-project-associate-walk-2026/": {
+  "sentAt": "2026-11-13T11:39:12.021Z",
+  "hash": "177a2c946f1f"
+ },
+ "https://news-views.in/jobs/kfri-project-fellow-walk-2026/": {
+  "sentAt": "2026-11-13T11:39:12.260Z",
+  "hash": "27235f3a33cc"
  }
 }
