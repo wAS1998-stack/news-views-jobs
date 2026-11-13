@@ -231,7 +231,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T11:39:09.068Z",
+    "at": "2026-11-13T13:48:19.540Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -242,24 +242,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T11:39:12.381Z",
+    "at": "2026-11-13T13:48:20.019Z",
     "ok": true,
-    "submitted": 11,
-    "failed": 0,
-    "limited": false,
-    "kept": 10,
+    "submitted": 0,
+    "budgetLeft": 0,
     "usedToday": 200,
+    "kept": 52,
+    "quotaDay": "2026-11-13",
     "log": [
-      "Indexing API: 11 to send (11 updated, 0 deleted); 189/200 used in Google's day 2026-11-13 (Pacific).",
-      "Indexing API: sent 11."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 200/200 used in Google's day 2026-11-13 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-13T11:40:14.556Z",
+    "at": "2026-11-13T13:50:11.045Z",
     "ok": true,
-    "sent": 52,
+    "sent": 148,
     "log": [
-      "push-notify: 52 sent\n  job punjabi-university-lecturer-tgt-more-2026 en ['s-punjab' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job punjabi-university-lecturer-tgt-more-2026 hi ['s-punjab' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job gad-driver-2026 en ['s-mi"
+      "push-notify: 148 sent\n  job hppwd-junior-office-assistant-junior-engineer-2026 en ['s-himachal-pradesh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job hppwd-junior-office-assistant-junior-engineer-2026 en ['s-himachal-pradesh' in topics && 'q-engineering-diploma' in topics && 'l"
     ]
   },
   "gsc": {
