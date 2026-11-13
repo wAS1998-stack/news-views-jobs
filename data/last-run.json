@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T13:48:19.540Z",
+    "at": "2026-11-13T16:14:45.207Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,23 +243,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T13:48:20.019Z",
+    "at": "2026-11-13T16:14:45.665Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 0,
     "usedToday": 200,
-    "kept": 52,
+    "kept": 85,
     "quotaDay": "2026-11-13",
     "log": [
       "Indexing API: 0 to send (0 updated, 0 deleted); 200/200 used in Google's day 2026-11-13 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-13T13:50:11.045Z",
+    "at": "2026-11-13T16:15:43.577Z",
     "ok": true,
-    "sent": 148,
+    "sent": 74,
     "log": [
-      "push-notify: 148 sent\n  job hppwd-junior-office-assistant-junior-engineer-2026 en ['s-himachal-pradesh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job hppwd-junior-office-assistant-junior-engineer-2026 en ['s-himachal-pradesh' in topics && 'q-engineering-diploma' in topics && 'l"
+      "push-notify: 74 sent\n  job janpad-panchayat-usoor-gram-rozgar-sahayak-2026 en ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job janpad-panchayat-usoor-gram-rozgar-sahayak-2026 hi ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job"
     ]
   },
   "gsc": {
