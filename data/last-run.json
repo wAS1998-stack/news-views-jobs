@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-13T07:39:42.262Z",
+    "at": "2026-11-13T10:11:33.607Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,23 +243,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-13T07:39:42.620Z",
+    "at": "2026-11-13T10:12:12.949Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 0,
-    "usedToday": 200,
-    "kept": 79,
-    "quotaDay": "2026-11-12",
+    "submitted": 189,
+    "failed": 0,
+    "limited": false,
+    "kept": 4,
+    "usedToday": 189,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 200/200 used in Google's day 2026-11-12 (Pacific)."
+      "Indexing API: 189 to send (177 updated, 12 deleted); 0/200 used in Google's day 2026-11-13 (Pacific).",
+      "Indexing API: sent 189."
     ]
   },
   "push": {
-    "at": "2026-11-13T07:40:46.561Z",
+    "at": "2026-11-13T10:13:17.340Z",
     "ok": true,
-    "sent": 90,
+    "sent": 68,
     "log": [
-      "push-notify: 90 sent\n  job gpsc-assistant-professor-assistant-public-prosecutor-2026 en ['s-goa' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gpsc-assistant-professor-assistant-public-prosecutor-2026 hi ['s-goa' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job"
+      "push-notify: 68 sent\n  job bnu-walkin-teacher-guest-lecturer-more-2026 en ['s-karnataka' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job bnu-walkin-teacher-guest-lecturer-more-2026 hi ['s-karnataka' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job oav-b"
     ]
   },
   "gsc": {
