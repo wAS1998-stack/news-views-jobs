@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-14",
   "tz": "PT",
-  "used": 178,
+  "used": 191,
   "drained": 30
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6390,5 +6390,57 @@
  "https://news-views.in/jobs/up-police-2020/": {
   "sentAt": "2026-11-14T11:01:43.830Z",
   "hash": "329baedacac6"
+ },
+ "https://news-views.in/jobs/aiims-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-14T13:03:05.075Z",
+  "hash": "cd4fadb40033"
+ },
+ "https://news-views.in/jobs/aiims-rajkot-faculty-list-out-provisional-2026/": {
+  "sentAt": "2026-11-14T13:03:05.336Z",
+  "hash": "c2a291154382"
+ },
+ "https://news-views.in/jobs/amu-jnmc-assistant-professor-senior-resident-2026/": {
+  "sentAt": "2026-11-14T13:03:05.596Z",
+  "hash": "61442486dc23"
+ },
+ "https://news-views.in/jobs/burari-hospital-senior-resident-2026/": {
+  "sentAt": "2026-11-14T13:03:05.877Z",
+  "hash": "3b42ee10a57c"
+ },
+ "https://news-views.in/jobs/gsv-faculty-professor-associate-professor-2026/": {
+  "sentAt": "2026-11-14T13:03:06.159Z",
+  "hash": "333ce6969b36"
+ },
+ "https://news-views.in/jobs/igmh-walkin-external-experts-consultants-2026/": {
+  "sentAt": "2026-11-14T13:03:06.331Z",
+  "hash": "f29bfa1f25e6"
+ },
+ "https://news-views.in/jobs/jharkhand-home-guard-sahibganj-accepted-rejected-2026/": {
+  "sentAt": "2026-11-14T13:03:06.543Z",
+  "hash": "886fb04754a8"
+ },
+ "https://news-views.in/jobs/kbcnmu-ipr-internship-2026/": {
+  "sentAt": "2026-11-14T13:03:06.793Z",
+  "hash": "61ac66ee0c47"
+ },
+ "https://news-views.in/jobs/ksssci-medical-physics-resident-walkin-2026/": {
+  "sentAt": "2026-11-14T13:03:07.039Z",
+  "hash": "0f78aa0dacf2"
+ },
+ "https://news-views.in/jobs/uas-dharwad-project-assistant-walk-2026/": {
+  "sentAt": "2026-11-14T13:03:07.247Z",
+  "hash": "8951d3c72e6c"
+ },
+ "https://news-views.in/jobs/uas-dharwad-senior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-14T13:03:07.484Z",
+  "hash": "dccaad762f3f"
+ },
+ "https://news-views.in/jobs/visva-bharati-junior-engineer-deputy-finance-2026/": {
+  "sentAt": "2026-11-14T13:03:07.728Z",
+  "hash": "3b78e70de8d8"
+ },
+ "https://news-views.in/jobs/wbpdcl-technician-apprentice-2026/": {
+  "sentAt": "2026-11-14T13:03:08.077Z",
+  "hash": "586623b59956"
  }
 }
