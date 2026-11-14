@@ -34,7 +34,7 @@
     ]
   },
   "fetch": {
-    "at": "2026-11-14T03:07:43.853Z",
+    "at": "2026-11-14T03:48:29.848Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -110,10 +110,10 @@
     ]
   },
   "watch": {
-    "at": "2026-11-14T03:08:11.553Z",
+    "at": "2026-11-14T03:49:53.654Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
-    "healthy": 23,
+    "healthy": 19,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -126,34 +126,34 @@
       "navy": "paused (fails 113, geo-blocked)",
       "iaf-agniveer": "paused (fails 113, geo-blocked)",
       "rrb-portal": "paused (fails 109, geo-blocked)",
-      "ibps": "12 links, 0 new via news-views.in",
+      "dsssb": "6 links, 0 new via direct",
       "ncs": "paused (fails 36)",
       "rbi": "18 links, 0 new via direct",
       "bpsc": "paused (fails 111, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via direct",
       "mppsc": "paused (fails 33, geo-blocked)",
       "mpsc": "paused (fails 113)",
-      "dsssb": "6 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "kpsc": "paused (fails 113, geo-blocked)",
       "appsc": "paused (fails 113, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "ibps": "12 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 113, geo-blocked)",
       "opsc": "paused (fails 36)",
       "hpsc": "paused (fails 113, geo-blocked)",
       "hppsc": "paused (fails 113, geo-blocked)",
       "ukpsc": "paused (fails 113, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "kvs": "3 links, 0 new via direct",
       "cgpsc": "paused (fails 113, geo-blocked)",
       "gpsc": "paused (fails 113, geo-blocked)",
-      "tgpsc": "2 links, 0 new via news-views.in",
+      "ssc": "7 links, 0 new via news-views.in",
       "ppsc": "paused (fails 113, geo-blocked)",
       "apsc": "paused (fails 113, geo-blocked)",
       "jkpsc": "paused (fails 113, geo-blocked)",
       "goapsc": "paused (fails 113, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "tgpsc": "2 links, 0 new via news-views.in",
       "rssb": "paused (fails 113, geo-blocked)",
       "esb-mp": "paused (fails 113, geo-blocked)",
-      "kvs": "3 links, 0 new via direct",
+      "tnpsc": "34 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
       "nta": "1 links, 0 new via news-views.in",
       "jssc": "paused (fails 113, geo-blocked)",
@@ -163,21 +163,21 @@
       "hprca": "paused (fails 113, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "kea": "paused (fails 113, geo-blocked)",
-      "uksssc": "26 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "dsssb2": "paused (fails 113, geo-blocked)",
-      "keralapsc": "6 links, 0 new via news-views.in",
       "bssc": "785 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
       "jkssb": "2 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 113, geo-blocked)",
       "tslprb": "paused (fails 113, geo-blocked)",
       "slprb-ap": "paused (fails 113, geo-blocked)",
-      "tnpsc": "34 links, 0 new via news-views.in",
-      "bpssc": "209 links, 0 new via news-views.in",
-      "uppbpb": "5 links, 0 new via direct",
-      "csbc": "195 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "upsssc": "4 links, 0 new via news-views.in",
-      "rpsc": "189 links, 0 new via news-views.in"
+      "uppbpb": "5 links, 0 new via direct",
+      "rpsc": "189 links, 0 new via news-views.in",
+      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "csbc": "error: news-views.in: HTTP 502 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
+      "bpssc": "error: news-views.in: HTTP 502 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -185,7 +185,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-14T03:08:12.007Z",
+    "at": "2026-11-14T03:49:54.003Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 0,
@@ -201,7 +201,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-14T01:37:02.298Z",
+    "at": "2026-11-14T03:49:55.547Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "factsRead": 0,
     "factsPending": 0,
@@ -213,35 +213,29 @@
     "contentPending": 0,
     "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
-    "searchFaqPages": 1,
+    "searchFaqPages": 0,
     "opportunities": 6,
-    "aiStatus": "ok (1 calls)",
+    "aiStatus": "ok (0 calls)",
     "log": [
       "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
       "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
-      "  ✓ search FAQ (6) for /jobs/rajasthan-safai-karamchari-2026/ [pos 4.9, 17 impr]"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-14T01:37:36.044Z",
+    "at": "2026-11-14T03:49:55.874Z",
     "ai": "OpenAI",
-    "aiStatus": "ok (2 calls)",
-    "published": 1,
-    "quizzes": 1,
+    "aiStatus": "ok (0 calls)",
+    "published": 0,
+    "quizzes": 0,
     "existing": 400,
-    "feeds": {
-      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
-    },
+    "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
-      "  20 source headlines for today's digest",
-      "  + digest: Current Affairs 14 November 2026: Key Government Updates for Exam Aspirants (314 words)",
-      "  + quiz: Current Affairs Quiz 14 November 2026 (10 Qs)"
+      "  current affairs for today already exists."
     ]
   },
   "gsc": {
