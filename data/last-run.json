@@ -35,7 +35,7 @@
     ]
   },
   "fetch": {
-    "at": "2026-11-14T12:17:32.572Z",
+    "at": "2026-11-14T12:57:57.377Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -44,21 +44,23 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (8 calls)",
-    "newJobs": 5,
+    "aiStatus": "ok (10 calls)",
+    "newJobs": 8,
     "newUpdates": 2,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-14; 78 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-14; 73 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-14; 11 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-13; 11 already known"
     },
     "updDiag": {
-      "seen": 32,
-      "known": 29,
+      "seen": 34,
+      "known": 31,
       "added": 2,
       "filtered": [],
       "samples": [
+        "SPMCIL Various Executive Exam Date 2026 Out - Check Revised CBT Date for Advt No",
+        "AIBE 22 Admit Card 2026 Out Today – Download AIBE XXII Hall Ticket",
         "UP Police SI Final Selection List 2026 Out – 203 Candidates Selected, Download P",
         "SBI PO Interview Admit Card 2026 Date Out – Check Interview Schedule & Call Lett",
         "RRB Group D CBT-I Result 2026 Out - Zone-Wise Result PDF, Cut Off and Scorecard ",
@@ -71,9 +73,7 @@
         "Railway RRB Paramedical CEN 05/2026 Exam City Details 2026 – Out",
         "CISF Exam Date 2026 Out – Constable, Tradesman, Driver & ASI Exam Schedule",
         "SSB Odisha Junior Assistant & Clerk Admit Card 2026 Date Out – Check Hall Ticket",
-        "JSSC Paramedical Staff Nurse Result 2026 Out – Download Post-Wise Result PDF",
-        "SSC CPO SI CAPF Exam City Details 2026",
-        "UPSC Civil Services IFS Mains Admit Card 2026"
+        "JSSC Paramedical Staff Nurse Result 2026 Out – Download Post-Wise Result PDF"
       ]
     },
     "log": [
@@ -105,10 +105,10 @@
     ]
   },
   "watch": {
-    "at": "2026-11-14T12:18:47.946Z",
+    "at": "2026-11-14T12:58:26.539Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
-    "healthy": 22,
+    "healthy": 23,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -125,10 +125,10 @@
       "ncs": "paused (fails 38)",
       "rbi": "18 links, 0 new via direct",
       "bpsc": "paused (fails 113, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via direct",
+      "dsssb": "6 links, 0 new via direct",
       "mppsc": "paused (fails 35, geo-blocked)",
       "mpsc": "paused (fails 115)",
-      "dsssb": "6 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via direct",
       "kpsc": "paused (fails 115, geo-blocked)",
       "appsc": "paused (fails 115, geo-blocked)",
       "ibps": "12 links, 0 new via news-views.in",
@@ -137,42 +137,42 @@
       "hpsc": "paused (fails 115, geo-blocked)",
       "hppsc": "paused (fails 115, geo-blocked)",
       "ukpsc": "paused (fails 115, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "tgpsc": "3 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 115, geo-blocked)",
       "gpsc": "paused (fails 115, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via direct",
       "ppsc": "paused (fails 115, geo-blocked)",
       "apsc": "paused (fails 115, geo-blocked)",
       "jkpsc": "paused (fails 115, geo-blocked)",
       "goapsc": "paused (fails 115, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "rssb": "paused (fails 115, geo-blocked)",
       "esb-mp": "paused (fails 115, geo-blocked)",
       "kvs": "3 links, 0 new via direct",
-      "tnpsc": "34 links, 0 new via news-views.in",
       "jpsc": "47 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 115, geo-blocked)",
       "osssc": "paused (fails 38, geo-blocked)",
       "gsssb": "paused (fails 115, geo-blocked)",
       "sssb-punjab": "paused (fails 115, geo-blocked)",
       "hprca": "paused (fails 115, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "tnpsc": "34 links, 0 new via news-views.in",
       "kea": "paused (fails 115, geo-blocked)",
       "bssc": "785 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 115, geo-blocked)",
+      "nta": "1 links, 0 new via news-views.in",
       "uksssc": "26 links, 0 new via direct",
       "jkssb": "2 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 115, geo-blocked)",
       "tslprb": "paused (fails 115, geo-blocked)",
       "slprb-ap": "paused (fails 115, geo-blocked)",
       "wbssc": "13 links, 0 new via direct",
-      "csbc": "195 links, 0 new via news-views.in",
-      "uppbpb": "6 links, 0 new via direct",
       "keralapsc": "6 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "rpsc": "188 links, 0 new via news-views.in",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
+      "csbc": "195 links, 0 new via news-views.in",
+      "upsssc": "4 links, 0 new via news-views.in",
+      "rpsc": "188 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -180,19 +180,20 @@
     ]
   },
   "apply": {
-    "at": "2026-11-14T12:19:18.460Z",
+    "at": "2026-11-14T12:58:46.440Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 3,
     "found": 0,
     "due": 3,
-    "cands": 938,
+    "cands": 2,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
+      "Warning: TT: undefined function: 21",
       "apply-links: checked 3, found 0 real application pages (3 due, pdf reader on)",
-      "  candidates seen 938, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "enrich": {
