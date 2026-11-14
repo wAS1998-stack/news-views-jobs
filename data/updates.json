@@ -1,5 +1,50 @@
 [
   {
+    "id": "ssc-cpo-si-capf-exam-city-details-2026",
+    "type": "admit-card",
+    "title": "SSC CPO SI CAPF Exam City Details 2026",
+    "organization": "Staff Selection Commission",
+    "org_short": "SSC",
+    "date": "2026-11-14",
+    "link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/City%20live%20CPO%20Exam%20notice_13112026.pdf",
+    "summary": "The Staff Selection Commission (SSC) has released the Exam City Details for the post of Sub Inspector in Delhi Police and Central Armed Police Forces Examination, 2026. Candidates who have applied for this recruitment can download their exam city details from the official website. The details were made available recently, and candidates are advised to check the information using their registration credentials.",
+    "exam_name": "Sub Inspector in Delhi Police and Central Armed Police Forces Examination, 2026",
+    "summary_hi": "स्टाफ सेलेक्शन कमीशन (SSC) ने दिल्ली पुलिस और केंद्रीय सशस्त्र पुलिस बल परीक्षा, 2026 के लिए सब इंस्पेक्टर के पद के लिए परीक्षा शहर विवरण जारी किया है। इस भर्ती के लिए आवेदन करने वाले उम्मीदवार अपने परीक्षा शहर का विवरण आधिकारिक वेबसाइट से डाउनलोड कर सकते हैं। यह विवरण हाल ही में जारी किया गया था, और उम्मीदवारों को अपनी पंजीकरण जानकारी का उपयोग करके जानकारी की जांच करने की सलाह दी जाती है।",
+    "steps": [
+      "Visit the official SSC website: https://ssc.gov.in/",
+      "Go to the 'Important Links' section on the homepage.",
+      "Click on the Exam City Details link.",
+      "Enter your Registration Number and Date of Birth along with the Captcha Code.",
+      "Submit the details by clicking on the Login button.",
+      "Download your Exam City Details once successfully logged in."
+    ],
+    "details": [
+      "Candidates must ensure they carry necessary documents to the examination center. A valid ID proof and any other required certifications should be presented upon entry. It is also important to check the exam guidelines issued by the SSC to understand the do's and don'ts on the exam day.",
+      "After downloading the Exam City Details, candidates should confirm their venue and plan their travel accordingly. In case of discrepancies, candidates must contact the SSC helpline for resolution. As for the upcoming examination, it will occur between 23 – 28 November 2026, following which the next stage of selection will take place based on the performance in the exams."
+    ],
+    "faq": [
+      {
+        "q": "How can I check my Exam City?",
+        "a": "You can check your Exam City by logging into the official SSC website with your registration number and date of birth."
+      },
+      {
+        "q": "What documents do I need to carry?",
+        "a": "You need to carry a valid ID proof along with your admit card to the examination center."
+      },
+      {
+        "q": "What if I have discrepancies in my Exam City Details?",
+        "a": "You should contact the SSC helpline immediately to report any discrepancies in your Exam City Details."
+      },
+      {
+        "q": "When is the exam scheduled?",
+        "a": "The examination is scheduled to be conducted from 23 to 28 November 2026."
+      }
+    ],
+    "official_link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/City%20live%20CPO%20Exam%20notice_13112026.pdf",
+    "official_website": "https://ssc.gov.in/",
+    "source": "https://www.sarkariexam.com/ssc-cpo-si-capf-2026/"
+  },
+  {
     "id": "ukpsc-upper-pcs-admit-card-2026",
     "type": "admit-card",
     "title": "UKPSC Upper PCS Admit Card 2026",
