@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-14",
   "tz": "PT",
-  "used": 169,
+  "used": 178,
   "drained": 30
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6354,5 +6354,41 @@
  "https://news-views.in/jobs/national-campa-deputy-chief-executive-officer-2026/": {
   "sentAt": "2026-11-14T08:37:38.490Z",
   "hash": "10d3db327b4d"
+ },
+ "https://news-views.in/jobs/aiims-delhi-project-assistant-2026/": {
+  "sentAt": "2026-11-14T11:01:41.916Z",
+  "hash": "fcf58a12cf2a"
+ },
+ "https://news-views.in/jobs/csir-serc-project-associate-ii-project-2026/": {
+  "sentAt": "2026-11-14T11:01:42.148Z",
+  "hash": "ce8b0ab50d8a"
+ },
+ "https://news-views.in/jobs/district-health-society-villupuram-therapeutic-2026/": {
+  "sentAt": "2026-11-14T11:01:42.399Z",
+  "hash": "4e3337b7f9b8"
+ },
+ "https://news-views.in/jobs/iiit-bhopal-phd-position-2026/": {
+  "sentAt": "2026-11-14T11:01:42.655Z",
+  "hash": "eeb79491d338"
+ },
+ "https://news-views.in/jobs/ilbs-instructor-2026/": {
+  "sentAt": "2026-11-14T11:01:42.878Z",
+  "hash": "9aa4b21707e6"
+ },
+ "https://news-views.in/jobs/rmlnlu-deo-training-assistant-more-2026/": {
+  "sentAt": "2026-11-14T11:01:43.116Z",
+  "hash": "01c0c72ce4b3"
+ },
+ "https://news-views.in/jobs/sjvn-apprentice-graduate-diploma-iti-apprentice-2026/": {
+  "sentAt": "2026-11-14T11:01:43.351Z",
+  "hash": "c576629a70c4"
+ },
+ "https://news-views.in/jobs/ucms-assistant-professor-extended-2026/": {
+  "sentAt": "2026-11-14T11:01:43.624Z",
+  "hash": "d1ec8224658b"
+ },
+ "https://news-views.in/jobs/up-police-2020/": {
+  "sentAt": "2026-11-14T11:01:43.830Z",
+  "hash": "329baedacac6"
  }
 }

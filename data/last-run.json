@@ -2,7 +2,7 @@
   "date": "2026-11-14",
   "runs": {},
   "notify": {
-    "at": "2026-11-14T08:37:04.395Z",
+    "at": "2026-11-14T11:01:41.098Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -14,24 +14,24 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "indexing-api": {
-    "at": "2026-11-14T08:37:38.612Z",
+    "at": "2026-11-14T11:01:43.952Z",
     "ok": true,
-    "submitted": 169,
+    "submitted": 9,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 169,
+    "usedToday": 178,
     "log": [
-      "Indexing API: 169 to send (169 updated, 0 deleted); 0/200 used in Google's day 2026-11-14 (Pacific).",
-      "Indexing API: sent 169."
+      "Indexing API: 9 to send (9 updated, 0 deleted); 169/200 used in Google's day 2026-11-14 (Pacific).",
+      "Indexing API: sent 9."
     ]
   },
   "push": {
-    "at": "2026-11-14T08:38:23.592Z",
+    "at": "2026-11-14T11:02:25.667Z",
     "ok": true,
     "sent": 26,
     "log": [
-      "push-notify: 26 sent\n  job ada-consultant-2026 en ['s-goa' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ada-consultant-2026 en ['s-karnataka' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ada-consultant-2026 hi ['s-goa' in topics && 'q-graduate' in topics &"
+      "push-notify: 26 sent\n  job sjvn-apprentice-graduate-diploma-iti-apprentice-2026 en ['s-himachal-pradesh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job sjvn-apprentice-graduate-diploma-iti-apprentice-2026 en ['s-himachal-pradesh' in topics && 'q-engineering-diploma' in topics &&"
     ]
   },
   "fetch": {
