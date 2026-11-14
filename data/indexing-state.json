@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-14",
   "tz": "PT",
-  "used": 193,
+  "used": 196,
   "drained": 30
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6450,5 +6450,17 @@
  "https://news-views.in/jobs/gmrc-section-engineer-engineer-sr-2026/": {
   "sentAt": "2026-11-14T15:41:26.275Z",
   "hash": "b89e2198e7fe"
+ },
+ "https://news-views.in/jobs/dlsa-katni-part-time-sweeper-2026/": {
+  "sentAt": "2026-11-14T18:07:07.957Z",
+  "hash": "452c2f841a86"
+ },
+ "https://news-views.in/jobs/ggh-kurnool-project-coordinator-ward-boy-2026/": {
+  "sentAt": "2026-11-14T18:07:08.170Z",
+  "hash": "9caa03a46db2"
+ },
+ "https://news-views.in/jobs/pserc-director-finance-staff-consultant-finance-2026/": {
+  "sentAt": "2026-11-14T18:07:08.384Z",
+  "hash": "b17a633e9a26"
  }
 }
