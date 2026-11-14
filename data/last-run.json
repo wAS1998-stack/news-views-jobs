@@ -35,7 +35,7 @@
     ]
   },
   "fetch": {
-    "at": "2026-11-14T08:31:23.332Z",
+    "at": "2026-11-14T09:10:39.580Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -44,19 +44,19 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (6 calls)",
-    "newJobs": 4,
-    "newUpdates": 2,
+    "aiStatus": "ok (1 calls)",
+    "newJobs": 1,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-14; 84 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-14; 87 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-14; 11 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-13; 11 already known"
     },
     "updDiag": {
       "seen": 28,
-      "known": 25,
-      "added": 2,
+      "known": 27,
+      "added": 0,
       "filtered": [],
       "samples": [
         "Goa Police PET Date 2026 Out – Constable & Platoon Commander Physical Test Sched",
@@ -77,6 +77,7 @@
       ]
     },
     "log": [
+      "   = same source page as an existing job, skipped: UPSSSC Inter Level Online Form 2026 (1784 Posts)",
       "   = same source page as an existing job, skipped: UPPSC RO / ARO Online Form 2026",
       "   = same source page as an existing job, skipped: Railway RRB Station Master Online Form 2026 (1265 Posts)",
       "   = rejected after reading on an earlier run, skipped: Railway RRB Ministerial & Isolated Online Form 2026",
@@ -100,15 +101,14 @@
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
       "   = id nit-silchar-junior-research-fellow-ece-2026 is retired (redirected), skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
-      "Added 2 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts"
     ]
   },
   "watch": {
-    "at": "2026-11-14T08:32:47.168Z",
+    "at": "2026-11-14T09:11:07.938Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
-    "healthy": 18,
+    "healthy": 23,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -123,12 +123,12 @@
       "rrb-portal": "paused (fails 110, geo-blocked)",
       "rbi": "18 links, 0 new via direct",
       "ncs": "paused (fails 37)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "ibps": "12 links, 0 new via news-views.in",
       "bpsc": "paused (fails 112, geo-blocked)",
       "dsssb": "6 links, 0 new via direct",
       "mppsc": "paused (fails 34, geo-blocked)",
       "mpsc": "paused (fails 114)",
-      "ibps": "12 links, 0 new via news-views.in",
+      "ssc": "7 links, 0 new via news-views.in",
       "kpsc": "paused (fails 114, geo-blocked)",
       "appsc": "paused (fails 114, geo-blocked)",
       "indiapost-gds": "142 links, 0 new via direct",
@@ -137,7 +137,7 @@
       "hpsc": "paused (fails 114, geo-blocked)",
       "hppsc": "paused (fails 114, geo-blocked)",
       "ukpsc": "paused (fails 114, geo-blocked)",
-      "uppsc": "1 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 114, geo-blocked)",
       "gpsc": "paused (fails 114, geo-blocked)",
       "tgpsc": "2 links, 0 new via news-views.in",
@@ -145,10 +145,10 @@
       "apsc": "paused (fails 114, geo-blocked)",
       "jkpsc": "paused (fails 114, geo-blocked)",
       "goapsc": "paused (fails 114, geo-blocked)",
-      "kvs": "3 links, 0 new via direct",
+      "uppsc": "1 links, 0 new via direct",
       "rssb": "paused (fails 114, geo-blocked)",
       "esb-mp": "paused (fails 114, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "kvs": "3 links, 0 new via direct",
       "jpsc": "47 links, 0 new via news-views.in",
       "tnpsc": "34 links, 0 new via news-views.in",
       "jssc": "paused (fails 114, geo-blocked)",
@@ -160,19 +160,19 @@
       "kea": "paused (fails 114, geo-blocked)",
       "bssc": "785 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 114, geo-blocked)",
-      "jkssb": "2 links, 0 new via news-views.in",
       "uksssc": "26 links, 0 new via direct",
-      "uppbpb": "5 links, 0 new via direct",
+      "jkssb": "2 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 114, geo-blocked)",
       "tslprb": "paused (fails 114, geo-blocked)",
       "slprb-ap": "paused (fails 114, geo-blocked)",
+      "csbc": "195 links, 0 new via news-views.in",
+      "uppbpb": "5 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "rpsc": "189 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)",
-      "nta": "error: news-views.in: HTTP 403 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 2)",
-      "bpssc": "error: news-views.in: HTTP 502 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)",
-      "csbc": "error: news-views.in: HTTP 502 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "upsssc": "4 links, 0 new via news-views.in",
+      "rpsc": "189 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -180,18 +180,18 @@
     ]
   },
   "apply": {
-    "at": "2026-11-14T08:32:50.148Z",
+    "at": "2026-11-14T09:11:08.380Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
-    "checked": 1,
+    "checked": 0,
     "found": 0,
-    "due": 1,
+    "due": 0,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
       "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
