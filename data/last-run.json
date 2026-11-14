@@ -2,7 +2,7 @@
   "date": "2026-11-14",
   "runs": {},
   "notify": {
-    "at": "2026-11-14T06:35:29.275Z",
+    "at": "2026-11-14T08:37:04.395Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -14,23 +14,24 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "indexing-api": {
-    "at": "2026-11-14T06:35:29.737Z",
+    "at": "2026-11-14T08:37:38.612Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 0,
-    "usedToday": 200,
-    "kept": 136,
-    "quotaDay": "2026-11-13",
+    "submitted": 169,
+    "failed": 0,
+    "limited": false,
+    "kept": 4,
+    "usedToday": 169,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 200/200 used in Google's day 2026-11-13 (Pacific)."
+      "Indexing API: 169 to send (169 updated, 0 deleted); 0/200 used in Google's day 2026-11-14 (Pacific).",
+      "Indexing API: sent 169."
     ]
   },
   "push": {
-    "at": "2026-11-14T06:35:57.876Z",
+    "at": "2026-11-14T08:38:23.592Z",
     "ok": true,
-    "sent": 16,
+    "sent": 26,
     "log": [
-      "push-notify: 16 sent\n  job aiims-jodhpur-project-technical-support-i-2026 en ['s-rajasthan' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job aiims-jodhpur-project-technical-support-i-2026 en ['s-rajasthan' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  j"
+      "push-notify: 26 sent\n  job ada-consultant-2026 en ['s-goa' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ada-consultant-2026 en ['s-karnataka' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ada-consultant-2026 hi ['s-goa' in topics && 'q-graduate' in topics &"
     ]
   },
   "fetch": {
