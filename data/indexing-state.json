@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-14",
   "tz": "PT",
-  "used": 191,
+  "used": 193,
   "drained": 30
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6442,5 +6442,13 @@
  "https://news-views.in/jobs/wbpdcl-technician-apprentice-2026/": {
   "sentAt": "2026-11-14T13:03:08.077Z",
   "hash": "586623b59956"
+ },
+ "https://news-views.in/jobs/dmho-vaccine-cold-chain-manager-2026/": {
+  "sentAt": "2026-11-14T15:41:26.001Z",
+  "hash": "051838de56cf"
+ },
+ "https://news-views.in/jobs/gmrc-section-engineer-engineer-sr-2026/": {
+  "sentAt": "2026-11-14T15:41:26.275Z",
+  "hash": "b89e2198e7fe"
  }
 }

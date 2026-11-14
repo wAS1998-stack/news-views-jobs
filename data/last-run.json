@@ -2,7 +2,7 @@
   "date": "2026-11-14",
   "runs": {},
   "notify": {
-    "at": "2026-11-14T13:03:04.304Z",
+    "at": "2026-11-14T15:41:25.154Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -14,24 +14,24 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "indexing-api": {
-    "at": "2026-11-14T13:03:08.200Z",
+    "at": "2026-11-14T15:41:26.398Z",
     "ok": true,
-    "submitted": 13,
+    "submitted": 2,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 191,
+    "usedToday": 193,
     "log": [
-      "Indexing API: 13 to send (13 updated, 0 deleted); 178/200 used in Google's day 2026-11-14 (Pacific).",
-      "Indexing API: sent 13."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 191/200 used in Google's day 2026-11-14 (Pacific).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-14T13:04:01.950Z",
+    "at": "2026-11-14T15:41:54.821Z",
     "ok": true,
-    "sent": 38,
+    "sent": 70,
     "log": [
-      "push-notify: 38 sent\n  job gsv-faculty-professor-associate-professor-2026 en ['s-gujarat' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job gsv-faculty-professor-associate-professor-2026 hi ['s-gujarat' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job aii"
+      "push-notify: 70 sent\n  job gmrc-section-engineer-engineer-sr-2026 en ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job gmrc-section-engineer-engineer-sr-2026 hi ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-hi' in topics]: ok\n  job dmho-va"
     ]
   },
   "fetch": {
