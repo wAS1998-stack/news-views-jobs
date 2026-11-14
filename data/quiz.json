@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-14",
+    "date": "2026-11-14",
+    "digest_id": "current-affairs-2026-11-14",
+    "title": "Current Affairs Quiz 14 November 2026",
+    "questions": [
+      {
+        "q": "What was highlighted by the results of the Swachh Survekshan 2025-26?",
+        "options": [
+          "Infrastructure development",
+          "Focus on public health",
+          "Trade statistics",
+          "Youth engagement"
+        ],
+        "answer": 1,
+        "why": "It reflects the government's focus on public health and urban development."
+      },
+      {
+        "q": "What tragic event did Prime Minister Modi express sorrow over?",
+        "options": [
+          "A flood in Maharashtra",
+          "A natural disaster in Karnataka",
+          "A fire in Delhi",
+          "An accident in Assam"
+        ],
+        "answer": 3,
+        "why": "Prime Minister Narendra Modi expressed deep sorrow over the loss of lives in an accident in Golaghat district, Assam."
+      },
+      {
+        "q": "Which ministry conducted a special cleanliness campaign 6.0?",
+        "options": [
+          "Ministry of Education",
+          "Ministry of Health",
+          "Ministry of Rural Development",
+          "Ministry of MSME"
+        ],
+        "answer": 3,
+        "why": "The Ministry of Micro, Small and Medium Enterprises conducted a special campaign promoting cleanliness initiatives."
+      },
+      {
+        "q": "What does the NFSF Fellowship aim to illustrate?",
+        "options": [
+          "Public participation",
+          "Disaster management",
+          "Financial support and academic excellence",
+          "Infrastructure development"
+        ],
+        "answer": 2,
+        "why": "The NFSF Fellowship has successfully empowered a scholar, illustrating how financial support can lead to academic excellence."
+      },
+      {
+        "q": "How many citizens participated in the 'Nasha Mukta Yuva, Viksit Bharat Quiz'?",
+        "options": [
+          "10,000",
+          "15,000",
+          "28,876",
+          "50,000"
+        ],
+        "answer": 2,
+        "why": "A massive participation of 28,876 citizens reflects the government's initiative towards creating awareness about substance abuse."
+      },
+      {
+        "q": "Where was India's first LED dome planetarium inaugurated?",
+        "options": [
+          "Maharashtra",
+          "Karnataka",
+          "Delhi",
+          "Uttar Pradesh"
+        ],
+        "answer": 1,
+        "why": "Prime Minister Modi inaugurated India's first LED dome planetarium, 'Cosmos-Mysuru', in Karnataka."
+      },
+      {
+        "q": "Which award did the NRIDA receive for innovation in road construction?",
+        "options": [
+          "Bharat Ratna",
+          "Nobel Prize",
+          "U.P. Medal 2025",
+          "Padma Bhushan"
+        ],
+        "answer": 2,
+        "why": "The NRIDA under the Ministry of Rural Development has been selected for the prestigious U.P. Medal 2025 for innovation in road construction."
+      },
+      {
+        "q": "What was the estimated export figure from April to October 2026-27?",
+        "options": [
+          "$350 billion",
+          "$468 billion",
+          "$568.84 billion",
+          "$700 billion"
+        ],
+        "answer": 2,
+        "why": "The estimated export figure for goods and services from April to October 2026-27 stands at $568.84 billion."
+      },
+      {
+        "q": "Which area of focus does the inauguration of the LED planetarium emphasize?",
+        "options": [
+          "Hygiene",
+          "Education and science",
+          "Public health",
+          "Disaster management"
+        ],
+        "answer": 1,
+        "why": "This event underscores the government's investment in education and science."
+      },
+      {
+        "q": "What is the significance of the Swachh Survekshan results for exam aspirants?",
+        "options": [
+          "Reflects government focus",
+          "Indicates destruction",
+          "Shows decrease in public health",
+          "Highlights trade deficits"
+        ],
+        "answer": 0,
+        "why": "Understanding the impact and progress of this initiative is crucial for competitive exam aspirants as it reflects the government's focus."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-13",
     "date": "2026-11-13",
     "digest_id": "current-affairs-2026-11-13",
