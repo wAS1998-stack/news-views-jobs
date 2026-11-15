@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-15",
   "tz": "PT",
-  "used": 5,
+  "used": 6,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6482,5 +6482,9 @@
  "https://news-views.in/jobs/iit-hyderabad-research-associate-nano-x-2026/": {
   "sentAt": "2026-11-15T09:55:29.631Z",
   "hash": "d3caa2bc8dfe"
+ },
+ "https://news-views.in/jobs/kkhsou-assistant-professor-2026/": {
+  "sentAt": "2026-11-15T11:57:39.054Z",
+  "hash": "5b74de759696"
  }
 }
