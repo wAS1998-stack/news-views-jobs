@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "runs": {},
   "fetch": {
-    "at": "2026-11-15T18:21:20.344Z",
+    "at": "2026-11-15T19:01:31.225Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -73,7 +73,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-15T18:22:39.586Z",
+    "at": "2026-11-15T19:02:27.888Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 21,
@@ -89,26 +89,26 @@
       "navy": "paused (fails 123, geo-blocked)",
       "iaf-agniveer": "paused (fails 123, geo-blocked)",
       "rrb-portal": "paused (fails 119, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
-      "ncs": "paused (fails 46)",
       "rbi": "18 links, 0 new via direct",
+      "ncs": "paused (fails 46)",
+      "ssc": "7 links, 0 new via news-views.in",
       "bpsc": "paused (fails 121, geo-blocked)",
-      "ibps": "12 links, 0 new via news-views.in",
+      "dsssb": "6 links, 0 new via direct",
       "mppsc": "paused (fails 43, geo-blocked)",
       "mpsc": "paused (fails 123)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "ibps": "8 links, 0 new via news-views.in",
       "kpsc": "paused (fails 123, geo-blocked)",
       "appsc": "paused (fails 123, geo-blocked)",
-      "kvs": "3 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 123, geo-blocked)",
       "opsc": "paused (fails 46)",
       "hpsc": "paused (fails 123, geo-blocked)",
       "hppsc": "paused (fails 123, geo-blocked)",
       "ukpsc": "paused (fails 123, geo-blocked)",
-      "tgpsc": "5 links, 0 new via news-views.in",
+      "tnpsc": "31 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 123, geo-blocked)",
       "gpsc": "paused (fails 123, geo-blocked)",
-      "tnpsc": "33 links, 0 new via news-views.in",
+      "kvs": "3 links, 0 new via direct",
       "ppsc": "paused (fails 123, geo-blocked)",
       "apsc": "paused (fails 123, geo-blocked)",
       "jkpsc": "paused (fails 123, geo-blocked)",
@@ -118,29 +118,29 @@
       "esb-mp": "paused (fails 123, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
       "nta": "1 links, 0 new via news-views.in",
-      "bssc": "785 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 123, geo-blocked)",
       "osssc": "paused (fails 46, geo-blocked)",
       "gsssb": "paused (fails 123, geo-blocked)",
       "sssb-punjab": "paused (fails 123, geo-blocked)",
       "hprca": "paused (fails 123, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
-      "kea": "paused (fails 123, geo-blocked)",
       "keralapsc": "6 links, 0 new via news-views.in",
+      "kea": "paused (fails 123, geo-blocked)",
+      "bssc": "785 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 123, geo-blocked)",
-      "uksssc": "26 links, 0 new via direct",
+      "tgpsc": "5 links, 0 new via news-views.in",
       "jkssb": "2 links, 0 new via news-views.in",
-      "uppbpb": "4 links, 0 new via direct",
+      "uksssc": "26 links, 0 new via direct",
       "tnusrb": "paused (fails 123, geo-blocked)",
       "tslprb": "paused (fails 123, geo-blocked)",
       "slprb-ap": "paused (fails 123, geo-blocked)",
       "wbssc": "13 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
-      "dsssb": "6 links, 0 new via news-views.in",
+      "uppbpb": "4 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "187 links, 0 new via news-views.in",
-      "indiapost-gds": "error: news-views.in: HTTP 503 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)",
-      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: HTTP 522 (fails 3)"
+      "indiapost-gds": "error: news-views.in: HTTP 503 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 2)",
+      "upsssc": "error: news-views.in: HTTP 522 | api.allorigins.win: HTTP 500 | api.codetabs.com: HTTP 522 (fails 4)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -148,105 +148,29 @@
     ]
   },
   "apply": {
-    "at": "2026-11-15T18:22:40.065Z",
+    "at": "2026-11-15T19:05:07.815Z",
     "ok": true,
-    "aiStatus": "ok (0 calls)",
-    "checked": 0,
-    "found": 0,
-    "due": 0,
-    "cands": 0,
-    "passed": 0,
-    "jobsWithCands": 0,
-    "careers": 0,
-    "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
-    ]
-  },
-  "enrich": {
-    "at": "2026-11-15T17:42:26.055Z",
-    "ai": "OpenAI (gpt-4o-mini)",
-    "factsRead": 0,
-    "factsPending": 0,
-    "linksFixed": 0,
-    "linksPending": 0,
-    "updatesEnriched": 0,
-    "updatesPending": 0,
-    "contentWritten": 0,
-    "contentPending": 0,
-    "hindiJobsPending": 1,
-    "hindiJobs": 1,
-    "hindiUpdatesPending": 0,
-    "searchFaqPages": 0,
-    "opportunities": 6,
     "aiStatus": "ok (1 calls)",
+    "checked": 20,
+    "found": 0,
+    "due": 20,
+    "cands": 229,
+    "passed": 10,
+    "jobsWithCands": 1,
+    "careers": 1,
     "log": [
-      "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
-      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
-      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
-      "Enrich/updates: 0 thin update(s) | doing up to 15",
-      "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 1 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: MSEDCL भर्ती 2026 – 2 कंपनी सेक्रेटरी, जॉइंट कंपनी सेक्रेटरी पदों के लिए ऑनलाइन आवेदन करें"
-    ]
-  },
-  "news": {
-    "at": "2026-11-15T17:42:26.502Z",
-    "ai": "OpenAI",
-    "aiStatus": "ok (0 calls)",
-    "published": 0,
-    "quizzes": 0,
-    "existing": 400,
-    "feeds": {},
-    "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists."
-    ]
-  },
-  "notify": {
-    "at": "2026-11-15T18:26:43.786Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "indexing-api": {
-    "at": "2026-11-15T18:26:44.925Z",
-    "ok": true,
-    "submitted": 1,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
-    "usedToday": 8,
-    "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 7/200 used in Google's day 2026-11-15 (Pacific).",
-      "Indexing API: sent 1."
-    ]
-  },
-  "push": {
-    "at": "2026-11-15T18:26:49.810Z",
-    "ok": true,
-    "sent": 0,
-    "quiet": true,
-    "log": [
-      "push-notify: nothing new to send (quiet hours)."
-    ]
-  },
-  "gsc": {
-    "at": "2026-11-15T00:20:05.414Z",
-    "ok": true,
-    "property": "https://news-views.in/",
-    "clicks28d": 39,
-    "impressions28d": 603,
-    "pages": 106,
-    "opportunities": 6,
-    "sitemap": 204,
-    "log": [
-      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
+      "Warning: TT: undefined function: 32",
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 32",
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 32",
+      "Warning: TT: undefined function: 32",
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 21",
+      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
+      "  candidates seen 229, passed the rules 10 (in 1 jobs); recruitment pages found: 1"
     ]
   }
 }
