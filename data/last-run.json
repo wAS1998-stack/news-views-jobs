@@ -209,7 +209,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-15T07:47:15.705Z",
+    "at": "2026-11-15T09:55:27.983Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -220,24 +220,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-15T07:47:16.032Z",
+    "at": "2026-11-15T09:55:29.752Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 4,
-    "usedToday": 196,
+    "submitted": 5,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-14",
+    "usedToday": 5,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 196/200 used in Google's day 2026-11-14 (Pacific)."
+      "Indexing API: 5 to send (5 updated, 0 deleted); 0/200 used in Google's day 2026-11-15 (Pacific).",
+      "Indexing API: sent 5."
     ]
   },
   "push": {
-    "at": "2026-11-15T07:47:16.662Z",
+    "at": "2026-11-15T09:55:53.615Z",
     "ok": true,
-    "sent": 0,
-    "quiet": false,
+    "sent": 12,
     "log": [
-      "push-notify: nothing new to send."
+      "push-notify: 12 sent\n  job iit-hyderabad-research-associate-nano-x-2026 en ['s-telangana' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job iit-hyderabad-research-associate-nano-x-2026 hi ['s-telangana' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  follow "
     ]
   },
   "gsc": {

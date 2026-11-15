@@ -1,9 +1,9 @@
 {
  "_day": {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "tz": "PT",
-  "used": 196,
-  "drained": 30
+  "used": 5,
+  "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
   "sentAt": "2026-11-06T04:18:29.722Z",
@@ -6462,5 +6462,25 @@
  "https://news-views.in/jobs/pserc-director-finance-staff-consultant-finance-2026/": {
   "sentAt": "2026-11-14T18:07:08.384Z",
   "hash": "b17a633e9a26"
+ },
+ "https://news-views.in/jobs/ignou-consultant-photography-consultant-2026/": {
+  "sentAt": "2026-11-15T09:55:28.706Z",
+  "hash": "9066b307c3db"
+ },
+ "https://news-views.in/jobs/iim-lucknow-manager-2026/": {
+  "sentAt": "2026-11-15T09:55:28.949Z",
+  "hash": "59bd4daba106"
+ },
+ "https://news-views.in/jobs/iim-lucknow-yoga-instructor-2026/": {
+  "sentAt": "2026-11-15T09:55:29.173Z",
+  "hash": "c9227a18e86f"
+ },
+ "https://news-views.in/jobs/iiml-junior-manager-junior-programme-assistant-2026/": {
+  "sentAt": "2026-11-15T09:55:29.389Z",
+  "hash": "5be9b3daf4ec"
+ },
+ "https://news-views.in/jobs/iit-hyderabad-research-associate-nano-x-2026/": {
+  "sentAt": "2026-11-15T09:55:29.631Z",
+  "hash": "d3caa2bc8dfe"
  }
 }
