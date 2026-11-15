@@ -202,7 +202,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-15T05:46:31.374Z",
+    "at": "2026-11-15T07:47:15.705Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -213,7 +213,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-15T05:46:31.779Z",
+    "at": "2026-11-15T07:47:16.032Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 4,
@@ -225,11 +225,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-15T05:46:38.496Z",
+    "at": "2026-11-15T07:47:16.662Z",
     "ok": true,
-    "sent": 18,
+    "sent": 0,
+    "quiet": false,
     "log": [
-      "push-notify: 18 sent\n  job jpch-senior-resident-walkin-2026 en [('s-delhi' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job jpch-senior-resident-walkin-2026 hi [('s-delhi' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l-hi"
+      "push-notify: nothing new to send."
     ]
   },
   "gsc": {
