@@ -202,7 +202,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-15T01:06:37.502Z",
+    "at": "2026-11-15T03:46:45.143Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -213,7 +213,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-15T01:06:37.908Z",
+    "at": "2026-11-15T03:46:45.622Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 4,
@@ -225,12 +225,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-15T01:06:38.660Z",
+    "at": "2026-11-15T03:47:15.597Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 72,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 72 sent\n  job wbpdcl-technician-apprentice-2026 en [('s-west-bengal' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job wbpdcl-technician-apprentice-2026 en [('s-west-bengal' in topics || 's-any' in topics) && 'q-engineering-diploma' in topics && 'l"
     ]
   },
   "gsc": {
