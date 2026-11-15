@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-15",
   "tz": "PT",
-  "used": 6,
+  "used": 7,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6486,5 +6486,9 @@
  "https://news-views.in/jobs/kkhsou-assistant-professor-2026/": {
   "sentAt": "2026-11-15T11:57:39.054Z",
   "hash": "5b74de759696"
+ },
+ "https://news-views.in/jobs/karnataka-school-education-teacher-2026/": {
+  "sentAt": "2026-11-15T13:56:04.084Z",
+  "hash": "905fe1a44187"
  }
 }
