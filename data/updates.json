@@ -1,5 +1,47 @@
 [
   {
+    "id": "bpsc-assistant-professor-advertisement-cancelled-2025",
+    "type": "exam-date",
+    "title": "BPSC Assistant Professor Advertisement Cancelled 2025",
+    "organization": "Bihar Public Service Commission",
+    "org_short": "BPSC",
+    "exam_name": "Assistant Professor",
+    "date": "2026-11-16",
+    "link": "https://bpsc.bihar.gov.in/wp-content/uploads/BPSC_content/Notices/Important-Notice-04-282025-Advertisement-cancelled_BPSC-20261029-wh9ep8.pdf",
+    "official_link": "https://bpsc.bihar.gov.in/wp-content/uploads/BPSC_content/Notices/Important-Notice-04-282025-Advertisement-cancelled_BPSC-20261029-wh9ep8.pdf",
+    "official_website": "https://bpsc.bihar.gov.in/",
+    "source": "https://bpsc.bihar.gov.in/wp-content/uploads/BPSC_content/Notices/Important-Notice-04-282025-Advertisement-cancelled_BPSC-20261029-wh9ep8.pdf",
+    "via": "official",
+    "summary": "The Bihar Public Service Commission has officially cancelled the advertisement for the posts of Assistant Professor in various departments of State Medical College & Hospitals. This applies to Advertisement Numbers 04/2025 to 28/2025. Candidates are advised to check the official BPSC website for more details regarding this cancellation.",
+    "summary_hi": "बिहार लोक सेवा आयोग ने राज्य चिकित्सा महाविद्यालय और अस्पतालों के विभिन्न विभागों में सहायक प्रोफेसर की पदों के लिए विज्ञापन को आधिकारिक रूप से रद्द कर दिया है। यह विज्ञापन संख्या 04/2025 से 28/2025 तक लागू है। उम्मीदवारों को इस रद्दीकरण के संबंध में अधिक विवरण के लिए आधिकारिक BPSC वेबसाइट की जांच करने की सलाह दी जाती है।",
+    "steps": [
+      "Visit the official BPSC website at bpsc.bihar.gov.in.",
+      "Navigate to the 'Notices' section on the homepage.",
+      "Search for the notice related to the Assistant Professor advertisements.",
+      "Click on the appropriate link to read the full notice.",
+      "Download the PDF for future reference if needed."
+    ],
+    "details": [
+      "Candidates who had applied for the Assistant Professor posts should note that their applications are no longer valid due to the cancellation of the advertisements. This decision affects multiple departments and is aimed at transparency.",
+      "Further instructions regarding the recruitment process or any future announcements will be communicated through the official BPSC website."
+    ],
+    "faq": [
+      {
+        "q": "Why was the Assistant Professor advertisement cancelled?",
+        "a": "The specific reasons for the cancellation are not detailed in the notice, but it is an official decision by BPSC."
+      },
+      {
+        "q": "Will there be a re-advertisement for these posts?",
+        "a": "Any future announcements or re-advertisements will be updated on the BPSC official website."
+      },
+      {
+        "q": "What should candidates do now?",
+        "a": "Candidates are advised to regularly check the BPSC website for future notices or updates."
+      }
+    ],
+    "enriched": "2026-11-16"
+  },
+  {
     "id": "opsc-app-admit-card-2026-out-download-hall-ticket",
     "type": "admit-card",
     "title": "OPSC APP Admit Card 2026 Out - Download Hall Ticket",
