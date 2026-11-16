@@ -1,5 +1,110 @@
 [
   {
+    "id": "current-affairs-2026-11-16",
+    "type": "current-affairs",
+    "title": "Current Affairs 16 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-16",
+    "summary": "Today's digest highlights significant government initiatives aimed at promoting arts, biodiversity, and tribal empowerment across India. Additionally, it covers infrastructural developments within the cooperative sector and insights into India's cultural diplomacy through international film collaborations.",
+    "body": [
+      {
+        "h": "Launch of 'AIR Umerte Sitare' Program",
+        "p": [
+          "The All India Radio has launched the 'AIR Umerte Sitare' program to provide a national platform for young musical talents. This initiative seeks to promote and nurture emerging artists, which is essential for sustaining India's rich cultural heritage."
+        ]
+      },
+      {
+        "h": "21st Sunday Bird Walk to Promote Citizen Science",
+        "p": [
+          "The National Zoological Park has organized the 21st Sunday Bird Walk to encourage citizen science and the documentation of biodiversity. This event not only raises awareness about avian species but also engages the public in conservation efforts, a key concern for environmental studies in various competitive exams."
+        ]
+      },
+      {
+        "h": "Inauguration of Cooperative Institute in Pune",
+        "p": [
+          "Union Home and Cooperation Minister Amit Shah inaugurated a multi-state cooperative institution in Pune and launched India Taxi Services digitally. This initiative aims to enhance the infrastructure and operational capabilities of cooperative societies, which plays a significant role in India's economic development, particularly in rural areas."
+        ]
+      },
+      {
+        "h": "India Promotes Cycling Initiative at Climate Summit",
+        "p": [
+          "At a recent climate summit, India emphasized the importance of cycling as a sustainable mode of transportation. This initiative aligns with global environmental goals and is significant for aspirants emphasizing climate change and sustainable development in their exams."
+        ]
+      },
+      {
+        "h": "Tribute to Birsa Munda by Prime Minister",
+        "p": [
+          "Prime Minister Narendra Modi paid tribute to tribal freedom fighter Birsa Munda on his birth anniversary, highlighting the importance of tribal empowerment and pride. This event also tied into celebrations for Tribal Pride Day, making it a crucial topic for those studying Indian history and tribal rights."
+        ]
+      },
+      {
+        "h": "International Film Festival Celebrates Russian and Spanish Cinema",
+        "p": [
+          "The 57th Indian International Film Festival will feature special screenings to celebrate cinematic relationships with participant country Russia. Moreover, Spain will be honored as the country of focus, showcasing contemporary Spanish cinema and storytelling, which underlines India's commitment to cultural diplomacy."
+        ]
+      },
+      {
+        "h": "Government Spending on Health Increases",
+        "p": [
+          "According to the National Health Accounts 2023-24, the government's health expenditure has tripled, significantly reducing the out-of-pocket expenses for families. This is a critical development for public health policies and will be relevant for aspirants preparing for health governance topics."
+        ]
+      },
+      {
+        "h": "Launch of Khelo India Youth Games 2026 Logo",
+        "p": [
+          "Union Sports Minister and Telangana's Chief Minister unveiled the logo and mascot for Khelo India Youth Games 2026. This initiative aims to promote sports among youth and is essential for those focusing on sports policy and youth development discussions in their exams."
+        ]
+      }
+    ],
+    "pointers": [
+      "AIR has launched a new program for young musical talents, crucial for cultural studies.",
+      "The 21st Sunday Bird Walk focuses on citizen science, relevant for environmental conservation topics.",
+      "Increased government health spending indicates progress in public health policy, important for health-related exams.",
+      "Khelo India initiative aims to enhance sports participation, a key area for discussions in youth development."
+    ],
+    "sources": [
+      {
+        "title": "आकाशवाणी ने युवा संगीत प्रतिभाओं को राष्ट्रीय मंच देने के लिए ‘एआईआर उभरते सितारे’ कार्यक्रम का शुभारंभ किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336700"
+      },
+      {
+        "title": "राष्ट्रीय प्राणी उद्यान ने नागरिक विज्ञान एवं जैव विविधता के दस्तावेजीकरण को बढ़ावा देने के लिए 21 वी संडे बर्ड वॉक का आयोजन किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336699"
+      },
+      {
+        "title": "केंद्रीय गृह एवं सहकारिता मंत्री श्री अमित शाह ने महाराष्ट्र के पुणे में एनएचईसी मल्टी स्टेट सहकारी संस्था का भूमि पूजन, डिजिटल माध्यम से सहकारी समितियों के केंद्रीय पंजीयक के पश्चिमी क्षेत्रीय कार्यालय का उद्घाटन तथा भारत टैक्सी सेवाओं का शुभारंभ किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336636"
+      },
+      {
+        "title": "जलवायु शिखर सम्मेलन में भारत ने रविवार को साइकिल चलाने की पहल का संदेश दिया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336675"
+      },
+      {
+        "title": "प्रधानमंत्री श्री नरेन्द्र मोदी ने उपराष्ट्रपति श्री सी. पी. राधाकृष्णन का एक लेख साझा किया है, जिसमें जनजातीय विद्यार्थियों को सशक्त बनाने में 'एकलव्य आदर्श आवासीय विद्यालयों' की भूमिका का उल्लेख किया गया है",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336616"
+      },
+      {
+        "title": "प्रधानमंत्री श्री नरेन्द्र मोदी ने संसद भवन परिसर में भगवान बिरसा मुंडा की जयंती पर श्रद्धांजलि अर्पित की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336653"
+      },
+      {
+        "title": "57वें भारतीय अंतर्राष्ट्रीय फिल्म महोत्सव में चार फिल्मों के विशेष प्रदर्शन के माध्यम से भागीदार देश रूस के साथ सिनेमाई संबंधों का उत्सव मनाया जाएगा",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336676"
+      },
+      {
+        "title": "केंद्रीय मंत्री डॉ. जितेंद्र सिंह ने कहा कि भारत इटली के 'इंटरनेशनल फिजिक्स सेंटर' के साथ संबंधों को मजबूत करेगा",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336602"
+      },
+      {
+        "title": "प्रधानमंत्री ने छठ महापर्व के संध्या अर्घ्य पर देशवासियों को शुभकामनाएं दीं",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336539"
+      },
+      {
+        "title": "केंद्रीय खेल मंत्री डॉ. मनसुख मांडविया और तेलंगाना के मुख्यमंत्री ए. रेवंत रेड्डी ने खेलो इंडिया यूथ गेम्स 2026 के 8वें संस्करण के लोगो और शुभंकर का अनावरण किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2336572"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-15",
     "type": "current-affairs",
     "title": "Current Affairs 15 November 2026: Key Government Updates for Exam Aspirants",
@@ -23444,63 +23549,6 @@
       {
         "title": "Railway Recruitment Cell (RRC), Southern Railway, Chennai — official notification",
         "link": "https://iroams.com/rrc_sr_cultural2026/"
-      }
-    ]
-  },
-  {
-    "id": "igntu-research-assistant-field-investigator-2026-explained",
-    "type": "analysis",
-    "title": "IGNTU Recruitment 2026: Apply Now for Research Assistant and Field Investigator Posts",
-    "date": "2026-10-23",
-    "summary": "The Indira Gandhi National Tribal University (IGNTU) has announced recruitment for two project-based positions: Research Assistant and Field Investigator. Interested candidates are invited to submit their applications via email by November 12, 2026, for these temporary roles focused on an ICSSR-PVTGs sponsored project.",
-    "body": [
-      {
-        "h": "Overview of the Recruitment",
-        "p": [
-          "IGNTU has officially released a notification for the recruitment of two positions—Research Assistant and Field Investigator—as part of a project aimed at understanding and supporting Particularly Vulnerable Tribal Groups (PVTGs) in India. This initiative is sponsored by the Indian Council of Social Science Research (ICSSR), emphasizing the university's commitment to contributing to tribal welfare and research.",
-          "The maximum duration of the employment for these roles is set at five months, providing a structured temporary work opportunity that allows candidates to engage meaningfully in field research and data collection."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria",
-        "p": [
-          "To apply for these positions, candidates must possess an M.A., M.Phil., or Ph.D. This educational requirement indicates that the roles are tailored for higher degree holders, making it ideal for those deeply interested in research, particularly within the context of tribal studies and social sciences.",
-          "This recruitment is particularly suitable for individuals looking to gain research experience or further their understanding of socio-economic issues affecting tribal communities in India, thereby providing an excellent opportunity for budding researchers and scholars in related fields."
-        ]
-      },
-      {
-        "h": "Selection Process and Expectations",
-        "p": [
-          "While the precise details of the selection process have not been outlined in the notification, candidates can expect that their applications will be evaluated based on their academic qualifications and relevance of experience in research contexts. Typically, for research-related positions, a shortlist may be created, followed by interviews or presentations of previous work.",
-          "Candidates should prepare by compiling a comprehensive application that highlights relevant experience and research interests. Those selected may also expect to engage actively in fieldwork as part of their responsibilities, which could include data collection, analysis, and interacting with various stakeholders in the communities being studied."
-        ]
-      },
-      {
-        "h": "Implications for Aspirants",
-        "p": [
-          "This recruitment is significant for aspirants aiming for a career in research, particularly in fields related to sociology, anthropology, or tribal studies. The experience gained during this project can be pivotal for future opportunities—either in academics or in governmental and non-governmental organizations focused on tribal welfare and development.",
-          "Moreover, working collaboratively on a project funded by the ICSSR adds prestige to one’s profile, thereby enhancing employability in academic and research institutions, as well as in policy implementation roles that tackle issues faced by marginalized communities."
-        ]
-      },
-      {
-        "h": "Application Process and Next Steps",
-        "p": [
-          "Interested candidates should prepare and submit their applications via email prior to the closing date of November 12, 2026. Since the precise start date for applications isn't specified, it is prudent for candidates to apply as early as possible to avoid last-minute issues.",
-          "For further details on the application format or any other specifics related to the recruitment process, candidates should refer to the official notification available on the IGNTU website or contact the university directly, ensuring they have the most accurate and updated information."
-        ]
-      }
-    ],
-    "pointers": [
-      "Check the official IGNTU website for updates on the application process and requirements.",
-      "Ensure your CV is tailored to highlight relevant research experiences and academic qualifications.",
-      "Submit the application by email well before the deadline of November 12, 2026.",
-      "Be prepared for possible interviews focusing on your research skills and understanding of tribal issues."
-    ],
-    "job_id": "igntu-research-assistant-field-investigator-2026",
-    "sources": [
-      {
-        "title": "Indira Gandhi National Tribal University — official notification",
-        "link": "https://www.igntu.ac.in/"
       }
     ]
   }

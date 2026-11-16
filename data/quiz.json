@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-16",
+    "date": "2026-11-16",
+    "digest_id": "current-affairs-2026-11-16",
+    "title": "Current Affairs Quiz 16 November 2026",
+    "questions": [
+      {
+        "q": "What program did All India Radio launch to promote young musical talents?",
+        "options": [
+          "Cycling Initiative",
+          "Khelo India",
+          "AIR Umerte Sitare",
+          "Citizen Science Walk"
+        ],
+        "answer": 2,
+        "why": "The article mentions the launch of the 'AIR Umerte Sitare' program to provide a national platform for young musical talents."
+      },
+      {
+        "q": "Who inaugurated the multi-state cooperative institution in Pune?",
+        "options": [
+          "Union Home and Cooperation Minister",
+          "President of India",
+          "Prime Minister",
+          "Chief Minister of Pune"
+        ],
+        "answer": 0,
+        "why": "The article states that the Union Home and Cooperation Minister Amit Shah inaugurated the cooperative institution in Pune."
+      },
+      {
+        "q": "What event was organized to promote citizen science and biodiversity documentation?",
+        "options": [
+          "Khelo India Youth Games",
+          "AIR Umerte Sitare",
+          "21st Sunday Bird Walk",
+          "International Film Festival"
+        ],
+        "answer": 2,
+        "why": "According to the article, the National Zoological Park organized the 21st Sunday Bird Walk to encourage citizen science."
+      },
+      {
+        "q": "What transportation method did India emphasize at the recent climate summit?",
+        "options": [
+          "Driving",
+          "Walking",
+          "Public transportation",
+          "Cycling"
+        ],
+        "answer": 3,
+        "why": "The article notes that India emphasized cycling as a sustainable mode of transportation at the climate summit."
+      },
+      {
+        "q": "Which freedom fighter did Prime Minister Narendra Modi pay tribute to on his birth anniversary?",
+        "options": [
+          "Birsa Munda",
+          "Bhagat Singh",
+          "Sardar Patel",
+          "Gandhi"
+        ],
+        "answer": 0,
+        "why": "The article mentions that Prime Minister Modi paid tribute to tribal freedom fighter Birsa Munda on his birth anniversary."
+      },
+      {
+        "q": "Which two countries' cinemas were celebrated at the 57th Indian International Film Festival?",
+        "options": [
+          "Russia and Spain",
+          "Germany and France",
+          "Italy and Japan",
+          "USA and UK"
+        ],
+        "answer": 0,
+        "why": "The article highlights that the festival featured screenings to celebrate Russian and Spanish cinema."
+      },
+      {
+        "q": "What has significantly increased according to the National Health Accounts 2023-24?",
+        "options": [
+          "Public Transport Initiatives",
+          "Government Spending on Health",
+          "Cultural Diplomacy",
+          "Sports Development"
+        ],
+        "answer": 1,
+        "why": "The article states that the government's health expenditure has tripled, according to the National Health Accounts 2023-24."
+      },
+      {
+        "q": "What was unveiled by the Union Sports Minister and Telangana's Chief Minister?",
+        "options": [
+          "A health initiative",
+          "A film festival",
+          "Cycling initiative",
+          "Khelo India Youth Games 2026 logo"
+        ],
+        "answer": 3,
+        "why": "The article mentions that they unveiled the logo and mascot for Khelo India Youth Games 2026."
+      },
+      {
+        "q": "What does the cooperative institution in Pune aim to enhance?",
+        "options": [
+          "Cultural education",
+          "Environmental conservation",
+          "Health services",
+          "Economic development"
+        ],
+        "answer": 3,
+        "why": "The article states that the initiative aims to enhance the infrastructure and operational capabilities of cooperative societies, contributing to economic development."
+      },
+      {
+        "q": "What day was associated with the tribute to Birsa Munda?",
+        "options": [
+          "National Education Day",
+          "Tribal Pride Day",
+          "Environment Day",
+          "Independence Day"
+        ],
+        "answer": 1,
+        "why": "The article connects the tribute to Birsa Munda with the celebrations for Tribal Pride Day."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-15",
     "date": "2026-11-15",
     "digest_id": "current-affairs-2026-11-15",
