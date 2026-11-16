@@ -1,5 +1,51 @@
 [
   {
+    "id": "opsc-app-admit-card-2026-out-download-hall-ticket",
+    "type": "admit-card",
+    "title": "OPSC APP Admit Card 2026 Out - Download Hall Ticket",
+    "organization": "Odisha Public Service Commission",
+    "org_short": "OPSC",
+    "date": "2026-11-16",
+    "link": "https://www.opsc.gov.in/",
+    "summary": "The Odisha Public Service Commission (OPSC) has released the Assistant Public Prosecutor Admit Card 2026 on 16 November 2026. This is for the written examination scheduled on 22 November 2026. Candidates can download their hall tickets from the official website opsc.gov.in or through the direct admission certificate portal at opscechayan.in.",
+    "exam_name": "Assistant Public Prosecutor",
+    "event_date": "2026-11-16",
+    "summary_hi": "ओडिशा लोक सेवा आयोग (OPSC) ने 16 नवंबर 2026 को सहायक लोक अभियोजक प्रवेश पत्र 2026 जारी किया है। यहWritten परीक्षा 22 नवंबर 2026 को निर्धारित है। उम्मीदवार अपने हॉल टिकट को आधिकारिक वेबसाइट opsc.gov.in या सीधे प्रवेश प्रमाण पत्र पोर्टल opscechayan.in से डाउनलोड कर सकते हैं।",
+    "steps": [
+      "Visit the official OPSC website at opsc.gov.in.",
+      "Go to the latest announcements or admission certificate section.",
+      "Find the link titled 'Assistant Public Prosecutor (Advt. No. 09 of 2026-27) - Download Admission Certificate & Instructions for Written Examination'.",
+      "Click the admission certificate download link.",
+      "Enter the required application or registration details, date of birth, and any other information requested by the portal.",
+      "Submit the details to access the hall ticket."
+    ],
+    "details": [
+      "Candidates are required to download their hall tickets and verify their personal information and examination details before the exam day. The printed OPSC APP Admit Card 2026, along with valid identity proof and any other required documents, must be presented at the examination center. It is also important to follow all instructions provided by OPSC in the hall ticket.",
+      "The OPSC Assistant Public Prosecutor examination will consist of an objective-type written test. Candidates should be aware of the exam format, the total number of questions, and the negative marking policy. Any discrepancies on the hall ticket should be reported to OPSC immediately for rectification."
+    ],
+    "faq": [
+      {
+        "q": "How can I download my OPSC APP admit card?",
+        "a": "You can download your OPSC APP admit card from the official website opsc.gov.in by following the designated steps for admission certificate download."
+      },
+      {
+        "q": "What documents do I need to carry to the examination?",
+        "a": "You must carry the printed copy of the OPSC APP Admit Card 2026 along with a valid photo identity proof as accepted by OPSC."
+      },
+      {
+        "q": "What should I do if there's an error on my admit card?",
+        "a": "If you notice any error on your admit card, you should contact OPSC through their official support channels as soon as possible."
+      },
+      {
+        "q": "Are there any specific instructions for the exam day?",
+        "a": "Yes, candidates should carefully read the instructions mentioned in the hall ticket, including the reporting time and any other guidelines."
+      }
+    ],
+    "official_link": "https://www.opsc.gov.in/",
+    "official_website": "https://opsc.gov.in/",
+    "source": "https://www.freejobalert.com/articles/opsc-app-admit-card-2026-3081587"
+  },
+  {
     "id": "drdo-ceptam-11-final-result-2026",
     "type": "result",
     "title": "DRDO CEPTAM-11 Final Result 2026",
