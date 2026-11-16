@@ -98,6 +98,10 @@ function seoTitle(job) {
     base = [org || String(job.organization || "").split(/[(,]/)[0].trim(), post && post.length <= 30 ? post : "", "Recruitment", year].filter(Boolean).join(" ");
   }
   if (!/\b20\d{2}\b/.test(base)) base += " " + year;
+  // The place people search for ("barauni refinery vacancy"): a specific unit or town from the location goes into the
+  // title when neither the headline nor the organisation's name carries it ("IOCL Barauni Refinery Recruitment 2026").
+  const place = placeOf(job);
+  if (place && /^(.+?) Recruitment\b/i.test(base) && (base.length + place.length + 1) <= 52) base = base.replace(/^(.+?) Recruitment\b/i, `$1 ${place} Recruitment`);
   const v = Number(job.total_vacancies);
   const bits = [];
   if (v > 0 && !new RegExp("\\b" + v.toLocaleString("en-IN").replace(/,/g, ",?") + "\\b").test(base) && !new RegExp("\\b" + v + "\\b").test(base)) bits.push(`${inr(v)} Post${v === 1 ? "" : "s"}`);
@@ -109,10 +113,25 @@ function seoTitle(job) {
   if (t.length > 70) t = base.slice(0, 68).replace(/\s+\S*$/, "") ;
   return (t + ` | ${SITE.name}`).length <= 72 ? `${t} | ${SITE.name}` : t;
 }
+/** A specific place from the job's location ("Barauni Refinery" from "Barauni Refinery, Bihar"), or "" when the
+    location is broad ("All India", "Various Railway Zones"), long, or already named in the headline or organisation. */
+const PLACE_BROAD = /\b(india|indian|various|across|all|zones?|units?|multiple|pan|states?|anywhere|centres?|centers?|offices?|branch(es)?|divisions?|districts?|locations?|nation\w*|abroad|overseas|remote|government|govt|schools?|colleges?|hospitals?|regions?|circles?|posting|depending|any|other|wise|headquarters|hq|online|offline|notified|tbd|na)\b/i;
+const PLACE_NOT = /\b(department|dept|station|research|hostel|campus|ghar|building|institute|hospital|college|university|laboratory|lab|block|floor|road|wing|cell|section|unit|project|centre|center|bhawan|bhavan|complex|sector|headquarter|division|school|faculty|chair|ward|hostels?|operations?|home|teaching|vertical|court|services?|collectorate|academy|mandir|cluster|village|sadan|prison|ground|municipality|mandapam|observatory|fields?|balashram|factory|office)\b/i;
+function placeOf(job) {
+  const p = String(job.location || "").split(/[,;(/|]/)[0].replace(/\s+/g, " ").trim();
+  if (!p || p.length < 3 || p.length > 26 || PLACE_BROAD.test(p) || PLACE_NOT.test(p) || /\d|[^\x20-\x7e]/.test(p)) return "";
+  // a place name: one to three capitalised words, not an acronym ("SBTF")
+  if (!/^[A-Z][a-z]+( [A-Z][a-z]+){0,2}$/.test(p)) return "";
+  const known = `${job.title || ""} ${job.organization || ""} ${job.org_short || ""}`.toLowerCase();
+  const words = p.toLowerCase().split(/[^a-z]+/).filter((w) => w.length >= 3);
+  if (!words.length || words.some((w) => known.includes(w))) return "";
+  return p;
+}
 function seoDesc(job) {
   const parts = [];
   const v = Number(job.total_vacancies);
-  parts.push(`${job.organization}${job.post_name ? " " + job.post_name : ""} recruitment${v > 0 ? ` for ${inr(v)} post${v === 1 ? "" : "s"}` : ""}.`);
+  const place = placeOf(job);
+  parts.push(`${job.organization}${job.post_name ? " " + job.post_name : ""} recruitment${place ? ` at ${place}` : ""}${v > 0 ? ` for ${inr(v)} post${v === 1 ? "" : "s"}` : ""}.`);
   if (job.qualification) parts.push(`Qualification: ${String(job.qualification).slice(0, 60)}.`);
   if (job.application_end) parts.push(`Last date ${fmtDate(job.application_end)}.`);
   parts.push("Eligibility, salary, selection process & official apply link.");
@@ -3191,4 +3210,4 @@ function main() {
 
 // `node build.js` builds the site; tests require() the pure helpers without building anything.
 if (require.main === module) main();
-module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect, fitToBudget, hasHiPage };
+module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect, fitToBudget, hasHiPage, seoTitle, placeOf };

@@ -231,3 +231,13 @@ test("twins: two different official PDFs of one site with clearly different coun
   // the same notice reported twice is still one recruitment
   assert.ok(L.isDuplicate({ ...a, id: "c", published: "2026-11-03" }, [a]));
 });
+
+test("isDuplicate: a short notice and the full notice of one recruitment are twins", () => {
+  const s = { id: "s", organization: "Railway Recruitment Board", org_short: "RRB", total_vacancies: 195, post_name: "Isolated Categories Posts", published: "2026-10-21" };
+  const f = { id: "f", organization: "Railway Recruitment Boards (RRBs)", org_short: "RRB", total_vacancies: 191, post_name: "Various Posts of Isolated Categories", application_end: "2026-12-04", official_notification: "https://www.rrbapply.gov.in/assets/forms/CEN_09_2026.pdf", published: "2026-11-05" };
+  assert.strictEqual(L.isDuplicate(f, [s]), s);
+  const g = { ...f, id: "g", organization: "Government of India, Ministry of Railways, Railway Recruitment Board", total_vacancies: 195 };
+  assert.strictEqual(L.isDuplicate(g, [s]), s);
+  // two full notices with close counts are not caught by this rule, nor are small notices
+  assert.strictEqual(L.isDuplicate({ ...f, id: "h", total_vacancies: 40 }, [{ ...s, total_vacancies: 41 }]), null);
+});

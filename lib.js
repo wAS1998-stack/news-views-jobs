@@ -718,6 +718,12 @@ function isDuplicate(job, list, { onExtend } = {}) {
     const xk = noticeKey(x.official_notification);
     const otherNotice = !!(nk && xk && nk !== xk && /\.pdf($|\?)/i.test(nk) && /\.pdf($|\?)/i.test(xk) && nk.split("/")[0] === xk.split("/")[0]
       && v && xv && Math.abs(v - xv) / Math.max(v, xv) > 0.05);
+    // A short notice (no last date, no notice link yet) and the full notice of one recruitment: same body family, a
+    // real recruitment (100+ posts) with counts within 3%, published within 30 days, posts not plainly different (RRB
+    // Isolated Categories: short notice 195 on 21 Oct, CEN 09/2026 with 191 on 5 Nov — the stub stayed "open" for good).
+    const stub = (r) => !r.application_end && !r.official_notification;
+    if ((stub(job) || stub(x)) && v >= 100 && xv >= 100 && Math.abs(v - xv) / Math.max(v, xv) <= 0.03 && dt < 30 * DAY
+      && sameFamily(job, x) && postsOverlap(job.post_name, x.post_name)) return true;
     if (!sameOrg(job, x)) {
       // The same organisation family ("RRB" / "RRB Ahmedabad"), the same last date and a real recruitment (20+ posts)
       // published within 45 days: one notice reported by two sources under different names.
