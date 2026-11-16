@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "tz": "PT",
-  "used": 33,
+  "used": 24,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6594,5 +6594,101 @@
  "https://news-views.in/jobs/zsi-project-assistant-2026/": {
   "sentAt": "2026-11-16T07:54:50.860Z",
   "hash": "d9ce79fb726c"
+ },
+ "https://news-views.in/jobs/aiims-mangalagiri-assistant-professor-interview-list-2026/": {
+  "sentAt": "2026-11-16T09:55:36.882Z",
+  "hash": "cd8b5240cc60"
+ },
+ "https://news-views.in/jobs/aiims-project-research-scientist-other-2026/": {
+  "sentAt": "2026-11-16T09:55:37.114Z",
+  "hash": "0f95ef8f5ef2"
+ },
+ "https://news-views.in/jobs/anna-university-project-assistant-fellow-2026/": {
+  "sentAt": "2026-11-16T09:55:37.336Z",
+  "hash": "d08a9c08ac1f"
+ },
+ "https://news-views.in/jobs/bric-nabi-research-trainee-2026/": {
+  "sentAt": "2026-11-16T09:55:37.567Z",
+  "hash": "f0062ee2aab7"
+ },
+ "https://news-views.in/jobs/bric-nipgr-senior-research-fellow-project-2026/": {
+  "sentAt": "2026-11-16T09:55:37.795Z",
+  "hash": "3bb0d89f0578"
+ },
+ "https://news-views.in/jobs/dlsa-pudukkottai-para-legal-volunteer-2026/": {
+  "sentAt": "2026-11-16T09:55:38.035Z",
+  "hash": "59847981a1d0"
+ },
+ "https://news-views.in/jobs/dr-pdkv-walkin-young-professional-project-2026/": {
+  "sentAt": "2026-11-16T09:55:38.296Z",
+  "hash": "86e9029c07f3"
+ },
+ "https://news-views.in/jobs/gprec-seating-plan-november-out-check-2026/": {
+  "sentAt": "2026-11-16T09:55:38.487Z",
+  "hash": "72ffc7010f85"
+ },
+ "https://news-views.in/jobs/h-fws-neurologist-physician-medical-officer-2026/": {
+  "sentAt": "2026-11-16T09:55:38.723Z",
+  "hash": "34802e7087b7"
+ },
+ "https://news-views.in/jobs/icg-assistant-director-2027/": {
+  "sentAt": "2026-11-16T09:55:38.914Z",
+  "hash": "fa47b2d986fc"
+ },
+ "https://news-views.in/jobs/iit-indore-ai-developer-2026/": {
+  "sentAt": "2026-11-16T09:55:39.106Z",
+  "hash": "051e715136e2"
+ },
+ "https://news-views.in/jobs/iit-ropar-junior-research-fellow-physics-2026/": {
+  "sentAt": "2026-11-16T09:55:39.323Z",
+  "hash": "6a84f20fd56c"
+ },
+ "https://news-views.in/jobs/ims-davv-visiting-faculty-2026/": {
+  "sentAt": "2026-11-16T09:55:39.537Z",
+  "hash": "b86fe30daef1"
+ },
+ "https://news-views.in/jobs/kalaburagi-district-court-stenographer-grade-3-2026/": {
+  "sentAt": "2026-11-16T09:55:39.732Z",
+  "hash": "c2286610fbaa"
+ },
+ "https://news-views.in/jobs/kalaburagi-district-court-typist-2026/": {
+  "sentAt": "2026-11-16T09:55:39.951Z",
+  "hash": "b22569185cd4"
+ },
+ "https://news-views.in/jobs/kau-skilled-worker-walkin-2026/": {
+  "sentAt": "2026-11-16T09:55:40.147Z",
+  "hash": "784ad2636b46"
+ },
+ "https://news-views.in/jobs/manuu-assistant-professor-school-sciences-walkin-2026/": {
+  "sentAt": "2026-11-16T09:55:40.341Z",
+  "hash": "fdb34a69a3fa"
+ },
+ "https://news-views.in/jobs/ni-msme-faculty-associate-walkin-2026/": {
+  "sentAt": "2026-11-16T09:55:40.536Z",
+  "hash": "8547ff037197"
+ },
+ "https://news-views.in/jobs/sggu-course-co-ordinator-walkin-2026/": {
+  "sentAt": "2026-11-16T09:55:40.728Z",
+  "hash": "aeb68efb6b85"
+ },
+ "https://news-views.in/jobs/ssc-sr-laboratory-assistant-tentative-accepted-2026/": {
+  "sentAt": "2026-11-16T09:55:40.920Z",
+  "hash": "02dd05f6b65f"
+ },
+ "https://news-views.in/jobs/ssc-wr-jr-fishing-gear-technologist-2026/": {
+  "sentAt": "2026-11-16T09:55:41.185Z",
+  "hash": "4caed3365722"
+ },
+ "https://news-views.in/jobs/tmc-actrec-audiologist-walkin-2026/": {
+  "sentAt": "2026-11-16T09:55:41.379Z",
+  "hash": "de5f4d755cd1"
+ },
+ "https://news-views.in/jobs/udd-program-manager-manager-mis-more-2026/": {
+  "sentAt": "2026-11-16T09:55:41.572Z",
+  "hash": "c72b3a5f9c40"
+ },
+ "https://news-views.in/jobs/uidai-accountant-2027/": {
+  "sentAt": "2026-11-16T09:55:41.766Z",
+  "hash": "fae26b5f3113"
  }
 }

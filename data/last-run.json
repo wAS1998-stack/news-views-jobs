@@ -228,7 +228,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-16T07:54:46.205Z",
+    "at": "2026-11-16T09:55:36.102Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -239,24 +239,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-16T07:54:50.983Z",
+    "at": "2026-11-16T09:55:41.888Z",
     "ok": true,
-    "submitted": 20,
+    "submitted": 24,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 33,
+    "usedToday": 24,
     "log": [
-      "Indexing API: 20 to send (20 updated, 0 deleted); 13/200 used in Google's day 2026-11-15 (Pacific).",
-      "Indexing API: sent 20."
+      "Indexing API: 24 to send (24 updated, 0 deleted); 0/200 used in Google's day 2026-11-16 (Pacific).",
+      "Indexing API: sent 24."
     ]
   },
   "push": {
-    "at": "2026-11-16T07:56:26.046Z",
+    "at": "2026-11-16T09:57:09.586Z",
     "ok": true,
-    "sent": 112,
+    "sent": 116,
     "log": [
-      "push-notify: 112 sent\n  job dslsa-intern-2026 en ['s-delhi' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dslsa-intern-2026 hi ['s-delhi' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dsywmp-high-technical-instructor-cum-advisor-2026 en ['s-madhya-pradesh' i"
+      "push-notify: 116 sent\n  job dlsa-pudukkottai-para-legal-volunteer-2026 en ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dlsa-pudukkottai-para-legal-volunteer-2026 hi ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job udd-program-ma"
     ]
   },
   "gsc": {
