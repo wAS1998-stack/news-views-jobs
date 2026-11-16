@@ -1,20 +1,15 @@
 {
- "date": "2026-11-15",
+ "date": "2026-11-16",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-17",
-  "2026-11-13"
+  "2026-10-18",
+  "2026-11-14"
  ],
  "totals": {
   "clicks": 39,
-  "impressions": 603
+  "impressions": 614
  },
  "daily": [
-  {
-   "date": "2026-10-17",
-   "clicks": 0,
-   "impressions": 1
-  },
   {
    "date": "2026-10-18",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-13",
    "clicks": 0,
    "impressions": 35
+  },
+  {
+   "date": "2026-11-14",
+   "clicks": 0,
+   "impressions": 12
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-16",
-   "2026-11-13"
+   "2026-08-17",
+   "2026-11-14"
   ],
   "rows": []
  },
@@ -211,8 +211,8 @@
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 101,
-   "ctr": 1.98,
+   "impressions": 110,
+   "ctr": 1.82,
    "position": 4.5
   },
   {
@@ -274,8 +274,8 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 18,
-   "ctr": 5.56,
+   "impressions": 20,
+   "ctr": 5,
    "position": 5
   },
   {
@@ -323,9 +323,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 5,
    "ctr": 0,
-   "position": 81
+   "position": 78
   },
   {
    "page": "/hi/",
@@ -738,9 +738,9 @@
   {
    "query": "barauni refinery vacancy",
    "clicks": 0,
-   "impressions": 10,
+   "impressions": 11,
    "ctr": 0,
-   "position": 4.8
+   "position": 4.7
   },
   {
    "query": "brahmaputra valley fertilizer corporation limited recruitment",
@@ -1037,6 +1037,20 @@
    "position": 2
   },
   {
+   "query": "indian oil job vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "indian oil vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
    "query": "indianbank career",
    "clicks": 0,
    "impressions": 1,
@@ -1046,7 +1060,7 @@
   {
    "query": "iocl barauni internship",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 6
   },
@@ -1203,28 +1217,14 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
-  },
-  {
-   "query": "latest govt jobs in karnataka 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "latest recruitment 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
   }
  ],
  "opportunities": [
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 101,
-   "ctr": 1.98,
+   "impressions": 110,
+   "ctr": 1.82,
    "position": 4.5,
    "queries": [
     {
@@ -1234,8 +1234,8 @@
     },
     {
      "q": "barauni refinery vacancy",
-     "impressions": 10,
-     "position": 4.8
+     "impressions": 11,
+     "position": 4.7
     },
     {
      "q": "barauni refinery job vacancy 2026",
@@ -1259,21 +1259,21 @@
     },
     {
      "q": "iocl barauni internship",
-     "impressions": 1,
+     "impressions": 2,
      "position": 6
     },
     {
-     "q": "iocl barauni recruitment",
+     "q": "indian oil job vacancy 2026",
      "impressions": 1,
-     "position": 4
+     "position": 3
     }
    ]
   },
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 18,
-   "ctr": 5.56,
+   "impressions": 20,
+   "ctr": 5,
    "position": 5,
    "queries": [
     {
@@ -1362,8 +1362,8 @@
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 101,
-   "ctr": 1.98,
+   "impressions": 110,
+   "ctr": 1.82,
    "position": 4.5
   }
  ]
