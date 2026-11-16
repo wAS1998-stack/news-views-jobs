@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 105,
+  "used": 107,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -2870,8 +2870,8 @@
   "hash": "c2d5b7a5beee"
  },
  "https://news-views.in/jobs/bbau-admin-cum-data-entry-operator-2026/": {
-  "sentAt": "2026-11-09T21:40:28.675Z",
-  "hash": "20ff771427b7"
+  "sentAt": "2026-11-16T19:47:16.888Z",
+  "hash": "63835c545fd2"
  },
  "https://news-views.in/jobs/iiest-shibpur-senior-assistant-2026/": {
   "sentAt": "2026-11-09T21:40:28.914Z",
@@ -7014,5 +7014,9 @@
  "https://news-views.in/jobs/svims-nursing-apprentices-under-nats-walkin-2026/": {
   "sentAt": "2026-11-16T17:40:18.090Z",
   "hash": "b45cfbeb93c7"
+ },
+ "https://news-views.in/jobs/embassy-india-marketing-executive-2026/": {
+  "sentAt": "2026-11-16T19:47:16.634Z",
+  "hash": "c216e53360c5"
  }
 }
