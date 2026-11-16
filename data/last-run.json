@@ -229,7 +229,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-16T09:55:36.102Z",
+    "at": "2026-11-16T12:00:09.263Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -240,24 +240,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-16T09:55:41.888Z",
+    "at": "2026-11-16T12:00:14.571Z",
     "ok": true,
-    "submitted": 24,
+    "submitted": 23,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 24,
+    "usedToday": 47,
     "log": [
-      "Indexing API: 24 to send (24 updated, 0 deleted); 0/200 used in Google's day 2026-11-16 (Pacific).",
-      "Indexing API: sent 24."
+      "Indexing API: 23 to send (23 updated, 0 deleted); 24/200 used in Google's day 2026-11-16 (Pacific).",
+      "Indexing API: sent 23."
     ]
   },
   "push": {
-    "at": "2026-11-16T09:57:09.586Z",
+    "at": "2026-11-16T12:01:43.375Z",
     "ok": true,
-    "sent": 116,
+    "sent": 90,
     "log": [
-      "push-notify: 116 sent\n  job dlsa-pudukkottai-para-legal-volunteer-2026 en ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dlsa-pudukkottai-para-legal-volunteer-2026 hi ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job udd-program-ma"
+      "push-notify: 90 sent\n  job emrs-junior-secretariat-assistant-accountant-more-2026 en ['s-manipur' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job emrs-junior-secretariat-assistant-accountant-more-2026 hi ['s-manipur' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  j"
     ]
   },
   "gsc": {
