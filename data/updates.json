@@ -1,5 +1,53 @@
 [
   {
+    "id": "ssc-sub-inspector-in-delhi-police-and-capfs-examination-2025-pet-pst-result-corr",
+    "type": "result",
+    "title": "SSC Sub-Inspector in Delhi Police and CAPFs Examination, 2025: PET/PST Result Corrigendum",
+    "organization": "Staff Selection Commission",
+    "org_short": "SSC",
+    "exam_name": "Sub-Inspector in Delhi Police and CAPFs Examination, 2025",
+    "event_date": "2026-11-16",
+    "date": "2026-11-16",
+    "link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_16112026.pdf",
+    "official_link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_16112026.pdf",
+    "official_website": "https://ssc.gov.in/",
+    "source": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_16112026.pdf",
+    "via": "official",
+    "summary": "The Staff Selection Commission has released a corrigendum to the PET/PST result of the Sub-Inspector in Delhi Police and CAPFs Examination, 2025. Three additional candidates are now allowed to appear in Paper-II due to involvement in court cases, while one candidate is deleted from the list. The corrected roll number for another candidate has also been updated. For full details, please check the official notice on the SSC website.",
+    "summary_hi": "स्टाफ सेलेक्शन कमीशन ने सब-इंस्पेक्टर दिल्ली पुलिस और CAPFs परीक्षा, 2025 के PET/PST परिणाम के लिए एक सुधार जारी किया है। तीन अतिरिक्त उम्मीदवारों को अदालत के मामलों में शामिल होने के कारण पेपर-II में उपस्थित होने की अनुमति दी गई है, जबकि एक उम्मीदवार को सूची से हटा दिया गया है। एक अन्य उम्मीदवार के लिए सही रोल नंबर को भी अपडेट किया गया है। पूर्ण विवरण के लिए कृपया SSC की वेबसाइट पर आधिकारिक नोटिस देखें।",
+    "steps": [
+      "Visit the official SSC website (ssc.gov.in).",
+      "Navigate to the 'Notices' section.",
+      "Locate the link for 'Sub-Inspector in Delhi Police and CAPFs Examination, 2025: Corrigendum to PET/PST Result'.",
+      "Click on the link to view the detailed corrigendum.",
+      "Download or print the corrigendum for your reference."
+    ],
+    "details": [
+      "The amendment allows three additional candidates to participate in the next stage of the examination, while ensuring that their results remain contingent upon the outcomes of pending court cases.",
+      "Candidates and stakeholders should closely monitor updates on the SSC website for any further changes or announcements regarding the examination process.",
+      "The commission assures that all other terms and conditions of the original result remain intact."
+    ],
+    "faq": [
+      {
+        "q": "What is the corrigendum about?",
+        "a": "The corrigendum updates the PET/PST results of the Sub-Inspector in Delhi Police and CAPFs Examination, 2025, allowing additional candidates to appear in Paper-II."
+      },
+      {
+        "q": "Where can I check the detailed corrigendum?",
+        "a": "You can check the detailed corrigendum on the official SSC website under the Notices section."
+      },
+      {
+        "q": "Will the results change for the candidates involved in court cases?",
+        "a": "Yes, the candidates' results are subject to the final outcome of their respective court cases."
+      },
+      {
+        "q": "What should I do if my roll number is updated?",
+        "a": "If your roll number has been updated, refer to the corrigendum for the correct number and ensure you are aware of any further instructions."
+      }
+    ],
+    "enriched": "2026-11-16"
+  },
+  {
     "id": "sbi-clerk-backlog-prelims-answer-key-2026-out-check-response-sheet-and",
     "type": "answer-key",
     "title": "SBI Clerk Backlog Prelims Answer Key 2026 Out – Check Response Sheet and Phase 1 Marks",
