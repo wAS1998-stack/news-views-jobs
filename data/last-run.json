@@ -218,7 +218,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-16T04:56:43.258Z",
+    "at": "2026-11-16T05:42:23.520Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -229,24 +229,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-16T04:56:44.137Z",
+    "at": "2026-11-16T05:42:24.681Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 3,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 10,
+    "usedToday": 13,
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 9/200 used in Google's day 2026-11-15 (Pacific).",
-      "Indexing API: sent 1."
+      "Indexing API: 3 to send (3 updated, 0 deleted); 10/200 used in Google's day 2026-11-15 (Pacific).",
+      "Indexing API: sent 3."
     ]
   },
   "push": {
-    "at": "2026-11-16T04:56:55.594Z",
+    "at": "2026-11-16T05:43:00.853Z",
     "ok": true,
-    "sent": 12,
+    "sent": 20,
     "log": [
-      "push-notify: 12 sent\n  job sainik-school-tilaiya-teaching-non-teaching-2026 en [('s-jharkhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job sainik-school-tilaiya-teaching-non-teaching-2026 hi [('s-jharkhand' in topics || 's-any' in topics) && 'q-12th-pass"
+      "push-notify: 20 sent\n  job ignfa-it-associate-technical-associate-2026 en ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ignfa-it-associate-technical-associate-2026 en ['s-uttarakhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job "
     ]
   },
   "gsc": {

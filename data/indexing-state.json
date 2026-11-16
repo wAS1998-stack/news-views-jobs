@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-15",
   "tz": "PT",
-  "used": 10,
+  "used": 13,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6502,5 +6502,17 @@
  "https://news-views.in/jobs/sainik-school-tilaiya-teaching-non-teaching-2026/": {
   "sentAt": "2026-11-16T04:56:44.013Z",
   "hash": "013cf713b799"
+ },
+ "https://news-views.in/jobs/ignfa-it-associate-technical-associate-2026/": {
+  "sentAt": "2026-11-16T05:42:24.132Z",
+  "hash": "e7475443f00a"
+ },
+ "https://news-views.in/jobs/kashmir-university-associate-professor-2026/": {
+  "sentAt": "2026-11-16T05:42:24.351Z",
+  "hash": "f2422cdfb92a"
+ },
+ "https://news-views.in/jobs/ucil-apprentice-2nd-list-out-jaduguda-2026/": {
+  "sentAt": "2026-11-16T05:42:24.558Z",
+  "hash": "44f7dc6b4e7f"
  }
 }
