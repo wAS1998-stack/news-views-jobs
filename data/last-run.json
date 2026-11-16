@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-16T15:26:18.167Z",
+    "at": "2026-11-16T17:40:15.994Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,24 +243,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-16T15:26:29.719Z",
+    "at": "2026-11-16T17:40:18.212Z",
     "ok": true,
-    "submitted": 52,
+    "submitted": 6,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 99,
+    "usedToday": 105,
     "log": [
-      "Indexing API: 52 to send (52 updated, 0 deleted); 47/200 used in Google's day 2026-11-16 (Pacific).",
-      "Indexing API: sent 52."
+      "Indexing API: 6 to send (6 updated, 0 deleted); 99/200 used in Google's day 2026-11-16 (Pacific).",
+      "Indexing API: sent 6."
     ]
   },
   "push": {
-    "at": "2026-11-16T15:28:24.513Z",
+    "at": "2026-11-16T17:40:45.127Z",
     "ok": true,
-    "sent": 170,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 170 sent\n  job wii-project-associate-project-assistant-more-advt-1-2026 en ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job wii-project-associate-project-assistant-more-advt-1-2026 en ['s-odisha' in topics && 'q-engineering-diploma' in topics &&"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "gsc": {

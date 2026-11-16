@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 99,
+  "used": 105,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6990,5 +6990,29 @@
  "https://news-views.in/jobs/wii-project-associate-project-assistant-more-advt-1-2026/": {
   "sentAt": "2026-11-16T15:26:29.598Z",
   "hash": "c4c5634bc3ec"
+ },
+ "https://news-views.in/jobs/ccsu-project-associate-i-walkin-2026/": {
+  "sentAt": "2026-11-16T17:40:16.981Z",
+  "hash": "f452fa0f0c94"
+ },
+ "https://news-views.in/jobs/district-sessions-judge-hoshiarpur-stenographer-grade-3-2026/": {
+  "sentAt": "2026-11-16T17:40:17.205Z",
+  "hash": "4599e3726c19"
+ },
+ "https://news-views.in/jobs/gttc-assistant-assistant-professor-more-2026/": {
+  "sentAt": "2026-11-16T17:40:17.439Z",
+  "hash": "58450f6f9b74"
+ },
+ "https://news-views.in/jobs/ku-walkin-senior-research-fellow-junior-2026/": {
+  "sentAt": "2026-11-16T17:40:17.662Z",
+  "hash": "ce0b4ae7bbe0"
+ },
+ "https://news-views.in/jobs/ncm-consultant-2026/": {
+  "sentAt": "2026-11-16T17:40:17.889Z",
+  "hash": "7fe8c35064ea"
+ },
+ "https://news-views.in/jobs/svims-nursing-apprentices-under-nats-walkin-2026/": {
+  "sentAt": "2026-11-16T17:40:18.090Z",
+  "hash": "b45cfbeb93c7"
  }
 }
