@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-15",
   "tz": "PT",
-  "used": 9,
+  "used": 10,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6498,5 +6498,9 @@
  "https://news-views.in/jobs/gmc-baramati-faculty-professor-associate-assistant-2026/": {
   "sentAt": "2026-11-15T23:07:14.827Z",
   "hash": "a4464525fcd9"
+ },
+ "https://news-views.in/jobs/sainik-school-tilaiya-teaching-non-teaching-2026/": {
+  "sentAt": "2026-11-16T04:56:44.013Z",
+  "hash": "013cf713b799"
  }
 }
