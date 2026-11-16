@@ -231,7 +231,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-16T05:42:23.520Z",
+    "at": "2026-11-16T07:54:46.205Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -242,24 +242,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-16T05:42:24.681Z",
+    "at": "2026-11-16T07:54:50.983Z",
     "ok": true,
-    "submitted": 3,
+    "submitted": 20,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 13,
+    "usedToday": 33,
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 10/200 used in Google's day 2026-11-15 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 20 to send (20 updated, 0 deleted); 13/200 used in Google's day 2026-11-15 (Pacific).",
+      "Indexing API: sent 20."
     ]
   },
   "push": {
-    "at": "2026-11-16T05:43:00.853Z",
+    "at": "2026-11-16T07:56:26.046Z",
     "ok": true,
-    "sent": 20,
+    "sent": 112,
     "log": [
-      "push-notify: 20 sent\n  job ignfa-it-associate-technical-associate-2026 en ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ignfa-it-associate-technical-associate-2026 en ['s-uttarakhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job "
+      "push-notify: 112 sent\n  job dslsa-intern-2026 en ['s-delhi' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dslsa-intern-2026 hi ['s-delhi' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dsywmp-high-technical-instructor-cum-advisor-2026 en ['s-madhya-pradesh' i"
     ]
   },
   "gsc": {

@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-15",
   "tz": "PT",
-  "used": 13,
+  "used": 33,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -6514,5 +6514,85 @@
  "https://news-views.in/jobs/ucil-apprentice-2nd-list-out-jaduguda-2026/": {
   "sentAt": "2026-11-16T05:42:24.558Z",
   "hash": "44f7dc6b4e7f"
+ },
+ "https://news-views.in/jobs/aiims-deoghar-faculty-list-out-9th-2026/": {
+  "sentAt": "2026-11-16T07:54:46.921Z",
+  "hash": "c4f7e9fd38a6"
+ },
+ "https://news-views.in/jobs/aiims-medical-education-consultant-project-associate-2026/": {
+  "sentAt": "2026-11-16T07:54:47.145Z",
+  "hash": "34fc31258018"
+ },
+ "https://news-views.in/jobs/avnl-manager-senior-manager-2026/": {
+  "sentAt": "2026-11-16T07:54:47.377Z",
+  "hash": "d2e0d323ec87"
+ },
+ "https://news-views.in/jobs/bbau-data-collector-data-analyst-2026/": {
+  "sentAt": "2026-11-16T07:54:47.597Z",
+  "hash": "caa7857a3ff0"
+ },
+ "https://news-views.in/jobs/bhel-rajbhasha-anuvadak-2026/": {
+  "sentAt": "2026-11-16T07:54:47.794Z",
+  "hash": "cee3c23d9a8e"
+ },
+ "https://news-views.in/jobs/coconut-development-board-group-a-b-c-2026/": {
+  "sentAt": "2026-11-16T07:54:47.979Z",
+  "hash": "232899d54dd3"
+ },
+ "https://news-views.in/jobs/csir-niist-project-associate-walkin-2026/": {
+  "sentAt": "2026-11-16T07:54:48.185Z",
+  "hash": "52beb66ded6a"
+ },
+ "https://news-views.in/jobs/dslsa-intern-2026/": {
+  "sentAt": "2026-11-16T07:54:48.371Z",
+  "hash": "fcb70f7b5571"
+ },
+ "https://news-views.in/jobs/dsywmp-high-technical-instructor-cum-advisor-2026/": {
+  "sentAt": "2026-11-16T07:54:48.555Z",
+  "hash": "743f3288bf77"
+ },
+ "https://news-views.in/jobs/jnu-vice-chancellor-2026/": {
+  "sentAt": "2026-11-16T07:54:48.781Z",
+  "hash": "1becafa5561c"
+ },
+ "https://news-views.in/jobs/kvasu-young-professional-ii-walkin-2026/": {
+  "sentAt": "2026-11-16T07:54:49.012Z",
+  "hash": "3acfe02638b2"
+ },
+ "https://news-views.in/jobs/nabcons-junior-technical-supervisor-2026/": {
+  "sentAt": "2026-11-16T07:54:49.243Z",
+  "hash": "95113282b21e"
+ },
+ "https://news-views.in/jobs/rcb-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-16T07:54:49.453Z",
+  "hash": "c48735a5276f"
+ },
+ "https://news-views.in/jobs/rcb-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-16T07:54:49.635Z",
+  "hash": "c38a39de11d4"
+ },
+ "https://news-views.in/jobs/rkmveri-project-assistant-2026/": {
+  "sentAt": "2026-11-16T07:54:49.860Z",
+  "hash": "9235692fb274"
+ },
+ "https://news-views.in/jobs/rri-assistant-administrative-officer-i-2026/": {
+  "sentAt": "2026-11-16T07:54:50.083Z",
+  "hash": "bbe57a23931c"
+ },
+ "https://news-views.in/jobs/ssc-ner-girl-cadet-instructor-final-2026/": {
+  "sentAt": "2026-11-16T07:54:50.268Z",
+  "hash": "1304b4791d96"
+ },
+ "https://news-views.in/jobs/tiss-field-coordinator-supervisor-2026/": {
+  "sentAt": "2026-11-16T07:54:50.495Z",
+  "hash": "6345a56fdcb3"
+ },
+ "https://news-views.in/jobs/tiss-sarala-das-memorial-doc-fellowship-2026/": {
+  "sentAt": "2026-11-16T07:54:50.678Z",
+  "hash": "3b129c96ef07"
+ },
+ "https://news-views.in/jobs/zsi-project-assistant-2026/": {
+  "sentAt": "2026-11-16T07:54:50.860Z",
+  "hash": "d9ce79fb726c"
  }
 }
