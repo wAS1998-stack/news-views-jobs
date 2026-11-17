@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 108,
+  "used": 109,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7022,5 +7022,9 @@
  "https://news-views.in/jobs/cmp-degree-college-assistant-professor-2026/": {
   "sentAt": "2026-11-16T22:22:46.162Z",
   "hash": "a293df641788"
+ },
+ "https://news-views.in/jobs/pmi-new-york-clerk-typist-2026/": {
+  "sentAt": "2026-11-17T00:24:25.377Z",
+  "hash": "aed28c85a108"
  }
 }
