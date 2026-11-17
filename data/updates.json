@@ -1,5 +1,50 @@
 [
   {
+    "id": "rssb-cet-10-2-inter-level-exam-date-2026",
+    "type": "exam-date",
+    "title": "RSSB CET 10+2 Inter Level Exam Date 2026",
+    "organization": "Rajasthan Staff Selection Board",
+    "org_short": "RSSB",
+    "date": "2026-11-17",
+    "link": "https://rssb.rajasthan.gov.in/storage/news_item/1794893623.pdf",
+    "summary": "Rajasthan Staff Selection Board (RSSB) has released the Exam Date for the CET 10+2 Inter Level Examination 2026 on 17 November 2026. The written examination will be conducted from 01 to 03 December 2026. Candidates can check their Exam Date from the official RSSB website. For additional details, refer to the official link provided below.",
+    "exam_name": "CET 10+2 Inter Level Examination 2026",
+    "event_date": "2026-11-17",
+    "summary_hi": "राजस्थान कर्मचारी चयन बोर्ड (RSSB) ने 17 नवंबर 2026 को CET 10+2 इंटर लेवल परीक्षा 2026 के लिए परीक्षा तिथि जारी की है। लिखित परीक्षा 01 से 03 दिसंबर 2026 तक आयोजित की जाएगी। उम्मीदवार अपनी परीक्षा तिथि आधिकारिक RSSB वेबसाइट से देख सकते हैं। अतिरिक्त विवरण के लिए नीचे दिए गए आधिकारिक लिंक पर जाएं।",
+    "steps": [
+      "Visit the official website of RSSB: https://rssb.rajasthan.gov.in/",
+      "Navigate to the Important Links section on the homepage.",
+      "Click on the Download Exam Date link.",
+      "Enter your Candidate’s Registration Number, Date of Birth, and Verification Code.",
+      "Submit the details to view or download the Exam Date."
+    ],
+    "details": [
+      "Following the release of the Exam Date, candidates are advised to prepare effectively for the written examination scheduled for December. It is crucial to ensure you have all necessary documentation ready, including your registration details, as they will be required to download your admit card once available.",
+      "The admit card will be issued prior to the exam dates, and candidates will need to use their Registration Number and additional credentials to access it. Keep an eye on the official website for updates regarding the release of the admit card and other exam-related notifications."
+    ],
+    "faq": [
+      {
+        "q": "Has the RSSB CET 10+2 Inter Level Exam Date 2026 been released?",
+        "a": "Yes, the RSSB CET 10+2 Inter Level Exam Date 2026 has been released."
+      },
+      {
+        "q": "When will the RSSB CET 10+2 Inter Level exam be held?",
+        "a": "The RSSB CET 10+2 Inter Level examination will be held from 01 to 03 December 2026."
+      },
+      {
+        "q": "Where can I check the RSSB CET 10+2 Inter Level Exam Date 2026?",
+        "a": "You can check it on the official RSSB website: rssb.rajasthan.gov.in/"
+      },
+      {
+        "q": "What details are required to download the admit card?",
+        "a": "Candidates need their Registration Number and Verification Code to download the admit card."
+      }
+    ],
+    "official_link": "https://rssb.rajasthan.gov.in/storage/news_item/1794893623.pdf",
+    "official_website": "https://rssb.rajasthan.gov.in/",
+    "source": "https://www.sarkariexam.com/rssb-cet-12-inter-level-2026/"
+  },
+  {
     "id": "bihar-slet-admit-card-2026-out-at-sletregistration-cbrt-co-in-download",
     "type": "admit-card",
     "title": "Bihar SLET Admit Card 2026 Out at sletregistration.cbrt.co.in – Download Librarian Hall Ticket",
