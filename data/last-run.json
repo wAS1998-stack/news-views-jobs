@@ -218,7 +218,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T00:24:24.509Z",
+    "at": "2026-11-17T02:31:48.524Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -229,25 +229,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T00:24:25.500Z",
+    "at": "2026-11-17T02:31:49.021Z",
     "ok": true,
-    "submitted": 1,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 91,
     "usedToday": 109,
+    "kept": 4,
+    "quotaDay": "2026-11-16",
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 108/200 used in Google's day 2026-11-16 (Pacific).",
-      "Indexing API: sent 1."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 109/200 used in Google's day 2026-11-16 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-17T00:24:30.275Z",
+    "at": "2026-11-17T02:32:21.371Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 126,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 126 sent\n  job svims-nursing-apprentices-under-nats-walkin-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job svims-nursing-apprentices-under-nats-walkin-2026 hi [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q"
     ]
   },
   "gsc": {
