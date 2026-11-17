@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-17",
   "tz": "PT",
-  "used": 31,
+  "used": 62,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7238,5 +7238,129 @@
  "https://news-views.in/jobs/zsi-junior-research-fellow-field-worker-2026/": {
   "sentAt": "2026-11-17T09:42:31.410Z",
   "hash": "39f0a3eb13a0"
+ },
+ "https://news-views.in/jobs/ccpd-research-assistant-accountant-more-2026/": {
+  "sentAt": "2026-11-17T11:47:34.305Z",
+  "hash": "c0e358ebc69e"
+ },
+ "https://news-views.in/jobs/cga-senior-accounts-officer-2026/": {
+  "sentAt": "2026-11-17T11:47:34.560Z",
+  "hash": "3c5d4f66a019"
+ },
+ "https://news-views.in/jobs/chpa-senior-accounts-officer-2026/": {
+  "sentAt": "2026-11-17T11:47:34.808Z",
+  "hash": "0d57e6748711"
+ },
+ "https://news-views.in/jobs/cmp-degree-college-assistant-professor-advt-1-2026/": {
+  "sentAt": "2026-11-17T11:47:35.010Z",
+  "hash": "918b5992cd62"
+ },
+ "https://news-views.in/jobs/crpf-walkin-specialist-medical-officer-surgeon-2026/": {
+  "sentAt": "2026-11-17T11:47:35.244Z",
+  "hash": "76b41b085645"
+ },
+ "https://news-views.in/jobs/dcpu-chennai-south-legal-cum-probation-2026/": {
+  "sentAt": "2026-11-17T11:47:35.448Z",
+  "hash": "143a56247662"
+ },
+ "https://news-views.in/jobs/depwd-director-2026/": {
+  "sentAt": "2026-11-17T11:47:35.681Z",
+  "hash": "80d9ecf42522"
+ },
+ "https://news-views.in/jobs/dhgmc-molecular-biologist-2026/": {
+  "sentAt": "2026-11-17T11:47:35.905Z",
+  "hash": "a52565d9d7d0"
+ },
+ "https://news-views.in/jobs/dlsa-west-champaran-para-legal-volunteer-2026/": {
+  "sentAt": "2026-11-17T11:47:36.121Z",
+  "hash": "c682a410349f"
+ },
+ "https://news-views.in/jobs/gfgnl-general-manager-2026/": {
+  "sentAt": "2026-11-17T11:47:36.340Z",
+  "hash": "49d1fa99f831"
+ },
+ "https://news-views.in/jobs/gfgnl-junior-technical-engineer-2026/": {
+  "sentAt": "2026-11-17T11:47:36.544Z",
+  "hash": "aaeed56f32d8"
+ },
+ "https://news-views.in/jobs/hbtu-junior-research-intern-senior-research-2026/": {
+  "sentAt": "2026-11-17T11:47:36.759Z",
+  "hash": "985c388abd77"
+ },
+ "https://news-views.in/jobs/icmr-nirwoh-project-research-scientist-ii-2026/": {
+  "sentAt": "2026-11-17T11:47:36.958Z",
+  "hash": "f460fe4902c7"
+ },
+ "https://news-views.in/jobs/icmr-nirwoh-project-research-scientist-ii-advt-3-2026/": {
+  "sentAt": "2026-11-17T11:47:37.148Z",
+  "hash": "40cbb02bb8de"
+ },
+ "https://news-views.in/jobs/iiitdm-kancheepuram-junior-research-fellow-school-2026/": {
+  "sentAt": "2026-11-17T11:47:37.346Z",
+  "hash": "e5deb1f44f24"
+ },
+ "https://news-views.in/jobs/iit-indore-research-associate-ii-2026/": {
+  "sentAt": "2026-11-17T11:47:37.548Z",
+  "hash": "5bbec8e84d0a"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-technical-personnel-walkin-2026/": {
+  "sentAt": "2026-11-17T11:47:37.753Z",
+  "hash": "c169af030126"
+ },
+ "https://news-views.in/jobs/incois-research-associate-walkin-2026/": {
+  "sentAt": "2026-11-17T11:47:37.952Z",
+  "hash": "eef1a5b05024"
+ },
+ "https://news-views.in/jobs/isi-specialist-doctor-part-time-contractual-2026/": {
+  "sentAt": "2026-11-17T11:47:38.149Z",
+  "hash": "52480f8595d0"
+ },
+ "https://news-views.in/jobs/jiit-junior-research-assistant-2026/": {
+  "sentAt": "2026-11-17T11:47:38.352Z",
+  "hash": "8c96c38dc0c4"
+ },
+ "https://news-views.in/jobs/kvic-technical-expert-marketing-expert-other-2026/": {
+  "sentAt": "2026-11-17T11:47:38.560Z",
+  "hash": "5631cd53b98a"
+ },
+ "https://news-views.in/jobs/mamc-ethics-committee-coordinator-walkin-2026/": {
+  "sentAt": "2026-11-17T11:47:38.738Z",
+  "hash": "40f5dfc98c1a"
+ },
+ "https://news-views.in/jobs/nca-assistant-professor-2026/": {
+  "sentAt": "2026-11-17T11:47:38.976Z",
+  "hash": "dccf5d208254"
+ },
+ "https://news-views.in/jobs/ndvsu-walkin-senior-research-fellow-junior-2026/": {
+  "sentAt": "2026-11-17T11:47:39.174Z",
+  "hash": "3467fcea4714"
+ },
+ "https://news-views.in/jobs/nit-rourkela-professor-2026/": {
+  "sentAt": "2026-11-17T11:47:39.374Z",
+  "hash": "8814d082b174"
+ },
+ "https://news-views.in/jobs/rltri-general-duty-medical-officer-2026/": {
+  "sentAt": "2026-11-17T11:47:39.579Z",
+  "hash": "dcf2827a13ef"
+ },
+ "https://news-views.in/jobs/sgpgims-senior-project-assistant-deo-2026/": {
+  "sentAt": "2026-11-17T11:47:39.754Z",
+  "hash": "c3e97117abc3"
+ },
+ "https://news-views.in/jobs/ssc-grade-c-stenographers-2026/": {
+  "sentAt": "2026-11-17T11:47:39.953Z",
+  "hash": "329b034ab4f9"
+ },
+ "https://news-views.in/jobs/sxc-jaipur-ai-research-engineering-intern-2026/": {
+  "sentAt": "2026-11-17T11:47:40.124Z",
+  "hash": "7edd720096ce"
+ },
+ "https://news-views.in/jobs/sxc-jaipur-human-resource-trainee-global-2026/": {
+  "sentAt": "2026-11-17T11:47:40.346Z",
+  "hash": "d3a08ec2d1de"
+ },
+ "https://news-views.in/jobs/uou-project-assistant-walkin-2026/": {
+  "sentAt": "2026-11-17T11:47:40.549Z",
+  "hash": "cd9e7bc082fb"
  }
 }

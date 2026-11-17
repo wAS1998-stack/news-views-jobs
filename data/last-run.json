@@ -234,7 +234,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T09:42:24.909Z",
+    "at": "2026-11-17T11:47:33.352Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -245,24 +245,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T09:42:31.532Z",
+    "at": "2026-11-17T11:47:40.671Z",
     "ok": true,
     "submitted": 31,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 31,
+    "usedToday": 62,
     "log": [
-      "Indexing API: 31 to send (31 updated, 0 deleted); 0/200 used in Google's day 2026-11-17 (Pacific).",
+      "Indexing API: 31 to send (31 updated, 0 deleted); 31/200 used in Google's day 2026-11-17 (Pacific).",
       "Indexing API: sent 31."
     ]
   },
   "push": {
-    "at": "2026-11-17T09:43:46.512Z",
+    "at": "2026-11-17T11:48:54.233Z",
     "ok": true,
-    "sent": 88,
+    "sent": 78,
     "log": [
-      "push-notify: 88 sent\n  job sainik-shiksha-niketan-prt-walkin-2026 en ['s-west-bengal' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job sainik-shiksha-niketan-prt-walkin-2026 hi ['s-west-bengal' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job trai-consultant-202"
+      "push-notify: 78 sent\n  job dlsa-west-champaran-para-legal-volunteer-2026 en ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job dlsa-west-champaran-para-legal-volunteer-2026 hi ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job ndvsu-walkin-seni"
     ]
   },
   "gsc": {
