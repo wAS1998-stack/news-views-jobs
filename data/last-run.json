@@ -236,7 +236,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T07:17:07.902Z",
+    "at": "2026-11-17T09:42:24.909Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -247,24 +247,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T07:17:11.980Z",
+    "at": "2026-11-17T09:42:31.532Z",
     "ok": true,
-    "submitted": 17,
+    "submitted": 31,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 131,
+    "usedToday": 31,
     "log": [
-      "Indexing API: 17 to send (17 updated, 0 deleted); 114/200 used in Google's day 2026-11-16 (Pacific).",
-      "Indexing API: sent 17."
+      "Indexing API: 31 to send (31 updated, 0 deleted); 0/200 used in Google's day 2026-11-17 (Pacific).",
+      "Indexing API: sent 31."
     ]
   },
   "push": {
-    "at": "2026-11-17T07:18:18.663Z",
+    "at": "2026-11-17T09:43:46.512Z",
     "ok": true,
-    "sent": 58,
+    "sent": 88,
     "log": [
-      "push-notify: 58 sent\n  job apslsa-other-person-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job apslsa-other-person-2026 hi ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job neigrihms-walkin-research-scientist-mts-202"
+      "push-notify: 88 sent\n  job sainik-shiksha-niketan-prt-walkin-2026 en ['s-west-bengal' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job sainik-shiksha-niketan-prt-walkin-2026 hi ['s-west-bengal' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job trai-consultant-202"
     ]
   },
   "gsc": {
