@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T11:47:33.352Z",
+    "at": "2026-11-17T14:35:06.882Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -244,24 +244,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T11:47:40.671Z",
+    "at": "2026-11-17T14:35:20.516Z",
     "ok": true,
-    "submitted": 31,
+    "submitted": 58,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 62,
+    "usedToday": 120,
     "log": [
-      "Indexing API: 31 to send (31 updated, 0 deleted); 31/200 used in Google's day 2026-11-17 (Pacific).",
-      "Indexing API: sent 31."
+      "Indexing API: 58 to send (58 updated, 0 deleted); 62/200 used in Google's day 2026-11-17 (Pacific).",
+      "Indexing API: sent 58."
     ]
   },
   "push": {
-    "at": "2026-11-17T11:48:54.233Z",
+    "at": "2026-11-17T14:36:56.945Z",
     "ok": true,
-    "sent": 78,
+    "sent": 152,
     "log": [
-      "push-notify: 78 sent\n  job dlsa-west-champaran-para-legal-volunteer-2026 en ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job dlsa-west-champaran-para-legal-volunteer-2026 hi ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job ndvsu-walkin-seni"
+      "push-notify: 152 sent\n  job jcsti-graduate-apprentice-technician-apprentice-2026 en ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jcsti-graduate-apprentice-technician-apprentice-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in top"
     ]
   },
   "gsc": {
