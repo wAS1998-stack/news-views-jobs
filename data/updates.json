@@ -1,5 +1,51 @@
 [
   {
+    "id": "ssc-constable-gd-pet-pst-rescheduling-notice-2026",
+    "type": "exam-date",
+    "title": "SSC Constable (GD) PET/PST Rescheduling Notice 2026",
+    "organization": "Staff Selection Commission",
+    "org_short": "SSC",
+    "exam_name": "Constable (GD) Examination",
+    "date": "2026-11-17",
+    "link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/noticectgd_17112026.pdf",
+    "official_link": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/noticectgd_17112026.pdf",
+    "official_website": "https://ssc.gov.in/",
+    "source": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/noticectgd_17112026.pdf",
+    "via": "official",
+    "summary": "The Staff Selection Commission has issued an important notice regarding the rescheduling of PET/PST dates for some candidates of the SSC Constable (GD) Examination, 2026. This adjustment is due to a clash with the SI in DP and CAPFs Exam, 2026 and 2025. Candidates may check the details on the official SSC website.",
+    "summary_hi": "कर्मचारी चयन आयोग ने एसएससी कांस्टेबल (जीडी) परीक्षा, 2026 के कुछ उम्मीदवारों के लिए पीईटी/पीएसटी तिथियों के पुनर्निर्धारण के बारे में एक महत्वपूर्ण नोटिस जारी किया है। यह समायोजन 2026 और 2025 में डीपी और सीएपीएफ परीक्षा के साथ टकराव के कारण है। उम्मीदवार आधिकारिक एसएससी वेबसाइट पर विवरण की जांच कर सकते हैं।",
+    "steps": [
+      "Visit the official SSC website: ssc.gov.in",
+      "Click on the 'Notice' section on the homepage.",
+      "Find the link for the SSC Constable (GD) Examination, 2026 rescheduling notice.",
+      "Download the notice PDF for further details.",
+      "Contact the provided email with necessary details if there is a clash."
+    ],
+    "details": [
+      "Candidates affected by the clash between the SSC Constable (GD) Examination, 2026, and the SI in DP and CAPFs Exams are advised to email the PET/PST conducting authority with their details for rescheduling arrangements.",
+      "The Commission will review these cases and make appropriate changes to the PET/PST dates for the affected candidates, ensuring they can appear for both examinations."
+    ],
+    "faq": [
+      {
+        "q": "What should I do if my PET/PST date clashes with another exam?",
+        "a": "You should notify the PET/PST conducting authority through email with your details."
+      },
+      {
+        "q": "What information do I need to include in my email?",
+        "a": "Include your name, roll/registration number, and details of both examinations."
+      },
+      {
+        "q": "Where can I find more information regarding this notice?",
+        "a": "You can find more information on the official SSC website under the notices section."
+      },
+      {
+        "q": "Will all candidates with a clash be allowed to reschedule?",
+        "a": "Cases will be examined individually by the Commission for rescheduling where applicable."
+      }
+    ],
+    "enriched": "2026-11-17"
+  },
+  {
     "id": "rpsc-asst-prof-sanskrit-college-edu-result-2024-out",
     "type": "result",
     "title": "RPSC Asst. Prof. (Sanskrit College Edu.) Result 2024 Out",
