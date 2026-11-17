@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-17",
   "tz": "PT",
-  "used": 144,
+  "used": 147,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7690,5 +7690,17 @@
  "https://news-views.in/jobs/vikram-dev-university-part-time-faculty-2026/": {
   "sentAt": "2026-11-17T19:24:41.795Z",
   "hash": "4a14c042660a"
+ },
+ "https://news-views.in/jobs/cmo-walkin-medical-officer-female-medical-2026/": {
+  "sentAt": "2026-11-17T21:58:21.425Z",
+  "hash": "541114b5ab4e"
+ },
+ "https://news-views.in/jobs/hplng-senior-engineer-operations-2026/": {
+  "sentAt": "2026-11-17T21:58:21.650Z",
+  "hash": "a274ccb5a669"
+ },
+ "https://news-views.in/jobs/kv-no-afs-jorhat-walkin-prt-2026/": {
+  "sentAt": "2026-11-17T21:58:21.887Z",
+  "hash": "54c5059dafd0"
  }
 }
