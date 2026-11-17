@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 114,
+  "used": 131,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7046,5 +7046,73 @@
  "https://news-views.in/jobs/rrc-nwr-scout-guide-quota-list-2026/": {
   "sentAt": "2026-11-17T06:35:52.573Z",
   "hash": "16242912b219"
+ },
+ "https://news-views.in/jobs/aaagh-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-17T07:17:08.580Z",
+  "hash": "9729033aa59f"
+ },
+ "https://news-views.in/jobs/acem-paid-intern-2026/": {
+  "sentAt": "2026-11-17T07:17:08.784Z",
+  "hash": "feca23ccd32b"
+ },
+ "https://news-views.in/jobs/aiims-project-assistant-project-associate-2026/": {
+  "sentAt": "2026-11-17T07:17:09.005Z",
+  "hash": "52810eb1fbe8"
+ },
+ "https://news-views.in/jobs/aiims-raipur-project-nurse-iii-walkin-2026/": {
+  "sentAt": "2026-11-17T07:17:09.245Z",
+  "hash": "e414aeefc6a6"
+ },
+ "https://news-views.in/jobs/apslsa-other-person-2026/": {
+  "sentAt": "2026-11-17T07:17:09.465Z",
+  "hash": "73d89175a22b"
+ },
+ "https://news-views.in/jobs/bmc-registrar-icu-walkin-2026/": {
+  "sentAt": "2026-11-17T07:17:09.701Z",
+  "hash": "73c66df55371"
+ },
+ "https://news-views.in/jobs/esis-walkin-senior-resident-part-time-2026/": {
+  "sentAt": "2026-11-17T07:17:09.901Z",
+  "hash": "7180f86fdd2f"
+ },
+ "https://news-views.in/jobs/kea-kslsa-section-officer-eligible-list-2026/": {
+  "sentAt": "2026-11-17T07:17:10.090Z",
+  "hash": "7f885456a5eb"
+ },
+ "https://news-views.in/jobs/koraput-guest-teacher-draft-eligible-list-2026/": {
+  "sentAt": "2026-11-17T07:17:10.296Z",
+  "hash": "8c45b3430f9d"
+ },
+ "https://news-views.in/jobs/ksebl-nodal-officer-2026/": {
+  "sentAt": "2026-11-17T07:17:10.485Z",
+  "hash": "0bcd04ec5be4"
+ },
+ "https://news-views.in/jobs/kslsa-section-officer-eligible-list-out-2026/": {
+  "sentAt": "2026-11-17T07:17:10.671Z",
+  "hash": "0d1e2bd2a216"
+ },
+ "https://news-views.in/jobs/neigrihms-dental-consultant-specialist-2026/": {
+  "sentAt": "2026-11-17T07:17:10.906Z",
+  "hash": "7aefa7c9ea36"
+ },
+ "https://news-views.in/jobs/neigrihms-walkin-research-scientist-mts-2026/": {
+  "sentAt": "2026-11-17T07:17:11.088Z",
+  "hash": "3cb04812bdcc"
+ },
+ "https://news-views.in/jobs/nibmg-bric-nibmg-fellow-2026/": {
+  "sentAt": "2026-11-17T07:17:11.298Z",
+  "hash": "4c0c64f0c517"
+ },
+ "https://news-views.in/jobs/nidm-consultant-walkin-2026/": {
+  "sentAt": "2026-11-17T07:17:11.485Z",
+  "hash": "6204f54f6464"
+ },
+ "https://news-views.in/jobs/vrde-paid-internship-2026/": {
+  "sentAt": "2026-11-17T07:17:11.671Z",
+  "hash": "9c77ed5584f4"
+ },
+ "https://news-views.in/jobs/wcl-out-clerk-junior-data-entry-2026/": {
+  "sentAt": "2026-11-17T07:17:11.859Z",
+  "hash": "ba88c9ae2573"
  }
 }
