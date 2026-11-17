@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-17",
   "tz": "PT",
-  "used": 120,
+  "used": 142,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7594,5 +7594,93 @@
  "https://news-views.in/jobs/uoh-project-associate-i-2026/": {
   "sentAt": "2026-11-17T14:35:20.392Z",
   "hash": "efa5a2cf0e2a"
+ },
+ "https://news-views.in/jobs/biet-jhansi-junior-research-assistant-2026/": {
+  "sentAt": "2026-11-17T17:16:18.468Z",
+  "hash": "85ec227e9978"
+ },
+ "https://news-views.in/jobs/central-university-rajasthan-non-teaching-lower-2026/": {
+  "sentAt": "2026-11-17T17:16:18.736Z",
+  "hash": "51f9befd8310"
+ },
+ "https://news-views.in/jobs/dpa-chief-engineer-2026/": {
+  "sentAt": "2026-11-17T17:16:18.938Z",
+  "hash": "23da7157d0d4"
+ },
+ "https://news-views.in/jobs/gmc-gondia-assistant-professor-statistician-cum-2026/": {
+  "sentAt": "2026-11-17T17:16:19.147Z",
+  "hash": "bd03ea361d6c"
+ },
+ "https://news-views.in/jobs/gmc-gondia-faculty-professor-associate-professor-2026/": {
+  "sentAt": "2026-11-17T17:16:19.368Z",
+  "hash": "89d820376e68"
+ },
+ "https://news-views.in/jobs/hridc-senior-executive-civil-2026/": {
+  "sentAt": "2026-11-17T17:16:19.564Z",
+  "hash": "14d89ad3f499"
+ },
+ "https://news-views.in/jobs/icar-cmfri-project-assistant-2026/": {
+  "sentAt": "2026-11-17T17:16:19.741Z",
+  "hash": "4a4e7d0df284"
+ },
+ "https://news-views.in/jobs/icf-consultant-pu-icf-2026/": {
+  "sentAt": "2026-11-17T17:16:19.938Z",
+  "hash": "9a931767b7b9"
+ },
+ "https://news-views.in/jobs/iit-delhi-project-assistant-electrical-engineering-2026/": {
+  "sentAt": "2026-11-17T17:16:20.103Z",
+  "hash": "0190a5a32f9f"
+ },
+ "https://news-views.in/jobs/iit-delhi-research-associate-centre-atmospheric-2026/": {
+  "sentAt": "2026-11-17T17:16:20.279Z",
+  "hash": "fea465417f6d"
+ },
+ "https://news-views.in/jobs/jnv-boudh-walkin-tgt-mathematics-tgt-2026/": {
+  "sentAt": "2026-11-17T17:16:20.460Z",
+  "hash": "936778cbb9ce"
+ },
+ "https://news-views.in/jobs/kud-office-assistant-cum-computer-operator-2026/": {
+  "sentAt": "2026-11-17T17:16:20.666Z",
+  "hash": "afe25e8b2c6d"
+ },
+ "https://news-views.in/jobs/mvh-walkin-senior-resident-2026/": {
+  "sentAt": "2026-11-17T17:16:20.866Z",
+  "hash": "343751fc2665"
+ },
+ "https://news-views.in/jobs/niper-guwahati-incubation-manager-2026/": {
+  "sentAt": "2026-11-17T17:16:21.045Z",
+  "hash": "a0445774af64"
+ },
+ "https://news-views.in/jobs/nirmithi-kendra-chamarajanagara-project-manager-2026/": {
+  "sentAt": "2026-11-17T17:16:21.223Z",
+  "hash": "6d43ac4a4288"
+ },
+ "https://news-views.in/jobs/nsi-young-professional-organic-chemistry-2026/": {
+  "sentAt": "2026-11-17T17:16:21.421Z",
+  "hash": "eb4da2dcc372"
+ },
+ "https://news-views.in/jobs/pondicherry-university-guest-faculty-2026/": {
+  "sentAt": "2026-11-17T17:16:21.615Z",
+  "hash": "f9556a600b42"
+ },
+ "https://news-views.in/jobs/sebi-part-time-counsellor-2026/": {
+  "sentAt": "2026-11-17T17:16:21.798Z",
+  "hash": "87440d703c09"
+ },
+ "https://news-views.in/jobs/shivaji-university-clerk-theatre-operator-2026/": {
+  "sentAt": "2026-11-17T17:16:21.974Z",
+  "hash": "be26f03516dd"
+ },
+ "https://news-views.in/jobs/upmrc-chief-controller-stores-2026/": {
+  "sentAt": "2026-11-17T17:16:22.119Z",
+  "hash": "6b95659f9dbe"
+ },
+ "https://news-views.in/jobs/upmrc-general-manager-2026/": {
+  "sentAt": "2026-11-17T17:16:22.299Z",
+  "hash": "d2dc2f491e64"
+ },
+ "https://news-views.in/jobs/wbsu-guest-teacher-walkin-2026/": {
+  "sentAt": "2026-11-17T17:16:22.455Z",
+  "hash": "8e9495d218fe"
  }
 }

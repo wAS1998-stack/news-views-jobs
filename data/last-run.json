@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T14:35:06.882Z",
+    "at": "2026-11-17T17:16:17.856Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,24 +243,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T14:35:20.516Z",
+    "at": "2026-11-17T17:16:22.577Z",
     "ok": true,
-    "submitted": 58,
+    "submitted": 22,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 120,
+    "usedToday": 142,
     "log": [
-      "Indexing API: 58 to send (58 updated, 0 deleted); 62/200 used in Google's day 2026-11-17 (Pacific).",
-      "Indexing API: sent 58."
+      "Indexing API: 22 to send (22 updated, 0 deleted); 120/200 used in Google's day 2026-11-17 (Pacific).",
+      "Indexing API: sent 22."
     ]
   },
   "push": {
-    "at": "2026-11-17T14:36:56.945Z",
+    "at": "2026-11-17T17:16:52.965Z",
     "ok": true,
-    "sent": 152,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 152 sent\n  job jcsti-graduate-apprentice-technician-apprentice-2026 en ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jcsti-graduate-apprentice-technician-apprentice-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in top"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "gsc": {
