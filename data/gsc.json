@@ -1,20 +1,15 @@
 {
- "date": "2026-11-16",
+ "date": "2026-11-17",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-18",
-  "2026-11-14"
+  "2026-10-19",
+  "2026-11-15"
  ],
  "totals": {
   "clicks": 39,
-  "impressions": 614
+  "impressions": 622
  },
  "daily": [
-  {
-   "date": "2026-10-18",
-   "clicks": 0,
-   "impressions": 6
-  },
   {
    "date": "2026-10-19",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-14",
    "clicks": 0,
    "impressions": 12
+  },
+  {
+   "date": "2026-11-15",
+   "clicks": 0,
+   "impressions": 14
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-17",
-   "2026-11-14"
+   "2026-08-18",
+   "2026-11-15"
   ],
   "rows": []
  },
@@ -211,8 +211,8 @@
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 110,
-   "ctr": 1.82,
+   "impressions": 113,
+   "ctr": 1.77,
    "position": 4.5
   },
   {
@@ -323,7 +323,7 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 5,
+   "impressions": 3,
    "ctr": 0,
    "position": 78
   },
@@ -447,11 +447,25 @@
    "position": 5
   },
   {
+   "page": "/jobs/esic-hospital-peenya-walkin-senior-resident-2026/",
+   "clicks": 0,
+   "impressions": 2,
+   "ctr": 0,
+   "position": 6
+  },
+  {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 8
+  },
+  {
+   "page": "/jobs/esic-walkin-senior-resident-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "page": "/jobs/gbu-project-scientist-i-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -501,20 +515,6 @@
    "impressions": 5,
    "ctr": 0,
    "position": 4.6
-  },
-  {
-   "page": "/jobs/hpcl-officers-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
-   "page": "/jobs/igkv-raipur-vice-chancellor-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
   }
  ],
  "topQueries": [
@@ -645,13 +645,6 @@
    "position": 9
   },
   {
-   "query": "10th pass govt jobs for female",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 3
-  },
-  {
    "query": "2026 job vacancy government",
    "clicks": 0,
    "impressions": 1,
@@ -664,6 +657,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "query": "anesthesia job vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
   },
   {
    "query": "assistant professor vacancy in lucknow 2026",
@@ -1081,7 +1081,7 @@
   {
    "query": "iocl diploma recruitment 2026",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 6
   },
@@ -1223,8 +1223,8 @@
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 110,
-   "ctr": 1.82,
+   "impressions": 113,
+   "ctr": 1.77,
    "position": 4.5,
    "queries": [
     {
@@ -1263,9 +1263,9 @@
      "position": 6
     },
     {
-     "q": "indian oil job vacancy 2026",
-     "impressions": 1,
-     "position": 3
+     "q": "iocl diploma recruitment 2026",
+     "impressions": 2,
+     "position": 6
     }
    ]
   },
@@ -1362,8 +1362,8 @@
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
    "clicks": 2,
-   "impressions": 110,
-   "ctr": 1.82,
+   "impressions": 113,
+   "ctr": 1.77,
    "position": 4.5
   }
  ]
