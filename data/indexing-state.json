@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-17",
   "tz": "PT",
-  "used": 142,
+  "used": 144,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7682,5 +7682,13 @@
  "https://news-views.in/jobs/wbsu-guest-teacher-walkin-2026/": {
   "sentAt": "2026-11-17T17:16:22.455Z",
   "hash": "8e9495d218fe"
+ },
+ "https://news-views.in/jobs/uksssc-uttarakhand-constable-civil-police-fireman-2026/": {
+  "sentAt": "2026-11-17T19:24:41.574Z",
+  "hash": "3f297b3f2926"
+ },
+ "https://news-views.in/jobs/vikram-dev-university-part-time-faculty-2026/": {
+  "sentAt": "2026-11-17T19:24:41.795Z",
+  "hash": "4a14c042660a"
  }
 }
