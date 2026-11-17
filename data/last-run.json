@@ -212,7 +212,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T02:31:48.524Z",
+    "at": "2026-11-17T05:11:38.990Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -223,23 +223,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T02:31:49.021Z",
+    "at": "2026-11-17T05:11:40.006Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 91,
-    "usedToday": 109,
+    "submitted": 2,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-16",
+    "usedToday": 111,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 109/200 used in Google's day 2026-11-16 (Pacific)."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 109/200 used in Google's day 2026-11-16 (Pacific).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-17T02:32:21.371Z",
+    "at": "2026-11-17T05:12:36.264Z",
     "ok": true,
-    "sent": 126,
+    "sent": 116,
     "log": [
-      "push-notify: 126 sent\n  job svims-nursing-apprentices-under-nats-walkin-2026 en [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job svims-nursing-apprentices-under-nats-walkin-2026 hi [('s-andhra-pradesh' in topics || 's-any' in topics) && 'q"
+      "push-notify: 116 sent\n  job nlc-india-executive-out-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job nlc-india-executive-out-2026 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nlc-india-executive-out-2026 hi ['s-c"
     ]
   },
   "gsc": {

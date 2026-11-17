@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 109,
+  "used": 111,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7026,5 +7026,13 @@
  "https://news-views.in/jobs/pmi-new-york-clerk-typist-2026/": {
   "sentAt": "2026-11-17T00:24:25.377Z",
   "hash": "aed28c85a108"
+ },
+ "https://news-views.in/jobs/nlc-india-executive-out-2026/": {
+  "sentAt": "2026-11-17T05:11:39.631Z",
+  "hash": "660bb5dc0b93"
+ },
+ "https://news-views.in/jobs/office-jute-commissioner-deputy-director-2026/": {
+  "sentAt": "2026-11-17T05:11:39.884Z",
+  "hash": "c96e1fac0ddc"
  }
 }
