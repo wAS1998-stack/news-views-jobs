@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-16",
   "tz": "PT",
-  "used": 111,
+  "used": 114,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7034,5 +7034,17 @@
  "https://news-views.in/jobs/office-jute-commissioner-deputy-director-2026/": {
   "sentAt": "2026-11-17T05:11:39.884Z",
   "hash": "c96e1fac0ddc"
+ },
+ "https://news-views.in/jobs/bric-nipgr-project-associate-i-walkin-2026/": {
+  "sentAt": "2026-11-17T06:35:52.092Z",
+  "hash": "7ab1a424e1bd"
+ },
+ "https://news-views.in/jobs/kv-afs-manauri-tgt-maths-walkin-2026/": {
+  "sentAt": "2026-11-17T06:35:52.349Z",
+  "hash": "fbdb09d60a7c"
+ },
+ "https://news-views.in/jobs/rrc-nwr-scout-guide-quota-list-2026/": {
+  "sentAt": "2026-11-17T06:35:52.573Z",
+  "hash": "16242912b219"
  }
 }

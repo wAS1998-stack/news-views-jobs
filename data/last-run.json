@@ -226,7 +226,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-17T05:11:38.990Z",
+    "at": "2026-11-17T06:35:51.086Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -237,24 +237,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-17T05:11:40.006Z",
+    "at": "2026-11-17T06:35:52.696Z",
     "ok": true,
-    "submitted": 2,
+    "submitted": 3,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 111,
+    "usedToday": 114,
     "log": [
-      "Indexing API: 2 to send (2 updated, 0 deleted); 109/200 used in Google's day 2026-11-16 (Pacific).",
-      "Indexing API: sent 2."
+      "Indexing API: 3 to send (3 updated, 0 deleted); 111/200 used in Google's day 2026-11-16 (Pacific).",
+      "Indexing API: sent 3."
     ]
   },
   "push": {
-    "at": "2026-11-17T05:12:36.264Z",
+    "at": "2026-11-17T06:36:40.975Z",
     "ok": true,
-    "sent": 116,
+    "sent": 32,
     "log": [
-      "push-notify: 116 sent\n  job nlc-india-executive-out-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job nlc-india-executive-out-2026 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nlc-india-executive-out-2026 hi ['s-c"
+      "push-notify: 32 sent\n  job icar-cifri-young-professional-ii-2026 en ['s-central' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job icar-cifri-young-professional-ii-2026 hi ['s-central' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job rrc-nwr-scout-guide-q"
     ]
   },
   "gsc": {
