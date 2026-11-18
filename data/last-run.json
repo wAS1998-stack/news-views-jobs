@@ -210,7 +210,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T02:05:24.772Z",
+    "at": "2026-11-18T04:07:12.293Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -221,7 +221,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T02:05:25.204Z",
+    "at": "2026-11-18T04:07:12.736Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 53,
@@ -233,11 +233,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-18T02:06:00.126Z",
+    "at": "2026-11-18T04:07:35.211Z",
     "ok": true,
-    "sent": 144,
+    "sent": 122,
     "log": [
-      "push-notify: 144 sent\n  job uksssc-uttarakhand-constable-civil-police-fireman-2026 en [('s-uttarakhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job uksssc-uttarakhand-constable-civil-police-fireman-2026 hi [('s-uttarakhand' in topics || 's-any' in topics"
+      "push-notify: 122 sent\n  job gmc-gondia-faculty-professor-associate-professor-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gmc-gondia-faculty-professor-associate-professor-2026 hi [('s-maharashtra' in topics || 's-any' in topics) &"
     ]
   },
   "gsc": {
