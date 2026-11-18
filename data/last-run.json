@@ -2,7 +2,7 @@
   "date": "2026-11-18",
   "runs": {},
   "fetch": {
-    "at": "2026-11-18T02:40:33.227Z",
+    "at": "2026-11-18T03:20:48.628Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -81,10 +81,10 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-18T02:41:36.815Z",
+    "at": "2026-11-18T03:21:56.688Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
-    "healthy": 21,
+    "healthy": 20,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -101,13 +101,13 @@
       "ncs": "paused (fails 61)",
       "ssc": "73 links, 0 new via news-views.in",
       "dsssb": "5 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "mppsc": "paused (fails 58, geo-blocked)",
       "mpsc": "paused (fails 138)",
-      "ibps": "8 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "kpsc": "paused (fails 138, geo-blocked)",
       "appsc": "paused (fails 138, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
+      "ibps": "8 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 138, geo-blocked)",
       "opsc": "paused (fails 61)",
       "hpsc": "paused (fails 138, geo-blocked)",
@@ -116,7 +116,7 @@
       "jpsc": "paused (fails 18, geo-blocked)",
       "cgpsc": "paused (fails 138, geo-blocked)",
       "gpsc": "paused (fails 138, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "tnpsc": "31 links, 0 new via news-views.in",
       "ppsc": "paused (fails 138, geo-blocked)",
       "apsc": "paused (fails 138, geo-blocked)",
       "jkpsc": "paused (fails 138, geo-blocked)",
@@ -125,8 +125,8 @@
       "rssb": "paused (fails 138, geo-blocked)",
       "esb-mp": "paused (fails 138, geo-blocked)",
       "kvs": "2 links, 0 new via direct",
-      "tgpsc": "5 links, 0 new via news-views.in",
       "uppsc": "1 links, 0 new via news-views.in",
+      "tgpsc": "5 links, 0 new via news-views.in",
       "jssc": "paused (fails 138, geo-blocked)",
       "osssc": "paused (fails 61, geo-blocked)",
       "gsssb": "paused (fails 138, geo-blocked)",
@@ -134,21 +134,21 @@
       "hprca": "paused (fails 138, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "kea": "paused (fails 138, geo-blocked)",
-      "bssc": "785 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
       "dsssb2": "paused (fails 138, geo-blocked)",
       "jkssb": "2 links, 0 new via news-views.in",
-      "uksssc": "26 links, 0 new via direct",
       "nta": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 138, geo-blocked)",
       "tslprb": "paused (fails 138, geo-blocked)",
       "slprb-ap": "paused (fails 138, geo-blocked)",
-      "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "6 links, 0 new via direct",
-      "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
+      "csbc": "195 links, 0 new via news-views.in",
       "rpsc": "186 links, 0 new via news-views.in",
-      "tnpsc": "error: news-views.in: HTTP 502 | api.allorigins.win: HTTP 520 | api.codetabs.com: HTTP 522 (fails 1)"
+      "bssc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)",
+      "bpsc": "error: news-views.in: HTTP 525 | api.allorigins.win: HTTP 522 | api.codetabs.com: The operation was aborted due to timeout (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -156,7 +156,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-18T02:41:37.190Z",
+    "at": "2026-11-18T03:21:57.303Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 0,
@@ -172,7 +172,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-18T01:24:20.030Z",
+    "at": "2026-11-18T03:21:59.088Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "factsRead": 0,
     "factsPending": 0,
@@ -197,21 +197,16 @@
     ]
   },
   "news": {
-    "at": "2026-11-18T01:24:47.341Z",
+    "at": "2026-11-18T03:21:59.507Z",
     "ai": "OpenAI",
-    "aiStatus": "ok (2 calls)",
-    "published": 1,
-    "quizzes": 1,
+    "aiStatus": "ok (0 calls)",
+    "published": 0,
+    "quizzes": 0,
     "existing": 400,
-    "feeds": {
-      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
-    },
+    "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
-      "  20 source headlines for today's digest",
-      "  + digest: Current Affairs 18 November 2026: Key Government Updates for Exam Aspirants (325 words)",
-      "  + quiz: Current Affairs Quiz 18 November 2026 (10 Qs)"
+      "  current affairs for today already exists."
     ]
   },
   "notify": {
