@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-18",
   "tz": "PT",
-  "used": 101,
+  "used": 131,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -8210,5 +8210,125 @@
  "https://news-views.in/jobs/ughg-lady-nursing-staff-walkin-2026/": {
   "sentAt": "2026-11-18T14:46:20.304Z",
   "hash": "5d8abe84532f"
+ },
+ "https://news-views.in/jobs/aiims-mangalagiri-faculty-professor-associate-professor-2026/": {
+  "sentAt": "2026-11-18T17:32:09.872Z",
+  "hash": "829b75b9956f"
+ },
+ "https://news-views.in/jobs/arias-walkin-junior-engineer-cpiu-more-2026/": {
+  "sentAt": "2026-11-18T17:32:10.091Z",
+  "hash": "97def038056e"
+ },
+ "https://news-views.in/jobs/chief-medical-health-officer-narayanpur-staff-2026/": {
+  "sentAt": "2026-11-18T17:32:10.314Z",
+  "hash": "e2e2d4560b9b"
+ },
+ "https://news-views.in/jobs/district-programme-officer-icds-ghazipur-anganwadi-2026/": {
+  "sentAt": "2026-11-18T17:32:10.504Z",
+  "hash": "73fd048b4309"
+ },
+ "https://news-views.in/jobs/dpar-consultant-2026/": {
+  "sentAt": "2026-11-18T17:32:10.702Z",
+  "hash": "4cddeea66e94"
+ },
+ "https://news-views.in/jobs/dr-pdkv-ai-ml-data-science-2026/": {
+  "sentAt": "2026-11-18T17:32:10.999Z",
+  "hash": "fcb628f17802"
+ },
+ "https://news-views.in/jobs/dte-education-gnctd-physiotherapist-table-tennis-2026/": {
+  "sentAt": "2026-11-18T17:32:11.176Z",
+  "hash": "45bfb2b2539c"
+ },
+ "https://news-views.in/jobs/gem-chief-technology-officer-2026/": {
+  "sentAt": "2026-11-18T17:32:11.372Z",
+  "hash": "42324c64b642"
+ },
+ "https://news-views.in/jobs/icar-isri-young-professional-i-walkin-2026/": {
+  "sentAt": "2026-11-18T17:32:11.578Z",
+  "hash": "cbebb875f48d"
+ },
+ "https://news-views.in/jobs/icar-isri-young-professional-ii-walk-2026/": {
+  "sentAt": "2026-11-18T17:32:11.760Z",
+  "hash": "cb1b7c018642"
+ },
+ "https://news-views.in/jobs/icar-isri-young-professional-ii-walkin-2026/": {
+  "sentAt": "2026-11-18T17:32:11.958Z",
+  "hash": "c88ff2d5c5d3"
+ },
+ "https://news-views.in/jobs/icar-niap-field-investigator-walkin-2026/": {
+  "sentAt": "2026-11-18T17:32:12.134Z",
+  "hash": "e1c8e50c06d8"
+ },
+ "https://news-views.in/jobs/iffco-iffco-trainee-diploma-2026/": {
+  "sentAt": "2026-11-18T17:32:12.316Z",
+  "hash": "8f86fa8328c9"
+ },
+ "https://news-views.in/jobs/iiser-pune-anrf-project-associate-i-2026/": {
+  "sentAt": "2026-11-18T17:32:12.492Z",
+  "hash": "55379b133f6d"
+ },
+ "https://news-views.in/jobs/kalyan-janata-sahakari-bank-officers-2026/": {
+  "sentAt": "2026-11-18T17:32:12.666Z",
+  "hash": "273bc2b8b823"
+ },
+ "https://news-views.in/jobs/khagaria-civil-court-stenographer-clerk-more-2026/": {
+  "sentAt": "2026-11-18T17:32:12.868Z",
+  "hash": "97e67368cf28"
+ },
+ "https://news-views.in/jobs/mamlatdar-office-bhanvad-sanchalak-cum-cook-2026/": {
+  "sentAt": "2026-11-18T17:32:13.066Z",
+  "hash": "a7f1523a4e8f"
+ },
+ "https://news-views.in/jobs/mbpa-graduate-apprentice-2026/": {
+  "sentAt": "2026-11-18T17:32:13.259Z",
+  "hash": "e07a4bf9fb39"
+ },
+ "https://news-views.in/jobs/mgu-assistant-professor-2026/": {
+  "sentAt": "2026-11-18T17:32:13.432Z",
+  "hash": "53f063bce5c3"
+ },
+ "https://news-views.in/jobs/mgu-associate-professor-2026/": {
+  "sentAt": "2026-11-18T17:32:13.610Z",
+  "hash": "81d9345fd8d8"
+ },
+ "https://news-views.in/jobs/mgu-cleaning-2026/": {
+  "sentAt": "2026-11-18T17:32:13.783Z",
+  "hash": "d6983c59f3ed"
+ },
+ "https://news-views.in/jobs/mnlu-mumbai-administrative-assistant-walkin-2026/": {
+  "sentAt": "2026-11-18T17:32:13.983Z",
+  "hash": "02d1b2e98af8"
+ },
+ "https://news-views.in/jobs/moefcc-young-professional-2026/": {
+  "sentAt": "2026-11-18T17:32:14.155Z",
+  "hash": "5b2de44c1174"
+ },
+ "https://news-views.in/jobs/msedcl-chief-engineer-2026/": {
+  "sentAt": "2026-11-18T17:32:14.335Z",
+  "hash": "b4f52c587278"
+ },
+ "https://news-views.in/jobs/msedcl-superintending-engineer-2026/": {
+  "sentAt": "2026-11-18T17:32:14.521Z",
+  "hash": "44392f3458dc"
+ },
+ "https://news-views.in/jobs/nit-rourkela-junior-research-fellow-jrf-2026/": {
+  "sentAt": "2026-11-18T17:32:14.715Z",
+  "hash": "d6b4d2643d0d"
+ },
+ "https://news-views.in/jobs/rvnl-general-manager-electrical-2026/": {
+  "sentAt": "2026-11-18T17:32:14.895Z",
+  "hash": "434d28e977d6"
+ },
+ "https://news-views.in/jobs/rvnl-joint-general-manager-senior-deputy-2026/": {
+  "sentAt": "2026-11-18T17:32:15.099Z",
+  "hash": "5db1d3cf2095"
+ },
+ "https://news-views.in/jobs/slusi-senior-system-analyst-2027/": {
+  "sentAt": "2026-11-18T17:32:15.358Z",
+  "hash": "205cbe6ad17c"
+ },
+ "https://news-views.in/jobs/smkc-special-executive-officer-2026/": {
+  "sentAt": "2026-11-18T17:32:15.536Z",
+  "hash": "0d0dcb13c65c"
  }
 }
