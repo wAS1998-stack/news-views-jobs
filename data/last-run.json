@@ -2,7 +2,7 @@
   "date": "2026-11-18",
   "runs": {},
   "fetch": {
-    "at": "2026-11-18T09:57:06.466Z",
+    "at": "2026-11-18T10:39:34.844Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,19 +11,19 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (1 calls)",
-    "newJobs": 0,
-    "newUpdates": 1,
+    "aiStatus": "ok (11 calls)",
+    "newJobs": 11,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-18; 61 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-18; 59 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-18; 5 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-18; 6 already known"
     },
     "updDiag": {
-      "seen": 57,
-      "known": 41,
-      "added": 1,
+      "seen": 50,
+      "known": 38,
+      "added": 0,
       "filtered": [
         "Calicut University Time Table 2026 Out - Check PG Exam Dates Online @ uoc.ac.in",
         "TOSS SSC, Intermediate Results 2026 Out - Download Result Online @ telanganaopen",
@@ -36,10 +36,7 @@
         "VBSPU Revised Time Table 2026-27 Out - Download UG & PG Exam Schedule @ vbspu.ac",
         "Kashmir University B.Tech Result 2026 Out - Check 6th semester Result Online at ",
         "JRRSU Admit Card 2026 Out - Download B.Ed Hall Ticket @ jrrsanskrituniversity.ac",
-        "BFUHS UG Result 2026 Out - Check B.Pharmacy & B.Sc Result Online @ bfuhs.ggsmch.",
-        "Punjabi University Patiala Date Sheet 2026 Out - Check UG & PG Exam Schedule Onl",
-        "NTA RIMCEE Exam City Slip 2027 Out - Check Class 8 Admission Update @ nta.ac.in",
-        "VMOU Result 2026 Out - Check UG & PG Result Online @ vmou.ac.in"
+        "BFUHS UG Result 2026 Out - Check B.Pharmacy & B.Sc Result Online @ bfuhs.ggsmch."
       ],
       "samples": [
         "AIBE 22nd Admit Card 2026",
@@ -60,6 +57,7 @@
       ]
     },
     "log": [
+      "   = same source page as an existing job, skipped: Sainik School Nagrota Recruitment 2026 – TGT Computer Science, Art Master & Nursing Sister Posts",
       "   = rejected after reading on an earlier run, skipped: BEL Probationary Engineer Recruitment 2026 - Apply Online 350 Posts",
       "   = rejected after reading on an earlier run, skipped: AFMS Medical Officer Recruitment 2026 – Apply Online for 120 Vacancies",
       "   = same source page as an existing job, skipped: AUD Delhi Non Teaching Recruitment 2026 – Apply for 06 Posts",
@@ -83,13 +81,12 @@
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
       "   = id nit-silchar-junior-research-fellow-ece-2026 is retired (redirected), skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-18T09:58:06.336Z",
+    "at": "2026-11-18T10:40:20.982Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 21,
@@ -105,17 +102,17 @@
       "navy": "paused (fails 140, geo-blocked)",
       "iaf-agniveer": "paused (fails 140, geo-blocked)",
       "rrb-portal": "paused (fails 136, geo-blocked)",
-      "ssc": "73 links, 0 new via news-views.in",
+      "ibps": "8 links, 0 new via news-views.in",
       "ncs": "paused (fails 63)",
       "rbi": "18 links, 0 new via direct",
+      "ssc": "73 links, 0 new via news-views.in",
       "dsssb": "5 links, 0 new via direct",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
       "mppsc": "paused (fails 60, geo-blocked)",
       "mpsc": "paused (fails 140)",
-      "ibps": "8 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "kpsc": "paused (fails 140, geo-blocked)",
       "appsc": "paused (fails 140, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 140, geo-blocked)",
       "opsc": "paused (fails 63)",
       "hpsc": "paused (fails 140, geo-blocked)",
@@ -124,7 +121,7 @@
       "jpsc": "paused (fails 20, geo-blocked)",
       "cgpsc": "paused (fails 140, geo-blocked)",
       "gpsc": "paused (fails 140, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
+      "ctet": "4 links, 0 new via news-views.in",
       "ppsc": "paused (fails 140, geo-blocked)",
       "apsc": "paused (fails 140, geo-blocked)",
       "jkpsc": "paused (fails 140, geo-blocked)",
@@ -132,9 +129,9 @@
       "upsssc": "paused (fails 10, geo-blocked)",
       "rssb": "paused (fails 140, geo-blocked)",
       "esb-mp": "paused (fails 140, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
       "tgpsc": "3 links, 0 new via news-views.in",
       "tnpsc": "31 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "jssc": "paused (fails 140, geo-blocked)",
       "osssc": "paused (fails 63, geo-blocked)",
       "gsssb": "paused (fails 140, geo-blocked)",
@@ -142,21 +139,21 @@
       "hprca": "paused (fails 140, geo-blocked)",
       "hssc": "9 links, 0 new via direct",
       "kea": "paused (fails 140, geo-blocked)",
-      "uppsc": "1 links, 0 new via news-views.in",
+      "bssc": "785 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 140, geo-blocked)",
       "uksssc": "26 links, 0 new via direct",
-      "bssc": "785 links, 0 new via news-views.in",
-      "jkssb": "2 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 140, geo-blocked)",
       "tslprb": "paused (fails 140, geo-blocked)",
       "slprb-ap": "paused (fails 140, geo-blocked)",
       "uppbpb": "6 links, 0 new via direct",
       "wbssc": "13 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
+      "jkssb": "2 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
+      "csbc": "195 links, 0 new via news-views.in",
       "rpsc": "186 links, 0 new via news-views.in",
-      "keralapsc": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: The operation was aborted due to timeout (fails 1)"
+      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 522 | api.codetabs.com: HTTP 522 (fails 1)"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -164,7 +161,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-18T09:58:06.822Z",
+    "at": "2026-11-18T10:40:21.484Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 0,
