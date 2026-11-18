@@ -228,7 +228,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T05:39:47.020Z",
+    "at": "2026-11-18T07:30:53.571Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -239,24 +239,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T05:39:48.283Z",
+    "at": "2026-11-18T07:30:58.548Z",
     "ok": true,
-    "submitted": 3,
+    "submitted": 23,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 150,
+    "usedToday": 173,
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 147/200 used in Google's day 2026-11-17 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 23 to send (23 updated, 0 deleted); 150/200 used in Google's day 2026-11-17 (Pacific).",
+      "Indexing API: sent 23."
     ]
   },
   "push": {
-    "at": "2026-11-18T05:40:41.857Z",
+    "at": "2026-11-18T07:32:08.276Z",
     "ok": true,
-    "sent": 76,
+    "sent": 68,
     "log": [
-      "push-notify: 76 sent\n  job rssb-je-increased-junior-engineer-2026 en ['s-rajasthan' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job rssb-je-increased-junior-engineer-2026 en ['s-rajasthan' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job rssb-je-increa"
+      "push-notify: 68 sent\n  job jut-ranchi-graduate-apprentices-2026 en ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jut-ranchi-graduate-apprentices-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job jut-ranchi-graduat"
     ]
   },
   "gsc": {
