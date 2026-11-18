@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-18",
   "tz": "PT",
-  "used": 131,
+  "used": 134,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -8330,5 +8330,17 @@
  "https://news-views.in/jobs/smkc-special-executive-officer-2026/": {
   "sentAt": "2026-11-18T17:32:15.536Z",
   "hash": "0d0dcb13c65c"
+ },
+ "https://news-views.in/jobs/district-legal-services-authority-mirzapur-stenographer-2026/": {
+  "sentAt": "2026-11-18T18:50:41.444Z",
+  "hash": "aa4992ab71d1"
+ },
+ "https://news-views.in/jobs/ernet-india-manager-assistant-manager-2026/": {
+  "sentAt": "2026-11-18T18:50:41.686Z",
+  "hash": "ad8fcb193034"
+ },
+ "https://news-views.in/jobs/family-court-botad-counselor-2026/": {
+  "sentAt": "2026-11-18T18:50:41.933Z",
+  "hash": "62e172e80213"
  }
 }
