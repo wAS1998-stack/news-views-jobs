@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T12:18:12.789Z",
+    "at": "2026-11-18T14:46:13.619Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,24 +243,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T12:18:24.528Z",
+    "at": "2026-11-18T14:46:20.427Z",
     "ok": true,
-    "submitted": 47,
+    "submitted": 29,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 72,
+    "usedToday": 101,
     "log": [
-      "Indexing API: 47 to send (47 updated, 0 deleted); 25/200 used in Google's day 2026-11-18 (Pacific).",
-      "Indexing API: sent 47."
+      "Indexing API: 29 to send (29 updated, 0 deleted); 72/200 used in Google's day 2026-11-18 (Pacific).",
+      "Indexing API: sent 29."
     ]
   },
   "push": {
-    "at": "2026-11-18T12:19:43.044Z",
+    "at": "2026-11-18T14:47:40.507Z",
     "ok": true,
-    "sent": 88,
+    "sent": 134,
     "log": [
-      "push-notify: 88 sent\n  job cspdcl-ae-je-deo-other-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspdcl-ae-je-deo-other-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job cspdcl-ae-je-deo-other-2026 hi"
+      "push-notify: 134 sent\n  job hg-cd-home-guard-volunteer-marine-2026 en ['s-goa' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job hg-cd-home-guard-volunteer-marine-2026 hi ['s-goa' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job icar-iiss-walkin-senior-research-fel"
     ]
   },
   "gsc": {
