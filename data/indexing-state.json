@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-17",
   "tz": "PT",
-  "used": 147,
+  "used": 150,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7702,5 +7702,17 @@
  "https://news-views.in/jobs/kv-no-afs-jorhat-walkin-prt-2026/": {
   "sentAt": "2026-11-17T21:58:21.887Z",
   "hash": "54c5059dafd0"
+ },
+ "https://news-views.in/jobs/bhu-non-teaching-out-group-a-b-2026/": {
+  "sentAt": "2026-11-18T05:39:47.733Z",
+  "hash": "8453e50680b6"
+ },
+ "https://news-views.in/jobs/osssc-medical-laboratory-technician-2026/": {
+  "sentAt": "2026-11-18T05:39:47.953Z",
+  "hash": "a7d8655527fb"
+ },
+ "https://news-views.in/jobs/rssb-je-increased-junior-engineer-2026/": {
+  "sentAt": "2026-11-18T05:39:48.160Z",
+  "hash": "84596376bc65"
  }
 }
