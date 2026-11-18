@@ -2,7 +2,7 @@
   "date": "2026-11-19",
   "runs": {},
   "fetch": {
-    "at": "2026-11-18T18:41:32.075Z",
+    "at": "2026-11-18T19:22:08.233Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,19 +11,19 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (2 calls)",
-    "newJobs": 0,
-    "newUpdates": 2,
+    "aiStatus": "ok (5 calls)",
+    "newJobs": 5,
+    "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-18; 82 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-18; 78 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-18; 6 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-18; 5 already known"
     },
     "updDiag": {
-      "seen": 37,
-      "known": 30,
-      "added": 2,
+      "seen": 36,
+      "known": 31,
+      "added": 0,
       "filtered": [
         "Tumkur University Time Table 2026 Out - Check UG Exam Dates Online @ tumkurunive",
         "SPPU B.A Result 2026 Out - Direct Link to Check Results Online @ unipune.ac.in",
@@ -44,10 +44,12 @@
         "MLSU PG Result 2026 Out - Direct Link to Check Result Online @ mlsu.ac.in",
         "IIM Mumbai Non Teaching Recruitment 2026 - Apply Online for 13 Junior Assistant,",
         "Koraput District Court Shortlist 2026 Out - Junior Clerk, Typist & Stenographer ",
-        "Surguja Practical Exam Date 2026 Out - Download Assistant Programmer and Account"
+        "UPSSSC Platoon Commander / Block Organizer Admit Card 2026"
       ]
     },
     "log": [
+      "   = rejected after reading on an earlier run, skipped: National Insurance Graduate Apprentice Recruitment 2026 - Apply Online for 200 Posts",
+      "   = id bhel-artisan-2026 is retired (redirected), skipped: BHEL Artisan Recruitment 2026 - Apply Online for 660 Posts",
       "   = rejected after reading on an earlier run, skipped: University of Delhi Assistant Recruitment 2026 - Apply Online for 126 Posts",
       "   = same source page as an existing job, skipped: HRIDC Senior Executive Civil Recruitment 2026 - Apply for 02 Posts",
       "   = near-duplicate headline, skipped: ONGC Apprentice Recruitment 2026: Apply Online for 3047 Posts",
@@ -56,7 +58,6 @@
       "   = same source page as an existing job, skipped: Sainik School Nagrota Recruitment 2026 – TGT Computer Science, Art Master & Nursing Sister Posts",
       "   = rejected after reading on an earlier run, skipped: BEL Probationary Engineer Recruitment 2026 - Apply Online 350 Posts",
       "   = rejected after reading on an earlier run, skipped: AFMS Medical Officer Recruitment 2026 – Apply Online for 120 Vacancies",
-      "   * update: BSF Constable Tradesman Admit Card 2026",
       "   = same source page as an existing job, skipped: BPSC Auditor Mains Online Form 2026",
       "   = rejected after reading on an earlier run, skipped: UPSC 13/2026 Various Post Online Form 2026",
       "   = rejected after reading on an earlier run, skipped: SBI PO Interview Letter 2026",
@@ -71,13 +72,12 @@
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
       "   = id nit-silchar-junior-research-fellow-ece-2026 is retired (redirected), skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
-      "Added 2 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-18T18:41:58.269Z",
+    "at": "2026-11-18T19:22:39.363Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 22,
@@ -93,9 +93,9 @@
       "navy": "paused (fails 142, geo-blocked)",
       "iaf-agniveer": "paused (fails 142, geo-blocked)",
       "rrb-portal": "paused (fails 138, geo-blocked)",
-      "rbi": "18 links, 0 new via direct",
-      "ncs": "paused (fails 65)",
       "ssc": "10 links, 0 new via news-views.in",
+      "ncs": "paused (fails 65)",
+      "rbi": "18 links, 0 new via direct",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via news-views.in",
       "mppsc": "paused (fails 62, geo-blocked)",
@@ -112,7 +112,7 @@
       "jpsc": "paused (fails 22, geo-blocked)",
       "cgpsc": "paused (fails 142, geo-blocked)",
       "gpsc": "paused (fails 142, geo-blocked)",
-      "kvs": "3 links, 0 new via direct",
+      "tgpsc": "5 links, 0 new via news-views.in",
       "ppsc": "paused (fails 142, geo-blocked)",
       "apsc": "paused (fails 142, geo-blocked)",
       "jkpsc": "paused (fails 142, geo-blocked)",
@@ -120,29 +120,29 @@
       "upsssc": "paused (fails 6, geo-blocked)",
       "rssb": "paused (fails 142, geo-blocked)",
       "esb-mp": "paused (fails 142, geo-blocked)",
+      "kvs": "3 links, 0 new via direct",
       "tnpsc": "31 links, 0 new via news-views.in",
-      "bpsc": "5 links, 0 new via news-views.in",
-      "tgpsc": "5 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 142, geo-blocked)",
       "osssc": "paused (fails 65, geo-blocked)",
       "gsssb": "paused (fails 142, geo-blocked)",
       "sssb-punjab": "paused (fails 142, geo-blocked)",
       "hprca": "paused (fails 142, geo-blocked)",
-      "uppsc": "1 links, 0 new via news-views.in",
+      "bssc": "785 links, 0 new via news-views.in",
       "kea": "paused (fails 142, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 142, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "uksssc": "27 links, 0 new via direct",
       "tnusrb": "paused (fails 142, geo-blocked)",
       "tslprb": "paused (fails 142, geo-blocked)",
       "slprb-ap": "paused (fails 142, geo-blocked)",
       "jkssb": "2 links, 0 new via news-views.in",
-      "bssc": "785 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
       "wbssc": "13 links, 0 new via direct",
-      "uppbpb": "6 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "187 links, 0 new via news-views.in"
     },
@@ -152,21 +152,21 @@
     ]
   },
   "apply": {
-    "at": "2026-11-18T18:44:47.309Z",
+    "at": "2026-11-18T19:25:59.336Z",
     "ok": true,
-    "aiStatus": "ok (4 calls)",
+    "aiStatus": "ok (0 calls)",
     "checked": 20,
     "found": 0,
     "due": 20,
-    "cands": 776,
-    "passed": 21,
-    "jobsWithCands": 4,
+    "cands": 12,
+    "passed": 0,
+    "jobsWithCands": 0,
     "careers": 0,
     "log": [
       "Warning: TT: undefined function: 21",
       "Warning: TT: undefined function: 21",
       "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
-      "  candidates seen 776, passed the rules 21 (in 4 jobs); recruitment pages found: 0"
+      "  candidates seen 12, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "notify": {
@@ -200,6 +200,62 @@
     "quiet": true,
     "log": [
       "push-notify: nothing new to send (quiet hours)."
+    ]
+  },
+  "enrich": {
+    "at": "2026-11-18T19:30:10.820Z",
+    "ai": "OpenAI (gpt-4o-mini)",
+    "factsRead": 0,
+    "factsPending": 0,
+    "linksFixed": 0,
+    "linksPending": 0,
+    "updatesEnriched": 0,
+    "updatesPending": 0,
+    "contentWritten": 0,
+    "contentPending": 0,
+    "hindiJobsPending": 14,
+    "hindiJobs": 14,
+    "hindiUpdatesPending": 2,
+    "hindiUpdates": 2,
+    "searchFaqPages": 0,
+    "opportunities": 6,
+    "aiStatus": "ok (16 calls)",
+    "log": [
+      "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
+      "Enrich/content: 0 job(s) on template content | doing up to 5",
+      "Enrich/hindi: 14 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi: IIT खड़गपुर जूनियर रिसर्च फेलो (माइनिंग इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: AVFU अन-कुशल श्रमिक (पशु चिकित्सा क्लिनिकल कॉम्प्लेक्स) भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: AVFU अन-कुशल श्रमिक भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: IIT तिरुपति पोस्ट डॉक्टोरल फेलो भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: NLU दिल्ली सहायक लाइब्रेरियन भर्ती 2026 – ऑनलाइन आवेदन करें",
+      "  ✓ hindi: BRIC NIPGR रिसर्च सहयोगी I भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: NIPHTR प्रशासन और वित्त अधिकारी भर्ती 2026 – वॉकइन",
+      "  ✓ hindi: AIIMS भोपाल लैब तकनीशियन भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: KEA भर्ती 2026 – 38 परागण निरीक्षक, विपणन पर्यवेक्षक पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: KEA औद्योगिक विस्तार अधिकारी भर्ती 2026 – 35 पदों के लिए ऑनलाइन आवेदन करें",
+      "  ✓ hindi: ACTREC वैज्ञानिक सहायक (कैंसर महामारी विज्ञान केन्द्र) भर्ती 2026 – वॉक-इन",
+      "  ✓ hindi: AIIMS जूनियर रेजिडेंट भर्ती 2026 – 10 पदों के लिए वॉक-इन",
+      "  ✓ hindi: DCPU सपोर्ट पर्सन्स (बाल कल्याण और विशेष सेवाएं) भर्ती 2026 – 20 पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi: प्रवेशी जिला और सत्र न्यायाधीश, सीतामढ़ी भर्ती 2026 – 3 स्टेनोग्राफर, क्लर्क और अन्य पदों के लिए ऑफलाइन आवेदन करें",
+      "  ✓ hindi update: BSF कांस्टेबल ट्रेड्समैन एडमिट कार्ड 2026 जारी – यहाँ से करें चेक",
+      "  ✓ hindi update: SBI जूनियर एसोसिएट्स क्लर्क प्री रिजल्ट / मेन एडमिट कार्ड 2026"
+    ]
+  },
+  "news": {
+    "at": "2026-11-18T19:30:11.337Z",
+    "ai": "OpenAI",
+    "aiStatus": "ok (0 calls)",
+    "published": 0,
+    "quizzes": 0,
+    "existing": 400,
+    "feeds": {},
+    "log": [
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
+      "  current affairs for today already exists."
     ]
   }
 }
