@@ -1,20 +1,15 @@
 {
- "date": "2026-11-17",
+ "date": "2026-11-18",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-19",
-  "2026-11-15"
+  "2026-10-20",
+  "2026-11-16"
  ],
  "totals": {
   "clicks": 39,
-  "impressions": 622
+  "impressions": 642
  },
  "daily": [
-  {
-   "date": "2026-10-19",
-   "clicks": 0,
-   "impressions": 4
-  },
   {
    "date": "2026-10-20",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-15",
    "clicks": 0,
    "impressions": 14
+  },
+  {
+   "date": "2026-11-16",
+   "clicks": 0,
+   "impressions": 24
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-18",
-   "2026-11-15"
+   "2026-08-19",
+   "2026-11-16"
   ],
   "rows": []
  },
@@ -274,9 +274,9 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 20,
-   "ctr": 5,
-   "position": 5
+   "impressions": 21,
+   "ctr": 4.76,
+   "position": 4.8
   },
   {
    "page": "/updates/tgpsc-deputy-educational-officers-hall-ticket-2026-released/",
@@ -323,9 +323,9 @@
   {
    "page": "/guides/how-to-prepare-ssc-cgl/",
    "clicks": 0,
-   "impressions": 3,
+   "impressions": 1,
    "ctr": 0,
-   "position": 78
+   "position": 68
   },
   {
    "page": "/hi/",
@@ -456,9 +456,9 @@
   {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 3,
    "ctr": 0,
-   "position": 8
+   "position": 4.7
   },
   {
    "page": "/jobs/esic-walkin-senior-resident-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -505,9 +505,9 @@
   {
    "page": "/jobs/gulf-hours-hotel-uae/",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 3,
    "ctr": 0,
-   "position": 2.3
+   "position": 2
   },
   {
    "page": "/jobs/gulf-walkin-burjeel-holdings-dubai-gulf/",
@@ -570,9 +570,9 @@
   {
    "query": "free job alert 2026",
    "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
-   "position": 2.5
+   "impressions": 3,
+   "ctr": 33.33,
+   "position": 2.7
   },
   {
    "query": "government jobs in karnataka apply online",
@@ -650,6 +650,27 @@
    "impressions": 1,
    "ctr": 0,
    "position": 2
+  },
+  {
+   "query": "aiims delhi recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "aiims recruitment",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
+  },
+  {
+   "query": "aiims vacancy",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 4
   },
   {
    "query": "amarkantak university recruitment",
@@ -939,6 +960,13 @@
    "position": 3
   },
   {
+   "query": "government job vacancy 2026 jharkhand",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "government job vacancy 2026 kerala",
    "clicks": 0,
    "impressions": 1,
@@ -974,7 +1002,7 @@
    "position": 2
   },
   {
-   "query": "gulf hotel jobs",
+   "query": "govt vacancy 2026",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
@@ -993,13 +1021,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
-  },
-  {
-   "query": "how to start preparation for ssc cgl",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 79
   },
   {
    "query": "iit dhanbad jrf position",
@@ -1196,27 +1217,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
-  },
-  {
-   "query": "kochi metro internship",
-   "clicks": 0,
-   "impressions": 2,
-   "ctr": 0,
-   "position": 8
-  },
-  {
-   "query": "lab technician jobs near me",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
-   "query": "latest bank jobs notification",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
   }
  ],
  "opportunities": [
@@ -1272,9 +1272,9 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 20,
-   "ctr": 5,
-   "position": 5,
+   "impressions": 21,
+   "ctr": 4.76,
+   "position": 4.8,
    "queries": [
     {
      "q": "राजस्थान सफाई कर्मचारी भर्ती 2026",
