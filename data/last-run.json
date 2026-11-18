@@ -239,7 +239,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T07:30:53.571Z",
+    "at": "2026-11-18T10:09:42.555Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -250,24 +250,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T07:30:58.548Z",
+    "at": "2026-11-18T10:09:48.008Z",
     "ok": true,
-    "submitted": 23,
+    "submitted": 25,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 173,
+    "usedToday": 25,
     "log": [
-      "Indexing API: 23 to send (23 updated, 0 deleted); 150/200 used in Google's day 2026-11-17 (Pacific).",
-      "Indexing API: sent 23."
+      "Indexing API: 25 to send (25 updated, 0 deleted); 0/200 used in Google's day 2026-11-18 (Pacific).",
+      "Indexing API: sent 25."
     ]
   },
   "push": {
-    "at": "2026-11-18T07:32:08.276Z",
+    "at": "2026-11-18T10:10:59.057Z",
     "ok": true,
-    "sent": 68,
+    "sent": 78,
     "log": [
-      "push-notify: 68 sent\n  job jut-ranchi-graduate-apprentices-2026 en ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jut-ranchi-graduate-apprentices-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job jut-ranchi-graduat"
+      "push-notify: 78 sent\n  job uksssc-constable-other-2026 en ['s-uttarakhand' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job uksssc-constable-other-2026 hi ['s-uttarakhand' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job ravenshaw-university-walkin-assistant-pro"
     ]
   },
   "gsc": {

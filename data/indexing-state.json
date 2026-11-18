@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "tz": "PT",
-  "used": 173,
+  "used": 25,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -7806,5 +7806,105 @@
  "https://news-views.in/jobs/zilla-parishad-dharashiv-ayush-medical-officer-2026/": {
   "sentAt": "2026-11-18T07:30:58.425Z",
   "hash": "f235467bfdb9"
+ },
+ "https://news-views.in/jobs/aud-delhi-steno-deputy-registrar-more-2026/": {
+  "sentAt": "2026-11-18T10:09:43.479Z",
+  "hash": "40af676277c8"
+ },
+ "https://news-views.in/jobs/bhagalpur-civil-court-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-18T10:09:43.695Z",
+  "hash": "495fbf8434a8"
+ },
+ "https://news-views.in/jobs/csvtu-faculty-professor-associate-professor-2026/": {
+  "sentAt": "2026-11-18T10:09:43.913Z",
+  "hash": "00c01a49b24a"
+ },
+ "https://news-views.in/jobs/depwd-hyderabad-junior-assistant-sweeper-more-2026/": {
+  "sentAt": "2026-11-18T10:09:44.114Z",
+  "hash": "8deef521ee68"
+ },
+ "https://news-views.in/jobs/dfccil-walkin-jgm-dgm-2026/": {
+  "sentAt": "2026-11-18T10:09:44.312Z",
+  "hash": "391d7060ae8b"
+ },
+ "https://news-views.in/jobs/dharanidhar-university-assistant-professor-eligible-2026/": {
+  "sentAt": "2026-11-18T10:09:44.463Z",
+  "hash": "242c42a79af3"
+ },
+ "https://news-views.in/jobs/dhs-tenkasi-therapeutic-assistant-physiotherapist-more-2026/": {
+  "sentAt": "2026-11-18T10:09:44.636Z",
+  "hash": "b88394203e42"
+ },
+ "https://news-views.in/jobs/icds-darbha-anganwadi-worker-anganwadi-helper-2026/": {
+  "sentAt": "2026-11-18T10:09:44.840Z",
+  "hash": "562c2d950b34"
+ },
+ "https://news-views.in/jobs/iiser-mohali-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-18T10:09:45.041Z",
+  "hash": "726b3f5df0ee"
+ },
+ "https://news-views.in/jobs/iit-gandhinagar-project-engineer-ee-2026/": {
+  "sentAt": "2026-11-18T10:09:45.224Z",
+  "hash": "70e8a7ff9039"
+ },
+ "https://news-views.in/jobs/iittm-noida-field-project-associate-walkin-2026/": {
+  "sentAt": "2026-11-18T10:09:45.395Z",
+  "hash": "644a7bb212da"
+ },
+ "https://news-views.in/jobs/jipmer-research-assistant-2026/": {
+  "sentAt": "2026-11-18T10:09:45.578Z",
+  "hash": "b64aedd49815"
+ },
+ "https://news-views.in/jobs/kv-bhimtal-walkin-pgt-tgt-more-2026/": {
+  "sentAt": "2026-11-18T10:09:45.776Z",
+  "hash": "e9e04be02156"
+ },
+ "https://news-views.in/jobs/lady-irwin-college-counsellor-walkin-2026/": {
+  "sentAt": "2026-11-18T10:09:45.961Z",
+  "hash": "788ae7fa43a0"
+ },
+ "https://news-views.in/jobs/nehu-research-assistant-field-investigator-2026/": {
+  "sentAt": "2026-11-18T10:09:46.143Z",
+  "hash": "3cb94f673224"
+ },
+ "https://news-views.in/jobs/principal-district-sessions-court-mahabubabad-typist-2026/": {
+  "sentAt": "2026-11-18T10:09:46.291Z",
+  "hash": "4dd829839dda"
+ },
+ "https://news-views.in/jobs/purba-bardhaman-community-health-assistant-dv-2026/": {
+  "sentAt": "2026-11-18T10:09:46.488Z",
+  "hash": "14a606e73147"
+ },
+ "https://news-views.in/jobs/ravenshaw-university-walkin-assistant-professor-2026/": {
+  "sentAt": "2026-11-18T10:09:46.653Z",
+  "hash": "d40a9e29bc86"
+ },
+ "https://news-views.in/jobs/sai-medical-officer-2027/": {
+  "sentAt": "2026-11-18T10:09:46.837Z",
+  "hash": "6295f28f0d2a"
+ },
+ "https://news-views.in/jobs/smc-chief-fire-officer-instrumentation-technician-2026/": {
+  "sentAt": "2026-11-18T10:09:47.019Z",
+  "hash": "d03ce402ea43"
+ },
+ "https://news-views.in/jobs/spa-new-delhi-visiting-faculty-2026/": {
+  "sentAt": "2026-11-18T10:09:47.168Z",
+  "hash": "8ee82c47f24b"
+ },
+ "https://news-views.in/jobs/ssm-principal-2026/": {
+  "sentAt": "2026-11-18T10:09:47.347Z",
+  "hash": "b5dd0e26011b"
+ },
+ "https://news-views.in/jobs/uksssc-constable-other-2026/": {
+  "sentAt": "2026-11-18T10:09:47.522Z",
+  "hash": "9713a4644509"
+ },
+ "https://news-views.in/jobs/upmrc-chief-engineer-2026/": {
+  "sentAt": "2026-11-18T10:09:47.704Z",
+  "hash": "3b78a380f739"
+ },
+ "https://news-views.in/jobs/zilla-parishad-dharashiv-ayush-medical-officer-district-2026/": {
+  "sentAt": "2026-11-18T10:09:47.886Z",
+  "hash": "5a20e99e4c45"
  }
 }
