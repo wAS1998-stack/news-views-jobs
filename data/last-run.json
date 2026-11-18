@@ -236,7 +236,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T10:09:42.555Z",
+    "at": "2026-11-18T12:18:12.789Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -247,24 +247,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T10:09:48.008Z",
+    "at": "2026-11-18T12:18:24.528Z",
     "ok": true,
-    "submitted": 25,
+    "submitted": 47,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 25,
+    "usedToday": 72,
     "log": [
-      "Indexing API: 25 to send (25 updated, 0 deleted); 0/200 used in Google's day 2026-11-18 (Pacific).",
-      "Indexing API: sent 25."
+      "Indexing API: 47 to send (47 updated, 0 deleted); 25/200 used in Google's day 2026-11-18 (Pacific).",
+      "Indexing API: sent 47."
     ]
   },
   "push": {
-    "at": "2026-11-18T10:10:59.057Z",
+    "at": "2026-11-18T12:19:43.044Z",
     "ok": true,
-    "sent": 78,
+    "sent": 88,
     "log": [
-      "push-notify: 78 sent\n  job uksssc-constable-other-2026 en ['s-uttarakhand' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job uksssc-constable-other-2026 hi ['s-uttarakhand' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job ravenshaw-university-walkin-assistant-pro"
+      "push-notify: 88 sent\n  job cspdcl-ae-je-deo-other-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspdcl-ae-je-deo-other-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job cspdcl-ae-je-deo-other-2026 hi"
     ]
   },
   "gsc": {
