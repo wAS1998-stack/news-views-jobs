@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-18",
+    "date": "2026-11-18",
+    "digest_id": "current-affairs-2026-11-18",
+    "title": "Current Affairs Quiz 18 November 2026",
+    "questions": [
+      {
+        "q": "What event concluded that emphasizes the promotion of Hindi language and culture?",
+        "options": [
+          "Indian International Trade Fair",
+          "IFFI 2026",
+          "Hindi Pakhwada Celebration",
+          "COP31"
+        ],
+        "answer": 2,
+        "why": "The article states that the Hindi Pakhwada ceremony for 2026 successfully concluded, promoting the Hindi language and culture."
+      },
+      {
+        "q": "Which international event showcased stories from Ladakh and Kashmir?",
+        "options": [
+          "PM's Visit to Manila",
+          "IFFI 2026",
+          "Hindi Pakhwada Celebration",
+          "Digital Addressable System Audit Manual"
+        ],
+        "answer": 1,
+        "why": "The IFFI 2026 highlighted captivating stories from Ladakh and Kashmir as part of its cinematic celebration."
+      },
+      {
+        "q": "What did the Central Air Quality Management (CAQM) lift in Delhi-NCR?",
+        "options": [
+          "Trade Fair",
+          "Food exports",
+          "Hindi Pakhwada",
+          "Restrictions under GRAP"
+        ],
+        "answer": 3,
+        "why": "The article mentions that CAQM lifted restrictions under the third phase of GRAP due to improvements in air quality."
+      },
+      {
+        "q": "Which ministry showcased its pavilion at the Indian International Trade Fair 2026?",
+        "options": [
+          "Ministry of Commerce",
+          "Ministry of Social Justice",
+          "Ministry of Environment",
+          "Ministry of External Affairs"
+        ],
+        "answer": 1,
+        "why": "The Ministry of Social Justice and Empowerment showcased its pavilion at the Indian International Trade Fair, as stated in the article."
+      },
+      {
+        "q": "What significant development related to biscuits is mentioned in the article?",
+        "options": [
+          "First Export to Japan",
+          "First Import from Madagascar",
+          "First Export to Madagascar",
+          "Biscuits festival"
+        ],
+        "answer": 2,
+        "why": "The article indicates that APEDA facilitated the first shipment of biscuits from Varanasi to Madagascar."
+      },
+      {
+        "q": "What deadline was extended concerning telecommunications services?",
+        "options": [
+          "Export Deadline for Biscuits",
+          "Deadline for IFFI Entries",
+          "Comments Deadline for DRM Manual",
+          "Deadline for Hindi Pakhwada Awards"
+        ],
+        "answer": 2,
+        "why": "The deadline for stakeholders to submit comments on the draft Digital Addressable System Audit Manual was extended."
+      },
+      {
+        "q": "Which minister discussed India's low-carbon transition at COP31?",
+        "options": [
+          "Minister of Social Justice",
+          "Minister of Environment",
+          "Minister of Commerce",
+          "Union Minister Bhupendra Yadav"
+        ],
+        "answer": 3,
+        "why": "The article states that Union Minister Bhupendra Yadav discussed India's plans for a low-carbon transition during COP31."
+      },
+      {
+        "q": "What type of insights can understanding cultural events like IFFI provide?",
+        "options": [
+          "Insights into India's Diversity",
+          "Legal Insights",
+          "Economic Insights",
+          "Technological Insights"
+        ],
+        "answer": 0,
+        "why": "The article suggests that understanding cultural events like IFFI can provide insights into India's diversity."
+      },
+      {
+        "q": "What were the diplomatic engagements discussed related to?",
+        "options": [
+          "PM's Visit to Manila",
+          "Visit to Madagascar",
+          "International Film Festival",
+          "Hindi Pakhwada"
+        ],
+        "answer": 0,
+        "why": "The article mentions discussing the outcomes of the Prime Minister's visit to Manila, highlighting significant diplomatic engagements."
+      },
+      {
+        "q": "Which environmental management plan is associated with improvements in air quality?",
+        "options": [
+          "Swachh Bharat",
+          "GRAP",
+          "Atal Mission",
+          "Smart City"
+        ],
+        "answer": 1,
+        "why": "The article states that the CAQM lifted restrictions under the third phase of GRAP due to improvements in air quality."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-17",
     "date": "2026-11-17",
     "digest_id": "current-affairs-2026-11-17",
