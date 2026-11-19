@@ -169,7 +169,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-19T21:35:21.333Z",
+    "at": "2026-11-19T23:33:02.442Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -180,20 +180,19 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-19T21:35:23.730Z",
+    "at": "2026-11-19T23:33:02.901Z",
     "ok": true,
-    "submitted": 8,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 62,
     "usedToday": 138,
+    "kept": 4,
+    "quotaDay": "2026-11-19",
     "log": [
-      "Indexing API: 8 to send (8 updated, 0 deleted); 130/200 used in Google's day 2026-11-19 (Pacific).",
-      "Indexing API: sent 8."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 138/200 used in Google's day 2026-11-19 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-19T21:35:54.368Z",
+    "at": "2026-11-19T23:33:03.745Z",
     "ok": true,
     "sent": 0,
     "quiet": true,
