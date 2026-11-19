@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-19T05:45:57.477Z",
+    "at": "2026-11-19T07:46:20.329Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,24 +187,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-19T05:46:01.124Z",
+    "at": "2026-11-19T07:46:25.289Z",
     "ok": true,
-    "submitted": 14,
+    "submitted": 19,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 154,
+    "usedToday": 173,
     "log": [
-      "Indexing API: 14 to send (14 updated, 0 deleted); 140/200 used in Google's day 2026-11-18 (Pacific).",
-      "Indexing API: sent 14."
+      "Indexing API: 19 to send (19 updated, 0 deleted); 154/200 used in Google's day 2026-11-18 (Pacific).",
+      "Indexing API: sent 19."
     ]
   },
   "push": {
-    "at": "2026-11-19T05:47:21.775Z",
+    "at": "2026-11-19T07:47:39.626Z",
     "ok": true,
-    "sent": 80,
+    "sent": 68,
     "log": [
-      "push-notify: 80 sent\n  job dhs-namakkal-ayush-pharmacist-mpw-more-2026 en ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dhs-namakkal-ayush-pharmacist-mpw-more-2026 en ['s-tamil-nadu' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job dh"
+      "push-notify: 68 sent\n  job aiims-deoghar-udc-executive-engineer-more-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job aiims-deoghar-udc-executive-engineer-more-2026 hi ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-hi' in topic"
     ]
   },
   "enrich": {
