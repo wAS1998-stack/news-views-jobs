@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-19",
   "tz": "PT",
-  "used": 118,
+  "used": 130,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -5724,8 +5724,8 @@
   "hash": "6136f3a1453e"
  },
  "https://news-views.in/jobs/asrb-icar-technical-assistant-2026/": {
-  "sentAt": "2026-11-14T08:37:07.096Z",
-  "hash": "6639cb3331b2"
+  "sentAt": "2026-11-19T19:11:05.798Z",
+  "hash": "ef5c30c0e7fc"
  },
  "https://news-views.in/jobs/au-jodhpur-field-assistant-walkin-2026/": {
   "sentAt": "2026-11-14T08:37:07.300Z",
@@ -8970,5 +8970,49 @@
  "https://news-views.in/jobs/sres-did-district-programme-assistant-block-2026/": {
   "sentAt": "2026-11-19T17:50:27.702Z",
   "hash": "06fdeb5a524b"
+ },
+ "https://news-views.in/jobs/aiahl-medical-officer-medical-cell-2026/": {
+  "sentAt": "2026-11-19T19:11:03.194Z",
+  "hash": "fd3b6fcafaf0"
+ },
+ "https://news-views.in/jobs/aiahl-officer-2026/": {
+  "sentAt": "2026-11-19T19:11:03.469Z",
+  "hash": "00266081b37b"
+ },
+ "https://news-views.in/jobs/dpa-chief-medical-officer-2026/": {
+  "sentAt": "2026-11-19T19:11:03.722Z",
+  "hash": "151ecef9b6d6"
+ },
+ "https://news-views.in/jobs/icf-stock-verifier-senior-section-officer-2026/": {
+  "sentAt": "2026-11-19T19:11:03.964Z",
+  "hash": "3de6f813e5ae"
+ },
+ "https://news-views.in/jobs/iiit-allahabad-assistant-engineer-technical-2026/": {
+  "sentAt": "2026-11-19T19:11:04.215Z",
+  "hash": "0bf2b6c9670e"
+ },
+ "https://news-views.in/jobs/iiit-allahabad-deputy-registrar-technical-officer-2026/": {
+  "sentAt": "2026-11-19T19:11:04.484Z",
+  "hash": "f3f6428150b9"
+ },
+ "https://news-views.in/jobs/msrlm-clf-manager-2026/": {
+  "sentAt": "2026-11-19T19:11:04.714Z",
+  "hash": "1b9b2bcbddd3"
+ },
+ "https://news-views.in/jobs/nitc-office-assistant-2026/": {
+  "sentAt": "2026-11-19T19:11:04.947Z",
+  "hash": "1743b67f4eaa"
+ },
+ "https://news-views.in/jobs/tiss-research-interns-honorarium-research-officer-2026/": {
+  "sentAt": "2026-11-19T19:11:05.156Z",
+  "hash": "653e843bf056"
+ },
+ "https://news-views.in/jobs/tmc-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-19T19:11:05.360Z",
+  "hash": "8019f97be8a8"
+ },
+ "https://news-views.in/jobs/vnmkv-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-19T19:11:05.577Z",
+  "hash": "e9472b572c9e"
  }
 }
