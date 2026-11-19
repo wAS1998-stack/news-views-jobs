@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-19",
   "tz": "PT",
-  "used": 32,
+  "used": 64,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -8626,5 +8626,133 @@
  "https://news-views.in/jobs/vcri-namakkal-project-assistant-walkin-2026/": {
   "sentAt": "2026-11-19T09:46:19.632Z",
   "hash": "d313bb11184b"
+ },
+ "https://news-views.in/jobs/aic-audf-chief-executive-officer-2026/": {
+  "sentAt": "2026-11-19T12:27:10.359Z",
+  "hash": "9f496d7b6945"
+ },
+ "https://news-views.in/jobs/angrau-teaching-associate-agribusiness-management-2026/": {
+  "sentAt": "2026-11-19T12:27:10.590Z",
+  "hash": "d60e26aafcdc"
+ },
+ "https://news-views.in/jobs/c-dot-intern-2026/": {
+  "sentAt": "2026-11-19T12:27:10.808Z",
+  "hash": "e9e0f15645a9"
+ },
+ "https://news-views.in/jobs/dcpu-tiruvannamalai-support-persons-2026/": {
+  "sentAt": "2026-11-19T12:27:11.014Z",
+  "hash": "7e9036748a58"
+ },
+ "https://news-views.in/jobs/dda-consultant-level-4-2026/": {
+  "sentAt": "2026-11-19T12:27:11.288Z",
+  "hash": "5d29efc98ad5"
+ },
+ "https://news-views.in/jobs/district-magistrate-kalimpong-group-d-2026/": {
+  "sentAt": "2026-11-19T12:27:11.490Z",
+  "hash": "ebdb8b61645f"
+ },
+ "https://news-views.in/jobs/gbu-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-19T12:27:11.703Z",
+  "hash": "e240b177f85e"
+ },
+ "https://news-views.in/jobs/gbu-senior-research-fellow-project-associate-2026/": {
+  "sentAt": "2026-11-19T12:27:11.882Z",
+  "hash": "521753257884"
+ },
+ "https://news-views.in/jobs/gndu-assistant-professor-2026/": {
+  "sentAt": "2026-11-19T12:27:12.101Z",
+  "hash": "ba0a9e2b66fe"
+ },
+ "https://news-views.in/jobs/gu-research-assistant-field-investigator-2026/": {
+  "sentAt": "2026-11-19T12:27:12.282Z",
+  "hash": "813107f1ffd9"
+ },
+ "https://news-views.in/jobs/icar-crri-senior-medical-officer-2026/": {
+  "sentAt": "2026-11-19T12:27:12.466Z",
+  "hash": "ea024942bd3b"
+ },
+ "https://news-views.in/jobs/icar-nbair-young-professional-i-walkin-2026/": {
+  "sentAt": "2026-11-19T12:27:12.653Z",
+  "hash": "e66bbad076fc"
+ },
+ "https://news-views.in/jobs/iiest-shibpur-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-19T12:27:12.872Z",
+  "hash": "88b2c29c08b8"
+ },
+ "https://news-views.in/jobs/iim-jammu-visiting-doctor-student-counsellor-2026/": {
+  "sentAt": "2026-11-19T12:27:13.049Z",
+  "hash": "e67636cb26a5"
+ },
+ "https://news-views.in/jobs/iit-indore-junior-research-fellow-mechanical-2026/": {
+  "sentAt": "2026-11-19T12:27:13.225Z",
+  "hash": "41ebb7aa9e6b"
+ },
+ "https://news-views.in/jobs/iot-walkin-technical-assistant-ipr-assistant-2026/": {
+  "sentAt": "2026-11-19T12:27:13.407Z",
+  "hash": "d9933b74a4ab"
+ },
+ "https://news-views.in/jobs/iwai-upper-division-clerk-2026/": {
+  "sentAt": "2026-11-19T12:27:13.611Z",
+  "hash": "052413dd6e4c"
+ },
+ "https://news-views.in/jobs/jamia-hamdard-field-workers-project-research-2026/": {
+  "sentAt": "2026-11-19T12:27:13.814Z",
+  "hash": "1e0172b8c6cb"
+ },
+ "https://news-views.in/jobs/kendriya-vidyalaya-gangtok-primary-teacher-music-2026/": {
+  "sentAt": "2026-11-19T12:27:13.995Z",
+  "hash": "c0dcbc80915a"
+ },
+ "https://news-views.in/jobs/kv-crpf-rampur-walkin-pgt-tgt-2026/": {
+  "sentAt": "2026-11-19T12:27:14.177Z",
+  "hash": "71b26e65d317"
+ },
+ "https://news-views.in/jobs/kvasu-teaching-assistant-dairy-technology-walkin-2026/": {
+  "sentAt": "2026-11-19T12:27:14.384Z",
+  "hash": "7dc66f2218f9"
+ },
+ "https://news-views.in/jobs/mtwu-network-engineer-walkin-2026/": {
+  "sentAt": "2026-11-19T12:27:14.568Z",
+  "hash": "5d1f5679a8be"
+ },
+ "https://news-views.in/jobs/murshidabad-university-walkin-guest-teacher-2026/": {
+  "sentAt": "2026-11-19T12:27:14.754Z",
+  "hash": "1afab27d19c6"
+ },
+ "https://news-views.in/jobs/nada-administrative-assistant-2027/": {
+  "sentAt": "2026-11-19T12:27:14.939Z",
+  "hash": "cd17e34bc70c"
+ },
+ "https://news-views.in/jobs/nbt-india-editorial-assistant-2026/": {
+  "sentAt": "2026-11-19T12:27:15.146Z",
+  "hash": "470971ac1fb9"
+ },
+ "https://news-views.in/jobs/ndsa-young-professional-2026/": {
+  "sentAt": "2026-11-19T12:27:15.342Z",
+  "hash": "ce83d7f446c9"
+ },
+ "https://news-views.in/jobs/netaji-subhashchandra-bose-college-nanded-assistant-2026/": {
+  "sentAt": "2026-11-19T12:27:15.527Z",
+  "hash": "a960f0788f5e"
+ },
+ "https://news-views.in/jobs/pjtau-part-time-teacher-walkin-2026/": {
+  "sentAt": "2026-11-19T12:27:15.712Z",
+  "hash": "e090000a4eaf"
+ },
+ "https://news-views.in/jobs/prc-faculty-associate-professor-assistant-professor-2026/": {
+  "sentAt": "2026-11-19T12:27:16.158Z",
+  "hash": "7ce19dbfe208"
+ },
+ "https://news-views.in/jobs/quess-corp-technical-fleet-maintenance-transport-2026/": {
+  "sentAt": "2026-11-19T12:27:16.341Z",
+  "hash": "d478c58fc41b"
+ },
+ "https://news-views.in/jobs/rbipmt-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-19T12:27:16.596Z",
+  "hash": "e7709af45b36"
+ },
+ "https://news-views.in/jobs/up-sant-kabir-nagar-ecce-educator-2026/": {
+  "sentAt": "2026-11-19T12:27:16.781Z",
+  "hash": "95e3f755cc83"
  }
 }

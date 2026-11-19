@@ -175,7 +175,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-19T09:46:12.192Z",
+    "at": "2026-11-19T12:27:09.333Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -186,24 +186,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-19T09:46:19.756Z",
+    "at": "2026-11-19T12:27:16.904Z",
     "ok": true,
     "submitted": 32,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 32,
+    "usedToday": 64,
     "log": [
-      "Indexing API: 32 to send (32 updated, 0 deleted); 0/200 used in Google's day 2026-11-19 (Pacific).",
+      "Indexing API: 32 to send (32 updated, 0 deleted); 32/200 used in Google's day 2026-11-19 (Pacific).",
       "Indexing API: sent 32."
     ]
   },
   "push": {
-    "at": "2026-11-19T09:47:30.618Z",
+    "at": "2026-11-19T12:28:40.646Z",
     "ok": true,
-    "sent": 78,
+    "sent": 70,
     "log": [
-      "push-notify: 78 sent\n  job kerala-dnb-mbbs-phase-1-allotment-out-2026 en ['s-kerala' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job kerala-dnb-mbbs-phase-1-allotment-out-2026 hi ['s-kerala' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job esic-patna-walkin-speci"
+      "push-notify: 70 sent\n  job angrau-teaching-associate-agribusiness-management-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job angrau-teaching-associate-agribusiness-management-2026 hi ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-hi' in t"
     ]
   },
   "enrich": {
