@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-19",
+    "date": "2026-11-19",
+    "digest_id": "current-affairs-2026-11-19",
+    "title": "Current Affairs Quiz 19 November 2026",
+    "questions": [
+      {
+        "q": "Who did the Prime Minister of India meet to strengthen diplomatic ties?",
+        "options": [
+          "Prince and Princess of Wales",
+          "Kerala Chief Minister",
+          "Lok Sabha Speaker",
+          "Vice President"
+        ],
+        "answer": 0,
+        "why": "The article states that the Prime Minister had a significant meeting with the Prince and Princess of Wales."
+      },
+      {
+        "q": "What was discussed during the Kerala Chief Minister's meeting with the Prime Minister?",
+        "options": [
+          "Health issues",
+          "State-related issues",
+          "Climate change",
+          "Agricultural initiatives"
+        ],
+        "answer": 1,
+        "why": "The meeting was presumably to discuss state-related issues and initiatives for better governance."
+      },
+      {
+        "q": "What major climate event did India participate in, advocating for global accountability?",
+        "options": [
+          "COP 30",
+          "Antimicrobial Awareness Week",
+          "World Peace Yagna",
+          "COP 31"
+        ],
+        "answer": 3,
+        "why": "India called for a transparent and fair second Global Stocktake during COP 31 held in Antalya, Turkey."
+      },
+      {
+        "q": "Where did the Lok Sabha Speaker participate in a World Peace Yagna?",
+        "options": [
+          "Vadnagar",
+          "New Delhi",
+          "Kerala",
+          "Antalya"
+        ],
+        "answer": 0,
+        "why": "The World Peace Yagna was held at the historical Shri Hatkeshwar Mahadev Temple in Vadnagar."
+      },
+      {
+        "q": "What was emphasized by the Vice President during the VMM College and Safdarjung Hospital convocation?",
+        "options": [
+          "Role of technology in healthcare",
+          "Importance of healthcare education",
+          "Environmental policies",
+          "Agricultural biodiversity"
+        ],
+        "answer": 1,
+        "why": "The Vice President emphasized the importance of healthcare education in India's health sector."
+      },
+      {
+        "q": "What was the purpose of the review meeting held by the Central Health Secretary?",
+        "options": [
+          "Promote agricultural biodiversity",
+          "Discuss peace initiatives",
+          "Strengthen healthcare delivery",
+          "Global climate agreements"
+        ],
+        "answer": 2,
+        "why": "The purpose was to evaluate institutional performance and strengthen healthcare delivery."
+      },
+      {
+        "q": "How many community seed banks did Diversity Farm-India map?",
+        "options": [
+          "500",
+          "700",
+          "800",
+          "652"
+        ],
+        "answer": 3,
+        "why": "Diversity Farm-India mapped 652 community seed banks as part of their initiatives."
+      },
+      {
+        "q": "What health awareness week did the Health Ministry celebrate?",
+        "options": [
+          "World Health Day",
+          "Global Health Issues Week",
+          "World Antimicrobial Resistance Awareness Week",
+          "National Nutrition Week"
+        ],
+        "answer": 2,
+        "why": "The Health Ministry celebrated 'World Antimicrobial Resistance Awareness Week 2026'."
+      },
+      {
+        "q": "Which topic is crucial for discussions related to sustainable agriculture?",
+        "options": [
+          "Environmental conservation",
+          "Healthcare education",
+          "Community seed banks",
+          "Global Stocktake"
+        ],
+        "answer": 2,
+        "why": "Strengthening community seed bank initiatives is crucial for discussions in sustainable agriculture."
+      },
+      {
+        "q": "What is the significance of high-level meetings mentioned in the article?",
+        "options": [
+          "Cultural significance",
+          "Healthcare education",
+          "International relations",
+          "Environmental impact"
+        ],
+        "answer": 2,
+        "why": "High-level interactions highlight the importance of international relations in global cooperation."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-18",
     "date": "2026-11-18",
     "digest_id": "current-affairs-2026-11-18",

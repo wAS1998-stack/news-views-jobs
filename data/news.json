@@ -1,5 +1,110 @@
 [
   {
+    "id": "current-affairs-2026-11-19",
+    "type": "current-affairs",
+    "title": "Current Affairs 19 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-19",
+    "summary": "This digest highlights important meetings and events involving top government officials, initiatives in health and education, and discussions on climate change and social justice. These updates are crucial for aspirants preparing for SSC, UPSC, Banking, Railway, or State PSC exams as they reflect current government priorities and actions.",
+    "body": [
+      {
+        "h": "Prime Minister Meets Prince and Princess of Wales",
+        "p": [
+          "The Prime Minister of India had a significant meeting with the Prince and Princess of Wales, showcasing India's commitment to strengthening diplomatic ties with the UK. Such high-level interactions highlight the importance of international relations in the context of global cooperation and strategic partnerships."
+        ]
+      },
+      {
+        "h": "Kerala Chief Minister Meets Prime Minister",
+        "p": [
+          "The Chief Minister of Kerala met with the Prime Minister, presumably to discuss state-related issues and initiatives for better governance. Meetings between state and national leaders reflect collaborative efforts to address regional challenges and can be a vital part of governance that aspirants should be aware of."
+        ]
+      },
+      {
+        "h": "Global Stocktake and Climate Accountability Emphasized",
+        "p": [
+          "India called for a transparent and fair second Global Stocktake under the Paris Agreement during COP 31 held in Antalya, Turkey. This highlights India's commitment to climate finance and the transfer of technology, which are crucial topics in environmental policy and governance, making them significant for competitive exams."
+        ]
+      },
+      {
+        "h": "Lok Sabha Speaker Participates in World Peace Yagna",
+        "p": [
+          "The Lok Sabha Speaker participated in a World Peace Yagna held at the historical Shri Hatkeshwar Mahadev Temple in Vadnagar. Such events emphasize India's cultural heritage and the promotion of peace, underscoring their relevance in social studies and cultural contexts in exams."
+        ]
+      },
+      {
+        "h": "Vice President Addresses VMCC and Safdarjung Hospital Convocation",
+        "p": [
+          "Vice President C.P. Radhakrishnan addressed the 8th convocation ceremony of VMM College and Safdarjung Hospital, emphasizing the importance of healthcare education in India's health sector. Understanding the intersection of education, healthcare, and policy is essential for aspirants in healthcare management and public administration domains."
+        ]
+      },
+      {
+        "h": "Review Meeting on Institutional Performance in Health Sector",
+        "p": [
+          "The Central Health Secretary held a review meeting with the executive directors of new AIIMS to evaluate institutional performance and strengthen healthcare delivery. This meeting is part of broader efforts to enhance health services in India, reflecting ongoing health policies that are critical for aspirants focusing on health-related governance."
+        ]
+      },
+      {
+        "h": "Strengthening Community Seed Bank Initiatives",
+        "p": [
+          "Diversity Farm-India has mapped 652 community seed banks as part of efforts to strengthen and promote agricultural biodiversity, alongside releasing a new capacity-building manual. These initiatives are crucial for sustainable agriculture discussions in competitive exams, particularly for those focusing on agriculture and rural development."
+        ]
+      },
+      {
+        "h": "Antimicrobial Resistance Awareness Week Celebrated",
+        "p": [
+          "The Health Ministry celebrated 'World Antimicrobial Resistance Awareness Week 2026', calling for collective action against AMR. Raising awareness about health challenges like AMR is vital for public health discussions, which are often included in competitive exams centered on health policies."
+        ]
+      }
+    ],
+    "pointers": [
+      "Understand the significance of major international meetings and their impact on India's diplomacy.",
+      "Keep abreast of developments in healthcare education and public health policies for relevant competitive exams.",
+      "Recognize the importance of cultural events and peace initiatives in shaping national identity.",
+      "Be aware of agricultural initiatives like community seed banks as part of sustainable development discussions."
+    ],
+    "sources": [
+      {
+        "title": "प्रधानमंत्री ने महामहिम वेल्स के राजकुमार और राजकुमारी से मुलाकात की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338196"
+      },
+      {
+        "title": "केरलम के मुख्यमंत्री ने प्रधानमंत्री से मुलाकात की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338182"
+      },
+      {
+        "title": "भारत ने पेरिस समझौते के अंतर्गत दूसरे 'ग्लोबल स्टॉकटेक' (जीएसटी-2) को खुला, पारदर्शी और न्यायसंगत बनाने का आह्वान किया; अंताल्या (तुर्किये) में आयोजित कॉप 31 में जलवायु वित्त और प्रौद्योगिकी हस्तांतरण के लिए जवाबदेही तय करने पर बल दिया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338166"
+      },
+      {
+        "title": "लोक सभा अध्यक्ष ने वडनगर स्थित ऐतिहासिक श्री हटकेश्वर महादेव मंदिर में आयोजित विश्व शांति महायज्ञ में भाग लिया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338145"
+      },
+      {
+        "title": "उपराष्ट्रपति श्री सी.पी. राधाकृष्णन ने केंद्रीय स्वास्थ्य मंत्री श्री जे.पी.नड्डा की उपस्थिति में वीएमएमसी और सफदरजंग अस्पताल के 8वें दीक्षांत समारोह को संबोधित किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338175"
+      },
+      {
+        "title": "प्रधानमंत्री 19 नवंबर को सामाजिक न्याय और अधिकारिता विभाग के सम्मेलन के समापन सत्र में भाग लेंगे",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338171"
+      },
+      {
+        "title": "केंद्रीय स्वास्थ्य सचिव पुण्य सलिला श्रीवास्तव ने नए एम्स के कार्यकारी निदेशकों के साथ संस्थागत प्रदर्शन का आकलन करने व स्वास्थ्य सेवा डिलीवरी को मजबूत करने के लिए समीक्षा बैठक की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338177"
+      },
+      {
+        "title": "भारत के कम्युनिटी सीड बैंक (सीएसबी) को मज़बूत करना: डायवर्सिफ़ार्म-इंडिया ने 652 सीएसबी की मैपिंग की और नई कैपेसिटी-बिल्डिंग मैनुअल जारी की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338172"
+      },
+      {
+        "title": "डीओएसईएल के सचिव ने दिव्यांग व्यक्तियों के अधिकारों पर संयुक्त राष्ट्र के विशेष दूत के साथ एक संवाद सत्र की अध्यक्षता की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338162"
+      },
+      {
+        "title": "45वें आईआईटीएफ 2026 में सामाजिक न्याय और अधिकारिता मंत्रालय के मंडप में कुल ₹ 29.56 लाख की बिक्री हुई; ग्राहकों की बढ़ती दिलचस्पी से कारीगरों के लिए आर्थिक अवसर बढ़े",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2338164"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-18",
     "type": "current-affairs",
     "title": "Current Affairs 18 November 2026: Key Government Updates for Exam Aspirants",
@@ -23553,63 +23658,6 @@
       {
         "title": "MOIL Limited — official notification",
         "link": "https://www.moil.nic.in/"
-      }
-    ]
-  },
-  {
-    "id": "sainik-school-tilaiya-tgt-music-teacher-2026-explained",
-    "type": "analysis",
-    "title": "Sainik School Tilaiya Announces Recruitment for Teaching and Support Staff Positions",
-    "date": "2026-10-24",
-    "summary": "Sainik School Tilaiya has released a recruitment notification for 6 contract posts, including TGT, Music Teacher, and Medical Officer. Candidates must submit their offline applications by November 17, 2026, followed by a selection process that includes written tests, skill tests, and interviews.",
-    "body": [
-      {
-        "h": "Overview of the Recruitment Notification",
-        "p": [
-          "Sainik School Tilaiya, located in Koderma, Jharkhand, has announced a recruitment drive for multiple contract posts. This notification includes opportunities for positions such as Trained Graduate Teachers (TGT), Music Teacher, and Medical Officer, totaling to 6 vacancies. While the application start date has not been explicitly mentioned, the last date for submitting applications is set for November 17, 2026. Enthusiastic candidates are advised to prepare their applications proactively within this time frame."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria and Suitability",
-        "p": [
-          "Candidates looking to apply for these positions must meet specific educational qualifications, which include a minimum of 12TH pass, and for several posts, a graduate degree such as B.A, B.Com, B.Ed, or B.Sc. Additionally, candidates with diplomas, ITI qualifications, and MBBS degrees may also be eligible. The diverse educational requirements imply that these positions are suited for a wide range of individuals, from fresh graduates to experienced professionals in education and medical fields."
-        ]
-      },
-      {
-        "h": "Selection Process and Expectations",
-        "p": [
-          "The selection procedure for the Sainik School Tilaiya recruitment comprises multiple stages, including written tests, skill evaluations, and personal interviews. This structured selection method ensures that candidates are rigorously assessed on their subject knowledge and teaching capabilities, particularly for the TGT and Music Teacher roles. Candidates can expect a comprehensive assessment that not only evaluates their academic qualifications but also their practical skills and communication abilities, which are crucial for success in an academic environment."
-        ]
-      },
-      {
-        "h": "Implications for Aspirants",
-        "p": [
-          "This recruitment announcement from Sainik School Tilaiya opens up avenues for individuals seeking employment in teaching and educational support roles in one of India's reputed institutions. The contract-based nature of the posts may attract candidates who are looking for flexible job opportunities or those seeking to start their careers in education without a long-term commitment. Furthermore, given that Sainik Schools are known for their disciplined environment and quality education, working here can enhance one's professional experience significantly, making future career prospects even brighter."
-        ]
-      },
-      {
-        "h": "Next Steps for Interested Candidates",
-        "p": [
-          "Potential applicants should prepare their applications well in advance of the submission deadline. It is recommended to check the official notification frequently for any updates regarding application procedures, exam dates, and any other relevant information that may become available. Interested candidates should gather their educational documents, certificates, and any necessary identification to ensure a complete application package when they apply."
-        ]
-      },
-      {
-        "h": "Key Takeaways for Applicants",
-        "p": [
-          "This recruitment is a significant opportunity to work in a renowned educational institution, so candidates should be diligent in understanding the requirements. Crafting an appealing application highlighting relevant skills and experiences can enhance their chances during the selection process. Networking with current or former employees of Sainik Schools may provide valuable insights into the application process."
-        ]
-      }
-    ],
-    "pointers": [
-      "Prepare for both written and skill tests by reviewing subject material relevant to the applied post.",
-      "Gather all necessary educational documents and certificates well before the application deadline.",
-      "Stay updated by checking the official notification frequently for any changes regarding the recruitment process."
-    ],
-    "job_id": "sainik-school-tilaiya-tgt-music-teacher-2026",
-    "sources": [
-      {
-        "title": "Sainik School Tilaiya — official notification",
-        "link": "https://www.sainikschooltilaiya.org"
       }
     ]
   }
