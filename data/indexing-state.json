@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-19",
   "tz": "PT",
-  "used": 114,
+  "used": 118,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -8954,5 +8954,21 @@
  "https://news-views.in/jobs/zila-panchayat-korba-eligible-ineligible-list-2026/": {
   "sentAt": "2026-11-19T15:05:54.851Z",
   "hash": "2aa9a0f5e1b1"
+ },
+ "https://news-views.in/jobs/appsc-assistant-director-2026/": {
+  "sentAt": "2026-11-19T17:50:26.936Z",
+  "hash": "c131c69a4a38"
+ },
+ "https://news-views.in/jobs/district-ayush-society-south-garo-hills-2026/": {
+  "sentAt": "2026-11-19T17:50:27.200Z",
+  "hash": "fb353b510592"
+ },
+ "https://news-views.in/jobs/iiser-berhampur-pdrf-2026/": {
+  "sentAt": "2026-11-19T17:50:27.443Z",
+  "hash": "c2c4397faa29"
+ },
+ "https://news-views.in/jobs/sres-did-district-programme-assistant-block-2026/": {
+  "sentAt": "2026-11-19T17:50:27.702Z",
+  "hash": "06fdeb5a524b"
  }
 }
