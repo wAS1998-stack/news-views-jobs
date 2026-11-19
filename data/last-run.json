@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-18T23:56:04.529Z",
+    "at": "2026-11-19T01:56:46.205Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,7 +179,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-18T23:56:04.927Z",
+    "at": "2026-11-19T01:56:46.663Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 60,
@@ -191,12 +191,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-18T23:56:05.657Z",
+    "at": "2026-11-19T01:57:21.423Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 156,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 156 sent\n  job gpsc-eligible-candidates-list-out-legal-2026 en [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gpsc-eligible-candidates-list-out-legal-2026 hi [('s-gujarat' in topics || 's-any' in topics) && 'q-graduate' in topics &"
     ]
   },
   "enrich": {
