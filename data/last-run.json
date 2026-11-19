@@ -171,7 +171,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-19T07:46:20.329Z",
+    "at": "2026-11-19T09:46:12.192Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -182,24 +182,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-19T07:46:25.289Z",
+    "at": "2026-11-19T09:46:19.756Z",
     "ok": true,
-    "submitted": 19,
+    "submitted": 32,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 173,
+    "usedToday": 32,
     "log": [
-      "Indexing API: 19 to send (19 updated, 0 deleted); 154/200 used in Google's day 2026-11-18 (Pacific).",
-      "Indexing API: sent 19."
+      "Indexing API: 32 to send (32 updated, 0 deleted); 0/200 used in Google's day 2026-11-19 (Pacific).",
+      "Indexing API: sent 32."
     ]
   },
   "push": {
-    "at": "2026-11-19T07:47:39.626Z",
+    "at": "2026-11-19T09:47:30.618Z",
     "ok": true,
-    "sent": 68,
+    "sent": 78,
     "log": [
-      "push-notify: 68 sent\n  job aiims-deoghar-udc-executive-engineer-more-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job aiims-deoghar-udc-executive-engineer-more-2026 hi ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-hi' in topic"
+      "push-notify: 78 sent\n  job kerala-dnb-mbbs-phase-1-allotment-out-2026 en ['s-kerala' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job kerala-dnb-mbbs-phase-1-allotment-out-2026 hi ['s-kerala' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job esic-patna-walkin-speci"
     ]
   },
   "enrich": {
