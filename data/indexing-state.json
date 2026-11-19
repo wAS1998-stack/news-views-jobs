@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-18",
   "tz": "PT",
-  "used": 140,
+  "used": 154,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -8366,5 +8366,61 @@
  "https://news-views.in/jobs/nlu-delhi-assistant-librarian-2026/": {
   "sentAt": "2026-11-18T21:31:27.335Z",
   "hash": "326359c73923"
+ },
+ "https://news-views.in/jobs/aud-delhi-psychotherapist-2026/": {
+  "sentAt": "2026-11-19T05:45:58.378Z",
+  "hash": "8436b8a01873"
+ },
+ "https://news-views.in/jobs/chhotaudepur-district-female-public-prosecutor-2026/": {
+  "sentAt": "2026-11-19T05:45:58.607Z",
+  "hash": "0757bf2f1cd9"
+ },
+ "https://news-views.in/jobs/csir-immt-junior-stenographer-eligible-list-2026/": {
+  "sentAt": "2026-11-19T05:45:58.803Z",
+  "hash": "590adb0b9a74"
+ },
+ "https://news-views.in/jobs/dcpu-krishnagiri-support-person-2026/": {
+  "sentAt": "2026-11-19T05:45:59.028Z",
+  "hash": "c5f3e0aacec2"
+ },
+ "https://news-views.in/jobs/dhs-namakkal-ayush-pharmacist-mpw-more-2026/": {
+  "sentAt": "2026-11-19T05:45:59.251Z",
+  "hash": "4b69f4a14617"
+ },
+ "https://news-views.in/jobs/dmho-ri-bhoi-immunisation-field-volunteer-2026/": {
+  "sentAt": "2026-11-19T05:45:59.437Z",
+  "hash": "faa3136cc07f"
+ },
+ "https://news-views.in/jobs/drdo-pxe-research-associate-junior-research-2026/": {
+  "sentAt": "2026-11-19T05:45:59.642Z",
+  "hash": "5234f16d0757"
+ },
+ "https://news-views.in/jobs/esic-patna-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-19T05:45:59.830Z",
+  "hash": "c8d2b63db586"
+ },
+ "https://news-views.in/jobs/jammu-university-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-19T05:46:00.029Z",
+  "hash": "edcc0d2e41d1"
+ },
+ "https://news-views.in/jobs/karnataka-forest-department-beat-forester-forest-2026/": {
+  "sentAt": "2026-11-19T05:46:00.209Z",
+  "hash": "16e69a721269"
+ },
+ "https://news-views.in/jobs/mdd-maharashtra-accountant-manager-more-2026/": {
+  "sentAt": "2026-11-19T05:46:00.394Z",
+  "hash": "abd47f179c44"
+ },
+ "https://news-views.in/jobs/mumbai-port-authority-computer-operator-programming-2026/": {
+  "sentAt": "2026-11-19T05:46:00.576Z",
+  "hash": "8651048dafd4"
+ },
+ "https://news-views.in/jobs/npci-data-engineer-2026/": {
+  "sentAt": "2026-11-19T05:46:00.793Z",
+  "hash": "d65cfbe4f92f"
+ },
+ "https://news-views.in/jobs/uptet-february-2027/": {
+  "sentAt": "2026-11-19T05:46:01.001Z",
+  "hash": "74b433f9f12f"
  }
 }

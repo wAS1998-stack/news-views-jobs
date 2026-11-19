@@ -171,7 +171,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-19T03:58:01.774Z",
+    "at": "2026-11-19T05:45:57.477Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -182,23 +182,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-19T03:58:02.312Z",
+    "at": "2026-11-19T05:46:01.124Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 60,
-    "usedToday": 140,
+    "submitted": 14,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-18",
+    "usedToday": 154,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 140/200 used in Google's day 2026-11-18 (Pacific)."
+      "Indexing API: 14 to send (14 updated, 0 deleted); 140/200 used in Google's day 2026-11-18 (Pacific).",
+      "Indexing API: sent 14."
     ]
   },
   "push": {
-    "at": "2026-11-19T03:58:39.814Z",
+    "at": "2026-11-19T05:47:21.775Z",
     "ok": true,
-    "sent": 134,
+    "sent": 80,
     "log": [
-      "push-notify: 134 sent\n  job rlbcau-professor-associate-professor-more-2026 en [('s-uttar-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job rlbcau-professor-associate-professor-more-2026 hi [('s-uttar-pradesh' in topics || 's-any' in topics) && 'q-gradu"
+      "push-notify: 80 sent\n  job dhs-namakkal-ayush-pharmacist-mpw-more-2026 en ['s-tamil-nadu' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dhs-namakkal-ayush-pharmacist-mpw-more-2026 en ['s-tamil-nadu' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job dh"
     ]
   },
   "enrich": {
