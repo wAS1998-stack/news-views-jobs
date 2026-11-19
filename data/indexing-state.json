@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-19",
   "tz": "PT",
-  "used": 130,
+  "used": 138,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9014,5 +9014,37 @@
  "https://news-views.in/jobs/vnmkv-senior-research-fellow-2026/": {
   "sentAt": "2026-11-19T19:11:05.577Z",
   "hash": "e9472b572c9e"
+ },
+ "https://news-views.in/jobs/dgt-director-training-2027/": {
+  "sentAt": "2026-11-19T21:35:22.166Z",
+  "hash": "8354a3d67226"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-19T21:35:22.388Z",
+  "hash": "8d48c9db7fef"
+ },
+ "https://news-views.in/jobs/invest-up-general-manager-asst-general-2026/": {
+  "sentAt": "2026-11-19T21:35:22.604Z",
+  "hash": "f6671e12ceec"
+ },
+ "https://news-views.in/jobs/kmclu-project-assistant-2026/": {
+  "sentAt": "2026-11-19T21:35:22.818Z",
+  "hash": "f7ccc8171c0d"
+ },
+ "https://news-views.in/jobs/mamc-senior-resident-nephrology-walkin-2026/": {
+  "sentAt": "2026-11-19T21:35:23.033Z",
+  "hash": "3ee59e81fc6d"
+ },
+ "https://news-views.in/jobs/myladuthurai-district-technical-assistant-2026/": {
+  "sentAt": "2026-11-19T21:35:23.234Z",
+  "hash": "c519dc983e86"
+ },
+ "https://news-views.in/jobs/rri-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-19T21:35:23.413Z",
+  "hash": "986c7e331e5c"
+ },
+ "https://news-views.in/jobs/rri-quantum-scientist-quantum-engineer-2026/": {
+  "sentAt": "2026-11-19T21:35:23.607Z",
+  "hash": "d0f843ce6499"
  }
 }
