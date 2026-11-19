@@ -1,20 +1,15 @@
 {
- "date": "2026-11-18",
+ "date": "2026-11-19",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-20",
-  "2026-11-16"
+  "2026-10-21",
+  "2026-11-17"
  ],
  "totals": {
   "clicks": 39,
-  "impressions": 642
+  "impressions": 647
  },
  "daily": [
-  {
-   "date": "2026-10-20",
-   "clicks": 0,
-   "impressions": 7
-  },
   {
    "date": "2026-10-21",
    "clicks": 0,
@@ -149,6 +144,11 @@
    "date": "2026-11-16",
    "clicks": 0,
    "impressions": 24
+  },
+  {
+   "date": "2026-11-17",
+   "clicks": 0,
+   "impressions": 12
   }
  ],
  "home": {
@@ -160,8 +160,8 @@
  },
  "brand": {
   "range": [
-   "2026-08-19",
-   "2026-11-16"
+   "2026-08-20",
+   "2026-11-17"
   ],
   "rows": []
  },
@@ -246,9 +246,9 @@
   {
    "page": "/jobs/gbu-faculty-professor-associate-assistant-professor-2026/",
    "clicks": 1,
-   "impressions": 14,
-   "ctr": 7.14,
-   "position": 3.9
+   "impressions": 13,
+   "ctr": 7.69,
+   "position": 3.8
   },
   {
    "page": "/jobs/iiser-berhampur-technical-assistant-2026/",
@@ -274,8 +274,8 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 21,
-   "ctr": 4.76,
+   "impressions": 22,
+   "ctr": 4.55,
    "position": 4.8
   },
   {
@@ -405,13 +405,6 @@
    "position": 4
   },
   {
-   "page": "/jobs/cochin-shipyard-apprentice-technician-graduate-apprentices-2/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 9
-  },
-  {
    "page": "/jobs/cws-iift-consultant-2026/",
    "clicks": 0,
    "impressions": 1,
@@ -463,7 +456,7 @@
   {
    "page": "/jobs/esic-walkin-senior-resident-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 2,
    "ctr": 0,
    "position": 3
   },
@@ -478,6 +471,13 @@
    "page": "/jobs/gmu-research-associate-field-investigator-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 4,
+   "ctr": 0,
+   "position": 2
+  },
+  {
+   "page": "/jobs/goa-samagra-shiksha-walkin-instructor-advt-99-27-2026/",
+   "clicks": 0,
+   "impressions": 1,
    "ctr": 0,
    "position": 2
   },
@@ -638,13 +638,6 @@
    "position": 2
   },
   {
-   "query": "(\"hindustan laboratories\" or \"hll\") and (\"ipo\" or \"initial public offering\" or \"sebi\" or \"securities and exchange board of india\" or \"public issue\" or \"listing\" or \"approval\" or \"clearance\")",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 9
-  },
-  {
    "query": "2026 job vacancy government",
    "clicks": 0,
    "impressions": 1,
@@ -675,7 +668,7 @@
   {
    "query": "amarkantak university recruitment",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 3,
    "ctr": 0,
    "position": 4
   },
@@ -988,6 +981,13 @@
    "position": 33
   },
   {
+   "query": "govt job vacancy 2026 odisha apply online",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
+  },
+  {
    "query": "govt jobs",
    "clicks": 0,
    "impressions": 1,
@@ -1009,18 +1009,18 @@
    "position": 3
   },
   {
-   "query": "gulf jobs 2025",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 7
-  },
-  {
    "query": "hindustan copper limited recruitment 2026 for freshers",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "query": "ibps rrb po exam date",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 69
   },
   {
    "query": "iit dhanbad jrf position",
@@ -1272,8 +1272,8 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 21,
-   "ctr": 4.76,
+   "impressions": 22,
+   "ctr": 4.55,
    "position": 4.8,
    "queries": [
     {
