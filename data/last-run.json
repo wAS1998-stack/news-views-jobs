@@ -179,7 +179,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T10:30:29.590Z",
+    "at": "2026-11-20T12:40:01.299Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -190,24 +190,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T10:30:40.283Z",
+    "at": "2026-11-20T12:40:11.106Z",
     "ok": true,
-    "submitted": 47,
+    "submitted": 40,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 69,
+    "usedToday": 109,
     "log": [
-      "Indexing API: 47 to send (47 updated, 0 deleted); 22/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 47."
+      "Indexing API: 40 to send (40 updated, 0 deleted); 69/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 40."
     ]
   },
   "push": {
-    "at": "2026-11-20T10:31:56.618Z",
+    "at": "2026-11-20T12:41:25.652Z",
     "ok": true,
-    "sent": 82,
+    "sent": 72,
     "log": [
-      "push-notify: 82 sent\n  job brlps-young-professional-2026 en ['s-bihar' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job brlps-young-professional-2026 hi ['s-bihar' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job iim-shillong-mukhya-mantri-fellow-assistant-2026 en"
+      "push-notify: 72 sent\n  job iit-ism-dhanbad-junior-research-fellow-advt-1419-2026 en ['s-jharkhand' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job iit-ism-dhanbad-junior-research-fellow-advt-1419-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' "
     ]
   },
   "enrich": {
