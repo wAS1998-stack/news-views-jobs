@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-20",
   "tz": "PT",
-  "used": 173,
+  "used": 177,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9794,5 +9794,21 @@
  "https://news-views.in/jobs/tn-nhm-staff-nurse-2026/": {
   "sentAt": "2026-11-20T17:50:29.208Z",
   "hash": "e00fe8ff4383"
+ },
+ "https://news-views.in/jobs/dhs-salem-staff-nurse-2026/": {
+  "sentAt": "2026-11-20T20:11:01.380Z",
+  "hash": "c79cf61a61c7"
+ },
+ "https://news-views.in/jobs/district-health-society-erode-staff-nurse-2026/": {
+  "sentAt": "2026-11-20T20:11:01.679Z",
+  "hash": "3b65fb0d9293"
+ },
+ "https://news-views.in/jobs/ohrc-internship-programme-2026/": {
+  "sentAt": "2026-11-20T20:11:01.942Z",
+  "hash": "5227d80857ef"
+ },
+ "https://news-views.in/jobs/tripura-university-driver-2026/": {
+  "sentAt": "2026-11-20T20:11:02.154Z",
+  "hash": "edb4fa40f599"
  }
 }

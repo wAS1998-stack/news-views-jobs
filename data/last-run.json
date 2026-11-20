@@ -227,5 +227,38 @@
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists."
     ]
+  },
+  "notify": {
+    "at": "2026-11-20T20:11:00.296Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-20T20:11:02.277Z",
+    "ok": true,
+    "submitted": 4,
+    "failed": 0,
+    "limited": false,
+    "kept": 4,
+    "usedToday": 177,
+    "log": [
+      "Indexing API: 4 to send (4 updated, 0 deleted); 173/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 4."
+    ]
+  },
+  "push": {
+    "at": "2026-11-20T20:11:21.916Z",
+    "ok": true,
+    "sent": 0,
+    "quiet": true,
+    "log": [
+      "push-notify: nothing new to send (quiet hours)."
+    ]
   }
 }
