@@ -138,10 +138,10 @@
    "usd": 0.4174
   },
   "2026-11-20": {
-   "calls": 177,
-   "in": 292414,
-   "out": 182831,
-   "usd": 0.1536
+   "calls": 202,
+   "in": 359820,
+   "out": 207744,
+   "usd": 0.1786
   }
  },
  "note": "Token usage of the site automation's AI calls, per day (IST). usd = estimated cost at pricePerMillion."
