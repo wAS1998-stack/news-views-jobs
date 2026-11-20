@@ -171,7 +171,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T08:01:06.944Z",
+    "at": "2026-11-20T10:30:29.590Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -182,24 +182,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T08:01:12.645Z",
+    "at": "2026-11-20T10:30:40.283Z",
     "ok": true,
-    "submitted": 22,
+    "submitted": 47,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 22,
+    "usedToday": 69,
     "log": [
-      "Indexing API: 22 to send (22 updated, 0 deleted); 0/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 22."
+      "Indexing API: 47 to send (47 updated, 0 deleted); 22/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 47."
     ]
   },
   "push": {
-    "at": "2026-11-20T08:02:27.392Z",
+    "at": "2026-11-20T10:31:56.618Z",
     "ok": true,
-    "sent": 64,
+    "sent": 82,
     "log": [
-      "push-notify: 64 sent\n  job bpbcc-lower-division-clerk-2026 en ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job bpbcc-lower-division-clerk-2026 hi ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job hp-high-court-stenographer-2026 en ['s-himach"
+      "push-notify: 82 sent\n  job brlps-young-professional-2026 en ['s-bihar' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job brlps-young-professional-2026 hi ['s-bihar' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job iim-shillong-mukhya-mantri-fellow-assistant-2026 en"
     ]
   },
   "enrich": {
