@@ -170,7 +170,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T12:40:01.299Z",
+    "at": "2026-11-20T15:20:42.823Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -181,24 +181,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T12:40:11.106Z",
+    "at": "2026-11-20T15:20:54.777Z",
     "ok": true,
-    "submitted": 40,
+    "submitted": 55,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 109,
+    "usedToday": 164,
     "log": [
-      "Indexing API: 40 to send (40 updated, 0 deleted); 69/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 40."
+      "Indexing API: 55 to send (55 updated, 0 deleted); 109/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 55."
     ]
   },
   "push": {
-    "at": "2026-11-20T12:41:25.652Z",
+    "at": "2026-11-20T15:22:18.639Z",
     "ok": true,
-    "sent": 72,
+    "sent": 142,
     "log": [
-      "push-notify: 72 sent\n  job iit-ism-dhanbad-junior-research-fellow-advt-1419-2026 en ['s-jharkhand' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job iit-ism-dhanbad-junior-research-fellow-advt-1419-2026 en ['s-jharkhand' in topics && 'q-engineering-diploma' in topics && 'l-en' "
+      "push-notify: 142 sent\n  job haryana-fisheries-department-clerk-2026 en ['s-haryana' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job haryana-fisheries-department-clerk-2026 hi ['s-haryana' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job district-agriculture-off"
     ]
   },
   "enrich": {
