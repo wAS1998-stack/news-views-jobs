@@ -170,7 +170,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T03:58:38.670Z",
+    "at": "2026-11-20T05:21:42.254Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -181,23 +181,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T03:58:39.219Z",
+    "at": "2026-11-20T05:21:46.064Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 62,
-    "usedToday": 138,
+    "submitted": 14,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-19",
+    "usedToday": 152,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 138/200 used in Google's day 2026-11-19 (Pacific)."
+      "Indexing API: 14 to send (14 updated, 0 deleted); 138/200 used in Google's day 2026-11-19 (Pacific).",
+      "Indexing API: sent 14."
     ]
   },
   "push": {
-    "at": "2026-11-20T03:59:24.191Z",
+    "at": "2026-11-20T05:22:36.167Z",
     "ok": true,
-    "sent": 168,
+    "sent": 62,
     "log": [
-      "push-notify: 168 sent\n  job msrlm-clf-manager-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job msrlm-clf-manager-2026 hi [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job kasega"
+      "push-notify: 62 sent\n  job ncl-clerk-lab-technician-more-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ncl-clerk-lab-technician-more-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  follow o-upsssc upsssc-moharir-exam-city-"
     ]
   },
   "enrich": {

@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-19",
   "tz": "PT",
-  "used": 138,
+  "used": 152,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9046,5 +9046,61 @@
  "https://news-views.in/jobs/rri-quantum-scientist-quantum-engineer-2026/": {
   "sentAt": "2026-11-19T21:35:23.607Z",
   "hash": "d0f843ce6499"
+ },
+ "https://news-views.in/jobs/cdm-pho-keonjhar-accountant-cum-deo-2026/": {
+  "sentAt": "2026-11-20T05:21:43.041Z",
+  "hash": "dba2d1941975"
+ },
+ "https://news-views.in/jobs/chandigarh-administration-veterinary-inspector-2026/": {
+  "sentAt": "2026-11-20T05:21:43.300Z",
+  "hash": "48791d90624e"
+ },
+ "https://news-views.in/jobs/csu-centre-coordinator-technical-expert-more-2026/": {
+  "sentAt": "2026-11-20T05:21:43.556Z",
+  "hash": "efaf10e678ec"
+ },
+ "https://news-views.in/jobs/dafw-member-secretary-2027/": {
+  "sentAt": "2026-11-20T05:21:43.776Z",
+  "hash": "13e79f5cc19e"
+ },
+ "https://news-views.in/jobs/dhs-salem-therapeutic-assistant-radiographer-more-2026/": {
+  "sentAt": "2026-11-20T05:21:44.018Z",
+  "hash": "99a782d8e7d6"
+ },
+ "https://news-views.in/jobs/iit-hyderabad-research-associate-mechanical-aerospace-2026/": {
+  "sentAt": "2026-11-20T05:21:44.223Z",
+  "hash": "6414ed5932a2"
+ },
+ "https://news-views.in/jobs/kerala-high-court-civil-judge-2026/": {
+  "sentAt": "2026-11-20T05:21:44.429Z",
+  "hash": "d0d16ebe275b"
+ },
+ "https://news-views.in/jobs/n-administration-senior-architect-architect-2027/": {
+  "sentAt": "2026-11-20T05:21:44.670Z",
+  "hash": "4e017cfc869f"
+ },
+ "https://news-views.in/jobs/ncl-clerk-lab-technician-more-2026/": {
+  "sentAt": "2026-11-20T05:21:44.881Z",
+  "hash": "67702d56628b"
+ },
+ "https://news-views.in/jobs/negd-full-stack-developer-business-analyst-2026/": {
+  "sentAt": "2026-11-20T05:21:45.087Z",
+  "hash": "a14618372ca0"
+ },
+ "https://news-views.in/jobs/nfsu-laboratory-assistant-associate-professor-more-2026/": {
+  "sentAt": "2026-11-20T05:21:45.296Z",
+  "hash": "7c3d4c639b6c"
+ },
+ "https://news-views.in/jobs/nlu-delhi-counsellor-2026/": {
+  "sentAt": "2026-11-20T05:21:45.500Z",
+  "hash": "a9badf036bc7"
+ },
+ "https://news-views.in/jobs/rsml-assistant-professor-2026/": {
+  "sentAt": "2026-11-20T05:21:45.708Z",
+  "hash": "6f2895f2faf8"
+ },
+ "https://news-views.in/jobs/shri-shivaji-mofat-education-society-assistant-2026/": {
+  "sentAt": "2026-11-20T05:21:45.940Z",
+  "hash": "5265645d3961"
  }
 }
