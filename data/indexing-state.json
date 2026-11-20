@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-20",
   "tz": "PT",
-  "used": 177,
+  "used": 178,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9810,5 +9810,9 @@
  "https://news-views.in/jobs/tripura-university-driver-2026/": {
   "sentAt": "2026-11-20T20:11:02.154Z",
   "hash": "edb4fa40f599"
+ },
+ "https://news-views.in/jobs/sfio-joint-director-deputy-director-more-2027/": {
+  "sentAt": "2026-11-20T22:10:54.166Z",
+  "hash": "b1fe266b0c15"
  }
 }
