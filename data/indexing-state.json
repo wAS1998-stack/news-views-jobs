@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "tz": "PT",
-  "used": 152,
+  "used": 22,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9102,5 +9102,93 @@
  "https://news-views.in/jobs/shri-shivaji-mofat-education-society-assistant-2026/": {
   "sentAt": "2026-11-20T05:21:45.940Z",
   "hash": "5265645d3961"
+ },
+ "https://news-views.in/jobs/bedf-principal-scientist-2026/": {
+  "sentAt": "2026-11-20T08:01:07.916Z",
+  "hash": "0c73c5914513"
+ },
+ "https://news-views.in/jobs/bobcaps-it-avp-2026/": {
+  "sentAt": "2026-11-20T08:01:08.166Z",
+  "hash": "0ec14585d721"
+ },
+ "https://news-views.in/jobs/bpbcc-lower-division-clerk-2026/": {
+  "sentAt": "2026-11-20T08:01:08.415Z",
+  "hash": "38ed75557d19"
+ },
+ "https://news-views.in/jobs/bu-library-apprentice-trainee-2026/": {
+  "sentAt": "2026-11-20T08:01:08.652Z",
+  "hash": "d5a6233eb965"
+ },
+ "https://news-views.in/jobs/cacp-member-secretary-2027/": {
+  "sentAt": "2026-11-20T08:01:08.934Z",
+  "hash": "00b63183eb18"
+ },
+ "https://news-views.in/jobs/cochin-port-authority-asst-secretary-gr-2027/": {
+  "sentAt": "2026-11-20T08:01:09.157Z",
+  "hash": "fdb180b8cd01"
+ },
+ "https://news-views.in/jobs/csb-junior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-20T08:01:09.378Z",
+  "hash": "eb60bf27f36c"
+ },
+ "https://news-views.in/jobs/csir-imtech-project-assistant-project-associate-2026/": {
+  "sentAt": "2026-11-20T08:01:09.576Z",
+  "hash": "386e282b10b2"
+ },
+ "https://news-views.in/jobs/csir-serc-security-assistant-2026/": {
+  "sentAt": "2026-11-20T08:01:09.827Z",
+  "hash": "d09b8944cb00"
+ },
+ "https://news-views.in/jobs/gbu-interns-walkin-2026/": {
+  "sentAt": "2026-11-20T08:01:10.053Z",
+  "hash": "f6656e7fada2"
+ },
+ "https://news-views.in/jobs/hp-high-court-stenographer-2026/": {
+  "sentAt": "2026-11-20T08:01:10.255Z",
+  "hash": "f8ef435747d5"
+ },
+ "https://news-views.in/jobs/icar-cmfri-young-professional-walkin-2026/": {
+  "sentAt": "2026-11-20T08:01:10.453Z",
+  "hash": "34abec77c1a4"
+ },
+ "https://news-views.in/jobs/icmr-young-professional-ii-2026/": {
+  "sentAt": "2026-11-20T08:01:10.661Z",
+  "hash": "8a3f42965d99"
+ },
+ "https://news-views.in/jobs/ihm-bhopal-principal-2026/": {
+  "sentAt": "2026-11-20T08:01:10.863Z",
+  "hash": "75c363a454f8"
+ },
+ "https://news-views.in/jobs/kashmir-university-junior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-20T08:01:11.086Z",
+  "hash": "c602aa590306"
+ },
+ "https://news-views.in/jobs/kvafsu-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-20T08:01:11.288Z",
+  "hash": "298708cfedc2"
+ },
+ "https://news-views.in/jobs/msrlm-block-anchor-senior-crp-2026/": {
+  "sentAt": "2026-11-20T08:01:11.487Z",
+  "hash": "f479e91689fe"
+ },
+ "https://news-views.in/jobs/nam-idukki-pharmacist-multi-purpose-worker-2026/": {
+  "sentAt": "2026-11-20T08:01:11.698Z",
+  "hash": "806b7329ade9"
+ },
+ "https://news-views.in/jobs/panjab-university-field-investigator-walkin-2026/": {
+  "sentAt": "2026-11-20T08:01:11.924Z",
+  "hash": "53b4266b7d10"
+ },
+ "https://news-views.in/jobs/rites-senior-technical-assistant-advt-48-26-2026/": {
+  "sentAt": "2026-11-20T08:01:12.120Z",
+  "hash": "f3dbb8d5498b"
+ },
+ "https://news-views.in/jobs/rri-senior-project-associate-2026/": {
+  "sentAt": "2026-11-20T08:01:12.322Z",
+  "hash": "fe948e81a729"
+ },
+ "https://news-views.in/jobs/uppsc-civil-judge-pcs-j-out-2026/": {
+  "sentAt": "2026-11-20T08:01:12.521Z",
+  "hash": "0f64617f2cde"
  }
 }

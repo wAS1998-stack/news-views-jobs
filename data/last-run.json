@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T05:21:42.254Z",
+    "at": "2026-11-20T08:01:06.944Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,24 +187,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T05:21:46.064Z",
+    "at": "2026-11-20T08:01:12.645Z",
     "ok": true,
-    "submitted": 14,
+    "submitted": 22,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 152,
+    "usedToday": 22,
     "log": [
-      "Indexing API: 14 to send (14 updated, 0 deleted); 138/200 used in Google's day 2026-11-19 (Pacific).",
-      "Indexing API: sent 14."
+      "Indexing API: 22 to send (22 updated, 0 deleted); 0/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 22."
     ]
   },
   "push": {
-    "at": "2026-11-20T05:22:36.167Z",
+    "at": "2026-11-20T08:02:27.392Z",
     "ok": true,
-    "sent": 62,
+    "sent": 64,
     "log": [
-      "push-notify: 62 sent\n  job ncl-clerk-lab-technician-more-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ncl-clerk-lab-technician-more-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  follow o-upsssc upsssc-moharir-exam-city-"
+      "push-notify: 64 sent\n  job bpbcc-lower-division-clerk-2026 en ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job bpbcc-lower-division-clerk-2026 hi ['s-bihar' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job hp-high-court-stenographer-2026 en ['s-himach"
     ]
   },
   "enrich": {
