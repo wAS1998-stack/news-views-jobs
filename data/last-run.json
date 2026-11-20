@@ -170,7 +170,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-20T15:20:42.823Z",
+    "at": "2026-11-20T17:50:26.489Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -181,24 +181,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-20T15:20:54.777Z",
+    "at": "2026-11-20T17:50:29.331Z",
     "ok": true,
-    "submitted": 55,
+    "submitted": 9,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 164,
+    "usedToday": 173,
     "log": [
-      "Indexing API: 55 to send (55 updated, 0 deleted); 109/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 55."
+      "Indexing API: 9 to send (9 updated, 0 deleted); 164/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 9."
     ]
   },
   "push": {
-    "at": "2026-11-20T15:22:18.639Z",
+    "at": "2026-11-20T17:50:59.661Z",
     "ok": true,
-    "sent": 142,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 142 sent\n  job haryana-fisheries-department-clerk-2026 en ['s-haryana' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job haryana-fisheries-department-clerk-2026 hi ['s-haryana' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job district-agriculture-off"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "enrich": {

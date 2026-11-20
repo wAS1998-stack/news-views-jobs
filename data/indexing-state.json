@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-20",
   "tz": "PT",
-  "used": 164,
+  "used": 173,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9758,5 +9758,41 @@
  "https://news-views.in/jobs/vigilance-department-mizoram-director-2027/": {
   "sentAt": "2026-11-20T15:20:54.655Z",
   "hash": "482b113778ed"
+ },
+ "https://news-views.in/jobs/civil-court-sheohar-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-20T17:50:27.447Z",
+  "hash": "70c094540564"
+ },
+ "https://news-views.in/jobs/district-health-society-karur-staff-nurse-2026/": {
+  "sentAt": "2026-11-20T17:50:27.688Z",
+  "hash": "e91b26cfe3f2"
+ },
+ "https://news-views.in/jobs/kanniyakumari-district-health-society-staff-nurse-2026/": {
+  "sentAt": "2026-11-20T17:50:27.924Z",
+  "hash": "f0165f77bf52"
+ },
+ "https://news-views.in/jobs/ncct-accounts-officer-audit-officer-2026/": {
+  "sentAt": "2026-11-20T17:50:28.137Z",
+  "hash": "f19246567bfd"
+ },
+ "https://news-views.in/jobs/nit-kurukshetra-junior-research-fellow-physics-2026/": {
+  "sentAt": "2026-11-20T17:50:28.379Z",
+  "hash": "2b58f49ff715"
+ },
+ "https://news-views.in/jobs/principal-district-sessions-judge-vaishali-clerk-2026/": {
+  "sentAt": "2026-11-20T17:50:28.605Z",
+  "hash": "b99e405de950"
+ },
+ "https://news-views.in/jobs/punjabi-university-research-associate-2026/": {
+  "sentAt": "2026-11-20T17:50:28.809Z",
+  "hash": "750980b6fd60"
+ },
+ "https://news-views.in/jobs/slbsnsu-senior-consultant-walkin-2026/": {
+  "sentAt": "2026-11-20T17:50:29.009Z",
+  "hash": "44948fb60439"
+ },
+ "https://news-views.in/jobs/tn-nhm-staff-nurse-2026/": {
+  "sentAt": "2026-11-20T17:50:29.208Z",
+  "hash": "e00fe8ff4383"
  }
 }
