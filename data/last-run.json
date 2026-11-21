@@ -209,7 +209,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T02:28:15.451Z",
+    "at": "2026-11-21T04:27:04.861Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -220,23 +220,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T02:28:15.996Z",
+    "at": "2026-11-21T04:27:06.148Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 19,
-    "usedToday": 181,
+    "submitted": 3,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-20",
+    "usedToday": 184,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 181/200 used in Google's day 2026-11-20 (Pacific)."
+      "Indexing API: 3 to send (3 updated, 0 deleted); 181/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 3."
     ]
   },
   "push": {
-    "at": "2026-11-21T02:29:02.194Z",
+    "at": "2026-11-21T04:27:48.926Z",
     "ok": true,
-    "sent": 154,
+    "sent": 140,
     "log": [
-      "push-notify: 154 sent\n  job tn-nhm-staff-nurse-2026 en [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job tn-nhm-staff-nurse-2026 hi [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job tn-nhm"
+      "push-notify: 140 sent\n  job ksfes-fire-fighter-out-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job ksfes-fire-fighter-out-2026 hi [('s-karnataka' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  jo"
     ]
   },
   "gsc": {

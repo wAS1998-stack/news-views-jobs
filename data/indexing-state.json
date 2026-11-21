@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-20",
   "tz": "PT",
-  "used": 181,
+  "used": 184,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9822,5 +9822,17 @@
  "https://news-views.in/jobs/nsic-general-manager-deputy-general-manager-2026/": {
   "sentAt": "2026-11-21T00:20:47.932Z",
   "hash": "ce19108e8274"
+ },
+ "https://news-views.in/jobs/iav-laboratory-instructor-2026/": {
+  "sentAt": "2026-11-21T04:27:05.609Z",
+  "hash": "6ac813d58cca"
+ },
+ "https://news-views.in/jobs/ksfes-fire-fighter-out-2026/": {
+  "sentAt": "2026-11-21T04:27:05.824Z",
+  "hash": "815544582b20"
+ },
+ "https://news-views.in/jobs/sctimst-doctoral-fellow-medical-walk-2026/": {
+  "sentAt": "2026-11-21T04:27:06.025Z",
+  "hash": "904e6ebebe85"
  }
 }
