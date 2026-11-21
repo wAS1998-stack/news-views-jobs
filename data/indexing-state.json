@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 91,
+  "used": 94,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10226,5 +10226,17 @@
  "https://news-views.in/jobs/iipa-senior-consultant-2026/": {
   "sentAt": "2026-11-21T21:08:14.801Z",
   "hash": "fe558f04f70b"
+ },
+ "https://news-views.in/jobs/icf-hospital-honorary-visiting-specialist-2026/": {
+  "sentAt": "2026-11-21T23:19:38.486Z",
+  "hash": "87f803ee39ca"
+ },
+ "https://news-views.in/jobs/kaimur-civil-court-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-21T23:19:38.795Z",
+  "hash": "d26b7441676c"
+ },
+ "https://news-views.in/jobs/uor-research-associate-project-assistant-2026/": {
+  "sentAt": "2026-11-21T23:19:39.103Z",
+  "hash": "2f6e98f4fa1f"
  }
 }
