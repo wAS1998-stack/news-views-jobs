@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 59,
+  "used": 74,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10098,5 +10098,65 @@
  "https://news-views.in/jobs/zp-satara-medical-officer-interview-list-2026/": {
   "sentAt": "2026-11-21T12:23:39.193Z",
   "hash": "bffceb6d3eac"
+ },
+ "https://news-views.in/jobs/amu-cpc-assistant-professor-2026/": {
+  "sentAt": "2026-11-21T14:26:10.850Z",
+  "hash": "ca5411b2364b"
+ },
+ "https://news-views.in/jobs/amu-instructor-2026/": {
+  "sentAt": "2026-11-21T14:26:11.130Z",
+  "hash": "27aef438e240"
+ },
+ "https://news-views.in/jobs/bmc-program-coordinator-deo-2026/": {
+  "sentAt": "2026-11-21T14:26:11.387Z",
+  "hash": "760d44c03199"
+ },
+ "https://news-views.in/jobs/bmc-x-ray-technician-2026/": {
+  "sentAt": "2026-11-21T14:26:11.650Z",
+  "hash": "c41a0ff28c43"
+ },
+ "https://news-views.in/jobs/dhs-pudukkottai-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T14:26:11.875Z",
+  "hash": "7f44a4436d66"
+ },
+ "https://news-views.in/jobs/district-programme-officer-icds-ballia-anganwadi-2026/": {
+  "sentAt": "2026-11-21T14:26:12.119Z",
+  "hash": "d5fdea70829f"
+ },
+ "https://news-views.in/jobs/district-transport-office-yadadri-bhuvanagiri-road-2026/": {
+  "sentAt": "2026-11-21T14:26:12.360Z",
+  "hash": "ae60f5242d66"
+ },
+ "https://news-views.in/jobs/gmrc-additional-general-manager-manager-more-2026/": {
+  "sentAt": "2026-11-21T14:26:12.593Z",
+  "hash": "02398388e149"
+ },
+ "https://news-views.in/jobs/katihar-district-administration-surveyor-volunteer-2026/": {
+  "sentAt": "2026-11-21T14:26:12.843Z",
+  "hash": "13355f938110"
+ },
+ "https://news-views.in/jobs/kgmu-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-21T14:26:13.052Z",
+  "hash": "ed10930af0de"
+ },
+ "https://news-views.in/jobs/moil-sap-functional-consultant-2026/": {
+  "sentAt": "2026-11-21T14:26:13.301Z",
+  "hash": "e81eed046e32"
+ },
+ "https://news-views.in/jobs/mpmmcc-genetic-counsellor-2026/": {
+  "sentAt": "2026-11-21T14:26:13.507Z",
+  "hash": "327e6a08951e"
+ },
+ "https://news-views.in/jobs/nam-yoga-instructor-physiotherapist-2026/": {
+  "sentAt": "2026-11-21T14:26:13.709Z",
+  "hash": "1436a2dc0374"
+ },
+ "https://news-views.in/jobs/uttarakhand-high-court-counsellor-general-counsellor-2026/": {
+  "sentAt": "2026-11-21T14:26:13.910Z",
+  "hash": "a498842db0e7"
+ },
+ "https://news-views.in/jobs/vbu-faculty-professor-associate-assistant-professor-2026/": {
+  "sentAt": "2026-11-21T14:26:14.149Z",
+  "hash": "d0eb2b949a96"
  }
 }

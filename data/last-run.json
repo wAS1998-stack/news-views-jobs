@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T12:23:33.790Z",
+    "at": "2026-11-21T14:26:10.092Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -244,24 +244,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T12:23:39.315Z",
+    "at": "2026-11-21T14:26:14.272Z",
     "ok": true,
-    "submitted": 23,
+    "submitted": 15,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 59,
+    "usedToday": 74,
     "log": [
-      "Indexing API: 23 to send (23 updated, 0 deleted); 36/200 used in Google's day 2026-11-21 (Pacific).",
-      "Indexing API: sent 23."
+      "Indexing API: 15 to send (15 updated, 0 deleted); 59/200 used in Google's day 2026-11-21 (Pacific).",
+      "Indexing API: sent 15."
     ]
   },
   "push": {
-    "at": "2026-11-21T12:24:55.378Z",
+    "at": "2026-11-21T14:27:20.040Z",
     "ok": true,
-    "sent": 66,
+    "sent": 110,
     "log": [
-      "push-notify: 66 sent\n  job mpuat-young-professional-i-walkin-2026 en ['s-rajasthan' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job mpuat-young-professional-i-walkin-2026 hi ['s-rajasthan' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job iit-ism-dhanbad-long-term"
+      "push-notify: 110 sent\n  job uttarakhand-high-court-counsellor-general-counsellor-2026 en ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job uttarakhand-high-court-counsellor-general-counsellor-2026 hi ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-hi' in "
     ]
   },
   "gsc": {
