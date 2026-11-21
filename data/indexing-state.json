@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 15,
+  "used": 27,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9922,5 +9922,53 @@
  "https://news-views.in/jobs/iit-roorkee-project-associate-walkin-2026/": {
   "sentAt": "2026-11-21T08:57:43.242Z",
   "hash": "7c6fbff1c89b"
+ },
+ "https://news-views.in/jobs/angrau-part-time-medical-officer-walkin-2026/": {
+  "sentAt": "2026-11-21T09:46:03.333Z",
+  "hash": "abe02c5829dd"
+ },
+ "https://news-views.in/jobs/angrau-teaching-assistant-walkin-2026/": {
+  "sentAt": "2026-11-21T09:46:03.619Z",
+  "hash": "0c6fa5c04d2e"
+ },
+ "https://news-views.in/jobs/bric-ils-accountant-2026/": {
+  "sentAt": "2026-11-21T09:46:03.853Z",
+  "hash": "386396dd3827"
+ },
+ "https://news-views.in/jobs/cskhpkv-project-assistant-2026/": {
+  "sentAt": "2026-11-21T09:46:04.065Z",
+  "hash": "bbd71a021380"
+ },
+ "https://news-views.in/jobs/ddu-hospital-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-21T09:46:04.375Z",
+  "hash": "381aa9ed8129"
+ },
+ "https://news-views.in/jobs/dhs-ariyalur-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T09:46:04.657Z",
+  "hash": "6e63c2a47556"
+ },
+ "https://news-views.in/jobs/dhs-tenkasi-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T09:46:04.892Z",
+  "hash": "011148cf0efe"
+ },
+ "https://news-views.in/jobs/district-social-welfare-office-mayiladuthurai-mts-2026/": {
+  "sentAt": "2026-11-21T09:46:05.059Z",
+  "hash": "0c91faa37bd5"
+ },
+ "https://news-views.in/jobs/gmfc-assistant-professor-college-counsellor-2026/": {
+  "sentAt": "2026-11-21T09:46:05.287Z",
+  "hash": "6449d2c020a3"
+ },
+ "https://news-views.in/jobs/msc-bank-representative-institutional-administrator-2026/": {
+  "sentAt": "2026-11-21T09:46:05.552Z",
+  "hash": "8774164543ab"
+ },
+ "https://news-views.in/jobs/thsti-walkin-project-assistant-project-research-2026/": {
+  "sentAt": "2026-11-21T09:46:05.816Z",
+  "hash": "42c36bbd3654"
+ },
+ "https://news-views.in/jobs/uoh-project-technical-support-ii-2026/": {
+  "sentAt": "2026-11-21T09:46:06.083Z",
+  "hash": "1aac33000429"
  }
 }
