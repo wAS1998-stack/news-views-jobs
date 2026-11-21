@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 27,
+  "used": 36,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9970,5 +9970,41 @@
  "https://news-views.in/jobs/uoh-project-technical-support-ii-2026/": {
   "sentAt": "2026-11-21T09:46:06.083Z",
   "hash": "1aac33000429"
+ },
+ "https://news-views.in/jobs/aiims-bhubaneswar-walkin-junior-consultant-research-2026/": {
+  "sentAt": "2026-11-21T10:21:58.346Z",
+  "hash": "3029c6d6497d"
+ },
+ "https://news-views.in/jobs/cec-computer-programme-assistant-producer-more-2026/": {
+  "sentAt": "2026-11-21T10:21:58.614Z",
+  "hash": "b0bd2cb61b48"
+ },
+ "https://news-views.in/jobs/csgrc-junior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-21T10:21:58.869Z",
+  "hash": "e1d4b1316d46"
+ },
+ "https://news-views.in/jobs/district-health-society-tiruchirappalli-staff-nurses-2026/": {
+  "sentAt": "2026-11-21T10:21:59.092Z",
+  "hash": "c2f0697d3399"
+ },
+ "https://news-views.in/jobs/iiit-sonepat-associate-professor-assistant-professor-2026/": {
+  "sentAt": "2026-11-21T10:21:59.345Z",
+  "hash": "1d54369b66a9"
+ },
+ "https://news-views.in/jobs/jamui-civil-court-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-21T10:21:59.594Z",
+  "hash": "a1f690380db2"
+ },
+ "https://news-views.in/jobs/mahabubnagar-district-court-special-judicial-magistrate-2026/": {
+  "sentAt": "2026-11-21T10:21:59.831Z",
+  "hash": "6ece60b34397"
+ },
+ "https://news-views.in/jobs/pajancoa-ri-consultant-2026/": {
+  "sentAt": "2026-11-21T10:22:00.070Z",
+  "hash": "8978e77a1e2d"
+ },
+ "https://news-views.in/jobs/punjabi-university-project-fellow-2026/": {
+  "sentAt": "2026-11-21T10:22:00.317Z",
+  "hash": "7d2d72ec00ed"
  }
 }
