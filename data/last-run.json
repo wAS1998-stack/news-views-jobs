@@ -218,7 +218,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T00:20:46.939Z",
+    "at": "2026-11-21T02:28:15.451Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -229,25 +229,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T00:20:48.296Z",
+    "at": "2026-11-21T02:28:15.996Z",
     "ok": true,
-    "submitted": 3,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 19,
     "usedToday": 181,
+    "kept": 4,
+    "quotaDay": "2026-11-20",
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 178/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 181/200 used in Google's day 2026-11-20 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-21T00:21:00.078Z",
+    "at": "2026-11-21T02:29:02.194Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 154,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 154 sent\n  job tn-nhm-staff-nurse-2026 en [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job tn-nhm-staff-nurse-2026 hi [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job tn-nhm"
     ]
   },
   "gsc": {
