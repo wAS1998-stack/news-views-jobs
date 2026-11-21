@@ -223,7 +223,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T04:27:04.861Z",
+    "at": "2026-11-21T06:28:11.921Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -234,24 +234,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T04:27:06.148Z",
+    "at": "2026-11-21T06:28:14.026Z",
     "ok": true,
-    "submitted": 3,
+    "submitted": 7,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 184,
+    "usedToday": 191,
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 181/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 7 to send (7 updated, 0 deleted); 184/200 used in Google's day 2026-11-20 (Pacific).",
+      "Indexing API: sent 7."
     ]
   },
   "push": {
-    "at": "2026-11-21T04:27:48.926Z",
+    "at": "2026-11-21T06:29:17.150Z",
     "ok": true,
-    "sent": 140,
+    "sent": 70,
     "log": [
-      "push-notify: 140 sent\n  job ksfes-fire-fighter-out-2026 en [('s-karnataka' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job ksfes-fire-fighter-out-2026 hi [('s-karnataka' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  jo"
+      "push-notify: 70 sent\n  job nhm-mp-staff-nurse-2026 en ['s-madhya-pradesh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job nhm-mp-staff-nurse-2026 hi ['s-madhya-pradesh' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job crsu-jind-teaching-out-professor-associate-"
     ]
   },
   "gsc": {

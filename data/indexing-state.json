@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-20",
   "tz": "PT",
-  "used": 184,
+  "used": 191,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9834,5 +9834,33 @@
  "https://news-views.in/jobs/sctimst-doctoral-fellow-medical-walk-2026/": {
   "sentAt": "2026-11-21T04:27:06.025Z",
   "hash": "904e6ebebe85"
+ },
+ "https://news-views.in/jobs/bric-nabi-system-analyst-management-assistant-2026/": {
+  "sentAt": "2026-11-21T06:28:12.656Z",
+  "hash": "8e6806e6ee48"
+ },
+ "https://news-views.in/jobs/cau-imphal-project-assistant-walkin-2026/": {
+  "sentAt": "2026-11-21T06:28:12.855Z",
+  "hash": "faf26be3e87d"
+ },
+ "https://news-views.in/jobs/crsu-jind-teaching-out-professor-associate-2026/": {
+  "sentAt": "2026-11-21T06:28:13.130Z",
+  "hash": "97c0fa3fd379"
+ },
+ "https://news-views.in/jobs/district-health-society-kallakurichi-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T06:28:13.325Z",
+  "hash": "96f454be5e1c"
+ },
+ "https://news-views.in/jobs/district-health-society-tirupathur-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T06:28:13.521Z",
+  "hash": "a07ba8089799"
+ },
+ "https://news-views.in/jobs/nhm-mp-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T06:28:13.702Z",
+  "hash": "e229b05b85c4"
+ },
+ "https://news-views.in/jobs/sidbi-grade-a-b-officer-out-general-2026/": {
+  "sentAt": "2026-11-21T06:28:13.902Z",
+  "hash": "fffcfaac00b8"
  }
 }
