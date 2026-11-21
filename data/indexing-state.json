@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "tz": "PT",
-  "used": 191,
+  "used": 15,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9862,5 +9862,65 @@
  "https://news-views.in/jobs/sidbi-grade-a-b-officer-out-general-2026/": {
   "sentAt": "2026-11-21T06:28:13.902Z",
   "hash": "fffcfaac00b8"
+ },
+ "https://news-views.in/jobs/aiims-bhopal-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-21T08:57:40.192Z",
+  "hash": "598b78910e4c"
+ },
+ "https://news-views.in/jobs/beml-executive-out-engineer-manager-other-2026/": {
+  "sentAt": "2026-11-21T08:57:40.411Z",
+  "hash": "ad4efd9ac928"
+ },
+ "https://news-views.in/jobs/dhs-cuddalore-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T08:57:40.646Z",
+  "hash": "1c33b8d68a53"
+ },
+ "https://news-views.in/jobs/dhs-nilgiris-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T08:57:40.871Z",
+  "hash": "e69c9e00d77e"
+ },
+ "https://news-views.in/jobs/dhs-ranipet-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T08:57:41.129Z",
+  "hash": "ab362174136d"
+ },
+ "https://news-views.in/jobs/dhs-thoothukudi-therapeutic-assistants-therapeutic-2026/": {
+  "sentAt": "2026-11-21T08:57:41.323Z",
+  "hash": "111d7596fe10"
+ },
+ "https://news-views.in/jobs/dhs-tirunelveli-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T08:57:41.514Z",
+  "hash": "220b410543cf"
+ },
+ "https://news-views.in/jobs/dhs-tiruvallur-staff-nurse-2026/": {
+  "sentAt": "2026-11-21T08:57:41.717Z",
+  "hash": "d077f2b21ed1"
+ },
+ "https://news-views.in/jobs/dhs-vellore-medical-officer-urban-health-2026/": {
+  "sentAt": "2026-11-21T08:57:41.941Z",
+  "hash": "3f758bacb925"
+ },
+ "https://news-views.in/jobs/district-sessions-judge-kamrup-government-pleader-2026/": {
+  "sentAt": "2026-11-21T08:57:42.151Z",
+  "hash": "509e361f6c44"
+ },
+ "https://news-views.in/jobs/ecl-advisor-2026/": {
+  "sentAt": "2026-11-21T08:57:42.370Z",
+  "hash": "54628b8eacbc"
+ },
+ "https://news-views.in/jobs/goa-police-constable-home-guard-2026/": {
+  "sentAt": "2026-11-21T08:57:42.565Z",
+  "hash": "202619bbb094"
+ },
+ "https://news-views.in/jobs/gsl-assistant-superintendent-2026/": {
+  "sentAt": "2026-11-21T08:57:42.787Z",
+  "hash": "cb266e8c067a"
+ },
+ "https://news-views.in/jobs/iit-jammu-research-associate-2026/": {
+  "sentAt": "2026-11-21T08:57:43.049Z",
+  "hash": "d9d47087e24d"
+ },
+ "https://news-views.in/jobs/iit-roorkee-project-associate-walkin-2026/": {
+  "sentAt": "2026-11-21T08:57:43.242Z",
+  "hash": "7c6fbff1c89b"
  }
 }

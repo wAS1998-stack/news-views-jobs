@@ -236,7 +236,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T06:28:11.921Z",
+    "at": "2026-11-21T08:57:39.419Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -247,24 +247,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T06:28:14.026Z",
+    "at": "2026-11-21T08:57:43.364Z",
     "ok": true,
-    "submitted": 7,
+    "submitted": 15,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 191,
+    "usedToday": 15,
     "log": [
-      "Indexing API: 7 to send (7 updated, 0 deleted); 184/200 used in Google's day 2026-11-20 (Pacific).",
-      "Indexing API: sent 7."
+      "Indexing API: 15 to send (15 updated, 0 deleted); 0/200 used in Google's day 2026-11-21 (Pacific).",
+      "Indexing API: sent 15."
     ]
   },
   "push": {
-    "at": "2026-11-21T06:29:17.150Z",
+    "at": "2026-11-21T08:58:39.172Z",
     "ok": true,
-    "sent": 70,
+    "sent": 78,
     "log": [
-      "push-notify: 70 sent\n  job nhm-mp-staff-nurse-2026 en ['s-madhya-pradesh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job nhm-mp-staff-nurse-2026 hi ['s-madhya-pradesh' in topics && 'q-12th-pass' in topics && 'l-hi' in topics]: ok\n  job crsu-jind-teaching-out-professor-associate-"
+      "push-notify: 78 sent\n  job goa-police-constable-home-guard-2026 en ['s-goa' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job goa-police-constable-home-guard-2026 hi ['s-goa' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job gsl-assistant-superintendent-2026 en ['s-"
     ]
   },
   "gsc": {
