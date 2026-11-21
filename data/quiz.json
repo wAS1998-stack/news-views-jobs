@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-21",
+    "date": "2026-11-21",
+    "digest_id": "current-affairs-2026-11-21",
+    "title": "Current Affairs Quiz 21 November 2026",
+    "questions": [
+      {
+        "q": "What event was cancelled on November 21, 2026?",
+        "options": [
+          "Cultural Exchange",
+          "Guard Change Ceremony",
+          "IITF Sales Achievement",
+          "National Gopal Ratna Award"
+        ],
+        "answer": 1,
+        "why": "The guard change ceremony scheduled for November 21, 2026, will not take place."
+      },
+      {
+        "q": "Who announced the success of India's Critical Mineral Mission?",
+        "options": [
+          "Shri Shivraj Singh Chouhan",
+          "Unknown",
+          "Professor Shekhar C. Mande",
+          "Keshav Chandra"
+        ],
+        "answer": 3,
+        "why": "Union Secretary of Mines, Mr. Keshav Chandra, stated the success of India's Critical Mineral Mission."
+      },
+      {
+        "q": "Which event was hosted in Goa?",
+        "options": [
+          "Cultural Exchange at IFFI",
+          "India International Trade Fair",
+          "National Gopal Ratna Award",
+          "Guard Change Ceremony"
+        ],
+        "answer": 0,
+        "why": "Goa is hosting the International Film Festival of India (IFFI) showcasing a cultural exchange."
+      },
+      {
+        "q": "What was the sales achievement at the 45th India International Trade Fair?",
+        "options": [
+          "Over ₹70 lakh",
+          "Over ₹50 lakh",
+          "Over ₹60.78 lakh",
+          "Unspecified"
+        ],
+        "answer": 2,
+        "why": "The Ministry of Social Justice and Empowerment achieved cumulative sales of over ₹60.78 lakh at IITF 2026."
+      },
+      {
+        "q": "What place will close to the public on November 21 and 22, 2026?",
+        "options": [
+          "National Zoological Park",
+          "National Gopal Ratna Award location",
+          "IFFI venue",
+          "India International Trade Fair"
+        ],
+        "answer": 0,
+        "why": "The National Zoological Park in New Delhi will be closed to the public on these dates."
+      },
+      {
+        "q": "What award recognizes contributions in dairy farming?",
+        "options": [
+          "Self-Reliant India Award",
+          "Critical Mineral Mission Award",
+          "National Gopal Ratna Award",
+          "Innovative Healthcare Award"
+        ],
+        "answer": 2,
+        "why": "The winners of the National Gopal Ratna Award 2026 recognize significant contributions in dairy farming."
+      },
+      {
+        "q": "Who dedicated the first indigenous vaccine for bird flu?",
+        "options": [
+          "Keshav Chandra",
+          "Professor Shekhar C. Mande",
+          "Shri Shivraj Singh Chouhan",
+          "The Prime Minister"
+        ],
+        "answer": 2,
+        "why": "Union Minister Shri Shivraj Singh Chouhan dedicated this vaccine as part of the self-reliant India initiative."
+      },
+      {
+        "q": "Who was appointed to the UN Sustainable Development Goals group?",
+        "options": [
+          "Shri Shivraj Singh Chouhan",
+          "Professor Shekhar C. Mande",
+          "Keshav Chandra",
+          "None of the above"
+        ],
+        "answer": 1,
+        "why": "Professor Shekhar C. Mande of the Indian National Science Academy has been appointed to this group."
+      },
+      {
+        "q": "Which initiative impacts resource management and economic policies in India?",
+        "options": [
+          "Self-Reliant India",
+          "Cultural Exchange",
+          "Critical Mineral Mission",
+          "Guard Change Ceremony"
+        ],
+        "answer": 2,
+        "why": "India's Critical Mineral Mission is pivotal for resource management and economic policies."
+      },
+      {
+        "q": "What theme was used at the IFFI red carpet event?",
+        "options": [
+          "Endless Emotions",
+          "Cultural Exchange",
+          "One World, Countless Stories",
+          "Tourism Policies"
+        ],
+        "answer": 2,
+        "why": "The theme 'One World, Countless Stories, Endless Emotions' was used at the IFFI red carpet event."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-20",
     "date": "2026-11-20",
     "digest_id": "current-affairs-2026-11-20",
