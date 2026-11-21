@@ -219,7 +219,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T16:29:15.230Z",
+    "at": "2026-11-21T18:29:30.979Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -230,24 +230,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T16:29:19.496Z",
+    "at": "2026-11-21T18:29:31.540Z",
     "ok": true,
-    "submitted": 15,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 111,
     "usedToday": 89,
+    "kept": 4,
+    "quotaDay": "2026-11-21",
     "log": [
-      "Indexing API: 15 to send (15 updated, 0 deleted); 74/200 used in Google's day 2026-11-21 (Pacific).",
-      "Indexing API: sent 15."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 89/200 used in Google's day 2026-11-21 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-21T16:29:59.113Z",
+    "at": "2026-11-21T18:29:32.563Z",
     "ok": true,
-    "sent": 32,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 32 sent\n  job district-judiciary-prakasam-special-judicial-magistrate-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job district-judiciary-prakasam-special-judicial-magistrate-2026 hi ['s-andhra-pradesh' in topics && 'q-graduate' in topics &&"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "gsc": {
