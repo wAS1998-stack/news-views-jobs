@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T14:26:10.092Z",
+    "at": "2026-11-21T16:29:15.230Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -244,24 +244,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T14:26:14.272Z",
+    "at": "2026-11-21T16:29:19.496Z",
     "ok": true,
     "submitted": 15,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 74,
+    "usedToday": 89,
     "log": [
-      "Indexing API: 15 to send (15 updated, 0 deleted); 59/200 used in Google's day 2026-11-21 (Pacific).",
+      "Indexing API: 15 to send (15 updated, 0 deleted); 74/200 used in Google's day 2026-11-21 (Pacific).",
       "Indexing API: sent 15."
     ]
   },
   "push": {
-    "at": "2026-11-21T14:27:20.040Z",
+    "at": "2026-11-21T16:29:59.113Z",
     "ok": true,
-    "sent": 110,
+    "sent": 32,
     "log": [
-      "push-notify: 110 sent\n  job uttarakhand-high-court-counsellor-general-counsellor-2026 en ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job uttarakhand-high-court-counsellor-general-counsellor-2026 hi ['s-uttarakhand' in topics && 'q-graduate' in topics && 'l-hi' in "
+      "push-notify: 32 sent\n  job district-judiciary-prakasam-special-judicial-magistrate-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job district-judiciary-prakasam-special-judicial-magistrate-2026 hi ['s-andhra-pradesh' in topics && 'q-graduate' in topics &&"
     ]
   },
   "gsc": {

@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 74,
+  "used": 89,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10158,5 +10158,65 @@
  "https://news-views.in/jobs/vbu-faculty-professor-associate-assistant-professor-2026/": {
   "sentAt": "2026-11-21T14:26:14.149Z",
   "hash": "d0eb2b949a96"
+ },
+ "https://news-views.in/jobs/bbmku-director-affiliated-colleges-2026/": {
+  "sentAt": "2026-11-21T16:29:16.256Z",
+  "hash": "6ca931883d60"
+ },
+ "https://news-views.in/jobs/bbmku-director-inclusive-education-2026/": {
+  "sentAt": "2026-11-21T16:29:16.493Z",
+  "hash": "70bf5641026b"
+ },
+ "https://news-views.in/jobs/bhavini-advisor-consultant-engineer-2026/": {
+  "sentAt": "2026-11-21T16:29:16.740Z",
+  "hash": "9469a2673e44"
+ },
+ "https://news-views.in/jobs/bsi-publication-assistant-2027/": {
+  "sentAt": "2026-11-21T16:29:16.963Z",
+  "hash": "47a440045ca2"
+ },
+ "https://news-views.in/jobs/bsi-staff-car-driver-2027/": {
+  "sentAt": "2026-11-21T16:29:17.204Z",
+  "hash": "b502908c70e4"
+ },
+ "https://news-views.in/jobs/bu-junior-research-fellow-project-associate-2026/": {
+  "sentAt": "2026-11-21T16:29:17.424Z",
+  "hash": "694b8cba22c0"
+ },
+ "https://news-views.in/jobs/civil-court-sheikhpura-stenographer-clerk-more-2026/": {
+  "sentAt": "2026-11-21T16:29:17.651Z",
+  "hash": "63d9ac66ba97"
+ },
+ "https://news-views.in/jobs/darbhanga-judgeship-stenographer-clerk-peon-orderly-2026/": {
+  "sentAt": "2026-11-21T16:29:17.892Z",
+  "hash": "f0963c8a25b2"
+ },
+ "https://news-views.in/jobs/dhfws-chitradurga-psychiatrist-clinical-psychologist-2026/": {
+  "sentAt": "2026-11-21T16:29:18.096Z",
+  "hash": "8849c1c1cd46"
+ },
+ "https://news-views.in/jobs/dhfws-kolar-walkin-mbbs-medical-officer-2026/": {
+  "sentAt": "2026-11-21T16:29:18.316Z",
+  "hash": "c096d547f098"
+ },
+ "https://news-views.in/jobs/district-judiciary-prakasam-special-judicial-magistrate-2026/": {
+  "sentAt": "2026-11-21T16:29:18.547Z",
+  "hash": "2a1fd6f1badc"
+ },
+ "https://news-views.in/jobs/govt-girls-2026/": {
+  "sentAt": "2026-11-21T16:29:18.747Z",
+  "hash": "e9a021957f9b"
+ },
+ "https://news-views.in/jobs/grsa-resource-person-2026/": {
+  "sentAt": "2026-11-21T16:29:18.964Z",
+  "hash": "427a71ad05bb"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-junior-research-fellow-materials-2026/": {
+  "sentAt": "2026-11-21T16:29:19.172Z",
+  "hash": "a3b225568c20"
+ },
+ "https://news-views.in/jobs/kv-rubber-board-kottayam-primary-teacher-2026/": {
+  "sentAt": "2026-11-21T16:29:19.373Z",
+  "hash": "3be023800b03"
  }
 }
