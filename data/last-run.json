@@ -2,7 +2,7 @@
   "date": "2026-11-22",
   "runs": {},
   "fetch": {
-    "at": "2026-11-21T19:01:08.952Z",
+    "at": "2026-11-21T19:41:11.492Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,9 +11,9 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (1 calls)",
+    "aiStatus": "ok (0 calls)",
     "newJobs": 0,
-    "newUpdates": 1,
+    "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-21; 70 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
@@ -22,8 +22,8 @@
     },
     "updDiag": {
       "seen": 53,
-      "known": 41,
-      "added": 1,
+      "known": 42,
+      "added": 0,
       "filtered": [
         "CLAT 2027 Admit Card",
         "SGBAU Result 2026 Out - Direct Link to Check MCA & M.Sc Result Online @ sgbau.ac",
@@ -55,6 +55,8 @@
       ]
     },
     "log": [
+      "   = same source page as an existing job, skipped: SBI Risk Specialist Recruitment 2026 - Apply Online for 03 Posts",
+      "   = rejected after reading on an earlier run, skipped: CSIR AMPRI Recruitment 2026 - Apply Online for 14 Technician, Officer, Assistant & MTS Posts",
       "   = same source page as an existing job, skipped: BRIC NABI Recruitment 2026 - Apply Online for System Analyst & Management Assistant Posts",
       "   = near-duplicate headline, skipped: BRIC THSTI Scientist Recruitment 2026 - Apply Online for 10 Posts",
       "   = same source page as an existing job, skipped: GSL Executive Recruitment 2026 - Apply Online for 41 Posts",
@@ -77,14 +79,12 @@
       "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
       "   = id nit-silchar-junior-research-fellow-ece-2026 is retired (redirected), skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
       "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts",
-      "Moved 1 older update(s) to data/updates-archive.json.",
-      "Added 1 update(s) (results/admit cards/answer keys)."
+      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-21T19:01:35.101Z",
+    "at": "2026-11-21T19:41:39.172Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 23,
@@ -102,15 +102,15 @@
       "rrb-portal": "paused (fails 157, geo-blocked)",
       "ssc": "7 links, 0 new via news-views.in",
       "ncs": "paused (fails 84)",
-      "ibps": "9 links, 0 new via news-views.in",
       "dsssb": "5 links, 0 new via direct",
-      "nta": "1 links, 0 new via news-views.in",
+      "ibps": "9 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "mppsc": "paused (fails 81, geo-blocked)",
       "mpsc": "paused (fails 161)",
       "ctet": "4 links, 0 new via news-views.in",
       "kpsc": "paused (fails 161, geo-blocked)",
       "appsc": "paused (fails 161, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "wbpsc": "paused (fails 161, geo-blocked)",
       "opsc": "paused (fails 84, geo-blocked)",
       "hpsc": "paused (fails 161, geo-blocked)",
@@ -119,7 +119,7 @@
       "jpsc": "paused (fails 41, geo-blocked)",
       "cgpsc": "paused (fails 161, geo-blocked)",
       "gpsc": "paused (fails 161, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
+      "tgpsc": "5 links, 0 new via news-views.in",
       "ppsc": "paused (fails 161, geo-blocked)",
       "apsc": "paused (fails 161, geo-blocked)",
       "jkpsc": "paused (fails 161, geo-blocked)",
@@ -127,9 +127,9 @@
       "upsssc": "paused (fails 16, geo-blocked)",
       "rssb": "paused (fails 161, geo-blocked)",
       "esb-mp": "paused (fails 161, geo-blocked)",
+      "nta": "1 links, 0 new via news-views.in",
+      "upsc": "4 links, 0 new via news-views.in",
       "bpsc": "5 links, 0 new via news-views.in",
-      "tgpsc": "5 links, 0 new via news-views.in",
-      "tnpsc": "31 links, 0 new via news-views.in",
       "jssc": "paused (fails 161, geo-blocked)",
       "osssc": "paused (fails 84, geo-blocked)",
       "gsssb": "paused (fails 161, geo-blocked)",
@@ -137,20 +137,20 @@
       "hprca": "paused (fails 161, geo-blocked)",
       "uppsc": "1 links, 0 new via news-views.in",
       "kea": "paused (fails 161, geo-blocked)",
-      "upsc": "4 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 161, geo-blocked)",
       "hssc": "8 links, 0 new via direct",
-      "uksssc": "26 links, 0 new via direct",
+      "dsssb2": "paused (fails 161, geo-blocked)",
       "keralapsc": "6 links, 0 new via news-views.in",
+      "tnpsc": "31 links, 0 new via news-views.in",
+      "bssc": "787 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 161, geo-blocked)",
       "tslprb": "paused (fails 161, geo-blocked)",
       "slprb-ap": "paused (fails 161, geo-blocked)",
-      "bssc": "787 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
-      "csbc": "195 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "uppbpb": "7 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
+      "csbc": "195 links, 0 new via news-views.in",
       "rpsc": "191 links, 0 new via news-views.in"
     },
     "log": [
@@ -159,21 +159,19 @@
     ]
   },
   "apply": {
-    "at": "2026-11-21T19:01:55.146Z",
+    "at": "2026-11-21T19:41:39.628Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
-    "checked": 2,
+    "checked": 0,
     "found": 0,
-    "due": 2,
-    "cands": 2,
+    "due": 0,
+    "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "Warning: TT: undefined function: 21",
-      "Warning: TT: undefined function: 21",
-      "apply-links: checked 2, found 0 real application pages (2 due, pdf reader on)",
-      "  candidates seen 2, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   },
   "notify": {
@@ -206,6 +204,46 @@
     "quiet": true,
     "log": [
       "push-notify: nothing new to send (quiet hours)."
+    ]
+  },
+  "enrich": {
+    "at": "2026-11-21T19:41:59.394Z",
+    "ai": "OpenAI (gpt-4o-mini)",
+    "factsRead": 0,
+    "factsPending": 0,
+    "linksFixed": 0,
+    "linksPending": 0,
+    "updatesEnriched": 0,
+    "updatesPending": 0,
+    "contentWritten": 0,
+    "contentPending": 0,
+    "hindiJobsPending": 0,
+    "hindiUpdatesPending": 1,
+    "hindiUpdates": 1,
+    "searchFaqPages": 0,
+    "opportunities": 5,
+    "aiStatus": "ok (1 calls)",
+    "log": [
+      "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
+      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
+      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
+      "Enrich/updates: 0 thin update(s) | doing up to 15",
+      "Enrich/content: 0 job(s) on template content | doing up to 5",
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
+      "  ✓ hindi update: SBI PO इंटरव्यू एडमिट कार्ड 2026 जारी - डाउनलोड करें फेज 3 कॉल लेटर"
+    ]
+  },
+  "news": {
+    "at": "2026-11-21T19:41:59.846Z",
+    "ai": "OpenAI",
+    "aiStatus": "ok (0 calls)",
+    "published": 0,
+    "quizzes": 0,
+    "existing": 400,
+    "feeds": {},
+    "log": [
+      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
+      "  current affairs for today already exists."
     ]
   }
 }
