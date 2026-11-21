@@ -237,7 +237,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-21T10:21:57.480Z",
+    "at": "2026-11-21T12:23:33.790Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -248,24 +248,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-21T10:22:00.440Z",
+    "at": "2026-11-21T12:23:39.315Z",
     "ok": true,
-    "submitted": 9,
+    "submitted": 23,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 36,
+    "usedToday": 59,
     "log": [
-      "Indexing API: 9 to send (9 updated, 0 deleted); 27/200 used in Google's day 2026-11-21 (Pacific).",
-      "Indexing API: sent 9."
+      "Indexing API: 23 to send (23 updated, 0 deleted); 36/200 used in Google's day 2026-11-21 (Pacific).",
+      "Indexing API: sent 23."
     ]
   },
   "push": {
-    "at": "2026-11-21T10:22:54.401Z",
+    "at": "2026-11-21T12:24:55.378Z",
     "ok": true,
-    "sent": 58,
+    "sent": 66,
     "log": [
-      "push-notify: 58 sent\n  job iiit-sonepat-associate-professor-assistant-professor-2026 en ['s-haryana' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job iiit-sonepat-associate-professor-assistant-professor-2026 hi ['s-haryana' in topics && 'q-post-graduate' in topics && 'l-hi' in"
+      "push-notify: 66 sent\n  job mpuat-young-professional-i-walkin-2026 en ['s-rajasthan' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job mpuat-young-professional-i-walkin-2026 hi ['s-rajasthan' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job iit-ism-dhanbad-long-term"
     ]
   },
   "gsc": {
