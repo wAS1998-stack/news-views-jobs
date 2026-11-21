@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 89,
+  "used": 91,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10218,5 +10218,13 @@
  "https://news-views.in/jobs/kv-rubber-board-kottayam-primary-teacher-2026/": {
   "sentAt": "2026-11-21T16:29:19.373Z",
   "hash": "3be023800b03"
+ },
+ "https://news-views.in/jobs/iibf-head-pdc-2026/": {
+  "sentAt": "2026-11-21T21:08:14.582Z",
+  "hash": "0f1e236ad4ac"
+ },
+ "https://news-views.in/jobs/iipa-senior-consultant-2026/": {
+  "sentAt": "2026-11-21T21:08:14.801Z",
+  "hash": "fe558f04f70b"
  }
 }
