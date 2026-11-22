@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-22",
   "tz": "PT",
-  "used": 8,
+  "used": 9,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10282,5 +10282,9 @@
  "https://news-views.in/jobs/kau-technical-officer-walkin-2026/": {
   "sentAt": "2026-11-22T18:10:13.293Z",
   "hash": "9e50ec3ec91e"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-junior-research-fellow-mechanical-2026/": {
+  "sentAt": "2026-11-22T20:52:43.345Z",
+  "hash": "2e23f47a765e"
  }
 }
