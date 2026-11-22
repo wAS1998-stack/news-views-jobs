@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 95,
+  "used": 97,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10242,5 +10242,13 @@
  "https://news-views.in/jobs/pm-shri-kv-no-gaya-walkin-2026/": {
   "sentAt": "2026-11-22T03:37:25.548Z",
   "hash": "b7f4e0956489"
+ },
+ "https://news-views.in/jobs/aps-lbs-marg-walkin-prt-chemistry-2026/": {
+  "sentAt": "2026-11-22T05:39:00.657Z",
+  "hash": "e382694be61a"
+ },
+ "https://news-views.in/jobs/ddu-gorakhpur-university-project-assistant-walkin-2026/": {
+  "sentAt": "2026-11-22T05:39:00.876Z",
+  "hash": "960898367973"
  }
 }
