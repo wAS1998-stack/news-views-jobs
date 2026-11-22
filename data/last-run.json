@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "runs": {},
   "fetch": {
-    "at": "2026-11-22T18:02:22.172Z",
+    "at": "2026-11-22T18:42:23.922Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,11 +11,11 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (1 calls)",
-    "newJobs": 1,
+    "aiStatus": "ok (0 calls)",
+    "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-22; 74 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-22; 75 already known",
       "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-21; 8 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-22; 5 already known"
@@ -82,7 +82,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-22T18:02:51.453Z",
+    "at": "2026-11-22T18:42:51.401Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 23,
@@ -92,23 +92,23 @@
     "skipped": [],
     "sources_health": {
       "nvs": "paused (fails 167, geo-blocked)",
-      "rbi": "16 links, 0 new via direct",
+      "ssc": "7 links, 0 new via news-views.in",
       "aiims": "paused (fails 90)",
       "army": "paused (fails 167, geo-blocked)",
       "navy": "paused (fails 167, geo-blocked)",
       "iaf-agniveer": "paused (fails 167, geo-blocked)",
       "rrb-portal": "paused (fails 163, geo-blocked)",
-      "ssc": "7 links, 0 new via news-views.in",
+      "rbi": "16 links, 0 new via direct",
       "ncs": "paused (fails 90)",
       "dsssb": "5 links, 0 new via direct",
       "ibps": "9 links, 0 new via news-views.in",
-      "ctet": "4 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "mppsc": "paused (fails 87, geo-blocked)",
       "mpsc": "paused (fails 167)",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "kpsc": "paused (fails 167, geo-blocked)",
       "appsc": "paused (fails 167, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
+      "bpsc": "5 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 167, geo-blocked)",
       "opsc": "paused (fails 90, geo-blocked)",
       "hpsc": "paused (fails 167, geo-blocked)",
@@ -117,7 +117,7 @@
       "jpsc": "paused (fails 47, geo-blocked)",
       "cgpsc": "paused (fails 167, geo-blocked)",
       "gpsc": "paused (fails 167, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "ppsc": "paused (fails 167, geo-blocked)",
       "apsc": "paused (fails 167, geo-blocked)",
       "jkpsc": "paused (fails 167, geo-blocked)",
@@ -125,30 +125,30 @@
       "upsssc": "paused (fails 22, geo-blocked)",
       "rssb": "paused (fails 167, geo-blocked)",
       "esb-mp": "paused (fails 167, geo-blocked)",
-      "upsc": "4 links, 0 new via news-views.in",
       "tgpsc": "5 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
+      "hssc": "8 links, 0 new via direct",
       "jssc": "paused (fails 167, geo-blocked)",
       "osssc": "paused (fails 90, geo-blocked)",
       "gsssb": "paused (fails 167, geo-blocked)",
       "sssb-punjab": "paused (fails 167, geo-blocked)",
       "hprca": "paused (fails 167, geo-blocked)",
-      "hssc": "8 links, 0 new via direct",
-      "kea": "paused (fails 167, geo-blocked)",
       "tnpsc": "31 links, 0 new via news-views.in",
-      "dsssb2": "paused (fails 167, geo-blocked)",
-      "uksssc": "26 links, 0 new via direct",
+      "kea": "paused (fails 167, geo-blocked)",
       "bssc": "787 links, 0 new via news-views.in",
-      "nta": "1 links, 0 new via news-views.in",
+      "dsssb2": "paused (fails 167, geo-blocked)",
+      "uppsc": "1 links, 0 new via news-views.in",
+      "upsc": "4 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
       "tnusrb": "paused (fails 167, geo-blocked)",
       "tslprb": "paused (fails 167, geo-blocked)",
       "slprb-ap": "paused (fails 167, geo-blocked)",
+      "uppbpb": "7 links, 0 new via direct",
       "jkssb": "1 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "bpssc": "209 links, 0 new via news-views.in",
       "csbc": "195 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "rpsc": "183 links, 0 new via news-views.in"
     },
     "log": [
@@ -157,106 +157,22 @@
     ]
   },
   "apply": {
-    "at": "2026-11-22T18:02:51.986Z",
+    "at": "2026-11-22T18:46:01.883Z",
     "ok": true,
-    "aiStatus": "ok (0 calls)",
-    "checked": 0,
+    "aiStatus": "ok (1 calls)",
+    "checked": 20,
     "found": 0,
-    "due": 0,
-    "cands": 0,
-    "passed": 0,
-    "jobsWithCands": 0,
+    "due": 20,
+    "cands": 215,
+    "passed": 10,
+    "jobsWithCands": 1,
     "careers": 0,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
-    ]
-  },
-  "notify": {
-    "at": "2026-11-22T18:10:12.055Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "indexing-api": {
-    "at": "2026-11-22T18:10:13.415Z",
-    "ok": true,
-    "submitted": 2,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
-    "usedToday": 8,
-    "log": [
-      "Indexing API: 2 to send (2 updated, 0 deleted); 6/200 used in Google's day 2026-11-22 (Pacific).",
-      "Indexing API: sent 2."
-    ]
-  },
-  "push": {
-    "at": "2026-11-22T18:10:22.070Z",
-    "ok": true,
-    "sent": 0,
-    "quiet": true,
-    "log": [
-      "push-notify: nothing new to send (quiet hours)."
-    ]
-  },
-  "enrich": {
-    "at": "2026-11-22T18:03:48.689Z",
-    "ai": "OpenAI (gpt-4o-mini)",
-    "factsRead": 0,
-    "factsPending": 0,
-    "linksFixed": 0,
-    "linksPending": 0,
-    "updatesEnriched": 0,
-    "updatesPending": 0,
-    "contentWritten": 0,
-    "contentPending": 0,
-    "hindiJobsPending": 2,
-    "hindiJobs": 2,
-    "hindiUpdatesPending": 0,
-    "searchFaqPages": 0,
-    "opportunities": 4,
-    "aiStatus": "ok (2 calls)",
-    "log": [
-      "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
-      "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
-      "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
-      "Enrich/updates: 0 thin update(s) | doing up to 15",
-      "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 2 job(s) without Hindi | doing up to 25",
-      "  ✓ hindi: KAU तकनीकी अधिकारी भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: IIT खड़गपुर ज्यूनियर रिसर्च फेलो (कंप्यूटर साइंस और इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें"
-    ]
-  },
-  "news": {
-    "at": "2026-11-22T18:03:49.233Z",
-    "ai": "OpenAI",
-    "aiStatus": "ok (0 calls)",
-    "published": 0,
-    "quizzes": 0,
-    "existing": 400,
-    "feeds": {},
-    "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists."
-    ]
-  },
-  "gsc": {
-    "at": "2026-11-22T00:34:59.963Z",
-    "ok": true,
-    "property": "https://news-views.in/",
-    "clicks28d": 35,
-    "impressions28d": 632,
-    "pages": 108,
-    "opportunities": 4,
-    "sitemap": 204,
-    "log": [
-      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
+      "Warning: TT: undefined function: 21",
+      "Warning: TT: undefined function: 32",
+      "Warning: TT: undefined function: 21",
+      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
+      "  candidates seen 215, passed the rules 10 (in 1 jobs); recruitment pages found: 0"
     ]
   }
 }
