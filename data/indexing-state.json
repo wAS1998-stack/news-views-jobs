@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-22",
   "tz": "PT",
-  "used": 5,
+  "used": 6,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10270,5 +10270,9 @@
  "https://news-views.in/jobs/uttara-kannada-zilla-panchayat-assistant-district-2026/": {
   "sentAt": "2026-11-22T10:42:44.570Z",
   "hash": "abe6117856d1"
+ },
+ "https://news-views.in/jobs/sbi-gm-head-cstra-2026/": {
+  "sentAt": "2026-11-22T16:03:16.300Z",
+  "hash": "958f2e6531e8"
  }
 }
