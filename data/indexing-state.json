@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "tz": "PT",
-  "used": 97,
+  "used": 1,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10250,5 +10250,9 @@
  "https://news-views.in/jobs/ddu-gorakhpur-university-project-assistant-walkin-2026/": {
   "sentAt": "2026-11-22T05:39:00.876Z",
   "hash": "960898367973"
+ },
+ "https://news-views.in/jobs/rohtas-civil-court-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-22T08:17:37.831Z",
+  "hash": "cdd823dcd622"
  }
 }
