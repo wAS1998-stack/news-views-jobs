@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-22",
   "tz": "PT",
-  "used": 1,
+  "used": 5,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10254,5 +10254,21 @@
  "https://news-views.in/jobs/rohtas-civil-court-stenographer-clerk-peon-2026/": {
   "sentAt": "2026-11-22T08:17:37.831Z",
   "hash": "cdd823dcd622"
+ },
+ "https://news-views.in/jobs/deputy-commissioner-imphal-east-case-worker-2026/": {
+  "sentAt": "2026-11-22T10:42:43.961Z",
+  "hash": "fd6801ae7f7a"
+ },
+ "https://news-views.in/jobs/iit-roorkee-project-assistant-hydrology-2026/": {
+  "sentAt": "2026-11-22T10:42:44.177Z",
+  "hash": "5c3533ba135e"
+ },
+ "https://news-views.in/jobs/kv-karauli-walkin-graduate-teacher-special-2026/": {
+  "sentAt": "2026-11-22T10:42:44.379Z",
+  "hash": "e2e8ebc77cb5"
+ },
+ "https://news-views.in/jobs/uttara-kannada-zilla-panchayat-assistant-district-2026/": {
+  "sentAt": "2026-11-22T10:42:44.570Z",
+  "hash": "abe6117856d1"
  }
 }
