@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-21",
   "tz": "PT",
-  "used": 94,
+  "used": 95,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10238,5 +10238,9 @@
  "https://news-views.in/jobs/uor-research-associate-project-assistant-2026/": {
   "sentAt": "2026-11-21T23:19:39.103Z",
   "hash": "2f6e98f4fa1f"
+ },
+ "https://news-views.in/jobs/pm-shri-kv-no-gaya-walkin-2026/": {
+  "sentAt": "2026-11-22T03:37:25.548Z",
+  "hash": "b7f4e0956489"
  }
 }
