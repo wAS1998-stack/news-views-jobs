@@ -1,5 +1,110 @@
 [
   {
+    "id": "current-affairs-2026-11-22",
+    "type": "current-affairs",
+    "title": "Current Affairs 22 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-22",
+    "summary": "Today's digest focuses on crucial discussions and initiatives ranging from law and order in Arunachal Pradesh to cultural showcases at the International Film Festival of India (IFFI) 2026. It highlights key government meetings and projects that can significantly influence competitive examinations like SSC, UPSC, and State PSC.",
+    "body": [
+      {
+        "h": "Review of Law and Order in Arunachal Pradesh",
+        "p": [
+          "Union Home and Cooperation Minister Amit Shah held a high-level meeting in Itanagar to review the law and order situation, internal security, and border management in Arunachal Pradesh. This is important for maintaining peace and stability in border areas, which directly impacts national security."
+        ]
+      },
+      {
+        "h": "Prime Minister's Address at Skill Convocation in Lucknow",
+        "p": [
+          "During the 'Skilling Convocation Ceremony' in Lucknow, Prime Minister Narendra Modi emphasized the importance of skill development in enhancing employment opportunities. Understanding government initiatives in skill development is vital for aspirants preparing for various competitive exams, as it reflects national priorities."
+        ]
+      },
+      {
+        "h": "IFFI 2026: Rakesh Bedi on Character Development",
+        "p": [
+          "At the IFFI 2026 press conference, renowned actor Rakesh Bedi shared insights on the art of character creation and bringing them to life on screen. This discussion sheds light on the cultural aspects of cinema and its significance in India’s identity, making it relevant for students of culture and arts."
+        ]
+      },
+      {
+        "h": "Media Collaboration Between India and Spain at IFFI",
+        "p": [
+          "India and Spain explored new avenues for collaboration in the media and entertainment sectors during IFFI 2026. This international cooperation is crucial as it demonstrates India's efforts in promoting cultural diplomacy, an important aspect for UPSC aspirants focusing on global relations."
+        ]
+      },
+      {
+        "h": "MOU Exchange for Social Protection Initiatives",
+        "p": [
+          "The National Institute of Social Defence (NISD) signed 23 memoranda of understanding with various universities and institutions aimed at strengthening social protection initiatives across the country. Such partnerships are crucial as they bolster social welfare programs, a significant area of focus for government exams."
+        ]
+      },
+      {
+        "h": "Launch of 'Page to Pitch' by Prasar Bharati",
+        "p": [
+          "Prasar Bharati initiated 'Page to Pitch' at IFFI 57 to discover new storytelling talent in Indian cinema. This initiative not only promotes creativity but also underscores the importance of storytelling in cultural heritage, resonating with aspirants of the arts."
+        ]
+      },
+      {
+        "h": "6th Round of India-Canada CEPA Talks Completed",
+        "p": [
+          "The sixth round of Comprehensive Economic Partnership Agreement (CEPA) negotiations between India and Canada was successfully concluded in New Delhi. Understanding such international economic discussions is essential for competitive exam candidates as it highlights India’s trade and economic strategies."
+        ]
+      },
+      {
+        "h": "Digital Health Summit Participation",
+        "p": [
+          "Bhashini participated in the Global Digital Health Summit 2026, emphasizing the role of multilingual artificial intelligence in building inclusive healthcare services. This discussion on technology's role in healthcare can inform aspirants about current trends in public health and technology."
+        ]
+      }
+    ],
+    "pointers": [
+      "Amit Shah's meeting on law and order in Arunachal Pradesh highlights the government's focus on border security.",
+      "Prime Minister Modi's speech at the skill convocation reflects the importance of skill development in India's employment sector.",
+      "International collaborations in media, like with Spain, are vital for cultural diplomacy and global relations.",
+      "The CEPA talks between India and Canada pertain to economic strategies important for trade policies."
+    ],
+    "sources": [
+      {
+        "title": "केंद्रीय गृह एवं सहकारिता मंत्री श्री अमित शाह ने आज ईटानगर में एक उच्च स्तरीय बैठक में अरुणाचल प्रदेश में कानून-व्यवस्था, आंतरिक सुरक्षा एवं सीमा प्रबंधन की समीक्षा की; प्रदेश के विकास कार्यों की भी समीक्षा बैठक की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339823"
+      },
+      {
+        "title": "उत्तर प्रदेश के लखनऊ में 'कौशल दीक्षांत समारोह' में भाग लेने के दौरान प्रधानमंत्री के संबोधन का मूल पाठ",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339783"
+      },
+      {
+        "title": "इफ्फी 2026 में ‘धुरंधर’ की प्रेस कॉन्फ्रेंस के दौरान जाने-माने अभिनेता राकेश बेदी ने किरदारों को गढ़ने और उन्हें जीवंत बनाने की कला पर अपने विचार साझा किए",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339816"
+      },
+      {
+        "title": "इफ्फी 2026 में भारत और स्पेन ने मीडिया और मनोरंजन क्षेत्र में सहयोग के नए रास्ते तलाशे",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339828"
+      },
+      {
+        "title": "सूचना एवं प्रसारण मंत्रालय के सचिव श्री चंचल कुमार ने गोवा में 57वें इफ़्फी में प्रकाशन विभाग के स्टॉल का उद्घाटन किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339788"
+      },
+      {
+        "title": "एनआईएसडी ने सामाजिक रक्षा संबंधी पहलों को सुदृढ़ बनाने के लिए देशभर के विश्वविद्यालयों और संस्थानों के साथ हस्ताक्षरित 23 समझौता ज्ञापनों का आदान-प्रदान किया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339819"
+      },
+      {
+        "title": "प्रसार भारती ने इफ़्फी (आईएफएफआई) 57 में भारतीय कथा-कथन की नई प्रतिभाओं को खोजने के लिए ‘पेज से पिच तक’ की शुरुआत की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339769"
+      },
+      {
+        "title": "भारत-कनाडा सीईपीए वार्ता का छठा दौर नई दिल्ली में संपन्न",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339776"
+      },
+      {
+        "title": "प्रधानमंत्री श्री नरेन्द्र मोदी ने लखनऊ, उत्तर प्रदेश में 5वें कौशल दीक्षांत समारोह में भाग लिया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339779"
+      },
+      {
+        "title": "“बिकमिंग एक आध्यात्मिक यात्रा है, जो हर पल चलती रहती है”: 57वें इफ्फी में निर्देशक लीना यादव",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2339775"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-21",
     "type": "current-affairs",
     "title": "Current Affairs 21 November 2026: Key Government Updates for Exam Aspirants",
@@ -23703,63 +23808,6 @@
       {
         "title": "Institute of Liver and Biliary Sciences — official notification",
         "link": "https://www.ilbs.in/images/media/inviting-faculty-applications-24102026.pdf"
-      }
-    ]
-  },
-  {
-    "id": "sgou-head-school-2026-explained",
-    "type": "analysis",
-    "title": "Sreenarayanaguru Open University Invites Applications for Head of School Position",
-    "date": "2026-10-24",
-    "summary": "Sreenarayanaguru Open University in Kollam is looking to recruit a Head of School for its School of Communication and Information Science. Eligible candidates must hold the requisite qualifications and submit their applications by November 11, 2026.",
-    "body": [
-      {
-        "h": "Details of the Recruitment Announcement",
-        "p": [
-          "Sreenarayanaguru Open University (SGOU), located in Kollam, has officially announced a recruitment notification for the position of Head of School in its School of Communication and Information Science. This position is critical for guiding academic programs, research initiatives, and administrative responsibilities within the school, ensuring that students receive high-quality education and resources.",
-          "The notification indicates that only one vacancy is available for this prestigious role. Prospective candidates should review the official notification for additional important details, including application procedures and specific responsibilities that will be undertaken by the Head of School."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria and Suitability",
-        "p": [
-          "To be eligible for the Head of School position at SGOU, candidates must possess certain academic qualifications, which includes a Master's degree like M.Phil, Ph.D., or other postgraduate credentials such as M.E/M.Tech, B.Tech/B.E, or M.Sc in relevant fields. This diverse range of acceptable qualifications makes the position suitable for those with a strong educational background in technical or communication disciplines.",
-          "In addition to formal qualifications, candidates are typically expected to have noteworthy experience in academia, including teaching and administrative experience that aligns with leading a school. Given the central role that this position plays in shaping academic strategy and research directions, this opportunity is particularly well-suited for seasoned professionals aiming to make impactful contributions in higher education administration."
-        ]
-      },
-      {
-        "h": "Selection Process and Expectations",
-        "p": [
-          "While the official notification does not specify the exact selection process or stages involved, candidates can generally anticipate a rigorous assessment that may include interviews and evaluations of their previous academic and administrative contributions. This multi-dimensional selection approach is designed to ensure that the chosen candidate not only has robust qualifications but also aligns with the university's vision and values.",
-          "Candidates might consider preparing for potential interviews by reflecting on their leadership experiences, vision for the school, and how they plan to foster an environment conducive to academic excellence and innovation. Understanding current trends in communication and information science will further strengthen candidates' positions during the selection process."
-        ]
-      },
-      {
-        "h": "Implication for Aspirants in Higher Education",
-        "p": [
-          "The opening for the Head of School position at SGOU represents a significant opportunity in the context of academia in India, especially in light of the ongoing reforms and emphasis on quality education in the country. As institutions strive to enhance their educational standards, positions like these are crucial for bringing forward visionary leaders who can implement effective strategies that foster academic advancement.",
-          "For aspirants looking to advance their careers in academia, this recruitment also signals a competitive landscape. Therefore, candidates interested in such leadership roles should continuously engage in professional development, research activities, and networking, allowing them to stand out in future applications."
-        ]
-      },
-      {
-        "h": "Next Steps for Interested Candidates",
-        "p": [
-          "Candidates eager to apply for the Head of School position should regularly check the official SGOU website for updates regarding application submission details, as the specific start date for applications has not been stated. Moreover, they should prepare their curriculum vitae, highlight relevant experience, and gather any necessary documents that demonstrate their qualifications and competencies.",
-          "With the application deadline set for November 11, 2026, aspirants should not wait until the last minute to submit their applications. Taking proactive steps to understand the needs and expectations of the educational institution will go a long way in strengthening their applications."
-        ]
-      }
-    ],
-    "pointers": [
-      "Check the official notification for detailed eligibility criteria and required qualifications.",
-      "Stay updated on application procedures, deadlines, and requirements, as some key dates are still unspecified.",
-      "Consider preparing for potential interviews by reflecting on educational leadership and innovation strategies.",
-      "Advise candidates to be proactive and gather necessary documents in advance to avoid last-minute issues."
-    ],
-    "job_id": "sgou-head-school-2026",
-    "sources": [
-      {
-        "title": "Sreenarayanaguru Open University, Kollam — official notification",
-        "link": "https://sgou.ac.in/"
       }
     ]
   }

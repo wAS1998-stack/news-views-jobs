@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-22",
+    "date": "2026-11-22",
+    "digest_id": "current-affairs-2026-11-22",
+    "title": "Current Affairs Quiz 22 November 2026",
+    "questions": [
+      {
+        "q": "What was the primary focus of the high-level meeting held by Amit Shah in Itanagar?",
+        "options": [
+          "Media collaboration",
+          "Cultural showcases",
+          "Internal security",
+          "Skill development"
+        ],
+        "answer": 2,
+        "why": "The meeting focused on reviewing the law and order situation, internal security, and border management."
+      },
+      {
+        "q": "What did Prime Minister Narendra Modi address at the 'Skilling Convocation Ceremony' in Lucknow?",
+        "options": [
+          "Skill development",
+          "Cultural identity",
+          "International relations",
+          "Social protection"
+        ],
+        "answer": 0,
+        "why": "He emphasized the importance of skill development in enhancing employment opportunities."
+      },
+      {
+        "q": "Who shared insights on character development at the IFFI 2026 press conference?",
+        "options": [
+          "Amit Shah",
+          "Rakesh Bedi",
+          "Narendra Modi",
+          "Bhashini"
+        ],
+        "answer": 1,
+        "why": "Rakesh Bedi discussed the art of character creation at the press conference."
+      },
+      {
+        "q": "What was a major topic discussed between India and Spain during IFFI 2026?",
+        "options": [
+          "Cultural diplomacy",
+          "Social protection",
+          "Digital health",
+          "Skill development"
+        ],
+        "answer": 0,
+        "why": "They explored collaboration in the media and entertainment sectors, showcasing cultural diplomacy."
+      },
+      {
+        "q": "How many memoranda of understanding were signed by the NISD for social protection initiatives?",
+        "options": [
+          "10",
+          "15",
+          "23",
+          "30"
+        ],
+        "answer": 2,
+        "why": "The NISD signed 23 memoranda aimed at strengthening social protection initiatives."
+      },
+      {
+        "q": "What initiative did Prasar Bharati launch at IFFI 57?",
+        "options": [
+          "Page to Pitch",
+          "Skill Development Program",
+          "Digital Health Initiative",
+          "Cultural Showcase"
+        ],
+        "answer": 0,
+        "why": "Prasar Bharati initiated 'Page to Pitch' to discover new storytelling talent."
+      },
+      {
+        "q": "What important discussions were concluded in New Delhi between India and Canada?",
+        "options": [
+          "Social welfare",
+          "Media collaboration",
+          "Skill development",
+          "CEPA negotiations"
+        ],
+        "answer": 3,
+        "why": "The sixth round of Comprehensive Economic Partnership Agreement (CEPA) negotiations was successfully concluded."
+      },
+      {
+        "q": "Which summit did Bhashini participate in to discuss healthcare services?",
+        "options": [
+          "Skill Development Summit",
+          "Global Digital Health Summit",
+          "Cultural Diplomacy Summit",
+          "Safety and Security Summit"
+        ],
+        "answer": 1,
+        "why": "Bhashini emphasized multilingual AI in healthcare at the Global Digital Health Summit."
+      },
+      {
+        "q": "What impact do government initiatives in skill development have on competitive exam preparation?",
+        "options": [
+          "They are irrelevant",
+          "They reflect national priorities",
+          "They focus solely on social welfare",
+          "They indicate challenges only"
+        ],
+        "answer": 1,
+        "why": "Understanding these initiatives is vital as they reflect national priorities relevant for exam aspirants."
+      },
+      {
+        "q": "What role does cinema play according to discussions at IFFI 2026?",
+        "options": [
+          "Cultural identity",
+          "Economic growth",
+          "Political engagement",
+          "International relations"
+        ],
+        "answer": 0,
+        "why": "Cinema is highlighted as significant for India’s cultural identity and heritage."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-21",
     "date": "2026-11-21",
     "digest_id": "current-affairs-2026-11-21",
