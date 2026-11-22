@@ -173,7 +173,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-22T10:42:43.081Z",
+    "at": "2026-11-22T13:25:40.197Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -184,24 +184,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-22T10:42:44.693Z",
+    "at": "2026-11-22T13:25:40.673Z",
     "ok": true,
-    "submitted": 4,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 195,
     "usedToday": 5,
+    "kept": 4,
+    "quotaDay": "2026-11-22",
     "log": [
-      "Indexing API: 4 to send (4 updated, 0 deleted); 1/200 used in Google's day 2026-11-22 (Pacific).",
-      "Indexing API: sent 4."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 5/200 used in Google's day 2026-11-22 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-22T10:43:04.290Z",
+    "at": "2026-11-22T13:25:41.566Z",
     "ok": true,
-    "sent": 18,
+    "sent": 0,
+    "quiet": false,
     "log": [
-      "push-notify: 18 sent\n  job deputy-commissioner-imphal-east-case-worker-2026 en ['s-manipur' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job deputy-commissioner-imphal-east-case-worker-2026 en ['s-manipur' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  jo"
+      "push-notify: nothing new to send."
     ]
   },
   "enrich": {
