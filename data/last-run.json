@@ -173,7 +173,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-22T16:03:15.434Z",
+    "at": "2026-11-22T18:10:12.055Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -184,24 +184,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-22T16:03:16.423Z",
+    "at": "2026-11-22T18:10:13.415Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 2,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 6,
+    "usedToday": 8,
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 5/200 used in Google's day 2026-11-22 (Pacific).",
-      "Indexing API: sent 1."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 6/200 used in Google's day 2026-11-22 (Pacific).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-22T16:03:26.479Z",
+    "at": "2026-11-22T18:10:22.070Z",
     "ok": true,
-    "sent": 24,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 24 sent\n  follow o-sbi sbi-gm-head-cstra-2026 en: ok\n  follow o-sbi sbi-gm-head-cstra-2026 hi: ok\n  digest s-any en (14): ok\n  digest s-any hi (14): ok\n  digest: 11 audiences"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "enrich": {
