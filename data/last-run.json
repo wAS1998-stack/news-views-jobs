@@ -2,7 +2,7 @@
   "date": "2026-11-22",
   "runs": {},
   "fetch": {
-    "at": "2026-11-21T23:53:52.395Z",
+    "at": "2026-11-22T00:34:31.610Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,7 +11,7 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (0 calls)",
+    "aiStatus": "ok (1 calls)",
     "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
@@ -84,7 +84,7 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-21T23:54:20.109Z",
+    "at": "2026-11-22T00:34:57.467Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 23,
@@ -94,20 +94,20 @@
     "skipped": [],
     "sources_health": {
       "nvs": "paused (fails 162, geo-blocked)",
-      "rbi": "16 links, 0 new via direct",
+      "ibps": "9 links, 0 new via news-views.in",
       "aiims": "paused (fails 85)",
       "army": "paused (fails 162, geo-blocked)",
       "navy": "paused (fails 162, geo-blocked)",
       "iaf-agniveer": "paused (fails 162, geo-blocked)",
       "rrb-portal": "paused (fails 158, geo-blocked)",
-      "dsssb": "5 links, 0 new via direct",
+      "rbi": "16 links, 0 new via direct",
       "ncs": "paused (fails 85)",
-      "ibps": "9 links, 0 new via news-views.in",
       "ssc": "7 links, 0 new via news-views.in",
+      "dsssb": "5 links, 0 new via direct",
       "nta": "1 links, 0 new via news-views.in",
       "mppsc": "paused (fails 82, geo-blocked)",
       "mpsc": "paused (fails 162)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "kpsc": "paused (fails 162, geo-blocked)",
       "appsc": "paused (fails 162, geo-blocked)",
       "kvs": "2 links, 0 new via direct",
@@ -119,7 +119,7 @@
       "jpsc": "paused (fails 42, geo-blocked)",
       "cgpsc": "paused (fails 162, geo-blocked)",
       "gpsc": "paused (fails 162, geo-blocked)",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "ppsc": "paused (fails 162, geo-blocked)",
       "apsc": "paused (fails 162, geo-blocked)",
       "jkpsc": "paused (fails 162, geo-blocked)",
@@ -127,30 +127,30 @@
       "upsssc": "paused (fails 17, geo-blocked)",
       "rssb": "paused (fails 162, geo-blocked)",
       "esb-mp": "paused (fails 162, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
       "tnpsc": "31 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
       "tgpsc": "5 links, 0 new via news-views.in",
       "jssc": "paused (fails 162, geo-blocked)",
       "osssc": "paused (fails 85, geo-blocked)",
       "gsssb": "paused (fails 162, geo-blocked)",
       "sssb-punjab": "paused (fails 162, geo-blocked)",
       "hprca": "paused (fails 162, geo-blocked)",
-      "upsc": "4 links, 0 new via news-views.in",
-      "kea": "paused (fails 162, geo-blocked)",
       "hssc": "8 links, 0 new via direct",
-      "dsssb2": "paused (fails 162, geo-blocked)",
+      "kea": "paused (fails 162, geo-blocked)",
       "uksssc": "26 links, 0 new via direct",
+      "dsssb2": "paused (fails 162, geo-blocked)",
+      "upsc": "4 links, 0 new via news-views.in",
       "bssc": "787 links, 0 new via news-views.in",
       "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 162, geo-blocked)",
       "tslprb": "paused (fails 162, geo-blocked)",
       "slprb-ap": "paused (fails 162, geo-blocked)",
-      "wbssc": "13 links, 0 new via direct",
-      "uppsc": "1 links, 0 new via news-views.in",
-      "uppbpb": "7 links, 0 new via direct",
-      "bpssc": "209 links, 0 new via news-views.in",
       "keralapsc": "6 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
+      "uppbpb": "7 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
+      "bpssc": "209 links, 0 new via news-views.in",
       "rpsc": "191 links, 0 new via news-views.in"
     },
     "log": [
@@ -159,7 +159,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-21T23:54:20.601Z",
+    "at": "2026-11-22T00:34:57.894Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 0,
@@ -247,6 +247,19 @@
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
       "  current affairs for today already exists."
+    ]
+  },
+  "gsc": {
+    "at": "2026-11-22T00:34:59.963Z",
+    "ok": true,
+    "property": "https://news-views.in/",
+    "clicks28d": 35,
+    "impressions28d": 632,
+    "pages": 108,
+    "opportunities": 4,
+    "sitemap": 204,
+    "log": [
+      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
     ]
   }
 }
