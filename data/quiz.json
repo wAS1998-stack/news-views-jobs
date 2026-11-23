@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-23",
+    "date": "2026-11-23",
+    "digest_id": "current-affairs-2026-11-23",
+    "title": "Current Affairs Quiz 23 November 2026",
+    "questions": [
+      {
+        "q": "What tragic incident did the Prime Minister express condolences for?",
+        "options": [
+          "Accident in Itanagar",
+          "Fire in Delhi",
+          "Floods in Assam",
+          "Loss of life in Tiruchirappalli"
+        ],
+        "answer": 3,
+        "why": "The Prime Minister expressed deep sorrow over the tragic incident in Tiruchirappalli, Tamil Nadu, that resulted in loss of life."
+      },
+      {
+        "q": "Who initiated a public movement for the cleanliness of the Yamuna River?",
+        "options": [
+          "The President",
+          "The Speaker of the Lok Sabha",
+          "The Prime Minister",
+          "The Home Minister"
+        ],
+        "answer": 1,
+        "why": "The Speaker of the Lok Sabha has initiated a public movement to keep the Yamuna River clean."
+      },
+      {
+        "q": "What focus was highlighted at the 57th International Film Festival of India (IFFI)?",
+        "options": [
+          "Films from BRICS",
+          "National Film Awards",
+          "Films from the US",
+          "Indian Regional Cinema"
+        ],
+        "answer": 0,
+        "why": "The 57th International Film Festival of India (IFFI) commenced with a focus on 'Films from BRICS.'"
+      },
+      {
+        "q": "What was discussed by veterans at the 57th IFFI?",
+        "options": [
+          "Role of film critics",
+          "Impact of global cinema",
+          "Film schools",
+          "Documentary filmmaking"
+        ],
+        "answer": 2,
+        "why": "Veterans from the film industry engaged in discussions about the role of film schools at the 57th IFFI."
+      },
+      {
+        "q": "What did the recent World Bank report state about the Modi government’s policies?",
+        "options": [
+          "Increased unemployment",
+          "Growing foreign investments",
+          "Higher inflation rates",
+          "Lifting 49.60 crore people above the poverty line"
+        ],
+        "answer": 3,
+        "why": "A recent World Bank report indicates that the Modi government's policies have lifted about 49.60 crore people above the poverty line."
+      },
+      {
+        "q": "Where was the 12th Battalion of the National Disaster Response Force (NDRF) inaugurated?",
+        "options": [
+          "Delhi",
+          "Bangalore",
+          "Itanagar",
+          "Kolkata"
+        ],
+        "answer": 2,
+        "why": "Home and Cooperation Minister Amit Shah inaugurated the 12th Battalion of the National Disaster Response Force (NDRF) in Itanagar."
+      },
+      {
+        "q": "What cultural initiative concluded in New Delhi?",
+        "options": [
+          "SAARC Cultural Festival",
+          "SCO Civilizational Dialogue Platform",
+          "BRICS Film Festival",
+          "G20 Cultural Forum"
+        ],
+        "answer": 1,
+        "why": "The first SCO Civilizational Dialogue Platform concluded in New Delhi."
+      },
+      {
+        "q": "What vision was unveiled by Minister Amit Shah in Itanagar?",
+        "options": [
+          "Vision 2025",
+          "Cooperative Vision 2047",
+          "Sustainable Development Goal 2030",
+          "Green India Initiative"
+        ],
+        "answer": 1,
+        "why": "Minister Amit Shah unveiled the 'Arunachal Pradesh Cooperative Vision 2047' at a cooperative ceremony in Itanagar."
+      },
+      {
+        "q": "What does the public movement for Yamuna's cleanliness signify?",
+        "options": [
+          "Government's disregard for environmental issues",
+          "Commitment to environmental issues",
+          "Lack of public engagement",
+          "Minimal involvement of local communities"
+        ],
+        "answer": 1,
+        "why": "The movement highlights the government's commitment to environmental issues and public participation."
+      },
+      {
+        "q": "What aspect is vital for understanding socio-economic transformations in India according to the article?",
+        "options": [
+          "Environmental policies",
+          "Healthcare reforms",
+          "Trade agreements",
+          "Poverty alleviation policies"
+        ],
+        "answer": 3,
+        "why": "The World Bank report on poverty alleviation serves as a critical point for understanding socio-economic transformations in India."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-22",
     "date": "2026-11-22",
     "digest_id": "current-affairs-2026-11-22",
