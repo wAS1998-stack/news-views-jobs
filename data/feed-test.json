@@ -1,0 +1,156 @@
+{
+  "at": "2026-11-23T03:20:17.332Z",
+  "feeds": {
+    "https://www.freejobalert.com/feed/": {
+      "configured": true,
+      "items": 100,
+      "via": "direct",
+      "newest": "2026-11-22",
+      "sample": [
+        "IIT Kharagpur Junior Research Fellow (Mechanical Engineering) Recruitment 2026 – Apply Online",
+        "KAU Technical Officer Recruitment 2026 – Walkin",
+        "IIT Kharagpur Project Associate Recruitment 2026 – Apply Online",
+        "IIT Kharagpur Junior Research Fellow (Computer Science and Engineering) Recruitment 2026 – Apply Online",
+        "Deputy Commissioner Imphal East Recruitment 2026 – Apply Offline for 3 Case Worker, Psycho-Social Counsellor and More Posts",
+        "Uttara Kannada Zilla Panchayat Assistant District Project Manager Recruitment 2026 – Apply Online"
+      ],
+      "errors": []
+    },
+    "https://www.sarkariexam.com/feed/": {
+      "configured": true,
+      "items": 40,
+      "via": "direct",
+      "newest": "2026-11-21",
+      "sample": [
+        "UPSSSC Veterinary Pharmacist Eligibility Result 2026",
+        "UPSSSC Livestock Extension Officer Eligibility Result 2026",
+        "UPSSSC Computer Operator Eligibility Result 2026",
+        "UIICL Administrative Officers AO Phase-II Admit Card 2026",
+        "UPESSC UP TGT Online Form 2026 (17,735 Posts) – Extended",
+        "CLAT 2027 Admit Card"
+      ],
+      "errors": []
+    },
+    "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": {
+      "configured": true,
+      "items": 25,
+      "via": "direct",
+      "newest": "2026-11-23",
+      "sample": [
+        "Latest IT Govt Jobs 2026 – All India IT Fresher & Software Job Vacancies",
+        "Latest Bank Jobs 2026 – Govt Banking Recruitment in India",
+        "Latest Government Jobs on 23 November 2026 (51678+ All India Vacancies Open Now)",
+        "SBI GM & Head CSTRA Recruitment 2026 - Apply Online, Notification",
+        "SBI Data Scientist Recruitment 2026 - Apply Online for 20 Posts",
+        "Latest Railway Jobs 2026 (8458+ RRB Vacancies Open Now)"
+      ],
+      "errors": []
+    },
+    "https://www.sarkarinaukriblog.com/feeds/posts/default?alt=rss": {
+      "configured": false,
+      "items": 25,
+      "via": "direct",
+      "newest": "2026-11-16",
+      "sample": [
+        "SBI Specialist Officer Vacancy Recruitment 2026-27",
+        "UPSC Government Job Vacancy Recruitment 2026",
+        "NLC India Executive Trainee Recruitment by GATE-2025",
+        "Power Grid Engineer Trainee Recruitment by GATE-2026",
+        "Indian Air Force AFCAT 01/2027 Officer Recruitment",
+        "BoB various Jobs Vacancy Recruitment 2026"
+      ],
+      "errors": []
+    },
+    "https://www.sarkarijobs.com/feed/": {
+      "configured": false,
+      "items": 30,
+      "via": "direct",
+      "newest": "2026-11-17",
+      "sample": [
+        "Delhi University Assistant Recruitment 2026: Deadline Extended for 126 Non-Teaching Posts",
+        "NLC India Recruitment 2026 Announced for 145 Executive Vacancies, Registration Opens 20 November",
+        "AUD Delhi Recruitment 2026 Announced For Non-Teaching Posts for Registrar, Statistical Officer and Stenographer",
+        "UPSC Recruitment 2026 Announced: Apply to 13 Dental Surgeon, Physician and Scientist Vacancies Online Through UPSC Online",
+        "Indian Bank Apprentice Recruitment 2026 Announced for 1,500 Training Seats, Apply by 25 November",
+        "IOCL Eastern Region Apprentice Recruitment 2026: Applications Open for 393+ ITI, Diploma and Graduate Training"
+      ],
+      "errors": []
+    },
+    "https://www.recruitmentresult.com/feed/": {
+      "configured": false,
+      "items": 20,
+      "via": "direct",
+      "newest": "2026-03-10",
+      "sample": [
+        "Best Engineering Colleges in India in 2026",
+        "JEE Main Session 2 Question Paper with Solved Solutions from ALLEN",
+        "Ujjwala Yojana eKYC 2025 – सभी गैस लाभार्थियों के लिए जरूरी सूचना! ऐसे करें ऑनलाइन eKYC और बचाएं सब्सिडी",
+        "New Family Pension Rules: जाने पेंशन पर किसका होगा पहला अधिकार और क्या हट जाएगा पेंशन से बेटियों का नाम, जाने क्या है पूरी रिपोर्ट?",
+        "Jamin Property Card Download: अब घर बैठे किसी भी जमीन का प्रोपर्टी कार्ड खुद से डाउनलोड और प्रिंट करें, जाने क्या है पूरी प्रक्रिया?",
+        "Ration Card Rule: यदि आपके पास भी है ये 5 चीजें या इतनी है आपकी कमाई तो राशन कार्ड करें सरेंडर वरना होगी जेल, जाने क्या है पूरी रिपोर्ट?"
+      ],
+      "errors": []
+    },
+    "https://www.freshersnow.com/feed/": {
+      "configured": false,
+      "items": 20,
+      "via": "direct",
+      "newest": "2026-11-20",
+      "sample": [
+        "Eltec Engineering Walkin Drive 2026 for Freshers in Coimbatore",
+        "UTECH First Walkin Drive 2026 for IT Support Engineer in Madurai",
+        "Aarvi Encon Walkin Drive 2026 for Recruiter in Noida",
+        "Shipco IT Walkin Drive 2026 for Pricing Analyst in Pune",
+        "EQ India Walkin Drive 2026 for Customer Experience Executive in Bengaluru",
+        "Praxis Services Walkin Drive 2026 for Customer Care Associate in Gurugram"
+      ],
+      "errors": []
+    },
+    "https://www.govtjobguru.in/feed/": {
+      "configured": false,
+      "items": 0,
+      "via": "direct",
+      "newest": null,
+      "sample": [],
+      "errors": [
+        "rss2json: HTTP 422"
+      ]
+    },
+    "https://www.mysarkarinaukri.com/rss": {
+      "configured": false,
+      "items": 0,
+      "via": "",
+      "newest": null,
+      "sample": [],
+      "errors": [
+        "direct: HTTP 403",
+        "alt-ua: HTTP 403",
+        "news-views.in: HTTP 403"
+      ]
+    },
+    "https://www.jagranjosh.com/rss/jobs.xml": {
+      "configured": false,
+      "items": 0,
+      "via": "",
+      "newest": null,
+      "sample": [],
+      "errors": [
+        "direct: HTTP 404",
+        "alt-ua: HTTP 404",
+        "news-views.in: HTTP 403"
+      ]
+    },
+    "https://employmentnews.gov.in/RSS.aspx": {
+      "configured": false,
+      "items": 0,
+      "via": "",
+      "newest": null,
+      "sample": [],
+      "errors": [
+        "direct: fetch failed (UND_ERR_CONNECT_TIMEOUT)",
+        "news-views.in: HTTP 522",
+        "api.allorigins.win: HTTP 522"
+      ]
+    }
+  }
+}
