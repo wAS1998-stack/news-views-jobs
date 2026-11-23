@@ -940,6 +940,8 @@ function sanitizeJob(j) {
   for (const k of JOB_DATE) if (o[k] != null) { const d = isoDate(o[k]); if (d) o[k] = d; else delete o[k]; }
   for (const k of JOB_LINK) if (o[k] != null && !/^https?:\/\/[^\s]+$/i.test(String(o[k]))) delete o[k];
   if (o.total_vacancies != null) { const n = toNum(o.total_vacancies); if (n) o.total_vacancies = Math.round(n); else delete o.total_vacancies; }
+  // "… – 0 Posts" (a headline written from a notice that states no count) never reaches a page
+  if (typeof o.title === "string") o.title = o.title.replace(/\s*[–—-]\s*0+\s+(posts?|vacanc(y|ies))\b/i, "").replace(/\b(for\s+)?0+\s+(posts?|vacanc(y|ies))\b\s*/i, "").replace(/\s{2,}/g, " ").trim();
   if (o.age_min != null) { const n = ageNum(o.age_min, Math.min); if (n) o.age_min = n; else delete o.age_min; }
   if (o.age_max != null) { const n = ageNum(o.age_max, Math.max); if (n) o.age_max = n; else delete o.age_max; }
   // An age limit nobody sets is an extraction slip (a pay level or "10 years' experience" read as an age: pages showed

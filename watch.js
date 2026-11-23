@@ -244,13 +244,15 @@ async function main() {
     if (existingUrls.has(norm(link.url))) { skipped.push("known url"); continue; }
     // Old notices re-surfacing on a homepage ("Cut-off Marks (01/2018)") are not news.
     if (oldYear(link.text, thisYear)) { skipped.push("old notice: " + link.text.slice(0, 50)); continue; }
+    // a debarment list ("debare_notice_annexure.pdf": candidates barred from exams) is not a recruitment
+    if (/\bdebar|debare_/i.test(`${link.text} ${link.url}`)) { skipped.push("debarment notice: " + link.text.slice(0, 50)); continue; }
     const kind = F.classify(link.text);
     const doc = await readDoc(link.url);
     if (kind === "job") {
       const o = await extractJob(src, link, doc);
       if (!o) { again.push({ src: src.id, link, tries: (item.tries || 0) + tryCost() }); skipped.push("AI unavailable, retry later: " + link.text.slice(0, 50)); continue; }
       // an extraction with "null"/"undefined" in the headline ("… – Null Posts") is cleaned, never published as is
-      if (o.headline) o.headline = String(o.headline).replace(/\s*[–—-]?\s*\b(null|undefined|nan)\b(\s+posts?)?/gi, "").replace(/\s{2,}/g, " ").replace(/\s*[–—-]\s*$/, "").trim();
+      if (o.headline) o.headline = String(o.headline).replace(/\s*[–—-]?\s*\b(null|undefined|nan)\b(\s+posts?)?/gi, "").replace(/\s*[–—-]\s*0+\s+(posts?|vacanc(y|ies))\b/gi, "").replace(/\s{2,}/g, " ").replace(/\s*[–—-]\s*$/, "").trim();
       if (o.is_recruitment === false || o.is_specific_notice === false || !o.headline || !o.organization || !(o.summary && o.summary.length > 40)) { skipped.push("not a specific recruitment: " + link.text.slice(0, 50)); continue; }
       if (/^\d{4}-\d{2}-\d{2}$/.test(String(o.application_end || "")) && o.application_end < today()) { skipped.push("already closed: " + o.headline); continue; }
       // A job page needs real substance: a post name AND (vacancies, a last date or an advertisement number).
