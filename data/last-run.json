@@ -237,7 +237,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-23T10:54:06.286Z",
+    "at": "2026-11-23T13:47:00.162Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -248,24 +248,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-23T10:54:10.857Z",
+    "at": "2026-11-23T13:47:11.205Z",
     "ok": true,
-    "submitted": 16,
+    "submitted": 52,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 25,
+    "usedToday": 77,
     "log": [
-      "Indexing API: 16 to send (16 updated, 0 deleted); 9/200 used in Google's day 2026-11-23 (Pacific).",
-      "Indexing API: sent 16."
+      "Indexing API: 52 to send (52 updated, 0 deleted); 25/200 used in Google's day 2026-11-23 (Pacific).",
+      "Indexing API: sent 52."
     ]
   },
   "push": {
-    "at": "2026-11-23T10:55:02.846Z",
+    "at": "2026-11-23T13:48:49.097Z",
     "ok": true,
-    "sent": 62,
+    "sent": 180,
     "log": [
-      "push-notify: 62 sent\n  job aiims-deoghar-senior-resident-2026 en ['s-jharkhand' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job aiims-deoghar-senior-resident-2026 hi ['s-jharkhand' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job bdl-fitter-electrician-"
+      "push-notify: 180 sent\n  job cmho-raigarh-mo-community-health-officer-2026 en ['s-chhattisgarh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job cmho-raigarh-mo-community-health-officer-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: o"
     ]
   },
   "gsc": {
