@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-23",
   "tz": "PT",
-  "used": 100,
+  "used": 101,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10804,5 +10804,9 @@
  "https://news-views.in/jobs/samagra-shiksha-surajpur-yoga-sports-teacher-2026/": {
   "sentAt": "2026-11-23T16:12:56.957Z",
   "hash": "aa5efab9f82f"
+ },
+ "https://news-views.in/jobs/iit-gandhinagar-program-assistant-i-finance-2026/": {
+  "sentAt": "2026-11-23T18:53:21.953Z",
+  "hash": "8c04bdc799cb"
  }
 }
