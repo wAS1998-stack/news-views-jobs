@@ -242,5 +242,9 @@ hurting users or breaking Google's policies.
   JobPosting `INTERN` on PSU trainee posts, salary texts that one unit cannot describe (no baseSalary), the service
   worker caching eligibility.json, and the public test key in assetlinks. App fixes went into build 52+. Left for the
   owner: third-party actions in android.yml are pinned by tag (pin to commit SHAs), and set RELAY_KEY to close the relay.
+- **Indexing is the bottleneck (weekly check, 23 Nov):** URL Inspection sample — 0 of 85 job pages from the last 14 days
+  indexed (2/90 on 16 Nov, 7/39 on 2 Nov); almost all "Discovered – currently not indexed" (Google knows them and does
+  not crawl). ~1,650 job pages in 14 days, half for 1–2 posts. GSC 28 days: 32 clicks / 617 impressions, more than half
+  from Google for Jobs. Next lever to consider: concentrate sitemaps/internal links on substantial listings.
 - Ideas with the biggest upside: faster coverage of big notifications (SSC, RRB, IBPS, state PSCs), results/admit-card
   pages that rank, Hindi coverage once English pages are indexed, app retention through relevant alerts.

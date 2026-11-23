@@ -49,7 +49,8 @@
   "feeds": [
     "https://www.freejobalert.com/feed/",
     "https://www.sarkariexam.com/feed/",
-    "https://www.indgovtjobs.in/feeds/posts/default?alt=rss"
+    "https://www.indgovtjobs.in/feeds/posts/default?alt=rss",
+    "https://www.sarkarijobs.com/feed/"
   ],
   "maxNewPerRun": 30,
   "maxUpdatesPerRun": 30,

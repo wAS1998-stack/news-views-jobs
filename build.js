@@ -92,10 +92,19 @@ function seoTitle(job) {
   let base = String(job.title)
     .replace(/\s*[–—:|-]\s*(apply|notification|last date|walk[- ]?in|online form|download|check|out\b).*$/i, "")
     .replace(/\s+(apply online|apply offline|notification out|vacancy|vacancies)\b.*$/i, "")
+    .replace(/\s+(online|offline|application) form\b/i, (m, k, i, str) => /\brecruitment\b/i.test(str) ? "" : " Recruitment")
+    .replace(/\s*\(\s*[\d,]+\s+posts?\s*\)\s*$/i, "")
     .replace(/\s+/g, " ").trim();
   if (base.length > 48 || base.length < 12) {
-    const post = String(job.post_name || "").split(/[,(/]| and | & /i)[0].trim();
-    base = [org || String(job.organization || "").split(/[(,]/)[0].trim(), post && post.length <= 30 ? post : "", "Recruitment", year].filter(Boolean).join(" ");
+    // "<organisation> <post> Recruitment <year>": the words people search for ("anganwadi worker recruitment 2026") come
+    // first; a long organisation name is shortened, never the "Recruitment <year>" end (74 titles had lost it)
+    const post = String(job.post_name || "").split(/[,(/]| and | & /i)[0].replace(/\s*[–—-]\s*$/, "").trim();
+    const p = post && post.length <= 30 ? post : "";
+    const tail = ` Recruitment ${year}`;
+    let o = org || String(job.organization || "").split(/[(,:]/)[0].replace(/^(the\s+)?office of (the\s+)?/i, "").replace(/\s+/g, " ").trim();
+    if (p && o && !org && (o.length + p.length + 1 + tail.length) > 64) { let cut = ""; for (const w of o.split(" ")) { const n = (cut + " " + w).trim(); if (n.length + p.length + 1 + tail.length > 64) break; cut = n; } o = cut.replace(/(\s+(of|and|&amp;|&|the|for|in|cum))+$/i, ""); }
+    if (!p && o.length + tail.length > 64) o = o.slice(0, 64 - tail.length).replace(/\s+\S*$/, "");
+    base = [o, p].filter(Boolean).join(" ") + tail;
   }
   if (!/\b20\d{2}\b/.test(base)) base += " " + year;
   // The place people search for ("barauni refinery vacancy"): a specific unit or town from the location goes into the
@@ -110,12 +119,15 @@ function seoTitle(job) {
   else if (dl !== null && dl < 0) bits.push("Closed");
   let t = base + (bits.length ? ` – ${bits.join(", ")}` : "");
   if (t.length > 70) t = base + (bits[0] ? ` – ${bits[0]}` : "");
-  if (t.length > 70) t = base.slice(0, 68).replace(/\s+\S*$/, "") ;
+  if (t.length > 70) {
+    const end = (base.match(/ Recruitment 20\d{2}$/) || [""])[0], head = base.slice(0, base.length - end.length), room = 68 - end.length;
+    t = (head.length <= room ? head : head.slice(0, room + 1).replace(/\s+\S*$/, "")) + end;
+  }
   return (t + ` | ${SITE.name}`).length <= 72 ? `${t} | ${SITE.name}` : t;
 }
 /** A specific place from the job's location ("Barauni Refinery" from "Barauni Refinery, Bihar"), or "" when the
     location is broad ("All India", "Various Railway Zones"), long, or already named in the headline or organisation. */
-const PLACE_BROAD = /\b(india|indian|various|across|all|zones?|units?|multiple|pan|states?|anywhere|centres?|centers?|offices?|branch(es)?|divisions?|districts?|locations?|nation\w*|abroad|overseas|remote|government|govt|schools?|colleges?|hospitals?|regions?|circles?|posting|depending|any|other|wise|headquarters|hq|online|offline|notified|tbd|na)\b/i;
+const PLACE_BROAD = /\b(railways?|india|indian|various|across|all|zones?|units?|multiple|pan|states?|anywhere|centres?|centers?|offices?|branch(es)?|divisions?|districts?|locations?|nation\w*|abroad|overseas|remote|government|govt|schools?|colleges?|hospitals?|regions?|circles?|posting|depending|any|other|wise|headquarters|hq|online|offline|notified|tbd|na)\b/i;
 const PLACE_NOT = /\b(department|dept|station|research|hostel|campus|ghar|building|institute|hospital|college|university|laboratory|lab|block|floor|road|wing|cell|section|unit|project|centre|center|bhawan|bhavan|complex|sector|headquarter|division|school|faculty|chair|ward|hostels?|operations?|home|teaching|vertical|court|services?|collectorate|academy|mandir|cluster|village|sadan|prison|ground|municipality|mandapam|observatory|fields?|balashram|factory|office)\b/i;
 function placeOf(job) {
   const p = String(job.location || "").split(/[,;(/|]/)[0].replace(/\s+/g, " ").trim();
@@ -127,13 +139,23 @@ function placeOf(job) {
   if (!words.length || words.some((w) => known.includes(w))) return "";
   return p;
 }
+// States where many people search in Hindi ("राजस्थान सफाई कर्मचारी भर्ती 2026" found the English page at position 5)
+const HINDI_BELT = /\b(rajasthan|uttar pradesh|madhya pradesh|bihar|jharkhand|chhattisgarh|haryana|himachal|uttarakhand|delhi)\b/i, HINDI_BELT_ABBR = /\b(UP|MP)\b/;
 function seoDesc(job) {
   const parts = [];
   const v = Number(job.total_vacancies);
   const place = placeOf(job);
-  parts.push(`${job.organization}${job.post_name ? " " + job.post_name : ""} recruitment${place ? ` at ${place}` : ""}${v > 0 ? ` for ${inr(v)} post${v === 1 ? "" : "s"}` : ""}.`);
-  if (job.qualification) parts.push(`Qualification: ${String(job.qualification).slice(0, 60)}.`);
+  const year = (String(job.title).match(/\b20\d{2}\b/) || [String(BUILT.getFullYear())])[0];
+  // "<org> <place> vacancy <year>: <N> <post> posts." — the words of the searches that reach job pages ("barauni
+  // refinery vacancy 2026"), then the last date before anything that may be cut at 160 characters
+  const full = String(job.organization || "").replace(/^(the\s+)?office of (the\s+)?/i, "").split(/[(,]/)[0].replace(/\s+/g, " ").trim();
+  const org = full && full.length <= 45 ? full : (String(job.org_short || "").trim() || full.slice(0, 45).replace(/\s+\S*$/, ""));
+  const post = String(job.post_name || "").trim();
+  parts.push(v > 0 || post ? `${org}${place ? " " + place : ""} vacancy ${year}: ${v > 0 ? inr(v) + " " : ""}${post ? post + " " : ""}post${v === 1 ? "" : "s"}.` : `${org}${place ? " " + place : ""} recruitment ${year}.`);
   if (job.application_end) parts.push(`Last date ${fmtDate(job.application_end)}.`);
+  const hiPost = job.hi && typeof job.hi.post_name === "string" ? job.hi.post_name.replace(/\s*\(.*?\)\s*/g, " ").trim() : "";
+  if (hiPost && hiPost.length <= 40 && /[\u0900-\u097F]/.test(hiPost) && [HINDI_BELT, HINDI_BELT_ABBR].some((re) => re.test(`${job.location || ""} ${job.state_hint || ""} ${job.organization || ""} ${job.title || ""}`))) parts.push(`${hiPost} भर्ती ${year}.`);
+  if (job.qualification) parts.push(`Qualification: ${String(job.qualification).slice(0, 60)}.`);
   parts.push("Eligibility, salary, selection process & official apply link.");
   let d = parts.join(" ");
   if (d.length > 160) d = d.slice(0, 157).replace(/\s+\S*$/, "") + "…";
