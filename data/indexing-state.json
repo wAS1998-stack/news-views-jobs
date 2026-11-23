@@ -1,9 +1,9 @@
 {
  "_day": {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "tz": "PT",
-  "used": 40,
-  "drained": 1
+  "used": 9,
+  "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
   "sentAt": "2026-11-06T04:18:29.722Z",
@@ -10404,5 +10404,41 @@
  "https://news-views.in/jobs/pondicherry-university-research-associate-coastal-2026/": {
   "sentAt": "2026-11-23T07:49:09.444Z",
   "hash": "b2456f0001a0"
+ },
+ "https://news-views.in/jobs/cdb-chief-coconut-development-officer-2027/": {
+  "sentAt": "2026-11-23T08:17:53.938Z",
+  "hash": "07475b223c6d"
+ },
+ "https://news-views.in/jobs/gmc-akola-group-d-peon-watchman-more-2026/": {
+  "sentAt": "2026-11-23T08:17:54.226Z",
+  "hash": "3d4888eb2551"
+ },
+ "https://news-views.in/jobs/icar-cmfri-walkin-young-professional-skilled-2026/": {
+  "sentAt": "2026-11-23T08:17:54.519Z",
+  "hash": "c5272d21cd93"
+ },
+ "https://news-views.in/jobs/iit-ropar-junior-research-fellow-chemistry-2026/": {
+  "sentAt": "2026-11-23T08:17:54.817Z",
+  "hash": "3d7a142b60f3"
+ },
+ "https://news-views.in/jobs/janpad-panchayat-konta-employment-assistant-2026/": {
+  "sentAt": "2026-11-23T08:17:55.131Z",
+  "hash": "9ffc31952890"
+ },
+ "https://news-views.in/jobs/nsc-guwahati-technical-assistant-walkin-2026/": {
+  "sentAt": "2026-11-23T08:17:55.410Z",
+  "hash": "e6f391e3a398"
+ },
+ "https://news-views.in/jobs/rgssh-walkin-senior-resident-2026/": {
+  "sentAt": "2026-11-23T08:17:55.703Z",
+  "hash": "fdd9f1c38fa4"
+ },
+ "https://news-views.in/jobs/shahajiraje-mahavidyalaya-principal-2026/": {
+  "sentAt": "2026-11-23T08:17:55.971Z",
+  "hash": "967d7e256bee"
+ },
+ "https://news-views.in/jobs/university-kerala-guest-faculty-walkin-2026/": {
+  "sentAt": "2026-11-23T08:17:56.233Z",
+  "hash": "faade03a0951"
  }
 }

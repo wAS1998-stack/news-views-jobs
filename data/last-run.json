@@ -233,7 +233,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-23T07:49:05.428Z",
+    "at": "2026-11-23T08:17:53.081Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -244,24 +244,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-23T07:49:09.764Z",
+    "at": "2026-11-23T08:17:56.355Z",
     "ok": true,
-    "submitted": 19,
+    "submitted": 9,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 40,
+    "usedToday": 9,
     "log": [
-      "Indexing API: 19 to send (19 updated, 0 deleted); 21/200 used in Google's day 2026-11-22 (Pacific).",
-      "Indexing API: sent 19."
+      "Indexing API: 9 to send (9 updated, 0 deleted); 0/200 used in Google's day 2026-11-23 (Pacific).",
+      "Indexing API: sent 9."
     ]
   },
   "push": {
-    "at": "2026-11-23T07:50:28.231Z",
+    "at": "2026-11-23T08:19:05.243Z",
     "ok": true,
-    "sent": 98,
+    "sent": 52,
     "log": [
-      "push-notify: 98 sent\n  job bhel-trainee-engineer-executive-supervisor-trainee-2027 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bhel-trainee-engineer-executive-supervisor-trainee-2027 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in to"
+      "push-notify: 52 sent\n  job janpad-panchayat-konta-employment-assistant-2026 en ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job janpad-panchayat-konta-employment-assistant-2026 hi ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  j"
     ]
   },
   "gsc": {
