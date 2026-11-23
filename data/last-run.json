@@ -2,27 +2,26 @@
   "date": "2026-11-23",
   "runs": {},
   "fetch": {
-    "at": "2026-11-23T02:42:22.427Z",
+    "at": "2026-11-23T03:23:05.448Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
       "telegram": true,
       "cloudflarePurge": false
     },
-    "feeds": 4,
+    "feeds": 3,
     "ai": "OpenAI (gpt-4o-mini)",
     "aiStatus": "ok (0 calls)",
     "newJobs": 0,
     "newUpdates": 0,
     "feedStatus": {
       "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-22; 76 already known",
-      "https://rajsarkariresult.com/feed": "10 items via direct; newest 2026-11-12; 8 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-21; 8 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-22; 5 already known"
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-23; 5 already known"
     },
     "updDiag": {
-      "seen": 48,
-      "known": 39,
+      "seen": 47,
+      "known": 38,
       "added": 0,
       "filtered": [
         "CLAT 2027 Admit Card",
@@ -53,6 +52,15 @@
       ]
     },
     "log": [
+      "   = same source page as an existing job, skipped: Supreme Court of India Court Assistant Recruitment 2026 – Apply Online for 15 Vacancies",
+      "   = same source page as an existing job, skipped: IIT (ISM) Dhanbad Long-term Research Internship Recruitment 2026 – Apply Online",
+      "   = same source page as an existing job, skipped: Rohini Courts, Delhi Court Auctioneer Recruitment 2026 – Apply Offline",
+      "   = rejected after reading on an earlier run, skipped: DTU Assistant Professor Recruitment 2026 - Apply Online for 219 Posts",
+      "   = same source page as an existing job, skipped: IIIT Bhagalpur Assistant Professor Eligible List 2026 Out - Download Grade-I & Grade-II Department-Wise PDF",
+      "   = same source page as an existing job, skipped: Punjabi University Project Fellow Recruitment 2026 – Apply Online",
+      "   = same source page as an existing job, skipped: Jamui Civil Court Recruitment 2026 – Apply Offline for 3 Stenographer, Clerk, Peon Posts",
+      "   = same source page as an existing job, skipped: CEC Recruitment 2026 – Apply Offline for 4 Computer Programme Assistant, Producer and More Posts",
+      "   = near-duplicate headline, skipped: IIT Delhi Senior Project Assistant Recruitment 2026 – Apply Online",
       "   = rejected after reading on an earlier run, skipped: SBI PO Interview Letter 2026",
       "   = same source page as an existing job, skipped: Railway RRB Station Master Online Form 2026 (1265 Posts)",
       "   = rejected after reading on an earlier run, skipped: SIDBI Grade A & B Online Form 2026",
@@ -68,21 +76,12 @@
       "   = rejected after reading on an earlier run, skipped: SSC Junior Engineer JE Answer Key 2026 – Out",
       "   = same source page as an existing job, skipped: UP Sant Kabir Nagar ECCE Educator Online Form 2026",
       "   = same source page as an existing job, skipped: UPTET February Online Form 2027",
-      "   = same source page as an existing job, skipped: ASRB ICAR Technical Assistant Online Form 2026 – Start",
-      "   = id indian-bank-consultant-it-consultant-2026 is retired (redirected), skipped: Indian Bank Consultant Recruitment 2026: Apply Offline for the IT Consultant Post",
-      "   = near-duplicate headline, skipped: GMCH SRF Recruitment 2026: Apply Offline for 1 Post",
-      "   = rejected after reading on an earlier run, skipped: DGRE Paid Internship Recruitment 2026: Apply Offline for 6 Posts",
-      "   = same source page as an existing job, skipped: Oil India Geologist Recruitment 2026 – Walk-in Interview for 3 Contractual Geologist Posts",
-      "   = same source page as an existing job, skipped: Jamia Hamdard Recruitment 2026 – Walk-in for 7 Guest/Visiting Faculty Posts",
-      "   = near-duplicate headline, skipped: AIIMS Rajkot Recruitment 2026 – Apply Online for 2 Forensic and Medical Jurisprudence, Cross-Sectional Imaging Posts",
-      "   = id nit-silchar-junior-research-fellow-ece-2026 is retired (redirected), skipped: NIT Silchar Junior Research Fellow Recruitment 2026: ECE विभाग में JRF के 1 पद पर ईमेल से आवेदन, वेतन ₹37,000",
-      "   = near-duplicate headline, skipped: Rajasthan University Recruitment 2026 – 4 Post Doctoral Fellow, Project Assistant पदों के लिए ईमेल से आवेदन करें",
-      "   = same source page as an existing job, skipped: DMRC Executive and Non Executive Recruitment 2026 – Apply Offline for 73 Supervisor, Engineer and More Posts"
+      "   = same source page as an existing job, skipped: ASRB ICAR Technical Assistant Online Form 2026 – Start"
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-23T02:42:48.227Z",
+    "at": "2026-11-23T03:23:34.348Z",
     "aiStatus": "ok (0 calls)",
     "sources": 59,
     "healthy": 23,
@@ -98,17 +97,17 @@
       "navy": "paused (fails 169, geo-blocked)",
       "iaf-agniveer": "paused (fails 169, geo-blocked)",
       "rrb-portal": "paused (fails 165, geo-blocked)",
-      "nta": "1 links, 0 new via news-views.in",
-      "ncs": "paused (fails 92)",
       "dsssb": "5 links, 0 new via direct",
+      "ncs": "paused (fails 92)",
       "ssc": "7 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "ibps": "9 links, 0 new via news-views.in",
       "mppsc": "paused (fails 89, geo-blocked)",
       "mpsc": "paused (fails 169)",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "kpsc": "paused (fails 169, geo-blocked)",
       "appsc": "paused (fails 169, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 169, geo-blocked)",
       "opsc": "paused (fails 92, geo-blocked)",
       "hpsc": "paused (fails 169, geo-blocked)",
@@ -117,7 +116,7 @@
       "jpsc": "paused (fails 49, geo-blocked)",
       "cgpsc": "paused (fails 169, geo-blocked)",
       "gpsc": "paused (fails 169, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
+      "upsc": "4 links, 0 new via news-views.in",
       "ppsc": "paused (fails 169, geo-blocked)",
       "apsc": "paused (fails 169, geo-blocked)",
       "jkpsc": "paused (fails 169, geo-blocked)",
@@ -125,30 +124,30 @@
       "upsssc": "paused (fails 24, geo-blocked)",
       "rssb": "paused (fails 169, geo-blocked)",
       "esb-mp": "paused (fails 169, geo-blocked)",
-      "ctet": "4 links, 0 new via news-views.in",
-      "upsc": "4 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via news-views.in",
+      "tgpsc": "5 links, 0 new via news-views.in",
+      "hssc": "8 links, 0 new via direct",
+      "tnpsc": "31 links, 0 new via news-views.in",
       "jssc": "paused (fails 169, geo-blocked)",
       "osssc": "paused (fails 92, geo-blocked)",
       "gsssb": "paused (fails 169, geo-blocked)",
       "sssb-punjab": "paused (fails 169, geo-blocked)",
       "hprca": "paused (fails 169, geo-blocked)",
-      "tgpsc": "5 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
       "kea": "paused (fails 169, geo-blocked)",
-      "hssc": "8 links, 0 new via direct",
+      "nta": "1 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 169, geo-blocked)",
-      "tnpsc": "31 links, 0 new via news-views.in",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
       "uksssc": "26 links, 0 new via direct",
-      "jkssb": "1 links, 0 new via news-views.in",
       "tnusrb": "paused (fails 169, geo-blocked)",
       "tslprb": "paused (fails 169, geo-blocked)",
       "slprb-ap": "paused (fails 169, geo-blocked)",
       "bssc": "787 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
+      "jkssb": "1 links, 0 new via news-views.in",
       "uppbpb": "7 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
       "rpsc": "183 links, 0 new via news-views.in"
     },
     "log": [
@@ -157,7 +156,7 @@
     ]
   },
   "apply": {
-    "at": "2026-11-23T02:42:48.690Z",
+    "at": "2026-11-23T03:23:34.816Z",
     "ok": true,
     "aiStatus": "ok (0 calls)",
     "checked": 0,
@@ -173,7 +172,7 @@
     ]
   },
   "enrich": {
-    "at": "2026-11-23T01:31:13.708Z",
+    "at": "2026-11-23T03:23:36.820Z",
     "ai": "OpenAI (gpt-4o-mini)",
     "factsRead": 0,
     "factsPending": 0,
@@ -185,35 +184,29 @@
     "contentPending": 0,
     "hindiJobsPending": 0,
     "hindiUpdatesPending": 0,
-    "searchFaqPages": 1,
+    "searchFaqPages": 0,
     "opportunities": 5,
-    "aiStatus": "ok (1 calls)",
+    "aiStatus": "ok (0 calls)",
     "log": [
       "Enrich/facts: 0 job(s) without the notice's facts | doing up to 40",
       "Enrich/links: 1 job(s) still link to the source blog | doing up to 25",
       "  - no official link found on source: MPESB Group 2 (Sub Group 1) Recruitment 2026",
       "Enrich/updates: 0 thin update(s) | doing up to 15",
       "Enrich/content: 0 job(s) on template content | doing up to 5",
-      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25",
-      "  ✓ search FAQ (6) for /jobs/dgqa-technician-2026/ [pos 4.2, 11 impr]"
+      "Enrich/hindi: 0 job(s) without Hindi | doing up to 25"
     ]
   },
   "news": {
-    "at": "2026-11-23T01:31:43.157Z",
+    "at": "2026-11-23T03:23:37.277Z",
     "ai": "OpenAI",
-    "aiStatus": "ok (2 calls)",
-    "published": 1,
-    "quizzes": 1,
+    "aiStatus": "ok (0 calls)",
+    "published": 0,
+    "quizzes": 0,
     "existing": 400,
-    "feeds": {
-      "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3": "20 via direct"
-    },
+    "feeds": {},
     "log": [
       "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  news feed: 20 items from https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3 (direct)",
-      "  20 source headlines for today's digest",
-      "  + digest: Current Affairs 23 November 2026: Key Government Updates for Exam Aspirants (330 words)",
-      "  + quiz: Current Affairs Quiz 23 November 2026 (10 Qs)"
+      "  current affairs for today already exists."
     ]
   },
   "notify": {
