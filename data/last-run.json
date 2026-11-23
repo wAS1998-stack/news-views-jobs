@@ -232,7 +232,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-23T13:47:00.162Z",
+    "at": "2026-11-23T16:12:51.458Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -243,24 +243,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-23T13:47:11.205Z",
+    "at": "2026-11-23T16:12:57.080Z",
     "ok": true,
-    "submitted": 52,
+    "submitted": 23,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 77,
+    "usedToday": 100,
     "log": [
-      "Indexing API: 52 to send (52 updated, 0 deleted); 25/200 used in Google's day 2026-11-23 (Pacific).",
-      "Indexing API: sent 52."
+      "Indexing API: 23 to send (23 updated, 0 deleted); 77/200 used in Google's day 2026-11-23 (Pacific).",
+      "Indexing API: sent 23."
     ]
   },
   "push": {
-    "at": "2026-11-23T13:48:49.097Z",
+    "at": "2026-11-23T16:13:45.561Z",
     "ok": true,
-    "sent": 180,
+    "sent": 70,
     "log": [
-      "push-notify: 180 sent\n  job cmho-raigarh-mo-community-health-officer-2026 en ['s-chhattisgarh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job cmho-raigarh-mo-community-health-officer-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: o"
+      "push-notify: 70 sent\n  job iit-gandhinagar-junior-research-fellow-mse-2026 en ['s-gujarat' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job iit-gandhinagar-junior-research-fellow-mse-2026 en ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job "
     ]
   },
   "gsc": {
