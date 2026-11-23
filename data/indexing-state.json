@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-22",
   "tz": "PT",
-  "used": 9,
+  "used": 10,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -9397,7 +9397,9 @@
  },
  "https://news-views.in/jobs/bssc-stenographer-2026/": {
   "sentAt": "2026-11-20T12:40:03.159Z",
-  "hash": "03221ad37a4c"
+  "hash": "03221ad37a4c",
+  "deleted": true,
+  "deletedAt": "2026-11-23T03:29:14.291Z"
  },
  "https://news-views.in/jobs/cci-medical-officer-ftc-walkin-2026/": {
   "sentAt": "2026-11-20T12:40:03.402Z",

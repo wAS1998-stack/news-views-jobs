@@ -210,7 +210,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-23T00:57:26.229Z",
+    "at": "2026-11-23T03:29:13.336Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -221,24 +221,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-23T00:57:26.790Z",
+    "at": "2026-11-23T03:29:14.414Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 191,
-    "usedToday": 9,
+    "submitted": 1,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-22",
+    "usedToday": 10,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 9/200 used in Google's day 2026-11-22 (Pacific)."
+      "Indexing API: 1 to send (0 updated, 1 deleted); 9/200 used in Google's day 2026-11-22 (Pacific).",
+      "Indexing API: sent 1."
     ]
   },
   "push": {
-    "at": "2026-11-23T00:57:27.812Z",
+    "at": "2026-11-23T03:29:29.891Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 42,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 42 sent\n  job rohtas-civil-court-stenographer-clerk-peon-2026 en [('s-bihar' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job rohtas-civil-court-stenographer-clerk-peon-2026 hi [('s-bihar' in topics || 's-any' in topics) && 'q-graduate' in topics "
     ]
   },
   "gsc": {
