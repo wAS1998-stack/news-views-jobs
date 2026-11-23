@@ -2,8 +2,8 @@
  "_day": {
   "date": "2026-11-22",
   "tz": "PT",
-  "used": 10,
-  "drained": 0
+  "used": 21,
+  "drained": 1
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
   "sentAt": "2026-11-06T04:18:29.722Z",
@@ -10288,5 +10288,49 @@
  "https://news-views.in/jobs/iit-kharagpur-junior-research-fellow-mechanical-2026/": {
   "sentAt": "2026-11-22T20:52:43.345Z",
   "hash": "2e23f47a765e"
+ },
+ "https://news-views.in/jobs/bhel-trichy-apprentice-walkin-trade-graduate-2026/": {
+  "sentAt": "2026-11-23T05:38:20.767Z",
+  "hash": "7800cfa96074"
+ },
+ "https://news-views.in/jobs/bpcl-pwbd-executive-by-november-2026/": {
+  "sentAt": "2026-11-23T05:38:21.024Z",
+  "hash": "a4fc6e8c8a71"
+ },
+ "https://news-views.in/jobs/bsa-hardoi-academic-resource-person-2026/": {
+  "sentAt": "2026-11-23T05:38:21.265Z",
+  "hash": "e11bc806d9e7"
+ },
+ "https://news-views.in/jobs/bsa-kushinagar-technical-instructor-2026/": {
+  "sentAt": "2026-11-23T05:38:21.513Z",
+  "hash": "f7460af24192"
+ },
+ "https://news-views.in/jobs/dhs-sivaganga-staff-nurse-2026/": {
+  "sentAt": "2026-11-23T05:38:21.757Z",
+  "hash": "e448801d2658"
+ },
+ "https://news-views.in/jobs/hbch-rc-muzaffarpur-walkin-mts-technician-2026/": {
+  "sentAt": "2026-11-23T05:38:21.990Z",
+  "hash": "1d8f32499816"
+ },
+ "https://news-views.in/jobs/kv-no-vasco-da-gama-walkin-2026/": {
+  "sentAt": "2026-11-23T05:38:22.223Z",
+  "hash": "655d41ef2fa0"
+ },
+ "https://news-views.in/jobs/mbpa-junior-professional-intern-2026/": {
+  "sentAt": "2026-11-23T05:38:22.450Z",
+  "hash": "fbe79a2fa595"
+ },
+ "https://news-views.in/jobs/nam-kozhikode-deo-mphw-more-2026/": {
+  "sentAt": "2026-11-23T05:38:22.649Z",
+  "hash": "6b2e512bc9fd"
+ },
+ "https://news-views.in/jobs/zilla-parishad-amravati-law-officer-2026/": {
+  "sentAt": "2026-11-23T05:38:22.882Z",
+  "hash": "95ba9e06affa"
+ },
+ "https://news-views.in/jobs/delhi-university-out-senior-assistant-assistant-2026/": {
+  "sentAt": "2026-11-23T05:38:23.077Z",
+  "hash": "4094b0474f6c"
  }
 }
