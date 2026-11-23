@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-23",
   "tz": "PT",
-  "used": 9,
+  "used": 25,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10440,5 +10440,69 @@
  "https://news-views.in/jobs/university-kerala-guest-faculty-walkin-2026/": {
   "sentAt": "2026-11-23T08:17:56.233Z",
   "hash": "faade03a0951"
+ },
+ "https://news-views.in/jobs/aiims-deoghar-senior-resident-2026/": {
+  "sentAt": "2026-11-23T10:54:07.251Z",
+  "hash": "2f7c29fb8f3e"
+ },
+ "https://news-views.in/jobs/apcrda-senior-specialist-engineer-junior-specialist-2026/": {
+  "sentAt": "2026-11-23T10:54:07.513Z",
+  "hash": "3f9a2bf0e538"
+ },
+ "https://news-views.in/jobs/bdl-fitter-electrician-more-2026/": {
+  "sentAt": "2026-11-23T10:54:07.775Z",
+  "hash": "63eb41f6f48a"
+ },
+ "https://news-views.in/jobs/civil-court-katihar-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-23T10:54:08.012Z",
+  "hash": "5c66ebdb03a4"
+ },
+ "https://news-views.in/jobs/cupb-maintenance-engineer-faculty-more-2026/": {
+  "sentAt": "2026-11-23T10:54:08.268Z",
+  "hash": "ee4e3e2fb453"
+ },
+ "https://news-views.in/jobs/dau-doctoral-fellow-2026/": {
+  "sentAt": "2026-11-23T10:54:08.474Z",
+  "hash": "13bf4eef0ada"
+ },
+ "https://news-views.in/jobs/deccan-college-field-assistant-2026/": {
+  "sentAt": "2026-11-23T10:54:08.721Z",
+  "hash": "92a9387e58bb"
+ },
+ "https://news-views.in/jobs/dhs-nagapattinam-staff-nurse-2026/": {
+  "sentAt": "2026-11-23T10:54:08.954Z",
+  "hash": "1fd08c42df00"
+ },
+ "https://news-views.in/jobs/jerc-jkl-independent-member-2027/": {
+  "sentAt": "2026-11-23T10:54:09.195Z",
+  "hash": "a06e23f0aa20"
+ },
+ "https://news-views.in/jobs/jnpa-safety-inspector-asstt-manager-2026/": {
+  "sentAt": "2026-11-23T10:54:09.402Z",
+  "hash": "abf86c8523d1"
+ },
+ "https://news-views.in/jobs/mirzapur-district-court-oath-commissioner-2026/": {
+  "sentAt": "2026-11-23T10:54:09.644Z",
+  "hash": "f7742b02825a"
+ },
+ "https://news-views.in/jobs/mizoram-law-judicial-department-deputy-secretary-2026/": {
+  "sentAt": "2026-11-23T10:54:09.850Z",
+  "hash": "1606823a399e"
+ },
+ "https://news-views.in/jobs/mnnit-allahabad-jra-2026/": {
+  "sentAt": "2026-11-23T10:54:10.052Z",
+  "hash": "0e50e0cebc8e"
+ },
+ "https://news-views.in/jobs/ndfdc-chief-manager-assistant-manager-more-2026/": {
+  "sentAt": "2026-11-23T10:54:10.278Z",
+  "hash": "d1e94d94774c"
+ },
+ "https://news-views.in/jobs/vjti-hall-manager-resident-matron-2026/": {
+  "sentAt": "2026-11-23T10:54:10.482Z",
+  "hash": "862872994840"
+ },
+ "https://news-views.in/jobs/vjti-head-chef-mess-manager-more-2026/": {
+  "sentAt": "2026-11-23T10:54:10.733Z",
+  "hash": "5f9f2245ccc7"
  }
 }
