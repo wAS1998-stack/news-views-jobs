@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-24",
   "tz": "PT",
-  "used": 67,
+  "used": 68,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11160,5 +11160,9 @@
  "https://news-views.in/jobs/meity-scientist-b-2026/": {
   "sentAt": "2026-11-24T16:41:00.962Z",
   "hash": "870ffcec9a90"
+ },
+ "https://news-views.in/jobs/moil-advisor-2026/": {
+  "sentAt": "2026-11-24T23:37:51.913Z",
+  "hash": "c76232dfb9cb"
  }
 }
