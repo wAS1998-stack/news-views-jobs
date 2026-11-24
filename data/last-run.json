@@ -174,7 +174,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-23T23:37:37.967Z",
+    "at": "2026-11-24T02:16:21.643Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -185,7 +185,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-23T23:37:38.365Z",
+    "at": "2026-11-24T02:16:22.103Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 96,
@@ -197,12 +197,11 @@
     ]
   },
   "push": {
-    "at": "2026-11-23T23:37:39.078Z",
+    "at": "2026-11-24T02:16:51.020Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 112,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 112 sent\n  job iaf-chandigarh-apprentice-electrician-aircraft-2026 en ['s-central' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job iaf-chandigarh-apprentice-electrician-aircraft-2026 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]:"
     ]
   },
   "enrich": {
