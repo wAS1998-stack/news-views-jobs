@@ -183,7 +183,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T06:21:29.571Z",
+    "at": "2026-11-24T08:45:57.978Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -194,24 +194,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T06:21:31.637Z",
+    "at": "2026-11-24T08:46:03.946Z",
     "ok": true,
-    "submitted": 7,
+    "submitted": 28,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 122,
+    "usedToday": 28,
     "log": [
-      "Indexing API: 7 to send (7 updated, 0 deleted); 115/200 used in Google's day 2026-11-23 (Pacific).",
-      "Indexing API: sent 7."
+      "Indexing API: 28 to send (28 updated, 0 deleted); 0/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 28."
     ]
   },
   "push": {
-    "at": "2026-11-24T06:22:20.470Z",
+    "at": "2026-11-24T08:47:22.518Z",
     "ok": true,
-    "sent": 32,
+    "sent": 90,
     "log": [
-      "push-notify: 32 sent\n  job nih-assistant-professor-walkin-2026 en ['s-west-bengal' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job nih-assistant-professor-walkin-2026 hi ['s-west-bengal' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job nih-walkin-mts-li"
+      "push-notify: 90 sent\n  job ecil-apprentice-graduate-engineer-diploma-apprentice-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ecil-apprentice-graduate-engineer-diploma-apprentice-2026 en ['s-telangana' in topics && 'q-engineering-diploma' in topics && 'l-e"
     ]
   },
   "enrich": {
