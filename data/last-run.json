@@ -175,7 +175,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T04:19:35.387Z",
+    "at": "2026-11-24T05:46:45.131Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -186,24 +186,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T04:19:36.786Z",
+    "at": "2026-11-24T05:46:47.465Z",
     "ok": true,
-    "submitted": 3,
+    "submitted": 8,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 107,
+    "usedToday": 115,
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 104/200 used in Google's day 2026-11-23 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 8 to send (8 updated, 0 deleted); 107/200 used in Google's day 2026-11-23 (Pacific).",
+      "Indexing API: sent 8."
     ]
   },
   "push": {
-    "at": "2026-11-24T04:20:01.207Z",
+    "at": "2026-11-24T05:47:30.733Z",
     "ok": true,
-    "sent": 44,
+    "sent": 30,
     "log": [
-      "push-notify: 44 sent\n  job chennai-city-urban-health-mission-staff-2026 en [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job chennai-city-urban-health-mission-staff-2026 hi [('s-tamil-nadu' in topics || 's-any' in topics) && 'q-graduate' in top"
+      "push-notify: 30 sent\n  job jipmer-project-nurse-ii-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jipmer-project-nurse-ii-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job aiims-bhubaneswar-data-entry-operator-walkin-2026"
     ]
   },
   "enrich": {

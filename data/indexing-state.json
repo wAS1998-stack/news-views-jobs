@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-23",
   "tz": "PT",
-  "used": 107,
+  "used": 115,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10832,5 +10832,37 @@
  "https://news-views.in/jobs/spa-vijayawada-research-assistant-2026/": {
   "sentAt": "2026-11-24T04:19:36.644Z",
   "hash": "cff7f5697a25"
+ },
+ "https://news-views.in/jobs/aiims-bhubaneswar-data-entry-operator-walkin-2026/": {
+  "sentAt": "2026-11-24T05:46:45.906Z",
+  "hash": "1bf2fa2b3045"
+ },
+ "https://news-views.in/jobs/bel-field-operation-engineer-project-engineer-2026/": {
+  "sentAt": "2026-11-24T05:46:46.102Z",
+  "hash": "d8f0c3574091"
+ },
+ "https://news-views.in/jobs/bsf-assistant-commandant-2027/": {
+  "sentAt": "2026-11-24T05:46:46.323Z",
+  "hash": "ca515e8c20b7"
+ },
+ "https://news-views.in/jobs/csir-igib-technician-2026/": {
+  "sentAt": "2026-11-24T05:46:46.533Z",
+  "hash": "241954f5e54b"
+ },
+ "https://news-views.in/jobs/iim-ahmedabad-research-associate-senior-research-2026/": {
+  "sentAt": "2026-11-24T05:46:46.750Z",
+  "hash": "c85ace1ca238"
+ },
+ "https://news-views.in/jobs/kvs-pilibhit-walkin-tgt-special-educator-2026/": {
+  "sentAt": "2026-11-24T05:46:46.932Z",
+  "hash": "d4aee0e36240"
+ },
+ "https://news-views.in/jobs/sub-division-office-jaynagar-vikas-mitra-2026/": {
+  "sentAt": "2026-11-24T05:46:47.140Z",
+  "hash": "0bb8bef88225"
+ },
+ "https://news-views.in/jobs/upsic-state-chief-information-commissioner-state-2026/": {
+  "sentAt": "2026-11-24T05:46:47.341Z",
+  "hash": "0f506e8fcd5b"
  }
 }
