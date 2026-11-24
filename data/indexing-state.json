@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-23",
   "tz": "PT",
-  "used": 115,
+  "used": 122,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10864,5 +10864,33 @@
  "https://news-views.in/jobs/upsic-state-chief-information-commissioner-state-2026/": {
   "sentAt": "2026-11-24T05:46:47.341Z",
   "hash": "0f506e8fcd5b"
+ },
+ "https://news-views.in/jobs/fact-craftsman-2026/": {
+  "sentAt": "2026-11-24T06:21:30.297Z",
+  "hash": "40e62db76b3e"
+ },
+ "https://news-views.in/jobs/hci-walkin-junior-sous-chef-commis-2026/": {
+  "sentAt": "2026-11-24T06:21:30.514Z",
+  "hash": "267bb2646fa1"
+ },
+ "https://news-views.in/jobs/kerala-public-enterprises-kpesrb-engineer-supervisor-2026/": {
+  "sentAt": "2026-11-24T06:21:30.729Z",
+  "hash": "e382936ea96e"
+ },
+ "https://news-views.in/jobs/nam-accounting-clerk-multi-purpose-worker-2026/": {
+  "sentAt": "2026-11-24T06:21:30.924Z",
+  "hash": "036457d16eaa"
+ },
+ "https://news-views.in/jobs/nih-assistant-professor-walkin-2026/": {
+  "sentAt": "2026-11-24T06:21:31.141Z",
+  "hash": "1db18c81543f"
+ },
+ "https://news-views.in/jobs/nih-walkin-mts-library-information-assistant-2026/": {
+  "sentAt": "2026-11-24T06:21:31.337Z",
+  "hash": "90051a157f24"
+ },
+ "https://news-views.in/jobs/pm-shri-kv-no-afs-sambra-2026/": {
+  "sentAt": "2026-11-24T06:21:31.515Z",
+  "hash": "642e292df6ea"
  }
 }

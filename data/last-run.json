@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T05:46:45.131Z",
+    "at": "2026-11-24T06:21:29.571Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,24 +188,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T05:46:47.465Z",
+    "at": "2026-11-24T06:21:31.637Z",
     "ok": true,
-    "submitted": 8,
+    "submitted": 7,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 115,
+    "usedToday": 122,
     "log": [
-      "Indexing API: 8 to send (8 updated, 0 deleted); 107/200 used in Google's day 2026-11-23 (Pacific).",
-      "Indexing API: sent 8."
+      "Indexing API: 7 to send (7 updated, 0 deleted); 115/200 used in Google's day 2026-11-23 (Pacific).",
+      "Indexing API: sent 7."
     ]
   },
   "push": {
-    "at": "2026-11-24T05:47:30.733Z",
+    "at": "2026-11-24T06:22:20.470Z",
     "ok": true,
-    "sent": 30,
+    "sent": 32,
     "log": [
-      "push-notify: 30 sent\n  job jipmer-project-nurse-ii-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job jipmer-project-nurse-ii-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job aiims-bhubaneswar-data-entry-operator-walkin-2026"
+      "push-notify: 32 sent\n  job nih-assistant-professor-walkin-2026 en ['s-west-bengal' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job nih-assistant-professor-walkin-2026 hi ['s-west-bengal' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job nih-walkin-mts-li"
     ]
   },
   "enrich": {
