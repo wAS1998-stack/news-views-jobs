@@ -183,5 +183,37 @@
       "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
       "  candidates seen 309, passed the rules 3 (in 1 jobs); recruitment pages found: 0"
     ]
+  },
+  "notify": {
+    "at": "2026-11-24T19:05:59.331Z",
+    "ok": true,
+    "websub": 204,
+    "sitemap-latest.xml": 204,
+    "news-sitemap.xml": 204,
+    "feed.xml": 204,
+    "log": [
+      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
+    ]
+  },
+  "indexing-api": {
+    "at": "2026-11-24T19:05:59.857Z",
+    "ok": true,
+    "submitted": 0,
+    "budgetLeft": 133,
+    "usedToday": 67,
+    "kept": 4,
+    "quotaDay": "2026-11-24",
+    "log": [
+      "Indexing API: 0 to send (0 updated, 0 deleted); 67/200 used in Google's day 2026-11-24 (Pacific)."
+    ]
+  },
+  "push": {
+    "at": "2026-11-24T19:06:08.323Z",
+    "ok": true,
+    "sent": 0,
+    "quiet": true,
+    "log": [
+      "push-notify: nothing new to send (quiet hours)."
+    ]
   }
 }
