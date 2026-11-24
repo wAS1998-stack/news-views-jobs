@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-23",
   "tz": "PT",
-  "used": 104,
+  "used": 107,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -10820,5 +10820,17 @@
  "https://news-views.in/jobs/isi-part-time-consultant-2026/": {
   "sentAt": "2026-11-23T21:33:48.558Z",
   "hash": "f14963bb2ef2"
+ },
+ "https://news-views.in/jobs/chennai-city-urban-health-mission-staff-2026/": {
+  "sentAt": "2026-11-24T04:19:36.264Z",
+  "hash": "b294a001c547"
+ },
+ "https://news-views.in/jobs/madc-manager-regional-connectivity-scheme-2026/": {
+  "sentAt": "2026-11-24T04:19:36.463Z",
+  "hash": "98a8e6163604"
+ },
+ "https://news-views.in/jobs/spa-vijayawada-research-assistant-2026/": {
+  "sentAt": "2026-11-24T04:19:36.644Z",
+  "hash": "cff7f5697a25"
  }
 }
