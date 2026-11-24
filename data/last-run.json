@@ -180,7 +180,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T08:45:57.978Z",
+    "at": "2026-11-24T11:25:59.789Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -191,24 +191,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T08:46:03.946Z",
+    "at": "2026-11-24T11:26:04.128Z",
     "ok": true,
-    "submitted": 28,
+    "submitted": 17,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 28,
+    "usedToday": 45,
     "log": [
-      "Indexing API: 28 to send (28 updated, 0 deleted); 0/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 28."
+      "Indexing API: 17 to send (17 updated, 0 deleted); 28/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 17."
     ]
   },
   "push": {
-    "at": "2026-11-24T08:47:22.518Z",
+    "at": "2026-11-24T11:27:20.038Z",
     "ok": true,
-    "sent": 90,
+    "sent": 74,
     "log": [
-      "push-notify: 90 sent\n  job ecil-apprentice-graduate-engineer-diploma-apprentice-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ecil-apprentice-graduate-engineer-diploma-apprentice-2026 en ['s-telangana' in topics && 'q-engineering-diploma' in topics && 'l-e"
+      "push-notify: 74 sent\n  job esic-faridabad-senior-resident-walkin-2026 en ['s-haryana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job esic-faridabad-senior-resident-walkin-2026 hi ['s-haryana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job esic-faridabad-facult"
     ]
   },
   "enrich": {
