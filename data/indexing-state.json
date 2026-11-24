@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-24",
   "tz": "PT",
-  "used": 65,
+  "used": 67,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11152,5 +11152,13 @@
  "https://news-views.in/jobs/ssc-ner-scientific-assistant-final-scrutiny-2026/": {
   "sentAt": "2026-11-24T14:10:15.384Z",
   "hash": "0efc4d22e8a0"
+ },
+ "https://news-views.in/jobs/angrau-research-associate-geospatial-technology-centre-2026/": {
+  "sentAt": "2026-11-24T16:41:00.741Z",
+  "hash": "9ef8ad608d60"
+ },
+ "https://news-views.in/jobs/meity-scientist-b-2026/": {
+  "sentAt": "2026-11-24T16:41:00.962Z",
+  "hash": "870ffcec9a90"
  }
 }

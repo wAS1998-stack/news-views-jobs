@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T14:10:10.024Z",
+    "at": "2026-11-24T16:40:59.865Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,24 +188,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T14:10:15.507Z",
+    "at": "2026-11-24T16:41:01.086Z",
     "ok": true,
-    "submitted": 20,
+    "submitted": 2,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 65,
+    "usedToday": 67,
     "log": [
-      "Indexing API: 20 to send (20 updated, 0 deleted); 45/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 20."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 65/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-24T14:11:47.809Z",
+    "at": "2026-11-24T16:41:16.963Z",
     "ok": true,
-    "sent": 140,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 140 sent\n  job dmho-kamareddy-staff-nurse-pharmacist-more-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dmho-kamareddy-staff-nurse-pharmacist-more-2026 en ['s-telangana' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n "
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "enrich": {
