@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T12:34:35.651Z",
+    "at": "2026-11-25T14:39:39.185Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,24 +188,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T12:34:45.225Z",
+    "at": "2026-11-25T14:39:49.369Z",
     "ok": true,
-    "submitted": 42,
+    "submitted": 43,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 75,
+    "usedToday": 118,
     "log": [
-      "Indexing API: 42 to send (42 updated, 0 deleted); 33/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 42."
+      "Indexing API: 43 to send (43 updated, 0 deleted); 75/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 43."
     ]
   },
   "push": {
-    "at": "2026-11-25T12:35:49.470Z",
+    "at": "2026-11-25T14:41:25.642Z",
     "ok": true,
-    "sent": 92,
+    "sent": 144,
     "log": [
-      "push-notify: 92 sent\n  job gmc-rajanna-sircilla-faculty-walkin-professor-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gmc-rajanna-sircilla-faculty-walkin-professor-2026 hi ['s-telangana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job c"
+      "push-notify: 144 sent\n  job nstl-drdo-apprentice-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nstl-drdo-apprentice-2026 hi ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-hi' in topics]: ok\n  job ghc-law-clerk-2026"
     ]
   },
   "enrich": {
