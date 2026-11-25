@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T01:40:43.664Z",
+    "at": "2026-11-25T03:50:04.636Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,23 +188,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T01:40:44.264Z",
+    "at": "2026-11-25T03:50:05.416Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 132,
-    "usedToday": 68,
+    "submitted": 1,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-24",
+    "usedToday": 69,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 68/200 used in Google's day 2026-11-24 (Pacific)."
+      "Indexing API: 1 to send (1 updated, 0 deleted); 68/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 1."
     ]
   },
   "push": {
-    "at": "2026-11-25T01:41:12.454Z",
+    "at": "2026-11-25T03:50:25.443Z",
     "ok": true,
-    "sent": 100,
+    "sent": 40,
     "log": [
-      "push-notify: 100 sent\n  job nhpc-trainee-engineer-civil-electrical-mechanical-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job nhpc-trainee-engineer-civil-electrical-mechanical-2026 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in top"
+      "push-notify: 40 sent\n  job edcil-computer-science-ict-mathematics-2026 en ['s-central' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job edcil-computer-science-ict-mathematics-2026 hi ['s-central' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job upstdc-as"
     ]
   },
   "enrich": {
