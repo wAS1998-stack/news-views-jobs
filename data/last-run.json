@@ -178,7 +178,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T06:01:48.802Z",
+    "at": "2026-11-25T06:36:10.320Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -189,24 +189,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T06:01:52.066Z",
+    "at": "2026-11-25T06:36:12.402Z",
     "ok": true,
-    "submitted": 11,
+    "submitted": 6,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 80,
+    "usedToday": 86,
     "log": [
-      "Indexing API: 11 to send (11 updated, 0 deleted); 69/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 11."
+      "Indexing API: 6 to send (6 updated, 0 deleted); 80/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 6."
     ]
   },
   "push": {
-    "at": "2026-11-25T06:02:51.624Z",
+    "at": "2026-11-25T06:36:58.117Z",
     "ok": true,
-    "sent": 40,
+    "sent": 28,
     "log": [
-      "push-notify: 40 sent\n  job dme-meghalaya-assistant-professor-senior-resident-2026 en ['s-meghalaya' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dme-meghalaya-assistant-professor-senior-resident-2026 hi ['s-meghalaya' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok"
+      "push-notify: 28 sent\n  job janpad-panchayat-chhindgarh-rojgar-sahayak-2026 en ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job janpad-panchayat-chhindgarh-rojgar-sahayak-2026 hi ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job"
     ]
   },
   "enrich": {

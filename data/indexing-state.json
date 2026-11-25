@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-24",
   "tz": "PT",
-  "used": 80,
+  "used": 86,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11212,5 +11212,29 @@
  "https://news-views.in/jobs/tnrd-village-panchayat-secretary-short-notice-2026/": {
   "sentAt": "2026-11-25T06:01:51.942Z",
   "hash": "09ba388117dd"
+ },
+ "https://news-views.in/jobs/banda-district-court-peon-reader-more-2026/": {
+  "sentAt": "2026-11-25T06:36:11.183Z",
+  "hash": "9943da4f0178"
+ },
+ "https://news-views.in/jobs/hal-x-ray-technician-2026/": {
+  "sentAt": "2026-11-25T06:36:11.408Z",
+  "hash": "bd416720a5dc"
+ },
+ "https://news-views.in/jobs/imsc-project-technical-assistant-project-scientific-2026/": {
+  "sentAt": "2026-11-25T06:36:11.632Z",
+  "hash": "949d4b729ea4"
+ },
+ "https://news-views.in/jobs/janpad-panchayat-chhindgarh-rojgar-sahayak-2026/": {
+  "sentAt": "2026-11-25T06:36:11.847Z",
+  "hash": "5933b4697c3a"
+ },
+ "https://news-views.in/jobs/thdcil-field-engineer-field-officer-2026/": {
+  "sentAt": "2026-11-25T06:36:12.094Z",
+  "hash": "cc522930a70c"
+ },
+ "https://news-views.in/jobs/tnpsc-departmental-examinations-december-2026/": {
+  "sentAt": "2026-11-25T06:36:12.279Z",
+  "hash": "ddf348e35e92"
  }
 }
