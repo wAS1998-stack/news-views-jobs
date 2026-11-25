@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-25",
+    "date": "2026-11-25",
+    "digest_id": "current-affairs-2026-11-25",
+    "title": "Current Affairs Quiz 25 November 2026",
+    "questions": [
+      {
+        "q": "What festival was celebrated in Varanasi as shared by the Prime Minister?",
+        "options": [
+          "Dev Deepawali",
+          "Bali Jatra",
+          "IFFI",
+          "Diwali"
+        ],
+        "answer": 0,
+        "why": "The Prime Minister shared images from the vibrant celebration of Dev Deepawali in Varanasi."
+      },
+      {
+        "q": "Which Gujarati film won hearts at the International Film Festival of India in 2026?",
+        "options": [
+          "Haf",
+          "I Matter",
+          "Elephants in the Fog",
+          "Lalo – Krishna Sada Sahayte"
+        ],
+        "answer": 3,
+        "why": "The Gujarati film 'Lalo – Krishna Sada Sahayte' has captivated audiences at the IFFI 2026."
+      },
+      {
+        "q": "What theme is explored in the film 'Elephants in the Fog'?",
+        "options": [
+          "Supernatural elements",
+          "Fear and risk",
+          "Identity and belonging",
+          "Social acceptance and ostracism"
+        ],
+        "answer": 3,
+        "why": "The film investigates the dualities of social acceptance and ostracism."
+      },
+      {
+        "q": "What does Elina Sarban's film 'I Matter' examine?",
+        "options": [
+          "Human emotions",
+          "Identity and belonging",
+          "Cultural traditions",
+          "Social challenges"
+        ],
+        "answer": 1,
+        "why": "Elina Sarban's film examines layers of identity and belonging amidst human experiences."
+      },
+      {
+        "q": "Which festival did the President of India participate in 2026?",
+        "options": [
+          "IFFI",
+          "Bali Jatra",
+          "Dev Deepawali",
+          "Baisakhi"
+        ],
+        "answer": 1,
+        "why": "The President of India participated in the Bali Jatra Festival 2026 in Cuttack."
+      },
+      {
+        "q": "What was Saurabh Sachdeva's motivation during his masterclass at IFFI?",
+        "options": [
+          "Conquer fears",
+          "Pursue risks",
+          "Create films",
+          "Understand dynamics"
+        ],
+        "answer": 1,
+        "why": "Saurabh Sachdeva encouraged artists to confront their fears and pursue risks aligned with their goals."
+      },
+      {
+        "q": "What unique element does the Malayalam film 'Haf' explore?",
+        "options": [
+          "Cultural traditions",
+          "Human emotions",
+          "Identity",
+          "Supernatural elements"
+        ],
+        "answer": 3,
+        "why": "The ambitious Malayalam film 'Haf' explores supernatural elements intertwined with human emotions."
+      },
+      {
+        "q": "What did the Vice President of India call for regarding education?",
+        "options": [
+          "More funding",
+          "Cultural programs",
+          "Global educational partnerships",
+          "Higher standards"
+        ],
+        "answer": 2,
+        "why": "The Vice President urged for robust global educational partnerships to tackle emerging challenges."
+      },
+      {
+        "q": "What potential did Union Minister Dr. Jitendra Singh emphasize for India's space economy?",
+        "options": [
+          "Economic growth",
+          "Cultural significance",
+          "Technological growth",
+          "Political influence"
+        ],
+        "answer": 0,
+        "why": "He emphasized the potential of India's space economy to grow, highlighting economic aspects."
+      },
+      {
+        "q": "What type of workshops at IFFI allows aspiring filmmakers to engage with critical themes?",
+        "options": [
+          "Masterclasses",
+          "Film critiques",
+          "Cultural exchanges",
+          "Online seminars"
+        ],
+        "answer": 0,
+        "why": "Workshops like these allow aspiring filmmakers to engage with critical themes relevant to societal issues."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-24",
     "date": "2026-11-24",
     "digest_id": "current-affairs-2026-11-24",
