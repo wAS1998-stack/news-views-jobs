@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-25",
   "tz": "PT",
-  "used": 127,
+  "used": 128,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11744,5 +11744,9 @@
  "https://news-views.in/jobs/supaul-civil-court-stenographer-clerk-peon-2026/": {
   "sentAt": "2026-11-25T17:08:34.842Z",
   "hash": "71c555a6a2af"
+ },
+ "https://news-views.in/jobs/district-court-kurnool-special-judicial-magistrate-2026/": {
+  "sentAt": "2026-11-25T19:10:56.044Z",
+  "hash": "637fc496174d"
  }
 }
