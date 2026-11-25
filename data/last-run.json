@@ -175,7 +175,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T10:01:19.856Z",
+    "at": "2026-11-25T12:34:35.651Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -186,24 +186,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T10:01:25.295Z",
+    "at": "2026-11-25T12:34:45.225Z",
     "ok": true,
-    "submitted": 25,
+    "submitted": 42,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 33,
+    "usedToday": 75,
     "log": [
-      "Indexing API: 25 to send (25 updated, 0 deleted); 8/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 25."
+      "Indexing API: 42 to send (42 updated, 0 deleted); 33/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 42."
     ]
   },
   "push": {
-    "at": "2026-11-25T10:02:26.262Z",
+    "at": "2026-11-25T12:35:49.470Z",
     "ok": true,
-    "sent": 80,
+    "sent": 92,
     "log": [
-      "push-notify: 80 sent\n  job bhel-project-engineer-project-supervisor-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bhel-project-engineer-project-supervisor-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]:"
+      "push-notify: 92 sent\n  job gmc-rajanna-sircilla-faculty-walkin-professor-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job gmc-rajanna-sircilla-faculty-walkin-professor-2026 hi ['s-telangana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job c"
     ]
   },
   "enrich": {
