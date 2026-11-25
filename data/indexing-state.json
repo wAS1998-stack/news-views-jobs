@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-25",
   "tz": "PT",
-  "used": 8,
+  "used": 33,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11268,5 +11268,105 @@
  "https://news-views.in/jobs/uidai-assistant-section-officer-2027/": {
   "sentAt": "2026-11-25T08:01:30.320Z",
   "hash": "eddcf78116ea"
+ },
+ "https://news-views.in/jobs/aiims-bhopal-medical-physicist-2026/": {
+  "sentAt": "2026-11-25T10:01:20.632Z",
+  "hash": "54adbbfec179"
+ },
+ "https://news-views.in/jobs/aiims-deoghar-faculty-final-list-out-2026/": {
+  "sentAt": "2026-11-25T10:01:20.831Z",
+  "hash": "75aa94fa32a6"
+ },
+ "https://news-views.in/jobs/anna-university-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-25T10:01:21.055Z",
+  "hash": "3bf25c1b581b"
+ },
+ "https://news-views.in/jobs/aps-ranchi-vice-principal-headmistress-2026/": {
+  "sentAt": "2026-11-25T10:01:21.268Z",
+  "hash": "b33bc14911f8"
+ },
+ "https://news-views.in/jobs/bhel-project-engineer-project-supervisor-2026/": {
+  "sentAt": "2026-11-25T10:01:21.464Z",
+  "hash": "dc0d8986adc6"
+ },
+ "https://news-views.in/jobs/burari-hospital-senior-resident-ent-walkin-2026/": {
+  "sentAt": "2026-11-25T10:01:21.642Z",
+  "hash": "bb84404c7008"
+ },
+ "https://news-views.in/jobs/cmd-accounts-clerk-assistant-manager-more-2026/": {
+  "sentAt": "2026-11-25T10:01:21.823Z",
+  "hash": "b2657a87cd2a"
+ },
+ "https://news-views.in/jobs/hal-consultant-2026/": {
+  "sentAt": "2026-11-25T10:01:22.003Z",
+  "hash": "0cd02a30e42b"
+ },
+ "https://news-views.in/jobs/hcl-junior-manager-walkin-2026/": {
+  "sentAt": "2026-11-25T10:01:22.203Z",
+  "hash": "acf309838382"
+ },
+ "https://news-views.in/jobs/iiser-bhopal-research-associate-i-2026/": {
+  "sentAt": "2026-11-25T10:01:22.414Z",
+  "hash": "77c38b2c869c"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-nurse-iii-2026/": {
+  "sentAt": "2026-11-25T10:01:22.593Z",
+  "hash": "323c906942dd"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-i-2026/": {
+  "sentAt": "2026-11-25T10:01:22.786Z",
+  "hash": "f8bfaf0d229b"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-i-advt-104-2026/": {
+  "sentAt": "2026-11-25T10:01:22.966Z",
+  "hash": "57913e83ae06"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-ii-2026/": {
+  "sentAt": "2026-11-25T10:01:23.173Z",
+  "hash": "9b93228c04c5"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-ii-advt-102-2026/": {
+  "sentAt": "2026-11-25T10:01:23.352Z",
+  "hash": "93593637f207"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-iii-2026/": {
+  "sentAt": "2026-11-25T10:01:23.531Z",
+  "hash": "40adbd59bca7"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-iii-advt-103-2026/": {
+  "sentAt": "2026-11-25T10:01:23.735Z",
+  "hash": "f5bc29cdce3c"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-technical-support-iii-advt-109-2026/": {
+  "sentAt": "2026-11-25T10:01:23.903Z",
+  "hash": "9e51336901ea"
+ },
+ "https://news-views.in/jobs/ilbs-senior-project-associate-project-assistant-2026/": {
+  "sentAt": "2026-11-25T10:01:24.085Z",
+  "hash": "f165422479cd"
+ },
+ "https://news-views.in/jobs/lnh-junior-resident-2026/": {
+  "sentAt": "2026-11-25T10:01:24.289Z",
+  "hash": "ada4bf3cd878"
+ },
+ "https://news-views.in/jobs/nhpc-trainee-engineer-officer-2026/": {
+  "sentAt": "2026-11-25T10:01:24.467Z",
+  "hash": "ddb2d19ccb91"
+ },
+ "https://news-views.in/jobs/nhpc-trainee-officer-hr-pr-law-2026/": {
+  "sentAt": "2026-11-25T10:01:24.648Z",
+  "hash": "dd8a4731e87d"
+ },
+ "https://news-views.in/jobs/rgu-doctoral-fellowship-2026/": {
+  "sentAt": "2026-11-25T10:01:24.835Z",
+  "hash": "f95fb689b65f"
+ },
+ "https://news-views.in/jobs/sdau-junior-research-fellow-plant-pathology-2026/": {
+  "sentAt": "2026-11-25T10:01:25.015Z",
+  "hash": "914340550f9d"
+ },
+ "https://news-views.in/jobs/uoh-senior-research-fellow-junior-research-2026/": {
+  "sentAt": "2026-11-25T10:01:25.171Z",
+  "hash": "65bf23f99bde"
  }
 }

@@ -181,7 +181,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T08:01:27.942Z",
+    "at": "2026-11-25T10:01:19.856Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -192,24 +192,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T08:01:30.443Z",
+    "at": "2026-11-25T10:01:25.295Z",
     "ok": true,
-    "submitted": 8,
+    "submitted": 25,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 8,
+    "usedToday": 33,
     "log": [
-      "Indexing API: 8 to send (8 updated, 0 deleted); 0/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 8."
+      "Indexing API: 25 to send (25 updated, 0 deleted); 8/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 25."
     ]
   },
   "push": {
-    "at": "2026-11-25T08:02:16.252Z",
+    "at": "2026-11-25T10:02:26.262Z",
     "ok": true,
-    "sent": 40,
+    "sent": 80,
     "log": [
-      "push-notify: 40 sent\n  job nardes-trainer-trainer-men-s-women-2026 en ['s-gujarat' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job nardes-trainer-trainer-men-s-women-2026 en ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nardes-trainer-"
+      "push-notify: 80 sent\n  job bhel-project-engineer-project-supervisor-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bhel-project-engineer-project-supervisor-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]:"
     ]
   },
   "enrich": {
