@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-25",
   "tz": "PT",
-  "used": 128,
+  "used": 129,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11748,5 +11748,9 @@
  "https://news-views.in/jobs/district-court-kurnool-special-judicial-magistrate-2026/": {
   "sentAt": "2026-11-25T19:10:56.044Z",
   "hash": "637fc496174d"
+ },
+ "https://news-views.in/jobs/c-dit-consultant-2026/": {
+  "sentAt": "2026-11-25T21:27:49.226Z",
+  "hash": "0e64beb885a9"
  }
 }
