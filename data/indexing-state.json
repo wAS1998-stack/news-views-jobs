@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-25",
   "tz": "PT",
-  "used": 118,
+  "used": 127,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11708,5 +11708,41 @@
  "https://news-views.in/jobs/uas-dharwad-assistant-medical-officer-walkin-2026/": {
   "sentAt": "2026-11-25T14:39:49.244Z",
   "hash": "be8e6063aba4"
+ },
+ "https://news-views.in/jobs/aweil-manager-it-web-2026/": {
+  "sentAt": "2026-11-25T17:08:33.016Z",
+  "hash": "fd955dbfb9ca"
+ },
+ "https://news-views.in/jobs/cdpo-kunzer-sanginis-2026/": {
+  "sentAt": "2026-11-25T17:08:33.250Z",
+  "hash": "95eeb433b682"
+ },
+ "https://news-views.in/jobs/dpiit-junior-consultant-2026/": {
+  "sentAt": "2026-11-25T17:08:33.493Z",
+  "hash": "d2e371363fa2"
+ },
+ "https://news-views.in/jobs/esis-up-specialist-physician-more-2026/": {
+  "sentAt": "2026-11-25T17:08:33.707Z",
+  "hash": "ea1468fab7a7"
+ },
+ "https://news-views.in/jobs/iim-ahmedabad-executive-placement-office-2026/": {
+  "sentAt": "2026-11-25T17:08:33.957Z",
+  "hash": "d19dc00a1b2e"
+ },
+ "https://news-views.in/jobs/iisc-research-associate-i-2026/": {
+  "sentAt": "2026-11-25T17:08:34.166Z",
+  "hash": "594d25387532"
+ },
+ "https://news-views.in/jobs/iiser-kolkata-junior-research-fellow-biological-2026/": {
+  "sentAt": "2026-11-25T17:08:34.409Z",
+  "hash": "1a8462fa2aa1"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-assistant-centre-2026/": {
+  "sentAt": "2026-11-25T17:08:34.640Z",
+  "hash": "99f8d41859b9"
+ },
+ "https://news-views.in/jobs/supaul-civil-court-stenographer-clerk-peon-2026/": {
+  "sentAt": "2026-11-25T17:08:34.842Z",
+  "hash": "71c555a6a2af"
  }
 }

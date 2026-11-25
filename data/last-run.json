@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T14:39:39.185Z",
+    "at": "2026-11-25T17:08:32.038Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,24 +187,25 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T14:39:49.369Z",
+    "at": "2026-11-25T17:08:34.966Z",
     "ok": true,
-    "submitted": 43,
+    "submitted": 9,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 118,
+    "usedToday": 127,
     "log": [
-      "Indexing API: 43 to send (43 updated, 0 deleted); 75/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 43."
+      "Indexing API: 9 to send (9 updated, 0 deleted); 118/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 9."
     ]
   },
   "push": {
-    "at": "2026-11-25T14:41:25.642Z",
+    "at": "2026-11-25T17:09:12.332Z",
     "ok": true,
-    "sent": 144,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 144 sent\n  job nstl-drdo-apprentice-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nstl-drdo-apprentice-2026 hi ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-hi' in topics]: ok\n  job ghc-law-clerk-2026"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "enrich": {
