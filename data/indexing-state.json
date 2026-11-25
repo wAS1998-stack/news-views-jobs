@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-24",
   "tz": "PT",
-  "used": 69,
+  "used": 80,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11168,5 +11168,49 @@
  "https://news-views.in/jobs/edcil-computer-science-ict-mathematics-2026/": {
   "sentAt": "2026-11-25T03:50:05.294Z",
   "hash": "e9c37c0f65aa"
+ },
+ "https://news-views.in/jobs/aps-kota-udc-ldc-more-2026/": {
+  "sentAt": "2026-11-25T06:01:49.762Z",
+  "hash": "222011f93c3f"
+ },
+ "https://news-views.in/jobs/bel-deputy-manager-senior-engineer-2026/": {
+  "sentAt": "2026-11-25T06:01:50.001Z",
+  "hash": "cd68ccaff60d"
+ },
+ "https://news-views.in/jobs/beml-consultant-2026/": {
+  "sentAt": "2026-11-25T06:01:50.239Z",
+  "hash": "5b2d40f628ad"
+ },
+ "https://news-views.in/jobs/dme-meghalaya-assistant-professor-senior-resident-2026/": {
+  "sentAt": "2026-11-25T06:01:50.468Z",
+  "hash": "dc60faa6484c"
+ },
+ "https://news-views.in/jobs/icmr-nirwh-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-25T06:01:50.697Z",
+  "hash": "88a16fa3b5a1"
+ },
+ "https://news-views.in/jobs/icmr-nirwoh-project-technical-support-iii-2026/": {
+  "sentAt": "2026-11-25T06:01:50.900Z",
+  "hash": "b62a0c48cbcc"
+ },
+ "https://news-views.in/jobs/imsc-project-assistant-scientific-officer-more-2026/": {
+  "sentAt": "2026-11-25T06:01:51.124Z",
+  "hash": "7777bd24a7ec"
+ },
+ "https://news-views.in/jobs/kufos-guest-faculty-2026/": {
+  "sentAt": "2026-11-25T06:01:51.329Z",
+  "hash": "8f3f6b3349b6"
+ },
+ "https://news-views.in/jobs/sbi-specialist-cadre-officers-2026/": {
+  "sentAt": "2026-11-25T06:01:51.537Z",
+  "hash": "796adf860a8b"
+ },
+ "https://news-views.in/jobs/tiruppur-district-sanitation-worker-2026/": {
+  "sentAt": "2026-11-25T06:01:51.739Z",
+  "hash": "bce822503be0"
+ },
+ "https://news-views.in/jobs/tnrd-village-panchayat-secretary-short-notice-2026/": {
+  "sentAt": "2026-11-25T06:01:51.942Z",
+  "hash": "09ba388117dd"
  }
 }

@@ -178,7 +178,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T03:50:04.636Z",
+    "at": "2026-11-25T06:01:48.802Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -189,24 +189,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T03:50:05.416Z",
+    "at": "2026-11-25T06:01:52.066Z",
     "ok": true,
-    "submitted": 1,
+    "submitted": 11,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 69,
+    "usedToday": 80,
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 68/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 1."
+      "Indexing API: 11 to send (11 updated, 0 deleted); 69/200 used in Google's day 2026-11-24 (Pacific).",
+      "Indexing API: sent 11."
     ]
   },
   "push": {
-    "at": "2026-11-25T03:50:25.443Z",
+    "at": "2026-11-25T06:02:51.624Z",
     "ok": true,
     "sent": 40,
     "log": [
-      "push-notify: 40 sent\n  job edcil-computer-science-ict-mathematics-2026 en ['s-central' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job edcil-computer-science-ict-mathematics-2026 hi ['s-central' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job upstdc-as"
+      "push-notify: 40 sent\n  job dme-meghalaya-assistant-professor-senior-resident-2026 en ['s-meghalaya' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job dme-meghalaya-assistant-professor-senior-resident-2026 hi ['s-meghalaya' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok"
     ]
   },
   "enrich": {
