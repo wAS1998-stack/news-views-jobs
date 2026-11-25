@@ -1,8 +1,8 @@
 {
  "_day": {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "tz": "PT",
-  "used": 86,
+  "used": 8,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11236,5 +11236,37 @@
  "https://news-views.in/jobs/tnpsc-departmental-examinations-december-2026/": {
   "sentAt": "2026-11-25T06:36:12.279Z",
   "hash": "ddf348e35e92"
+ },
+ "https://news-views.in/jobs/hpnlu-accountant-2026/": {
+  "sentAt": "2026-11-25T08:01:28.727Z",
+  "hash": "5c27a23834a1"
+ },
+ "https://news-views.in/jobs/iit-guwahati-administrative-assistant-2026/": {
+  "sentAt": "2026-11-25T08:01:28.992Z",
+  "hash": "81c5a3c03988"
+ },
+ "https://news-views.in/jobs/iit-indore-project-assistant-civil-engineering-2026/": {
+  "sentAt": "2026-11-25T08:01:29.214Z",
+  "hash": "9919394310f9"
+ },
+ "https://news-views.in/jobs/nardes-trainer-trainer-men-s-women-2026/": {
+  "sentAt": "2026-11-25T08:01:29.440Z",
+  "hash": "9d8f9f42d0a0"
+ },
+ "https://news-views.in/jobs/pau-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-25T08:01:29.694Z",
+  "hash": "90fa114ec348"
+ },
+ "https://news-views.in/jobs/pau-young-professional-ii-2026/": {
+  "sentAt": "2026-11-25T08:01:29.916Z",
+  "hash": "d7b36f5b5696"
+ },
+ "https://news-views.in/jobs/pesb-director-operations-2026/": {
+  "sentAt": "2026-11-25T08:01:30.131Z",
+  "hash": "4609ac743d7f"
+ },
+ "https://news-views.in/jobs/uidai-assistant-section-officer-2027/": {
+  "sentAt": "2026-11-25T08:01:30.320Z",
+  "hash": "eddcf78116ea"
  }
 }

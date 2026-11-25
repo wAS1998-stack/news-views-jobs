@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-25T06:36:10.320Z",
+    "at": "2026-11-25T08:01:27.942Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,24 +187,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-25T06:36:12.402Z",
+    "at": "2026-11-25T08:01:30.443Z",
     "ok": true,
-    "submitted": 6,
+    "submitted": 8,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 86,
+    "usedToday": 8,
     "log": [
-      "Indexing API: 6 to send (6 updated, 0 deleted); 80/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 6."
+      "Indexing API: 8 to send (8 updated, 0 deleted); 0/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 8."
     ]
   },
   "push": {
-    "at": "2026-11-25T06:36:58.117Z",
+    "at": "2026-11-25T08:02:16.252Z",
     "ok": true,
-    "sent": 28,
+    "sent": 40,
     "log": [
-      "push-notify: 28 sent\n  job janpad-panchayat-chhindgarh-rojgar-sahayak-2026 en ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job janpad-panchayat-chhindgarh-rojgar-sahayak-2026 hi ['s-chhattisgarh' in topics && 'q-10th-pass' in topics && 'l-hi' in topics]: ok\n  job"
+      "push-notify: 40 sent\n  job nardes-trainer-trainer-men-s-women-2026 en ['s-gujarat' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job nardes-trainer-trainer-men-s-women-2026 en ['s-gujarat' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]: ok\n  job nardes-trainer-"
     ]
   },
   "enrich": {
