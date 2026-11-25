@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-24T23:37:51.078Z",
+    "at": "2026-11-25T01:40:43.664Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,25 +188,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-24T23:37:52.035Z",
+    "at": "2026-11-25T01:40:44.264Z",
     "ok": true,
-    "submitted": 1,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 132,
     "usedToday": 68,
+    "kept": 4,
+    "quotaDay": "2026-11-24",
     "log": [
-      "Indexing API: 1 to send (1 updated, 0 deleted); 67/200 used in Google's day 2026-11-24 (Pacific).",
-      "Indexing API: sent 1."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 68/200 used in Google's day 2026-11-24 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-24T23:37:56.707Z",
+    "at": "2026-11-25T01:41:12.454Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 100,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 100 sent\n  job nhpc-trainee-engineer-civil-electrical-mechanical-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job nhpc-trainee-engineer-civil-electrical-mechanical-2026 en ['s-central' in topics && 'q-engineering-diploma' in topics && 'l-en' in top"
     ]
   },
   "enrich": {
