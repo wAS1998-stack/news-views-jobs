@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 158,
+  "used": 165,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12472,5 +12472,33 @@
  "https://news-views.in/jobs/wcd-mungeli-anganwadi-worker-anganwadi-helper-2026/": {
   "sentAt": "2026-11-26T19:17:24.052Z",
   "hash": "9fb3c73f19c9"
+ },
+ "https://news-views.in/jobs/dh-fw-samiti-cooch-behar-staff-2026/": {
+  "sentAt": "2026-11-26T21:19:10.735Z",
+  "hash": "34d44018908d"
+ },
+ "https://news-views.in/jobs/doon-university-project-assistant-walkin-2026/": {
+  "sentAt": "2026-11-26T21:19:10.971Z",
+  "hash": "0b4178ff8486"
+ },
+ "https://news-views.in/jobs/nrlm-block-manager-farm-livelihoods-2026/": {
+  "sentAt": "2026-11-26T21:19:11.202Z",
+  "hash": "c4197093decb"
+ },
+ "https://news-views.in/jobs/nrlm-karnataka-district-manager-2026/": {
+  "sentAt": "2026-11-26T21:19:11.429Z",
+  "hash": "d1a84c226d98"
+ },
+ "https://news-views.in/jobs/nrlm-karnataka-office-assistant-2026/": {
+  "sentAt": "2026-11-26T21:19:11.650Z",
+  "hash": "234e9a939d60"
+ },
+ "https://news-views.in/jobs/nrlm-taluk-program-manager-2026/": {
+  "sentAt": "2026-11-26T21:19:11.854Z",
+  "hash": "82409219ada1"
+ },
+ "https://news-views.in/jobs/university-rajasthan-project-assistant-2026/": {
+  "sentAt": "2026-11-26T21:19:12.041Z",
+  "hash": "765ffdd92275"
  }
 }

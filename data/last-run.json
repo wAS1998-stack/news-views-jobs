@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T19:17:21.134Z",
+    "at": "2026-11-26T21:19:09.676Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,20 +179,20 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T19:17:24.175Z",
+    "at": "2026-11-26T21:19:12.164Z",
     "ok": true,
-    "submitted": 10,
+    "submitted": 7,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 158,
+    "usedToday": 165,
     "log": [
-      "Indexing API: 10 to send (10 updated, 0 deleted); 148/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 10."
+      "Indexing API: 7 to send (7 updated, 0 deleted); 158/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 7."
     ]
   },
   "push": {
-    "at": "2026-11-26T19:17:58.126Z",
+    "at": "2026-11-26T21:19:39.269Z",
     "ok": true,
     "sent": 0,
     "quiet": true,
