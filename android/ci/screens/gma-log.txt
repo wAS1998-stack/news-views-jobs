@@ -1,33 +1,34 @@
-11-23 03:34:05.578  4705  4705 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1117)
-11-23 03:34:13.746  4705  4705 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/mad/sdk/native/production/sdk-core-v40-impl.js?n=true&lv=sdk_20190107_RC02:1110)
-11-23 03:34:25.020  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:25.049  4705  5050 I Ads     : Ad failed to load : 0
-11-23 03:34:25.429  4705  4705 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1117)
-11-23 03:34:26.084  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:26.092  4705  5119 I Ads     : Ad failed to load : 0
-11-23 03:34:26.339  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:26.365  4705  5103 I Ads     : Ad failed to load : 0
-11-23 03:34:43.016  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:43.019  4705  5034 I Ads     : Ad failed to load : 0
-11-23 03:34:43.035  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:43.046  4705  5835 I Ads     : Ad failed to load : 0
-11-23 03:34:43.090  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:43.093  4705  5031 I Ads     : Ad failed to load : 0
-11-23 03:34:51.931  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:34:51.947  4705  5027 I Ads     : Ad failed to load : 0
-11-23 03:35:08.319  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:35:08.330  4705  5053 I Ads     : Ad failed to load : 0
-11-23 03:35:14.815  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:35:14.821  4705  5034 I Ads     : Ad failed to load : 0
-11-23 03:35:14.857  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:35:14.860  4705  5119 I Ads     : Ad failed to load : 0
-11-23 03:35:14.877  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:35:14.889  4705  5118 I Ads     : Ad failed to load : 0
-11-23 03:35:40.103  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:35:40.107  4705  5835 I Ads     : Ad failed to load : 0
-11-23 03:36:16.267  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:36:16.285  4705  5120 I Ads     : Ad failed to load : 0
-11-23 03:36:16.323  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:36:16.328  4705  5118 I Ads     : Ad failed to load : 0
-11-23 03:36:16.409  4705  4705 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
-11-23 03:36:16.412  4705  5034 I Ads     : Ad failed to load : 0
+11-26 17:54:12.059  3243  3243 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1117)
+11-26 17:54:36.084  5042  5042 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1117)
+11-26 17:54:41.969  5042  5042 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/mad/sdk/native/production/sdk-core-v40-impl.js?n=true&lv=sdk_20190107_RC02:1110)
+11-26 17:54:42.883  5042  5333 I Ads     : Ad failed to load : 3
+11-26 17:54:52.006  5042  5042 I Ads     : JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1117)
+11-26 17:54:52.086  5042  5042 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-26 17:54:52.105  5042  5312 I Ads     : Ad failed to load : 0
+11-26 17:54:54.971  5042  5042 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-26 17:54:54.979  5042  5277 I Ads     : Ad failed to load : 0
+11-26 17:54:59.570  5042  5042 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-26 17:54:59.576  5042  5318 I Ads     : Ad failed to load : 0
+11-26 17:55:08.180  5042  5042 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-26 17:55:08.186  5042  5277 I Ads     : Ad failed to load : 0
+11-26 17:55:10.896  5042  5042 I Ads     : Received log message: <Google:HTML> Incorrect native ad response. Click actions were not properly specified
+11-26 17:55:10.901  5042  5386 I Ads     : Ad failed to load : 0
+11-26 17:55:20.652  5042  5317 I Ads     : Ad failed to load : 3
+11-26 17:55:21.794  5042  5042 E Ads     : JS: Error: <svg> attribute viewBox: Expected number, "0 0 300px 169px". (https://googleads.g.doubleclick.net/mads/gma?caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=3047144&heap_max=201326592&heap_total=87302424&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=11&seq_num=12&target_api=36#caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=3047144&heap_max=201326592&heap_total=87302424&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=11&seq_num=12&target_api=36:1)
+11-26 17:55:22.375  5042  5042 E Ads     : JS: Uncaught TypeError: a is not a function (https://www.gstatic.com/mysidia/772a9825434e9987d329eefb48963891.js?tag=addon/video:200)
+11-26 17:55:30.499  5042  5288 I Ads     : Ad failed to load : 3
+11-26 17:55:37.150  5042  5321 I Ads     : Ad failed to load : 3
+11-26 17:55:37.745  5042  5042 E Ads     : JS: Error: <svg> attribute viewBox: Expected number, "0 0 300px 169px". (https://googleads.g.doubleclick.net/mads/gma?caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=15746424&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=13&seq_num=14&target_api=36#caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=15746424&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=13&seq_num=14&target_api=36:1)
+11-26 17:55:37.965  5042  5042 E Ads     : JS: Uncaught TypeError: a is not a function (https://www.gstatic.com/mysidia/772a9825434e9987d329eefb48963891.js?tag=addon/video:200)
+11-26 17:55:39.004  5042  5334 I Ads     : Ad failed to load : 3
+11-26 17:55:42.397  5042  5317 I Ads     : Ad failed to load : 3
+11-26 17:55:44.985  5042  5042 E Ads     : JS: Error: <svg> attribute viewBox: Expected number, "0 0 300px 169px". (https://googleads.g.doubleclick.net/mads/gma?caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=12993752&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=17&seq_num=18&target_api=36#caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=12993752&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=17&seq_num=18&target_api=36:1)
+11-26 17:55:45.063  5042  5042 E Ads     : JS: Uncaught TypeError: a is not a function (https://www.gstatic.com/mysidia/772a9825434e9987d329eefb48963891.js?tag=addon/video:200)
+11-26 17:56:01.514  5042  5042 E Ads     : JS: Error: <svg> attribute viewBox: Expected number, "0 0 300px 169px". (https://googleads.g.doubleclick.net/mads/gma?caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=504256&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=18&seq_num=19&target_api=36#caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=504256&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=18&seq_num=19&target_api=36:1)
+11-26 17:56:01.584  5042  5042 E Ads     : JS: Uncaught TypeError: a is not a function (https://www.gstatic.com/mysidia/772a9825434e9987d329eefb48963891.js?tag=addon/video:200)
+11-26 17:56:07.994  5042  5334 I Ads     : Ad failed to load : 3
+11-26 17:56:22.139  5042  5042 E Ads     : JS: Error: <svg> attribute viewBox: Expected number, "0 0 300px 169px". (https://googleads.g.doubleclick.net/mads/gma?caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=6208856&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=21&seq_num=22&target_api=36#caps=inlineVideo_interactiveVideo_mraid1_mraid2_mraid3_sdkVideo_exo3_th_autoplay_mediation_scroll_av_transparentBackground_sdkAdmobApiForAds_di_aso_sfv_dinm_dim_nav_navc_dinmo_ipdof_gls_saiMacro_sai_xSeconds&eid=318484909&format=300x250_as&heap_free=6208856&heap_max=201326592&heap_total=103044992&js=afma-sdk-a-v263305000.263305000.0&msid=in.newsviews.app&preqs=21&seq_num=22&target_api=36:1)
+11-26 17:56:22.238  5042  5042 E Ads     : JS: Uncaught TypeError: a is not a function (https://www.gstatic.com/mysidia/772a9825434e9987d329eefb48963891.js?tag=addon/video:200)
+11-26 17:56:32.676  5042  5312 I Ads     : Ad failed to load : 3
+11-26 17:56:39.625  5042  5321 I Ads     : Ad failed to load : 3
+11-26 17:56:43.105  5042  5317 I Ads     : Ad failed to load : 3
