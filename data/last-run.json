@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T06:11:43.057Z",
+    "at": "2026-11-26T08:55:51.354Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,24 +187,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T06:11:48.334Z",
+    "at": "2026-11-26T08:55:59.855Z",
     "ok": true,
-    "submitted": 20,
+    "submitted": 41,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 151,
+    "usedToday": 41,
     "log": [
-      "Indexing API: 20 to send (20 updated, 0 deleted); 131/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 20."
+      "Indexing API: 41 to send (41 updated, 0 deleted); 0/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 41."
     ]
   },
   "push": {
-    "at": "2026-11-26T06:12:48.114Z",
+    "at": "2026-11-26T08:57:17.255Z",
     "ok": true,
-    "sent": 82,
+    "sent": 88,
     "log": [
-      "push-notify: 82 sent\n  job appsc-aee-extended-assistant-executive-engineer-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job appsc-aee-extended-assistant-executive-engineer-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-e"
+      "push-notify: 88 sent\n  job esic-walkin-senior-resident-specialist-2026 en ['s-madhya-pradesh' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job esic-walkin-senior-resident-specialist-2026 en ['s-madhya-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]"
     ]
   },
   "enrich": {
