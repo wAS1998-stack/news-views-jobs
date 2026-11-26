@@ -175,7 +175,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T04:42:22.986Z",
+    "at": "2026-11-26T06:11:43.057Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -186,24 +186,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T04:42:24.376Z",
+    "at": "2026-11-26T06:11:48.334Z",
     "ok": true,
-    "submitted": 2,
+    "submitted": 20,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 131,
+    "usedToday": 151,
     "log": [
-      "Indexing API: 2 to send (2 updated, 0 deleted); 129/200 used in Google's day 2026-11-25 (Pacific).",
-      "Indexing API: sent 2."
+      "Indexing API: 20 to send (20 updated, 0 deleted); 131/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 20."
     ]
   },
   "push": {
-    "at": "2026-11-26T04:43:09.651Z",
+    "at": "2026-11-26T06:12:48.114Z",
     "ok": true,
-    "sent": 128,
+    "sent": 82,
     "log": [
-      "push-notify: 128 sent\n  job uksssc-sub-inspector-out-si-other-2026 en [('s-uttarakhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job uksssc-sub-inspector-out-si-other-2026 hi [('s-uttarakhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && "
+      "push-notify: 82 sent\n  job appsc-aee-extended-assistant-executive-engineer-2026 en ['s-andhra-pradesh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job appsc-aee-extended-assistant-executive-engineer-2026 en ['s-andhra-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-e"
     ]
   },
   "enrich": {
