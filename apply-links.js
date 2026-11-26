@@ -124,7 +124,7 @@ async function aiConfirm(job, list) {
     `\n\nWhich ONE link is where candidates apply for THIS recruitment (its online application form, registration or recruitment portal), or the official page for THIS specific recruitment? ` +
     `Not an admissions, exam, result, journal or general page, and not a different recruitment. ` +
     `Reply with JSON only: {"pick": <the number>} or {"pick": 0} if none clearly is.`;
-  const ans = await L.askAI(prompt, { maxTokens: 30 }).catch(() => "");
+  const ans = await L.askAI(prompt, { maxTokens: 30, purpose: "apply-confirm" }).catch(() => "");
   const obj = L.parseJson(ans) || {};
   const n = Number(obj.pick ?? (String(ans || "").match(/\d+/) || [])[0]);
   return n >= 1 && n <= list.length ? list[n - 1] : null;

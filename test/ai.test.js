@@ -7,7 +7,9 @@ const ROOT = path.join(__dirname, "..");
 const L = require("../lib.js");
 
 /** Runs a snippet in a fresh process (the keys are read when lib.js loads) with fetch replaced; returns what it prints as JSON. */
-function withAI(env, mocks, body) {
+function withAI(env, mocks, body, ledger) {
+  const usageFile = path.join(require("os").tmpdir(), `ai-usage-test-${process.pid}-${Math.random().toString(36).slice(2)}.json`);
+  require("fs").writeFileSync(usageFile, JSON.stringify(ledger || {}));
   const script = `
     const calls = { openai: 0, claude: 0 };
     ${mocks}
@@ -22,8 +24,10 @@ function withAI(env, mocks, body) {
       console.log(JSON.stringify({ calls, out, status: L.aiStatus(), down: L.aiDown() }));
     })();`;
   const out = execFileSync(process.execPath, ["-e", script], { cwd: ROOT, encoding: "utf8",
-    env: { ...process.env, OPENAI_API_KEY: "", ANTHROPIC_API_KEY: "", ...env } });
-  return JSON.parse(out.trim().split("\n").pop());
+    env: { ...process.env, OPENAI_API_KEY: "", ANTHROPIC_API_KEY: "", AI_BUDGET_INR: "", AI_USAGE_FILE: usageFile, ...env } });
+  const res = JSON.parse(out.trim().split("\n").pop());
+  try { res.ledger = JSON.parse(require("fs").readFileSync(usageFile, "utf8")); require("fs").unlinkSync(usageFile); } catch {}
+  return res;
 }
 const NO_CREDIT = `({ status: 429, body: { error: { code: "insufficient_quota", type: "insufficient_quota" } } })`;
 
@@ -66,7 +70,7 @@ test("askAI: a working call reports ok", () => {
     const out = [await L.askAI("a")];`);
   assert.deepStrictEqual(r.out, ['{"a":1}']);
   assert.strictEqual(r.down, "");
-  assert.strictEqual(r.status, "ok (1 calls)");
+  assert.match(r.status, /^ok \(1 calls; ₹0 of ₹10 used in the last 24 h\)$/);
 });
 
 test("the stand-in apply steps name no way of applying", () => {
@@ -179,4 +183,41 @@ test("quiz: English only, no answer the explanation contradicts, right option sp
   assert.strictEqual(pos.size, 4, "every position is used");
   const keep = { q: "Which are true?", options: ["A only", "B only", "Both A and B", "Neither"], answer: 2, why: "" };
   assert.deepStrictEqual(N.spreadAnswer(keep), keep, "options that point at others are not moved");
+});
+
+test("budget: this site's AI spend in any 24 hours stops at 90% of the daily rupees; new notices come first", () => {
+  const hour = new Date().toISOString().slice(0, 13);
+  const OK = `const OPENAI = () => ({ status: 200, body: { choices: [{ message: { content: '{"a":1}' } }], usage: { prompt_tokens: 2000, completion_tokens: 500, prompt_tokens_details: { cached_tokens: 0 } } } }); const CLAUDE = () => ({ status: 500, body: {} });`;
+  // ₹10 a day at ₹90/$ stops at $0.10. Spent $0.06: an extra (Hindi) is refused at 55%, upkeep and a new notice go out
+  let r = withAI({ OPENAI_API_KEY: "k" }, OK, `
+    const out = [await L.askAI("hi", { purpose: "hindi-job" }), await L.askAI("a", { purpose: "apply-confirm" }), await L.askAI("n", { essential: true, purpose: "extract-job" })];`,
+    { hours: { [hour]: 0.06 } });
+  assert.deepStrictEqual(r.out, [null, '{"a":1}', '{"a":1}']);
+  assert.strictEqual(r.calls.openai, 2);
+  assert.match(r.status, /Hindi and extras wait/);
+  // the two calls are metered by purpose and by hour: 2,000 in + 500 out at $0.15 / $0.60 per 1M = $0.0006 each
+  const day = Object.keys(r.ledger.days)[0];
+  assert.deepStrictEqual(Object.keys(r.ledger.days[day].by).sort(), ["apply-confirm", "extract-job"]);
+  assert.ok(Math.abs(r.ledger.hours[hour] - 0.0612) < 1e-6, String(r.ledger.hours[hour]));
+  assert.strictEqual(r.ledger.budget.inrPerDay, 10);
+  // spent $0.0999: one more notice goes out (at most one call over), then everything waits
+  r = withAI({ OPENAI_API_KEY: "k" }, OK, `
+    const out = [await L.askAI("n1", { essential: true, purpose: "extract-job" }), await L.askAI("n2", { essential: true, purpose: "extract-job" }), await L.askAI("q", { purpose: "quiz" })];`,
+    { hours: { [hour]: 0.0999 } });
+  assert.deepStrictEqual(r.out, ['{"a":1}', null, null]);
+  assert.strictEqual(r.calls.openai, 1);
+  assert.match(r.status, /^paused: daily AI budget reached \(₹9 of ₹10 in the last 24 hours\) \(after 1 calls\)$/);
+  // spend older than 24 hours does not count
+  const old = new Date(Date.now() - 26 * 3600e3).toISOString().slice(0, 13);
+  r = withAI({ OPENAI_API_KEY: "k" }, OK, `const out = [await L.askAI("hi", { purpose: "hindi-job" })];`, { hours: { [old]: 5 } });
+  assert.deepStrictEqual(r.out, ['{"a":1}']);
+});
+
+test("budget refusals are not failures: work waits, nothing is marked", () => {
+  const hour = new Date().toISOString().slice(0, 13);
+  const r = withAI({ OPENAI_API_KEY: "k" }, `const OPENAI = () => { throw new Error("must not be called"); }; const CLAUDE = OPENAI;`, `
+    const out = [await L.askAI("x", { essential: true, purpose: "extract-job" })]; out.push(!!L.aiDown(), L.aiHealth().failed);`,
+    { hours: { [hour]: 0.2 } });
+  assert.deepStrictEqual(r.out, [null, true, 0]);
+  assert.strictEqual(r.calls.openai, 0);
 });

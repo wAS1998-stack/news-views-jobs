@@ -54,6 +54,18 @@ hurting users or breaking Google's policies.
   text, numbers, YYYY-MM-DD dates, http(s) links. build.js applies the same on load. Dates are Indian dates (`L.todayIST`).
   `L.stripTags` decodes Cloudflare-hidden e-mail addresses (`data-cfemail`); older text that says "[email protected]"
   is rewritten by `sanitizeJob` to point at the official notice (it was showing on 55 job pages).
+- **Daily AI budget: ₹10 (owner, 26 Nov) — for this website's automation only.** `config.json` → `aiBudget`
+  (`inrPerDay` 10, `inrPerUsd` 90, `stopAt` 0.9): `lib.js` meters every call (data/ai-usage.json: per IST day `usd`/`inr`/`by`
+  purpose, per UTC hour `hours`) and refuses calls once the spend in the last 24 hours reaches ₹9, so no calendar day (UTC
+  dashboard or IST) passes ₹10. Other apps on the OpenAI account are not counted or limited. Priority: reading new notices
+  and the daily quiz may use it all; upkeep (apply-link checks, overviews, thin updates) stops at 85%, Hindi and
+  search-console FAQ at 55%. A refused call is handled like an outage (work waits, nothing marked). To make it fit
+  (weekdays had cost ₹22–41): notices are read facts-only (6,000 characters, 15 best links; no AI FAQ, tips, about-text or
+  Hindi summary — `faqsBase()` writes the FAQ from the facts, `prepTipList()` the tips, for the page and the app feed),
+  the overview is written later from leftover budget (open jobs, most posts first), Hindi covers the short fields only
+  (title, summary, post, qualification, place, steps, selection) for open jobs, most posts first, and headline-only pages
+  are noindex and out of the sitemap until read. About ₹9.5 covers an average day's notices; on busy days some wait hours.
+  Every `askAI` call passes a `purpose` (see `PURPOSE_TIER`); `aiStatus` shows "₹x of ₹10 used in the last 24 h".
 - **When the AI refuses calls** (no credit, an outage — it happened on 11 Nov: every OpenAI call answered 429 for a day
   and nobody saw it): `askAI` logs the provider's reason (`insufficient_quota`, `rate_limit_exceeded`), stops asking for
   the rest of that step when the account has no credit, and every section of `data/last-run.json` carries `aiStatus`

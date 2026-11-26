@@ -107,3 +107,15 @@ test("qualification tags: 'be' is not B.E., a Postmaster or Headmaster post is n
   assert.strictEqual(q("M. Sc. in Chemistry"), "post-graduate");
   assert.strictEqual(q("Foreign Going Master's Certificate"), "");
 });
+
+test("the facts FAQ names the right way to apply; the app gets the same FAQ and tips as the page", () => {
+  const base = { id: "x", title: "X Recruitment 2026", organization: "X", application_end: "2026-12-20", total_vacancies: 12, qualification: "10th pass" };
+  const how = (job) => B.faqsBase(job).find((f) => /How can I apply/.test(f.q)).a;
+  assert.match(how({ ...base, title: "X Walk-in 2026" }), /walk-in/i);
+  assert.doesNotMatch(how({ ...base, title: "X Walk-in 2026" }), /online/i);
+  assert.match(how({ ...base, title: "X Recruitment 2026 – Apply Offline" }), /offline/);
+  assert.match(how({ ...base, title: "X Recruitment 2026 – Apply Online" }), /online/);
+  assert.match(B.faqsBase({ ...base, title: "X Walk-in 2026" })[0].a, /walk-in date/);
+  assert.ok(B.prepTipList({ title: "SSC CGL 2026", organization: "SSC" }).length >= 3, "tips without AI tips");
+  assert.deepStrictEqual(B.prepTipList({ title: "T", preparation_tips: ["a", "b", "c"] }), ["a", "b", "c"]);
+});

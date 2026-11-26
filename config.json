@@ -64,6 +64,12 @@
   "_indiaRelayNote": "indiaRelayUrl: optional relay running on a server in India (tools-dev/india-relay.js), tried first for official sites that refuse foreign networks. Leave empty if none; INDIA_RELAY_URL (env/secret) overrides it.",
   "_appMinVersionNote": "appMinVersion: the lowest app versionCode the feed still supports (index.json minVersion). 0 = every version; raise it only when old versions must update.",
   "aiModel": "gpt-4o-mini",
+  "aiBudget": {
+    "_note": "Hard limit on THIS website's AI spend in any 24 hours (lib.js). Calls stop at stopAt (90%) of inrPerDay. Only the calls this site makes are counted; other apps on the OpenAI account are not affected.",
+    "inrPerDay": 10,
+    "inrPerUsd": 90,
+    "stopAt": 0.9
+  },
   "newsModel": "gpt-4o-mini",
   "minArticleWords": 300,
   "maxEnrichPerRun": 5,

@@ -329,34 +329,87 @@ const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || process.env.CLAUDE_MODEL 
 const AI = OPENAI_KEY ? "OpenAI" : (ANTHROPIC_KEY ? "Claude" : "");
 const AI_LABEL = AI ? `${AI} (${AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL})` : "off";
 
-/* ---- AI cost meter: every call's token usage is added to data/ai-usage.json (per IST day, last 60 days) when the
-   process exits, so the real daily cost is known instead of guessed. Prices are USD per 1M tokens. */
-const AI_PRICES = { "gpt-4o-mini": [0.15, 0.60], "claude-haiku-4-5-20251001": [1.00, 5.00] };
-const USAGE = { calls: 0, in: 0, out: 0 };
-process.on("exit", () => {
-  if (!USAGE.calls && !USAGE_FB.calls) return;
+/* ---- AI cost meter and daily budget (this website's own AI calls only) ----
+   Every call's cost goes into data/ai-usage.json at once (USD at the model's price per 1M tokens, cached input at its
+   lower price): per IST day ("days": calls, tokens, usd, inr and "by" purpose) and per UTC hour ("hours", the last 48).
+   The meter matches the OpenAI bill (20–26 Nov: $2.21 metered, $2.19 billed).
+   The budget (config.json "aiBudget": inrPerDay, inrPerUsd, stopAt) is a hard limit on what THIS SITE's automation
+   spends in any 24 hours — so every calendar day, in UTC (the OpenAI dashboard) or in IST, stays under it. It counts
+   only the calls made here: other apps on the same OpenAI account are not limited or counted. Calls stop at stopAt
+   (90%) of inrPerDay, at most one call over. The owner set ₹10 a day on 26 Nov (weekdays had cost ₹22–41).
+   The money goes to what matters first: reading a new notice (dates, posts, eligibility, links) may use the whole
+   budget, and so may the daily quiz (₹0.3 a day); upkeep (apply-link checks, written overviews, thin updates) stops at 85% of it; extras
+   (Hindi, search-console FAQ) at 55%. A call the budget refuses is treated like an AI outage: nothing is marked done,
+   the work waits for a later run (aiDown()). */
+// USD per 1M tokens: in, out, cached in (config aiModel may name another model of the same API; unknown models are priced as gpt-4o-mini)
+const AI_PRICES = { "gpt-4o-mini": [0.15, 0.60, 0.075], "gpt-4.1-nano": [0.10, 0.40, 0.025], "gpt-4.1-mini": [0.40, 1.60, 0.10], "claude-haiku-4-5-20251001": [1.00, 5.00, 0.10] };
+const USAGE_FILE = process.env.AI_USAGE_FILE || path.join(ROOT, "data", "ai-usage.json");
+const LEDGER = (() => { try { const u = JSON.parse(fs.readFileSync(USAGE_FILE, "utf8")); return u && typeof u === "object" ? u : {}; } catch { return {}; } })();
+const AI_BUDGET = (() => {
+  const b = CONFIG.aiBudget || {};
+  const inrPerDay = Number(process.env.AI_BUDGET_INR) || Number(b.inrPerDay) || 10;
+  const inrPerUsd = Number(b.inrPerUsd) || 90;
+  const stopAt = Math.min(1, Math.max(0.5, Number(b.stopAt) || 0.9));
+  return { inrPerDay, inrPerUsd, stopAt, usd: (inrPerDay * stopAt) / inrPerUsd };
+})();
+const TIER_SHARE = { essential: 1, normal: 0.85, extra: 0.55 };
+const PURPOSE_TIER = { "extract-job": "essential", "extract-update": "essential", "facts": "essential", "watch-job": "essential", "watch-update": "essential",
+  "news": "essential", "quiz": "essential",   // the daily current-affairs digest and its quiz: once a day, about ₹0.3
+  "apply-confirm": "normal", "links": "normal", "content": "normal", "update-enrich": "normal",
+  "hindi-job": "extra", "hindi-update": "extra", "search-faq": "extra" };
+const utcHour = (t = Date.now()) => new Date(t).toISOString().slice(0, 13);
+function priceOf(model) {
+  const own = CONFIG.aiPricePerM && [Number(CONFIG.aiPricePerM.in), Number(CONFIG.aiPricePerM.out)];
+  if (own && own.every((x) => x > 0) && model === OPENAI_MODEL) return [own[0], own[1], own[0] / 2];
+  return AI_PRICES[model] || [0.15, 0.60, 0.075];
+}
+/** What this site's automation spent in the last 24 hours, in USD (25 hourly buckets: never less than 24 hours). */
+function spent24h(now = Date.now()) {
+  const from = utcHour(now - 24 * 3600e3);
+  let sum = 0; for (const [h, v] of Object.entries(LEDGER.hours || {})) if (h >= from) sum += Number(v) || 0;
+  return sum;
+}
+const toInr = (usd) => Math.round(usd * AI_BUDGET.inrPerUsd * 10) / 10;
+function recordUsage(model, { input = 0, output = 0, cached = 0 }, purpose, fallback = false) {
+  const [pi, po, pc] = priceOf(model);
+  const usd = (Math.max(0, input - cached) * pi + cached * pc + output * po) / 1e6;
   try {
-    const file = path.join(ROOT, "data", "ai-usage.json");
-    let u = {}; try { u = JSON.parse(fs.readFileSync(file, "utf8")); } catch {}
-    const model = AI === "OpenAI" ? OPENAI_MODEL : ANTHROPIC_MODEL;
-    const [pi, po] = (CONFIG.aiPricePerM && [CONFIG.aiPricePerM.in, CONFIG.aiPricePerM.out]) || AI_PRICES[model] || [0.15, 0.60];
-    const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
-    u.model = model; u.pricePerMillion = { in: pi, out: po }; u.days = u.days || {};
-    const d = u.days[day] || { calls: 0, in: 0, out: 0 };
-    d.calls += USAGE.calls; d.in += USAGE.in; d.out += USAGE.out;
-    d.usd = +((d.in * pi + d.out * po) / 1e6).toFixed(4);
-    if (USAGE_FB.calls) {   // calls answered by the second provider while the first one refused (its own, higher price)
-      const [fi, fo] = AI_PRICES[ANTHROPIC_MODEL] || [1.00, 5.00];
-      const f = d.fallback || { model: ANTHROPIC_MODEL, calls: 0, in: 0, out: 0 };
-      f.calls += USAGE_FB.calls; f.in += USAGE_FB.in; f.out += USAGE_FB.out; f.usd = +((f.in * fi + f.out * fo) / 1e6).toFixed(4);
-      d.fallback = f;
-    }
-    u.days[day] = d;
-    for (const k of Object.keys(u.days).sort().slice(0, -60)) delete u.days[k];
-    u.note = "Token usage of the site automation's AI calls, per day (IST). usd = estimated cost at pricePerMillion.";
-    fs.writeFileSync(file, JSON.stringify(u, null, 1) + "\n");
+    const day = todayIST(), hour = utcHour();
+    LEDGER.days = LEDGER.days || {}; LEDGER.hours = LEDGER.hours || {};
+    const d = LEDGER.days[day] = LEDGER.days[day] || { calls: 0, in: 0, out: 0, usd: 0 };
+    d.calls++; d.in += input; d.out += output; d.usd = +(d.usd + usd).toFixed(5); d.inr = toInr(d.usd);
+    const by = d.by = d.by || {};
+    const p = by[purpose] = by[purpose] || { calls: 0, usd: 0 };
+    p.calls++; p.usd = +(p.usd + usd).toFixed(5);
+    if (fallback) { const f = d.fallback = d.fallback || { model, calls: 0, in: 0, out: 0, usd: 0 }; f.calls++; f.in += input; f.out += output; f.usd = +(f.usd + usd).toFixed(5); }
+    LEDGER.hours[hour] = +((Number(LEDGER.hours[hour]) || 0) + usd).toFixed(5);
+    const keepFrom = utcHour(Date.now() - 48 * 3600e3);
+    for (const h of Object.keys(LEDGER.hours)) if (h < keepFrom) delete LEDGER.hours[h];
+    for (const k of Object.keys(LEDGER.days).sort().slice(0, -60)) delete LEDGER.days[k];
+    const main = AI === "Claude" ? ANTHROPIC_MODEL : OPENAI_MODEL;
+    LEDGER.model = main; LEDGER.pricePerMillion = { in: priceOf(main)[0], out: priceOf(main)[1] };
+    const spent = spent24h();
+    LEDGER.budget = { inrPerDay: AI_BUDGET.inrPerDay, inrPerUsd: AI_BUDGET.inrPerUsd, stopsAtInr: +(AI_BUDGET.inrPerDay * AI_BUDGET.stopAt).toFixed(2), spentInr24h: toInr(spent), spentUsd24h: +spent.toFixed(4) };
+    LEDGER.note = "Cost of this website's AI calls: per IST day (usd, inr, by purpose) and per UTC hour (the last 48, for the 24-hour budget in config.json aiBudget). See lib.js \"AI cost meter and daily budget\".";
+    fs.writeFileSync(USAGE_FILE, JSON.stringify(LEDGER, null, 1) + "\n");
   } catch { /* metering must never break a run */ }
-});
+  return usd;
+}
+/** May a call of this purpose go out? Refused once the last 24 hours' spend reaches the purpose's share of the budget. */
+function budgetAllows(purpose, essential) {
+  const tier = essential ? "essential" : PURPOSE_TIER[purpose] || "normal";
+  const spent = spent24h();
+  if (spent < AI_BUDGET.usd * TIER_SHARE[tier]) return true;
+  if (!AI_HEALTH.budget) {
+    AI_HEALTH.budget = tier === "essential"
+      ? `daily AI budget reached (₹${toInr(spent)} of ₹${AI_BUDGET.inrPerDay} in the last 24 hours)`
+      : `AI budget: ${tier === "extra" ? "Hindi and extras" : "upkeep"} wait (₹${toInr(spent)} of ₹${AI_BUDGET.inrPerDay} used in the last 24 hours; new notices come first)`;
+    console.log(`  (${AI_HEALTH.budget} — the work is kept for a later run)`);
+  }
+  return false;
+}
+function aiBudget() { const spent = spent24h(); return { ...AI_BUDGET, spentUsd24h: spent, spentInr24h: toInr(spent) }; }
+
 /* ---- AI health: why a call failed, and when to stop asking ----
    The provider's answer to a failed call says what is wrong ("insufficient_quota": the account has no credit left;
    "rate_limit_exceeded": too many requests this minute; "invalid_api_key"). It is logged with the status, kept for the
@@ -366,20 +419,22 @@ process.on("exit", () => {
    - a rate limit: wait as long as the provider says (at most 20 s) and try again, twice;
    - a server error: one more try.
    Calls marked essential (reading the facts of a new notice) go to the second provider when the first one is down and
-   both keys are set (config "aiFallback": false switches that off): a job page without dates is worse than a dearer call. */
-const AI_HEALTH = { ok: 0, failed: 0, down: "", last: "", fallback: 0, streak: 0 };
-const USAGE_FB = { calls: 0, in: 0, out: 0 };
+   both keys are set (config "aiFallback": false switches that off); they count against the same daily budget. */
+const AI_HEALTH = { ok: 0, failed: 0, down: "", budget: "", last: "", fallback: 0, streak: 0 };
 // what a provider calls "this account cannot be used now": OpenAI insufficient_quota / credit_balance_exhausted /
 // billing_hard_limit_reached / account_deactivated / invalid_api_key, Anthropic authentication_error / permission_error
 // (and its "credit balance is too low" message, which errorCode() turns into no_credit)
 const QUOTA_CODES = /insufficient_quota|credit|balance|exhausted|billing|deactivated|invalid_api_key|authentication|permission/i;
-const aiDown = () => AI_HEALTH.down;
-/** One line for the run summary: "ok (12 calls)" | "OpenAI refused: insufficient_quota (0 ok, 3 failed)". */
+/** Truthy when no more AI calls go out in this step: the provider refuses them, or the daily budget is used up. */
+const aiDown = () => AI_HEALTH.down || AI_HEALTH.budget;
+/** One line for the run summary: "ok (12 calls; ₹3.4 of ₹10 used in the last 24 h)" | "OpenAI refused: …" | "paused: …". */
 function aiStatus() {
   if (!AI) return "off";
   const n = `${AI_HEALTH.ok} ok, ${AI_HEALTH.failed} failed${AI_HEALTH.fallback ? `, ${AI_HEALTH.fallback} answered by the second provider` : ""}`;
-  if (AI_HEALTH.down) return `${AI} refused: ${AI_HEALTH.down} (${n})`;
-  return AI_HEALTH.failed ? `${AI} partly failing: ${AI_HEALTH.last} (${n})` : `ok (${AI_HEALTH.ok} calls)`;
+  const money = `₹${toInr(spent24h())} of ₹${AI_BUDGET.inrPerDay} used in the last 24 h`;
+  if (AI_HEALTH.down) return `${AI} refused: ${AI_HEALTH.down} (${n}; ${money})`;
+  if (AI_HEALTH.budget) return `paused: ${AI_HEALTH.budget}${AI_HEALTH.ok ? ` (after ${AI_HEALTH.ok} calls)` : ""}`;
+  return AI_HEALTH.failed ? `${AI} partly failing: ${AI_HEALTH.last} (${n}; ${money})` : `ok (${AI_HEALTH.ok} calls; ${money})`;
 }
 const aiHealth = () => ({ ...AI_HEALTH, provider: AI });
 function aiFailed(provider, status, code) {
@@ -398,7 +453,7 @@ async function errorCode(res) {
     return !QUOTA_CODES.test(code) && /credit balance|current quota|billing/i.test(String(e.message || "")) ? "no_credit" : code;
   } catch { return ""; }
 }
-async function callOpenAI(prompt, maxTokens) {
+async function callOpenAI(prompt, maxTokens, purpose) {
   for (let attempt = 1; ; attempt++) {
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -407,8 +462,8 @@ async function callOpenAI(prompt, maxTokens) {
       signal: AbortSignal.timeout(90000),
     });
     if (res.ok) {
-      const d = await res.json();
-      USAGE.calls++; USAGE.in += (d.usage && d.usage.prompt_tokens) || 0; USAGE.out += (d.usage && d.usage.completion_tokens) || 0;
+      const d = await res.json(); const u = d.usage || {};
+      recordUsage(OPENAI_MODEL, { input: u.prompt_tokens || 0, output: u.completion_tokens || 0, cached: (u.prompt_tokens_details && u.prompt_tokens_details.cached_tokens) || 0 }, purpose);
       AI_HEALTH.ok++; AI_HEALTH.streak = 0;
       return d.choices?.[0]?.message?.content || "";
     }
@@ -424,7 +479,7 @@ async function callOpenAI(prompt, maxTokens) {
     return null;
   }
 }
-async function callClaude(prompt, maxTokens, usage = USAGE) {
+async function callClaude(prompt, maxTokens, purpose, fallback = false) {
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "content-type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
@@ -434,23 +489,26 @@ async function callClaude(prompt, maxTokens, usage = USAGE) {
   if (!res.ok) {
     const code = await errorCode(res);
     console.log(`  (Claude HTTP ${res.status}${code ? " " + code : ""})`);
-    if (usage === USAGE) aiFailed("Claude", res.status, code);
+    if (!fallback) aiFailed("Claude", res.status, code);
     return null;
   }
-  const d = await res.json();
-  usage.calls++; usage.in += (d.usage && d.usage.input_tokens) || 0; usage.out += (d.usage && d.usage.output_tokens) || 0;
-  if (usage === USAGE) { AI_HEALTH.ok++; AI_HEALTH.streak = 0; } else AI_HEALTH.fallback++;
+  const d = await res.json(); const u = d.usage || {};
+  recordUsage(ANTHROPIC_MODEL, { input: u.input_tokens || 0, output: u.output_tokens || 0 }, purpose, fallback);
+  if (!fallback) { AI_HEALTH.ok++; AI_HEALTH.streak = 0; } else AI_HEALTH.fallback++;
   return (d.content || []).filter((c) => c.type === "text").map((c) => c.text).join("");
 }
 let FALLBACK_DEAD = false;
-async function askAI(prompt, { maxTokens = 3000, essential = false } = {}) {
+/** One AI call. `purpose` names the work (see PURPOSE_TIER) for the daily budget and the meter; `essential` = reading a
+    new notice (first claim on the budget, may use the second provider). Returns the text, or null. */
+async function askAI(prompt, { maxTokens = 3000, essential = false, purpose = "other" } = {}) {
   if (!AI) return null;
+  if (!budgetAllows(purpose, essential)) return null;
   try {
-    if (AI !== "OpenAI") return AI_HEALTH.down ? null : await callClaude(prompt, maxTokens);
-    if (!AI_HEALTH.down) { const out = await callOpenAI(prompt, maxTokens); if (out !== null || !AI_HEALTH.down) return out; }
+    if (AI !== "OpenAI") return AI_HEALTH.down ? null : await callClaude(prompt, maxTokens, purpose);
+    if (!AI_HEALTH.down) { const out = await callOpenAI(prompt, maxTokens, purpose); if (out !== null || !AI_HEALTH.down) return out; }
     // OpenAI is refusing: the facts of a new notice may be read by the second provider
     if (essential && ANTHROPIC_KEY && CONFIG.aiFallback !== false && !FALLBACK_DEAD) {
-      const out = await callClaude(prompt, maxTokens, USAGE_FB);
+      const out = await callClaude(prompt, maxTokens, purpose, true);
       if (out === null) FALLBACK_DEAD = true;
       return out;
     }
@@ -1153,5 +1211,5 @@ function dropRetired() {
 function todayIST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 
 module.exports = { sanitizeJob, aiJobFields, toText, unhideEmails, fixHiddenEmail, todayIST, linkKind, applyMode, applyInfo, isGenericList, GENERIC_LIST, fetchWithAIA, CHAIN_ERR, CONFIG, ROOT, UA, HDRS, decodeEntities, stripTags, cleanTitle, orgFromTitle, fetchText, parseFeed, fetchFeed, hostOf, isAggregator,
-  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, aiDown, aiStatus, aiHealth, addRedirects, mergeTwin, dropRetired, relayKeyFor, factless, factsPending, GENERIC_STEPS, GENERIC_STEPS_HI, isGenericSteps, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
+  extractOfficialLinks, pickLinksHeuristic, validateLinks, hostFromTitle, isBadOfficial, hostMatches, articleRegion, AI, AI_LABEL, askAI, aiDown, aiStatus, aiHealth, aiBudget, addRedirects, mergeTwin, dropRetired, relayKeyFor, factless, factsPending, GENERIC_STEPS, GENERIC_STEPS_HI, isGenericSteps, parseJson, strArr, faqArr, logRun, logTail, OFF_TOPIC, NON_GOVT, isNonGovt, JUNK_TITLE, STRONG_OFFICIAL, updateKey, isDupUpdate, officialHomeFor, OFF_TOPIC_EXAMS, SPECULATIVE, isSpeculative, noticeStatusOf, matchNoticeStatus, applyNoticeStatus, saveUpdates, readUpdatesArchive, retiredUpdateIds, UPDATES_KEEP, loadJobs, saveJobs, retiredJobIds, jobShard,
   isDuplicate, sameOrg, normPost, postsOverlap, advtKey, noticeKey, joinStageNumbers, stageNum, romanWord, ROMAN, STAGE_WORD };

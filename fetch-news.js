@@ -68,7 +68,7 @@ async function getFeed(url) {
 }
 const NEWS_STATUS = {};
 
-const askAI = (prompt, maxTokens = 3000) => L.askAI(prompt, { maxTokens });
+const askAI = (prompt, maxTokens = 3000, purpose = "news") => L.askAI(prompt, { maxTokens, purpose });
 function parseJson(raw) {
   if (!raw) return null;
   try {
@@ -212,7 +212,7 @@ async function makeQuiz(digest) {
   const prompt = `Write a 10-question multiple-choice current affairs quiz for Indian competitive-exam aspirants, using ONLY facts stated in the article below. ` +
     `Every question must be answerable from the article; never add outside facts, numbers or names. Each question has exactly 4 options, one correct. ` +
     `Write every question, option and explanation in English. Vary the position of the correct option. Return ONLY a JSON object: {"questions":[{"q":"...","options":["A","B","C","D"],"answer":0,"why":"one-sentence explanation citing the article"}]} where answer is the 0-based index.\n\nARTICLE:\n${text.slice(0, 7000)}`;
-  const obj = parseJson(await askAI(prompt, 3500));
+  const obj = parseJson(await askAI(prompt, 2500, "quiz"));
   const qs = (obj && Array.isArray(obj.questions) ? obj.questions : []).map((x) => ({
     q: String(x.q || "").trim(), options: (Array.isArray(x.options) ? x.options : []).map((o) => String(o).trim()).filter(Boolean),
     answer: Number(x.answer), why: String(x.why || "").trim(),

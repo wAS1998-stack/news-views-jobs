@@ -953,7 +953,7 @@ function buildUpdatePage(u, all) {
     ${u.via === "official" ? `<p class="verified">✓ Verified from the official website — <a href="${esc(u.official_link || u.link)}" rel="nofollow noopener" target="_blank">${esc(hostOf(u.official_link || u.link))}</a></p>` : ""}
     <div class="prose">
       <p class="lede">${esc(u.summary)}</p>
-      ${u.summary_hi ? `<p class="hindi" lang="hi">${esc(u.summary_hi)}</p>` : ""}
+      ${(u.summary_hi || (u.hi && u.hi.summary)) ? `<p class="hindi" lang="hi">${esc(u.summary_hi || u.hi.summary)}</p>` : ""}
     </div>
     <div class="spec"><dl>
       ${row("Organisation", esc(u.organization))}
@@ -1687,7 +1687,7 @@ function helpfulGuidesForJob(job) {
     <ul class="guides">${picks.map((g) => `<li><a class="guide-card" href="/guides/${g.slug}/"><h3>${esc(g.meta.title)}</h3><p>${esc(g.meta.description || "")}</p><span class="readmore">Read guide &rarr;</span></a></li>`).join("")}</ul>
   </section>`;
 }
-function prepTips(job) {
+function prepTipList(job) {
   const t = `${job.title} ${job.organization} ${job.org_short || ""} ${job.qualification || ""}`.toLowerCase();
   const generic = [
     `Read the official notification end to end before applying — eligibility, exam pattern, syllabus and the fee are all defined there, and small details often decide selection.`,
@@ -1703,7 +1703,10 @@ function prepTips(job) {
   if (/engineer|je|technical|diploma|iti|drdo|isro|psu/.test(t)) extra.push(`For technical posts, revise your core branch subjects thoroughly, since the technical section usually carries the highest weight.`);
   const aiTips = Array.isArray(job.preparation_tips)
     ? job.preparation_tips.map((x) => String(x || "").trim()).filter(Boolean) : [];
-  const all = aiTips.length >= 3 ? aiTips.slice(0, 5) : [...extra, ...generic].slice(0, 4);
+  return aiTips.length >= 3 ? aiTips.slice(0, 5) : [...extra, ...generic].slice(0, 4);
+}
+function prepTips(job) {
+  const all = prepTipList(job);
   return `<div class="prose"><h2 class="section-h">How to prepare for ${esc(orgKey(job) || job.organization)} ${esc(job.post_name || "this exam")}</h2>
     <p>Preparation for ${esc(job.title)} is most effective when it is planned and consistent. A few practical pointers:</p>
     <ul>${all.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
@@ -1907,7 +1910,8 @@ function buildJob(job, all) {
   const between = !!(selection || salaryProse(job) || steps);   // a content block between job-mid and the Apply bar
 
   const hiAlt = hasHiPage(job) ? { ...(SITE.crawlHindiDetail ? { alternates: [{ hreflang: "en", href: canonical }, { hreflang: "hi", href: `${SITE.url}/hi/jobs/${job.id}/` }, { hreflang: "x-default", href: canonical }] } : {}), langSwitch: `/hi/jobs/${job.id}/` } : {};
-  return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt }) + `
+  // headline-only (its notice is read again within the daily AI budget): noindex until it has its facts
+  return head({ title, desc, canonical, ld, ogType: "article", image: ogImage(`og/jobs/${job.id}.png`), ...hiAlt, ...(LIB.factless(job) ? { noindex: true } : {}) }) + `
 <main class="wrap" id="main">
   ${hasHiPage(job) ? `<p class="lang-note" lang="hi"><a href="/hi/jobs/${esc(job.id)}/">यह जानकारी हिंदी में पढ़ें &rarr;</a></p>` : ""}
   <p class="crumb"><a href="/">Jobs</a> &nbsp;&rsaquo;&nbsp; ${st1 ? `<a href="/state/${st1.slug}/">${esc(st1.name)} govt jobs</a> &nbsp;&rsaquo;&nbsp; ` : ""}${ORG_PAGES.has(slug(orgKey(job)))
@@ -1925,7 +1929,7 @@ function buildJob(job, all) {
     ${!job.notice_status && isStale(job) ? `<div class="closed-notice"><strong>This recruitment has closed.</strong> ${job.application_end ? `The last date to apply was ${fmtDate(job.application_end)}.` : `Its notice is more than ${Number(SITE.staleDays || 45)} days old.`} This page is kept for reference — <a href="/">browse current open jobs</a> or check the <a href="/updates/">latest results &amp; admit cards</a>.</div>` : ""}
     ${keyFacts(job, "en", { cta: statusOf(job).live })}
     <p class="lede">${esc(job.summary || "")}</p>
-    ${job.summary_hindi ? `<p class="hindi" lang="hi">${esc(job.summary_hindi)}</p>` : ""}
+    ${(job.summary_hindi || (job.hi && job.hi.summary)) ? `<p class="hindi" lang="hi">${esc(job.summary_hindi || job.hi.summary)}</p>` : ""}
     ${pct !== null ? `<div class="window" role="img" aria-label="Application window from ${fmtDate(job.application_start)} to ${fmtDate(job.application_end)}">
       <div class="bar"><span class="fill ${st.cls}" style="width:${pct.toFixed(0)}%"></span></div>
       <div class="window-ends"><span>${fmtDate(job.application_start)}</span><span>${fmtDate(job.application_end)}</span></div>
@@ -2019,7 +2023,7 @@ function buildSitemap(jobs, cats, extra = [], mods = new Map()) {
   // jobs leave it 2 days after closing (config sitemapClosedDays); their pages stay live and linked. (At 15 days a
   // quarter of the sitemap was closed jobs while Search Console showed 70% of open ones "Discovered – not indexed".)
   const cutoff = new Date(BUILT.getTime() - Number(SITE.sitemapClosedDays ?? 2) * 86400000).toISOString().slice(0, 10);
-  const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff));
+  const mapJobs = jobs.filter((j) => !(j.application_end && j.application_end < cutoff) && !LIB.factless(j));
   const urls = [
     { loc: SITE.url + "/", mod: today },
     ...extra.map((u) => ({ loc: `${SITE.url}/${u}`, mod: mods.get(u) || today })),
@@ -2245,8 +2249,8 @@ function appJobDetail(j) {
     application_start: appDay(j.application_start), application_end: appDay(j.application_end), exam_date: appDay(j.exam_date),
     location: j.location ? String(j.location) : "", published: appDay(j.published), verified: j.via === "official",
     summary: j.summary || "", overview: appArr(j.overview), eligibility_notes: j.eligibility_notes ? String(j.eligibility_notes) : "",
-    selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(j.faq),
-    preparation_tips: appArr(j.preparation_tips),
+    selection_process: appArr(j.selection_process), how_to_apply: appArr(j.how_to_apply), faq: appFaq(faqsBase(j)),
+    preparation_tips: appArr(prepTipList(j)),
     official_notification: j.official_notification || "", apply_link: j.apply_link || "", official_website: j.official_website || "",
     cta: appCta(j).cta || "", cta_url: appCta(j).url || "", apply_mode: LIB.applyMode(j),
     src_host: srcHostOf(j), upd: updatedOf(j) || appDay(j.published),
@@ -2460,13 +2464,17 @@ function faqsBase(job) {
     if (cleaned.length) return cleaned;
   }
   const f = [];
-  if (job.application_end) f.push({ q: `What is the last date to apply for ${job.title}?`, a: `The last date to submit the online application is ${fmtDate(job.application_end)}.` });
+  const mode = LIB.applyMode(job);
+  if (job.application_end) f.push({ q: `What is the last date to apply for ${job.title}?`, a: mode === "walkin" ? `The walk-in date given in the notice is ${fmtDate(job.application_end)}. Check the official notification for the time and venue.` : `The last date to apply is ${fmtDate(job.application_end)}.` });
   if (job.total_vacancies) f.push({ q: `How many vacancies are there in ${job.title}?`, a: `There are ${inr(job.total_vacancies)} vacancies in this recruitment.` });
   if (job.qualification) f.push({ q: `What is the educational qualification required?`, a: `Candidates must have ${job.qualification}.` });
   if (job.age_max) f.push({ q: `What is the age limit for this recruitment?`, a: `The age limit is generally ${job.age_min ? job.age_min + "–" : "up to "}${job.age_max} years, with relaxation for reserved categories as per government norms.` });
   if (job.fee) f.push({ q: `What is the application fee?`, a: `The application fee is ${job.fee}.` });
   if (job.salary) f.push({ q: `What is the salary for ${job.post_name || job.title}?`, a: `The pay offered is ${job.salary}.` });
-  f.push({ q: `How can I apply for ${job.title}?`, a: `Applications are accepted online through the official website. The step-by-step process is listed in the "How to apply" section above.` });
+  const how = { online: "Applications are made online on the official website.", offline: "Applications are sent offline: download the notice and the form, fill it in and send it as the notice says.",
+    email: "Applications are sent by e-mail, to the address given in the official notice.", walkin: "This is a walk-in: candidates attend on the date and at the venue given in the official notice, with the documents it lists." }[mode]
+    || "Apply in the way the official notification describes.";
+  f.push({ q: `How can I apply for ${job.title}?`, a: `${how} The steps are listed in the "How to apply" section above.` });
   return f;
 }
 function faqSection(faqs) {
@@ -3232,4 +3240,4 @@ function main() {
 
 // `node build.js` builds the site; tests require() the pure helpers without building anything.
 if (require.main === module) main();
-module.exports = { parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect, fitToBudget, hasHiPage, seoTitle, placeOf };
+module.exports = {parseSalary, qualsOf, shortTitle, jobLd, localityOf, ctaOf, statusOf, statesOf, orderRedirects, isDynamicRedirect, fitToBudget, hasHiPage, seoTitle, placeOf, faqsBase, prepTipList };

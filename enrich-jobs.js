@@ -32,9 +32,12 @@ const SITE_URL = (C.url || "https://news-views.in").replace(/\/$/, "");
 
 const badLink = (u) => !u || L.isBadOfficial(u);
 function needsLinks(j) { return badLink(j.apply_link) && badLink(j.official_notification) && !j.links_checked; }
-function needsContent(j) {
-  return !(Array.isArray(j.overview) && j.overview.length >= 2) || !(Array.isArray(j.faq) && j.faq.length >= 3);
-}
+// A page needs written content when it has no overview of 50+ words. (Its FAQ is written from the facts by build.js.)
+const words = (list) => (Array.isArray(list) ? list.join(" ") : "").split(/\s+/).filter(Boolean).length;
+function needsContent(j) { return words(j.overview) < 50; }
+const isOpenJob = (j) => !j.application_end || new Date(j.application_end + "T23:59:59+05:30") >= new Date();
+// the daily AI budget goes furthest on the recruitments most people look for: most posts first, then the newest
+const byValue = (a, b) => (Number(b.total_vacancies) || 0) - (Number(a.total_vacancies) || 0) || String(b.published || "").localeCompare(String(a.published || ""));
 // "partial" = read once and no steps came back: one more reading within two weeks (then "partial-2", final). An update
 // whose reading failed because the AI refused the call is not marked at all, so it stays due.
 const daysOld = (d) => (Date.now() - new Date(String(d || "").slice(0, 10) + "T00:00:00Z").getTime()) / 86400000;
@@ -65,7 +68,7 @@ const MAX_FACTS = Number(process.env.ENRICH_FACTS || C.maxFactsPerRun || 40);
 async function readFacts(job) {
   const src = await F.readSource(job.source);
   const mark = L.aiHealth().failed;
-  const extra = L.aiJobFields(await F.aiExtract({ title: job.title, summary: job.summary }, src));
+  const extra = L.aiJobFields(await F.aiExtract({ title: job.title, summary: job.summary }, src, "facts"));
   if (!Object.keys(extra).length) {
     if (aiFault(mark)) return "ai";
     job.facts_tries = (job.facts_tries || 0) + 1;
@@ -115,7 +118,7 @@ async function fixLinks(job) {
       `The links MUST belong to the recruiting body named in the title (its own domain or its application portal) — if a candidate is for a different organisation or an unrelated exam, do not pick it; prefer null over a wrong link. ` +
       `Never pick a news/blog/aggregator site. Return ONLY a JSON object with those three keys.\n\nCANDIDATES:\n` +
       src.cands.map((c, i) => `${i + 1}. ${c.url}${c.text ? "  (link text: " + c.text + ")" : ""}${c.pdf ? "  [PDF]" : ""}`).join("\n");
-    picked = L.validateLinks(L.parseJson(await L.askAI(prompt, { maxTokens: 400 })) || {}, src.cands);
+    picked = L.validateLinks(L.parseJson(await L.askAI(prompt, { maxTokens: 400, purpose: "links" })) || {}, src.cands);
   }
   const heur = L.pickLinksHeuristic(src.cands);
   const apply = picked.apply_link || heur.apply_link || picked.official_notification || heur.official_notification;
@@ -134,35 +137,20 @@ async function enrichContent(job) {
   const facts = [
     `Title: ${job.title}`, `Organisation: ${job.organization || ""}`, `Post: ${job.post_name || ""}`,
     `Vacancies: ${job.total_vacancies ?? "not stated"}`, `Qualification: ${job.qualification || "not stated"}`,
-    `Location: ${job.location || "not stated"}`, `Application start: ${job.application_start || "not stated"}`,
-    `Last date: ${job.application_end || "not stated"}`, `Exam date: ${job.exam_date || "not stated"}`,
-    `Fee: ${job.fee || "not stated"}`, `Salary: ${job.salary || "not stated"}`,
-    `Existing summary: ${job.summary || ""}`,
+    `Location: ${job.location || "not stated"}`, `Last date: ${job.application_end || "not stated"}`,
+    `Selection: ${(job.selection_process || []).join(", ") || "not stated"}`, `Summary: ${job.summary || ""}`,
   ].join("\n");
-  const prompt = `You are writing the content for one recruitment page on an Indian government-jobs website. ` +
-    `Use ONLY the verified facts below. Never invent vacancy numbers, dates, fees, salaries or cut-offs. ` +
-    `Where a fact is "not stated", tell the reader to check the official notification instead of guessing.\n\n` +
-    `Return ONLY a JSON object with keys: ` +
-    `overview (array of 3 paragraphs, 160-220 words total, explaining this recruitment in plain English: what the post involves, who it suits, and what applicants should check before applying), ` +
-    `about_organization (2-3 sentences, 50-70 words, on the recruiting body and the work it does), ` +
-    `eligibility_notes (2-3 sentences explaining the eligibility in plain language, flagging any conditions worth noting), ` +
-    `preparation_tips (array of 3-4 practical pointers tailored to THIS exam and post, naming the actual subjects or stages where known), ` +
-    `faq (array of 4-5 objects with keys q and a, answering what a real candidate would ask about this specific recruitment; each answer 1-3 sentences).\n\n` +
-    `Write genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate.\n\nVERIFIED FACTS:\n${facts}`;
-  const o = L.parseJson(await L.askAI(prompt));
+  // short, within the daily AI budget (lib.js): the facts table, FAQ and tips on the page come from the record itself
+  const prompt = `Write a short overview for one recruitment page on an Indian government-jobs website, using ONLY the verified facts below. ` +
+    `Never invent numbers, dates, fees, salaries or cut-offs; where a fact is "not stated", say to check the official notification. ` +
+    `Return ONLY a JSON object with keys: overview (array of 2 short paragraphs, 70-110 words in total: what the post involves, who can apply and what to check before applying), ` +
+    `eligibility_notes (1-2 sentences on the eligibility in plain language). Clear, neutral, useful — no filler.\n\nVERIFIED FACTS:\n${facts}`;
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 450, purpose: "content" }));
   if (!o) return null;
-  const overview = L.strArr(o.overview, 4);
-  const faq = L.faqArr(o.faq, 6);
-  if (overview.length < 2 || overview.join(" ").split(/\s+/).length < 100 || faq.length < 3) return null;
-  return {
-    overview,
-    about_organization: L.toText(o.about_organization, "about_organization") || undefined,
-    eligibility_notes: L.toText(o.eligibility_notes, "eligibility_notes") || undefined,
-    preparation_tips: L.strArr(o.preparation_tips, 5),
-    faq,
-  };
+  const overview = L.strArr(o.overview, 3);
+  if (!overview.length || words(overview) < 50) return null;
+  return { overview, eligibility_notes: L.toText(o.eligibility_notes, "eligibility_notes") || undefined };
 }
-
 
 /* ---- pass 4: Hindi edition (grounded translation, never new facts) ----- */
 const MAX_HI_JOBS = Number(process.env.HINDI_JOBS || C.maxHindiJobsPerRun || 25);
@@ -177,47 +165,42 @@ const HI_RULES = `Translate into natural, simple Hindi (Devanagari) the way lead
   `Keep exam and organisation abbreviations in Latin letters (SSC, UPSC, RRB, IBPS, CGL, NTPC, PwBD, OBC, PDF, KB). Keep every number, date, rupee amount, website address and age exactly as given. ` +
   `Do not add, drop or change any fact. If a field is empty, return an empty string or empty array for it.`;
 async function hindiJob(job) {
+  // the short fields only, within the daily AI budget (lib.js); the stand-in steps have a fixed Hindi version
+  const generic = L.isGenericSteps(job.how_to_apply);
   const src = {
-    title: job.title, organization: job.organization, post_name: job.post_name || "", qualification: job.qualification || "",
-    fee: job.fee || "", salary: job.salary || "", location: job.location || "", summary: job.summary || "",
-    overview: job.overview || [], eligibility_notes: job.eligibility_notes || "", about_organization: job.about_organization || "",
-    how_to_apply: job.how_to_apply || [], selection_process: job.selection_process || [], preparation_tips: job.preparation_tips || [],
-    faq: (job.faq || []).slice(0, 5),
+    title: job.title, organization: job.organization || "", post_name: job.post_name || "", qualification: job.qualification || "",
+    location: job.location || "", summary: job.summary || "", how_to_apply: generic ? [] : (job.how_to_apply || []).slice(0, 6),
+    selection_process: (job.selection_process || []).slice(0, 6),
   };
-  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input (faq items keep keys q and a), every value translated to Hindi. ` +
+  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input, every value translated to Hindi. ` +
     `For "title", write a Hindi headline in the usual style, e.g. "SSC CGL भर्ती 2026: 14582 पदों के लिए ऑनलाइन आवेदन".\n\nINPUT:\n${JSON.stringify(src)}`;
-  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 4000 }));
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 900, purpose: "hindi-job" }));
   if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
   const hi = {
     title: String(o.title).trim(), organization: L.toText(o.organization, "organization"), post_name: L.toText(o.post_name, "post_name"),
-    qualification: L.toText(o.qualification, "qualification"), fee: L.toText(o.fee, "fee"), salary: L.toText(o.salary, "salary"),
-    location: L.toText(o.location, "location"), summary: String(o.summary).trim(), overview: L.strArr(o.overview, 5),
-    eligibility_notes: L.toText(o.eligibility_notes, "eligibility_notes"), about_organization: L.toText(o.about_organization, "about_organization"),
-    how_to_apply: L.strArr(o.how_to_apply, 8), selection_process: L.strArr(o.selection_process, 8),
-    preparation_tips: L.strArr(o.preparation_tips, 6), faq: L.faqArr(o.faq, 6),
+    qualification: L.toText(o.qualification, "qualification"), location: L.toText(o.location, "location"), summary: String(o.summary).trim(),
+    how_to_apply: generic ? L.GENERIC_STEPS_HI.slice() : L.strArr(o.how_to_apply, 8), selection_process: L.strArr(o.selection_process, 8),
     at: new Date().toISOString().slice(0, 10),
   };
   for (const k of Object.keys(hi)) if (hi[k] === "" || (Array.isArray(hi[k]) && !hi[k].length)) delete hi[k];
   return hi;
 }
 async function hindiUpdate(u) {
-  const src = { title: u.title, organization: u.organization || "", exam_name: u.exam_name || "", summary: u.summary || "",
-    steps: u.steps || [], details: u.details || [], faq: (u.faq || []).slice(0, 5) };
-  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input (faq items keep keys q and a), every value translated to Hindi. ` +
+  const src = { title: u.title, organization: u.organization || "", exam_name: u.exam_name || "", summary: u.summary || "", steps: (u.steps || []).slice(0, 6) };
+  const prompt = `${HI_RULES}\nReturn ONLY a JSON object with exactly the same keys and structure as the input, every value translated to Hindi. ` +
     `For "title", write a Hindi headline in the usual style, e.g. "SSC GD कांस्टेबल रिजल्ट 2026 जारी – ऐसे करें चेक".\n\nINPUT:\n${JSON.stringify(src)}`;
-  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 3000 }));
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 700, purpose: "hindi-update" }));
   if (!o || !o.title || !o.summary || devanagariShare(o.title + o.summary) < 0.5) return null;
   const hi = { title: String(o.title).trim(), organization: L.toText(o.organization, "organization"), exam_name: String(o.exam_name || "").trim(),
-    summary: String(o.summary).trim(), steps: L.strArr(o.steps, 8), details: L.strArr(o.details, 5), faq: L.faqArr(o.faq, 6), at: new Date().toISOString().slice(0, 10) };
+    summary: String(o.summary).trim(), steps: L.strArr(o.steps, 8), at: new Date().toISOString().slice(0, 10) };
   for (const k of Object.keys(hi)) if (hi[k] === "" || (Array.isArray(hi[k]) && !hi[k].length)) delete hi[k];
   return hi;
 }
 
-
 /* ---- pass 5: Search Console opportunities --------------------------------
    Pages Google already shows at positions 4–20 get FAQ answers written for the
    exact searches people used — answered ONLY from the page's own facts. */
-const MAX_SEO = Number(process.env.SEO_MAX || C.maxSeoPerRun || 10);
+const MAX_SEO = Number(process.env.SEO_MAX || C.maxSeoPerRun || 5);
 async function searchFaq(entry, queries, kind) {
   const facts = kind === "job"
     ? { title: entry.title, organization: entry.organization, post: entry.post_name, vacancies: entry.total_vacancies, qualification: entry.qualification,
@@ -229,7 +212,7 @@ async function searchFaq(entry, queries, kind) {
     `"q" = a natural question phrased the way the searcher meant it (in the same language as the query — Hindi queries get Hindi answers), "a" = a direct 1–3 sentence answer using ONLY the facts. ` +
     `If a fact needed for an answer is missing, say candidates should check the official notification — never guess numbers or dates. Skip queries that are unrelated to this page. ` +
     `Return ONLY JSON: {"faq":[{"q":"...","a":"..."}]} with at most 6 items.\n\nQUERIES:\n${queries.map((x) => "- " + x.q).join("\n")}\n\nFACTS:\n${JSON.stringify(facts)}`;
-  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 1500 }));
+  const o = L.parseJson(await L.askAI(prompt, { maxTokens: 700, purpose: "search-faq" }));
   return L.faqArr(o && o.faq, 6);
 }
 
@@ -287,7 +270,7 @@ async function main() {
   for (const u of pendUpd.slice(0, MAX_UPD)) {
     const src = await F.readSource(u.source || u.link);
     const mark = L.aiHealth().failed;
-    const ai = L.AI ? await F.aiUpdate({ title: u.title, summary: u.summary }, u.type, src) : {};
+    const ai = L.AI ? await F.aiUpdate({ title: u.title, summary: u.summary }, u.type, src, "update-enrich") : {};
     // the AI did not answer: the update stays due (marking it "partial" here left result pages as one-liners for good)
     if (L.AI && !Object.keys(ai).length && aiFault(mark)) { console.log("  - the AI is not answering: thin updates wait for a later run"); break; }
     const second = u.enriched === "partial";
@@ -304,12 +287,12 @@ async function main() {
   // Pass 3 — content (AI only)
   if (L.AI) {
     // not for a record still waiting for its facts (pass 0): prose written from "not stated" would stay for good
-    const pending = jobs.filter((j) => j && j.id && j.title && needsContent(j) && !L.factsPending(j));
+    const pending = jobs.filter((j) => j && j.id && j.title && needsContent(j) && !L.factsPending(j) && isOpenJob(j)).sort(byValue);
     console.log(`Enrich/content: ${pending.length} job(s) on template content | doing up to ${MAX_CONTENT}`);
     for (const job of pending.slice(0, MAX_CONTENT)) {
       if (L.aiDown()) { console.log("  - the AI is not answering: content waits for a later run"); break; }
       const rich = await enrichContent(job);
-      if (!rich) { console.log(`  - skipped (quality gate): ${job.title}`); continue; }
+      if (!rich) { if (L.aiDown()) break; console.log(`  - skipped (quality gate): ${job.title}`); continue; }
       // the model's output gets the same shape checks as everything else (objects → text, arrays of strings, …)
       const clean = L.sanitizeJob({ ...job, ...rich });
       for (const k of Object.keys(job)) delete job[k];
@@ -320,17 +303,16 @@ async function main() {
     stats.contentPending = Math.max(0, pending.length - MAX_CONTENT);
   } else console.log("Enrich/content: no AI key — skipped.");
 
-  // Pass 4 — Hindi edition (newest first; open jobs before closed ones)
+  // Pass 4 — Hindi edition (open jobs, most posts first; the short fields only)
   if (L.AI) {
-    const isOpen = (j) => !j.application_end || new Date(j.application_end + "T23:59:59+05:30") >= new Date();
-    const hj = jobs.filter((j) => j && j.id && j.title && !j.hi && Array.isArray(j.overview) && j.overview.length)
-      .sort((a, b) => (isOpen(b) - isOpen(a)) || String(b.published || "").localeCompare(String(a.published || "")));
+    // open jobs only (a closed job's Hindi page goes a week after its last date), most posts first
+    const hj = jobs.filter((j) => j && j.id && j.title && j.summary && !j.hi && isOpenJob(j) && !L.factsPending(j)).sort(byValue);
     stats.hindiJobsPending = hj.length;
     console.log(`Enrich/hindi: ${hj.length} job(s) without Hindi | doing up to ${MAX_HI_JOBS}`);
     for (const job of hj.slice(0, MAX_HI_JOBS)) {
       if (L.aiDown()) break;
       const hi = await hindiJob(job);
-      if (!hi) { console.log(`  - hindi skipped (quality gate): ${job.title}`); continue; }
+      if (!hi) { if (L.aiDown()) break; console.log(`  - hindi skipped (quality gate): ${job.title}`); continue; }
       job.hi = hi; jobsDirty = true; stats.hindiJobs = (stats.hindiJobs || 0) + 1;
       console.log(`  ✓ hindi: ${hi.title}`);
       await sleep(500);
@@ -340,7 +322,7 @@ async function main() {
     for (const u of hu.slice(0, MAX_HI_UPD)) {
       if (L.aiDown()) break;
       const hi = await hindiUpdate(u);
-      if (!hi) { console.log(`  - hindi update skipped: ${u.title}`); continue; }
+      if (!hi) { if (L.aiDown()) break; console.log(`  - hindi update skipped: ${u.title}`); continue; }
       u.hi = hi; updDirty = true; stats.hindiUpdates = (stats.hindiUpdates || 0) + 1;
       console.log(`  ✓ hindi update: ${hi.title}`);
       await sleep(400);

@@ -168,49 +168,40 @@ function candList(cands) {
 }
 
 /* ---- optional: extract structured fields with AI ----------------- */
-async function aiExtract(item, src) {
+async function aiExtract(item, src, purpose = "extract-job") {
   if (!AI_PROVIDER) return {};
-  const pageText = src.text || item.summary || "";
-  const prompt = `You are extracting facts from an Indian government job notification to build a complete, useful job page. ` +
-    `Return ONLY a JSON object (no prose, no markdown) with these keys, using null when genuinely unknown: ` +
-    `organization (full official name of the recruiting body — NOT the headline), org_short (its common abbreviation, e.g. SSC, UPSC, RRB, IBPS), advt_no (the advertisement / notification number exactly as printed, e.g. "CEN 05/2026", or null), post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
-    `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
-    `apply_link, official_notification, official_website (see rules below), ` +
-    `summary (2-3 clear factual sentences describing the recruitment), summary_hindi (the same summary written naturally in Hindi — Devanagari only, never mix Latin letters into Hindi words), ` +
-    `selection_process (array of the selection stages if mentioned), ` +
-    `how_to_apply (array of 4-6 clear step-by-step instructions to apply online), ` +
-    `overview (3 well-written paragraphs, 160-220 words total, as an array of paragraph strings, explaining this recruitment in plain English for an Indian job seeker: what the post involves, who it suits, why it matters, and what applicants should check before applying), ` +
-    `about_organization (2-3 sentences, 50-70 words, describing the recruiting body and the kind of work it does), ` +
-    `eligibility_notes (2-3 sentences explaining the eligibility in plain language, including any relaxations or conditions worth flagging), ` +
-    `preparation_tips (array of 3-4 specific, practical preparation pointers tailored to THIS exam and post — mention the actual subjects or test stages where known), ` +
-    `faq (array of 4-5 objects with keys q and a, answering the questions a real candidate would ask about this specific recruitment; each answer 1-3 sentences). ` +
-    `LINK RULES: choose apply_link (the official online application / registration page), official_notification (the official notification PDF or notice page) and official_website (the recruiting body's own site homepage) ONLY from the CANDIDATE LINKS list below — copy the URL exactly; if no suitable candidate exists use null. The links must belong to the recruiting body in the TITLE (its own domain or its application portal); a link for a different organisation or exam is wrong — prefer null. Never choose a news/blog/aggregator site. ` +
-    `Write overview, about_organization, eligibility_notes, preparation_tips and faq as genuinely useful original prose in a clear, neutral, informative style — never filler, never repeated boilerplate. ` +
-    `Do not invent specific numbers, dates or fees; use null for those if not clearly stated, and phrase guidance generally where the notification is silent.\n\n` +
-    `TITLE: ${item.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nTEXT:\n${pageText}`;
-  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 3200, essential: true }));
+  // Facts only: the daily AI budget (₹10, lib.js) must cover ~150 notices a day. The page's FAQ is written from these
+  // facts by build.js, preparation tips are the site's own, the overview is added later from leftover budget
+  // (enrich-jobs.js), and the Hindi text by the Hindi pass. The source text is cut at 6,000 characters (the facts table
+  // of an aggregator article comes first) and the candidate links at the 15 best-scored.
+  const pageText = String(src.text || item.summary || "").slice(0, 6000);
+  const prompt = `Extract the facts of this Indian government job notice. Return ONLY a JSON object. Use null when the text does not state a value — never guess numbers, dates or fees. Keys: ` +
+    `organization (full official name of the recruiting body, not the headline), org_short (its abbreviation, e.g. SSC, RRB, IBPS), advt_no (as printed), post_name, total_vacancies (number), ` +
+    `qualification (short), age_min (number), age_max (number), application_start, application_end, exam_date (YYYY-MM-DD), fee (short), salary (short), location, ` +
+    `apply_link (the official online application or registration page), official_notification (the official notice PDF or page), official_website (the body's own homepage): ` +
+    `copy each URL exactly from CANDIDATE LINKS; it must belong to the recruiting body named in the TITLE (its own site or its application portal), never a news, blog or aggregator site; null if none fits. ` +
+    `summary (2 factual sentences), selection_process (array of the stages, if stated), ` +
+    `how_to_apply (array of 3-5 short steps, in the way this notice says to apply: online, by post, by e-mail or walk-in).\n\n` +
+    `TITLE: ${item.title}\n\nCANDIDATE LINKS:\n${candList(src.cands.slice(0, 15))}\n\nTEXT:\n${pageText}`;
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 900, essential: purpose === "extract-job" || purpose === "facts", purpose }));
   if (!obj) { console.log("  (AI extract failed)"); return {}; }
   return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== null && v !== "" && !(Array.isArray(v) && !v.length)));
 }
 
 /* ---- updates (results / admit cards / answer keys): rich entries ---------- */
-async function aiUpdate(it, kind, src) {
+async function aiUpdate(it, kind, src, purpose = "extract-update") {
   if (!AI_PROVIDER) return {};
   const label = { "admit-card": "admit card / hall ticket", result: "result / merit list / cut-off", "answer-key": "answer key", "exam-date": "exam date / schedule" }[kind] || kind;
-  const prompt = `You are writing a helpful page about a ${label} announcement for an Indian government exam. Use ONLY the source text; never invent dates, cut-offs or numbers.\n` +
-    `Return ONLY a JSON object with keys: ` +
-    `organization (full official name of the exam body), org_short (common abbreviation), exam_name (the exam / post this is for), ` +
-    `event_date (YYYY-MM-DD of the release/exam date if stated, else null), ` +
-    `summary (3-4 factual sentences: what was released, for which exam/post, when, and where to check), ` +
-    `summary_hi (the same summary in natural Hindi, Devanagari only), ` +
-    `steps (array of 4-6 numbered steps telling the candidate exactly how to download/check it on the official website — mention the real site name and the credentials needed, e.g. registration number and date of birth), ` +
-    `details (array of 2-3 paragraphs, 120-180 words total, with the useful context: what happens next, documents to carry, how cut-offs or the next stage work for THIS exam, common problems and fixes), ` +
-    `faq (array of 3-4 objects with keys q and a that a candidate would ask about this specific ${label}), ` +
-    `official_link (the single best official URL to check/download this, chosen ONLY from the CANDIDATE LINKS list, copied exactly; it must belong to the exam body in the title — null if none fits), ` +
-    `official_website (the exam body's own homepage, from the candidate list or null).\n` +
-    `Never pick a news/blog/aggregator site as official. Write clear, original, neutral English.\n\n` +
-    `TITLE: ${it.title}\n\nCANDIDATE LINKS:\n${candList(src.cands)}\n\nSOURCE TEXT:\n${(src.text || it.summary || "").slice(0, 6000)}`;
-  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 2000, essential: true }));
+  // short and factual, within the daily AI budget (lib.js): no FAQ or Hindi here (the Hindi pass writes the Hindi text)
+  const prompt = `This is a ${label} announcement for an Indian government exam. Use ONLY the source text; never invent dates, cut-offs or numbers. Return ONLY a JSON object with keys: ` +
+    `organization (full official name of the exam body), org_short (abbreviation), exam_name (the exam or post), event_date (YYYY-MM-DD of the release or exam date if stated, else null), ` +
+    `summary (2-3 factual sentences: what was released, for which exam, where to check), ` +
+    `steps (array of 3-5 short steps to check or download it on the official website, naming the credentials needed), ` +
+    `details (array of 1-2 short paragraphs, 50-90 words in total: what happens next for this exam), ` +
+    `official_link (the single best official URL for it, copied exactly from CANDIDATE LINKS and belonging to the exam body; null if none fits), ` +
+    `official_website (the exam body's homepage from CANDIDATE LINKS, or null). Never pick a news, blog or aggregator site.\n\n` +
+    `TITLE: ${it.title}\n\nCANDIDATE LINKS:\n${candList(src.cands.slice(0, 15))}\n\nSOURCE TEXT:\n${(src.text || it.summary || "").slice(0, 4000)}`;
+  const obj = L.parseJson(await L.askAI(prompt, { maxTokens: 700, essential: purpose === "extract-update", purpose }));
   return obj || {};
 }
 function finishUpdate(base, ai, src) {

@@ -145,29 +145,27 @@ async function pool(items, n, fn) {
 /* ---- AI: turn one official notice into a job or an update ---- */
 function candList(c) { return c.length ? c.map((x, i) => `${i + 1}. ${x.url}${x.text ? "  (" + x.text + ")" : ""}`).join("\n") : "(none)"; }
 async function extractJob(src, link, doc) {
-  const prompt = `This is an official recruitment notice published on the website of ${src.name} (${src.state}). Extract the facts to build a job page. ` +
-    `Return ONLY a JSON object, null where unknown: headline (a clear English headline like "UPPSC Lecturer Recruitment 2026 – 120 Posts" — organisation short name, post, year, number of posts if stated), ` +
-    `is_recruitment (true only if this notice invites applications for posts; false for results, admit cards, corrigenda, schedules, tenders), ` +
-    `is_specific_notice (true only if the text is ONE specific notice/advertisement; false if it is a listing, index, menu or section page that lists many notices), ` +
-    `advt_no (advertisement / notification number if stated), ` +
-    `organization (full name), org_short, post_name, total_vacancies (number), qualification, age_min (number), age_max (number), ` +
-    `application_start (YYYY-MM-DD), application_end (YYYY-MM-DD), exam_date (YYYY-MM-DD), fee, salary, location, ` +
-    `apply_link (official online application page, chosen ONLY from CANDIDATE LINKS or null), ` +
-    `summary (2-3 factual sentences), summary_hindi (same in natural Hindi), selection_process (array), how_to_apply (array of 4-6 steps), ` +
-    `overview (array of 3 paragraphs, 160-220 words total, plain English for an Indian job seeker), about_organization (2-3 sentences), ` +
-    `eligibility_notes (2-3 sentences), preparation_tips (array of 3-4), faq (array of 4-5 {q,a}). ` +
-    `Use ONLY the notice text — never invent numbers, dates or fees.\n\nLINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nCANDIDATE LINKS:\n${candList(doc.cands)}\n\nNOTICE TEXT:\n${doc.text || "(text not readable — use the link text only and leave unknown fields null)"}`;
-  return L.parseJson(await L.askAI(prompt, { maxTokens: 3500, essential: true }));
+  // facts only, within the daily AI budget (lib.js); see fetch-jobs.js aiExtract
+  const prompt = `This is an official recruitment notice on the website of ${src.name} (${src.state}). Extract its facts. Return ONLY a JSON object, null where the notice does not say — never invent numbers, dates or fees. Keys: ` +
+    `headline (a clear English headline like "UPPSC Lecturer Recruitment 2026 – 120 Posts": organisation short name, post, year, number of posts if stated), ` +
+    `is_recruitment (true only if it invites applications for posts; false for results, admit cards, corrigenda, schedules, tenders), ` +
+    `is_specific_notice (true only if the text is ONE specific notice; false for a listing, index or section page), ` +
+    `advt_no, organization (full name), org_short, post_name, total_vacancies (number), qualification (short), age_min (number), age_max (number), ` +
+    `application_start, application_end, exam_date (YYYY-MM-DD), fee (short), salary (short), location, ` +
+    `apply_link (the official online application page, copied ONLY from CANDIDATE LINKS, or null), ` +
+    `summary (2 factual sentences), selection_process (array), how_to_apply (array of 3-5 short steps in the way the notice says to apply).\n\n` +
+    `LINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nCANDIDATE LINKS:\n${candList((doc.cands || []).slice(0, 15))}\n\nNOTICE TEXT:\n${doc.text ? String(doc.text).slice(0, 6000) : "(text not readable — use the link text only and leave unknown fields null)"}`;
+  return L.parseJson(await L.askAI(prompt, { maxTokens: 900, essential: true, purpose: "watch-job" }));
 }
 async function extractUpdate(src, link, doc, kind) {
   const label = { "admit-card": "admit card / hall ticket", result: "result / merit or selection list / cut-off", "answer-key": "answer key", "exam-date": "exam date / schedule / interview" }[kind];
-  const prompt = `This is an official ${label} notice published on the website of ${src.name} (${src.state}). Use ONLY the notice text; never invent dates or numbers. ` +
-    `Return ONLY a JSON object: is_specific_notice (true only if the text is ONE specific ${label} notice for a named exam or post; false for listing/index/section pages, procedures or general instructions), ` +
-    `headline (clear English headline like "UPSSSC Junior Assistant Result 2026 Out" — organisation short name, exam/post, type, year), ` +
-    `organization, org_short, exam_name, event_date (YYYY-MM-DD or null), summary (3-4 factual sentences: what was released, for which exam/post, where to check), ` +
-    `summary_hi (same in Hindi), steps (array of 4-6 steps to download/check it on ${new URL(link.url).host}), details (array of 2-3 short paragraphs with what happens next), ` +
-    `faq (array of 3-4 {q,a}).\n\nLINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nNOTICE TEXT:\n${doc.text || "(text not readable — use the link text only)"}`;
-  return L.parseJson(await L.askAI(prompt, { maxTokens: 2200, essential: true }));
+  const prompt = `This is an official ${label} notice on the website of ${src.name} (${src.state}). Use ONLY the notice text; never invent dates or numbers. ` +
+    `Return ONLY a JSON object: is_specific_notice (true only if the text is ONE specific ${label} notice for a named exam or post; false for listing, index or section pages and general instructions), ` +
+    `headline (clear English headline like "UPSSSC Junior Assistant Result 2026 Out": organisation short name, exam/post, type, year), ` +
+    `organization, org_short, exam_name, event_date (YYYY-MM-DD or null), summary (2-3 factual sentences: what was released, for which exam/post, where to check), ` +
+    `steps (array of 3-5 short steps to download/check it on ${new URL(link.url).host}), details (array of 1-2 short paragraphs on what happens next).\n\n` +
+    `LINK TEXT: ${link.text}\nNOTICE URL: ${link.url}\n\nNOTICE TEXT:\n${doc.text ? String(doc.text).slice(0, 4000) : "(text not readable — use the link text only)"}`;
+  return L.parseJson(await L.askAI(prompt, { maxTokens: 700, essential: true, purpose: "watch-update" }));
 }
 
 /** Does the text name only years from two or more years ago ("Cut-off Marks (01/2018)", "Advt. No. 05/2024")? */
