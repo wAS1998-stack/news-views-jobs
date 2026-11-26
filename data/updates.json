@@ -1,5 +1,99 @@
 [
   {
+    "id": "rpsc-asst-prof-result-2024-out",
+    "type": "result",
+    "title": "RPSC Asst. Prof. Result 2024 Out",
+    "organization": "Rajasthan Public Service Commission",
+    "org_short": "RPSC",
+    "exam_name": "Assistant Professor (Sanskrit College Education)",
+    "event_date": "2026-11-26",
+    "date": "2026-11-26",
+    "link": "https://rpsc.rajasthan.gov.in/Static/Result/9700384C0CB7425FB40752E12A141506.pdf",
+    "official_link": "https://rpsc.rajasthan.gov.in/Static/Result/9700384C0CB7425FB40752E12A141506.pdf",
+    "official_website": "https://rpsc.rajasthan.gov.in/",
+    "source": "https://rpsc.rajasthan.gov.in/Static/Result/9700384C0CB7425FB40752E12A141506.pdf",
+    "via": "official",
+    "summary": "The revised result and cutoff marks for the Assistant Professor exam 2024 (Sanskrit College Education) have been published. Candidates can check their results and the cutoff marks on the official RPSC website. This notice pertains to the candidates who are qualified for the interview stage.",
+    "summary_hi": "सुधारित परिणाम और कटऑफ अंक सहायक प्रोफेसर परीक्षा 2024 (संस्कृत कॉलेज शिक्षा) के लिए प्रकाशित किए गए हैं। उम्मीदवार अपने परिणाम और कटऑफ मार्क्स आधिकारिक आरपीएससी वेबसाइट पर देख सकते हैं। यह सूचना उन उम्मीदवारों से संबंधित है जो साक्षात्कार चरण के लिए योग्य हैं।",
+    "steps": [
+      "Visit the official RPSC website: rpsc.rajasthan.gov.in",
+      "Navigate to the 'Results' section.",
+      "Find the link for 'Asst. Prof. (Sanskrit College Education) - 2024 Revised Result and Cutoff Marks'.",
+      "Click on the link to open the PDF document.",
+      "Download and save the result for your reference."
+    ],
+    "details": [
+      "Candidates who have qualified based on the revised result will be invited for the interview. It is essential for them to prepare adequately to perform well in the next stage of the selection process.",
+      "Further instructions and details regarding the interview process will be communicated to qualified candidates. They should keep an eye on the official RPSC website for updates."
+    ],
+    "faq": [
+      {
+        "q": "How can I check my result?",
+        "a": "You can check your result by visiting the RPSC official website and navigating to the results section."
+      },
+      {
+        "q": "What do I do if I have queries regarding my result?",
+        "a": "You can contact the RPSC helpdesk or check the FAQ section on their website for assistance."
+      },
+      {
+        "q": "When will the interviews be conducted?",
+        "a": "The exact dates for the interviews will be announced on the official website after the results are declared."
+      },
+      {
+        "q": "Is there a need to fill any forms for the interview?",
+        "a": "Qualified candidates will be informed through official communication on any forms or documents needed for the interview."
+      }
+    ],
+    "enriched": "2026-11-26"
+  },
+  {
+    "id": "uppsc-pre-exam-city-details-2026",
+    "type": "admit-card",
+    "title": "UPPSC Pre Exam City Details 2026",
+    "organization": "Uttar Pradesh Public Service Commission",
+    "org_short": "UPPSC",
+    "date": "2026-11-26",
+    "link": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
+    "summary": "Uttar Pradesh Public Service Commission (UPPSC) has released the Exam City Details for the recruitment of the Combined State Upper Subordinate Services Examination 2026 on its official website. Candidates who applied for this examination can download their Exam City Details from the official UPPSC site. The details were made available on 27 November 2026.",
+    "exam_name": "Combined State Upper Subordinate Services Examination 2026",
+    "event_date": "2026-11-27",
+    "summary_hi": "उत्तर प्रदेश लोक सेवा आयोग (UPPSC) ने समाहित राज्य उच्च अधीनस्थ सेवा परीक्षा 2026 के लिए परीक्षा शहर विवरण अपनी आधिकारिक वेबसाइट पर जारी किया है। इस परीक्षा के लिए आवेदन करने वाले उम्मीदवार अपनी परीक्षा शहर विवरण आधिकारिक UPPSC साइट से डाउनलोड कर सकते हैं। यह विवरण 27 नवंबर 2026 को उपलब्ध कराया गया।",
+    "steps": [
+      "Visit the official UPPSC website at https://uppsc.up.nic.in.",
+      "Navigate to the 'Important Links' section on the homepage.",
+      "Click on the relevant link for 'Exam City Details'.",
+      "Enter your Registration Number/Roll Number and Date of Birth/Password.",
+      "Complete any Captcha verification if prompted.",
+      "Submit the information to view and download your Exam City Details."
+    ],
+    "details": [
+      "After downloading the Exam City Details, candidates should verify all information to ensure accuracy. The details include the exam venue and other pertinent information for the examination set for 06 December 2026. It's essential to keep this information handy as it will guide you to the correct examination center.",
+      "Candidates are advised to carry their Admit Card, a valid photo ID, and any other required documentation to the exam center on the exam day. It's equally important to arrive on time and familiarize yourself with the exam venue beforehand to avoid any last-minute issues.",
+      "Successful candidates will then proceed to the mains examination, which will be followed by an interview and other selection processes. Make sure to check the UPPSC website regularly for updates on further stages and any possible changes."
+    ],
+    "faq": [
+      {
+        "q": "Has the UPPSC Pre Exam City Details 2026 been released?",
+        "a": "Yes, the UPPSC Pre Exam City Details 2026 has been released on the official website."
+      },
+      {
+        "q": "When will the UPPSC Pre exam be held?",
+        "a": "The UPPSC Pre examination will be conducted on 06 December 2026."
+      },
+      {
+        "q": "What details are required to download the Admit Card?",
+        "a": "Candidates need their Registration Number/Roll Number and Password/Captcha to download the Admit Card."
+      },
+      {
+        "q": "Where can I check the UPPSC Pre Exam City Details 2026?",
+        "a": "You can check it on the official UPPSC website: uppsc.up.nic.in."
+      }
+    ],
+    "official_link": "https://uppsc.up.nic.in/CandidatePages/Notifications.aspx",
+    "official_website": "https://uppsc.up.nic.in/",
+    "source": "https://www.sarkariexam.com/uppsc-pcs-2026/"
+  },
+  {
     "id": "isro-sac-assistant-recruitment-2025-cancelled-notification-withdrawn",
     "type": "exam-date",
     "title": "ISRO SAC Assistant Recruitment 2025 (Cancelled) - Notification Withdrawn",
@@ -65230,170 +65324,6 @@
         {
           "q": "मैं रिजल्ट PDF कहाँ खोज सकता हूं?",
           "a": "रिजल्ट PDFs SSC की आधिकारिक वेबसाइट पर रिजल्ट सेक्शन के अंतर्गत मिलेंगे।"
-        }
-      ],
-      "at": "2026-10-29"
-    }
-  },
-  {
-    "id": "trbt-stpgt-exam-date-2026-check-pgt-exam-schedule-pdf",
-    "type": "exam-date",
-    "title": "TRBT STPGT Exam Date 2026 - Check PGT Exam Schedule PDF",
-    "organization": "Teachers' Recruitment Board, Tripura",
-    "org_short": "TRBT",
-    "date": "2026-10-29",
-    "link": "https://trb.tripura.gov.in/sites/default/files/Notification%201.pdf",
-    "summary": "TRBT has announced the exam date for the STPGT 2026 for 125 vacancies for Post Graduate Teacher in Music, scheduled for February 28, 2027, in Agartala. The official notification was released on October 28, 2026. Candidates can check the details on the official website trb.tripura.gov.in.",
-    "exam_name": "Selection Test for Post Graduate Teacher (STPGT) 2026",
-    "event_date": "2026-10-28",
-    "summary_hi": "TRBT ने संगीत के लिए 125 पदों के लिए STPGT 2026 की परीक्षा तिथि का ऐलान किया है, जो 28 फरवरी 2027 को अगरतला में आयोजित होगी। आधिकारिक सूचना 28 अक्टूबर 2026 को जारी की गई थी। उम्मीदवार विवरण आधिकारिक वेबसाइट trb.tripura.gov.in पर देख सकते हैं।",
-    "steps": [
-      "Visit the official website at www.trb.tripura.gov.in.",
-      "Look for the notification regarding the Selection Test for Post Graduate Teacher (STPGT) 2026.",
-      "Read the notification for eligibility criteria and examination details.",
-      "Prepare to apply online once the application process opens as instructed in the notification.",
-      "Download your admit card once it is available, as it will include details about the exam center."
-    ],
-    "details": [
-      "The TRBT STPGT 2026 Selection Test will be held for the recruitment of Post Graduate Teachers in Music, with a total of 125 vacancies. Candidates are advised to regularly check the official website for updates regarding the application process and eligibility requirements, which will be detailed in the upcoming Prospectus-cum-Instructions.",
-      "It is important for candidates to prepare for the exam while waiting for the application process to open. They should keep their documents ready, as the admit card will need to be downloaded in advance for entry into the exam center in Agartala."
-    ],
-    "faq": [
-      {
-        "q": "What is the tentative date for the TRBT STPGT exam?",
-        "a": "The tentative date for the TRBT STPGT exam is February 28, 2027."
-      },
-      {
-        "q": "Where will the exam be conducted?",
-        "a": "The exam will be conducted in Agartala only."
-      },
-      {
-        "q": "When will the application process start?",
-        "a": "The application process dates will be announced in the upcoming notification."
-      },
-      {
-        "q": "How can I download my admit card?",
-        "a": "The admit card will be available for download on the official website once released, and candidates must keep checking for updates."
-      }
-    ],
-    "official_link": "https://trb.tripura.gov.in/sites/default/files/Notification%201.pdf",
-    "official_website": "https://trb.tripura.gov.in/",
-    "source": "https://www.freejobalert.com/articles/trbt-stpgt-exam-date-2026-3076818",
-    "hi": {
-      "title": "TRBT STPGT परीक्षा की तारीख 2026 - PGT परीक्षा कार्यक्रम PDF चेक करें",
-      "organization": "शिक्षकों की भर्ती बोर्ड, त्रिपुरा",
-      "exam_name": "पोस्ट ग्रेजुएट टीचर (STPGT) 2026 के लिए चयन परीक्षा",
-      "summary": "TRBT ने संगीत में पोस्ट ग्रेजुएट टीचर के लिए 125 पदों के लिए STPGT 2026 की परीक्षा की तारीख का घोषणा की है, जो 28 फरवरी, 2027 को अगरतला में आयोजित की जाएगी। आधिकारिक नोटिफिकेशन 28 अक्टूबर, 2026 को जारी किया गया था। उम्मीदवार आधिकारिक वेबसाइट trb.tripura.gov.in पर विवरण देख सकते हैं।",
-      "steps": [
-        "आधिकारिक वेबसाइट www.trb.tripura.gov.in पर जाएं।",
-        "पोस्ट ग्रेजुएट टीचर (STPGT) 2026 के लिए चयन परीक्षा से संबंधित नोटिफिकेशन को देखें।",
-        "योग्यता मानदंड और परीक्षा के विवरण के लिए नोटिफिकेशन पढ़ें।",
-        "नोटिफिकेशन में निर्देशित अनुसार ऑनलाइन आवेदन करने के लिए तैयार रहें जब आवेदन प्रक्रिया शुरू हो।",
-        "अपना प्रवेश पत्र डाउनलोड करें जब यह उपलब्ध हो, क्योंकि इसमें परीक्षा केंद्र के विवरण होंगे।"
-      ],
-      "details": [
-        "TRBT STPGT 2026 चयन परीक्षा संगीत में पोस्ट ग्रेजुएट टीचर्स की भर्ती के लिए आयोजित की जाएगी, जिसमें कुल 125 पद हैं। उम्मीदवारों को आवेदन प्रक्रिया और योग्यताओं के बारे में अपडेट के लिए नियमित रूप से आधिकारिक वेबसाइट चेक करने की सलाह दी जाती है, जो आगामी प्रॉस्पेक्टस-केम-निर्देश में विस्तृत किया जाएगा।",
-        "उम्मीदवारों के लिए परीक्षा की तैयारी करना महत्वपूर्ण है जबकि वह आवेदन प्रक्रिया के शुरू होने की प्रतीक्षा कर रहे हैं। उन्हें अपने दस्तावेज तैयार रखे जाने चाहिए, क्योंकि प्रवेश पत्र को परीक्षा केंद्र में प्रवेश के लिए पहले से डाउनलोड करना होगा।"
-      ],
-      "faq": [
-        {
-          "q": "TRBT STPGT परीक्षा की प्रारंभिक तारीख क्या है?",
-          "a": "TRBT STPGT परीक्षा की प्रारंभिक तारीख 28 फरवरी, 2027 है।"
-        },
-        {
-          "q": "परीक्षा कहाँ आयोजित की जाएगी?",
-          "a": "परीक्षा केवल अगरतला में आयोजित की जाएगी।"
-        },
-        {
-          "q": "आवेदन प्रक्रिया कब शुरू होगी?",
-          "a": "आवेदन प्रक्रिया की तारीखें आगामी नोटिफिकेशन में घोषित की जाएंगी।"
-        },
-        {
-          "q": "मैं अपना प्रवेश पत्र कैसे डाउनलोड कर सकता हूँ?",
-          "a": "एक बार जारी होने पर प्रवेश पत्र आधिकारिक वेबसाइट पर डाउनलोड के लिए उपलब्ध होगा, और उम्मीदवारों को अपडेट के लिए बार-बार चेक करते रहना चाहिए।"
-        }
-      ],
-      "at": "2026-10-29"
-    }
-  },
-  {
-    "id": "jkssb-driver-final-answer-key-2026-out-download-driver-ii-and-driver-g",
-    "type": "answer-key",
-    "title": "JKSSB Driver Final Answer Key 2026 Out - Download Driver-II and Driver Grade-II PDF",
-    "organization": "Jammu and Kashmir Services Selection Board",
-    "org_short": "JKSSB",
-    "date": "2026-10-29",
-    "link": "https://jkssb.nic.in/Pdf/Final_answerkey_28102026.pdf",
-    "summary": "The JKSSB has released the Final Answer Key for the Driver, Driver-II and Driver Grade-II examinations on October 28, 2026. Candidates can check the updated answers and objection refund details on the official website. The OMR-based written exam was conducted on October 18, 2026. The final answer key has been published after reviewing objections related to unique questions.",
-    "exam_name": "Driver, Driver-II and Driver Grade-II",
-    "event_date": "2026-10-28",
-    "summary_hi": "JKSSB ने 28 अक्टूबर, 2026 को ड्राइवर, ड्राइवर-II और ड्राइवर ग्रेड-II परीक्षाओं के लिए अंतिम उत्तर कुंजी जारी की है। उम्मीदवार आधिकारिक वेबसाइट पर अद्यतन उत्तर और आपत्ति धनवापसी विवरण देख सकते हैं। ओएमआर आधारित लिखित परीक्षा 18 अक्टूबर, 2026 को आयोजित की गई थी। अंतिम उत्तर कुंजी अद्वितीय प्रश्नों से संबंधित आपत्तियों की समीक्षा के बाद प्रकाशित की गई है।",
-    "steps": [
-      "Visit the official JKSSB website at jkssb.nic.in.",
-      "Open the latest notifications section.",
-      "Find the notice dated October 28, 2026, concerning the final answer key.",
-      "Click the final answer key PDF link.",
-      "Check the changes applicable to your question booklet series.",
-      "Download and save the PDF for future reference."
-    ],
-    "details": [
-      "Candidates should be aware that no further objections regarding the final answer key will be entertained by JKSSB. The final answer key reflects changes made after the review of 201 objections concerning 11 unique questions. While four answers were revised, seven answers remain unchanged.",
-      "Candidates whose objections were found to be valid will receive a refund of the objection fee, credited to their provided bank accounts. It is important for candidates to maintain all necessary documents and check the final answer key carefully, as this will affect future selection processes and potential cut-offs."
-    ],
-    "faq": [
-      {
-        "q": "Can I raise further objections against the final answer key?",
-        "a": "No, JKSSB has stated that no further claims regarding the final answer key will be entertained."
-      },
-      {
-        "q": "How do I check the changes in the final answer key?",
-        "a": "You can check the changes by downloading the PDF from the official website and comparing it with your marked responses."
-      },
-      {
-        "q": "What should I do if my objection was accepted?",
-        "a": "If your objection was accepted, you will be refunded the objection fee, which will be credited to your bank account."
-      },
-      {
-        "q": "What if I lost my registration details?",
-        "a": "You should retrieve your registration details from your email or any previous correspondence with JKSSB or use the recovery option if available on the official site."
-      }
-    ],
-    "official_link": "https://jkssb.nic.in/Pdf/Final_answerkey_28102026.pdf",
-    "official_website": "https://jkssb.nic.in/",
-    "source": "https://www.freejobalert.com/articles/jkssb-driver-final-answer-key-2026-3076823",
-    "hi": {
-      "title": "JKSSB ड्राइवर फाइनल उत्तर कुंजी 2026 जारी - ड्राइवर-II और ड्राइवर ग्रेड-II PDF डाउनलोड करें",
-      "organization": "जम्मू और कश्मीर सेवा चयन बोर्ड",
-      "exam_name": "ड्राइवर, ड्राइवर-II और ड्राइवर ग्रेड-II",
-      "summary": "JKSSB ने 28 अक्टूबर 2026 को ड्राइवर, ड्राइवर-II और ड्राइवर ग्रेड-II परीक्षाओं के लिए फाइनल उत्तर कुंजी जारी की है। उम्मीदवार आधिकारिक वेबसाइट पर अद्यतन उत्तर और आपत्ति धनवापसी विवरण देख सकते हैं। OMR-आधारित लिखित परीक्षा 18 अक्टूबर 2026 को आयोजित की गई थी। अंतिम उत्तर कुंजी अनूठे प्रश्नों से संबंधित आपत्तियों की समीक्षा के बाद प्रकाशित की गई है।",
-      "steps": [
-        "आधिकारिक JKSSB वेबसाइट jkssb.nic.in पर जाएँ।",
-        "नवीनतम सूचनाओं के अनुभाग को खोलें।",
-        "फाइनल उत्तर कुंजी से संबंधित 28 अक्टूबर 2026 की नोटिस खोजें।",
-        "फाइनल उत्तर कुंजी PDF लिंक पर क्लिक करें।",
-        "अपने प्रश्न बुकलेट श्रृंखला पर लागू परिवर्तनों की जांच करें।",
-        "भविष्य में संदर्भ के लिए PDF डाउनलोड करें और सहेजें।"
-      ],
-      "details": [
-        "उम्मीदवारों को ध्यान देना चाहिए कि JKSSB फाइनल उत्तर कुंजी के संबंध में कोई अन्य आपत्तियाँ स्वीकार नहीं करेगा। फाइनल उत्तर कुंजी उन 11 अनूठे प्रश्नों पर 201 आपत्तियों की समीक्षा के बाद किए गए परिवर्तनों को दर्शाती है। जबकि चार उत्तरों में संशोधन किया गया है, सात उत्तर अपरिवर्तित रहे हैं।",
-        "उम्मीदवारों जिनकी आपत्तियाँ मान्य पाई गई हैं, वे आपत्ति शुल्क का धनवापसी प्राप्त करेंगे, जो उनके द्वारा प्रदान किए गए बैंक खातों में जमा किया जाएगा। उम्मीदवारों के लिए यह महत्वपूर्ण है कि वे सभी आवश्यक दस्तावेज़ बनाए रखें और फाइनल उत्तर कुंजी को ध्यान से देखें, क्योंकि यह भविष्य की चयन प्रक्रियाओं और संभावित कट-ऑफ को प्रभावित करेगा।"
-      ],
-      "faq": [
-        {
-          "q": "क्या मैं फाइनल उत्तर कुंजी के खिलाफ और आपत्तियाँ उठा सकता हूँ?",
-          "a": "नहीं, JKSSB ने कहा है कि फाइनल उत्तर कुंजी के संबंध में कोई और दावे स्वीकार नहीं किए जाएंगे।"
-        },
-        {
-          "q": "मैं फाइनल उत्तर कुंजी में परिवर्तनों की जांच कैसे करूँ?",
-          "a": "आप आधिकारिक वेबसाइट से PDF डाउनलोड करके और इसे अपने चिह्नित उत्तरों के साथ तुलना करके परिवर्तनों की जांच कर सकते हैं।"
-        },
-        {
-          "q": "यदि मेरी आपत्ति स्वीकार की गई तो मुझे क्या करना चाहिए?",
-          "a": "यदि आपकी आपत्ति स्वीकार की गई, तो आपको आपत्ति शुल्क का धनवापसी मिलेगी, जो आपके बैंक खाते में जमा की जाएगी।"
-        },
-        {
-          "q": "अगर मैंने अपनी पंजीकरण विवरण खो दी तो क्या होगा?",
-          "a": "आपको अपने ईमेल से या JKSSB के साथ किसी पूर्व संवाद से अपनी पंजीकरण विवरण पुनः प्राप्त करनी चाहिए या आधिकारिक साइट पर उपलब्ध पुनर्प्राप्ति विकल्प का उपयोग करना चाहिए।"
         }
       ],
       "at": "2026-10-29"
