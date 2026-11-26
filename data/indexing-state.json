@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 130,
+  "used": 148,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12360,5 +12360,77 @@
  "https://news-views.in/jobs/wamul-senior-assistant-supervisor-assistant-2026/": {
   "sentAt": "2026-11-26T13:58:59.629Z",
   "hash": "7e494759b769"
+ },
+ "https://news-views.in/jobs/actrec-project-technical-support-i-walk-2026/": {
+  "sentAt": "2026-11-26T16:27:41.168Z",
+  "hash": "79780e446c21"
+ },
+ "https://news-views.in/jobs/bjrmh-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-26T16:27:41.432Z",
+  "hash": "f9f52faa58de"
+ },
+ "https://news-views.in/jobs/btsl-deputy-engineer-manager-supply-chain-2026/": {
+  "sentAt": "2026-11-26T16:27:41.658Z",
+  "hash": "9ec61c4355f6"
+ },
+ "https://news-views.in/jobs/csir-niist-project-jrf-2026/": {
+  "sentAt": "2026-11-26T16:27:41.919Z",
+  "hash": "e39022cdf601"
+ },
+ "https://news-views.in/jobs/gsssb-laboratory-technician-class-3-2026/": {
+  "sentAt": "2026-11-26T16:27:42.162Z",
+  "hash": "12bd4d05148b"
+ },
+ "https://news-views.in/jobs/iimb-research-associate-macroeconomics-applied-2026/": {
+  "sentAt": "2026-11-26T16:27:42.393Z",
+  "hash": "3b8c4f424ba7"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-i-advt-101-2026/": {
+  "sentAt": "2026-11-26T16:27:42.629Z",
+  "hash": "2eb6769c217e"
+ },
+ "https://news-views.in/jobs/kbcaos-research-associate-junior-research-fellow-2026/": {
+  "sentAt": "2026-11-26T16:27:42.807Z",
+  "hash": "99d82a501cd4"
+ },
+ "https://news-views.in/jobs/kozhikode-district-court-office-attendant-peon-2026/": {
+  "sentAt": "2026-11-26T16:27:43.048Z",
+  "hash": "cfe66c4fcb0d"
+ },
+ "https://news-views.in/jobs/ksmc-clerk-typist-2026/": {
+  "sentAt": "2026-11-26T16:27:43.294Z",
+  "hash": "8141c90ac013"
+ },
+ "https://news-views.in/jobs/ku-senior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-26T16:27:43.496Z",
+  "hash": "b45c5a6761a5"
+ },
+ "https://news-views.in/jobs/kvs-pgt-walkin-2026/": {
+  "sentAt": "2026-11-26T16:27:43.699Z",
+  "hash": "041cc3e978d8"
+ },
+ "https://news-views.in/jobs/ministry-steel-young-professional-2026/": {
+  "sentAt": "2026-11-26T16:27:43.904Z",
+  "hash": "a313f1f0c9a5"
+ },
+ "https://news-views.in/jobs/nfsu-walkin-research-assistant-field-investigator-2026/": {
+  "sentAt": "2026-11-26T16:27:44.112Z",
+  "hash": "ca89e6126457"
+ },
+ "https://news-views.in/jobs/nirmal-district-court-senior-superintendent-office-2026/": {
+  "sentAt": "2026-11-26T16:27:44.349Z",
+  "hash": "22be24072b3a"
+ },
+ "https://news-views.in/jobs/rri-h-siliguri-senior-research-fellow-2026/": {
+  "sentAt": "2026-11-26T16:27:44.526Z",
+  "hash": "ab01a2582485"
+ },
+ "https://news-views.in/jobs/thsti-walkin-deo-clinical-research-associate-2026/": {
+  "sentAt": "2026-11-26T16:27:44.734Z",
+  "hash": "5b81f0f46ef0"
+ },
+ "https://news-views.in/jobs/utkal-university-research-assistant-2026/": {
+  "sentAt": "2026-11-26T16:27:44.937Z",
+  "hash": "892a4ac9bcbe"
  }
 }

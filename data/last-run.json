@@ -170,7 +170,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T13:58:46.621Z",
+    "at": "2026-11-26T16:27:40.143Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -181,24 +181,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T13:58:59.754Z",
+    "at": "2026-11-26T16:27:45.060Z",
     "ok": true,
-    "submitted": 63,
+    "submitted": 18,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 130,
+    "usedToday": 148,
     "log": [
-      "Indexing API: 63 to send (63 updated, 0 deleted); 67/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 63."
+      "Indexing API: 18 to send (18 updated, 0 deleted); 130/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 18."
     ]
   },
   "push": {
-    "at": "2026-11-26T14:00:36.171Z",
+    "at": "2026-11-26T16:28:29.092Z",
     "ok": true,
-    "sent": 158,
+    "sent": 64,
     "log": [
-      "push-notify: 158 sent\n  job aft-chandigarh-stenographer-deo-more-2027 en ['s-haryana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job aft-chandigarh-stenographer-deo-more-2027 hi ['s-haryana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job bel-trainee-engineer-2"
+      "push-notify: 64 sent\n  job utkal-university-research-assistant-2026 en ['s-odisha' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job utkal-university-research-assistant-2026 hi ['s-odisha' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job skau-visiting-fac"
     ]
   },
   "enrich": {
