@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "runs": {},
   "fetch": {
-    "at": "2026-11-26T18:26:35.207Z",
+    "at": "2026-11-26T19:07:20.006Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -11,19 +11,19 @@
     },
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
-    "aiStatus": "ok (3 calls; ₹0.8 of ₹10 used in the last 24 h)",
-    "newJobs": 3,
-    "newUpdates": 0,
+    "aiStatus": "ok (1 calls; ₹0.8 of ₹10 used in the last 24 h)",
+    "newJobs": 0,
+    "newUpdates": 1,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-26; 72 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-26; 75 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-26; 12 already known",
       "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-26; 7 already known",
       "https://www.sarkarijobs.com/feed/": "30 items via direct; newest 2026-11-25; 1 already known"
     },
     "updDiag": {
       "seen": 43,
-      "known": 37,
-      "added": 0,
+      "known": 36,
+      "added": 1,
       "filtered": [
         "Punjabi University Patiala Result 2026 Out - Check UG and PG Result Online @ pun",
         "RSSB CET 12th Admit Card 2026 Out - Download Rajasthan CET Hall Ticket",
@@ -49,8 +49,6 @@
       ]
     },
     "log": [
-      "   = rejected after reading on an earlier run, skipped: AUD Delhi Recruitment 2026 Announced For Non-Teaching Posts for Registrar, Statistical Officer and Stenographer",
-      "   = rejected after reading on an earlier run, skipped: UPSC Recruitment 2026 Announced: Apply to 13 Dental Surgeon, Physician and Scientist Vacancies Online Through UPSC Online",
       "   = rejected after reading on an earlier run, skipped: Indian Bank Apprentice Recruitment 2026 Announced for 1,500 Training Seats, Apply by 25 November",
       "   = rejected after reading on an earlier run, skipped: SBI Security Officer Recruitment 2026 Announced for 60 Specialist Cadre Posts, Last Date to Apply is 25 November",
       "   = rejected after reading on an earlier run, skipped: ISRO SAC Apprentice Recruitment 2026: Applications Open for Graduate, Diploma and ITI Training",
@@ -73,15 +71,17 @@
       "   = rejected after reading on an earlier run, skipped: Bank of Baroda Recruitment 2026 Notification Released for 837 Wealth Management Vacancies",
       "   = rejected after reading on an earlier run, skipped: ONGC Apprentice Recruitment 2026 Announced: Apply Online for 3,047 Posts by November 20",
       "   = same source page as an existing job, skipped: BPCL PwBD Recruitment 2026: Apply Online to 49 Executive Vacancies by November 29",
-      "   = rejected after reading on an earlier run, skipped: UPPSC RO ARO Recruitment 2026: Applications Open for 501 Posts, Last Date November 26"
+      "   = rejected after reading on an earlier run, skipped: UPPSC RO ARO Recruitment 2026: Applications Open for 501 Posts, Last Date November 26",
+      "Moved 1 older update(s) to data/updates-archive.json.",
+      "Added 1 update(s) (results/admit cards/answer keys)."
     ]
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-26T18:27:11.923Z",
+    "at": "2026-11-26T19:07:46.029Z",
     "aiStatus": "ok (0 calls; ₹0.8 of ₹10 used in the last 24 h)",
     "sources": 59,
-    "healthy": 21,
+    "healthy": 22,
     "newLinks": 0,
     "publishedJobs": 0,
     "publishedUpdates": 0,
@@ -94,23 +94,23 @@
       "navy": "paused (fails 192, geo-blocked)",
       "iaf-agniveer": "paused (fails 192, geo-blocked)",
       "rrb-portal": "paused (fails 188, geo-blocked)",
-      "ssc": "6 links, 0 new via news-views.in",
-      "ncs": "paused (fails 115)",
       "rbi": "15 links, 0 new via direct",
+      "ncs": "paused (fails 115)",
+      "ssc": "6 links, 0 new via news-views.in",
       "dsssb": "5 links, 0 new via direct",
       "indiapost-gds": "142 links, 0 new via news-views.in",
       "mppsc": "paused (fails 112, geo-blocked)",
       "mpsc": "paused (fails 192)",
-      "ctet": "4 links, 0 new via news-views.in",
+      "ibps": "8 links, 0 new via news-views.in",
       "kpsc": "paused (fails 192, geo-blocked)",
       "appsc": "paused (fails 192, geo-blocked)",
-      "bpsc": "5 links, 0 new via news-views.in",
+      "ctet": "4 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 192, geo-blocked)",
       "opsc": "paused (fails 115, geo-blocked)",
       "hpsc": "paused (fails 192, geo-blocked)",
       "hppsc": "paused (fails 192, geo-blocked)",
       "ukpsc": "paused (fails 192, geo-blocked)",
-      "ibps": "8 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 192, geo-blocked)",
       "gpsc": "paused (fails 192, geo-blocked)",
       "tgpsc": "3 links, 0 new via news-views.in",
@@ -121,9 +121,9 @@
       "upsssc": "paused (fails 16, geo-blocked)",
       "rssb": "paused (fails 192, geo-blocked)",
       "esb-mp": "paused (fails 192, geo-blocked)",
-      "upsc": "4 links, 0 new via news-views.in",
-      "jpsc": "47 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
+      "tnpsc": "35 links, 0 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in",
       "jssc": "paused (fails 192, geo-blocked)",
       "osssc": "paused (fails 115, geo-blocked)",
       "gsssb": "paused (fails 192, geo-blocked)",
@@ -131,21 +131,21 @@
       "hprca": "paused (fails 192, geo-blocked)",
       "jkssb": "paused (fails 6, geo-blocked)",
       "kea": "paused (fails 192, geo-blocked)",
-      "hssc": "9 links, 0 new via direct",
+      "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 192, geo-blocked)",
+      "upsc": "4 links, 0 new via news-views.in",
+      "hssc": "9 links, 0 new via direct",
       "bssc": "791 links, 0 new via news-views.in",
-      "uksssc": "26 links, 0 new via direct",
-      "wbssc": "13 links, 0 new via direct",
       "tnusrb": "paused (fails 192, geo-blocked)",
       "tslprb": "paused (fails 192, geo-blocked)",
       "slprb-ap": "paused (fails 192, geo-blocked)",
-      "uppbpb": "6 links, 0 new via direct",
       "csbc": "195 links, 0 new via news-views.in",
+      "uksssc": "26 links, 0 new via direct",
+      "uppbpb": "6 links, 0 new via direct",
+      "wbssc": "13 links, 0 new via direct",
       "bpssc": "209 links, 0 new via news-views.in",
-      "uppsc": "1 links, 0 new via news-views.in",
-      "tnpsc": "35 links, 0 new via news-views.in",
-      "rpsc": "176 links, 0 new via news-views.in",
-      "nta": "error: news-views.in: HTTP 530 | api.allorigins.win: HTTP 408 | api.codetabs.com: HTTP 522 (fails 1)"
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "rpsc": "176 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
@@ -153,122 +153,20 @@
     ]
   },
   "apply": {
-    "at": "2026-11-26T18:27:14.085Z",
+    "at": "2026-11-26T19:10:54.261Z",
     "ok": true,
     "aiStatus": "ok (0 calls; ₹0.8 of ₹10 used in the last 24 h)",
-    "checked": 1,
+    "checked": 20,
     "found": 0,
-    "due": 1,
-    "cands": 0,
+    "due": 20,
+    "cands": 4,
     "passed": 0,
     "jobsWithCands": 0,
     "careers": 0,
     "log": [
-      "apply-links: checked 1, found 0 real application pages (1 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
-    ]
-  },
-  "notify": {
-    "at": "2026-11-26T16:27:40.143Z",
-    "ok": true,
-    "websub": 204,
-    "sitemap-latest.xml": 204,
-    "news-sitemap.xml": 204,
-    "feed.xml": 204,
-    "log": [
-      "notify-search: {\"websub\":204,\"sitemap-latest.xml\":204,\"news-sitemap.xml\":204,\"feed.xml\":204}"
-    ]
-  },
-  "indexing-api": {
-    "at": "2026-11-26T16:27:45.060Z",
-    "ok": true,
-    "submitted": 18,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
-    "usedToday": 148,
-    "log": [
-      "Indexing API: 18 to send (18 updated, 0 deleted); 130/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 18."
-    ]
-  },
-  "push": {
-    "at": "2026-11-26T16:28:29.092Z",
-    "ok": true,
-    "sent": 64,
-    "log": [
-      "push-notify: 64 sent\n  job utkal-university-research-assistant-2026 en ['s-odisha' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job utkal-university-research-assistant-2026 hi ['s-odisha' in topics && 'q-post-graduate' in topics && 'l-hi' in topics]: ok\n  job skau-visiting-fac"
-    ]
-  },
-  "enrich": {
-    "at": "2026-11-26T17:52:49.570Z",
-    "ai": "OpenAI (gpt-4o-mini)",
-    "factsRead": 0,
-    "factsPending": 0,
-    "linksFixed": 0,
-    "linksPending": 0,
-    "updatesEnriched": 0,
-    "updatesPending": 0,
-    "contentWritten": 0,
-    "contentPending": 0,
-    "hindiJobsPending": 25,
-    "hindiJobs": 25,
-    "hindiUpdatesPending": 0,
-    "searchFaqPages": 0,
-    "opportunities": 5,
-    "aiStatus": "ok (25 calls; ₹0.6 of ₹10 used in the last 24 h)",
-    "log": [
-      "  ✓ hindi: APPSC AEE भर्ती 2026: 503 सहायक कार्यकारी इंजीनियर पदों के लिए ऑनलाइन आवेदन",
-      "  ✓ hindi: APPSC भर्ती 2026: 106 सहायक मोटर वाहन निरीक्षक, प्रयोगशाला सहायक और अन्य पदों के लिए ऑनलाइन आवेदन",
-      "  ✓ hindi: AFT चंडीगढ़ भर्ती 2027 – 57 स्टेनोग्राफर, DEO और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: C-DIT भर्ती 2026 – 30 जूनियर मशीन ऑपरेटर, प्रोडक्शन कोऑर्डिनेटर और अन्य पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: DCPU Rohtas सहायक व्यक्ति भर्ती 2026 – 30 पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: PBTI भर्ती 2026 – 7 वैज्ञानिक सहायक, सहायक वैज्ञानिक अधिकारी और अन्य पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: DRDO DRDE जूनियर रिसर्च फेलो भर्ती 2026 – वॉकइन",
-      "  ✓ hindi: BBCI भर्ती 2026 – 4 कंसल्टेंट 'D' / सीनियर रेजिडेंट / तकनीशियन पदों के लिए ऑनलाइन आवेदन करें",
-      "  ✓ hindi: SAFEMA निरीक्षक भर्ती 2027 – ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: MPKV भर्ती 2026 – 3 कुशल सहायक, इलेक्ट्रिशियन पदों के लिए ऑफ़लाइन आवेदन करें",
-      "  ✓ hindi: ECHS भर्ती 2026 – 2 नर्सिंग असिस्टेंट, क्लर्क पदों के लिए ऑफलाइन आवेदन करें",
-      "  ✓ hindi: कलिकट विश्वविद्यालय केस समन्वयक सह लियाजन अधिकारी भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: NIPER तकनीकी सहायक भर्ती 2026 – वॉक-इन",
-      "  ✓ hindi: MyGov एसोसिएट/सीनियर एसोसिएट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: MyGov नेटवर्क एडमिनिस्ट्रेटर/ इंजीनियर भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: MyGov डेटा एनालिस्ट भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: IIT जम्मू जूनियर रिसर्च फेलो (मैकेनिकल इंजीनियरिंग) भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: MMMUT जूनियर रिसर्च असिस्टेंट भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: AIIMS दिल्ली परियोजना शोध वैज्ञानिक II भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CSIR-IMTECH परियोजना तकनीकी सहायता II भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CSB CSGRC जूनियर रिसर्च फेलो भर्ती 2026 – वॉक इन",
-      "  ✓ hindi: CHTI प्रशासनिक अधिकारी भर्ती 2026 – ऑफलाइन आवेदन करें",
-      "  ✓ hindi: IAV प्रयोगशाला प्रबंधक भर्ती 2026 - ऑनलाइन आवेदन करें",
-      "  ✓ hindi: CUP प्रोजेक्ट इंटर्न भर्ती 2026 – ऑनलाइन आवेदन करें",
-      "  ✓ hindi: इलाहाबाद उच्च न्यायालय सदस्य भर्ती 2026 – ऑफलाइन आवेदन करें"
-    ]
-  },
-  "news": {
-    "at": "2026-11-26T17:52:50.026Z",
-    "ai": "OpenAI",
-    "aiStatus": "ok (0 calls; ₹0.6 of ₹10 used in the last 24 h)",
-    "published": 0,
-    "quizzes": 0,
-    "existing": 400,
-    "feeds": {},
-    "log": [
-      "News: AI OpenAI (gpt-4o-mini) | feeds 1 | min words 300 | existing 400",
-      "  current affairs for today already exists."
-    ]
-  },
-  "gsc": {
-    "at": "2026-11-26T00:03:44.713Z",
-    "ok": true,
-    "property": "https://news-views.in/",
-    "clicks28d": 31,
-    "impressions28d": 654,
-    "pages": 90,
-    "opportunities": 5,
-    "sitemap": 204,
-    "log": [
-      "GSC: property https://news-views.in/ | sitemap submit HTTP 204"
+      "Warning: TT: undefined function: 21",
+      "apply-links: checked 20, found 0 real application pages (20 due, pdf reader on)",
+      "  candidates seen 4, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
     ]
   }
 }
