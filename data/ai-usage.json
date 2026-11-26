@@ -174,28 +174,33 @@
    "usd": 0.3658
   },
   "2026-11-26": {
-   "calls": 481,
-   "in": 891851,
-   "out": 489573,
-   "usd": 0.42748,
-   "inr": 38.5,
+   "calls": 484,
+   "in": 897328,
+   "out": 491039,
+   "usd": 0.42918,
+   "inr": 38.6,
    "by": {
     "hindi-job": {
      "calls": 25,
      "usd": 0.00698
+    },
+    "extract-job": {
+     "calls": 3,
+     "usd": 0.0017
     }
    }
   }
  },
  "note": "Cost of this website's AI calls: per IST day (usd, inr, by purpose) and per UTC hour (the last 48, for the 24-hour budget in config.json aiBudget). See lib.js \"AI cost meter and daily budget\".",
  "hours": {
-  "2026-11-26T17": 0.00698
+  "2026-11-26T17": 0.00698,
+  "2026-11-26T18": 0.0017
  },
  "budget": {
   "inrPerDay": 10,
   "inrPerUsd": 90,
   "stopsAtInr": 9,
-  "spentInr24h": 0.6,
-  "spentUsd24h": 0.007
+  "spentInr24h": 0.8,
+  "spentUsd24h": 0.0087
  }
 }
