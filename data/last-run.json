@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T11:23:09.476Z",
+    "at": "2026-11-26T13:58:46.621Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,24 +188,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T11:23:15.736Z",
+    "at": "2026-11-26T13:58:59.754Z",
     "ok": true,
-    "submitted": 26,
+    "submitted": 63,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 67,
+    "usedToday": 130,
     "log": [
-      "Indexing API: 26 to send (26 updated, 0 deleted); 41/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 26."
+      "Indexing API: 63 to send (63 updated, 0 deleted); 67/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 63."
     ]
   },
   "push": {
-    "at": "2026-11-26T11:24:15.820Z",
+    "at": "2026-11-26T14:00:36.171Z",
     "ok": true,
-    "sent": 82,
+    "sent": 158,
     "log": [
-      "push-notify: 82 sent\n  job ofbl-danger-building-worker-2026 en ['s-odisha' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ofbl-danger-building-worker-2026 hi ['s-odisha' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job igims-driver-2026 en ['s-bihar' in topics &"
+      "push-notify: 158 sent\n  job aft-chandigarh-stenographer-deo-more-2027 en ['s-haryana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job aft-chandigarh-stenographer-deo-more-2027 hi ['s-haryana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job bel-trainee-engineer-2"
     ]
   },
   "enrich": {
