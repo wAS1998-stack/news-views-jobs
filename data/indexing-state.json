@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 148,
+  "used": 158,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12432,5 +12432,45 @@
  "https://news-views.in/jobs/utkal-university-research-assistant-2026/": {
   "sentAt": "2026-11-26T16:27:44.937Z",
   "hash": "892a4ac9bcbe"
+ },
+ "https://news-views.in/jobs/apsac-project-scientist-2026/": {
+  "sentAt": "2026-11-26T19:17:22.060Z",
+  "hash": "b9154c1814b1"
+ },
+ "https://news-views.in/jobs/bbci-consultant-d-senior-resident-technician-2026/": {
+  "sentAt": "2026-11-26T19:17:22.328Z",
+  "hash": "117e36c77613"
+ },
+ "https://news-views.in/jobs/csir-nbri-walkin-project-assistant-senior-2026/": {
+  "sentAt": "2026-11-26T19:17:22.556Z",
+  "hash": "c43bd66889de"
+ },
+ "https://news-views.in/jobs/iiitdm-kancheepuram-consultant-2026/": {
+  "sentAt": "2026-11-26T19:17:22.770Z",
+  "hash": "157c40b76943"
+ },
+ "https://news-views.in/jobs/mgu-medical-lab-technologist-walkin-2026/": {
+  "sentAt": "2026-11-26T19:17:22.989Z",
+  "hash": "e0b7e27fb731"
+ },
+ "https://news-views.in/jobs/mpsc-stenographer-grade-3-2026/": {
+  "sentAt": "2026-11-26T19:17:23.196Z",
+  "hash": "6db81729184f"
+ },
+ "https://news-views.in/jobs/niper-technical-assistant-walkin-2026/": {
+  "sentAt": "2026-11-26T19:17:23.477Z",
+  "hash": "adcbe25b1fb4"
+ },
+ "https://news-views.in/jobs/pbti-scientific-assistant-assistant-scientific-officer-2026/": {
+  "sentAt": "2026-11-26T19:17:23.661Z",
+  "hash": "d4dd3764347f"
+ },
+ "https://news-views.in/jobs/safema-inspector-2027/": {
+  "sentAt": "2026-11-26T19:17:23.864Z",
+  "hash": "50774f4923d9"
+ },
+ "https://news-views.in/jobs/wcd-mungeli-anganwadi-worker-anganwadi-helper-2026/": {
+  "sentAt": "2026-11-26T19:17:24.052Z",
+  "hash": "9fb3c73f19c9"
  }
 }
