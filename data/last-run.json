@@ -176,7 +176,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T04:00:01.358Z",
+    "at": "2026-11-26T04:42:22.986Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -187,23 +187,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T04:00:01.978Z",
+    "at": "2026-11-26T04:42:24.376Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 71,
-    "usedToday": 129,
+    "submitted": 2,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-25",
+    "usedToday": 131,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 129/200 used in Google's day 2026-11-25 (Pacific)."
+      "Indexing API: 2 to send (2 updated, 0 deleted); 129/200 used in Google's day 2026-11-25 (Pacific).",
+      "Indexing API: sent 2."
     ]
   },
   "push": {
-    "at": "2026-11-26T04:00:34.715Z",
+    "at": "2026-11-26T04:43:09.651Z",
     "ok": true,
-    "sent": 142,
+    "sent": 128,
     "log": [
-      "push-notify: 142 sent\n  job nmdc-apprentice-out-walkin-trade-technician-2026 en [('s-chhattisgarh' in topics || 's-any' in topics) && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job nmdc-apprentice-out-walkin-trade-technician-2026 en [('s-chhattisgarh' in topics || 's-any' in topics) && 'q-en"
+      "push-notify: 128 sent\n  job uksssc-sub-inspector-out-si-other-2026 en [('s-uttarakhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job uksssc-sub-inspector-out-si-other-2026 hi [('s-uttarakhand' in topics || 's-any' in topics) && 'q-12th-pass' in topics && "
     ]
   },
   "enrich": {

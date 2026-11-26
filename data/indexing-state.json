@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-25",
   "tz": "PT",
-  "used": 129,
+  "used": 131,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -11752,5 +11752,13 @@
  "https://news-views.in/jobs/c-dit-consultant-2026/": {
   "sentAt": "2026-11-25T21:27:49.226Z",
   "hash": "0e64beb885a9"
+ },
+ "https://news-views.in/jobs/aps-sukna-tgt-prt-2026/": {
+  "sentAt": "2026-11-26T04:42:24.027Z",
+  "hash": "ec9dae39aafe"
+ },
+ "https://news-views.in/jobs/uksssc-sub-inspector-out-si-other-2026/": {
+  "sentAt": "2026-11-26T04:42:24.252Z",
+  "hash": "9b76bb7a43e3"
  }
 }
