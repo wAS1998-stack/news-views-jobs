@@ -174,7 +174,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T08:55:51.354Z",
+    "at": "2026-11-26T11:23:09.476Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -185,24 +185,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T08:55:59.855Z",
+    "at": "2026-11-26T11:23:15.736Z",
     "ok": true,
-    "submitted": 41,
+    "submitted": 26,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 41,
+    "usedToday": 67,
     "log": [
-      "Indexing API: 41 to send (41 updated, 0 deleted); 0/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 41."
+      "Indexing API: 26 to send (26 updated, 0 deleted); 41/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 26."
     ]
   },
   "push": {
-    "at": "2026-11-26T08:57:17.255Z",
+    "at": "2026-11-26T11:24:15.820Z",
     "ok": true,
-    "sent": 88,
+    "sent": 82,
     "log": [
-      "push-notify: 88 sent\n  job esic-walkin-senior-resident-specialist-2026 en ['s-madhya-pradesh' in topics && 'q-post-graduate' in topics && 'l-en' in topics]: ok\n  job esic-walkin-senior-resident-specialist-2026 en ['s-madhya-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topics]"
+      "push-notify: 82 sent\n  job ofbl-danger-building-worker-2026 en ['s-odisha' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ofbl-danger-building-worker-2026 hi ['s-odisha' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job igims-driver-2026 en ['s-bihar' in topics &"
     ]
   },
   "enrich": {
