@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 165,
+  "used": 167,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12500,5 +12500,13 @@
  "https://news-views.in/jobs/university-rajasthan-project-assistant-2026/": {
   "sentAt": "2026-11-26T21:19:12.041Z",
   "hash": "765ffdd92275"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-project-research-scientist-i-advt-102-2026/": {
+  "sentAt": "2026-11-26T23:46:46.251Z",
+  "hash": "254111e35388"
+ },
+ "https://news-views.in/jobs/kea-lecturer-kannada-lecturer-more-2026/": {
+  "sentAt": "2026-11-26T23:46:46.499Z",
+  "hash": "7a0d529ffdbc"
  }
 }
