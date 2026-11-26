@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-26",
+    "date": "2026-11-26",
+    "digest_id": "current-affairs-2026-11-26",
+    "title": "Current Affairs Quiz 26 November 2026",
+    "questions": [
+      {
+        "q": "What award did India win at the 61st Venice Art Biennale?",
+        "options": [
+          "Cultural Excellence Award",
+          "Golden Lion",
+          "Best Pavilion",
+          "Visitors Lion"
+        ],
+        "answer": 3,
+        "why": "India was awarded the 'Visitors Lion' for the best national participation."
+      },
+      {
+        "q": "What campaign was launched by the Ministry of Women and Child Development?",
+        "options": [
+          "#NumberSaveKiya?",
+          "#SafetyFirst",
+          "#WomenEmpowerment",
+          "#EndGenderViolence"
+        ],
+        "answer": 0,
+        "why": "The '#NumberSaveKiya?' campaign aims to combat gender violence."
+      },
+      {
+        "q": "Which Ministries collaborated under Jal Jeevan Mission 2.0?",
+        "options": [
+          "Ministry of Rural Development and Ministry of Water Resources",
+          "Ministry of Skill Development and Ministry of Jal Shakti",
+          "Ministry of Education and Ministry of Skill Development",
+          "Ministry of Women and Child Development and Ministry of Home Affairs"
+        ],
+        "answer": 1,
+        "why": "The Ministry of Skill Development partnered with the Ministry of Jal Shakti for this initiative."
+      },
+      {
+        "q": "What significant meeting did the Prime Minister chair recently?",
+        "options": [
+          "55th Progress Meeting",
+          "National Economic Conference",
+          "Youth Engagement Summit",
+          "Digital Governance Meeting"
+        ],
+        "answer": 0,
+        "why": "The Prime Minister recently chaired the 55th Progress Meeting."
+      },
+      {
+        "q": "What was a major focus of the International Film Festival of India (IFFI)?",
+        "options": [
+          "Investment in Film Industry",
+          "Celebration of Cultural Richness",
+          "Promotion of Documentaries",
+          "Screening of International Films"
+        ],
+        "answer": 1,
+        "why": "IFFI celebrated various cultural events that highlighted cinema's ability to transcend language barriers."
+      },
+      {
+        "q": "What is the aim of the '#NumberSaveKiya?' campaign?",
+        "options": [
+          "Promote women's education",
+          "Provide financial support to women",
+          "Increase female representation",
+          "Combat gender violence"
+        ],
+        "answer": 3,
+        "why": "The campaign aims to combat gender violence through a consultation."
+      },
+      {
+        "q": "What notable initiative does the launch of 'Samavesh' relate to?",
+        "options": [
+          "Cultural Heritage",
+          "Youth Engagement",
+          "Digital Governance",
+          "Skill Development"
+        ],
+        "answer": 2,
+        "why": "Samavesh aims to strengthen digital governance and welfare distribution."
+      },
+      {
+        "q": "When is Constitution Day celebrated in 2026?",
+        "options": [
+          "26th November",
+          "15th August",
+          "1st January",
+          "26th January"
+        ],
+        "answer": 0,
+        "why": "Constitution Day is celebrated on 26th November to recognize the adoption of the Indian Constitution."
+      },
+      {
+        "q": "How many students participated in the 'Yuva Somnath Yatra'?",
+        "options": [
+          "Over 500",
+          "Over 2,000",
+          "Over 1,100",
+          "Over 1,500"
+        ],
+        "answer": 2,
+        "why": "'Yuva Somnath Yatra' successfully returned over 1,100 students to New Delhi."
+      },
+      {
+        "q": "What type of initiatives does the article highlight regarding government efforts?",
+        "options": [
+          "Environmental Conservation",
+          "Healthcare Improvement",
+          "Cultural Achievements and Skill Development",
+          "Infrastructure Development"
+        ],
+        "answer": 2,
+        "why": "The article highlights key government initiatives and cultural achievements."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-25",
     "date": "2026-11-25",
     "digest_id": "current-affairs-2026-11-25",
