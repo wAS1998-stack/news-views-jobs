@@ -1,5 +1,123 @@
 [
   {
+    "id": "current-affairs-quiz-2026-11-27",
+    "date": "2026-11-27",
+    "digest_id": "current-affairs-2026-11-27",
+    "title": "Current Affairs Quiz 27 November 2026",
+    "questions": [
+      {
+        "q": "What is the financial allocation approved for the transformation process of India Post?",
+        "options": [
+          "₹1,000 crore",
+          "₹75,000 crore",
+          "₹2,632 crore",
+          "₹50,000 crore"
+        ],
+        "answer": 2,
+        "why": "The article states that the Cabinet has approved a financial allocation of ₹2,632 crore for the transformation process of India Post."
+      },
+      {
+        "q": "Which country is India collaborating with for the joint development and production of defense equipment?",
+        "options": [
+          "United Arab Emirates",
+          "China",
+          "United States",
+          "Russia"
+        ],
+        "answer": 0,
+        "why": "The article mentions that India and the United Arab Emirates have reached an agreement for defense collaboration."
+      },
+      {
+        "q": "In which category did the Pension Reform Division achieve the top rank in the Grievance Redressal Assessment and Index?",
+        "options": [
+          "Group A",
+          "Group C",
+          "Group B",
+          "Group D"
+        ],
+        "answer": 2,
+        "why": "The article highlights that the Pension Reform Division achieved the top rank in the Group B category of the GRAI."
+      },
+      {
+        "q": "What is celebrated on Constitution Day according to Dr. Ambedkar Foundation?",
+        "options": [
+          "Civil rights",
+          "Social justice",
+          "Economic development",
+          "Environmental laws"
+        ],
+        "answer": 1,
+        "why": "The article states that Dr. Ambedkar Foundation's celebration of Constitution Day reiterates its commitment to social justice."
+      },
+      {
+        "q": "What is the value of the national highway projects launched in West Bengal?",
+        "options": [
+          "₹50,000 crore",
+          "₹75,000 crore",
+          "₹100,000 crore",
+          "₹25,000 crore"
+        ],
+        "answer": 1,
+        "why": "The article reports that Union Minister Nitin Gadkari announced ₹75,000 crore worth of national highway projects in West Bengal."
+      },
+      {
+        "q": "What initiative did the Ministry of Panchayati Raj undertake on Constitution Day?",
+        "options": [
+          "Online voting",
+          "Collective reading of the Preamble",
+          "Constitutional debates",
+          "Public awareness campaigns"
+        ],
+        "answer": 1,
+        "why": "The article describes that the Ministry of Panchayati Raj marked Constitution Day with a collective reading of the Preamble."
+      },
+      {
+        "q": "Who demonstrated land record modernization to a delegation from Sri Lanka?",
+        "options": [
+          "Ministry of Home Affairs",
+          "Department of Land Resources",
+          "Department of Financial Services",
+          "Ministry of External Affairs"
+        ],
+        "answer": 1,
+        "why": "The article states that the Department of Land Resources demonstrated its initiatives on land record modernization."
+      },
+      {
+        "q": "What aspect of governance does the demonstration of land records focus on?",
+        "options": [
+          "Transparency and efficiency",
+          "Public health",
+          "Financial management",
+          "Transport systems"
+        ],
+        "answer": 0,
+        "why": "The article notes that the land record modernization initiatives are critical for enhancing transparency and efficiency."
+      },
+      {
+        "q": "What is a significant outcome of the defense cooperation between India and UAE according to the article?",
+        "options": [
+          "Economic ties",
+          "Regional security enhancement",
+          "Cultural exchange",
+          "Trade agreements"
+        ],
+        "answer": 1,
+        "why": "The article emphasizes that strengthening defense ties with the UAE enhances regional security."
+      },
+      {
+        "q": "What does the Constitution Day celebration aim to enhance among citizens?",
+        "options": [
+          "Economic growth",
+          "Civic awareness",
+          "Technological advancement",
+          "Environmental consciousness"
+        ],
+        "answer": 1,
+        "why": "The article states that observing Constitution Day is essential for nurturing civic awareness among citizens."
+      }
+    ]
+  },
+  {
     "id": "current-affairs-quiz-2026-11-26",
     "date": "2026-11-26",
     "digest_id": "current-affairs-2026-11-26",

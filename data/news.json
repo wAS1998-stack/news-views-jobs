@@ -1,5 +1,104 @@
 [
   {
+    "id": "current-affairs-2026-11-27",
+    "type": "current-affairs",
+    "title": "Current Affairs 27 November 2026: Key Government Updates for Exam Aspirants",
+    "date": "2026-11-27",
+    "summary": "Today's digest features significant developments in the Indian government sector, including updates on the transformation process of India Post and advancements in defense cooperation with the UAE. Aspirants will also find key insights from Constitution Day celebrations and financial consultations for the upcoming budget.",
+    "body": [
+      {
+        "h": "India Post's Transformation",
+        "p": [
+          "The Cabinet has approved a substantial financial allocation of ₹2,632 crore for the transformation process of India Post. This initiative aims to enhance the efficiency and operational capabilities of postal services across the country, which is crucial for improving communication and logistics, impacting both rural and urban sectors."
+        ]
+      },
+      {
+        "h": "Defense Collaboration with UAE",
+        "p": [
+          "India and the United Arab Emirates have reached an agreement to expedite the joint development and production of next-generation defense equipment during the 14th Joint Defense Cooperation Committee meeting held in Abu Dhabi. Strengthening defense ties with the UAE is significant as it enhances regional security and promotes advanced technology sharing."
+        ]
+      },
+      {
+        "h": "Top Rank in Grievance Redressal Index",
+        "p": [
+          "The Pension Reform Division of the Department of Financial Services has achieved the top rank in the Group B category of the Grievance Redressal Assessment and Index (GRAI) released by the Department of Administrative Reforms and Public Grievances for October 2026. This achievement reflects the government's commitment to improving citizen services and the efficacy of public administration."
+        ]
+      },
+      {
+        "h": "Celebration of Constitution Day",
+        "p": [
+          "Dr. Ambedkar Foundation celebrated Constitution Day 2026, reiterating its commitment to constitutional values, social justice, and inclusive democracy. The observance of this day is essential for nurturing civic awareness among citizens and enhancing appreciation for their rights and responsibilities."
+        ]
+      },
+      {
+        "h": "National Highway Projects in West Bengal",
+        "p": [
+          "Union Minister Nitin Gadkari has announced the launch of ₹75,000 crore worth of national highway projects in West Bengal. These infrastructure developments are expected to boost connectivity, stimulate economic growth, and create job opportunities in the region."
+        ]
+      },
+      {
+        "h": "Panchayati Raj Ministry Celebrates Constitution Day",
+        "p": [
+          "The Ministry of Panchayati Raj marked Constitution Day with a collective reading of the Preamble in local languages across various panchayats and local bodies nationwide. This initiative fosters a sense of unity and respect for the Constitution among local populations."
+        ]
+      },
+      {
+        "h": "Showcasing Land Records Innovation",
+        "p": [
+          "The Department of Land Resources demonstrated its initiatives on land record modernization to a delegation from Sri Lanka. These efforts are critical for enhancing transparency and efficiency in land administration, which are vital topics in governance and development."
+        ]
+      }
+    ],
+    "pointers": [
+      "India Post has received a ₹2,632 crore financial allocation for transformation, enhancing postal network efficiency.",
+      "India and UAE are collaborating on defense equipment production, emphasizing strategic alliances.",
+      "The Pension Reform Division ranked first in grievance redressal, showcasing improved public service effectiveness.",
+      "Nitin Gadkari announced ₹75,000 crore national highway projects in West Bengal, boosting regional infrastructure."
+    ],
+    "sources": [
+      {
+        "title": "मंत्रिमंडल की मंजूरी के बाद भारतीय डाक 2,632 करोड़ रुपये के वित्तीय परिव्यय से अपने परिवर्तन की प्रक्रिया को तेज करने जा रहा है",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342300"
+      },
+      {
+        "title": "आर्यन के नजरिए से: श्रीहरि हरिदास ने मॉक्यूमेंट्री शैली में कहानी कहने, व्यक्तिगत प्रभावों और अपनी फीचर फिल्म ‘अजयन्ते मरणम्: ओरु केस स्टडी’ के निर्माण पर चर्चा की",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342250"
+      },
+      {
+        "title": "भारत और संयुक्त अरब अमीरात अबू धाबी में आयोजित 14वीं संयुक्त रक्षा सहयोग समिति की बैठक में अगली पीढ़ी के रक्षा उपकरणों के संयुक्त विकास एवं उत्पादन में तेजी लाने पर सहमत हुए",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342271"
+      },
+      {
+        "title": "वित्तीय सेवाएं विभाग के पेंशन सुधार प्रभाग ने प्रशासनिक सुधार एवं लोक शिकायत विभाग द्वारा अक्टूबर 2026 के लिए जारी शिकायत निवारण मूल्यांकन एवं सूचकांक (जीआरएआई) के समूह बी श्रेणी में शीर्ष स्थान प्राप्त किया है",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342252"
+      },
+      {
+        "title": "डॉ. अंबेडकर फाउंडेशन ने संविधान दिवस 2026 मनाया; संवैधानिक मूल्यों, सामाजिक न्याय और समावेशी लोकतंत्र के प्रति अपनी प्रतिबद्धता को पुनः दोहराया",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342281"
+      },
+      {
+        "title": "मूल्यांकन के लिए कहानी का मानवीय चरित्र एवं गांधीवादी आदर्शों के साथ जुड़ाव सबसे प्रमुख विचार: आईसीएफटी-यूनेस्को गांधी पदक जूरी सदस्य मनोज कदम",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342231"
+      },
+      {
+        "title": "भारत की राष्ट्रपति भारत के उच्चतम न्यायालय द्वारा आयोजित संविधान दिवस समारोह में शामिल हुईं",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342201"
+      },
+      {
+        "title": "ऑस्कर को समझना: 57वें आईएफएफआई में नताली वेड ने फिल्म निर्माताओं को सबमिशन प्रक्रिया और वैश्विक अवसरों के बारे में जानकारी दी",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342246"
+      },
+      {
+        "title": "केंद्रीय वित्त एवं कॉरपोरेट कार्य मंत्री श्रीमती निर्मला सीतारमण ने केंद्रीय बजट 2027-28 के लिए व्यापक बजट-पूर्व परामर्श संपन्न किए",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342267"
+      },
+      {
+        "title": "क्या आपका स्मार्टफोन आपको नियंत्रित कर रहा है? आईएफएफआई 2026 में तमिल थ्रिलर 'स्क्रॉल' ने डिजिटल दुनिया को लेकर एक नई चेतावनी दी है",
+        "link": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2342241"
+      }
+    ]
+  },
+  {
     "id": "current-affairs-2026-11-26",
     "type": "current-affairs",
     "title": "Current Affairs 26 November 2026: Key Government Updates for Exam Aspirants",
@@ -23914,57 +24013,5 @@
     ],
     "job_id": "uppsc-ro-aro-2026",
     "sources": []
-  },
-  {
-    "id": "drdo-itr-chandipur-apprenticeship-2026-explained",
-    "type": "analysis",
-    "title": "DRDO ITR Chandipur Announces 54 Apprenticeship Vacancies for 2026",
-    "date": "2026-10-25",
-    "summary": "The Defence Research & Development Organisation (DRDO), through its Integrated Test Range (ITR) in Chandipur, has announced the opening of 54 apprenticeship positions for Graduate and Technician (Diploma) Apprentices. This opportunity offers a monthly stipend and a practical experience in a premier defence research organisation.",
-    "body": [
-      {
-        "h": "Overview of the Recruitment Announcement",
-        "p": [
-          "The Defence Research & Development Organisation (DRDO) has published a notification regarding the recruitment of apprentices at its Integrated Test Range (ITR) located in Chandipur, Odisha, for the year 2026. A total of 54 positions are available for eligible candidates, with vacancies divided between Graduate Apprentice and Technician (Diploma) Apprentice roles. This recruitment drive provides an excellent opportunity for candidates seeking hands-on experience in a leading institution involved in India's defence sector."
-        ]
-      },
-      {
-        "h": "Eligibility Criteria and Suitable Candidates",
-        "p": [
-          "To be eligible for the apprenticeship positions, candidates must possess a relevant educational qualification depending on the post they are applying for. The qualifications include B.E. or B.Tech degrees for Graduate Apprentice roles and a Diploma in the pertinent field for Technician Apprentice positions, along with B.Lib.Sc., BBA, and B.Com. candidates as specified in the official notification. Aspiring candidates who meet these educational criteria and are looking to gain valuable exposure in research and development should consider applying for these positions."
-        ]
-      },
-      {
-        "h": "Selection Process and What Candidates Can Expect",
-        "p": [
-          "While the specific selection process has not been detailed in the notification, it typically involves a review of applications based on academic qualifications, and possibly an interview or assessment to gauge the candidates' suitability for the roles. Candidates should prepare to showcase their relevant skills and knowledge during these evaluations. It is imperative for applicants to stay updated on selection details by regularly checking the official DRDO ITR website or the recruitment notifications."
-        ]
-      },
-      {
-        "h": "Significance of This Opportunity for Aspirants",
-        "p": [
-          "Engaging in an apprenticeship with DRDO ITR Chandipur not only offers individuals a chance to earn a monthly stipend but also to gain hands-on experience in cutting-edge research and technology within the defence sector. Such experience is invaluable and can significantly enhance a candidate's employability in future job prospects, both within and beyond the government sector. In an era where practical exposure is increasingly crucial for job seekers, this apprenticeship can serve as a stepping stone for further career development."
-        ]
-      },
-      {
-        "h": "Next Steps for Interested Candidates",
-        "p": [
-          "Interested candidates should promptly prepare their applications and gather necessary documents to avoid last-minute inconveniences. It is essential to note the application submission guidelines, particularly as the announcement specifies that applications must be submitted offline. Candidates are encouraged to maintain close communication with the official notifications from DRDO for any updates regarding application procedures or additional requirements."
-        ]
-      }
-    ],
-    "pointers": [
-      "Application starts and detailed submission guidelines should be confirmed from the official notification.",
-      "Ensure that all educational qualifications meet the specified criteria for the respective apprentice roles.",
-      "Stay updated on any potential interviews or selection tests by checking the DRDO ITR Chandipur official website regularly.",
-      "Prepare your application and supporting documents well ahead of the deadline to ensure a smooth submission process."
-    ],
-    "job_id": "drdo-itr-chandipur-apprenticeship-2026",
-    "sources": [
-      {
-        "title": "Defence Research & Development Organisation (DRDO), Integrated Test Range (ITR), Chandipur — official notification",
-        "link": "https://www.nats.education.gov.in"
-      }
-    ]
   }
 ]
