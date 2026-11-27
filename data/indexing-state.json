@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 175,
+  "used": 200,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -184,6 +184,12 @@
   "hash": "c84278187dce"
  },
  "_retry": [
+  "https://news-views.in/jobs/tamil-university-honorary-assistant-professor-2026/",
+  "https://news-views.in/jobs/thrissur-district-court-senior-clerk-2026/",
+  "https://news-views.in/jobs/utkal-university-assistant-professor-walkin-2026/",
+  "https://news-views.in/jobs/utkal-university-laboratory-assistant-cum-storekeeper-2026/",
+  "https://news-views.in/jobs/vmmc-safdarjung-hospital-deo-scientist-2026/",
+  "https://news-views.in/jobs/vpci-project-research-scientist-ii-2026/",
   "https://news-views.in/jobs/ghss-sindhigam-guest-faculty-2026/",
   "https://news-views.in/jobs/optcl-company-secretary-by-oct-2025/",
   "https://news-views.in/jobs/indian-bank-consultant-it-consultant-2026/",
@@ -12540,5 +12546,105 @@
  "https://news-views.in/jobs/ugc-secretary-2027/": {
   "sentAt": "2026-11-27T05:52:42.618Z",
   "hash": "b1ca899bb687"
+ },
+ "https://news-views.in/jobs/aecs-walkin-tgt-prt-2026/": {
+  "sentAt": "2026-11-27T07:58:51.219Z",
+  "hash": "2cbe4c1fd16e"
+ },
+ "https://news-views.in/jobs/coimbatore-institute-technology-assistant-professor-2026/": {
+  "sentAt": "2026-11-27T07:58:51.485Z",
+  "hash": "9af2280f4fd3"
+ },
+ "https://news-views.in/jobs/crpf-walkin-specialist-doctor-anesthesia-more-2026/": {
+  "sentAt": "2026-11-27T07:58:51.746Z",
+  "hash": "6449f85d0ce3"
+ },
+ "https://news-views.in/jobs/csir-iiim-project-associate-project-assistant-2026/": {
+  "sentAt": "2026-11-27T07:58:51.971Z",
+  "hash": "bd92a6b6aff9"
+ },
+ "https://news-views.in/jobs/dcpu-n-m-andaman-ayahs-chowkidar-2026/": {
+  "sentAt": "2026-11-27T07:58:52.230Z",
+  "hash": "aade5973b3d7"
+ },
+ "https://news-views.in/jobs/dcwss-member-2026/": {
+  "sentAt": "2026-11-27T07:58:52.400Z",
+  "hash": "ea623eb2c2a4"
+ },
+ "https://news-views.in/jobs/delhi-state-cancer-institutes-senior-resident-2026/": {
+  "sentAt": "2026-11-27T07:58:52.646Z",
+  "hash": "868692cfa2d2"
+ },
+ "https://news-views.in/jobs/gipmer-senior-resident-advt-56-2026/": {
+  "sentAt": "2026-11-27T07:58:52.918Z",
+  "hash": "e889947744b2"
+ },
+ "https://news-views.in/jobs/icmr-ccp-senior-resident-2026/": {
+  "sentAt": "2026-11-27T07:58:53.125Z",
+  "hash": "79bdc7ae72d0"
+ },
+ "https://news-views.in/jobs/iim-bangalore-research-associate-2026/": {
+  "sentAt": "2026-11-27T07:58:53.360Z",
+  "hash": "baf5c5ef62d7"
+ },
+ "https://news-views.in/jobs/iiser-thiruvananthapuram-clinical-psychologist-2026/": {
+  "sentAt": "2026-11-27T07:58:53.596Z",
+  "hash": "6fe3ff89cc61"
+ },
+ "https://news-views.in/jobs/iit-indore-technical-assistant-2026/": {
+  "sentAt": "2026-11-27T07:58:53.826Z",
+  "hash": "90e82434c546"
+ },
+ "https://news-views.in/jobs/iit-roorkee-jrf-2026/": {
+  "sentAt": "2026-11-27T07:58:54.063Z",
+  "hash": "dad3b0af8e80"
+ },
+ "https://news-views.in/jobs/kozhikode-district-court-office-attendant-peon-advt-1-11625-2026/": {
+  "sentAt": "2026-11-27T07:58:54.272Z",
+  "hash": "f974b4b6e7e9"
+ },
+ "https://news-views.in/jobs/ldcl-trainee-2026/": {
+  "sentAt": "2026-11-27T07:58:54.504Z",
+  "hash": "3b953cce55b7"
+ },
+ "https://news-views.in/jobs/mandya-village-administrative-officer-verification-list-2026/": {
+  "sentAt": "2026-11-27T07:58:54.706Z",
+  "hash": "8401ee753ad4"
+ },
+ "https://news-views.in/jobs/mdd-maharashtra-managing-director-manager-more-2026/": {
+  "sentAt": "2026-11-27T07:58:54.912Z",
+  "hash": "ca0e8e00980c"
+ },
+ "https://news-views.in/jobs/mumbai-port-authority-senior-deputy-chief-2026/": {
+  "sentAt": "2026-11-27T07:58:55.122Z",
+  "hash": "7192caf809f0"
+ },
+ "https://news-views.in/jobs/ncahp-consultant-2026/": {
+  "sentAt": "2026-11-27T07:58:55.366Z",
+  "hash": "965aab66c8f7"
+ },
+ "https://news-views.in/jobs/nfl-doctor-2026/": {
+  "sentAt": "2026-11-27T07:58:55.603Z",
+  "hash": "643875d2d0bb"
+ },
+ "https://news-views.in/jobs/nit-calicut-junior-research-fellow-project-2026/": {
+  "sentAt": "2026-11-27T07:58:55.842Z",
+  "hash": "0ab2503533ca"
+ },
+ "https://news-views.in/jobs/nit-calicut-project-associate-2026/": {
+  "sentAt": "2026-11-27T07:58:56.089Z",
+  "hash": "3a0196217fdd"
+ },
+ "https://news-views.in/jobs/nit-kurukshetra-internship-2026/": {
+  "sentAt": "2026-11-27T07:58:56.296Z",
+  "hash": "c71c0bf902ca"
+ },
+ "https://news-views.in/jobs/nit-kurukshetra-research-fellow-2026/": {
+  "sentAt": "2026-11-27T07:58:56.507Z",
+  "hash": "bfe3ec20104a"
+ },
+ "https://news-views.in/jobs/rgu-project-assistant-2026/": {
+  "sentAt": "2026-11-27T07:58:56.711Z",
+  "hash": "d4046e6132a5"
  }
 }

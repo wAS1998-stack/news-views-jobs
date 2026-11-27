@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T05:52:40.929Z",
+    "at": "2026-11-27T07:58:50.300Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,24 +188,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T05:52:42.741Z",
+    "at": "2026-11-27T07:58:56.834Z",
     "ok": true,
-    "submitted": 5,
+    "submitted": 25,
     "failed": 0,
     "limited": false,
-    "kept": 4,
-    "usedToday": 175,
+    "kept": 10,
+    "usedToday": 200,
     "log": [
-      "Indexing API: 5 to send (5 updated, 0 deleted); 170/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 5."
+      "Indexing API: 25 to send (25 updated, 0 deleted); 175/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 25."
     ]
   },
   "push": {
-    "at": "2026-11-27T05:53:23.911Z",
+    "at": "2026-11-27T07:59:52.353Z",
     "ok": true,
-    "sent": 70,
+    "sent": 78,
     "log": [
-      "push-notify: 70 sent\n  job cspgcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspgcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in to"
+      "push-notify: 78 sent\n  job csir-iiim-project-associate-project-assistant-2026 en ['s-jammu-kashmir' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job csir-iiim-project-associate-project-assistant-2026 hi ['s-jammu-kashmir' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok"
     ]
   },
   "enrich": {
