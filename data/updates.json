@@ -1,5 +1,86 @@
 [
   {
+    "id": "bssc-stenographer-steno-typist-grade-iii-admit-card-released",
+    "type": "admit-card",
+    "title": "BSSC Stenographer/Steno Typist Grade III Admit Card Released",
+    "organization": "Bihar Staff Selection Commission",
+    "org_short": "BSSC",
+    "exam_name": "Stenographer/Steno Typist Grade III",
+    "date": "2026-11-27",
+    "link": "https://bsscsteno.cbrt.co.in/login",
+    "official_link": "https://bsscsteno.cbrt.co.in/login",
+    "official_website": "https://bssc.bihar.gov.in/",
+    "source": "https://bsscsteno.cbrt.co.in/login",
+    "via": "official",
+    "summary": "The admit card for the BSSC Stenographer/Steno Typist Grade III (Adv. No.-07/25) has been released. Candidates can check and download their admit cards from the official website.",
+    "steps": [
+      "Visit the official website at bsscsteno.cbrt.co.in.",
+      "Click on the 'Login' section.",
+      "Enter your Registration Number and Date of Birth.",
+      "Click on the 'Login' button to access your admit card.",
+      "Download and print your admit card for examination purposes."
+    ],
+    "details": [
+      "After downloading the admit card, candidates should verify all details mentioned on it. If there are any discrepancies, they should contact the provided helpdesk number.",
+      "Candidates are advised to keep the admit card safe until the completion of the examination process, as it will be required for verification on the exam day."
+    ],
+    "enriched": "2026-11-27"
+  },
+  {
+    "id": "rpsc-school-lecturer-political-science-result-2025-out",
+    "type": "result",
+    "title": "RPSC School Lecturer Political Science Result 2025 Out",
+    "organization": "Rajasthan Public Service Commission",
+    "org_short": "RPSC",
+    "exam_name": "School Lecturer (Political Science)",
+    "date": "2026-11-27",
+    "link": "https://rpsc.rajasthan.gov.in/Static/Result/08C68C39A41B4481B3BB94C5204ECF7E.pdf",
+    "official_link": "https://rpsc.rajasthan.gov.in/Static/Result/08C68C39A41B4481B3BB94C5204ECF7E.pdf",
+    "official_website": "https://rpsc.rajasthan.gov.in/",
+    "source": "https://rpsc.rajasthan.gov.in/Static/Result/08C68C39A41B4481B3BB94C5204ECF7E.pdf",
+    "via": "official",
+    "summary": "The RPSC has released the result and cutoff marks for the School Lecturer exam for Political Science. Candidates can check their results by visiting the official website.",
+    "steps": [
+      "Visit the RPSC official website at rpsc.rajasthan.gov.in.",
+      "Navigate to the 'Results' section.",
+      "Select the 'School Lecturer (Political Science) Result 2025' link.",
+      "Download the result PDF.",
+      "Check your roll number in the list."
+    ],
+    "details": [
+      "Candidates who have cleared the exam will be eligible for the next stages of the recruitment process as per the guidelines set by the RPSC.",
+      "It is advisable for the candidates to keep an eye on the official website for further updates regarding the selection process."
+    ],
+    "enriched": "2026-11-27"
+  },
+  {
+    "id": "rpsc-school-lecturer-history-2025-result-and-cutoff-marks-released",
+    "type": "result",
+    "title": "RPSC School Lecturer History 2025 Result and Cutoff Marks Released",
+    "organization": "Rajasthan Public Service Commission",
+    "org_short": "RPSC",
+    "exam_name": "School Lecturer (School Edu.) - 2025 (History)",
+    "date": "2026-11-27",
+    "link": "https://rpsc.rajasthan.gov.in/Static/Result/371DD8909304406B8DEF417F94ECA3EE.pdf",
+    "official_link": "https://rpsc.rajasthan.gov.in/Static/Result/371DD8909304406B8DEF417F94ECA3EE.pdf",
+    "official_website": "https://rpsc.rajasthan.gov.in/",
+    "source": "https://rpsc.rajasthan.gov.in/Static/Result/371DD8909304406B8DEF417F94ECA3EE.pdf",
+    "via": "official",
+    "summary": "The Rajasthan Public Service Commission has released the result and cutoff marks for the School Lecturer (History) exam of 2025. Candidates can check their results on the official website of RPSC.",
+    "steps": [
+      "Visit the official RPSC website: rpsc.rajasthan.gov.in",
+      "Navigate to the 'Results' section.",
+      "Find the link for School Lecturer (History) 2025 Results.",
+      "Click on the link and enter your details if required.",
+      "View and download your result."
+    ],
+    "details": [
+      "Students who qualify will receive further instructions regarding the next stages of recruitment, including interviews and document verification.",
+      "It's important for candidates to keep an eye on the RPSC website for updates on schedules and additional requirements."
+    ],
+    "enriched": "2026-11-27"
+  },
+  {
     "id": "mppsc-assistant-director-farmer-welfare-answer-key-2026-out-download-p",
     "type": "answer-key",
     "title": "MPPSC Assistant Director Farmer Welfare Answer Key 2026 Out - Download Provisional Key PDF",
@@ -63016,253 +63097,6 @@
         {
           "q": "आपत्ति अवधि के बाद क्या होता है?",
           "a": "आयोग प्रस्तुत की गई आपत्तियों की समीक्षा करेगा और फिर वैध शिकायतों के आधार पर अंतिम उत्तर कुंजी जारी करेगा।"
-        }
-      ],
-      "at": "2026-10-31"
-    }
-  },
-  {
-    "id": "ssb-hc-ministerial-skill-test-date-2026-out-download-typing-test-sched",
-    "type": "exam-date",
-    "title": "SSB HC (Ministerial) Skill Test Date 2026 Out - Download Typing Test Schedule PDF",
-    "organization": "Sashastra Seema Bal",
-    "org_short": "SSB",
-    "date": "2026-10-31",
-    "link": "https://recruitment.ssb.gov.in/AdmitCardUrl",
-    "summary": "The skill test date for the SSB Head Constable (Ministerial)-2020 recruitment has been announced. It is scheduled to begin on 16 and 18 November 2026. Candidates can find the official schedule and updates on shortlisted candidates and admit cards at recruitment.ssb.gov.in.",
-    "exam_name": "Head Constable (Ministerial) - 2020",
-    "event_date": "2026-10-30",
-    "summary_hi": "SSB हेड कांस्टेबल (मंत्रालय) - 2020 भर्ती के लिए कौशल परीक्षण की तिथि की घोषणा की गई है। यह 16 और 18 नवंबर 2026 को शुरू होने वाला है। उम्मीदवार आधिकारिक कार्यक्रम और चयनित उम्मीदवारों तथा प्रवेश पत्रों के अद्यतन को recruitment.ssb.gov.in पर देख सकते हैं।",
-    "steps": [
-      "Visit the official SSB recruitment portal at recruitment.ssb.gov.in.",
-      "Open the Notification or Notice/Circular section.",
-      "Find the notice titled 'Regarding the Skill/Typing Test for Head Constable (Min)-2020'.",
-      "Check the publication date, 30 October 2026.",
-      "Open the official skill test schedule notice.",
-      "Download the notice for future reference and check the portal regularly for shortlisted candidates list and admit card."
-    ],
-    "details": [
-      "Following the skill test, candidates will be shortlisted based on their performance in the written examination, adhering to recruitment rules specific to category-wise vacancies. Only candidates who qualify will proceed to the skill and typing test, with a maximum of 15 candidates shortlisted per vacancy in their respective categories.",
-      "Admit cards for the skill test will be made available through the official recruitment portal. Candidates should keep an eye on the website for the release date of these cards and additional instructions regarding their availability."
-    ],
-    "faq": [
-      {
-        "q": "When will the SSB HC (Ministerial) Skill Test be held?",
-        "a": "The skill test will be held on 16 and 18 November 2026."
-      },
-      {
-        "q": "Where can I find the admit card for the skill test?",
-        "a": "The admit card will be available on the official SSB recruitment portal."
-      },
-      {
-        "q": "What should I do if I face issues accessing my admit card?",
-        "a": "Ensure that you are using the correct registration number and date of birth on the recruitment portal."
-      },
-      {
-        "q": "How are candidates shortlisted for the skill test?",
-        "a": "Candidates are shortlisted category-wise based on the number of vacancies, with up to 15 candidates per vacancy being selected."
-      }
-    ],
-    "official_link": "https://recruitment.ssb.gov.in/AdmitCardUrl",
-    "official_website": "https://ssb.gov.in/",
-    "source": "https://www.freejobalert.com/articles/ssb-hc-ministerial-skill-test-date-2026-3077430",
-    "hi": {
-      "title": "SSB HC (Ministerial) स्किल टेस्ट तिथि 2026 जारी - टाइपिंग टेस्ट शेड्यूल PDF डाउनलोड करें",
-      "organization": "सशस्त्र सीमा बल",
-      "exam_name": "हेड कॉन्स्टेबल (मिनिस्टीरियलों) - 2020",
-      "summary": "SSB हेड कॉन्स्टेबल (मिनिस्टीरियलों)-2020 भर्ती के लिए स्किल टेस्ट तिथि की घोषणा कर दी गई है। यह 16 और 18 नवंबर 2026 को आयोजित होने वाला है। उम्मीदवार आधिकारिक शेड्यूल और शॉर्टलिस्टेड उम्मीदवारों और एडमिट कार्ड के अपडेट recruitment.ssb.gov.in पर देख सकते हैं।",
-      "steps": [
-        "आधिकारिक SSB भर्ती पोर्टल पर जाएं recruitment.ssb.gov.in।",
-        "सूचना या नोटिस/सर्कुलर सेक्शन खोलें।",
-        "हेड कॉन्स्टेबल (Min)-2020 के लिए 'स्किल/टायपिंग टेस्ट से संबंधित' शीर्षक वाला नोटिस खोजें।",
-        "प्रकाशन तिथि, 30 अक्टूबर 2026, देखें।",
-        "आधिकारिक स्किल टेस्ट शेड्यूल नोटिस खोलें।",
-        "भविष्य के संदर्भ के लिए नोटिस डाउनलोड करें और शॉर्टलिस्टेड उम्मीदवारों की सूची और एडमिट कार्ड के लिए पोर्टल पर नियमित रूप से जांच करें।"
-      ],
-      "details": [
-        "स्किल टेस्ट के बाद, उम्मीदवारों को लिखित परीक्षा में उनके प्रदर्शन के आधार पर शॉर्टलिस्ट किया जाएगा, जो कि श्रेणी-वार रिक्तियों के लिए भर्ती नियमों के अनुसार होगा। केवल वही उम्मीदवार स्किल और टाइपिंग टेस्ट के लिए आगे बढ़ेंगे, जिनकी श्रेणी में अधिकतम 15 उम्मीदवारों को प्रत्येक रिक्ति के लिए शॉर्टलिस्ट किया जाएगा।",
-        "स्किल टेस्ट के लिए एडमिट कार्ड आधिकारिक भर्ती पोर्टल के माध्यम से उपलब्ध कराए जाएंगे। उम्मीदवारों को इन कार्डों की रिलीज़ तिथि और उनकी उपलब्धता के बारे में अतिरिक्त निर्देशों के लिए वेबसाइट पर नज़र रखनी चाहिए।"
-      ],
-      "faq": [
-        {
-          "q": "SSB HC (Ministerial) स्किल टेस्ट कब होगा?",
-          "a": "स्किल टेस्ट 16 और 18 नवंबर 2026 को होगा।"
-        },
-        {
-          "q": "मैं स्किल टेस्ट के लिए एडमिट कार्ड कहाँ पा सकता हूँ?",
-          "a": "एडमिट कार्ड आधिकारिक SSB भर्ती पोर्टल पर उपलब्ध होगा।"
-        },
-        {
-          "q": "अगर मुझे एडमिट कार्ड एक्सेस करने में समस्या होती है तो मैं क्या करूँ?",
-          "a": "सुनिश्चित करें कि आप भर्ती पोर्टल पर सही पंजीकरण नंबर और जन्म तिथि का उपयोग कर रहे हैं।"
-        },
-        {
-          "q": "उम्मीदवारों को स्किल टेस्ट के लिए कैसे शॉर्टलिस्ट किया जाता है?",
-          "a": "उम्मीदवारों को रिक्तियों की संख्या के आधार पर श्रेणी-वार शॉर्टलिस्ट किया जाता है, जिसमें प्रत्येक रिक्ति के लिए 15 तक उम्मीदवारों का चयन किया जाता है।"
-        }
-      ],
-      "at": "2026-10-31"
-    }
-  },
-  {
-    "id": "rrb-ntpc-ug-cbt-2-cut-off-2026-out-check-zone-wise-and-category-wise-c",
-    "type": "result",
-    "title": "RRB NTPC UG CBT 2 Cut Off 2026 Out - Check Zone-Wise and Category-Wise Cutoff Marks",
-    "organization": "Railway Recruitment Boards",
-    "org_short": "RRB",
-    "date": "2026-10-31",
-    "link": "https://rrb.indianrailways.gov.in/",
-    "summary": "The RRB NTPC UG CBT 2 Cut Off 2026 has been released for the Non-Technical Popular Categories recruitment under CEN 07/2025. This announcement occurred on October 30, 2026, and candidates can check the post-wise, category-wise, and zone-wise cutoff marks. The official cutoff PDFs are available for download on the RRB websites.",
-    "exam_name": "RRB NTPC UG CBT 2",
-    "event_date": "2026-10-30",
-    "summary_hi": "RRB NTPC UG CBT 2 कट ऑफ 2026, CEN 07/2025 के तहत Non-Technical Popular Categories भर्ती के लिए जारी किया गया है। यह घोषणा 30 अक्टूबर 2026 को हुई, और उम्मीदवार पोस्ट-वार, श्रेणी-वार और क्षेत्र-वार कटऑफ अंक देख सकते हैं। आधिकारिक कटऑफ पीडीएफ को RRB वेबसाइटों पर डाउनलोड किया जा सकता है।",
-    "steps": [
-      "Visit the official RRB website at https://rrb.indianrailways.gov.in/",
-      "Navigate to the 'CEN 07/2025' section to find the RRB NTPC UG CBT 2 cutoff.",
-      "Select the appropriate zone for your examination.",
-      "Download the cutoff PDF for your specific post category.",
-      "To check your scorecard, visit the login portal at https://rrb.digialm.com/EForms/configuredHtml/33128/100181/login.html and log in using your registration number and date of birth."
-    ],
-    "details": [
-      "After checking the cutoff marks, candidates who qualify will proceed to the next stage, the Computer-Based Typing Skill Test (CBTST), tentatively scheduled for November 27, 2026. It is essential to carry relevant documents and ID proofs during the CBTST.",
-      "Candidates must understand the cutoff marks vary by category and railway zone, which impacts the selection process. Issues such as login problems for scorecard access can often be resolved by ensuring the correct registration details are used. If faced with any discrepancies, candidates should contact the respective RRB immediately."
-    ],
-    "faq": [
-      {
-        "q": "How can I check my CBT 2 score?",
-        "a": "You can check your score by visiting the RRB login portal and entering your registration number and date of birth."
-      },
-      {
-        "q": "What is the next stage after the CBT 2 results?",
-        "a": "The next stage is the Computer-Based Typing Skill Test (CBTST), which is tentatively scheduled for November 27, 2026."
-      },
-      {
-        "q": "Where can I find the cutoff marks for my category?",
-        "a": "The cutoff marks for each category are published in the official cutoff PDFs available on the RRB websites."
-      },
-      {
-        "q": "What should I do if I can’t access my scorecard?",
-        "a": "Ensure you are using the correct registration credentials. If problems persist, contact your respective RRB for assistance."
-      }
-    ],
-    "official_link": "https://rrb.indianrailways.gov.in/",
-    "official_website": "https://rrb.indianrailways.gov.in/",
-    "source": "https://www.freejobalert.com/articles/rrb-ntpc-ug-cbt-2-cut-off-2026-3077437",
-    "hi": {
-      "title": "RRB NTPC UG CBT 2 कट ऑफ 2026 जारी - ज़ोन और श्रेणी के अनुसार कटऑफ अंक चेक करें",
-      "organization": "रेलवे भर्ती बोर्ड",
-      "exam_name": "RRB NTPC UG CBT 2",
-      "summary": "RRB NTPC UG CBT 2 कट ऑफ 2026 का अनावरण CEN 07/2025 के तहत गैर-तकनीकी लोकप्रिय श्रेणियों की भर्ती के लिए किया गया है। यह घोषणा 30 अक्टूबर, 2026 को हुई, और उम्मीदवार पद के अनुसार, श्रेणी के अनुसार, और क्षेत्र के अनुसार कटऑफ अंक चेक कर सकते हैं। आधिकारिक कटऑफ PDFs RRB वेबसाइटों पर डाउनलोड करने के लिए उपलब्ध हैं।",
-      "steps": [
-        "आधिकारिक RRB वेबसाइट पर जाएँ https://rrb.indianrailways.gov.in/",
-        "'CEN 07/2025' सेक्शन में जाएँ ताकि RRB NTPC UG CBT 2 कटऑफ मिल सके।",
-        "अपने परीक्षा के लिए उचित ज़ोन का चयन करें।",
-        "अपनी विशेष पद श्रेणी का कटऑफ PDF डाउनलोड करें।",
-        "अपना स्कोरकार्ड चेक करने के लिए, लॉगिन पोर्टल पर जाएँ https://rrb.digialm.com/EForms/configuredHtml/33128/100181/login.html और अपने पंजीकरण संख्या और जन्म तिथि का उपयोग करके लॉगिन करें।"
-      ],
-      "details": [
-        "कटऑफ अंक चेक करने के बाद, जो उम्मीदवार योग्य होंगे, वे अगले चरण में जाएंगे, जो कि कंप्यूटर-आधारित टाइपिंग स्किल टेस्ट (CBTST) है, जो अस्थायी रूप से 27 नवंबर, 2026 को निर्धारित है। CBTST के दौरान संबंधित दस्तावेज और पहचान प्रमाण रखना आवश्यक है।",
-        "उपयोगकर्ताओं को समझना चाहिए कि कटऑफ अंक श्रेणी और रेलवे ज़ोन के अनुसार भिन्न होते हैं, जो चयन प्रक्रिया को प्रभावित करते हैं। स्कोरकार्ड एक्सेस के लिए लॉगिन में समस्याएँ अक्सर सही पंजीकरण विवरण का उपयोग करके हल की जा सकती हैं। यदि किसी भी असंगति का सामना करना पड़े, तो उम्मीदवारों को संबंधित RRB से तुरंत संपर्क करना चाहिए।"
-      ],
-      "faq": [
-        {
-          "q": "मैं अपने CBT 2 स्कोर कैसे चेक कर सकता हूँ?",
-          "a": "आप RRB लॉगिन पोर्टल पर जाकर और अपनी पंजीकरण संख्या और जन्म तिथि डालकर अपना स्कोर चेक कर सकते हैं।"
-        },
-        {
-          "q": "CBT 2 परिणाम के बाद अगला चरण क्या है?",
-          "a": "अगला चरण कंप्यूटर-आधारित टाइपिंग स्किल टेस्ट (CBTST) है, जो अस्थायी रूप से 27 नवंबर, 2026 को निर्धारित है।"
-        },
-        {
-          "q": "मैं अपनी श्रेणी के लिए कटऑफ अंक कहाँ देख सकता हूँ?",
-          "a": "प्रत्येक श्रेणी के कटऑफ अंक आधिकारिक कटऑफ PDFs में प्रकाशित होते हैं, जो RRB वेबसाइटों पर उपलब्ध हैं।"
-        },
-        {
-          "q": "अगर मैं अपने स्कोरकार्ड तक पहुँच नहीं पा रहा हूँ तो मुझे क्या करना चाहिए?",
-          "a": "यह सुनिश्चित करें कि आप सही पंजीकरण क्रेडेंशियल्स का उपयोग कर रहे हैं। यदि समस्याएँ बनी रहती हैं, तो सहायता के लिए अपने संबंधित RRB से संपर्क करें।"
-        }
-      ],
-      "at": "2026-10-31"
-    }
-  },
-  {
-    "id": "upsc-epfo-2025-interview-schedule-2026",
-    "type": "exam-date",
-    "title": "UPSC EPFO 2025 Interview Schedule 2026",
-    "organization": "Union Public Service Commission",
-    "org_short": "UPSC",
-    "date": "2026-10-31",
-    "link": "https://www.upsc.gov.in/sites/default/files/RT-Intv-74-APFC-EPFO-Engl-301026.pdf",
-    "summary": "Union Public Service Commission (UPSC) has released the Interview Schedule for the post of Enforcement Officer, Accounts Officer, and Assistant Provident Fund Commissioner. This schedule was announced on 31st October 2026. Candidates who qualified for the written examination can download their Interview Schedule from the official UPSC website.",
-    "exam_name": "Enforcement Officer / Accounts Officer / Assistant Provident Fund Commissioner",
-    "event_date": "2026-10-31",
-    "summary_hi": "यूनियन पब्लिक सर्विस कमीशन (UPSC) ने प्रवर्तन अधिकारी, लेखा अधिकारी और सहायक भविष्य निधि आयुक्त के पद के लिए साक्षात्कार कार्यक्रम जारी किया है। यह कार्यक्रम 31 अक्टूबर 2026 को जारी किया गया। जो उम्मीदवार लिखित परीक्षा में सफल हुए हैं, वे अपने साक्षात्कार कार्यक्रम को UPSC की आधिकारिक वेबसाइट से डाउनलोड कर सकते हैं।",
-    "steps": [
-      "Visit the official UPSC website: https://upsc.gov.in/",
-      "Go to the important links section.",
-      "Click on the link for the Interview Schedule.",
-      "You will be redirected to the login page.",
-      "Enter your Registration Number, Date of Birth, and Captcha Code.",
-      "Click on the 'Login' tab to download your Interview Schedule."
-    ],
-    "details": [
-      "After the release of the Interview Schedule, candidates are advised to prepare thoroughly for their interviews, which will take place from 16th to 27th November 2026. It is essential to carry all required documents, including their ID proof and any other materials specified in the schedule.",
-      "Candidates should note that the selection process includes a written exam followed by an interview, and they are advised to check the official UPSC website regularly for updates on results and further stages. If candidates encounter issues logging in or downloading their schedules, they can contact the UPSC helpline for assistance."
-    ],
-    "faq": [
-      {
-        "q": "When will the UPSC EPFO EO / AO / APFC Interview Schedule be released?",
-        "a": "The Interview Schedule was released on 31st October 2026."
-      },
-      {
-        "q": "When will the UPSC EPFO EO / AO / APFC exam be held?",
-        "a": "The interview examination will be conducted from 16th to 27th November 2026."
-      },
-      {
-        "q": "Where can I check the UPSC EPFO Interview Schedule?",
-        "a": "You can check it on the official UPSC website: https://upsc.gov.in/"
-      },
-      {
-        "q": "What is the official website of UPSC?",
-        "a": "The official website of UPSC is https://upsc.gov.in/"
-      }
-    ],
-    "official_link": "https://www.upsc.gov.in/sites/default/files/RT-Intv-74-APFC-EPFO-Engl-301026.pdf",
-    "official_website": "https://upsc.gov.in/",
-    "source": "https://www.sarkariexam.com/upsc-epfo-eo-ao-2025/",
-    "hi": {
-      "title": "UPSC EPFO 2025 इंटरव्यू शेड्यूल 2026",
-      "organization": "संघ लोक सेवा आयोग",
-      "exam_name": "अन Enforcement Officer / Accounts Officer / Assistant Provident Fund Commissioner",
-      "summary": "संघ लोक सेवा आयोग (UPSC) ने Enforcement Officer, Accounts Officer, और Assistant Provident Fund Commissioner के पद के लिए इंटरव्यू शेड्यूल जारी किया है। यह शेड्यूल 31 अक्टूबर 2026 को घोषित किया गया था। वे उम्मीदवार जिन्होंने लिखित परीक्षा पास की है, वे अपने इंटरव्यू शेड्यूल को आधिकारिक UPSC वेबसाइट से डाउनलोड कर सकते हैं।",
-      "steps": [
-        "आधिकारिक UPSC वेबसाइट पर जाएं: https://upsc.gov.in/",
-        "महत्वपूर्ण लिंक सेक्शन में जाएं।",
-        "इंटरव्यू शेड्यूल के लिंक पर क्लिक करें।",
-        "आपको लॉगिन पेज पर पुनःनिर्देशित किया जाएगा।",
-        "अपना पंजीकरण नंबर, जन्म तिथि, और कैप्चा कोड दर्ज करें।",
-        "अपने इंटरव्यू शेड्यूल को डाउनलोड करने के लिए 'लॉगिन' टैब पर क्लिक करें।"
-      ],
-      "details": [
-        "इंटरव्यू शेड्यूल जारी होने के बाद, उम्मीदवारों को सलाह दी जाती है कि वे अपने इंटरव्यू के लिए पूरी तैयारी करें, जो 16 से 27 नवंबर 2026 के बीच होंगे। सभी आवश्यक दस्तावेज, जिसमें उनकी पहचान प्रमाण और शेड्यूल में निर्दिष्ट अन्य सामग्री शामिल हैं, ले जाना आवश्यक है।",
-        "उम्मीदवारों को यह ध्यान में रखना चाहिए कि चयन प्रक्रिया में एक लिखित परीक्षा शामिल है जो इंटरव्यू के बाद होगी, और उन्हें परिणामों और आगे के चरणों के लिए नियमित रूप से आधिकारिक UPSC वेबसाइट की जांच करने की सलाह दी जाती है। यदि उम्मीदवारों को लॉगिन करने या अपने शेड्यूल डाउनलोड करने में समस्या होती है, तो वे सहायता के लिए UPSC हेल्पलाइन से संपर्क कर सकते हैं।"
-      ],
-      "faq": [
-        {
-          "q": "UPSC EPFO EO / AO / APFC इंटरव्यू शेड्यूल कब जारी होगा?",
-          "a": "इंटरव्यू शेड्यूल 31 अक्टूबर 2026 को जारी किया गया था।"
-        },
-        {
-          "q": "UPSC EPFO EO / AO / APFC परीक्षा कब होगी?",
-          "a": "इंटरव्यू परीक्षा 16 से 27 नवंबर 2026 के बीच आयोजित की जाएगी।"
-        },
-        {
-          "q": "मैं UPSC EPFO इंटरव्यू शेड्यूल कहाँ देख सकता हूँ?",
-          "a": "आप इसे आधिकारिक UPSC वेबसाइट पर देख सकते हैं: https://upsc.gov.in/"
-        },
-        {
-          "q": "UPSC की आधिकारिक वेबसाइट क्या है?",
-          "a": "UPSC की आधिकारिक वेबसाइट है https://upsc.gov.in/"
         }
       ],
       "at": "2026-10-31"
