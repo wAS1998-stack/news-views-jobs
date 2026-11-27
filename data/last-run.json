@@ -179,7 +179,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T10:35:37.986Z",
+    "at": "2026-11-27T12:46:06.656Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -190,24 +190,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T10:35:45.773Z",
+    "at": "2026-11-27T12:46:15.435Z",
     "ok": true,
-    "submitted": 32,
+    "submitted": 38,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 32,
+    "usedToday": 70,
     "log": [
-      "Indexing API: 32 to send (32 updated, 0 deleted); 0/200 used in Google's day 2026-11-27 (Pacific).",
-      "Indexing API: sent 32."
+      "Indexing API: 38 to send (38 updated, 0 deleted); 32/200 used in Google's day 2026-11-27 (Pacific).",
+      "Indexing API: sent 38."
     ]
   },
   "push": {
-    "at": "2026-11-27T10:36:52.768Z",
+    "at": "2026-11-27T12:47:29.032Z",
     "ok": true,
     "sent": 78,
     "log": [
-      "push-notify: 78 sent\n  job atma-khunti-accountant-cum-clerk-block-2026 en ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job atma-khunti-accountant-cum-clerk-block-2026 hi ['s-jharkhand' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job ugb-concurrent-"
+      "push-notify: 78 sent\n  job telangana-high-court-office-subordinate-cv-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job telangana-high-court-office-subordinate-cv-2026 hi ['s-telangana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dhs-goa"
     ]
   },
   "enrich": {
