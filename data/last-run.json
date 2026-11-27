@@ -177,7 +177,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T14:59:31.381Z",
+    "at": "2026-11-27T17:00:04.835Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -188,7 +188,7 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T14:59:31.944Z",
+    "at": "2026-11-27T17:00:05.459Z",
     "ok": true,
     "submitted": 0,
     "budgetLeft": 130,
@@ -200,11 +200,12 @@
     ]
   },
   "push": {
-    "at": "2026-11-27T15:00:36.458Z",
+    "at": "2026-11-27T17:00:35.626Z",
     "ok": true,
-    "sent": 122,
+    "sent": 0,
+    "quiet": true,
     "log": [
-      "push-notify: 122 sent\n  follow o-mppsc-assistant mppsc-assistant-director-farmer-welfare-answer-key-2026-out-download-p en: ok\n  follow o-mppsc-assistant mppsc-assistant-director-farmer-welfare-answer-key-2026-out-download-p hi: ok\n  follow o-ibps-po ibps-po-mt-xvi-mains-score-card-2026-out-download"
+      "push-notify: nothing new to send (quiet hours)."
     ]
   },
   "enrich": {
