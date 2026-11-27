@@ -191,35 +191,35 @@
    }
   },
   "2026-11-27": {
-   "calls": 92,
-   "in": 83861,
-   "out": 26094,
-   "usd": 0.02819,
-   "inr": 2.5,
+   "calls": 142,
+   "in": 122408,
+   "out": 41050,
+   "usd": 0.04293,
+   "inr": 3.9,
    "by": {
     "extract-update": {
-     "calls": 5,
-     "usd": 0.0019
+     "calls": 6,
+     "usd": 0.00228
     },
     "extract-job": {
-     "calls": 36,
-     "usd": 0.01697
+     "calls": 52,
+     "usd": 0.0245
     },
     "apply-confirm": {
      "calls": 5,
      "usd": 0.00017
     },
     "content": {
-     "calls": 20,
-     "usd": 0.0027
+     "calls": 25,
+     "usd": 0.00336
     },
     "hindi-job": {
-     "calls": 20,
-     "usd": 0.00458
+     "calls": 45,
+     "usd": 0.01012
     },
     "hindi-update": {
-     "calls": 3,
-     "usd": 0.00056
+     "calls": 6,
+     "usd": 0.00119
     },
     "search-faq": {
      "calls": 1,
@@ -251,13 +251,13 @@
   "2026-11-27T04": 0.00132,
   "2026-11-27T05": 0.00443,
   "2026-11-27T06": 0.00791,
-  "2026-11-27T07": 0.00131
+  "2026-11-27T07": 0.01605
  },
  "budget": {
   "inrPerDay": 10,
   "inrPerUsd": 90,
   "stopsAtInr": 9,
-  "spentInr24h": 3.3,
-  "spentUsd24h": 0.0369
+  "spentInr24h": 4.6,
+  "spentUsd24h": 0.0516
  }
 }
