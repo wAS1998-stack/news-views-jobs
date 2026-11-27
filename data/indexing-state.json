@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 170,
+  "used": 175,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12520,5 +12520,25 @@
  "https://news-views.in/jobs/pau-senior-field-lab-helper-2026/": {
   "sentAt": "2026-11-27T04:26:20.732Z",
   "hash": "3af87f505aa7"
+ },
+ "https://news-views.in/jobs/cspgcl-graduate-apprentice-diploma-apprentice-2026/": {
+  "sentAt": "2026-11-27T05:52:41.738Z",
+  "hash": "cba9a20e66d2"
+ },
+ "https://news-views.in/jobs/drdo-lrde-apprentice-walkin-graduate-technician-2026/": {
+  "sentAt": "2026-11-27T05:52:41.963Z",
+  "hash": "eb359dc33ba6"
+ },
+ "https://news-views.in/jobs/karnataka-pu-lecturer-out-2026/": {
+  "sentAt": "2026-11-27T05:52:42.177Z",
+  "hash": "62ac736e9db1"
+ },
+ "https://news-views.in/jobs/orissa-high-court-research-assistant-2026/": {
+  "sentAt": "2026-11-27T05:52:42.402Z",
+  "hash": "21cec06b1e74"
+ },
+ "https://news-views.in/jobs/ugc-secretary-2027/": {
+  "sentAt": "2026-11-27T05:52:42.618Z",
+  "hash": "b1ca899bb687"
  }
 }

@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T04:26:19.344Z",
+    "at": "2026-11-27T05:52:40.929Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,24 +179,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T04:26:20.855Z",
+    "at": "2026-11-27T05:52:42.741Z",
     "ok": true,
-    "submitted": 3,
+    "submitted": 5,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 170,
+    "usedToday": 175,
     "log": [
-      "Indexing API: 3 to send (3 updated, 0 deleted); 167/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 3."
+      "Indexing API: 5 to send (5 updated, 0 deleted); 170/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 5."
     ]
   },
   "push": {
-    "at": "2026-11-27T04:26:56.102Z",
+    "at": "2026-11-27T05:53:23.911Z",
     "ok": true,
-    "sent": 128,
+    "sent": 70,
     "log": [
-      "push-notify: 128 sent\n  job bmc-x-ray-assistant-laboratory-technician-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bmc-x-ray-assistant-laboratory-technician-2026 hi [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate'"
+      "push-notify: 70 sent\n  job cspgcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspgcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in to"
     ]
   },
   "enrich": {
