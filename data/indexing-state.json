@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-26",
   "tz": "PT",
-  "used": 167,
+  "used": 170,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12508,5 +12508,17 @@
  "https://news-views.in/jobs/kea-lecturer-kannada-lecturer-more-2026/": {
   "sentAt": "2026-11-26T23:46:46.499Z",
   "hash": "7a0d529ffdbc"
+ },
+ "https://news-views.in/jobs/iit-kharagpur-senior-research-fellow-computer-2026/": {
+  "sentAt": "2026-11-27T04:26:20.266Z",
+  "hash": "26df881f91e8"
+ },
+ "https://news-views.in/jobs/oil-walkin-assistant-fitter-assistant-diesel-2026/": {
+  "sentAt": "2026-11-27T04:26:20.504Z",
+  "hash": "8175fff27c55"
+ },
+ "https://news-views.in/jobs/pau-senior-field-lab-helper-2026/": {
+  "sentAt": "2026-11-27T04:26:20.732Z",
+  "hash": "3af87f505aa7"
  }
 }

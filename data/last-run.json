@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T02:25:26.452Z",
+    "at": "2026-11-27T04:26:19.344Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,23 +179,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T02:25:26.956Z",
+    "at": "2026-11-27T04:26:20.855Z",
     "ok": true,
-    "submitted": 0,
-    "budgetLeft": 33,
-    "usedToday": 167,
+    "submitted": 3,
+    "failed": 0,
+    "limited": false,
     "kept": 4,
-    "quotaDay": "2026-11-26",
+    "usedToday": 170,
     "log": [
-      "Indexing API: 0 to send (0 updated, 0 deleted); 167/200 used in Google's day 2026-11-26 (Pacific)."
+      "Indexing API: 3 to send (3 updated, 0 deleted); 167/200 used in Google's day 2026-11-26 (Pacific).",
+      "Indexing API: sent 3."
     ]
   },
   "push": {
-    "at": "2026-11-27T02:26:03.137Z",
+    "at": "2026-11-27T04:26:56.102Z",
     "ok": true,
-    "sent": 164,
+    "sent": 128,
     "log": [
-      "push-notify: 164 sent\n  job ibps-po-personality-test-released-check-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ibps-po-personality-test-released-check-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job bpsc-aedo-short-"
+      "push-notify: 128 sent\n  job bmc-x-ray-assistant-laboratory-technician-2026 en [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bmc-x-ray-assistant-laboratory-technician-2026 hi [('s-maharashtra' in topics || 's-any' in topics) && 'q-graduate'"
     ]
   },
   "enrich": {
