@@ -246,6 +246,19 @@
      "usd": 0.00144
     }
    }
+  },
+  "2026-11-28": {
+   "calls": 3,
+   "in": 5171,
+   "out": 1115,
+   "usd": 0.00145,
+   "inr": 0.1,
+   "by": {
+    "facts": {
+     "calls": 3,
+     "usd": 0.00145
+    }
+   }
   }
  },
  "note": "Cost of this website's AI calls: per IST day (usd, inr, by purpose) and per UTC hour (the last 48, for the 24-hour budget in config.json aiBudget). See lib.js \"AI cost meter and daily budget\".",
@@ -269,13 +282,14 @@
   "2026-11-27T10": 0.005,
   "2026-11-27T11": 0.01334,
   "2026-11-27T12": 0.01824,
-  "2026-11-27T18": 0.00706
+  "2026-11-27T18": 0.00706,
+  "2026-11-27T19": 0.00145
  },
  "budget": {
   "inrPerDay": 10,
   "inrPerUsd": 90,
   "stopsAtInr": 9,
   "spentInr24h": 9,
-  "spentUsd24h": 0.1003
+  "spentUsd24h": 0.1001
  }
 }
