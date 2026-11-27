@@ -178,7 +178,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-27T12:46:06.656Z",
+    "at": "2026-11-27T14:59:31.381Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -189,24 +189,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-27T12:46:15.435Z",
+    "at": "2026-11-27T14:59:31.944Z",
     "ok": true,
-    "submitted": 38,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 130,
     "usedToday": 70,
+    "kept": 4,
+    "quotaDay": "2026-11-27",
     "log": [
-      "Indexing API: 38 to send (38 updated, 0 deleted); 32/200 used in Google's day 2026-11-27 (Pacific).",
-      "Indexing API: sent 38."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 70/200 used in Google's day 2026-11-27 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-27T12:47:29.032Z",
+    "at": "2026-11-27T15:00:36.458Z",
     "ok": true,
-    "sent": 78,
+    "sent": 122,
     "log": [
-      "push-notify: 78 sent\n  job telangana-high-court-office-subordinate-cv-2026 en ['s-telangana' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job telangana-high-court-office-subordinate-cv-2026 hi ['s-telangana' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job dhs-goa"
+      "push-notify: 122 sent\n  follow o-mppsc-assistant mppsc-assistant-director-farmer-welfare-answer-key-2026-out-download-p en: ok\n  follow o-mppsc-assistant mppsc-assistant-director-farmer-welfare-answer-key-2026-out-download-p hi: ok\n  follow o-ibps-po ibps-po-mt-xvi-mains-score-card-2026-out-download"
     ]
   },
   "enrich": {
