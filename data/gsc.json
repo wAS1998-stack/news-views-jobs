@@ -1,20 +1,15 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-28",
-  "2026-11-24"
+  "2026-10-29",
+  "2026-11-25"
  ],
  "totals": {
-  "clicks": 31,
-  "impressions": 654
+  "clicks": 29,
+  "impressions": 653
  },
  "daily": [
-  {
-   "date": "2026-10-28",
-   "clicks": 1,
-   "impressions": 15
-  },
   {
    "date": "2026-10-29",
    "clicks": 5,
@@ -149,6 +144,11 @@
    "date": "2026-11-24",
    "clicks": 0,
    "impressions": 26
+  },
+  {
+   "date": "2026-11-25",
+   "clicks": 0,
+   "impressions": 15
   }
  ],
  "home": {
@@ -156,12 +156,12 @@
   "clicks": 0,
   "impressions": 21,
   "ctr": 0,
-  "position": 6.7
+  "position": 6.6
  },
  "brand": {
   "range": [
-   "2026-08-27",
-   "2026-11-24"
+   "2026-08-28",
+   "2026-11-25"
   ],
   "rows": []
  },
@@ -190,16 +190,9 @@
   {
    "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 3,
-   "impressions": 6,
-   "ctr": 50,
+   "impressions": 5,
+   "ctr": 60,
    "position": 2
-  },
-  {
-   "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
-   "clicks": 2,
-   "impressions": 4,
-   "ctr": 50,
-   "position": 21
   },
   {
    "page": "/jobs/iocl-trade-apprentice-technician-apprentice-more-2026/",
@@ -211,15 +204,15 @@
   {
    "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
    "clicks": 1,
-   "impressions": 6,
-   "ctr": 16.67,
-   "position": 2.7
+   "impressions": 2,
+   "ctr": 50,
+   "position": 3
   },
   {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/",
    "clicks": 1,
-   "impressions": 9,
-   "ctr": 11.11,
+   "impressions": 11,
+   "ctr": 9.09,
    "position": 3.4
   },
   {
@@ -246,8 +239,8 @@
   {
    "page": "/jobs/jhdc-latehar-rural-home-guard-urban-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 69,
-   "ctr": 1.45,
+   "impressions": 76,
+   "ctr": 1.32,
    "position": 3
   },
   {
@@ -269,7 +262,7 @@
    "clicks": 0,
    "impressions": 21,
    "ctr": 0,
-   "position": 6.7
+   "position": 6.6
   },
   {
    "page": "/apprentice/",
@@ -302,9 +295,9 @@
   {
    "page": "/hi/",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 4,
    "ctr": 0,
-   "position": 5.8
+   "position": 7
   },
   {
    "page": "/hi/exam/india-post-gds/",
@@ -354,6 +347,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 8
+  },
+  {
+   "page": "/jobs/as-cfms-consultant-it-expert-project-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 20
   },
   {
    "page": "/jobs/aud-project-research-scientist-project-technical-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -421,9 +421,9 @@
   {
    "page": "/jobs/esic-hospital-peenya-walkin-senior-resident-2026/",
    "clicks": 0,
-   "impressions": 9,
+   "impressions": 10,
    "ctr": 0,
-   "position": 4.9
+   "position": 5.2
   },
   {
    "page": "/jobs/esic-walkin-senior-resident-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -470,7 +470,7 @@
   {
    "page": "/jobs/igntu-junior-research-fellow-project-fellow-2026/",
    "clicks": 0,
-   "impressions": 40,
+   "impressions": 41,
    "ctr": 0,
    "position": 3.2
   },
@@ -773,16 +773,16 @@
   {
    "query": "dgafms group c cut off",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 7,
    "ctr": 0,
-   "position": 50.2
+   "position": 49.9
   },
   {
    "query": "esic hospital job vacancy 2026",
    "clicks": 0,
-   "impressions": 1,
+   "impressions": 3,
    "ctr": 0,
-   "position": 5
+   "position": 3.7
   },
   {
    "query": "esic hospital recruitment 2026",
@@ -797,6 +797,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "query": "esic hospital vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 8
   },
   {
    "query": "food safety officer gujarat vacancy",
@@ -857,7 +864,7 @@
   {
    "query": "free job alert jharkhand",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 6,
    "ctr": 0,
    "position": 3
   },
@@ -1100,6 +1107,13 @@
    "position": 3
   },
   {
+   "query": "jharkhand home guard vacancy 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "jharkhand job alert",
    "clicks": 0,
    "impressions": 1,
@@ -1128,9 +1142,16 @@
    "position": 3
   },
   {
+   "query": "job alert 2026",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 3
+  },
+  {
    "query": "job alert jharkhand",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 4,
    "ctr": 0,
    "position": 3
   },
@@ -1196,27 +1217,6 @@
    "impressions": 1,
    "ctr": 0,
    "position": 80
-  },
-  {
-   "query": "manipur police constable result",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 80
-  },
-  {
-   "query": "manipur police recruitment",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 2
-  },
-  {
-   "query": "manipur police recruitment 2026",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 27
   }
  ],
  "opportunities": [
@@ -1313,7 +1313,7 @@
    "clicks": 0,
    "impressions": 21,
    "ctr": 0,
-   "position": 6.7,
+   "position": 6.6,
    "queries": []
   },
   {
@@ -1373,6 +1373,30 @@
      "position": 2
     }
    ]
+  },
+  {
+   "page": "/jobs/esic-hospital-peenya-walkin-senior-resident-2026/",
+   "clicks": 0,
+   "impressions": 10,
+   "ctr": 0,
+   "position": 5.2,
+   "queries": [
+    {
+     "q": "esic hospital job vacancy 2026",
+     "impressions": 1,
+     "position": 5
+    },
+    {
+     "q": "esic hospital vacancy",
+     "impressions": 1,
+     "position": 4
+    },
+    {
+     "q": "esic hospital vacancy 2026",
+     "impressions": 1,
+     "position": 8
+    }
+   ]
   }
  ],
  "lowCtr": [
@@ -1386,8 +1410,8 @@
   {
    "page": "/jobs/jhdc-latehar-rural-home-guard-urban-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 69,
-   "ctr": 1.45,
+   "impressions": 76,
+   "ctr": 1.32,
    "position": 3
   }
  ]
