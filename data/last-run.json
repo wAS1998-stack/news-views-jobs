@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-26T23:46:45.241Z",
+    "at": "2026-11-27T02:25:26.452Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,25 +179,23 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-26T23:46:46.622Z",
+    "at": "2026-11-27T02:25:26.956Z",
     "ok": true,
-    "submitted": 2,
-    "failed": 0,
-    "limited": false,
-    "kept": 4,
+    "submitted": 0,
+    "budgetLeft": 33,
     "usedToday": 167,
+    "kept": 4,
+    "quotaDay": "2026-11-26",
     "log": [
-      "Indexing API: 2 to send (2 updated, 0 deleted); 165/200 used in Google's day 2026-11-26 (Pacific).",
-      "Indexing API: sent 2."
+      "Indexing API: 0 to send (0 updated, 0 deleted); 167/200 used in Google's day 2026-11-26 (Pacific)."
     ]
   },
   "push": {
-    "at": "2026-11-26T23:46:55.347Z",
+    "at": "2026-11-27T02:26:03.137Z",
     "ok": true,
-    "sent": 0,
-    "quiet": true,
+    "sent": 164,
     "log": [
-      "push-notify: nothing new to send (quiet hours)."
+      "push-notify: 164 sent\n  job ibps-po-personality-test-released-check-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job ibps-po-personality-test-released-check-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job bpsc-aedo-short-"
     ]
   },
   "enrich": {
