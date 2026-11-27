@@ -2,7 +2,7 @@
   "date": "2026-11-27",
   "runs": {},
   "fetch": {
-    "at": "2026-11-27T14:08:38.871Z",
+    "at": "2026-11-27T14:48:36.752Z",
     "integrations": {
       "ai": "OpenAI (gpt-4o-mini)",
       "googleIndexing": true,
@@ -12,17 +12,17 @@
     "feeds": 4,
     "ai": "OpenAI (gpt-4o-mini)",
     "aiStatus": "paused: daily AI budget reached (₹9 of ₹10 in the last 24 hours)",
-    "newJobs": 2,
+    "newJobs": 14,
     "newUpdates": 0,
     "feedStatus": {
-      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-27; 68 already known",
+      "https://www.freejobalert.com/feed/": "100 items via direct; newest 2026-11-27; 57 already known",
       "https://www.sarkariexam.com/feed/": "40 items via direct; newest 2026-11-27; 14 already known",
-      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-27; 5 already known",
+      "https://www.indgovtjobs.in/feeds/posts/default?alt=rss": "25 items via direct; newest 2026-11-27; 6 already known",
       "https://www.sarkarijobs.com/feed/": "30 items via direct; newest 2026-11-26; 1 already known"
     },
     "updDiag": {
-      "seen": 46,
-      "known": 43,
+      "seen": 44,
+      "known": 41,
       "added": 0,
       "filtered": [
         "KUU Revised Time Table 2026 Out - Check PG Exam Dates Online @ kuu.ac.in",
@@ -30,6 +30,8 @@
         "KVS Delhi Region 2nd Pre-Board Date Sheet 2026-27 Out - Check Class 10 and 12 Ex"
       ],
       "samples": [
+        "CTET September Exam City Details 2026",
+        "Bihar BSSC Stenographer 2025 Admit Card 2026",
         "CTET December 2026 City Intimation Slip Out - Check Exam City for Paper 1 & 2",
         "IBPS PO MT XVI Mains Score Card 2026 Out - Download Scorecard Link",
         "KUU Revised Time Table 2026 Out - Check PG Exam Dates Online @ kuu.ac.in",
@@ -42,9 +44,7 @@
         "CSJMU Assistant Professor Exam Date 2026 Out - Check Written Exam Date & Subject",
         "Kerala PSC HSST Junior Mathematics Interview Schedule 2026 Out - Check Final Pha",
         "RIMS Ranchi Result 2026 Out - Download Floor Co-ordinator & Ayushman Mitra Selec",
-        "BEML Skill Test Shortlist 2026 Out - Download Non Executive Shortlisted Candidat",
-        "KNRUHS Superspeciality Results 2026 Out - Check Regular and Backlog Result Onlin",
-        "KEA SWD Residential School Teacher Result 2026 Out - Download KK Provisional Sco"
+        "BEML Skill Test Shortlist 2026 Out - Download Non Executive Shortlisted Candidat"
       ]
     },
     "log": [
@@ -77,11 +77,11 @@
   },
   "note": "Written by the automation after each step so run health can be checked without opening Actions logs.",
   "watch": {
-    "at": "2026-11-27T14:12:06.963Z",
+    "at": "2026-11-27T14:51:54.605Z",
     "aiStatus": "paused: daily AI budget reached (₹9 of ₹10 in the last 24 hours)",
     "sources": 59,
-    "healthy": 22,
-    "newLinks": 7,
+    "healthy": 23,
+    "newLinks": 8,
     "publishedJobs": 0,
     "publishedUpdates": 0,
     "skipped": [
@@ -91,36 +91,37 @@
       "AI unavailable, retry later: 27/11/2026 Result Preamble and Cutoff Marks (Main ",
       "AI unavailable, retry later: 27/11/2026 Result Preamble and Cutoff Marks (Main ",
       "AI unavailable, retry later: 27/11/2026 Result Preamble and Cutoff Marks (Main ",
-      "AI unavailable, retry later: Click Here to Download Admit Card for Adv. No.-07/"
+      "AI unavailable, retry later: Click Here to Download Admit Card for Adv. No.-07/",
+      "AI unavailable, retry later: 27/11/2026 Amended Main Merit List (Part-III) and "
     ],
     "sources_health": {
       "nvs": "paused (fails 197, geo-blocked)",
-      "ssc": "6 links, 0 new via news-views.in",
+      "rbi": "15 links, 0 new via direct",
       "aiims": "paused (fails 120)",
       "army": "paused (fails 197, geo-blocked)",
       "navy": "paused (fails 197, geo-blocked)",
       "iaf-agniveer": "paused (fails 197, geo-blocked)",
       "rrb-portal": "paused (fails 193, geo-blocked)",
-      "rbi": "15 links, 0 new via direct",
+      "ssc": "6 links, 0 new via news-views.in",
       "ncs": "paused (fails 120)",
-      "nta": "1 links, 0 new via news-views.in",
+      "indiapost-gds": "142 links, 0 new via news-views.in",
       "dsssb": "5 links, 0 new via news-views.in",
-      "bpsc": "5 links, 0 new via news-views.in",
+      "ctet": "8 links, 0 new via news-views.in",
       "mppsc": "paused (fails 117, geo-blocked)",
       "mpsc": "paused (fails 197)",
-      "indiapost-gds": "142 links, 0 new via news-views.in",
+      "kvs": "2 links, 0 new via direct",
       "kpsc": "paused (fails 197, geo-blocked)",
       "appsc": "paused (fails 197, geo-blocked)",
-      "kvs": "2 links, 0 new via direct",
+      "upsc": "4 links, 0 new via news-views.in",
       "wbpsc": "paused (fails 197, geo-blocked)",
       "opsc": "paused (fails 120, geo-blocked)",
       "hpsc": "paused (fails 197, geo-blocked)",
       "hppsc": "paused (fails 197, geo-blocked)",
       "ukpsc": "paused (fails 197, geo-blocked)",
-      "ctet": "8 links, 0 new via news-views.in",
+      "bpsc": "5 links, 0 new via news-views.in",
       "cgpsc": "paused (fails 197, geo-blocked)",
       "gpsc": "paused (fails 197, geo-blocked)",
-      "tgpsc": "3 links, 0 new via news-views.in",
+      "uppsc": "1 links, 0 new via news-views.in",
       "ppsc": "paused (fails 197, geo-blocked)",
       "apsc": "paused (fails 15, geo-blocked)",
       "jkpsc": "paused (fails 197, geo-blocked)",
@@ -128,7 +129,7 @@
       "upsssc": "paused (fails 21, geo-blocked)",
       "rssb": "paused (fails 197, geo-blocked)",
       "esb-mp": "paused (fails 197, geo-blocked)",
-      "uppsc": "1 links, 0 new via news-views.in",
+      "tgpsc": "3 links, 0 new via news-views.in",
       "tnpsc": "35 links, 0 new via news-views.in",
       "hssc": "9 links, 0 new via direct",
       "jssc": "paused (fails 197, geo-blocked)",
@@ -140,40 +141,40 @@
       "kea": "paused (fails 197, geo-blocked)",
       "jpsc": "47 links, 0 new via news-views.in",
       "dsssb2": "paused (fails 197, geo-blocked)",
-      "upsc": "4 links, 0 new via news-views.in",
-      "wbssc": "13 links, 0 new via direct",
       "uksssc": "26 links, 0 new via direct",
+      "keralapsc": "6 links, 0 new via news-views.in",
+      "uppbpb": "6 links, 0 new via direct",
       "tnusrb": "paused (fails 197, geo-blocked)",
       "tslprb": "paused (fails 197, geo-blocked)",
       "slprb-ap": "paused (fails 197, geo-blocked)",
-      "uppbpb": "6 links, 0 new via direct",
-      "csbc": "195 links, 0 new via news-views.in",
+      "wbssc": "13 links, 0 new via direct",
       "bssc": "792 links, 0 new via news-views.in",
+      "csbc": "195 links, 0 new via news-views.in",
       "bpssc": "209 links, 0 new via news-views.in",
-      "keralapsc": "6 links, 0 new via news-views.in",
-      "rpsc": "187 links, 0 new via news-views.in",
-      "ibps": "error: news-views.in: HTTP 530 | api.allorigins.win: The operation was aborted due to timeout | api.codetabs.com: The operation (fails 1)"
+      "ibps": "9 links, 0 new via news-views.in",
+      "rpsc": "188 links, 1 new via news-views.in",
+      "nta": "1 links, 0 new via news-views.in"
     },
     "log": [
       "Watch: 59 official sources | AI OpenAI (gpt-4o-mini) | pdf on | max publish 25",
-      "Watch: 7 new official notice link(s) (7 retried).",
+      "Watch: 8 new official notice link(s) (7 retried).",
       "  (daily AI budget reached (₹9 of ₹10 in the last 24 hours) — the work is kept for a later run)"
     ]
   },
   "apply": {
-    "at": "2026-11-27T14:12:07.554Z",
+    "at": "2026-11-27T14:52:41.181Z",
     "ok": true,
     "aiStatus": "ok (0 calls; ₹9 of ₹10 used in the last 24 h)",
-    "checked": 0,
+    "checked": 4,
     "found": 0,
-    "due": 0,
+    "due": 4,
     "cands": 0,
     "passed": 0,
     "jobsWithCands": 0,
-    "careers": 0,
+    "careers": 2,
     "log": [
-      "apply-links: checked 0, found 0 real application pages (0 due, pdf reader on)",
-      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 0"
+      "apply-links: checked 4, found 0 real application pages (4 due, pdf reader on)",
+      "  candidates seen 0, passed the rules 0 (in 0 jobs); recruitment pages found: 2"
     ]
   },
   "notify": {
