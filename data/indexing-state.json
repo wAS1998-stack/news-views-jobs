@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-27",
   "tz": "PT",
-  "used": 75,
+  "used": 89,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12940,5 +12940,61 @@
  "https://news-views.in/jobs/pau-assistant-security-supervisor-2026/": {
   "sentAt": "2026-11-27T19:02:56.655Z",
   "hash": "5cdb7f61a4a6"
+ },
+ "https://news-views.in/jobs/asap-kerala-assistant-engineering-consultant-2026/": {
+  "sentAt": "2026-11-27T21:40:56.898Z",
+  "hash": "7550c225d72c"
+ },
+ "https://news-views.in/jobs/bau-sabour-start-up-cell-coordinator-2026/": {
+  "sentAt": "2026-11-27T21:40:57.146Z",
+  "hash": "2d723f5dd968"
+ },
+ "https://news-views.in/jobs/cmaml-chief-operating-officer-2026/": {
+  "sentAt": "2026-11-27T21:40:57.405Z",
+  "hash": "452745ac42be"
+ },
+ "https://news-views.in/jobs/cmrl-chief-vigilance-officer-2026/": {
+  "sentAt": "2026-11-27T21:40:57.667Z",
+  "hash": "4dec30a1b0e2"
+ },
+ "https://news-views.in/jobs/cmrl-general-manager-2026/": {
+  "sentAt": "2026-11-27T21:40:57.920Z",
+  "hash": "e3326c534daa"
+ },
+ "https://news-views.in/jobs/csir-cmeri-security-assistant-2027/": {
+  "sentAt": "2026-11-27T21:40:58.153Z",
+  "hash": "62064cf897d6"
+ },
+ "https://news-views.in/jobs/csir-nml-driver-cum-mechanic-fitter-2027/": {
+  "sentAt": "2026-11-27T21:40:58.385Z",
+  "hash": "9af2a12a8477"
+ },
+ "https://news-views.in/jobs/iica-consultant-assistant-hostel-warden-2026/": {
+  "sentAt": "2026-11-27T21:40:58.617Z",
+  "hash": "769ad1eb0a1d"
+ },
+ "https://news-views.in/jobs/iica-consultant-assistant-librarian-2026/": {
+  "sentAt": "2026-11-27T21:40:58.870Z",
+  "hash": "dda1711253d1"
+ },
+ "https://news-views.in/jobs/iica-senior-web-application-developer-2026/": {
+  "sentAt": "2026-11-27T21:40:59.074Z",
+  "hash": "df5312c8d480"
+ },
+ "https://news-views.in/jobs/jamui-district-court-clerk-stenographer-peon-2026/": {
+  "sentAt": "2026-11-27T21:40:59.316Z",
+  "hash": "dea5ea6f4598"
+ },
+ "https://news-views.in/jobs/jncasr-secretarial-support-2026/": {
+  "sentAt": "2026-11-27T21:40:59.529Z",
+  "hash": "94b70a969935"
+ },
+ "https://news-views.in/jobs/niamt-guest-faculty-2026/": {
+  "sentAt": "2026-11-27T21:40:59.726Z",
+  "hash": "c850819efefa"
+ },
+ "https://news-views.in/jobs/zp-wardha-district-programme-manager-ayush-2026/": {
+  "sentAt": "2026-11-27T21:40:59.934Z",
+  "hash": "df0583840a2f"
  }
 }
