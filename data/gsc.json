@@ -1,20 +1,15 @@
 {
- "date": "2026-11-27",
+ "date": "2026-11-28",
  "property": "https://news-views.in/",
  "range": [
-  "2026-10-29",
-  "2026-11-25"
+  "2026-10-30",
+  "2026-11-26"
  ],
  "totals": {
-  "clicks": 29,
-  "impressions": 653
+  "clicks": 24,
+  "impressions": 676
  },
  "daily": [
-  {
-   "date": "2026-10-29",
-   "clicks": 5,
-   "impressions": 20
-  },
   {
    "date": "2026-10-30",
    "clicks": 5,
@@ -149,35 +144,40 @@
    "date": "2026-11-25",
    "clicks": 0,
    "impressions": 15
+  },
+  {
+   "date": "2026-11-26",
+   "clicks": 0,
+   "impressions": 44
   }
  ],
  "home": {
   "page": "/",
   "clicks": 0,
-  "impressions": 21,
+  "impressions": 26,
   "ctr": 0,
-  "position": 6.6
+  "position": 6.8
  },
  "brand": {
   "range": [
-   "2026-08-28",
-   "2026-11-25"
+   "2026-08-29",
+   "2026-11-26"
   ],
   "rows": []
  },
  "topPages": [
   {
    "page": "/jobs/cmrl-manager-assistant-manager-more-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 8,
-   "impressions": 24,
-   "ctr": 33.33,
-   "position": 2.2
+   "clicks": 6,
+   "impressions": 19,
+   "ctr": 31.58,
+   "position": 2.3
   },
   {
    "page": "/jobs/dcpu-chennai-south-legal-cum-probation-2026/",
    "clicks": 4,
-   "impressions": 21,
-   "ctr": 19.05,
+   "impressions": 22,
+   "ctr": 18.18,
    "position": 3.3
   },
   {
@@ -189,9 +189,9 @@
   },
   {
    "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 3,
-   "impressions": 5,
-   "ctr": 60,
+   "clicks": 2,
+   "impressions": 4,
+   "ctr": 50,
    "position": 2
   },
   {
@@ -202,25 +202,11 @@
    "position": 4.5
   },
   {
-   "page": "/jobs/district-panchayat-kanker-chhattisgarh-accountant-2026/",
-   "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
-   "position": 3
-  },
-  {
    "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/",
    "clicks": 1,
    "impressions": 11,
    "ctr": 9.09,
    "position": 3.4
-  },
-  {
-   "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
-   "clicks": 1,
-   "impressions": 10,
-   "ctr": 10,
-   "position": 3
   },
   {
    "page": "/jobs/esic-medical-college-hospital-beltola-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -239,15 +225,15 @@
   {
    "page": "/jobs/jhdc-latehar-rural-home-guard-urban-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 76,
-   "ctr": 1.32,
+   "impressions": 88,
+   "ctr": 1.14,
    "position": 3
   },
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 36,
-   "ctr": 2.78,
+   "impressions": 37,
+   "ctr": 2.7,
    "position": 5
   },
   {
@@ -260,9 +246,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 21,
+   "impressions": 26,
    "ctr": 0,
-   "position": 6.6
+   "position": 6.8
   },
   {
    "page": "/apprentice/",
@@ -398,18 +384,18 @@
    "position": 2
   },
   {
-   "page": "/jobs/cws-iift-consultant-2026/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 9
-  },
-  {
    "page": "/jobs/dh-fws-purba-bardhaman-pharmacist-medical-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 3,
    "ctr": 0,
    "position": 4
+  },
+  {
+   "page": "/jobs/district-panchayat-kondagaon-accountant-program-officer-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 10
   },
   {
    "page": "/jobs/dlsa-bhojpur-para-legal-volunteer-2026/",
@@ -424,6 +410,13 @@
    "impressions": 10,
    "ctr": 0,
    "position": 5.2
+  },
+  {
+   "page": "/jobs/esic-hospital-tiruppur-walkin-specialist-senior-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 6,
+   "ctr": 0,
+   "position": 3
   },
   {
    "page": "/jobs/esic-walkin-senior-resident-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
@@ -447,13 +440,6 @@
    "position": 2
   },
   {
-   "page": "/jobs/gulf-walkin-burjeel-holdings-dubai-gulf/",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 5
-  },
-  {
    "page": "/jobs/hpcl-officers-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
    "impressions": 1,
@@ -470,16 +456,16 @@
   {
    "page": "/jobs/igntu-junior-research-fellow-project-fellow-2026/",
    "clicks": 0,
-   "impressions": 41,
+   "impressions": 47,
    "ctr": 0,
    "position": 3.2
   },
   {
    "page": "/jobs/iit-delhi-walkin-senior-project-engineer-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 0,
-   "impressions": 13,
+   "impressions": 10,
    "ctr": 0,
-   "position": 3.6
+   "position": 3.8
   },
   {
    "page": "/jobs/iit-indore-senior-research-fellow-walkin-2026/",
@@ -515,6 +501,20 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
+  },
+  {
+   "page": "/jobs/jrhms-specialist-medical-officer-out-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
+  },
+  {
+   "page": "/jobs/jssh-senior-resident-2026/",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 5
   }
  ],
  "topQueries": [
@@ -549,8 +549,8 @@
   {
    "query": "jharkhand government jobs",
    "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
+   "impressions": 3,
+   "ctr": 33.33,
    "position": 3
   },
   {
@@ -559,27 +559,6 @@
    "impressions": 2,
    "ctr": 50,
    "position": 2
-  },
-  {
-   "query": "metro jobs",
-   "clicks": 1,
-   "impressions": 1,
-   "ctr": 100,
-   "position": 2
-  },
-  {
-   "query": "railway job vacancy 2026",
-   "clicks": 1,
-   "impressions": 2,
-   "ctr": 50,
-   "position": 2
-  },
-  {
-   "query": "tirupur government job vacancy",
-   "clicks": 1,
-   "impressions": 4,
-   "ctr": 25,
-   "position": 3
   },
   {
    "query": "2026 vacancy government",
@@ -622,6 +601,13 @@
    "impressions": 1,
    "ctr": 0,
    "position": 3
+  },
+  {
+   "query": "assistant probation officer",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 2
   },
   {
    "query": "bank job vacancy 2026",
@@ -708,18 +694,18 @@
    "position": 5
   },
   {
-   "query": "contract basis jobs in delhi ministry",
-   "clicks": 0,
-   "impressions": 1,
-   "ctr": 0,
-   "position": 4
-  },
-  {
    "query": "contractual government jobs in delhi",
    "clicks": 0,
    "impressions": 1,
    "ctr": 0,
    "position": 5
+  },
+  {
+   "query": "court master salary",
+   "clicks": 0,
+   "impressions": 1,
+   "ctr": 0,
+   "position": 84
   },
   {
    "query": "dcpu chennai recruitment 2026",
@@ -773,9 +759,9 @@
   {
    "query": "dgafms group c cut off",
    "clicks": 0,
-   "impressions": 7,
+   "impressions": 8,
    "ctr": 0,
-   "position": 49.9
+   "position": 53.4
   },
   {
    "query": "esic hospital job vacancy 2026",
@@ -829,7 +815,7 @@
   {
    "query": "free job alert 2026",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
    "position": 3
   },
@@ -864,14 +850,14 @@
   {
    "query": "free job alert jharkhand",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 7,
    "ctr": 0,
    "position": 3
   },
   {
    "query": "free job alert jharkhand 2026",
    "clicks": 0,
-   "impressions": 2,
+   "impressions": 3,
    "ctr": 0,
    "position": 3
   },
@@ -893,6 +879,13 @@
    "query": "freejobalert",
    "clicks": 0,
    "impressions": 2,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "freejobalert jharkhand",
+   "clicks": 0,
+   "impressions": 1,
    "ctr": 0,
    "position": 3
   },
@@ -983,16 +976,16 @@
   {
    "query": "igntu recruitment",
    "clicks": 0,
-   "impressions": 17,
+   "impressions": 19,
    "ctr": 0,
-   "position": 2.9
+   "position": 3.1
   },
   {
    "query": "igntu recruitment 2026",
    "clicks": 0,
-   "impressions": 6,
+   "impressions": 7,
    "ctr": 0,
-   "position": 3.8
+   "position": 3.9
   },
   {
    "query": "indian oil job vacancy 2026",
@@ -1074,7 +1067,7 @@
   {
    "query": "jharkhand government jobs vacancy 2026",
    "clicks": 0,
-   "impressions": 7,
+   "impressions": 10,
    "ctr": 0,
    "position": 3
   },
@@ -1151,7 +1144,14 @@
   {
    "query": "job alert jharkhand",
    "clicks": 0,
-   "impressions": 4,
+   "impressions": 5,
+   "ctr": 0,
+   "position": 3
+  },
+  {
+   "query": "job vacancy in jharkhand government",
+   "clicks": 0,
+   "impressions": 1,
    "ctr": 0,
    "position": 3
   },
@@ -1272,14 +1272,14 @@
   {
    "page": "/jobs/rajasthan-safai-karamchari-2026/",
    "clicks": 1,
-   "impressions": 36,
-   "ctr": 2.78,
+   "impressions": 37,
+   "ctr": 2.7,
    "position": 5,
    "queries": [
     {
      "q": "राजस्थान सफाई कर्मचारी भर्ती 2026",
-     "impressions": 9,
-     "position": 5.7
+     "impressions": 10,
+     "position": 5.6
     },
     {
      "q": "सफाई कर्मचारी भर्ती राजस्थान",
@@ -1311,9 +1311,9 @@
   {
    "page": "/",
    "clicks": 0,
-   "impressions": 21,
+   "impressions": 26,
    "ctr": 0,
-   "position": 6.6,
+   "position": 6.8,
    "queries": []
   },
   {
@@ -1397,6 +1397,35 @@
      "position": 8
     }
    ]
+  },
+  {
+   "page": "/jobs/niepmd-ear-mould-technician-assistant-professor-2026/",
+   "clicks": 0,
+   "impressions": 10,
+   "ctr": 0,
+   "position": 5.7,
+   "queries": [
+    {
+     "q": "niepmd recruitment 2026",
+     "impressions": 4,
+     "position": 5.8
+    },
+    {
+     "q": "niepmd chennai recruitment 2026",
+     "impressions": 3,
+     "position": 6.3
+    },
+    {
+     "q": "niepmd vacancy 2026",
+     "impressions": 2,
+     "position": 5
+    },
+    {
+     "q": "niepmd recruitment",
+     "impressions": 1,
+     "position": 5
+    }
+   ]
   }
  ],
  "lowCtr": [
@@ -1410,8 +1439,8 @@
   {
    "page": "/jobs/jhdc-latehar-rural-home-guard-urban-2026/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
    "clicks": 1,
-   "impressions": 76,
-   "ctr": 1.32,
+   "impressions": 88,
+   "ctr": 1.14,
    "position": 3
   }
  ]
