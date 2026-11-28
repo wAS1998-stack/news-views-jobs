@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-28T10:31:18.792Z",
+    "at": "2026-11-28T12:29:57.891Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,24 +179,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-28T10:31:29.727Z",
+    "at": "2026-11-28T12:30:02.413Z",
     "ok": true,
-    "submitted": 48,
+    "submitted": 17,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 69,
+    "usedToday": 86,
     "log": [
-      "Indexing API: 48 to send (48 updated, 0 deleted); 21/200 used in Google's day 2026-11-28 (Pacific).",
-      "Indexing API: sent 48."
+      "Indexing API: 17 to send (17 updated, 0 deleted); 69/200 used in Google's day 2026-11-28 (Pacific).",
+      "Indexing API: sent 17."
     ]
   },
   "push": {
-    "at": "2026-11-28T10:32:23.882Z",
+    "at": "2026-11-28T12:31:00.575Z",
     "ok": true,
-    "sent": 94,
+    "sent": 72,
     "log": [
-      "push-notify: 94 sent\n  job aiims-bhopal-lab-technician-research-scientist-2026 en ['s-madhya-pradesh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job aiims-bhopal-lab-technician-research-scientist-2026 en ['s-madhya-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en"
+      "push-notify: 72 sent\n  job cspdcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspdcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in to"
     ]
   },
   "enrich": {

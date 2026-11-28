@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-28",
   "tz": "PT",
-  "used": 69,
+  "used": 86,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -13368,5 +13368,73 @@
  "https://news-views.in/jobs/university-kerala-technical-officer-walkin-2026/": {
   "sentAt": "2026-11-28T10:31:29.401Z",
   "hash": "e2edaedaf217"
+ },
+ "https://news-views.in/jobs/andhra-medical-college-walkin-lab-technician-2026/": {
+  "sentAt": "2026-11-28T12:29:58.827Z",
+  "hash": "63d1538560bb"
+ },
+ "https://news-views.in/jobs/bpsc-assistant-state-architectural-auditor-2027/": {
+  "sentAt": "2026-11-28T12:29:59.066Z",
+  "hash": "fe6636787769"
+ },
+ "https://news-views.in/jobs/bric-cdfd-junior-managerial-assistant-administrative-2027/": {
+  "sentAt": "2026-11-28T12:29:59.305Z",
+  "hash": "aeb7c17255fe"
+ },
+ "https://news-views.in/jobs/cau-cf-senior-research-fellow-walkin-2026/": {
+  "sentAt": "2026-11-28T12:29:59.536Z",
+  "hash": "021512372583"
+ },
+ "https://news-views.in/jobs/cspdcl-graduate-apprentice-diploma-apprentice-2026/": {
+  "sentAt": "2026-11-28T12:29:59.778Z",
+  "hash": "459d08763a13"
+ },
+ "https://news-views.in/jobs/cuk-walkin-trainer-master-artisan-2026/": {
+  "sentAt": "2026-11-28T12:29:59.998Z",
+  "hash": "be90f83721aa"
+ },
+ "https://news-views.in/jobs/cusb-jrf-2026/": {
+  "sentAt": "2026-11-28T12:30:00.237Z",
+  "hash": "ad5c8a7f8ddb"
+ },
+ "https://news-views.in/jobs/district-court-gopalganj-clerk-stenographer-peon-2026/": {
+  "sentAt": "2026-11-28T12:30:00.465Z",
+  "hash": "34f481745779"
+ },
+ "https://news-views.in/jobs/hbch-rc-consultant-d-general-medicine-2026/": {
+  "sentAt": "2026-11-28T12:30:00.665Z",
+  "hash": "75119ba06d2b"
+ },
+ "https://news-views.in/jobs/hbch-rc-consultant-d-walkin-2026/": {
+  "sentAt": "2026-11-28T12:30:00.863Z",
+  "hash": "71ca3d18be1a"
+ },
+ "https://news-views.in/jobs/hbchrc-senior-resident-walkin-2026/": {
+  "sentAt": "2026-11-28T12:30:01.087Z",
+  "hash": "1d2b8ee8db69"
+ },
+ "https://news-views.in/jobs/iit-roorkee-project-fellow-water-resources-2026/": {
+  "sentAt": "2026-11-28T12:30:01.283Z",
+  "hash": "2cabb63e6f89"
+ },
+ "https://news-views.in/jobs/iit-roorkee-research-associate-walkin-2026/": {
+  "sentAt": "2026-11-28T12:30:01.508Z",
+  "hash": "ae85cd2066f4"
+ },
+ "https://news-views.in/jobs/rcf-out-technician-trainee-junior-fireman-2026/": {
+  "sentAt": "2026-11-28T12:30:01.705Z",
+  "hash": "27a5eba3dd17"
+ },
+ "https://news-views.in/jobs/sheohar-district-court-clerk-stenographer-peon-2026/": {
+  "sentAt": "2026-11-28T12:30:01.903Z",
+  "hash": "4de8d2983d00"
+ },
+ "https://news-views.in/jobs/tmc-senior-resident-radiation-oncology-2026/": {
+  "sentAt": "2026-11-28T12:30:02.098Z",
+  "hash": "c6fdf12a731a"
+ },
+ "https://news-views.in/jobs/university-calcutta-student-intern-walkin-2026/": {
+  "sentAt": "2026-11-28T12:30:02.289Z",
+  "hash": "6eeb42bab719"
  }
 }
