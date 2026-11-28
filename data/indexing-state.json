@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-27",
   "tz": "PT",
-  "used": 95,
+  "used": 96,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -13020,5 +13020,9 @@
  "https://news-views.in/jobs/ubkv-project-assistant-walkin-2026/": {
   "sentAt": "2026-11-28T00:10:25.037Z",
   "hash": "21bc8c91fb83"
+ },
+ "https://news-views.in/jobs/dc-dhubri-revenue-sheristadar-2026/": {
+  "sentAt": "2026-11-28T02:51:12.612Z",
+  "hash": "84951ba0b233"
  }
 }
