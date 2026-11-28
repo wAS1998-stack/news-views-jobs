@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-28T08:30:00.774Z",
+    "at": "2026-11-28T10:31:18.792Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,24 +179,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-28T08:30:05.688Z",
+    "at": "2026-11-28T10:31:29.727Z",
     "ok": true,
-    "submitted": 21,
+    "submitted": 48,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 21,
+    "usedToday": 69,
     "log": [
-      "Indexing API: 21 to send (21 updated, 0 deleted); 0/200 used in Google's day 2026-11-28 (Pacific).",
-      "Indexing API: sent 21."
+      "Indexing API: 48 to send (48 updated, 0 deleted); 21/200 used in Google's day 2026-11-28 (Pacific).",
+      "Indexing API: sent 48."
     ]
   },
   "push": {
-    "at": "2026-11-28T08:30:59.474Z",
+    "at": "2026-11-28T10:32:23.882Z",
     "ok": true,
-    "sent": 60,
+    "sent": 94,
     "log": [
-      "push-notify: 60 sent\n  job zila-panchayat-koriya-gram-panchayat-sachiv-2026 en ['s-chhattisgarh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job zila-panchayat-koriya-gram-panchayat-sachiv-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topic"
+      "push-notify: 94 sent\n  job aiims-bhopal-lab-technician-research-scientist-2026 en ['s-madhya-pradesh' in topics && 'q-10th-pass' in topics && 'l-en' in topics]: ok\n  job aiims-bhopal-lab-technician-research-scientist-2026 en ['s-madhya-pradesh' in topics && 'q-engineering-diploma' in topics && 'l-en"
     ]
   },
   "enrich": {
