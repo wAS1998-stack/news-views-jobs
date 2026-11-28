@@ -170,7 +170,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-28T07:10:33.447Z",
+    "at": "2026-11-28T08:30:00.774Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -181,24 +181,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-28T07:10:36.495Z",
+    "at": "2026-11-28T08:30:05.688Z",
     "ok": true,
-    "submitted": 12,
+    "submitted": 21,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 114,
+    "usedToday": 21,
     "log": [
-      "Indexing API: 12 to send (12 updated, 0 deleted); 102/200 used in Google's day 2026-11-27 (Pacific).",
-      "Indexing API: sent 12."
+      "Indexing API: 21 to send (21 updated, 0 deleted); 0/200 used in Google's day 2026-11-28 (Pacific).",
+      "Indexing API: sent 21."
     ]
   },
   "push": {
-    "at": "2026-11-28T07:11:19.149Z",
+    "at": "2026-11-28T08:30:59.474Z",
     "ok": true,
-    "sent": 40,
+    "sent": 60,
     "log": [
-      "push-notify: 40 sent\n  job rrc-northern-railway-sports-quota-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job rrc-northern-railway-sports-quota-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job thsti-walkin-project-associat"
+      "push-notify: 60 sent\n  job zila-panchayat-koriya-gram-panchayat-sachiv-2026 en ['s-chhattisgarh' in topics && 'q-12th-pass' in topics && 'l-en' in topics]: ok\n  job zila-panchayat-koriya-gram-panchayat-sachiv-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in topic"
     ]
   },
   "enrich": {
