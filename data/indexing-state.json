@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-27",
   "tz": "PT",
-  "used": 102,
+  "used": 114,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -13048,5 +13048,53 @@
  "https://news-views.in/jobs/uuhf-senior-scientist-cum-head-subject-2026/": {
   "sentAt": "2026-11-28T05:06:55.237Z",
   "hash": "4f1ce6bc927e"
+ },
+ "https://news-views.in/jobs/cochin-port-authority-deputy-chief-vigilance-2027/": {
+  "sentAt": "2026-11-28T07:10:34.219Z",
+  "hash": "3de86efe0c54"
+ },
+ "https://news-views.in/jobs/grcp-professor-2026/": {
+  "sentAt": "2026-11-28T07:10:34.445Z",
+  "hash": "9445873c88c1"
+ },
+ "https://news-views.in/jobs/hal-lab-technician-2026/": {
+  "sentAt": "2026-11-28T07:10:34.661Z",
+  "hash": "c3980d7e7d0f"
+ },
+ "https://news-views.in/jobs/hbchrc-visakhapatnam-technician-walkin-2026/": {
+  "sentAt": "2026-11-28T07:10:34.878Z",
+  "hash": "ab5bb347f5d3"
+ },
+ "https://news-views.in/jobs/mmmut-junior-research-assistant-electronics-2026/": {
+  "sentAt": "2026-11-28T07:10:35.076Z",
+  "hash": "f189a5c41aed"
+ },
+ "https://news-views.in/jobs/mzu-director-dia-coe-2026/": {
+  "sentAt": "2026-11-28T07:10:35.279Z",
+  "hash": "99fc574bb923"
+ },
+ "https://news-views.in/jobs/nhm-uttara-kannada-laboratory-technician-deic-2026/": {
+  "sentAt": "2026-11-28T07:10:35.456Z",
+  "hash": "a1ec0d247084"
+ },
+ "https://news-views.in/jobs/nit-calicut-junior-research-fellow-architecture-2026/": {
+  "sentAt": "2026-11-28T07:10:35.638Z",
+  "hash": "5830e13d5d03"
+ },
+ "https://news-views.in/jobs/nit-rourkela-junior-research-fellow-life-advt-25-50-2026/": {
+  "sentAt": "2026-11-28T07:10:35.815Z",
+  "hash": "ef3780a1a480"
+ },
+ "https://news-views.in/jobs/npc-technical-assistant-2026/": {
+  "sentAt": "2026-11-28T07:10:35.996Z",
+  "hash": "039bac8a93b9"
+ },
+ "https://news-views.in/jobs/rrc-northern-railway-sports-quota-2026/": {
+  "sentAt": "2026-11-28T07:10:36.179Z",
+  "hash": "7426d7a9d9be"
+ },
+ "https://news-views.in/jobs/thsti-walkin-project-associate-i-project-2026/": {
+  "sentAt": "2026-11-28T07:10:36.372Z",
+  "hash": "188bc2e2f310"
  }
 }

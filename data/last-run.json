@@ -166,7 +166,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-28T05:06:52.907Z",
+    "at": "2026-11-28T07:10:33.447Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -177,24 +177,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-28T05:06:55.360Z",
+    "at": "2026-11-28T07:10:36.495Z",
     "ok": true,
-    "submitted": 6,
+    "submitted": 12,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 102,
+    "usedToday": 114,
     "log": [
-      "Indexing API: 6 to send (6 updated, 0 deleted); 96/200 used in Google's day 2026-11-27 (Pacific).",
-      "Indexing API: sent 6."
+      "Indexing API: 12 to send (12 updated, 0 deleted); 102/200 used in Google's day 2026-11-27 (Pacific).",
+      "Indexing API: sent 12."
     ]
   },
   "push": {
-    "at": "2026-11-28T05:07:40.817Z",
+    "at": "2026-11-28T07:11:19.149Z",
     "ok": true,
-    "sent": 102,
+    "sent": 40,
     "log": [
-      "push-notify: 102 sent\n  job bhel-medical-officer-gdmo-more-2026 en [('s-madhya-pradesh' in topics || 's-any' in topics) && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job bhel-medical-officer-gdmo-more-2026 en ['s-maharashtra' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job "
+      "push-notify: 40 sent\n  job rrc-northern-railway-sports-quota-2026 en ['s-central' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job rrc-northern-railway-sports-quota-2026 hi ['s-central' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  job thsti-walkin-project-associat"
     ]
   },
   "enrich": {
