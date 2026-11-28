@@ -168,7 +168,7 @@
     ]
   },
   "notify": {
-    "at": "2026-11-28T12:29:57.891Z",
+    "at": "2026-11-28T14:55:47.283Z",
     "ok": true,
     "websub": 204,
     "sitemap-latest.xml": 204,
@@ -179,24 +179,24 @@
     ]
   },
   "indexing-api": {
-    "at": "2026-11-28T12:30:02.413Z",
+    "at": "2026-11-28T14:55:50.891Z",
     "ok": true,
-    "submitted": 17,
+    "submitted": 13,
     "failed": 0,
     "limited": false,
     "kept": 4,
-    "usedToday": 86,
+    "usedToday": 99,
     "log": [
-      "Indexing API: 17 to send (17 updated, 0 deleted); 69/200 used in Google's day 2026-11-28 (Pacific).",
-      "Indexing API: sent 17."
+      "Indexing API: 13 to send (13 updated, 0 deleted); 86/200 used in Google's day 2026-11-28 (Pacific).",
+      "Indexing API: sent 13."
     ]
   },
   "push": {
-    "at": "2026-11-28T12:31:00.575Z",
+    "at": "2026-11-28T14:56:44.280Z",
     "ok": true,
-    "sent": 72,
+    "sent": 98,
     "log": [
-      "push-notify: 72 sent\n  job cspdcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job cspdcl-graduate-apprentice-diploma-apprentice-2026 en ['s-chhattisgarh' in topics && 'q-engineering-diploma' in topics && 'l-en' in to"
+      "push-notify: 98 sent\n  job district-court-jharsuguda-persons-on-daily-2026 en ['s-odisha' in topics && 'q-graduate' in topics && 'l-en' in topics]: ok\n  job district-court-jharsuguda-persons-on-daily-2026 hi ['s-odisha' in topics && 'q-graduate' in topics && 'l-hi' in topics]: ok\n  follow o-ibps ibp"
     ]
   },
   "enrich": {

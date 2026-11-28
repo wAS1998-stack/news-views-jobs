@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-28",
   "tz": "PT",
-  "used": 86,
+  "used": 99,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -13210,8 +13210,8 @@
   "hash": "0e27d9b73a3c"
  },
  "https://news-views.in/jobs/cmru-doctoral-fellow-2027/": {
-  "sentAt": "2026-11-28T10:31:21.436Z",
-  "hash": "7d7038e89324"
+  "sentAt": "2026-11-28T14:55:50.768Z",
+  "hash": "56cb86be6580"
  },
  "https://news-views.in/jobs/csir-niist-walkin-administrative-assistant-senior-2026/": {
   "sentAt": "2026-11-28T10:31:21.635Z",
@@ -13436,5 +13436,53 @@
  "https://news-views.in/jobs/university-calcutta-student-intern-walkin-2026/": {
   "sentAt": "2026-11-28T12:30:02.289Z",
   "hash": "6eeb42bab719"
+ },
+ "https://news-views.in/jobs/coenstds-winter-internship-program-2026/": {
+  "sentAt": "2026-11-28T14:55:48.086Z",
+  "hash": "54590637044a"
+ },
+ "https://news-views.in/jobs/directorate-social-justice-clerk-deputy-director-2026/": {
+  "sentAt": "2026-11-28T14:55:48.328Z",
+  "hash": "3f1665118b4a"
+ },
+ "https://news-views.in/jobs/district-court-jharsuguda-persons-on-daily-2026/": {
+  "sentAt": "2026-11-28T14:55:48.581Z",
+  "hash": "a4aecc1e39e3"
+ },
+ "https://news-views.in/jobs/district-court-nalanda-clerk-stenographer-peon-2026/": {
+  "sentAt": "2026-11-28T14:55:48.820Z",
+  "hash": "91bbdbcd6238"
+ },
+ "https://news-views.in/jobs/district-court-thrissur-confidential-assistant-2026/": {
+  "sentAt": "2026-11-28T14:55:49.080Z",
+  "hash": "aa6affbe4f1b"
+ },
+ "https://news-views.in/jobs/greater-chennai-corporation-out-medical-officer-2026/": {
+  "sentAt": "2026-11-28T14:55:49.277Z",
+  "hash": "0a58d978db51"
+ },
+ "https://news-views.in/jobs/hbcb-mpmmmcc-multi-tasking-staff-2026/": {
+  "sentAt": "2026-11-28T14:55:49.470Z",
+  "hash": "c93c83473573"
+ },
+ "https://news-views.in/jobs/kgmu-junior-research-assistant-medicine-2026/": {
+  "sentAt": "2026-11-28T14:55:49.670Z",
+  "hash": "def4d0a30ba4"
+ },
+ "https://news-views.in/jobs/konkan-railway-jta-walk-interview-2026/": {
+  "sentAt": "2026-11-28T14:55:49.917Z",
+  "hash": "83c0d23b97e4"
+ },
+ "https://news-views.in/jobs/kumurambheem-asifabad-district-road-safety-co-2026/": {
+  "sentAt": "2026-11-28T14:55:50.154Z",
+  "hash": "423a916bf874"
+ },
+ "https://news-views.in/jobs/nims-walkin-neuropsychologists-psychological-2026/": {
+  "sentAt": "2026-11-28T14:55:50.391Z",
+  "hash": "946d5c79370c"
+ },
+ "https://news-views.in/jobs/sainik-school-kodagu-pem-pti-cum-2026/": {
+  "sentAt": "2026-11-28T14:55:50.561Z",
+  "hash": "0d5b18d960c7"
  }
 }
