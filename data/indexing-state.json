@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-27",
   "tz": "PT",
-  "used": 96,
+  "used": 102,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -13024,5 +13024,29 @@
  "https://news-views.in/jobs/dc-dhubri-revenue-sheristadar-2026/": {
   "sentAt": "2026-11-28T02:51:12.612Z",
   "hash": "84951ba0b233"
+ },
+ "https://news-views.in/jobs/appsc-deputy-commissioner-endowments-2026/": {
+  "sentAt": "2026-11-28T05:06:53.840Z",
+  "hash": "bd32260a785c"
+ },
+ "https://news-views.in/jobs/bhel-medical-officer-gdmo-more-2026/": {
+  "sentAt": "2026-11-28T05:06:54.166Z",
+  "hash": "ff0abd859592"
+ },
+ "https://news-views.in/jobs/cihts-junior-office-assistant-pharmacist-more-2026/": {
+  "sentAt": "2026-11-28T05:06:54.401Z",
+  "hash": "799c6ee3bb61"
+ },
+ "https://news-views.in/jobs/csir-nml-engineering-graduate-diploma-engineering-2026/": {
+  "sentAt": "2026-11-28T05:06:54.670Z",
+  "hash": "29cc8f8348c6"
+ },
+ "https://news-views.in/jobs/iih-consultant-walkin-2026/": {
+  "sentAt": "2026-11-28T05:06:54.926Z",
+  "hash": "3298e61cea2d"
+ },
+ "https://news-views.in/jobs/uuhf-senior-scientist-cum-head-subject-2026/": {
+  "sentAt": "2026-11-28T05:06:55.237Z",
+  "hash": "4f1ce6bc927e"
  }
 }
