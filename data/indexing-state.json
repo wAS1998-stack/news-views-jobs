@@ -2,7 +2,7 @@
  "_day": {
   "date": "2026-11-27",
   "tz": "PT",
-  "used": 89,
+  "used": 95,
   "drained": 0
  },
  "https://news-views.in/jobs/conservator-forest-plantation-research-evaluation-advt-2-27-2026/": {
@@ -12996,5 +12996,29 @@
  "https://news-views.in/jobs/zp-wardha-district-programme-manager-ayush-2026/": {
   "sentAt": "2026-11-27T21:40:59.934Z",
   "hash": "df0583840a2f"
+ },
+ "https://news-views.in/jobs/cmrl-general-manager-deputy-general-manager-2026/": {
+  "sentAt": "2026-11-28T00:10:23.915Z",
+  "hash": "2c5b6e114838"
+ },
+ "https://news-views.in/jobs/district-court-east-champaran-clerk-peon-2026/": {
+  "sentAt": "2026-11-28T00:10:24.124Z",
+  "hash": "96ecf909542b"
+ },
+ "https://news-views.in/jobs/district-sessions-judge-chamba-clerk-2026/": {
+  "sentAt": "2026-11-28T00:10:24.366Z",
+  "hash": "8a08e86b2a34"
+ },
+ "https://news-views.in/jobs/mhrb-lecturer-2026/": {
+  "sentAt": "2026-11-28T00:10:24.603Z",
+  "hash": "e0c334a47749"
+ },
+ "https://news-views.in/jobs/tiss-research-officer-research-interns-2026/": {
+  "sentAt": "2026-11-28T00:10:24.837Z",
+  "hash": "e285096a023d"
+ },
+ "https://news-views.in/jobs/ubkv-project-assistant-walkin-2026/": {
+  "sentAt": "2026-11-28T00:10:25.037Z",
+  "hash": "21bc8c91fb83"
  }
 }
